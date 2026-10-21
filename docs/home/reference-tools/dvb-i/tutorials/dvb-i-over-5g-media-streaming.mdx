@@ -96,9 +96,8 @@ npm start
 
 Open `http://localhost:4000/`.
 
-1. In the Service List Settings, type a **Service List ID** that is a `tag:` URI of your own, for example `tag:example.com,2026:servicelist:tutorial-5gms`.
-2. In the services toolbar, choose **Reference service (all fields, DASH)** and press **Load Template**.
-3. Change these fields:
+1. In the services toolbar, choose **Reference service (all fields, DASH)** and press **Load Template**.
+2. Change these fields:
 
    | Field | Value |
    |---|---|
@@ -111,7 +110,7 @@ Open `http://localhost:4000/`.
    | Target Region (under the instances) | empty |
    | Subscription Package | empty |
 
-4. Press **Save Service**, then **Save & Publish**.
+3. Press **Save Service**, then **Save & Publish**.
 
 **Check:** the last instance in the published list is yours, and it holds the M4d URL.
 
@@ -142,10 +141,10 @@ cd ~
 git clone https://github.com/5G-MAG/rt-dvb-i-application.git
 cd rt-dvb-i-application
 npm install
-PROXY_ALLOW_ORIGINS="http://localhost:4000,http://127.0.0.1:4000" npm start
+npm start
 ```
 
-Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. The sidebar shows the list and its channels; channel 4 is `5GMS Tutorial Channel`. Select it, or press **4**. The player requests the MPD and then the segments from the 5GMS Application Server at M4d. To see where the media comes from, open the developer tools of the browser on the **Network** tab: the first request goes to your `<M4D_MPD_URL>`. If that address does not answer, the client shows `All streams unavailable`.
+A plain `npm start` is enough: the client's server allows the provider's default address, `http://localhost:4000`, without any setting. Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. The sidebar shows the list and its channels; channel 4 is `5GMS Tutorial Channel`. Select it, or press **4**. The player requests the MPD and then the segments from the 5GMS Application Server at M4d. To see where the media comes from, open the developer tools of the browser on the **Network** tab: the first request goes to your `<M4D_MPD_URL>`. If that address does not answer, the client tries the instance again and then shows `All 1 stream unavailable`, which took about 45 seconds on the checked run.
 
 The [Tutorial: DVB-I Application](./dvb-i-application) explains the screen and the settings.
 
@@ -186,14 +185,14 @@ Press Ctrl+C in the terminal of the provider and of the client. To remove them, 
 <details>
 <summary>What was run for this page, and the specifications read</summary>
 
-Run on Ubuntu Linux with Node.js 24.21.0, npm 11.19.0 and Python 3.14.4, on clean clones of `main`: rt-dvb-i-application-provider `003ce59`, rt-dvb-i-application `7a9ae28`. The portal was driven in a headless Chromium (Playwright 1.64.1).
+Run on Ubuntu Linux with Node.js 24.21.0, npm 11.19.0 and Python 3.14.4, on clean clones of `main`: rt-dvb-i-application-provider `e3cfb1e`, rt-dvb-i-application `bb15220`, re-run on 2026-10-21. The portal was driven in a headless Chromium (Playwright 1.61.1, Chromium 149.0.7827.55).
 
 Section by section:
 
 - 1: not a procedure. The clauses were read in the published documents: ETSI TR 103 972 V1.1.1, ETSI TS 103 770 V1.2.1, ETSI TS 126 512 V19.3.0 and 3GPP TS 26.501 V20.0.0.
 - 2: **Not run.** This machine has no Docker and no root rights, so no Application Function or Application Server was started. The `m8.json` content is taken from the existing 5GMS tutorial, not from a run.
-- 3: **Partly run.** Provider started, **Reference service (all fields, DASH)** loaded, the table above applied, saved and published, the XML read back, **Validate** 11 of 11. The Stream URL used was a placeholder of the same form as `<M4D_MPD_URL>` on the address `192.0.2.10` (reserved for documentation), because there was no AS.
-- 4.1: **Partly run.** The client was started and the list of section 3 opened; channel 4 appeared with its name, and selecting it made the client request the M4d URL (on the placeholder address, so nothing answered and the client showed `All streams unavailable`). Playback from a real Application Server was not run.
+- 3: **Partly run.** Provider started, **Reference service (all fields, DASH)** loaded, the table above applied, saved and published, the XML read back, **Validate** 11 of 11 and **Compliance** 38 of 38. The Stream URL used was a placeholder of the same form as `<M4D_MPD_URL>` on the address `192.0.2.10` (reserved for documentation), because there was no AS.
+- 4.1: **Partly run.** The client was started with a plain `npm start` and the list of section 3 opened; channel 4 appeared with its name, and selecting it made the client request the M4d URL (on the placeholder address, so nothing answered and, after about 45 seconds, the client showed `All 1 stream unavailable`). Playback from a real Application Server was not run.
 - 4.2: **Not run.** No Android device, no JDK and no Android SDK on this machine. The build properties are from the README of rt-dvb-i-android-application (`553b4a4`).
 - 5: **Run** for the schema check on the list of section 3 (`VALID`, with the schema folder the other DVB-I tutorials use).
 - 6: run.

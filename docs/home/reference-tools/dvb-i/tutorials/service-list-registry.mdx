@@ -82,7 +82,7 @@ curl -s 'http://localhost:7000/query?TargetCountry=CHE'
     </Provider>
     <ServiceListOffering>
       <dvbisd-t:ServiceListName>5G-MAG</dvbisd-t:ServiceListName>
-      <dvbisd-t:ServiceListURI contentType="application/xml">
+      <dvbisd-t:ServiceListURI contentType="application/vnd.dvb.dvbisl+xml">
         <dvbisd-t:URI>http://localhost:4000/service-list.xml</dvbisd-t:URI>
       </dvbisd-t:ServiceListURI>
       <dvbisd-t:Delivery>
@@ -98,7 +98,7 @@ curl -s 'http://localhost:7000/query?TargetCountry=CHE'
 </ServiceListEntryPoints>
 ```
 
-That is a Service List Entry Point: the name of a list, the URL where a client fetches it, and what it delivers. The one in the stock file points at `http://localhost:4000/service-list.xml`, where the [DVB-I Application Provider](./application-provider) publishes its list.
+That is a Service List Entry Point: the name of a list, the URL where a client fetches it, and what it delivers. The `contentType` of the URI is the media type of a Service List, `application/vnd.dvb.dvbisl+xml` (TS 103 770 V1.2.1, clauses 5.1.2 and 5.3.5, table 22). The entry in the stock file points at `http://localhost:4000/service-list.xml`, where the [DVB-I Application Provider](./application-provider) publishes its list, and it carries the name `5G-MAG` and the identifier of that provider's stock list.
 
 Ask for a country nothing targets:
 
@@ -154,7 +154,7 @@ Open `registry.json`. Under `providers` is a list of providers, each with its `o
 | `languages`, `countries` | Audio languages (`en`) and countries (ISO 3166 alpha-3 such as `FRA`) the list targets. An offering with none is returned for every value of that parameter |
 | `genres`, `regulator`, `extensions` | Leave as shown. `regulator` is `true` only for the list a national regulator publishes |
 
-The values above match the list you make in [Tutorial: DVB-I Application Provider](./application-provider); change them if your list differs.
+The stock entry already matches the stock list of [Tutorial: DVB-I Application Provider](./application-provider): the same name (`5G-MAG`) and the same identifier. The entry above only shows how an offering is written; it points at the same address as the stock one. For a list of your own, use the name and the `id` that the provider shows for it in the Service List Settings. A client may compare the `id` of an offering with the `id` of the list it fetches (table 12, `ServiceListId`).
 
 Check that the registry now offers it:
 
@@ -165,6 +165,7 @@ curl -s 'http://localhost:7000/query?TargetCountry=FRA' | grep -E 'ServiceListNa
 ```text
       <dvbisd-t:ServiceListName>DVB-I Demo Service List</dvbisd-t:ServiceListName>
         <dvbisd-t:URI>http://localhost:4000/service-list.xml</dvbisd-t:URI>
+      </dvbisd-t:ServiceListURI>
       <dvbisd-t:ServiceListId>tag:example.com,2026:servicelist:tutorial</dvbisd-t:ServiceListId>
 ```
 
@@ -220,7 +221,7 @@ The repository has unit tests that follow the clause: which parameters exist, ho
 npm test
 ```
 
-They finish with `pass 14` and `fail 0`. Its last step, the schema check, skips until you give it the schema files (section 5) and then prints `ALL VALID`. The line that says `NOT CHECKED` is about the 5G broadcast extension, which the DVB schemas do not define; the [DVB-I over 5G](./dvb-i-over-5g-broadcast) tutorials cover it.
+They finish with `pass 15` and `fail 0`. Its last step, the schema check, skips until you give it the schema files (section 5) and then prints `ALL VALID`. The line that says `NOT CHECKED` is about the 5G broadcast extension, which the DVB schemas do not define; the [DVB-I over 5G](./dvb-i-over-5g-broadcast) tutorials cover it.
 
 </details>
 
@@ -228,7 +229,14 @@ They finish with `pass 14` and `fail 0`. Its last step, the schema check, skips 
 
 A registry answer is a `ServiceListEntryPoints` document. Its schema is `dvbi_service_list_discovery_v1.6.xsd` (TS 103 770 V1.2.1, clause 5.3.1 and annex B). The repository does not carry schema files; you supply them from a folder outside the clone.
 
-1. Get the schema files. They come with the specification, in the electronic attachment archive of ETSI TS 103 770 (named in annex B and in the repository's README). Put them in one folder, for example `~/dvb-i-schemas`. The folder needs `dvbi_service_list_discovery_v1.6.xsd` and the files it imports: `dvbi_types_v1.0.xsd`, `tva_metadata_3-1_2024.xsd`, `tva_mpeg7.xsd` and `xml.xsd`.
+1. Get the schema files. They come with the specification, in the electronic attachment archive `ts_103770v010201p0.zip` of ETSI TS 103 770 V1.2.1 (annex B). The folder needs `dvbi_service_list_discovery_v1.6.xsd` and the files it imports: `dvbi_types_v1.0.xsd`, `tva_metadata_3-1.xsd` and `tva_mpeg7.xsd` from the archive, and `xml.xsd` from the W3C, which is not in the archive. The repository's README ("Where the schema files come from") gives the same steps:
+
+   ```bash
+   mkdir -p ~/dvb-i-schemas && cd ~/dvb-i-schemas
+   curl -L -A "Mozilla/5.0" -O https://www.etsi.org/deliver/etsi_ts/103700_103799/103770/01.02.01_60/ts_103770v010201p0.zip
+   unzip -j ts_103770v010201p0.zip '*.xsd' -x 'xmlait/*' -d .
+   curl -L -A "Mozilla/5.0" -o xml.xsd https://www.w3.org/2001/xml.xsd
+   ```
 2. Run the repository's own check:
 
    ```bash
@@ -242,7 +250,8 @@ A registry answer is a `ServiceListEntryPoints` document. Its schema is `dvbi_se
    + fixture, Delivery[]=dvb-dash&Delivery[]=dvb-t: VALID
    + fixture, no matches: VALID
    + registry.json as shipped: VALID
-   ~ fixture + LOCAL 5G delivery extension: NOT CHECKED ...
+   ~ fixture + LOCAL 5G delivery extension: NOT CHECKED — carries the LOCAL 5G delivery extension
+       (set DVBI_5G_EXT_SCHEMA to dvbi-5g-ext-1.0.xsd to check it)
 
    ==== ALL VALID (1 not checked, see above) ====
    ```
@@ -276,8 +285,8 @@ A registry answer is a `ServiceListEntryPoints` document. Its schema is `dvbi_se
    VALID: answer.xml
    ```
 
-:::note[Where the schema files for this page came from]
-The run for this page used copies of the schema files from the `schemas` folder of a third-party repository, [paulhiggs/dvb-i-tools](https://github.com/paulhiggs/dvb-i-tools), because a download of the ETSI archive from the command line was refused (HTTP 403). The ETSI archive was not opened for this page, so which of the five files it contains is taken from the repository's README and from annex B, not from the archive itself.
+:::note[The ETSI download]
+The run for this page used the archive from ETSI, as in the commands above. A plain `curl` of that address was refused with HTTP 403 in an earlier run and answered 200 on 2026-10-21; the `-A "Mozilla/5.0"` option and a browser download both worked. If your download is refused, use one of those.
 :::
 
 ## 6. Configure it
@@ -310,9 +319,9 @@ To see a client use your registry, follow [Tutorial: DVB-I Application](./dvb-i-
 <details>
 <summary>What was run for this page</summary>
 
-Every command above was run on a clean clone of `main` (commit `97721a6`) on Ubuntu Linux with Node.js 24.21.0 and npm 11.19.0, Python 3.14.4 and lxml 6.1.3 (libxml2 2.14.6). The registry's dependencies were installed with the plain `npm install` of section 1.
+Every command above was run on a clean clone of `main` (commit `d0ab0ea`, which includes the fix of `ServiceListURI@contentType`) on Ubuntu Linux with Node.js 24.21.0 and npm 11.19.0, Python 3.14.4 and lxml 6.1.3 (libxml2 2.14.6). The registry's dependencies were installed with the plain `npm install` of section 1. The page was last re-run on 2026-10-21.
 
-Section by section: 1 run; 2 run in a headless Chromium (page loaded, query run, screenshot taken); 3 run (the second provider added, the answer read back with no restart); 4 run (every query in the table, the two refusals and the 414); 5 run with the schema files described in the note, `npm run test:xsd` and `check.py` both valid; 6 run once (second registry on port 7001 with a copy of the stock file); the TLS note is from the specification and the code and was not run. The registry's `npm test` printed 14 passes.
+Section by section: 1 run (the answer for `TargetCountry=CHE` read back with `application/vnd.dvb.dvbisl+xml`; the answer for `ITA` has no `ProviderOffering`); 2 run in a headless Chromium (Playwright 1.61.1, Chromium 149.0.7827.55: page loaded, query run, screenshot taken); 3 run (the second provider added, the answer read back with no restart); 4 run (every query in the table, the two refusals and the 414); 5 run with the schema files of the ETSI archive and the W3C `xml.xsd` as described, `npm run test:xsd` and `check.py` both valid; 6 run once (second registry on port 7001 with a copy of the stock file); the TLS note is from the specification and the code and was not run. The registry's `npm test` printed 15 passes.
 
 A `VALID` result means the response matches the schema.
 

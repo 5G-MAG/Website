@@ -75,9 +75,8 @@ The stock list has three channels. [Tutorial: DVB-I Application Provider](./appl
 
 The routine is that of the provider tutorial, sections 1 and 3: edit in the portal, **Save Service**, **Save & Publish**, then read the published XML. Open `http://localhost:4000/`.
 
-1. In the Service List Settings, type a **Service List ID** that is a `tag:` URI of your own, for example `tag:example.com,2026:servicelist:tutorial-5g`.
-2. In the services toolbar, choose **Reference service (all fields, DASH)** and press **Load Template**.
-3. Change these fields:
+1. In the services toolbar, choose **Reference service (all fields, DASH)** and press **Load Template**.
+2. Change these fields:
 
    | Field | Value |
    |---|---|
@@ -88,8 +87,8 @@ The routine is that of the provider tutorial, sections 1 and 3: edit in the port
    | Target Region (under the instances) | empty |
    | Subscription Package | empty |
 
-4. The template has one instance, of type **DASH**. Set its **Priority** to `2`, its **Label** to `Hybrid Tutorial Channel (unicast DASH)` and its **Stream URL** to `https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd`, a public DASH test stream.
-5. Press **+ Add Instance**. In the new instance, choose the type **5G / MBMS (extension)** and set:
+3. The template has one instance, of type **DASH**. Set its **Priority** to `2`, its **Label** to `Hybrid Tutorial Channel (unicast DASH)` and its **Stream URL** to `https://dash.akamaized.net/dash264/TestCasesUHD/2b/11/MultiRate.mpd`, a public DASH test stream.
+4. Press **+ Add Instance**. In the new instance, choose the type **5G / MBMS (extension)** and set:
 
    | Field | Value |
    |---|---|
@@ -101,7 +100,7 @@ The routine is that of the provider tutorial, sections 1 and 3: edit in the port
 
    ![The two instances of the service: DASH with priority 2, and 5G / MBMS with priority 1](/img/dvb-i/tut-dvbi-5g-instances.png)
 
-6. Press **Save Service**, then **Save & Publish**.
+5. Press **Save Service**, then **Save & Publish**.
 
 **Check:** the service has two instances, and the 5G one has priority 1.
 
@@ -127,10 +126,10 @@ curl -s http://localhost:4000/service-list.xml | sed -n '/<!-- Hybrid Tutorial C
     </ServiceInstance>
 ```
 
-:::tip[A local extension, and why the portal shows a failed check]
+:::tip[A local extension, and what the portal says about it]
 TS 103 770 V1.2.1 defines no delivery parameters for MBMS in its list of delivery parameter types (clauses 5.5.18.1 to 5.5.18.8), so the provider writes the 5G instance through the extension point `OtherDeliveryParameters`, with a type in the 5G-MAG namespace `urn:5g-mag:metadata:dvbi-5g:2026`. The namespace is declared in the list only when a service uses it. ETSI TR 103 972 V1.1.1 clause 6.2.4 records the missing element as a gap, and clause 6.4.3.3 prefers a separate instance type to signalling 5G Broadcast as DASH delivery. A client that does not know the namespace finds no delivery parameters it understands on that instance and uses another instance of the service.
 
-In the portal, **Validate** reports 10 of 11 checks for this list: `All stream URLs use http(s)` fails with `1 URL(s) are not http/https`, because the locator is an `mbms://` URL. That is the expected result for this instance.
+In the portal, **Validate** passes all 11 checks for this list: the check `All stream URLs use http(s)` accepts an `mbms://` locator on an instance of type **5G / MBMS (extension)**, which is where the extension carries it, and still refuses it on any other instance. **Compliance** reports 38 of 39 checks and one warning, in a section named "Local extension (outside the DVB schema)": the list carries the 5G-MAG extension, which no DVB schema defines, so the checks above cover only what DVB specifies. It does not report such a list as "Fully compliant".
 :::
 
 ## 3. See it in a DVB-I client
@@ -140,7 +139,7 @@ cd ~
 git clone https://github.com/5G-MAG/rt-dvb-i-application.git
 cd rt-dvb-i-application
 npm install
-PROXY_ALLOW_ORIGINS="http://localhost:4000,http://127.0.0.1:4000" npm start
+npm start
 ```
 
 Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. Channel 4 shows a dashed badge, **5G ext**; hover over it for the tooltip, which names the extension and says it is local and not defined by any DVB specification. Select the channel, or press **4**.
@@ -150,6 +149,15 @@ Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. Channe
 *The picture area is black in this capture because it was taken in a headless browser without video codecs. In your browser the stream plays.*
 
 **Check:** which instance played. Open the developer tools of the browser on the **Network** tab. The client requested `MultiRate.mpd` and its segments from `dash.akamaized.net`, all with status 200, and made no request to an `mbms://` address: a browser cannot join an MBMS bearer, so it uses the unicast instance.
+
+<details>
+<summary>A service with the 5G instance and a unicast fallback only</summary>
+
+The `Unicast fallback URL` of the extension is also played. The client turns it into a separate unicast instance with a lower priority than the 5G instance (the priority of the 5G instance plus one), following the model of TR 103 972 clauses 6.4.3.1 and 6.4.3.2: unicast and 5G as two service instances, the 5G one with the higher priority. The new instance takes the content protection and the content attributes of the 5G instance, and its media type from the `type` attribute of the extension element, else from the URL (`.m3u8` is HLS, `.mpd` is DASH), else DASH. It is not added when the service already lists the URL, which is the case in this section, because the DASH instance has the same URL. `UnicastFallback` is a local extension, not part of TS 103 770 or TR 103 972.
+
+To see it, edit the channel in the portal, remove the DASH instance with the **✕** at the end of its row, press **Save Service**, then **Save & Publish**, and reload the client. The channel keeps its **5G ext** badge and, when you select it, the client requests `MultiRate.mpd` from the fallback URL and makes no request to an `mbms://` address. The **AD** and **HoH** badges are gone, because they belonged to the DASH instance and the 5G instance declares none.
+
+</details>
 
 ## 4. What a receiver does with the instance
 
@@ -163,7 +171,7 @@ With an MBMS Client on the device, the specifications give the receiver these st
 | Reception starts | The MBMS-Aware Application selects the streaming service, the MBMS Client receives the MPD and segments and stores them in its Media Server, and the player reads them from there | ETSI TR 103 972 V1.1.1 clause 6.2.3.4, steps 33 to 48; 3GPP TS 26.347 V18.1.0 clause 6.3 |
 | The instance is chosen among others | The signalled `@priority` is respected; lower values mean higher priority; an instance with video or audio that the client could not present is discarded | ETSI TS 103 770 V1.2.1 clauses 5.2.13 and 5.5.4 |
 
-The unicast fallback in the extension, and the second instance with priority 2, are what a client without an MBMS Client plays.
+The second instance with priority 2, and the unicast fallback in the extension, are what a client without an MBMS Client plays.
 
 :::note[Two ways to write the locator]
 TS 103 770 V1.2.1 clause 9.3.3 speaks of "a DVB-I service instance with an mbms:// locator" but names no element for it, and ETSI TR 103 972 V1.1.1 clause 6.2.4 records that as a gap. The service list does define `IdentifierBasedDeliveryParameters` (clause 5.5.18.8), "An identifier in the form of a locator (URL) or name (URN)". The Android client of [rt-dvb-i-android-application](https://github.com/5G-MAG/rt-dvb-i-android-application) reads an `mbms://` locator from that element, checks it against TS 26.347 clause 8.2.2 and shows a 5G Broadcast badge; the provider and the browser client of this tutorial use the 5G-MAG extension of section 2 instead. A list written by the provider therefore shows the 5G instance as a 5G extension in the browser client, and the Android client treats it as a delivery it does not know and plays the DASH instance (`Instances.kt`, `ServiceListParser.kt` in rt-dvb-i-android-application).
@@ -180,12 +188,12 @@ DVBI_SCHEMAS=~/dvb-i-schemas npm run test:xsd
 
 ```text
 Service list (live config.json):
-  ~ config.json: NOT CONFORMANT GROUND ...
+  ~ config.json: NOT CONFORMANT GROUND — carries the LOCAL 5G delivery extension (urn:5g-mag:metadata:dvbi-5g:2026), which no published schema defines. Valid against the published schema composed with schemas/dvbi-5g-ext-1.0.xsd; that is not conformance to TS 103 770. See COMPLIANCE.md.
 ```
 
-(The line goes on to say that the list carries the local 5G delivery extension, which no published schema defines, that it is valid against the published schema composed with `schemas/dvbi-5g-ext-1.0.xsd`, and that this is not conformance to TS 103 770.) The check composes the published schema with `schemas/dvbi-5g-ext-1.0.xsd` and reports the list as valid against the two together. It labels the result so that it is not read as conformance to TS 103 770, which defines no such type.
+The line says that the list carries the local 5G delivery extension, which no published schema defines, that it is valid against the published schema composed with `schemas/dvbi-5g-ext-1.0.xsd`, and that this is not conformance to TS 103 770, which defines no such type. The stock channels of this list carry HLS as well as the 5G instance; with the schema folder of the provider tutorial (which has the HLS extension) the list is checked as above, and with only the files of the ETSI archive it is reported as `NOT CHECKED` because of the HLS instances. The run ends with `==== ALL VALID (2 not checked, see above) ====`.
 
-**In the portal.** **Compliance** runs its structural checks on the list; for this list it reported 38 of 38.
+**In the portal.** **Compliance** runs its structural checks on the list; for this list it reported 38 of 39 checks passed and one warning, "Local extension (outside the DVB schema)", as in section 2.
 
 ## 6. Stop and clean up
 
@@ -194,15 +202,15 @@ Press Ctrl+C in the terminal of the provider and of the client. To remove them, 
 <details>
 <summary>What was run for this page, and the specifications read</summary>
 
-Run on Ubuntu Linux with Node.js 24.21.0, npm 11.19.0 and Python 3.14.4, on clean clones of `main`: rt-dvb-i-application-provider `003ce59`, rt-dvb-i-application `7a9ae28`. The pages were driven in a headless Chromium (Playwright 1.64.1), which is also how the two pictures were taken.
+Run on Ubuntu Linux with Node.js 24.21.0, npm 11.19.0 and Python 3.14.4, on clean clones of `main`: rt-dvb-i-application-provider `e3cfb1e`, rt-dvb-i-application `bb15220`, re-run on 2026-10-21. The pages were driven in a headless Chromium (Playwright 1.61.1, Chromium 149.0.7827.55), which is also how the two pictures were taken.
 
 Section by section:
 
 - 1: **Run** (`/api/health` answered as shown).
-- 2: **Run.** The template was loaded, the two instances filled in as in the tables, saved and published, and the XML read back as shown. **Validate** reported 10 of 11 and **Compliance** 38 of 38.
-- 3: **Partly run.** The list loaded, the channel showed the **5G ext** badge and its tooltip, and the channel played in the sense that the client requested `MultiRate.mpd` and its audio segments, all with status 200; the picture was not shown because the headless browser has no video codecs, and playback was not watched in a desktop browser.
+- 2: **Run.** The template was loaded, the two instances filled in as in the tables, saved and published, and the XML read back as shown. **Validate** reported 11 of 11 and **Compliance** 38 of 39 with the warning of the tip.
+- 3: **Partly run.** With a plain `npm start`, the list loaded, the channel showed the **5G ext** badge and its tooltip, and the channel played in the sense that the client requested `MultiRate.mpd` and its audio segments, all with status 200; the picture was not shown because the headless browser has no video codecs, and playback was not watched in a desktop browser. The fold with the 5G instance and the fallback only was run as described: after the DASH instance was removed, the client requested `MultiRate.mpd` and no `mbms://` address. The tooltip of the badge was read from the page (it names the extension, says it is local and not defined by any DVB specification, and says playback uses the unicast fallback); the inheritance of protection and attributes, and the media type guess, are from the client's README and its tests, and were not run here.
 - 4: **Not run.** It describes what the specifications say, read in the published documents: ETSI TS 103 770 V1.2.1, ETSI TR 103 972 V1.1.1, 3GPP TS 26.347 V18.1.0 and 3GPP TS 26.346 V19.3.0. No MBMS Client, 5G Broadcast receiver or transmitter was available. What the Android client does with `IdentifierBasedDeliveryParameters` is from its code and README (`553b4a4`); it was not built or run (no JDK, no Android SDK, no device).
-- 5: **Run** (`npm run test:xsd` with the schema folder used for the other DVB-I tutorials).
+- 5: **Run** (`npm run test:xsd` with the schema folder of the provider tutorial, and again with only the ETSI archive files, to see the `NOT CHECKED` result).
 - 6: run.
 
 ETSI TS 103 720 (5G Broadcast) was not read for this page.

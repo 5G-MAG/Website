@@ -52,11 +52,12 @@ npm start
 ```
 
 ```text
-{"time":"2026-10-20T22:38:25.629Z","level":"info","msg":"DVB-I Client listening (http)","port":5000}
+{"time":"2026-10-21T19:06:51.533Z","level":"warn","msg":"/proxy will follow these origins without the private-address check","origins":["http://localhost:4000","http://127.0.0.1:4000"],"source":"default (PROXY_ALLOW_ORIGINS not set)"}
+{"time":"2026-10-21T19:06:51.535Z","level":"info","msg":"DVB-I Client listening (http)","port":5000}
 DVB-I Client      →  http://localhost:5000
 ```
 
-Open `http://localhost:5000` in a browser. The client first tries the provider on your own machine, which is not set up yet (section 3), so the sidebar says `Load failed`. Press the gear icon at the top of the sidebar (or the **S** key) to open the settings, and under **Service list URL** press the **dtv.fi** button. It loads the list that Sofia Digital publishes at `https://dvbi-rest.dtv.fi/services_r4/DVBI(epg)`.
+The first line says which local addresses the client's server may fetch lists from (section 3 explains it). Open `http://localhost:5000` in a browser. The client first tries the provider on your own machine, which is not set up yet (section 3), so the sidebar says `Load failed` and the list shows `Error: HTTP 502 for http://localhost:4000/service-list.xml: TypeError: fetch failed`. Press the gear icon at the top of the sidebar (or the **S** key) to open the settings, and under **Service list URL** press the **dtv.fi** button. It loads the list that Sofia Digital publishes at `https://dvbi-rest.dtv.fi/services_r4/DVBI(epg)`.
 
 The sidebar shows the name of the list, `DVBI(epg)`, and its channels with their channel numbers (eleven when this page was written). Press a channel to play it.
 
@@ -80,44 +81,42 @@ Keys: **↑** and **↓** change channel, a channel number **1** to **9** tunes 
 
 Run the provider of [Tutorial: DVB-I Application Provider](./application-provider), sections 1 and 3, so that `http://localhost:4000/service-list.xml` answers.
 
-The client reaches service lists through its own server (`/proxy`), because a browser cannot fetch most lists across origins. That server refuses addresses on your own machine unless you name them. Stop the client with Ctrl+C and start it again with the provider's address allowed:
+The client reaches service lists through its own server (`/proxy`), because a browser cannot fetch most lists across origins. That server refuses addresses on your own machine unless their origin is named in `PROXY_ALLOW_ORIGINS`. When the variable is not set, it allows the origin of the provider's default address, `http://localhost:4000` and `http://127.0.0.1:4000`, so the client you started in section 1 can load the provider's list as it is. Open the list by its address:
 
-```bash
-PROXY_ALLOW_ORIGINS="http://localhost:4000,http://127.0.0.1:4000" npm start
-```
+`http://localhost:5000/?url=http://localhost:4000/service-list.xml`
 
-Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. The `url` in the address is the service list to load; the client remembers it in the browser for the next visit.
+The `url` in the address is the service list to load; the client remembers it in the browser for the next visit. (A browser that remembers no other list opens the provider's list at `http://localhost:5000/` with nothing added; yours remembers the **dtv.fi** list from section 1, which is why the address above names the list.)
 
-The sidebar shows `DVB-I Demo Service List` and its channels. If you did section 3 of the provider tutorial, channel 4 is `Tutorial Channel`, with the programme that is on now. Select it, or press **4**. The strip under the player shows **Now** and **Next** from the provider's programme guide, and **E** opens the full schedule.
+The sidebar shows `5G-MAG`, the name of the stock list, and its channels. If you did section 3 of the provider tutorial, channel 4 is `Tutorial Channel`, with the programme that is on now. Select it, or press **4**. The strip under the player shows **Now** and **Next** from the provider's programme guide, and **E** opens the full schedule.
 
 To change something and see it arrive, edit a channel in the provider's admin portal (`http://localhost:4000/`), press **Save & Publish**, and reload the client page.
 
-:::tip[A list on your machine needs `PROXY_ALLOW_ORIGINS`]
-Without it the client shows `Load failed` and `Error: HTTP 400`: its server answered that the address is private or on the loopback interface. Name each origin you need, with its scheme, host and port; everything else stays refused. A list on another machine needs nothing.
+:::tip[A list on another address of your machine]
+For any local address other than the provider's default, name its origin: `PROXY_ALLOW_ORIGINS="http://localhost:4000,http://192.168.1.20:8080" npm start`. Setting the variable replaces the default, so name the provider's origin too when you still need it, and an empty value allows no local origin at all (what a public deployment should use). When the client's server refuses an address, the sidebar shows `Load failed` and `Error: HTTP 400`, with a hint that names the setting. A list on another machine needs nothing.
 :::
 
 ## 4. Find a list through a registry
 
-A client that is given no list address asks a Service List Registry for the lists of a country. Run the registry of [Tutorial: DVB-I Service List Registry](./service-list-registry), with the second list of its section 3, and start the client with both origins allowed:
+A client that is given no list address asks a Service List Registry for the lists of a country. Run the registry of [Tutorial: DVB-I Service List Registry](./service-list-registry), with the second list of its section 3. The registry is on port 7000, which is not among the default origins, so stop the client with Ctrl+C and start it again with the provider's and the registry's origins:
 
 ```bash
 PROXY_ALLOW_ORIGINS="http://localhost:4000,http://localhost:7000" npm start
 ```
 
 1. Open `http://localhost:5000` and open the settings.
-2. Under **Service List Registry**, replace the address in the first box with `http://localhost:7000/query`. The client remembers it.
+2. Under **Service List Registry**, the first box is empty: the client has no default registry address, because none is named by TS 103 770 or TR 103 972. Type `http://localhost:7000/query`. The client remembers it. (If you press **Look up** with the box empty, the client says `No Service List Registry address is set.` and tells you to enter one.)
 3. In the second box type the country code `CHE` and press **Look up**.
 
 The client sends `GET /query?TargetCountry=CHE` to the registry. The registry holds two lists for Switzerland, so the client offers both under **Found 2 service lists**:
 
 ![The settings panel after a look-up: two service lists to choose from](/img/dvb-i/tut-dvbi-client-lookup.png)
 
-4. Press `DVB-I Demo Service List`. The client loads it from the address the registry gave and shows its channels.
+4. Press `5G-MAG`, the entry of the stock registry. The client loads the list from the address the registry gave and shows its channels. The second entry, `DVB-I Demo Service List`, points at the same address, so it shows the same channels.
 
 With one match the client loads the list at once. If a registry lists several addresses for the same list, the client keeps them as fallbacks.
 
-:::note[Use your own registry address]
-The box under **Service List Registry** is filled in with a public registry address when you first open the settings. That address did not answer when this page was written (a request to it returned HTTP 404), so always put the address of your own registry there.
+:::note[A registry that does not answer]
+If the look-up fails, the settings panel shows the reason: for example `HTTP 400 ... disallowed (private/loopback) address` when the registry's origin is not in `PROXY_ALLOW_ORIGINS`. Check the address in the box, then the registry itself with `curl -s 'http://localhost:7000/query?TargetCountry=CHE'`.
 :::
 
 ## 5. Check it
@@ -136,7 +135,7 @@ curl -s 'http://localhost:5000/proxy?url=http://localhost:4000/service-list.xml'
   xmlns="urn:dvb:metadata:servicediscovery:2024"
 ```
 
-If it answers `{"error":"URL resolves to a disallowed (private/loopback) address"}` the origin is not in `PROXY_ALLOW_ORIGINS`.
+If it answers `{"error":"URL resolves to a disallowed (private/loopback) address","hint":...}` the origin is not allowed: name it in `PROXY_ALLOW_ORIGINS` (the hint says how).
 
 The repository has unit tests and browser tests:
 
@@ -144,7 +143,7 @@ The repository has unit tests and browser tests:
 npm run test:unit
 ```
 
-The unit tests finish with `pass 9` and `fail 0`. `npm test` also runs the browser tests; they need a Playwright browser, installed once with `npx playwright install chromium`, and use Firefox when you set `BROWSER=firefox`.
+The unit tests finish with `pass 9` and `fail 0`. `npm test` also runs the browser tests; they need a Playwright browser, installed once with `npx playwright install chromium`, and use Firefox when you set `BROWSER=firefox`. With the browser installed, `npm test` finishes with `pass 29` and `fail 0`.
 
 ## 6. Stop and clean up
 
@@ -153,10 +152,10 @@ Press Ctrl+C in the terminal of the client. To remove it, delete `~/rt-dvb-i-app
 <details>
 <summary>What was run for this page</summary>
 
-Every command above that is not named below was run on a clean clone of `main` (commit `7a9ae28`) on Ubuntu Linux with Node.js 24.21.0 and npm 11.19.0. The pages were driven in a headless Chromium (Playwright 1.64.1; headless shell 156.0.8078.4), which is also how the two pictures were taken.
+Every command above that is not named below was run on a clean clone of `main` (commit `bb15220`, which includes the fixes of the defaults and the 5G unicast fallback) on Ubuntu Linux with Node.js 24.21.0 and npm 11.19.0. The pages were driven in a headless Chromium (Playwright 1.61.1, Chromium 149.0.7827.55), which is also how the two pictures were taken. The page was last re-run on 2026-10-21.
 
-Section by section: 1 run (the **dtv.fi** list loaded, the eleven channels listed; the `Load failed` message of the default list was seen); 2 run (the screen read; the keys **4** and **E** were tried, the others are from the help screen of the page); 3 run (the list loaded with `?url=`, channel 4 selected, the programme guide shown, the `Load failed` message seen without `PROXY_ALLOW_ORIGINS`); 4 run (registry address typed, `CHE` looked up, two lists offered, the second chosen and loaded); 5 run (`curl` on `/proxy`; `npm run test:unit` printed `pass 9`).
+Section by section: 1 run (the **dtv.fi** list loaded, the eleven channels listed; with no provider running, the `Load failed` message and the `HTTP 502` text of the default list were seen); 2 run (the screen read; the keys **4** and **E** were tried, the others are from the help screen of the page); 3 run (with a plain `npm start`, the provider's list loaded without `PROXY_ALLOW_ORIGINS`, by `http://localhost:5000/` and by `?url=`; channel 4 selected, the programme guide shown; with `PROXY_ALLOW_ORIGINS` set to another address, the `Load failed` message with its hint was seen); 4 run (a look-up with the registry box empty, which said so; then the registry address typed, `CHE` looked up, two lists offered, one chosen and loaded; the look-up was also tried without the registry's origin allowed, and failed with the reason shown); 5 run (`curl` on `/proxy`; `npm run test:unit` printed `pass 9`; `npm test` with Playwright Chromium from a local cache printed `pass 29`).
 
-Partly run: playing a channel. In the headless browser the player fetched the DASH manifest and the audio segments of the Akamai test stream, all with status 200, but the picture was not shown because that browser has no video codecs, and playback was not watched in a desktop browser. Not run: the browser tests of `npm test` (no Playwright browser was installed), the **Share** button, the settings for audio language and parental controls, and playback of the other channels.
+Partly run: playing a channel. In the headless browser the player fetched the DASH manifest and the audio segments of the Akamai test stream, all with status 200, but the picture was not shown because that browser has no video codecs, and playback was not watched in a desktop browser. Not run: the **Share** button, the settings for audio language and parental controls, `BROWSER=firefox npm test`, and playback of the other channels.
 
 </details>
