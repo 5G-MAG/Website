@@ -13169,6 +13169,32 @@
         "19",
         "20"
        ]
+      },
+      {
+       "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
+       "verdict": "absent",
+       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating.",
+       "repo": "rt-dvb-i-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
+      },
+      {
+       "case": "Except when parental rating information provided by content guide metadata is available, t ...",
+       "verdict": "differs",
+       "what": "The client gates selection on the service-level rating only; programme ratings from the content guide are parsed and shown as a badge but are not used to restrict access during that programme.",
+       "repo": "rt-dvb-i-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
       }
      ],
      "noted": []
@@ -17798,6 +17824,30 @@
         "19",
         "20"
        ]
+      },
+      {
+       "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
+       "verdict": "absent",
+       "what": "The patch and the WebView wrapper contain no parental rating handling; any DVB-I logic is in the external front end.",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
+      },
+      {
+       "case": "Except when parental rating information provided by content guide metadata is available, t ...",
+       "verdict": "absent",
+       "what": "The patch and the WebView wrapper contain no parental rating handling; any DVB-I logic is in the external front end.",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
       }
      ],
      "noted": []
@@ -19380,6 +19430,32 @@
         "19",
         "20"
        ]
+      },
+      {
+       "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
+       "verdict": "absent",
+       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating.",
+       "repo": "rt-dvb-i-android-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
+      },
+      {
+       "case": "Except when parental rating information provided by content guide metadata is available, t ...",
+       "verdict": "implemented",
+       "what": "The restriction check uses the rating of the programme now playing when there is one and the service rating otherwise, re-evaluated when now/next is loaded, and stops or resumes playback.",
+       "repo": "rt-dvb-i-android-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.4"
       }
      ],
      "noted": []
