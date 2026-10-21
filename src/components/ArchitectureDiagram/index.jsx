@@ -161,7 +161,7 @@ export default function ArchitectureDiagram({ entities, containers, nodes, edges
         </span>
       </figcaption>
       <p className={styles.omissionNote}>
-        NEF and PCF (generic 5G Core functions the AF also connects to over N33/N5) are not shown — they have no
+        NEF and PCF (generic 5G Core functions the AF also connects to over N33/N5) are not shown; they have no
         5G-MAG reference-tools repository of their own and are out of this inventory&apos;s scope, not a difference
         from the real figure.
       </p>

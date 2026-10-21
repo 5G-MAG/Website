@@ -21,7 +21,7 @@ This page is the detailed, release-by-release companion to [Standards: Towards 6
 
 :::tip[At a glance]
 
-- **Release 20:** work items FS_6G_REQ, FS_6G_RAN_Scen_Req, FS_6G_MED, FS_DCTC_eQOS_MED; 1 change request.
+- **Release 20:** work items FS_6G_REQ, FS_6G_RAN_Scen_Req, FS_6G_MED, FS_DCTC_eQOS_MED, FS_6G_ARC, FS_6G_Radio; 1 change request.
 - **Release 19:** 1 change request.
 - **Release 18:** work items MeCAR, FS_XRTraffic; 2 change requests.
 - **Release 17:** work items 8K_VR_5G, 8K_TV_5G; 2 change requests.
@@ -41,12 +41,16 @@ This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.
 | [FS_6G_RAN_Scen_Req](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1060079) | Study on 6G Scenarios and Requirements | Study | [TR 38.914](https://www.3gpp.org/dynareport/38914.htm) | Complete, Jun 2026 | [RP-251395](https://www.3gpp.org/ftp/tsg_ran/TSG_RAN/TSGR_108/Docs/RP-251395.zip) |
 | [FS_6G_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1100010) | Study on Media Aspects for 6G System | Study | [TR 26.870](https://www.3gpp.org/dynareport/26870.htm) | 39% complete, planned Mar 2027 | [SP-251652](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_110_Baltimore_2025-12/Docs/SP-251652.zip) |
 | [FS_DCTC_eQOS_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090041) | Study on Usage of Dynamically Changing Traffic Characteristics and Enhanced QoS support in Media Applications and Services | Study | [TR 26.925](https://www.3gpp.org/dynareport/26925.htm) (with TR 26.926, TR 26.822, TR 26.812, TR 26.823) | 75% complete, planned Dec 2026 | [SP-251201](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_109_Beijing_2025-09/Docs/SP-251201.zip) |
+| [FS_6G_ARC](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1080057) | Study on Architecture for 6G System | Study | [TR 23.801-01](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=4423) (stage 2, SA2; draft V0.9.0 of September 2026) | In progress (30% on the 3GPP portal in March 2026) | SP-251633 |
+| [FS_6G_Radio](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1080072) | Study on 6G Radio | Study | TR 38.9xx and per-working-group TR 38.8xx planned (no TR listed on the portal yet) | In progress (2% on the 3GPP portal in September 2025) | RP-261559 |
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 22.870 | 20.0.0 |  | Further editorial cleaning after SA#111's approval, including check of all references, streamlining the decimal separator; streamlining the housands seprator, etc. |  |
 | TR 38.914 | 20.0.0 |  | TR 38.914 as approved by RAN #112 |  |
 | TR 38.914 | 20.1.0 | 0001 | CR on editorials for TR 38.914 | FS_6G_RAN_Scen_Req |
+
+The FS_6G_ARC and FS_6G_Radio rows are taken from the work item pages of the 3GPP portal, because no TR 21.920 release description exists yet; their completion figures are as last shown there and are unverified. The Release 20 6G studies of other groups (for example FS_6G_APP, FS_6G_SEC, FS_6G_CH, FS_6G_OAM, FS_6G_LI, FS_MCS_6G) are listed on the [3GPP Release 20 page](https://www.3gpp.org/specifications-technologies/releases/release-20) and are not tracked here. No 6G work item appears in TR 21.915 to TR 21.919.
 
 ## Release 19
 

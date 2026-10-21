@@ -233,7 +233,7 @@ export default function Deploy() {
           <div className="container">
             <h2 className={styles.sectionTitle}>From Code to Product</h2>
             <p className={styles.sectionSubtitle}>
-              Making the value proposition tangible to the industry — through interoperability,
+              Making the value proposition tangible to the industry, through interoperability,
               early testing and plugfests.
             </p>
             <div className={styles.pillarGrid3}>
@@ -265,7 +265,7 @@ export default function Deploy() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Out in the field</h2>
             <p className={styles.sectionSubtitle}>
-              End-to-end demos and showcases at industry events and trials — user-facing
+              End-to-end demos and showcases at industry events and trials: user-facing
               demonstrations that abstract technical complexity, promoting and demonstrating value,
               not just specs.
             </p>
@@ -278,7 +278,7 @@ export default function Deploy() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  <Link to="/deployments/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  <Link to="/deployments/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link>,
                   hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>

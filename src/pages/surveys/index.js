@@ -45,7 +45,7 @@ export default function Surveys() {
   return (
     <Layout
       title="Industry Surveys"
-      description="Share your input through 5G-MAG's industry surveys — help shape the requirements and priorities members bring to standards bodies."
+      description="Share your input through 5G-MAG's industry surveys. Help shape the requirements and priorities members bring to standards bodies."
     >
       <HubHero title="Industry Surveys" icon={SURVEY_ICON_PATH} />
 
@@ -56,7 +56,7 @@ export default function Surveys() {
           <section className={styles.section}>
             <div className="container" style={{ textAlign: 'center' }}>
               <p className={styles.sectionSubtitle}>
-                No survey is currently open — check back soon.
+                No survey is currently open; check back soon.
               </p>
             </div>
           </section>

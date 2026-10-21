@@ -397,6 +397,16 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 | --- | --- | --- | --- | --- |
 | TR 22.804 | 14.1.0 | 0001 | Remove requirement in MCData TS 22.282 that has been added to MCCoRe TS 22.280. |  |
 
+## Novelties per release (from the Release descriptions)
+
+Features that TR 21.915 to TR 21.919 attribute to each release for time-sensitive communication, with the clause that describes them. TR 21.915 (Release 15) contains no TSC feature. No TR 21.920 exists yet, so the Release 20 entry rests on the change requests above and is unverified against a release description.
+
+- **Release 16.** Vertical_LAN: the 5G system integrates with IEEE TSN as a time-aware system, with TSC assistance information for scheduling (TR 21.916 clause 6.3). NR_IIOT (RAN): NR support for TSC, with reference timing delivery to the UE at 10 ns granularity by RRC signalling, Ethernet Header Compression in PDCP, TSC Assistance Information, more semi-persistent scheduling and configured grant configurations, and PDCP duplication enhancements (TR 21.916 clause 5.3).
+- **Release 17.** IIoT (stage 2, with FS_IIoT): the Time Sensitive Communication and Time Synchronization Function (TSCTSF), exposure to Application Functions through the NEF, the 5G system as IEEE 802.1AS time-aware system, IEEE 1588 boundary clock or transparent clock, the SMPTE profile of IEEE 1588 among the supported PTP profiles, uplink and UE-to-UE time synchronisation, and survival time in the TSC Assistance Information (TR 21.917 clause 7.4). NR_IIOT_URLLC_enh (RAN): propagation delay compensation for time synchronisation (round-trip-time based and timing-advance based), and RAN handling of survival time (TR 21.917 clause 7.3).
+- **Release 18.** 5TRS, FS_5TRS_URLLC and TRS_URLLC (with the RAN item TRS_URLLC-NR): reporting of the network timing synchronisation status to the TSCTSF and UEs (SIB9 indicates a change of clock quality), interworking with a TSN network in the transport network, and adaptation of traffic scheduling from RAN feedback on burst arrival time and periodicity (TR 21.918 clause 6.5.1). FS_TSNCH and TSN_CH: charging for TSN, with the new TS 32.282 and the TSCTSF and TSN AF as charging trigger functions (TR 21.918 clause 6.5.2). FS_DetNet and DetNet: extensions of the TSC framework to support DetNet, listed without a summary in TR 21.918 (clauses 27.20 and 28.11). FFAPP: SEAL enhancements for TSC services in Factories of the Future applications (TR 21.918 clause 10.11).
+- **Release 19.** TEI19_QME: configuring and transferring QoS monitoring capabilities in the 5GC, so that the SMF can determine whether the RAN supports QoS monitoring (TR 21.919 clause 23.7; TS 29.565 is among the specifications it lists). The Advanced Media Delivery work adds time synchronisation to the 5G Media Streaming and MBS architecture, offering SIB9-based and user-domain time services (TR 21.919 clause 11.6).
+- **Release 20.** Change requests to TS 29.565 only (listed above); unverified against a release description.
+
 ## TS 22.104 before change control
 
 <details>

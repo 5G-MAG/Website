@@ -1,4 +1,4 @@
-import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, isReferenceTool, isValidationTool, isPlatform, isCommonTools, displayNameOf, typeOf, PROJECT_TYPES } from './baskets';
+import { TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, isReferenceTool, isValidationTool, displayNameOf, typeOf, PROJECT_TYPES } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they

@@ -7,7 +7,6 @@ import {
   STAGE_GROUPS,
   TOPIC_BASKETS,
   basketStageReach,
-  displayNameOf,
   projectTitleOf,
   reposFor,
 } from '@site/src/data/baskets';

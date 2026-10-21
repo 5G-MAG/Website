@@ -22,7 +22,7 @@ import { DVBI_SPECS, DVBI_LAYER_ORDER } from '@site/src/data/specs/dvb-i';
 
 ## Overview
 
-5G-MAG monitors and contributes to work on DVB-I service delivery over 5G systems. DVB-I (Digital Video Broadcasting - Internet) defines mechanisms for internet-connected devices to discover and access sets of linear TV services delivered over broadband or broadcast networks, together with the associated programme metadata. For the technical analysis of DVB-I service discovery and its deployment over 5G, see the Tech page linked below.
+5G-MAG monitors and contributes to work on DVB-I service delivery over 5G systems. DVB-I (Digital Video Broadcasting - Internet) defines mechanisms for internet-connected devices to discover and access sets of linear TV services delivered over broadband or broadcast networks, together with the associated programme metadata. For DVB-I service discovery and its deployment over 5G, see the Technology page linked below.
 
 The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in ETSI TR 103 972.
 
@@ -64,7 +64,7 @@ The specifications in scope, filterable by the layer they define: the DVB and ET
 DVB-I over 5G spans three standards bodies, so there is no single release line. The dependencies track as follows:
 
 - **DVB**: A177 (published in successive revisions as ETSI TS 103 770) is the stable service-discovery base; ETSI TR 103 972 V1.1.1 (2023) is a technical report rather than a normative specification, so it records guidance and gaps rather than mandating behaviour. The commercial input came from DVB C100 (2021).
-- **3GPP SA4**: the 5GMS architecture (TS 26.501) was introduced in Release 16 and has been extended in later releases; the MBS user-service work (TS 26.502) and the underlying system architecture (TS 23.247) were introduced in Release 17 and continue to evolve.
+- **3GPP SA4**: the 5GMS architecture (TS 26.501) was introduced in Release 16 and has been extended in later releases; the MBS user-service work (TS 26.502) and the underlying system architecture (TS 23.247) were introduced in Release 17 and continue to evolve. The Release 18 5G Media Streaming Protocols Phase 2 work item added support for 5GMS over MBS and hybrid 5GMS services (TR 21.918 clause 17.9), and Release 19 Advanced Media Delivery added in-session unicast repair for MBS object distribution and deployment guidelines for MBS User Services over eMBMS (TR 21.919 clause 11.6).
 - **ETSI JTC Broadcast**: the LTE-based 5G Broadcast profile (TS 103 720) has been aligned to successive 3GPP releases, with work items updating it toward Release 18 and Release 19.
 
 Because TR 103 972 is a technical report, its main output is a set of recommended changes to specifications owned by DVB, 3GPP and ETSI; the follow-up happens in those bodies rather than in a single DVB-I-over-5G specification.
@@ -79,7 +79,7 @@ ETSI TR 103 972 maps the commercial requirements for DVB-I over 5G (captured in 
 | Broadcast           | LTE-based 5G Broadcast     | One-way, wide-area linear TV and radio to many devices                      |
 | Concurrent / hybrid | 5G Broadcast and ordinary unicast | The same service over both bearers, or hybrid DVB-I services combining them |
 
-The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI. For the reference architecture and scenario-by-scenario detail, see [Tech: DVB-I Services over 5G](/tech/dvb-i).
+The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI. For the reference architecture and scenario-by-scenario detail, see [Technology: DVB-I Services over 5G](/tech/dvb-i).
 
 ## Related
 

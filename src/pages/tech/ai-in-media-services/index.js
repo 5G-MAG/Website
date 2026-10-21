@@ -35,7 +35,7 @@ export default function AIForMedia() {
     >
       <p>
                   AI and ML in 5G media services are studied and evaluated in 3GPP SA4, in TR 26.927 and
-                  TR 26.847. 5G-MAG builds two testbeds for this work: the AI/ML Evaluation Framework, which
+                  TR 26.847. 5G-MAG builds testbeds for this work: the AI/ML Evaluation Framework, which
                   is the repository cited by TR 26.847 for the AI4Media evaluations, and the 6G AI Traffic
                   Characterization Testbed, which measures the traffic of AI media services for the 6G media
                   study (TR 26.870).

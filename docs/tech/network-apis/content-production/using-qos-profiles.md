@@ -61,7 +61,7 @@ CAMARA QoS Profiles are an abstraction over the 3GPP QoS model. In 3GPP, a stand
 For a media contribution example, a profile intended for a single uplink camera feed would set a high guaranteed upstream rate (for example several Mbps), a low `packetDelayBudget` and `jitter`, and a low `packetErrorLossRate`, with a `serviceClass` such as `real_time_interactive`.
 
 ```json
-// Example values — replace with actual network requirements
+// Example values: replace with actual network requirements
 [
   {
     "name": "voice",

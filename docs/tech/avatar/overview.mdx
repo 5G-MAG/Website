@@ -2,7 +2,7 @@
 title: Conversational Avatar Communication Overview
 sidebar_position: 0
 hide_title: true
-description: Placeholder for the Conversational Avatar Communication with MPEG ARF technical analysis deep-dive; structure only, content to follow.
+description: "Technology overview of Conversational Avatar Communication: Real-time conversational avatars, animated from user to user"
 sidebar_label: Overview
 ---
 
@@ -71,6 +71,8 @@ At a high level, a conversational avatar session proceeds as follows: (TR 26.813
 
 This analysis distinguishes four interoperability boundaries (a grouping derived by 5G-MAG from the clauses above, not stated in TR 26.813): the ARF base-avatar asset (so any conforming client can load the same avatar), the ARF animation stream and AAU structure (so animation produced by one endpoint can drive an avatar at another), the scene-description document that anchors the avatar, and the session-level negotiation (SDP media descriptions for IVAS audio and for the avatar animation payload). Keeping animation production separate from rendering means the tracking/animation component and the Unity-based presentation can evolve independently, provided both sides agree on the ARF stream format.
 
+**Release history:** TS 26.264 was created in Release 18 by the IBACS work item as the AR-MTSI client specification (TR 21.918 clause 14.6; TS 26.264 V18.0.0). The avatar call functionality was added in Release 19 by the AvCall-MED work item (TR 21.919 clause 12.4; TS 26.264 V19.4.1 annex E, CR 0006 "CR for Avatar calls in IMS", version 19.0.0): ARF base avatars, 3D and 2D avatars, data channel animation messages, avatar negotiation in SDP and over the data channel, and the Base Avatar Repository management service. Later Release 19 versions add the OpenAPI specification of the Base Avatar Management Interface (CR 0007, V19.1.0) and corrections to animation sample transport, call flows and profile signalling (CRs 0017, 0018 and 0023).
+
 :::note[ARF specification stage]
 ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025; MPEG's own report of its 155th meeting (July 2026) states it has since advanced to Final Draft International Standard, the stage just before publication, so the base-avatar and animation-stream details above can still change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
 :::
@@ -78,9 +80,9 @@ ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of
 The slide deck below introduces the Avatar Communications reference tools and their role in 5G real-time communication.
 
 <div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Avatar.pdf')} title="Slide deck: Avatar Communications reference tools"></iframe>
+  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/decks/avatar.pdf')} title="Slide deck: Avatar Communications reference tools"></iframe>
 </div>
 
-[Download the slide deck](pathname:///docs/Reference_Tools_Avatar.pdf)
+[Download the slide deck](pathname:///docs/decks/avatar.pdf)
 
 **Related:** [XR/3D Scenes with MPEG-I Scene Description](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description): the `MPEG_node_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.

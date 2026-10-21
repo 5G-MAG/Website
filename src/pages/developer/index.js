@@ -27,6 +27,7 @@ import filterStyles from '../reference-tools/styles.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
 import { ALL_REPOS, CONTRIBUTORS, ICON_CATALOG, filterRepos } from '@site/src/data/baskets';
+import RepoRef from '@site/src/components/RepoRef';
 
 // A repo row's own project icon -- the same taxonomy.json `icon` catalog
 // key every other hub page reads (r.projectIcon, set in ALL_REPOS), not
@@ -195,7 +196,7 @@ export default function Home() {
   return (
     <Layout
       title="Software Accelerator"
-      description="Open-source reference implementations — from specifications to working code"
+      description="Open-source reference implementations: from specifications to working code"
     >
       <HubHero
         title="Media Connectivity Software Accelerator"
@@ -260,7 +261,7 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>Why Open Source, and Why Now</h2>
             <p className={styles.sectionSubtitle}>
               Media and network technologies move fast, and open source usually arrives only
-              after a standard is frozen — with additional cost at every stage along the way. The
+              after a standard is frozen, with additional cost at every stage along the way. The
               Accelerator closes both gaps.
             </p>
 
@@ -442,7 +443,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work in the field</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools running on real hardware, at real events — and recent demos and
+              Reference Tools running on real hardware, at real events, and recent demos and
               tutorials from the developer community.
             </p>
             <div className={styles.photoGrid}>
@@ -454,7 +455,7 @@ export default function Home() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  A Reference Tools demo rig — SDR hardware and phones running live 5GMS and
+                  A Reference Tools demo rig: SDR hardware and phones running live 5GMS and
                   volumetric video demos.
                 </p>
               </figure>
@@ -530,6 +531,7 @@ export default function Home() {
                       <a href={r.url} target="_blank" rel="noreferrer" className={styles.repoName}>
                         {r.name}
                       </a>
+                      <RepoRef slug={r.slug} />
                       {/* only the MBS branch is named on the site; every other entry is read as its main branch */}
                       {r.branch === '5mbs' && <span className={styles.repoBranch}>{r.branch}</span>}
                       {r.description && <p className={styles.repoDesc}>{r.description}</p>}

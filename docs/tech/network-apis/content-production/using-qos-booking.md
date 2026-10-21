@@ -34,12 +34,6 @@ This API ties the booking to a device (and application server) at creation time,
 
 ## Workflow and Architecture
 
-This is a high-level figure with the entities involving APIs and the devices involved:
-
-:::note[Diagram forthcoming]
-An architecture diagram showing the media application (ASP) invoking the Network API Platform to create a device-bound QoS booking will be added here.
-:::
-
 ### General Workflow
 
 In the procedure flow below, each step is tagged with the actor that performs it: **ASP** (Application Service Provider, the media application side) or **CSP** (Communication Service Provider, the network operator side). Coloured bands group the steps into the phases Pre-conditions, Before using the network, During operation, and Dismantling.

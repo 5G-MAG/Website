@@ -6,6 +6,8 @@ sidebar_position: 3
 description: "Step by step with rt-media-origin in Docker: create DASH, HLS and CMAF streams, live and on demand, radio, real-time push feeds, XR scenes and V3C volumetric video, and serve titles and posters."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
@@ -22,14 +24,15 @@ In this tutorial you run [rt-media-origin](https://github.com/5G-MAG/rt-media-or
 Each repository below has a README that lists what to install and how to build and run it. Read the one for [rt-media-origin](https://github.com/5G-MAG/rt-media-origin#readme) before you start, and the others when you reach the section that uses them.
 :::
 
-| Repository | What it is | Used in |
-|---|---|---|
-| [rt-media-origin](https://github.com/5G-MAG/rt-media-origin) | The origin: packages and serves the content, with a dashboard and a Docker image. See also its [docker/README.md](https://github.com/5G-MAG/rt-media-origin/blob/development/docker/README.md) | All sections |
-| [rt-media-android-application](https://github.com/5G-MAG/rt-media-android-application) | The Reference Media Application that plays the content on a phone | [Tutorial: Reference Media Application](./media-application) |
-| [rt-xr-content](https://github.com/5G-MAG/rt-xr-content) | Scenes and videos for XR | [6. Content for XR](#6-content-for-xr) |
-| [rt-xr-unity-player](https://github.com/5G-MAG/rt-xr-unity-player) | The XR scene player | [6. Content for XR](#6-content-for-xr) |
-| [rt-v3c-content](https://github.com/5G-MAG/rt-v3c-content) | Volumetric video titles | [7. Content for V3C](#7-content-for-v3c) |
-| [rt-v3c-unity-player](https://github.com/5G-MAG/rt-v3c-unity-player) | The V3C Immersive Player | [7. Content for V3C](#7-content-for-v3c) |
+<RepoCards slugs={['rt-media-origin', 'rt-media-android-application', 'rt-xr-content', 'rt-xr-unity-player', 'rt-v3c-content', 'rt-v3c-unity-player']} />
+
+Where the other repositories are used:
+
+- `rt-media-android-application`: [Tutorial: Reference Media Application](./media-application)
+- `rt-xr-content`: [6. Content for XR](#6-content-for-xr)
+- `rt-xr-unity-player`: [6. Content for XR](#6-content-for-xr)
+- `rt-v3c-content`: [7. Content for V3C](#7-content-for-v3c)
+- `rt-v3c-unity-player`: [7. Content for V3C](#7-content-for-v3c)
 
 | You want | Go to |
 |---|---|

@@ -6,6 +6,8 @@ sidebar_position: 2
 description: "Step by step with the AI and ML Evaluation Framework: run NNCodec over a range of quantization parameters on the wav2vec 2.0 speech recognition model, plot word error rate against compressed size, read the points against the test cases of TR 26.847 clause 5.2.9, and change a codec setting."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -30,9 +32,16 @@ TR 26.847 characterises a compression method by a set of test configurations, ea
 Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md); the sections "NNC Evaluation Script" and "Graph Plotter" describe the two scripts used here.
 :::
 
-| Repository | What it is | Used in |
+## Components
+
+<RepoCards slugs={['rt-ai-ml-evaluation-framework']} />
+
+In `rt-ai-ml-evaluation-framework`: the framework; the scripts are in `scripts/asr/compression`.
+
+Other software the tutorial uses:
+
+| Software | What it is | Used in |
 |---|---|---|
-| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the scripts are in `scripts/asr/compression` | All sections |
 | [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, the compression method that is swept (version 0.3.1) | All sections |
 
 | You want | Go to |

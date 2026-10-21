@@ -1,0 +1,283 @@
+/* The repository card. Tinted from the owning project's accent (--repo-accent, set inline) or the
+   site's primary colour; no grey (owner's rule), every pill a semantic hue. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+  gap: 1.1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.cluster {
+  margin-top: 1.5rem;
+}
+
+.clusterHeading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.card {
+  --accent: var(--repo-accent, var(--ifm-color-primary));
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 0;
+  padding: 1.15rem 1.25rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-top: 6px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--ifm-background-surface-color));
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 14%, transparent);
+  scroll-margin-top: 5rem;
+}
+
+.card:target {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.iconTile {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+}
+
+.iconTile svg {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.iconTile:empty {
+  display: none;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.name {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.name a {
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+}
+
+.name a:hover {
+  text-decoration: underline !important;
+}
+
+.slug {
+  align-self: flex-start;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 0.78rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 16%, var(--ifm-background-surface-color));
+  color: var(--ifm-font-color-base);
+}
+
+.status {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.statusOpen {
+  background: color-mix(in srgb, var(--ifm-color-success) 22%, var(--ifm-background-surface-color));
+  color: var(--ifm-color-success-darkest);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-success) 55%, transparent);
+}
+
+:global([data-theme='dark']) .statusOpen {
+  color: color-mix(in srgb, var(--ifm-color-success) 30%, #fff);
+}
+
+.statusEarly {
+  background: var(--ifm-color-warning);
+  color: #1f1500 !important;
+}
+
+.statusEarly:hover {
+  background: var(--ifm-color-warning-dark);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tagLabel {
+  flex: 0 0 5.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  line-height: 1.5;
+}
+
+.tag a {
+  color: inherit !important;
+  text-decoration: underline;
+}
+
+.tagLicense {
+  background: color-mix(in srgb, var(--accent) 18%, var(--ifm-background-surface-color));
+  color: var(--ifm-font-color-base);
+}
+
+.tagStandard {
+  background: var(--tag-standard-background);
+  color: var(--tag-standard-foreground);
+}
+
+.tagSoftware {
+  background: color-mix(in srgb, var(--ifm-color-info) 22%, var(--ifm-background-surface-color));
+  color: color-mix(in srgb, var(--ifm-color-info) 35%, #000);
+}
+
+:global([data-theme='dark']) .tagSoftware {
+  color: color-mix(in srgb, var(--ifm-color-info) 40%, #fff);
+}
+
+.tagDependency {
+  background: color-mix(in srgb, var(--ifm-color-warning) 25%, var(--ifm-background-surface-color));
+  color: color-mix(in srgb, var(--ifm-color-warning) 30%, #000);
+}
+
+:global([data-theme='dark']) .tagDependency {
+  color: color-mix(in srgb, var(--ifm-color-warning) 40%, #fff);
+}
+
+.release {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.6rem;
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 14%, var(--ifm-background-surface-color));
+  font-size: 0.85rem;
+}
+
+.releaseLabel {
+  font-weight: 700;
+}
+
+.releaseTag {
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-font-color-base) !important;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+}
+
+.button {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.buttonPrimary {
+  /* Darkened so white text keeps 4.5:1 on the lighter basket accents. */
+  background: color-mix(in srgb, var(--accent) 70%, #000);
+  color: #fff !important;
+}
+
+.buttonPrimary:hover {
+  background: color-mix(in srgb, var(--accent) 55%, #000);
+  border-color: color-mix(in srgb, var(--accent) 55%, #000);
+}
+
+.buttonGhost {
+  background: transparent;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.buttonGhost:hover {
+  background: color-mix(in srgb, var(--accent) 70%, #000);
+  color: #fff !important;
+}
+
+.empty {
+  font-style: italic;
+}
+
+/* A visible keyboard focus ring in both themes (the accent border alone hides the default one). */
+.card a:focus-visible {
+  outline: 3px solid var(--ifm-font-color-base);
+  outline-offset: 2px;
+}
+
+/* Narrow screens: the status pill drops under the name instead of squeezing it into three lines. */
+@media (max-width: 480px) {
+  .head {
+    flex-wrap: wrap;
+  }
+
+  .status {
+    order: 3;
+  }
+}

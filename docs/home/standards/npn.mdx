@@ -22,7 +22,7 @@ import { NPN_SPECS, NPN_LAYER_ORDER } from '@site/src/data/specs/npn';
 
 ## Overview
 
-5G-MAG tracks 3GPP Non-Public Network (NPN) standards for private 5G media production and contribution. For the technical analysis of NPN deployment models, identity/onboarding and QoS considerations, see the Tech page linked below. For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/npn/evolution).
+5G-MAG tracks 3GPP Non-Public Network (NPN) standards for private 5G media production and contribution. For NPN deployment models, identity/onboarding and QoS considerations, see the Technology page linked below. For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/npn/evolution).
 
 5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution.
 
@@ -37,9 +37,13 @@ Both deployment models are defined in clause 5.30 of TS 23.501, Support for non-
 
 The NPN feature set has grown across releases. The following is an orientation, not a substitute for the 3GPP work plan.
 
-- **Release 16**: Baseline NPN. Introduced the SNPN and PNI-NPN models, the NID for SNPN, and the CAG mechanism for PNI-NPN. Architecture in the NPN clause of TS 23.501.
-- **Release 17**: SNPN enhancements. Credentials Holder support (credentials owned by a separate 3GPP or non-3GPP entity such as an AAA server), UE onboarding and remote provisioning, and equivalent-SNPN handling. Related VIAPA requirements work continued in TS 22.263.
-- **Release 18 and later**: Continued refinements to NPN mobility, service continuity between SNPN and PLMN, and localised services. Confirm the specific enhancements and their release placement against the current 3GPP work plan.
+- **Release 16**: Baseline NPN. Introduced the SNPN and PNI-NPN models, the NID for SNPN, and the CAG mechanism for PNI-NPN (work items Vertical_LAN and, for the RAN, NG_RAN_PRN). Architecture in the NPN clause of TS 23.501.
+- **Release 17**: SNPN enhancements (eNPN, NG_RAN_PRN_enh). Credentials Holder support (credentials owned by a separate 3GPP or non-3GPP entity such as an AAA server), UE onboarding and remote provisioning, IMS voice and emergency services and PWS for SNPN. Related VIAPA requirements work continued in TS 22.263.
+- **Release 18**: Non-Public Networks Phase 2 (eNPN_Ph2). Mobility between equivalent SNPNs without new network selection, non-3GPP access for SNPN, and access to Localized Services.
+- **Release 19**: security for a PLMN hosting an NPN (PLMNNPN, TS 33.501), interconnect of SNPNs (ISN, TS 22.261 and study TR 22.848), ProSe in NPN (TEI19_ProSe_NPN) and CAG-based access control for NR Femto (5G_Femto).
+- **Release 20**: security for a PLMN hosting an NPN, phase 2 (PLMNNPN_Ph2-SEC, TS 33.501). No Release 20 description (TR 21.920) exists yet, so confirm Release 20 content against the current 3GPP work plan.
+
+The per-release features and the clauses of TR 21.916 to TR 21.919 that describe them are on [Standards Evolution](/standards/npn/evolution).
 
 ## Specifications in scope
 
@@ -49,6 +53,7 @@ The specifications in scope of Non-Public Networks, grouped by the layer they de
 
 ## Related
 
+- [Technology: Non-Public Networks](/tech/npn)
 - [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis)
 - [Standards: Time-Sensitive Communications (TSC)](/standards/tsc): TSC for professional media production is typically deployed over an NPN
 - [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc): interactive, uplink-heavy contribution over an NPN

@@ -10,6 +10,7 @@ import { ALL_PROJECTS as projectsData, CONTRIBUTORS, isTestbed, isValidationTool
 import { activityLabel, communityTotals } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
 import ProjectIcon from '@site/src/components/ProjectIcon';
+import RepoRef from '@site/src/components/RepoRef';
 import { AgeKey, Icon, Repo, CLUSTERS, BASKET_OF, ACTIVITY_BY_PROJECT, clusterStyles } from '@site/src/components/RepoActivity';
 
 // Same exclusion set CommunityStatsBoard used to keep its summary totals
@@ -204,6 +205,7 @@ function RepoStatsTable({ repos }) {
                   <a href={repo.repo_url} target="_blank" rel="noreferrer" className={styles.repoLink}>
                     {repo.repo}
                   </a>
+                  <RepoRef slug={repo.repo} />
                 </td>
                 <td className={styles.numCell}>{repo.stars}</td>
                 <td className={styles.numCell}>{repo.forks}</td>

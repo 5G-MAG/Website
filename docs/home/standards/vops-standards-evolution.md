@@ -27,18 +27,30 @@ This page is the detailed, release-by-release companion to [Standards: Video Ope
 :::tip[At a glance]
 
 - **Release 19:** work item VOPS; 5 change requests.
+- **Release 20:** no work item in the work plan lists TS 26.265.
+- **Release 15 to 18:** earlier video operation points in TS 26.116, TS 26.118 and TS 26.511, which the VOPS work item consolidates.
 
 :::
 
-Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 26.265 V19.3.0.
+Sources: the 3GPP release descriptions TR 21.915, TR 21.917, TR 21.918 and TR 21.919, the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 26.265 V19.3.0.
 
 This page covers [TS 26.265](https://www.3gpp.org/dynareport/26265.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
+
+## Release 20
+
+The work plan of 28 September 2026 lists no Release 20 work item for TS 26.265.
 
 ## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [VOPS](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1030002) | Video Operating Points - Harmonization and Stereo MV-HEVC | Normative | [TS 26.265](https://www.3gpp.org/dynareport/26265.htm) (with TS 26.116, TS 26.118, TS 26.119, TS 26.143, TS 26.511) | Complete, Dec 2025 | [SP-250818](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_108_Prague_2025-06/Docs/SP-250818.zip) |
+
+What the release description adds (TR 21.919 clause 11.5):
+
+- The work item consolidates video operation points and capabilities that were scattered across several SA4 specifications into the new TS 26.265, and adds stereoscopic encoding and decoding capabilities and operation points based on the Multiview Extensions of HEVC (MV-HEVC), with a conformance framework including tools and test vectors.
+- TS 26.265 defines three video representation formats (3GPP High-Definition, 3GPP High Dynamic Range and 3GPP Stereoscopic), common bitstream constraints such as progressive scan and limits on HEVC VUI syntax, and decoding capabilities for AVC and HEVC by codec, profile, tier and level. They combine into the operation points of TS 26.265 V19.3.0 clause 6.1, table 6.1-1: 3GPP-AVC-HD, 3GPP-HEVC-HD, 3GPP-HEVC-HD-HDR, 3GPP-HEVC-UHD-HDR, 3GPP-HEVC-Stereo, 3GPP-MV-HEVC-Main-Stereo and 3GPP-MV-HEVC-Ext-Stereo.
+- Annex B of TS 26.265 provides the conformance assets: video test material, reference encoder configurations, a conformance validator and conformance bitstreams (TR 21.919 clause 11.5; TS 26.265 V19.3.0 clause B.1).
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -48,6 +60,20 @@ This page covers [TS 26.265](https://www.3gpp.org/dynareport/26265.htm). The wor
 | TS 26.265 | 19.1.0 | 0003 | [VOPS] Essential corrections | VOPS |
 | TS 26.265 | 19.2.0 | 0004 | [VOPS] Conformance Updates | VOPS |
 | TS 26.265 | 19.3.0 | 0006 | [VOPS] MV-HEVC profile and OLS handling | VOPS |
+
+## Release 15 to Release 18: earlier video operation points
+
+TS 26.265 is created in Release 19 (version 19.0.0, see the Release 19 section above). The release descriptions list earlier work on video operation points and profiles in other specifications. TR 21.919 clause 11.5 states that VOPS consolidates such definitions; the work plan lists TS 26.116, TS 26.118, TS 26.119, TS 26.143 and TS 26.511 with the VOPS work item. This page does not state which clauses of those specifications were moved.
+
+| Release | Work item | What it adds | Source |
+| --- | --- | --- | --- |
+| 15 | HDR | High Dynamic Range in the TV Video Profiles of TS 26.116: an HDR video profile based on the Perceptual Quantizer, following ITU-R BT.2100, with H.265 (HEVC) compression, transfer functions, colour primaries and metadata | TR 21.915 clause 12.4.2 |
+| 15 | VRStream | Virtual Reality profiles in TS 26.118; for video, three operation points (Basic Video on H.264/AVC High Profile Level 5.1, Main Video and Advanced Video on H.265/HEVC High Profile Level 5.1) | TR 21.915 clause 12.4.3 |
+| 16 | HLG_HDR | Addition of HLG HDR to TV Video Profiles; listed without a description | TR 21.916 clause 22.1.3 |
+| 17 | 8K_TV_5G | An HEVC-based 8K TV operation point (H.265/HEVC Main-10 Profile Main Tier) in TS 26.116, and the corresponding decoding capabilities for 5G Media Streaming in TS 26.511 | TR 21.917 clause 15.2 |
+| 18 | FS_HEVC_Profiles | Study on new HEVC profiles and operating points; listed without a description | TR 21.918 clause 17.13 |
+| 18 | MeCAR | TS 26.119, media capabilities of AR devices, including video codecs (AVC and HEVC) per device type | TR 21.918 clause 14.2 |
+| 18 | PROMISE | TS 26.143 messaging media profiles; video requirements upgraded with Full HD and HDR in alignment with TS 26.511 | TR 21.918 clause 17.2 |
 
 ## TS 26.265 before change control
 

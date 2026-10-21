@@ -34,7 +34,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Why the specification exists
 
-TS 26.265 V19.3.0, clause 4.1: "Video capabilities are predominantly independent of the service in use." The same clause says the specification defines video capabilities and operation points "such that 3GPP service specifications as well as third-party service providers can refer to the interoperability points defined in this specification."
+TS 26.265 V19.3.0, clause 4.1: "Video capabilities are predominantly independent of the service in use." The same clause says the specification defines video capabilities and operation points "such that 3GPP service specifications as well as third-party service providers can refer to the interoperability points defined in this specification." TS 26.265 is new in Release 19: the VOPS work item consolidates video operation points and capabilities previously scattered across several SA4 specifications, and adds the MV-HEVC stereo operation points (TR 21.919 clause 11.5). Earlier releases defined operation points in other specifications, for example HDR in TS 26.116 (Release 15, TR 21.915 clause 12.4.2) and an 8K TV operation point in TS 26.116 (Release 17, TR 21.917 clause 15.2); see the [release history](/standards/vops/evolution).
 
 ## What an operation point is
 
@@ -76,10 +76,11 @@ Clause 6.1, table 6.1-1 gives seven operation points, each with a video format a
 
 Annex B.1 lists the conformance functions: annotated video test signals, reference encoders and configurations, a conformance validator, conforming decoders and conformance bitstreams (TS 26.265 V19.3.0 clause B.1; TS 26.265 V19.3.0 clause B.3). Annex B.3: "the conformance validator may be used to test bitstreams claiming to be conformant to an operation point indeed are conforming, or if not, which test assertions are not fulfilled."
 
-The [VOPS Conformance Validator](/validation/vops) is 5G-MAG's validator for these operation points. It is built against V19.2.0 and still needs testing with conformance bitstreams. TS 26.265 V19.3.0 changes the dual-layer HEVC capability (clause 5.3.3), so the validator's MV-HEVC operation points will need rechecking against it.
+The [VOPS Conformance Validator](/validation/vops) is 5G-MAG's validator for these operation points; its status and the specification version it follows are on its [Implementation Detail](/validation/vops/implementation) page. TS 26.265 V19.3.0 changes the dual-layer HEVC capability (clause 5.3.3) compared with V19.2.0.
 
 ## Sources
 
 - 3GPP TS 26.265 V19.3.0 (2026-09), clauses 3.1, 4.1, 4.2, 4.3, 5.1, 6.1, 7.2.2, 7.2.3 and annexes A.2.3, B.1, B.2.3 and B.3.
 - 3GPP TS 26.265 V19.3.0, clause 5.3.3 (renamed "Dual-layer HEVC Decoding Capabilities", output layer sets), checked against V19.2.0 as baseline.
+- 3GPP TR 21.915, TR 21.917 and TR 21.919, release descriptions (clauses 12.4.2, 15.2 and 11.5).
 - [Standards: Video Operation Points](/standards/vops)

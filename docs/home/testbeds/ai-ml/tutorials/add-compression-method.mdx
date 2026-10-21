@@ -6,6 +6,8 @@ sidebar_position: 3
 description: "Step by step with the AI and ML Evaluation Framework: write a new coder for the codec pipeline, register it, evaluate it on the wav2vec 2.0 speech recognition model and read its size and word error rate, as TR 26.847 clause 5.2 asks for any compression method."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -30,9 +32,16 @@ The test encoder and test decoder of the model data testbed (3GPP TR 26.847 V19.
 Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md), in particular its sections on the codec pipeline and on extending it, before you start.
 :::
 
-| Repository | What it is | Used in |
+## Components
+
+<RepoCards slugs={['rt-ai-ml-evaluation-framework']} />
+
+In `rt-ai-ml-evaluation-framework`: the framework; the pipeline is in `scripts/asr/compression`.
+
+Other software the tutorial uses:
+
+| Software | What it is | Used in |
 |---|---|---|
-| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the pipeline is in `scripts/asr/compression` | All sections |
 | [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, installed with the pipeline although this tutorial's coder does not use it | [1. Install the pipeline](#1-install-the-pipeline) |
 
 | You want | Go to |
@@ -78,7 +87,7 @@ The pipeline gets the anchor model from the evaluation task, sends it through th
 | `encode(self, model)` | Writes the `state_dict()` of the model to the bitstream file |
 | `decode(self, rec_model)` | Reads the bitstream file and loads the parameters into the `state_dict` of `rec_model` |
 
-The size the pipeline reports is the size of the bitstream file. For an encoder-only method, `encode` can write the optimized parameters in a raw format and `decode` can read them back; that is the case here, and it matches clause 5.2.7 b) of TR 26.847, where the bitstream holds the parameters as N-byte values (N is 2 here).
+The size the pipeline reports is the size of the bitstream file. For an encoder-only method, `encode` can write the optimised parameters in a raw format and `decode` can read them back; that is the case here, and it matches clause 5.2.7 b) of TR 26.847, where the bitstream holds the parameters as N-byte values (N is 2 here).
 
 ## 3. Write the coder
 

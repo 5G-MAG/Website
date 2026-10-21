@@ -48,7 +48,7 @@ config that is provided in [the 5gmag-rt-wui configuration in rt-common-shared](
 The Reference Tools support three different service announcement formats. The examples below use either the
 `5gmag_legacy` format for the recordings or the `default` format for seamless switching. To use the seamless switching
 format that was agreed in 5G-MAG you have to use `5gmag_bc_uc`. The corresponding service announcement example file is
-labeled `bootstrap.multipart.seamlessswitching.hls.5gmag`. More details can be found in the
+labelled `bootstrap.multipart.seamlessswitching.hls.5gmag`. More details can be found in the
 [Service Announcement Formats](../additional/rt-common-shared/MBMS-service-announcement-files) section.
 
 ## Playback of 5GBC together with the MBMS Modem
@@ -91,9 +91,9 @@ url being deleted immediately:
   }
 ```
 
-## FLUTE ffmpeg watchfolder with signaling server
+## FLUTE ffmpeg watchfolder with signalling server
 
-### HLS seamless switching (signaling server)
+### HLS seamless switching (signalling server)
 
 Set the config file for the rt-mbms-examples project in `flute-ffmpeg\config\default.cfg` to:
 
@@ -131,7 +131,7 @@ Enable seamless switching in the `/etc/5gmag-rt.conf` file:
   }
 ```
 
-### DASH Broadcast (signaling server)
+### DASH Broadcast (signalling server)
 
 Disable seamless switching and set the right SA format in the `/etc/5gmag-rt.conf` file:
 
@@ -169,7 +169,7 @@ general : {
 }
 ```
 
-### HLS Broadcast (signaling server)
+### HLS Broadcast (signalling server)
 
 Disable seamless switching and set the right SA format in the `/etc/5gmag-rt.conf` file:
 

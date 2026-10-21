@@ -66,10 +66,6 @@ The `sliceQosProfile` here is a separate parameter set from the operator-catalog
 
 A user of a media application would like to book the availability of a network slice for a given time area and QoS Profile. The following steps are executed:
 
-:::note
-Workflow figure to be added. It should show a single interaction: the API consumer sending **POST /slices** with a `serviceTime`, `serviceArea` and `sliceQosProfile`, and the operator returning the booking with its `sliceId` (there are no pre-conditions) (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST response 201; SliceInfo).
-:::
-
 ### Step 0: Pre-conditions
 
 - In principle none. Only after invoking the API the API consumer will receive a response whether the network slice booking can be successfully created (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST).
@@ -168,5 +164,3 @@ Type of response: the booking attributes (`serviceTime`, `serviceArea`, `sliceQo
   "status": "REQUESTED"
 }
 ```
-
-Only Dedicated Networks has a reference implementation among these CAMARA APIs today; this one does not yet.

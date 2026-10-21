@@ -231,5 +231,3 @@ With **GET /device-qos-bookings/{bookingId}**. The response returns the booking'
   }
 }
 ```
-
-Only Dedicated Networks has a reference implementation among these CAMARA APIs today; this one does not yet.

@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-10-18T10:25:36.082Z",
+  "updated_at": "2026-10-21T06:45:24.786Z",
   "posts": [
     {
-      "title": "Future Media Townhall 2026 — Speaker Slides Now Available",
+      "title": "Future Media Townhall 2026: Speaker Slides Now Available",
       "date": "2026-09-15",
       "slug": "fmt-2026-slides-available",
       "tags": [
         "Announcement"
       ],
       "image": "/assets/images/news/fmt-2026-slides-available.png",
-      "excerpt": "The Future Media Townhall took place on Saturday 12 September 2026 at IBC, RAI Amsterdam — and the speaker slides from every session are now available to download on the [event page](/fmt)."
+      "excerpt": "The Future Media Townhall took place on Saturday 12 September 2026 at IBC, RAI Amsterdam, and the speaker slides from every session are now available to download on the [event page](/fmt)."
     },
     {
       "title": "Introducing the 5GMAGazine",
@@ -29,7 +29,7 @@
         "Announcement"
       ],
       "image": "/assets/images/news/ntn-forum-2026-recap.jpg",
-      "excerpt": "5G-MAG took center stage at the European Space Agency's (ESA) NTN Forum Colloquium & General Assembly, bringing an end-to-end demonstration of its open-source 3GPP Release 18 [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) reference tools."
+      "excerpt": "5G-MAG took centre stage at the European Space Agency's (ESA) NTN Forum Colloquium & General Assembly, bringing an end-to-end demonstration of its open-source 3GPP Release 18 [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) reference tools."
     },
     {
       "title": "5G-MAG at MPEG/ITU Workshop: driving open-source development for faster technology deployment",
@@ -49,7 +49,7 @@
         "Announcement"
       ],
       "image": "/assets/images/news/mwc-shanghai-2026-recap.jpg",
-      "excerpt": "At MWC Shanghai (24–26 June, SNIEC), 5G-MAG showcased the live demonstration \"Towards Media-Aware Intelligent Networks — Smarter Video Streaming for 6G\" at Qualcomm's booth."
+      "excerpt": "At MWC Shanghai (24–26 June, SNIEC), 5G-MAG showcased the live demonstration \"Towards Media-Aware Intelligent Networks, Smarter Video Streaming for 6G\" at Qualcomm's booth."
     },
     {
       "title": "First 5G Broadcast PlugFest by 5G-MAG brings developers together in Berlin",
@@ -59,7 +59,7 @@
         "Announcement"
       ],
       "image": "/assets/images/news/plugfest-berlin-2026.jpg",
-      "excerpt": "The first 5G Broadcast PlugFest organized by 5G-MAG took place from 9 to 11 June 2026 at Fraunhofer FOKUS in Berlin, bringing together infrastructure vendors, technology providers, software developers and operators to test the interoperability of 5G Broadcast equipment."
+      "excerpt": "The first 5G Broadcast PlugFest organised by 5G-MAG took place from 9 to 11 June 2026 at Fraunhofer FOKUS in Berlin, bringing together infrastructure vendors, technology providers, software developers and operators to test the interoperability of 5G Broadcast equipment."
     },
     {
       "title": "phine.tech - New 5G-MAG member",
@@ -91,7 +91,7 @@
       "slug": "new-wg-chairs-2025",
       "tags": [],
       "image": "/assets/images/news/new-wg-chairs-2025.png",
-      "excerpt": "5G-MAG -- The Media Connectivity Association -- is pleased to announce the election of new chairs for its Working Groups, reinforcing its commitment to advancing media and connectivity technologies through open standards and collaborative development."
+      "excerpt": "5G-MAG, the Media Connectivity Association, is pleased to announce the election of new chairs for its Working Groups, reinforcing its commitment to advancing media and connectivity technologies through open standards and collaborative development."
     },
     {
       "title": "5G-MAG announces Steering Group leaders for the 2025-2027 term",

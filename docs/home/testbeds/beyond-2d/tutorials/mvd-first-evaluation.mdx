@@ -6,6 +6,8 @@ sidebar_position: 1
 description: "Step by step with the multi-view plus depth part of the Beyond 2D Video Evaluation Framework: build TMIV and QMIV, prepare the test content, run a small evaluation of one coding condition and read its output files."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -25,9 +27,16 @@ The framework supports the 3GPP study on Beyond 2D video, [TR 26.956](https://ww
 Read the [multi-view plus depth README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/mvd/README.md) before you start. It lists the requirements, the options of the configure script and the output files. The [repository README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework#readme) gives the context.
 :::
 
-| Repository | What it is | Used in |
+## Components
+
+<RepoCards slugs={['rt-beyond2d-evaluation-framework']} />
+
+In `rt-beyond2d-evaluation-framework`: the scripts and configuration files; the `mvd/` folder holds this framework.
+
+Other software the tutorial uses:
+
+| Software | What it is | Used in |
 |---|---|---|
-| [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework) | The scripts and configuration files; the `mvd/` folder holds this framework | All sections |
 | [TMIV](https://gitlab.com/mpeg-i-visual/tmiv) | MPEG test model for immersive video: encoder, multiplexer, decoder and renderer (tag v24.0). Built by `setup.sh` | [2](#2-build-the-software), [4](#4-run-the-evaluation) |
 | [QMIV](https://gitlab.com/mpeg-i-visual/qmiv) | Quality metrics for immersive video. Built by `setup.sh` | [2](#2-build-the-software), [4](#4-run-the-evaluation) |
 

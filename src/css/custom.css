@@ -1739,6 +1739,21 @@
   --ifm-button-border-color: var(--ifm-color-primary);
 }
 
+/* WCAG AA: white text on the stock primary (#00a0d2) is 3.0:1. In the light
+   theme the solid small and current-tab primary buttons use the darker
+   brand solid (5.3:1 with white text); the dark theme keeps the stock colour
+   because its button text is dark. */
+:root:not([data-theme='dark']) .button.button--primary.button--sm:not(.button--outline),
+:root:not([data-theme='dark']) .button.button--primary.button--tab-current {
+  --ifm-button-background-color: var(--brand-solid);
+  --ifm-button-border-color: var(--brand-solid);
+}
+:root:not([data-theme='dark']) .button.button--primary.button--sm:not(.button--outline):hover,
+:root:not([data-theme='dark']) .button.button--primary.button--tab-current:hover {
+  --ifm-button-background-color: var(--ifm-color-primary-darkest);
+  --ifm-button-border-color: var(--ifm-color-primary-darkest);
+}
+
 /* Direction C. The Home page hero is not touched. */
 
 /* Figure tiles cycle their top rule through blue, teal, purple and orange. */
@@ -1766,4 +1781,13 @@
 /* The search button's keyboard hint (Ctrl K) is set in the site font, not the browser's system font. */
 .DocSearch-Button-Key {
   font-family: var(--ifm-font-family-base);
+}
+
+/* Wide tables scroll inside their own box on narrow screens instead of running past the page edge. */
+@media (max-width: 996px) {
+  .markdown table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
 }

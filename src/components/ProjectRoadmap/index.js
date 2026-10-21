@@ -82,7 +82,7 @@ export default function ProjectRoadmap({ topics = [] }) {
       </p>
       {matched.length === 0 ? (
         <p>
-          No labelled items match right now — see the{' '}
+          No labelled items match right now; see the{' '}
           <a href="https://github.com/orgs/5G-MAG/projects/48" target="_blank" rel="noreferrer">
             full org roadmap
           </a>

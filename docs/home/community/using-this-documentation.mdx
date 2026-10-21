@@ -15,48 +15,46 @@ description: How the 5G-MAG documentation portal is structured, and a suggested 
 </div>
 </div>
 
-This documentation follows a hierarchical structure to help you navigate the 5G-MAG ecosystem efficiently. Reference Tools and Testbeds each have their own project list; every project follows the same set of subcategories covering specifications and roadmap, source code and releases, and hands-on tutorials. Applications is organised differently: it collects end-to-end scenarios assembled from several Reference Tools, grouped by use case rather than by project.
+This documentation is organised by project. Each project (for example 5G Media Streaming, 5G Multicast Broadcast Services or 5G Broadcast) has pages in several sections of the site, and they all share the same project menu on the left, so you can move between them without going back to the top navigation.
 
-Each Reference Tools and Testbeds project shares a consistent set of subcategories: **Scope**, **Resources**, and **Tutorials**. Not every subcategory has content for every project: a missing item (for example, no packages listed under Resources) means "nothing published yet for this project", not a broken page.
+## Sections of a project
 
-Each project opens on a landing page with a short description, a "Developer Exchange" section of recorded talks and demos where available (labelled "Watch"), and a row of buttons linking to its subcategories (Scope, Resources, Tutorials, and, where available, Developer Exchange). The subcategories below describe what each of these covers.
+### Technology
 
+The [Technology](/tech) pages explain how a technology works: the overview, the architecture and the features, and, for some projects, analyses of open questions.
 
-## Subcategories
+### Specifications
 
-### Scope
+The [Specifications](/standards) pages list the standards behind a project (3GPP, MPEG, ETSI and others), the release in which each one appeared, and the standards work 5G-MAG tracks. A Release history page gives the work items and the changes release by release where it exists.
 
-The **Scope** section outlines the high-level architecture, objectives and specifications of each project, and points to its roadmap. Here, you will find:
+### Reference Tools, Testbeds and Validation Tools
 
-- What the project implements, under a "What This Project Implements" heading. Where a project audits itself feature by feature against the specifications, that audit appears as a status board: a card per component showing how much is implemented, then one collapsible section per specification. The specification list itself is not repeated here; it lives on the project's own page at `/standards/<project>`, one click away in the sidebar.
-- Architectural diagrams illustrating the implementation.
-- A feature matrix mapping specifications to their current implementation status.
-- Guidance for identifying which technical standards to study for a deeper understanding.
-- A **Roadmap** heading near the end of the page, linking to the GitHub project board(s) that track the project's planned, in-progress, and completed work. Major features are also tracked via the [Reference Tools Roadmaps board](https://github.com/orgs/5G-MAG/projects/48).
+Under [Developer](/developer), the [Reference Tools](/reference-tools), [Testbeds](/testbeds) and [Validation Tools](/validation) pages describe the software. A project opens on a landing page with a short description, the standards it implements, its contributors, and its repositories with their latest releases and open pull requests, and, where there is one, a link to its roadmap on GitHub. Where a project has them, the landing page is followed by:
 
-### Resources
+- **Implementation Detail**: what the code implements, component by component, where the project has been audited against the specifications. Some projects have no such page yet.
+- **Tutorials**: step-by-step guides to set up and run the software. Many walk through several components working together; some focus on one.
 
-The **Resources** section provides direct links to the project's GitHub repositories, pre-built packages when available (binaries, containers, Docker deployments), and the latest published releases for each repository, with dates. Each repository includes its own build and installation instructions, as well as links to its issue tracker. The releases listed draw on the same data as the [Releases](/community/activity#reference-tools) section on the Community Activity page.
+A missing page or an empty list means that nothing has been published yet for that project, not that a page is broken.
 
-### Tutorials
+### Deployments
 
-The **Tutorials** section offers end-to-end setup guides. These walkthroughs typically demonstrate how to integrate multiple components to create a functional system. While some tutorials focus on single components, others provide cross-references to related technical topics. Where a project has one, a **Developer Exchange** subsection collects related community demos and discussion.
+The [Deployments](/deployments) pages cover testing, interoperability events such as PlugFests, and, per project, what is available to deploy.
 
 ### Developer Exchange
 
-Where available, a **Developer Exchange** section on the project's landing page (labelled "Watch") collects recorded talks, demonstrations and workshop sessions related to the project. The full cross-project collection lives at [Developer Exchanges](/developer/exchanges).
+Where a project has recorded talks or demonstrations, they appear on its landing page, and the full collection is on the [Developer Exchanges](/developer/exchanges) page.
 
-## Suggested Workflow
+## Suggested workflow
 
-First, decide how you want to enter the documentation: if you want to understand or run a specific tool, start from [Reference Tools](/reference-tools); if you want step-by-step guides to run the tools, start from [Tutorials](/tutorials).
+First, decide how you want to enter the documentation. To understand a technology, start from [Technology](/tech). To read the standards behind it, start from [Specifications](/standards). To run a tool, start from [Reference Tools](/reference-tools); for step-by-step guides, start from [Tutorials](/tutorials).
 
-Then, to get the most out of a project's documentation, we recommend the following approach:
+Then, for a project:
 
-1. **Explore the Architecture:** Start with the **Scope** subcategory to understand the high-level design of your chosen technology.
-2. **Assess Status:** Check the **Roadmap** heading within Scope to see what is currently implemented and what is planned.
-3. **Access the Code:** Navigate to the **Resources** subcategory to clone or download the software.
-4. **Implementation:** Follow the **Tutorials**, including any Developer Exchange links, to begin your local setup and testing.
+1. **Understand the design:** read the Technology overview and the Specifications page.
+2. **Assess the status:** open Implementation Detail, where it exists, to see what is implemented, and use the project's roadmap on GitHub to see what is planned. Major features are also tracked on the [Reference Tools Roadmaps board](https://github.com/orgs/5G-MAG/projects/48).
+3. **Get the code:** use Repositories & Releases on the project's landing page to clone or download the software. The same release data appears on the [Community Activity](/community/activity#reference-tools) page.
+4. **Set it up:** follow the Tutorials, and the Developer Exchange recordings where they exist.
 
-## Feedback & Support
+## Feedback and support
 
-We encourage all users to consult this documentation thoroughly before reaching out to maintainers. If your questions remain unanswered, see [Get in Touch](/community#get-in-touch) on the Community page for how to reach us.
+Please consult this documentation before contacting the maintainers. If your questions remain unanswered, see [Get in Touch](/community#get-in-touch) on the Community page for how to reach us.

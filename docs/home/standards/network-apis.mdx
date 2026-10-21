@@ -21,13 +21,13 @@ import { NETWORK_APIS_SPECS, NETWORK_APIS_LAYER_ORDER } from '@site/src/data/spe
 
 ## Overview
 
-5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For the technical analysis of how these map together, see the Tech page linked below. For the release-by-release work-item history and CAMARA meta-release tracking behind these specifications, see [Standards Evolution](/standards/network-apis/evolution).
+5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For how these map together, see the Technology page linked below. For the release-by-release work-item history and CAMARA meta-release tracking behind these specifications, see [Standards Evolution](/standards/network-apis/evolution).
 
 5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto.
 
 ## Specifications in scope
 
-The specifications in scope, filterable by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). Search matches the specification number, its title and any scope note. See [Tech: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
+The specifications in scope, filterable by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). Search matches the specification number, its title and any scope note. See [Technology: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
 
 <SpecIndex specs={NETWORK_APIS_SPECS} layerOrder={NETWORK_APIS_LAYER_ORDER} />
 
@@ -42,11 +42,11 @@ The specifications in scope, filterable by the layer of network capability expos
 | Connectivity Insights   | Reports on likely network conditions so a workflow can adapt encoding or scheduling                                        |
 | Dedicated Networks      | Provisions and manages an on-site dedicated network for a production                                                       |
 
-See the [Tech: Network APIs](/tech/network-apis) page for detailed CAMARA API profiles.
+See the [Technology: Network APIs](/tech/network-apis) page for detailed CAMARA API profiles.
 
 ### How CAMARA is organised
 
-CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. APIs are shipped in twice-yearly meta-releases (spring and fall): a `wip` version on the `main` branch is work in progress, a released meta-release version (`r`-tagged) is the one to integrate against. Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`).
+CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. APIs are shipped in twice-yearly meta-releases (spring and autumn): a `wip` version on the `main` branch is work in progress, a released meta-release version (`r`-tagged) is the one to integrate against. Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`).
 
 ### CAMARA APIs to 3GPP mapping (summary)
 

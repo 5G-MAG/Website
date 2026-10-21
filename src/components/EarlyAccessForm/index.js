@@ -17,7 +17,7 @@ const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 // both an a11y lint error and misleading about what the value is.
 export default function EarlyAccessForm({
   web3formsKey,
-  subject = 'New Early Access Request — 5G-MAG website',
+  subject = 'New Early Access Request: 5G-MAG website',
 }) {
   const { status, errorMessage, submit } = useWeb3FormSubmit(web3formsKey, subject);
   const [captchaToken, setCaptchaToken] = useState('');
@@ -121,7 +121,7 @@ export default function EarlyAccessForm({
       {status === 'error' && <p className={styles.errorText}>{errorMessage}</p>}
 
       <p className={styles.legal}>
-        Every request is reviewed manually, based on your answers above — there is no automatic
+        Every request is reviewed manually, based on your answers above; there is no automatic
         approval. By submitting this form, you are consenting to be contacted by 5G-MAG
         Association.
       </p>

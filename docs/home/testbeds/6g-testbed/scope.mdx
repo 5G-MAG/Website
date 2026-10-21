@@ -135,6 +135,107 @@ The AI gateway scenario (clause D.1.2.11) is not in table D.1.1. It places an in
 The call flows below are those of the simplified figures in clause D.1.2, between the client the testbed drives, the client library and the model or service. The TR also gives detailed flows with the metrics collected (figures D.1.2.1-3 to D.1.2.1-6, D.1.2.2-2, D.1.2.3-2, D.1.2.6-2, D.1.2.7-1 and D.1.2.8-2), a flow for the AI gateway (D.1.2.11-1) and one for the live AI mode (D.1.2.12-1); for several, an Editor's Note says that the source code of the call flow needs to be provided.
 
 <details>
+<summary>Detailed call flows with the metrics collected</summary>
+
+These are the detailed flows of the TR, as drawn in the specification. The scenario figures above show the simplified flows.
+
+<FigurePair
+  figures={[
+    {
+      label: 'Figure D.1.2.1-3',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.1-3.svg',
+      width: 1200, height: 816,
+      title: 'Chat scenario with openAI client synchronous mode',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-3',
+      alt: 'Call flow of figure D.1.2.1-3 of TR 26.870, chat scenario with openAI client synchronous mode, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.1-4',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.1-4.svg',
+      width: 1200, height: 1040,
+      title: 'Chat scenario with OpenAI client streaming mode',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-4',
+      alt: 'Call flow of figure D.1.2.1-4 of TR 26.870, chat scenario with OpenAI client streaming mode, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.1-5',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.1-5.svg',
+      width: 1200, height: 940,
+      title: 'Chat scenario with Gemini client streaming mode',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-5',
+      alt: 'Call flow of figure D.1.2.1-5 of TR 26.870, chat scenario with Gemini client streaming mode, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.1-6',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.1-6.svg',
+      width: 1200, height: 741,
+      title: 'Chat scenario Deepseek client streaming/sync mode',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-6',
+      alt: 'Call flow of figure D.1.2.1-6 of TR 26.870, chat scenario Deepseek client streaming/sync mode, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.2-2',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.2-2.svg',
+      width: 1200, height: 1164,
+      title: 'Shopping AI agent scenario with MCP and metrics collection',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.2-2',
+      alt: 'Call flow of figure D.1.2.2-2 of TR 26.870, shopping AI agent scenario with MCP and metrics collection, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.3-2',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.3-2.svg',
+      width: 1200, height: 988,
+      title: 'Image generation scenario with openAI and metrics computed',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.3-2',
+      alt: 'Call flow of figure D.1.2.3-2 of TR 26.870, image generation scenario with openAI and metrics computed, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.6-2',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.6-2.svg',
+      width: 1200, height: 1208,
+      title: 'Real-Time text/audio scenario with openAI and metrics',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.6-2',
+      alt: 'Call flow of figure D.1.2.6-2 of TR 26.870, real-Time text/audio scenario with openAI and metrics, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.7-1',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.7-1.svg',
+      width: 1200, height: 1098,
+      title: 'Web search including parallel web search procedures and metrics',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.7-1',
+      alt: 'Call flow of figure D.1.2.7-1 of TR 26.870, web search including parallel web search procedures and metrics, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.8-2',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.8-2.svg',
+      width: 1200, height: 1116,
+      title: 'Computer use scenario including metrics',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.8-2',
+      alt: 'Call flow of figure D.1.2.8-2 of TR 26.870, computer use scenario including metrics, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.11-1',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.11-1.svg',
+      width: 1200, height: 813,
+      title: 'AI gateway scenario simplified',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.11-1',
+      alt: 'Call flow of figure D.1.2.11-1 of TR 26.870, aI gateway scenario simplified, redrawn as in the specification.',
+    },
+    {
+      label: 'Figure D.1.2.12-1',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.1.2.12-1.svg',
+      width: 1003, height: 868,
+      title: 'Multimodal analysis live AI mode scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.12-1',
+      alt: 'Call flow of figure D.1.2.12-1 of TR 26.870, multimodal analysis live AI mode scenario, redrawn as in the specification.',
+    },
+  ]}
+  note="Redrawn from the figures of TR 26.870 V0.6.1 clause D.1.2, with their step numbers and labels as published. Click a figure to enlarge it."
+/>
+
+</details>
+
+<details>
 <summary>Call flows: Chat</summary>
 
 In non-streaming mode the client sends one HTTP POST and receives the full response. In streaming mode the server returns the response in chunks as Server-Sent Events. With tokens, the client first turns the text into token identifiers with a local tokenizer and sends those as the prompt.

@@ -18,7 +18,7 @@ export default function EarlyAccessCallout() {
         <span className={styles.kicker}>Only for 5G-MAG Members and under invitation</span>
         <h3 className={styles.title}>Early Access</h3>
         <p className={styles.desc}>
-          Selected projects are set to private. Request access below — every request is reviewed
+          Selected projects are set to private. Request access below; every request is reviewed
           manually, case by case.
         </p>
 

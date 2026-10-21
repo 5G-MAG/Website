@@ -1,6 +1,6 @@
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
-import { icon } from '@site/src/components/GodeeperCard';
-import { ALL_REPOS, ICON_CATALOG } from '@site/src/data/baskets';
+import RepoCard from '@site/src/components/RepoCard';
+import cardStyles from '@site/src/components/RepoCard/styles.module.css';
+import { ALL_REPOS, repoMetaFor } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
 // The one shared "real repos behind this project" section every
@@ -34,7 +34,7 @@ import styles from '@site/src/pages/tech/index.module.css';
 // handle per page. `isTestbed`: true reads the heading as "Testbeds"
 // instead of "Reference Tools" -- raised directly ("given we have
 // testbeds maybe make clear if it is reference tools or testbed").
-export default function ProjectRepoSection({ projectNames, accent, isTestbed = false }) {
+export default function ProjectRepoSection({ projectNames }) {
   const names = Array.isArray(projectNames) ? projectNames : [projectNames];
   const repos = ALL_REPOS.filter((r) => names.includes(r.projectName));
   if (repos.length === 0) return null;
@@ -55,25 +55,14 @@ export default function ProjectRepoSection({ projectNames, accent, isTestbed = f
     <>
       <h2 className={styles.sectionTitle}>Repositories of This Project</h2>
       <p className={styles.sectionSubtitle}>
-        The real, running software for this technology: {repos.length}{' '}
-        {repos.length === 1 ? 'repository' : 'repositories'}.
+        The real, running software for this technology: what each repository is, what it implements, its latest release and where to find it.
       </p>
       {clusters.map((cluster) => (
-        <div key={cluster.label || 'own'} style={cluster.label ? { marginTop: '1.75rem' } : undefined}>
-          {cluster.label && (
-            <h3 style={{ fontSize: '1rem', marginBottom: '0.75rem' }}>Also used by {cluster.label}</h3>
-          )}
-          <div className="godeeper-grid">
+        <div key={cluster.label || 'own'} className={cluster.label ? cardStyles.cluster : undefined}>
+          {cluster.label && <h3 className={cardStyles.clusterHeading}>Also used by {cluster.label}</h3>}
+          <div className={cardStyles.grid}>
             {cluster.repos.map((r) => (
-              <HubDestinationCard
-                key={r.key}
-                compact
-                accent={accent}
-                icon={iconForCatalogKey(r.originIcon)}
-                title={r.name}
-                desc={shortDesc(r.description)}
-                href={r.url}
-              />
+              <RepoCard key={r.key} entry={r} meta={repoMetaFor(r.slug)} />
             ))}
           </div>
         </div>
@@ -84,47 +73,14 @@ export default function ProjectRepoSection({ projectNames, accent, isTestbed = f
 
 // The same cards for a chosen list of repositories, by slug, in the order given: e.g. the components a
 // tutorial needs. A repository listed under several projects shows once, with its owning project's icon.
-export function RepoCards({ slugs, accent }) {
+export function RepoCards({ slugs }) {
   const repos = slugs.map((slug) => ALL_REPOS.find((r) => r.slug === slug && r.originName === r.projectName) || ALL_REPOS.find((r) => r.slug === slug)).filter(Boolean);
   if (repos.length === 0) return null;
   return (
-    <div className="godeeper-grid">
+    <div className={cardStyles.grid}>
       {repos.map((r) => (
-        <HubDestinationCard
-          key={r.slug}
-          compact
-          accent={accent}
-          icon={iconForCatalogKey(r.originIcon)}
-          title={r.name}
-          desc={shortDesc(r.description)}
-          href={r.url}
-        />
+        <RepoCard key={r.slug} entry={r} meta={repoMetaFor(r.slug)} />
       ))}
     </div>
   );
-}
-
-function iconForCatalogKey(key) {
-  const paths = key && ICON_CATALOG[key];
-  if (!paths || !paths.length) return null;
-  return icon(
-    <>
-      {paths.map((d, i) => (
-        <path key={i} d={d} />
-      ))}
-    </>
-  );
-}
-
-// A repo's own real description, cut to one short clause rather than the
-// full multi-sentence text or dropped outright (raised directly: "the
-// description should be minimal" then "you are very radical" once it
-// was removed entirely). Trims to a word boundary at or before 60 chars,
-// so nothing is cut mid-word.
-function shortDesc(description) {
-  if (!description) return undefined;
-  const first = description.split(/(?<=[.!?])\s/)[0];
-  if (first.length <= 60) return first;
-  const cut = first.slice(0, 60);
-  return `${cut.slice(0, cut.lastIndexOf(' '))}…`;
 }

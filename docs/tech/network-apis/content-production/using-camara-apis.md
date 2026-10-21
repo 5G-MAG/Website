@@ -363,7 +363,7 @@ No single CAMARA API covers all five phases cleanly. The right choice depends on
 | Reserve a dedicated network for a venue and time, discover its service areas, then attach devices | [Dedicated Networks](./using-dedicated-networks)             | Separates area discovery, reservation and device access; the most complete fit for multi-device productions. |
 | Book slice-level resources for an area and window                                                 | [Network Slice Booking](../camara-network-slice-booking)     | Reserves slice resources; the device that creates the session uses them automatically.                       |
 
-The decisive property is whether **reservation is decoupled from device assignment**. Dedicated Networks and QoS Booking and Assignment decouple them, which is what makes device swaps and dynamic prioritisation (the on-air / preview / standby pattern in the [Workflows](./workflows#dynamic-prioritization-of-qos-for-different-media-flows) page) possible without tearing down and re-creating a booking, and therefore without risking the loss of the reserved resources.
+The decisive property is whether **reservation is decoupled from device assignment**. Dedicated Networks and QoS Booking and Assignment decouple them, which is what makes device swaps and dynamic prioritisation (the on-air / preview / standby pattern in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page) possible without tearing down and re-creating a booking, and therefore without risking the loss of the reserved resources.
 
 ## Gaps identified against the requirements
 
@@ -380,7 +380,7 @@ Whichever CAMARA API is chosen, the operator's Network API Platform translates t
 
 ## API consumer authentication
 
-Before any of the calls above, the API consumer authenticates to the operator's authorization server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent; two-legged (client credentials) tokens are restricted to APIs that do not process personal data. The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
+Before any of the calls above, the API consumer authenticates to the operator's authorisation server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent; two-legged (client credentials) tokens are restricted to APIs that do not process personal data. The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
 
 ## Related
 

@@ -22,7 +22,7 @@ import { NTN_SPECS, NTN_LAYER_ORDER } from '@site/src/data/specs/ntn';
 
 ## Overview
 
-5G-MAG tracks 3GPP Non-Terrestrial Network (NTN) standards for satellite and HAPS media distribution. For the technical analysis of NTN deployment models, mobility and media delivery, see the Tech page linked below.
+5G-MAG tracks 3GPP Non-Terrestrial Network (NTN) standards for satellite and HAPS media distribution. For NTN deployment models, mobility and media delivery, see the Technology page linked below.
 
 :::tip
 New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) and [Standards: 5G Broadcast](/standards/5g-broadcast) for background before reading this page.
@@ -40,6 +40,16 @@ The specifications in scope, filterable by the layer they define: the NR radio a
 
 Applying MBS over NTN is the subject of active work in Release 19 and beyond; treat orbit-by-orbit and mode-by-mode feature placement as provisional. One confirmed item: Release 19 adds **SIB27** to TS 38.331 for MBS broadcast over NTN. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail.
 
+## Specifications by release
+
+- **Release 15 and 16**: studies (TR 38.811, TR 38.821, TR 22.822, stage 1 of 5GSAT, with no stage 2 or 3 feature in Release 16).
+- **Release 17**: first normative NTN: satellite NG-RAN in the 5G Core (5GSAT_ARCH), NR over transparent satellite payloads (NR_NTN_solutions, TS 38.300, TS 38.331, TS 38.101-5) and NB-IoT and eMTC over NTN.
+- **Release 18**: satellite backhaul (5GSATB), discontinuous coverage (5GSAT_Ph2) and NR NTN enhancements (NR_NTN_enh): FR2-NTN bands, NTN-TN mobility, satellite switch with re-synchronization, network-verified UE location.
+- **Release 19**: NR_NTN_Ph3 (including multicast and broadcast with an intended service area smaller than a cell, and gNB on board the satellite), 5GSAT_Ph3 (Store and Forward, UE-Satellite-UE), PWS over satellite, E-UTRA TN to NR NTN reselection and a GSO band for LTE-based 5G Broadcast.
+- **Release 20**: 5GSAT_Ph4 and further RAN items are approved; no Release 20 description (TR 21.920) exists yet, so treat Release 20 content as unverified.
+
+The features per release and the clauses of TR 21.915 to TR 21.919 that describe them are on [Standards Evolution](/standards/ntn/evolution).
+
 ## Specifications by role
 
 The table groups the key specifications by the part of the system they govern.
@@ -54,6 +64,7 @@ The table groups the key specifications by the part of the system they govern.
 
 ## Related
 
+- [Technology: Non-Terrestrial Networks in 5G Systems](/tech/ntn)
 - [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): MBS Multicast and Broadcast are the primary service layers deployed over NTN
 - [Standards: 5G Broadcast](/standards/5g-broadcast): ETSI TS 103 720 defines the 5G Broadcast system (FeMBMS) that can operate over satellite NTN delivery paths
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for Linear TV and Radio Services; relevant for GEO satellite broadcast delivery scenarios

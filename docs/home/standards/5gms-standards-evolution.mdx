@@ -78,6 +78,31 @@ Note: for FS_5GMS_Multicast the work plan lists its output only as "new". TR 26.
 | [5GMSA](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=820002) | Media streaming architecture | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Jun 2019 | [SP-180984](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_82/Docs/SP-180984.zip) |
 | [5GMS3](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=840001) | 5G Media Streaming stage 3 | Normative | [TS 26.117](https://www.3gpp.org/dynareport/26117.htm), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | Complete, Sep 2020 | [SP-190464](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_84/Docs/SP-190464.zip) |
 
+## What each release added
+
+The entries below are the novelties each release description (TR 21.916 to TR 21.919) or specification change history gives for the work items above. Release 20 has no release description yet; its entries come from the change history of TS 26.501 V20.0.0 and the work plan, and the work item scope beyond that is unverified.
+
+- **Release 16.** 5GMS3 produced three new specifications: speech and audio profiles in TS 26.117, profiles, codecs and formats in TS 26.511, and protocols in TS 26.512, plus a change to TS 26.247 that makes CMAF the baseline container format for 5GMS downlink streaming (TR 21.916 clause 13.2.3). 5GMSA created the architecture in TS 26.501; the release description gives no further detail on it.
+- **Release 17.**
+  - EVEX: generic UE data collection, reporting and event exposure (TS 26.531 and TS 26.532), its instantiation for 5GMS in TS 26.501 and TS 26.512 (the M1 API is extended with Data Access Profiles), and extensions to TS 29.517, TS 29.522 and TS 29.591 (TR 21.917 clause 15.6).
+  - 5GMS_EDGE: TS 26.501 CR 0030 "Support of Edge Media Processing in 5GMS" (SA#94-e, V17.0.0) and CR 0036 "[EVEX] [5GMS_EDGE] Expanded downlink provisioning procedures and domain model" (SA#96, V17.2.0). TR 21.917 gives no summary for 5GMS_EDGE.
+  - 5MBUSA: new TS 26.502 for the MBS User Service architecture, and changes to TS 26.501 so that 5GMS downlink streaming can run as an MBMS-Aware Application on eMBMS, with procedures for exclusive eMBMS delivery, consumption reporting, metrics reporting, hybrid delivery and dynamic provisioning (TR 21.917 clause 6.3.4.5; TS 26.501 CR 0034 "5GMS via eMBMS", SA#95-e, V17.1.0).
+  - 5MBP3: new TS 26.517 for MBS User Service announcement and distribution methods, and extensions to TS 26.512, TS 26.346, TS 26.347 and TS 26.348 for 5GMS via eMBMS (TR 21.917 clause 6.3.4.3.3).
+  - FS_5GMS_Multicast: the study concludes that the generic MBS User Service architecture is to be defined in TS 26.502 and is independent of 5GMS (TR 21.917 clause 6.3.4.4).
+  - 8K_TV_5G: an 8K TV operation point in TS 26.116 and the corresponding decoding capabilities for 5GMS in TS 26.511 (TR 21.917 clause 15.2).
+- **Release 18.**
+  - 5GMS_Ph2 (stage 2, TS 26.501): uplink streaming; 5GMS delivery via MBS, including a service available on MBS and unicast at the same time; hybrid DASH/HLS operation under one Content Hosting Configuration; Service Operation Points in Dynamic Policies; 5GMS AS configuration at M3; improved data collection; 3GPP Service URL; and Background Data Transfer in Policy Templates (TR 21.918 clause 17.12).
+  - 5GMS_Pro_Ph2 (stage 3): topics include uplink streaming, low-latency live streaming, 5GMS over MBS, multiple media service entry points, traffic identification, OAuth 2.0, the 3GPP Service Handler and URL, an M3 RESTful API, and data types for ANBR-based Network Assistance. The new TS 26.510 harmonises provisioning and media session handling across 5G Media Streaming and Real-time Media Communication (TR 21.918 clause 17.9).
+  - 5GMS_Audio_Ph2: a new xHE-AAC stereo audio operation point in TS 26.117; TS 26.511 is updated for conditional mandatory eAAC+ support and recommends xHE-AAC stereo for the streaming default and Television profiles (TR 21.918 clause 17.11).
+  - MeCAR: new TS 26.119 on device media capabilities for Augmented Reality (TR 21.918 clause 14.2).
+  - FS_MS_NS_Ph2: TR 21.918 lists the study (as a row of clause 28.2) but gives no summary.
+- **Release 19.**
+  - AMD (FS_AMD, AMD-ARCH-MED, AMD_PRO-MED): in-band reporting of Common Media Client Data, multi-access media delivery, delivery from multiple service endpoints or CDNs, distribution of encrypted content, improved QoS support including ECN marking for L4S, and media streaming over network slices (TR 21.919 clause 11.6). For the MBS side, the same clause lists in-session unicast repair for object distribution, time synchronisation, and deployment guidelines for MBS User Services over eMBMS.
+  - VOPS: service-independent video operation points and stereoscopic MV-HEVC capabilities consolidated in new TS 26.265 (TR 21.919 clause 11.5).
+  - 5G_RTP_Ph2: RTP configuration work in TS 26.522, TS 26.510 and TS 26.113, including PDU Set Importance values in the RTC Dynamic Policy API of TS 26.510 (TR 21.919 clause 11.7).
+  - IVAS_Codec_Ph2: fixed-point reference code in TS 26.251 and updated conformance testing in TS 26.252 (TR 21.919 clause 11.3).
+- **Release 20 (unverified beyond the specification change history).** TS 26.501 V20.0.0 change history lists CR 0120 "[AMD_ARCH_Ph2-MED] 5G Media Streaming independent of 5G System" and CR 0115 "[Energy_ARCH-MED] Instantiate energy architecture in 5GMS System" (both SA#113, September 2026).
+
 ## Other SA4 work items that changed 5GMS specifications
 
 These SA4 work items are not 5GMS work items, but the work plan lists 5GMS specifications among the specifications they changed. The 5GMS specifications are shown.

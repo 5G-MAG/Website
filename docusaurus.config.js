@@ -418,7 +418,7 @@ const config = {
           ],
         },
         {
-          title: 'Technical Resources',
+          title: 'Technology',
           items: [
             { label: 'Overview', to: '/tech' },
             { label: 'Where We Stand', to: '/tech#where-we-stand' },

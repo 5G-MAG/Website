@@ -32,6 +32,39 @@ The Rel column is the release of each document's first version. Titles are each 
 | [TS 29.532](https://www.3gpp.org/dynareport/29532.htm) | 5G System; 5G Multicast-Broadcast Session Management Services; Stage 3 | 17 | MB-SMF: Nmbsmf_TMGI and Nmbsmf_MBSSession |
 | [TS 29.510](https://www.3gpp.org/dynareport/29510.htm) | 5G System; Network Function Repository Services; Stage 3 | 15 | NRF: discovery of the Network Functions above |
 
+## Novelties per release
+
+What each release added to these services, from the 3GPP release descriptions (TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.918 V18.0.0, TR 21.919 V19.0.0) and from the change history of each specification (Annex "Change history", Category B change requests, with the version that introduced them). Only items that touch the four specifications above are listed.
+
+| Release | Item | Specification | Source |
+| --- | --- | --- | --- |
+| 15 | First versions of the three services; the NRF supports service registration, deregistration, authorization and discovery | TS 29.510, TS 29.514, TS 29.521 | TR 21.915 clauses 5.5.2.1 and 5.5.2.3; TS 29.521 V20.1.0 change history (15.0.0) |
+| 16 | 5G_eSBA: indirect communication models through the SCP, NF sets and NF service sets, binding mechanism | TS 29.510 and all service APIs | TR 21.916 clause 18.5.1 |
+| 16 | eIMS5G_SBA: IMS functions use N5 towards the PCF; the NRF and Nnrf protocols updated for HSS discovery | TS 29.514, TS 29.510 | TR 21.916 clause 18.5.2 |
+| 16 | Multiple UE addresses in one binding; binding update; same PCF selection; PCF set Id and PCF Id | TS 29.521 | TS 29.521 V20.1.0 change history, CRs 0037, 0038 (16.0.0), 0053 (16.2.0), 0063 (16.3.0) |
+| 16 | Requester nfInstanceId parameter in NFDiscovery; NFType for SCP | TS 29.510 | TS 29.510 V20.1.0 change history, CRs 0187 (16.0.0), 0315 (16.3.0) |
+| 16 | QoS Monitoring for service data flows | TS 29.514 | TS 29.514 V20.1.0 change history, CR 0142 (16.3.0) |
+| 17 | 5MBS: 5G multicast-broadcast services (MB-SMF); TS 29.532 approved at version 17.0.0 | TS 29.532 | TR 21.917 clause 6.3.4.3.1; TS 29.532 V20.0.0 change history |
+| 17 | MB-SMF registration and discovery; MB-SMF discovery by the AMF using MBS Session ID and Area Session ID; MBSF and MB-STF profiles in the NRF | TS 29.510 | TS 29.510 V20.1.0 change history, CRs 0552 (17.3.0), 0577 (17.4.0), 0636 (17.5.0), 0715 (17.6.0) |
+| 17 | SCP domain routing information | TS 29.510 | TS 29.510 V20.1.0 change history, CR 0417 (17.0.0) |
+| 17 | TEI17_DCAMP: the AF can request service area coverage and high throughput for a UE; the BSF is queried for the PCF serving the UE; BSF subscription to PCF registration, PCF registration and deregistration for a UE, discovery of a PCF for a UE; PCF as consumer of Npcf_PolicyAuthorization | TS 29.521, TS 29.514 | TR 21.917 clause 17.12; TS 29.521 V20.1.0 change history, CRs 0113, 0115, 0119 (17.2.0), 0130 (17.3.0); TS 29.514 V20.1.0 change history, CR 0294 (17.1.0) |
+| 17 | PCF for an MBS Session binding; MBSF as consumer of Nbsf_Management_Discovery | TS 29.521 | TS 29.521 V20.1.0 change history, CRs 0158 to 0161 (17.6.0), 0164 (17.7.0) |
+| 17 | en5GPccSer17: stage 3 alignments of PCC services between EPS and 5GS | TS 29.514 (with TS 29.512, TS 29.513) | TR 21.917 clause 9.6 |
+| 18 | 5MBS_Ph2: CT4 aspects listed; the TR describes only the charging aspects (MB-SMF as consumer of Nchf_ConvergedCharging) | TS 29.532 (the TR does not name it) | TR 21.918 clause 12.1 |
+| 18 | Associated Session ID in the Create request; RedCap UEs information for a broadcast MBS session; MOCN support in Nmbsmf_MBSSession | TS 29.532 | TS 29.532 V20.0.0 change history, CRs 0054 (18.1.0), 0085 and 0086 (18.4.0) |
+| 18 | NRFe: shared data in Nnrf_NFManagement and Nnrf_NFDiscovery, reduced information between VPLMN and HPLMN | TS 29.510 | TR 21.918 clause 10.9; TS 29.510 V20.1.0 change history, CR 0905 (18.6.0) |
+| 18 | XRM: policy control enhancements for multi-modal flows, PDU set handling, QoS monitoring, L4S | TS 29.514 | TR 21.918 clause 14.8; TS 29.514 V20.1.0 change history, CRs 0473 (18.1.0), 0488, 0508, 0528 (18.2.0) |
+| 18 | 5GSATB: satellite backhaul category | TS 29.514 | TR 21.918 clause 5.1; TS 29.514 V20.1.0 change history, CR 0474 (18.1.0) |
+| 18 | IPv6 prefix delegation in the binding | TS 29.521 | TS 29.521 V20.1.0 change history, CR 0180 (18.1.0) |
+| 19 | RedInfExp_SBI: selective parameter omission and default or null values in NRF responses, access scope filtering | TS 29.510 | TR 21.919 clause 22.3 |
+| 19 | NF discovery and selection by the target PLMN | TS 29.510 | TR 21.919 clause 25.3.3; TS 29.510 V20.1.0 change history, CR 1029 (19.0.0) |
+| 19 | MPS4msg: procedural updates for the PCF receiving the MPS for Messaging indication on N5 | TS 29.514 | TR 21.919 clause 20.6; TS 29.514 V20.1.0 change history, CR 0682 (19.1.0) |
+| 19 | 5GSAT_Ph3: serving satellite identification in UE-SAT-UE communication | TS 29.514 | TR 21.919 clause 6.2.1; TS 29.514 V20.1.0 change history, CR 0704 (19.1.0) |
+| 19 | Updates to Nbsf_Management; PCF as consumer of Nbsf_Management_Discovery; BSF subscription expiry time | TS 29.521 | TS 29.521 V20.1.0 change history, CRs 0205 (19.0.0), 0217 (19.3.0), 0223 (19.4.0) |
+| 20 (unverified) | Energy indicator provisioning; SCONE support; energy-aware NF discovery and selection; BSF stale registrations handling | TS 29.514, TS 29.510, TS 29.521 | Change history only (TS 29.514 CRs 0843, 0844; TS 29.510 CR 1310; TS 29.521 CR 0236); no Release 20 release description or work item was read |
+
+TS 29.532 has no feature change requests in the Release 19 versions listed in its change history, only API version updates.
+
 ## Related
 
 - [Implementation Detail](/reference-tools/3gpp-platforms/implementation#5g-core-service-consumers)

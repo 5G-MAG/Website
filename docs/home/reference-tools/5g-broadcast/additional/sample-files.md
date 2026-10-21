@@ -22,7 +22,7 @@ description: Lists downloadable I/Q sample capture files (RTP, HLS and DASH payl
 
 ## Overview
 
-In order to support application developers as well as 5G-MAG contributors for testing their improvements, ORS captured sample files ("raw data" = digitized I/Q (In-phase/Quadrature) samples at [LimeSDR Mini 2](https://limemicro.com/sdr/limesdr-mini-2-0/) output) directly from a 5G BC transmitter. You can also capture sample files using the [capture command of the Receive Process](https://github.com/5G-MAG/rt-mbms-modem#capture-and-running-of-sample-files).
+In order to support application developers as well as 5G-MAG contributors for testing their improvements, ORS captured sample files ("raw data" = digitised I/Q (In-phase/Quadrature) samples at [LimeSDR Mini 2](https://limemicro.com/sdr/limesdr-mini-2-0/) output) directly from a 5G BC transmitter. You can also capture sample files using the [capture command of the Receive Process](https://github.com/5G-MAG/rt-mbms-modem#capture-and-running-of-sample-files).
 
 ### Understanding the filenames
 
@@ -85,6 +85,6 @@ Payload DASH, Modulation Coding Scheme 16 (16QAM), subcarrier spacing 1.25 kHz:
 - Rel.16 CAS [8MHz_MCS16_1kHz25_Rel16.raw](https://obeca-testdaten.s3.eu-central-1.amazonaws.com/8MHz_MCS16_1kHz25_Rel16.raw) (13.4 GB) (PBCH Repetition, Aggregation Level 16, CFI-Indicator in MIB-MBMS)
   - **Note**: Release 16 is currently not supported in the rt-mbms-modem. This stream can be used for development purposes.
 
-> Note: The sample files were captured in Nov 2021. An mp4 file of the movie [Big Buck Bunny](https://www.bigbuckbunny.org) (published under the [Creative Commons Attribution 3.0 license](https://creativecommons.org/licenses/by/3.0/), (c) copyright 2008, Blender Foundation / [www.bigbuckbunny.org](https://www.bigbuckbunny.org)) was looped to create RTP and HLS streams. Play duration of each sample file is 3-5 minutes.
+> Note: The sample files were captured in Nov 2021. An mp4 file of the movie [Big Buck Bunny](https://www.bigbuckbunny.org) (published under the [Creative Commons Attribution 3.0 licence](https://creativecommons.org/licenses/by/3.0/), (c) copyright 2008, Blender Foundation / [www.bigbuckbunny.org](https://www.bigbuckbunny.org)) was looped to create RTP and HLS streams. Play duration of each sample file is 3-5 minutes.
 
 If you need any further sample files, please get in contact with us **[reference-tools@5g-mag.com](mailto:reference-tools@5g-mag.com)**.

@@ -55,7 +55,7 @@ export default function Membership() {
   return (
     <Layout
       title="Membership"
-      description="Join, collaborate and sponsor software development with 5G-MAG — scale your projects with the industry."
+      description="Join, collaborate and sponsor software development with 5G-MAG, scale your projects with the industry."
     >
       <HubHero
         title="Membership"
@@ -149,7 +149,7 @@ export default function Membership() {
               </table>
               <p className={styles.feeTableNote}>
                 * Micro also includes universities, regulators, public research bodies,
-                institutions, NGOs, and non-profit organizations.
+                institutions, NGOs, and non-profit organisations.
               </p>
             </div>
             <div className={styles.contactCallout}>
@@ -199,7 +199,7 @@ export default function Membership() {
               </p>
               <ContactForm
                 web3formsKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
-                subject="Membership Enquiry — 5G-MAG website"
+                subject="Membership Enquiry: 5G-MAG website"
                 submitLabel="Send enquiry"
                 successNote="Next, we will follow up directly and share the Articles of Association and the Internal Rules with you."
               />
@@ -215,7 +215,7 @@ export default function Membership() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our Members</h2>
             <p className={styles.sectionSubtitle}>
-              A thriving, open community — membership is open to any organization willing to join
+              Membership is open to any organisation willing to join
               the efforts.
             </p>
             <div className={styles.membersGrid}>

@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 const CASE = [
   {
     stage: 'Evaluation',
-    today: ['Duplicated prototypes.', ' Each organization builds its own to evaluate a draft; results differ and feedback is slow.'],
+    today: ['Duplicated prototypes.', ' Each organisation builds its own to evaluate a draft; results differ and feedback is slow.'],
     start: ['One shared baseline.', ' Drafts are validated against running code before the freeze, while gaps are cheap to fix.'],
   },
   {

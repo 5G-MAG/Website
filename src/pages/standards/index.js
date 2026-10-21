@@ -144,7 +144,7 @@ const FEEDBACK_AREAS = [
   },
   {
     title: 'Feedback to ETSI TS 103 720',
-    desc: '5G Broadcast System for linear TV and radio services — the free-to-air LTE-based delivery system.',
+    desc: '5G Broadcast System for linear TV and radio services: the free-to-air LTE-based delivery system.',
     topics: [
       {
         title: 'List of issues',
@@ -368,7 +368,7 @@ export default function Standards() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
             <p className={styles.sectionSubtitle}>
-              Feedback, requirements and pain points — deployment experience submitted to SDOs, and
+              Feedback, requirements and pain points: deployment experience submitted to SDOs, and
               how each GitHub issue is carried through to a correction, new-feature proposal or
               liaison input.
             </p>

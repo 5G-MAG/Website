@@ -79,7 +79,7 @@ export default function Events() {
     },
     {
       src: useBaseUrl('/assets/images/fmt/gallery/photo-07.jpg'),
-      alt: 'Future Media Townhall 2025: a panel discussion on tangible standardization projects for the Rel-20 and 6G era',
+      alt: 'Future Media Townhall 2025: a panel discussion on tangible standardisation projects for the Rel-20 and 6G era',
     },
     {
       src: useBaseUrl('/assets/images/fmt/gallery/photo-10.jpg'),
@@ -89,7 +89,7 @@ export default function Events() {
   return (
     <Layout
       title="Events"
-      description="Where to meet 5G-MAG — recurring industry events and the Future Media Townhall."
+      description="Where to meet 5G-MAG: recurring industry events and the Future Media Townhall."
     >
       <HubHero
         title="Events"
@@ -137,7 +137,7 @@ export default function Events() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Flagship Events</h2>
             <p className={styles.sectionSubtitle}>
-              Trade shows and conferences 5G-MAG organizes or takes part in.
+              Trade shows and conferences 5G-MAG organises or takes part in.
             </p>
             <div className={styles.pillarGrid3}>
               {EVENT_PAGES.map((e) => (
@@ -166,7 +166,7 @@ export default function Events() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Dev Public Call</h2>
             <p className={styles.sectionSubtitle}>
-              5G-MAG&apos;s open monthly session — anyone can join, no membership required.
+              5G-MAG&apos;s open monthly session: anyone can join, no membership required.
             </p>
             <div style={{ textAlign: 'center' }}>
               <Link className="button button--primary button--lg" to="/public-call">
@@ -184,7 +184,7 @@ export default function Events() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Community Workshops</h2>
             <p className={styles.sectionSubtitle}>
-              Community workshops 5G-MAG co-organizes with other open-source and standards groups.
+              Community workshops 5G-MAG co-organises with other open-source and standards groups.
             </p>
             <div className={styles.pillarGrid3}>
               {WORKSHOP_PAGES.map((w) => (
@@ -205,7 +205,7 @@ export default function Events() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Gallery</h2>
             <p className={styles.sectionSubtitle}>
-              Highlights from across 5G-MAG events — plugfests, trade shows and the Future Media
+              Highlights from across 5G-MAG events: plugfests, trade shows and the Future Media
               Townhall.
             </p>
             <PhotoGallery photos={galleryPhotos} />

@@ -1,0 +1,203 @@
+---
+title: "Tutorial: DVB-I over 5G Media Streaming"
+sidebar_label: "DVB-I over 5G Media Streaming - a service list that points at 5GMS content"
+hide_title: true
+sidebar_position: 4
+description: "Step by step: take the Media Entry Point of content hosted in a 5G Media Streaming system, publish it in a DVB-I service list with the DVB-I Application Provider, and open the list in a DVB-I client."
+---
+
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">DVB-I over 5G Systems</span>
+<h1>Tutorial: DVB-I over 5G Media Streaming</h1>
+</div>
+</div>
+
+A DVB-I service can be delivered by a 5G Media Streaming (5GMS) system. The service list is a DVB-I document; the media comes from the 5GMS Application Server over reference point M4d. ETSI TR 103 972 V1.1.1 describes the arrangement in clause 6.3: in the discovery step (clause 6.3.3.2, step 8), "All service instances appearing in the DVB-I Service List with a DASHDeliveryParameters element are available via unicast", and the URL of the Media Player Entry document, a DASH MPD, is carried in `DASHDeliveryParameters/UriBasedLocation`. In this tutorial you do that: you take the Media Entry Point URL of content hosted in a 5GMS system, publish it in a service list with the DVB-I Application Provider, and open the list in a DVB-I client.
+
+:::tip[Read the READMEs first]
+Read the README of [rt-dvb-i-application-provider](https://github.com/5G-MAG/rt-dvb-i-application-provider#readme) before you start; `DEPLOYMENT.md` in the same repository gives every setting. The 5GMS repositories have their own installation guides, which section 2 points to. The other repositories below are only needed in the sections that name them.
+:::
+
+<RepoCards slugs={['rt-dvb-i-application-provider', 'rt-dvb-i-application', 'rt-dvb-i-android-application', 'rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application-provider']} />
+
+Where each repository is used:
+
+- `rt-dvb-i-application-provider`: [3. Publish a service list that points at 5GMS content](#3-publish-a-service-list-that-points-at-5gms-content)
+- `rt-dvb-i-application`: [4. Open the list in a DVB-I client](#4-open-the-list-in-a-dvb-i-client)
+- `rt-dvb-i-android-application`: [4.2 On a phone](#42-on-a-phone)
+- `rt-5gms-application-function`: [2. Get the Media Entry Point from the 5GMS system](#2-get-the-media-entry-point-from-the-5gms-system)
+- `rt-5gms-application-server`: [2. Get the Media Entry Point from the 5GMS system](#2-get-the-media-entry-point-from-the-5gms-system)
+- `rt-5gms-application-provider`: [2. Get the Media Entry Point from the 5GMS system](#2-get-the-media-entry-point-from-the-5gms-system)
+
+| You want | Go to |
+|---|---|
+| To know which part of the specifications each step follows | [1. How the parts fit](#1-how-the-parts-fit) |
+| Content hosted by a 5GMS system and its M4d URL | [2. Get the Media Entry Point from the 5GMS system](#2-get-the-media-entry-point-from-the-5gms-system) |
+| The service list that points at that content | [3. Publish a service list that points at 5GMS content](#3-publish-a-service-list-that-points-at-5gms-content) |
+| To watch it | [4. Open the list in a DVB-I client](#4-open-the-list-in-a-dvb-i-client) |
+| Proof that the list is valid DVB-I | [5. Check what you published](#5-check-what-you-published) |
+
+**You need:** a Linux machine with `git`, Node.js 20 or later with `npm`, `curl` and a browser; about 30 MB of disk for the provider and the client. For section 2 you also need a 5GMS Application Function and Application Server that you can start, which the 5GMS tutorials set up. Sections 3 to 5 can be followed without them, with any DASH stream in place of the 5GMS URL.
+
+## 1. How the parts fit
+
+Three documents define the parts. The page names the version of each that was read; clause numbers are those of the version named.
+
+| Step | What the specification says | Where |
+|---|---|---|
+| Content is made available in the 5GMS system | The 5GMS Application Provider creates a Provisioning Session at the AF, then a Content Hosting Configuration, at reference point M1d. For a Media Entry Point such as a DASH MPD, the AF adds no path elements to the `relativePath` when it nominates the `baseURL`. | ETSI TS 126 512 V19.3.0 clauses 4.3.2.1 and 4.3.3.1; ETSI TR 103 972 V1.1.1 clause 6.3.3.1 steps 3 to 5 |
+| The player fetches the content | From the 5GMS Application Server at M4d | 3GPP TS 26.501 V20.0.0 clause 4.2.1 |
+| The service list names the content | A service instance with `DASHDeliveryParameters`; `UriBasedLocation` is mandatory and holds the URI of the MPD | ETSI TS 103 770 V1.2.1 clause 5.5.18.6, table 32; ETSI TR 103 972 V1.1.1 clause 6.3.3.2 step 8 |
+| The client chooses an instance | The signalled `@priority` is respected; lower values mean higher priority | ETSI TS 103 770 V1.2.1 clauses 5.2.13 and 5.5.4 |
+
+Where the service list stands in the architecture of ETSI TR 103 972 V1.1.1 figure 5.1-1: the DVB-I Service List Server and the DVB-I Content Guide Server are the provider of this tutorial; the DVB-I Client is the browser or Android client; the 5GMS Application Function and Application Server sit in the 5G Data Network. The [Implementation Detail](../implementation) page shows the figure with the repository behind each box.
+
+:::note[What the service list carries]
+The same clause 6.3.3.2 says the service list "needs to convey at minimum the baseline Service Access Information parameters, namely the available 5GMSd AF host address(es) and the Provisioning Session identifier", which a Media Session Handler uses to request Service Access Information from the AF (TS 26.501 V20.0.0 clause 4.2.3; TS 26.512 V19.3.0 clause 4.7.2.1). ETSI TR 103 972 V1.1.1 clause 6.3.4, gap 1, records that TS 103 770 has no element for it, and TS 103 770 V1.2.1 has none. The instance you publish here carries the MPD URL only, so the client plays the stream from the Application Server over M4d as it plays any DASH stream. Consumption reporting, metrics reporting, dynamic policies and network assistance belong to the Media Session Handler and are outside this tutorial.
+:::
+
+## 2. Get the Media Entry Point from the 5GMS system
+
+Set up the 5GMS Application Function and Application Server and create a Provisioning Session with a Content Hosting Configuration by following [5GMSd (with Docker)](/reference-tools/5gms/tutorials/end-to-end), server-side setup, up to and including "Creating a Content Hosting Configuration". Each repository's README has its own installation guide (see the table above).
+
+The `msaf-configuration` tool of that tutorial creates the Provisioning Session and the Content Hosting Configuration at M1d, and writes the M8 information as `m8.json`. M8d is the reference point between the 5GMSd-Aware Application and the 5GMSd Application Provider; its format is not specified by 3GPP (TS 26.501 V20.0.0 clause 4.2.1), so `m8.json` is the format of these tools. Open `http://localhost/m8.json`. Each `locator` in `entryPoints` is the Media Entry Point URL at M4d:
+
+```text
+http://192.168.178.55/m4d/provisioning-session-872a0eb2-e40a-41ed-bf2a-03b8343221a7/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=mpd-time-csf)
+```
+
+(That is the example of the 5GMS tutorial; the host and identifiers are those of its machine, and yours differ.) Copy the `locator` whose `contentType` is `application/dash+xml`. In the rest of this page it is written `<M4D_MPD_URL>`.
+
+**Check:** the Application Server answers for it.
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' '<M4D_MPD_URL>'
+```
+
+A `200` means the AS serves the manifest.
+
+## 3. Publish a service list that points at 5GMS content
+
+Run the provider and add one channel. The routine is the one of [Tutorial: DVB-I Application Provider](./application-provider), sections 1 and 3.
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/rt-dvb-i-application-provider.git
+cd rt-dvb-i-application-provider
+npm install
+npm start
+```
+
+Open `http://localhost:4000/`.
+
+1. In the Service List Settings, type a **Service List ID** that is a `tag:` URI of your own, for example `tag:example.com,2026:servicelist:tutorial-5gms`.
+2. In the services toolbar, choose **Reference service (all fields, DASH)** and press **Load Template**.
+3. Change these fields:
+
+   | Field | Value |
+   |---|---|
+   | Service Name | `5GMS Tutorial Channel` |
+   | LCN | `4` |
+   | Unique ID (UID) | `tag:example.com,2026:service:tutorial-5gms` |
+   | Multi-language service names, `en` line | `5GMS Tutorial Channel` |
+   | Label of the instance | `5GMS Tutorial Channel (5GMSd AS, M4d)` |
+   | Stream URL of the DASH instance | `<M4D_MPD_URL>` from section 2 |
+   | Target Region (under the instances) | empty |
+   | Subscription Package | empty |
+
+4. Press **Save Service**, then **Save & Publish**.
+
+**Check:** the last instance in the published list is yours, and it holds the M4d URL.
+
+```bash
+curl -s http://localhost:4000/service-list.xml | grep -A4 '<DASHDeliveryParameters>' | tail -5
+```
+
+```xml
+      <DASHDeliveryParameters>
+        <UriBasedLocation contentType="application/dash+xml">
+          <dvbisd-t:URI>http://192.0.2.10/m4d/provisioning-session-872a0eb2-e40a-41ed-bf2a-03b8343221a7/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=mpd-time-csf)</dvbisd-t:URI>
+        </UriBasedLocation>
+      </DASHDeliveryParameters>
+```
+
+(This output is from the checked run, which used the example locator of section 2 on a placeholder address; yours shows your own `<M4D_MPD_URL>`.) The `contentType` of `UriBasedLocation` tells the client that the URL refers to an MPD (TS 103 770 V1.2.1 clause 5.2.7.2).
+
+:::tip[Plain HTTP at M4d]
+The AS of the 5GMS tutorials answers on plain `http` unless you provision a server certificate (TS 26.512 V19.3.0 clause 4.3.6). The browser client of section 4.1 plays it. The Android client of section 4.2 refuses plain HTTP to a host that was not named when it was built.
+:::
+
+## 4. Open the list in a DVB-I client
+
+### 4.1 In a browser
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/rt-dvb-i-application.git
+cd rt-dvb-i-application
+npm install
+PROXY_ALLOW_ORIGINS="http://localhost:4000,http://127.0.0.1:4000" npm start
+```
+
+Open `http://localhost:5000/?url=http://localhost:4000/service-list.xml`. The sidebar shows the list and its channels; channel 4 is `5GMS Tutorial Channel`. Select it, or press **4**. The player requests the MPD and then the segments from the 5GMS Application Server at M4d. To see where the media comes from, open the developer tools of the browser on the **Network** tab: the first request goes to your `<M4D_MPD_URL>`. If that address does not answer, the client shows `All streams unavailable`.
+
+The [Tutorial: DVB-I Application](./dvb-i-application) explains the screen and the settings.
+
+### 4.2 On a phone
+
+Build the `dvbi` variant of [rt-dvb-i-android-application](https://github.com/5G-MAG/rt-dvb-i-android-application) as its README describes. Android blocks plain HTTP unless the build allows the host, so name the hosts of the provider and of the AS (comma separated), and the address of your list:
+
+```bash
+./gradlew assembleDvbiDebug \
+  -PdvbiCleartextHosts=<PROVIDER_HOST>,<AS_HOST> \
+  -PdvbiServiceListUrl=http://<PROVIDER_HOST>:4000/service-list.xml
+```
+
+`<PROVIDER_HOST>` is the address of the machine that runs the provider and `<AS_HOST>` the host of the 5GMS Application Server, both reachable from the phone. Install the APK as the README shows, open the app, and select channel 4. ETSI TS 103 770 V1.2.1 clause 7.3 allows plain HTTP to a metadata endpoint only on the same private subnet as the client; the app says so in a notice under the top bar.
+
+## 5. Check what you published
+
+**Against the schema.** The repository does not carry schema files; the check is the one of [Tutorial: DVB-I Application Provider](./application-provider#5-check-what-you-published). With your schema folder in `~/dvb-i-schemas`:
+
+```bash
+cd ~/rt-dvb-i-application-provider
+DVBI_SCHEMAS=~/dvb-i-schemas npm run test:xsd
+```
+
+The line for the live list reads:
+
+```text
+Service list (live config.json):
+  ✓ config.json: VALID
+```
+
+**In the portal.** Press **Validate**; the list passes all 11 checks. The URL of the instance contains parentheses, which the provider writes as they are.
+
+## 6. Stop and clean up
+
+Press Ctrl+C in the terminal of the provider and of the client. To remove them, delete `~/rt-dvb-i-application-provider` and `~/rt-dvb-i-application`. The 5GMS system is stopped as its own tutorials describe.
+
+<details>
+<summary>What was run for this page, and the specifications read</summary>
+
+Run on Ubuntu Linux with Node.js 24.21.0, npm 11.19.0 and Python 3.14.4, on clean clones of `main`: rt-dvb-i-application-provider `003ce59`, rt-dvb-i-application `7a9ae28`. The portal was driven in a headless Chromium (Playwright 1.64.1).
+
+Section by section:
+
+- 1: not a procedure. The clauses were read in the published documents: ETSI TR 103 972 V1.1.1, ETSI TS 103 770 V1.2.1, ETSI TS 126 512 V19.3.0 and 3GPP TS 26.501 V20.0.0.
+- 2: **Not run.** This machine has no Docker and no root rights, so no Application Function or Application Server was started. The `m8.json` content is taken from the existing 5GMS tutorial, not from a run.
+- 3: **Partly run.** Provider started, **Reference service (all fields, DASH)** loaded, the table above applied, saved and published, the XML read back, **Validate** 11 of 11. The Stream URL used was a placeholder of the same form as `<M4D_MPD_URL>` on the address `192.0.2.10` (reserved for documentation), because there was no AS.
+- 4.1: **Partly run.** The client was started and the list of section 3 opened; channel 4 appeared with its name, and selecting it made the client request the M4d URL (on the placeholder address, so nothing answered and the client showed `All streams unavailable`). Playback from a real Application Server was not run.
+- 4.2: **Not run.** No Android device, no JDK and no Android SDK on this machine. The build properties are from the README of rt-dvb-i-android-application (`553b4a4`).
+- 5: **Run** for the schema check on the list of section 3 (`VALID`, with the schema folder the other DVB-I tutorials use).
+- 6: run.
+
+Not read: ETSI TS 103 285 (the DVB-DASH profile that TR 103 972 cites for the MPD and segment servers) was not read.
+
+</details>

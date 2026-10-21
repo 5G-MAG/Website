@@ -108,7 +108,6 @@ export default function IssueTrackerFilter({ groups, children }) {
 
   useEffect(() => {
     applyFilter(active);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   return (

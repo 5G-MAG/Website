@@ -86,7 +86,7 @@ The response below shows one network profile: note the `id` (used in later calls
 An example of the QoS Profile, including status:
 
 ```json
-// Example values — replace with actual network requirements
+// Example values: replace with actual network requirements
 [
   {
     "name": "voice",
@@ -270,7 +270,7 @@ The Dedicated Networks API is the most complete fit for the [multi-device produc
 - **Reservation** (`POST /networks`) books a Network Profile (a QoS profile plus a device cap and aggregate uplink/downlink throughput) for a service area and time window, independent of any specific device.
 - **Device access** (`POST /accesses`, `DELETE /accesses/{accessId}`) attaches and detaches individual devices to the reserved network at any time during operation.
 
-This decoupling is what enables the operational patterns a production needs: attaching cameras only when they come online, swapping in a back-up camera without losing the reservation, and the on-air / preview / standby prioritisation described in the [Workflows](./workflows#dynamic-prioritization-of-qos-for-different-media-flows) page (where a Network Profile is booked for the worst-case aggregate throughput, but only a subset of devices holds the high-quality profile at any instant). A single-device MoJo contribution is a degenerate case of the same model, with one Network Profile and one device access.
+This decoupling is what enables the operational patterns a production needs: attaching cameras only when they come online, swapping in a back-up camera without losing the reservation, and the on-air / preview / standby prioritisation described in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page (where a Network Profile is booked for the worst-case aggregate throughput, but only a subset of devices holds the high-quality profile at any instant). A single-device MoJo contribution is a degenerate case of the same model, with one Network Profile and one device access.
 
 ## Relationship to Network Profiles and QoS Profiles
 

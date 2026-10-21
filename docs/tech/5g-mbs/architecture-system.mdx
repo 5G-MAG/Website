@@ -79,7 +79,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 | **Nmb12** | MBSF and PCF (TS 23.247 V20.0.0 clause 5.3.1) |
 | **Nmb13** | MB-SMF and AF/AS (TS 23.247 V20.0.0 clause 5.3.1) |
 | **Nmb14** | NEF and MBSTF (TS 23.247 V20.0.0 clause 5.3.1) |
-| **N101** | MB-SMF and CHF (TS 23.247 V20.0.0 clause 5.3.1) |
+| **N101** | MB-SMF and CHF (TS 23.247 V20.0.0 clause 5.3.1). Added in Release 18 with the charging work item 5MBS_CH (TR 21.918 clause 12.1); it is in TS 23.247 V18.8.0 and not in V17.12.0 |
 
 In functionality, Nmb13, N29mb and Nmb1 are identical, Nmb5 and Nmb10 are identical, and Nmb9 and N6mb are identical. The existing reference points N1, N2, N4, N5, N10, N11, N30, N33 and N40 are enhanced for MBS. Between NG-RAN and the MB-SMF, the AMF relays the N2 SM information transparently (TS 23.247 V20.0.0 clause 5.3.1; TS 23.247 V20.0.0 clause 5.1, NOTE 5; TS 23.247 V20.0.0 clause 8.1.2).
 
@@ -180,7 +180,7 @@ The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS use
 | **MCCH-RNTI** | Identifies MCCH transmissions and change notifications for broadcast (TS 38.300 V19.4.0 clause 8.1) |
 | **Multicast MCCH-RNTI** | Identifies MCCH transmissions and change notifications for multicast in RRC_INACTIVE (TS 38.300 V19.4.0 clause 8.1) |
 | **SIB20, SIB21** | MCCH configuration, and service continuity information, for broadcast (TS 38.300 V19.4.0 clause 7.3.1) |
-| **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.10.5.2) |
+| **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.10.5.2). Added in Release 18 (TS 38.331 V18.11.0 clause 5.10 compared with V17.17.0, which has no SIB24) |
 | **SIB27** | The intended service areas (ISAs) of MBS broadcast services in an NTN cell (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.14.12; TS 38.300 V18.11.0 clause 7.3.1). Added in Release 19 |
 
 In a PTP transmission, the gNB schedules a UE-specific PDSCH with a PDCCH whose CRC is scrambled by a UE-specific RNTI, such as the C-RNTI. In a PTM transmission, it schedules a group-common PDSCH with a group-common PDCCH whose CRC is scrambled by a group-common RNTI. When a UE has both a PTM and a PTP leg, the gNB decides dynamically which to use, based on information such as the session QoS requirements, the number of joined UEs and the UE feedback on reception quality. The same QoS requirements apply whichever it chooses (TS 38.300 V19.4.0 clause 16.10.5.4).

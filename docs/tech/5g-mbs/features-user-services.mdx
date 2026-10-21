@@ -26,13 +26,13 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::
 
-<JumpMenu items={[["Provisioning of MBS User Services", "provisioning-of-mbs-user-services"], ["Distribution Session control in the MBSTF", "distribution-session-control-in-the-mbstf"], ["Object Distribution Method", "object-distribution-method"], ["Packet Distribution Method", "packet-distribution-method"], ["User Service Announcement", "user-service-announcement"], ["Object repair", "object-repair"], ["Time synchronization", "time-synchronization"], ["Application Layer FEC", "application-layer-fec"], ["Security", "security"], ["Service areas, location-dependent and multiplexed sessions", "service-areas-location-dependent-and-multiplexed-sessions"], ["Status notifications", "status-notifications"], ["Interworking with eMBMS", "interworking-with-embms"], ["Conformance profiles", "conformance-profiles"], ["For further study", "for-further-study"]]} />
+<JumpMenu items={[["Provisioning of MBS User Services", "provisioning-of-mbs-user-services"], ["Distribution Session control in the MBSTF", "distribution-session-control-in-the-mbstf"], ["Object Distribution Method", "object-distribution-method"], ["Packet Distribution Method", "packet-distribution-method"], ["User Service Announcement", "user-service-announcement"], ["Object repair", "object-repair"], ["Time synchronisation", "time-synchronisation"], ["Application Layer FEC", "application-layer-fec"], ["Security", "security"], ["Service areas, location-dependent and multiplexed sessions", "service-areas-location-dependent-and-multiplexed-sessions"], ["Status notifications", "status-notifications"], ["Interworking with eMBMS", "interworking-with-embms"], ["Conformance profiles", "conformance-profiles"], ["For further study", "for-further-study"]]} />
 
 ## Provisioning of MBS User Services
 
 **Defined in** TS 26.502 clauses 4.5 and 7.2 · **procedure** clause 5.3
 
-The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3).
+The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. Release 18 added to the Nmbsf_MBSUserDataIngestSession API the Associated Session ID, the NR RedCap UE information and active periods given as a repetition rule (feature 5MBS2), and Release 20 adds the feature 5MBS3: retrieval and reporting of the User Service Announcement bundle, a transport security protection indication, the conformance profiles of the content and the expected MIME content types (TS 29.580 V20.0.0 clause 6.2.8; the feature 5MBS3 is not in V19.6.0). The change history names no work item for the Release 20 change request, CR 0086 (CP-262115). It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3).
 
 <details>
 <summary>Services and APIs</summary>
@@ -136,11 +136,11 @@ With the Object Distribution Method, the MBS AS provides a byte-range Object Rep
 
 </details>
 
-## Time synchronization
+## Time synchronisation
 
 **Defined in** TS 26.502 clause 4.2.7 · **format** TS 26.517 clause 5.2.11 and annex C.3
 
-Added in Release 19. The MBS Client is required to be time-synchronized with the 5G System with a precision of at least ±1 s to support certain MBS User Service functions. The network provides at least one of two options: NR SIB9, which conveys a UTC wallclock to an accuracy of 10 ms, or a time service hosted by the MBS AS. If both are offered, the MBS Client should preferably use SIB9. The Time Synchronization Parameters of a Distribution Session in the User Service Announcement indicate whether SIB9 is transmitted and list the time service endpoints, each identified by a DASH UTC timing scheme (TS 26.502 V19.6.0 clause 4.2.7; TS 26.517 V19.3.0 clause 5.2.11, C.3; TS 26.502 V18.7.0 (comparison)).
+Added in Release 19. The MBS Client is required to be time-synchronised with the 5G System with a precision of at least ±1 s to support certain MBS User Service functions. The network provides at least one of two options: NR SIB9, which conveys a UTC wallclock to an accuracy of 10 ms, or a time service hosted by the MBS AS. If both are offered, the MBS Client should preferably use SIB9. The Time Synchronization Parameters of a Distribution Session in the User Service Announcement indicate whether SIB9 is transmitted and list the time service endpoints, each identified by a DASH UTC timing scheme (TS 26.502 V19.6.0 clause 4.2.7; TS 26.517 V19.3.0 clause 5.2.11, C.3; TS 26.502 V18.7.0 (comparison)).
 
 ## Application Layer FEC
 
@@ -158,7 +158,7 @@ Security protection of MBS traffic uses a control plane procedure, for multicast
 
 **Defined in** TS 26.502 clause 4.5.2 and table 4.5.6-1 · **announcement** TS 26.517 clause 5.2.9
 
-A Distribution Session may specify target service areas, outside which MBS data is not transmitted. In the User Service Announcement, each target service area is expressed as a list of NR Cell Identifiers, a list of Tracking Area Identifiers or a list of polygon or circle shapes (added in Release 19). Location-dependent variants of a service share the same MBS Session Identifier with disjoint target service areas. With the Multiplexed service flag, Distribution Sessions with the same (or empty) target service areas are multiplexed onto one MBS Session. Target UE classes state whether a broadcast session is intended for reduced capability (RedCap) UEs, full capability UEs or both (TS 26.502 V19.6.0 clause 4.5.2, table 4.5.6-1; TS 26.517 V19.3.0 clause 5.2.9; TS 26.517 V18.7.0 (comparison)).
+A Distribution Session may specify target service areas, outside which MBS data is not transmitted. In the User Service Announcement, each target service area is expressed as a list of NR Cell Identifiers, a list of Tracking Area Identifiers or a list of polygon or circle shapes (added in Release 19). Location-dependent variants of a service share the same MBS Session Identifier with disjoint target service areas. With the Multiplexed service flag, Distribution Sessions with the same (or empty) target service areas are multiplexed onto one MBS Session. Target UE classes, added in Release 18, state whether a broadcast session is intended for reduced capability (RedCap) UEs, full capability UEs or both (TS 26.502 V18.6.0 clause 4.5.2, which V17.13.0 does not have; TS 26.502 V19.6.0 clause 4.5.2, table 4.5.6-1; TS 26.517 V19.3.0 clause 5.2.9; TS 26.517 V18.7.0 (comparison)).
 
 ## Status notifications
 
@@ -190,7 +190,7 @@ Conformance profiles enable interoperability and signal which features a Distrib
 
 ## For further study
 
-Reception reporting by the MBS Client (TS 26.502 clauses 4.2.5 and 4.5.4) and the use of the network QoS primitives by MBS User Services (clause 4.7) are for further study in Release 19.
+Reception reporting by the MBS Client (TS 26.502 clauses 4.2.5 and 4.5.4) and the use of the network QoS primitives by MBS User Services (clause 4.7) are for further study in Release 19. For Release 20, the study FS_AMD_Ph2 in TR 26.802 V20.0.0 clause 8.5 recommends work on combined multicast, broadcast and unicast delivery, with unicast requests proxied selectively to the MBS AS or to the MBS Application Provider under a steering policy, and with explicit error signalling for permanently or temporarily unavailable resources. These are recommendations of a study, not specified features.
 
 <details>
 <summary>Sources for this page</summary>

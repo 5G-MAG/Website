@@ -1,5 +1,6 @@
 import communityStatsData from '@site/static/data/community-stats.json';
 import { activityLabel } from '@site/src/utils/communityStats';
+import RepoRef from '@site/src/components/RepoRef';
 
 export default function CommunityStats({ name }) {
   const project = communityStatsData.projects.find((p) => p.name === name);
@@ -53,6 +54,7 @@ export default function CommunityStats({ name }) {
                 <a href={repo.repo_url} target="_blank" rel="noreferrer">
                   {repo.repo}
                 </a>
+                <RepoRef slug={repo.repo} page={false} />
               </td>
               <td>{repo.stars}</td>
               <td>{repo.forks}</td>

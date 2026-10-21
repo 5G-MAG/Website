@@ -73,7 +73,7 @@ const USE_CASE_PHOTOS = [
   {
     type: 'photo',
     src: '/assets/images/gallery/reference-tools-demo-rig.jpg',
-    alt: '5G Media Streaming, live on real devices — 5G-MAG Reference Tools demo rig with SDR hardware and phones',
+    alt: '5G Media Streaming, live on real devices, 5G-MAG Reference Tools demo rig with SDR hardware and phones',
   },
   {
     type: 'photo',
@@ -93,12 +93,12 @@ const USE_CASE_PHOTOS = [
   {
     type: 'photo',
     src: '/assets/images/gallery/camara-dedicated-networks-demo.png',
-    alt: 'Network APIs — the CAMARA Dedicated Networks reference tool reserving connectivity on demand',
+    alt: 'Network APIs: the CAMARA Dedicated Networks reference tool reserving connectivity on demand',
   },
   {
     type: 'photo',
     src: '/assets/images/gallery/5g-broadcast-plugfest-2026.jpg',
-    alt: 'Validated at PlugFests — interop testing across vendors at the 5G Broadcast PlugFest 2026',
+    alt: 'Validated at PlugFests: interop testing across vendors at the 5G Broadcast PlugFest 2026',
   },
 ];
 
@@ -375,7 +375,7 @@ export default function Home() {
                   Driving the future of connected media experiences with open specifications and open-source software.
                 </p>
                 <p className={styles.introLine}>
-                  We are a neutral, non-profit association enabling organizations to collaborate, share development efforts, scale software projects, and bring open technologies to market faster.
+                  We are a neutral, non-profit association enabling organisations to collaborate, share development efforts, scale software projects, and bring open technologies to market faster.
                 </p>
                 <div className={styles.introLinks}>
                   <Link to="/about">Learn more about us &rarr;</Link>
@@ -501,7 +501,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our Members</h2>
             <p className={styles.sectionSubtitle}>
-              Open to any organization willing to join — and member-driven once you do.
+              Open to any organisation willing to join, and member-driven once you do.
             </p>
           </div>
           <MembersMarquee />

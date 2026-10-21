@@ -1,0 +1,41 @@
+.ref {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.status {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.open {
+  background: color-mix(in srgb, var(--ifm-color-success) 22%, var(--ifm-background-surface-color));
+  color: var(--ifm-color-success-darkest);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-success) 55%, transparent);
+}
+
+.early {
+  background: var(--ifm-color-warning);
+  color: var(--ifm-color-warning-contrast-foreground) !important;
+}
+
+.early:hover {
+  background: var(--ifm-color-warning-dark);
+}
+
+.page {
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

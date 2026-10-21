@@ -31,6 +31,42 @@ pagination_next: null
 
 Work items and study items as listed in the 3GPP work plan of 28 September 2026. ID is the work plan's Unique_ID; Group is its responsible group (empty for a parent item); Specifications is its list of impacted specifications. Where that list is empty or does not name a document, a note gives what the work item description (WID) says. Items whose list names specifications of both sections appear in both, each showing its own specifications.
 
+## Novelties by release
+
+What each release added, as the 3GPP release descriptions (TR 21.917, TR 21.918, TR 21.919) and the change histories of the specifications state it. The tables below list the work items; this section says what they changed. TR 21.920 (Release 20) is not available, so every Release 20 entry rests on the specifications' change histories and the work plan only.
+
+### Release 17
+
+- **5MBS (SA2, TS 23.247):** architectural enhancements to the 5G System for multicast and broadcast communication services over NR: delivery from the 5GC ingress to NG-RAN (5GC Shared and 5GC Individual delivery), local and location dependent services, mobility, session activation and deactivation, QoS and policy control, and interworking with E-UTRAN and EPC eMBMS at the service layer (TR 21.917 clause 6.3.4.3.1). The first version under change control of TS 23.247 is V17.0.0 (TS 23.247 change history, September 2021).
+- **NR_MBS (RAN2):** multicast delivery for UEs in RRC_CONNECTED (group scheduling with a G-RNTI, HARQ feedback, dynamic PTP/PTM switch, lossless handover) and broadcast delivery for UEs in all RRC states (broadcast configuration on the MCCH, MBS frequency prioritisation, MBS Interest Indication) (TR 21.917 clause 6.3.4.3.2).
+- **5MBS security (SA3, TS 33.501):** control plane and user plane procedures for the security of multicast and broadcast traffic at the service layer, with the user plane security between UE and RAN deactivated for 5GC Shared delivery (TR 21.917 clause 6.3.4.3.1).
+- **FS_5GMS_Multicast and 5MBUSA (SA4):** the study TR 26.802 recommended a generic MBS User Service architecture; 5MBUSA created TS 26.502 (MBS User Services architecture, reference points, the Object and Packet Distribution Methods, procedures, services of the MBSF and MBSTF) and added the use of eMBMS by 5GMS to TS 26.501 (TR 21.917 clauses 6.3.4.4 and 6.3.4.5).
+- **5MBP3 (SA4):** the stage 3 of the user services: TS 26.517 for the User Service Announcement (M5) and for the Object and Packet distribution methods (M4), and extensions to TS 26.512, TS 26.346, TS 26.347 and TS 26.348 (TR 21.917 clause 6.3.4.3.3).
+- **5MBS_eMC (SA1, TS 22.261) and FS_MC5MBS (SA6):** listed by TR 21.917 clause 6.3.4.6 without a description.
+
+### Release 18
+
+- **5MBS_Ph2, stage 2 (SA2, TS 23.247):** TR 21.918 clause 12.1 lists the work items but summarises only the charging part. The change history of TS 23.247 shows the additions: Group Message Delivery (CR 0143, V18.0.0); multicast reception by UEs in RRC_INACTIVE (CR 0149 and CR 0159, V18.1.0); MBS data reception for UEs using power saving functions (CR 0162, V18.1.0); resource sharing across broadcast MBS sessions in network sharing (CR 0176, V18.1.0); RedCap UEs in MBS Broadcast (CR 0341, V18.5.0); QoE measurement collection (CR 0358, V18.6.0). TS 23.247 V18.8.0 has clauses 6.15 to 6.20 for these, and V17.12.0 has none of them.
+- **NR_MBS_enh (RAN2):** multicast reception by UEs in RRC_INACTIVE; shared processing for MBS broadcast and unicast reception, where a UE in RRC_CONNECTED reports with the MBS Interest Indication the parameters of a broadcast service in a non-serving cell; and resource efficiency of MBS broadcast in RAN sharing, where the 5GC provides an Associated Session ID to NG-RAN (TR 21.918 clause 12.2).
+- **UEConfig5MBS (CT1, CT6):** UE pre-configuration for MBS: per PLMN, the PLMN identity, the NR-ARFCN of broadcast services, the TMGIs with their user service description, and a default DNN and S-NSSAI for joining multicast sessions. It is provided by the UE implementation, in the USIM (service no. 147, DF5MBSUECONFIG with EF5MBSUECONFIG, TS 31.102) or in a management object (TS 24.575) (TR 21.918 clause 12.3). TS 24.575 has V18.0.0 as its first version.
+- **5MBS_CH (SA5):** charging for MBS: the N101 interface between the MB-SMF and the CHF in TS 32.240, the MB-SMF as a consumer of Nchf_ConvergedCharging in TS 32.290, PDU session charging of multicast in TS 32.255, the new TS 32.279, and changes to TS 32.291 and TS 32.298 (TR 21.918 clause 12.1). N101 appears in TS 23.247 V18.8.0 and not in V17.12.0.
+- **MBS User Services specifications:** TS 26.502 V18.1.0 adds the Target UE classes for RedCap UEs and alignment with power saving (CR 0027 and CR 0029). TS 29.580 V18.8.0 lists the feature 5MBS2 (clause 6.2.8: Associated Session ID for MOCN network sharing, NR RedCap UE Information, active periods as a repetition rule), and also MBSEventsExt, MBSErrorHandling and MBSPatchEnh. TS 29.581 adds group message delivery (CR 0022, V18.0.0). TS 29.532 adds the Associated Session ID (CR 0054, V18.1.0), RedCap UE information (CR 0085, V18.4.0) and a feature for MOCN (CR 0086, V18.4.0).
+- **TEI18_MBS4V2X (SA2, CT1, CT6):** MBS support for V2X services in TS 23.287: V2X messages sent from the V2X application server over broadcast or multicast MBS sessions, discovery of the V2X application server over a broadcast session, MBS announcement for V2X, 5QI 75 in TS 23.501, and support in SNPN (TR 21.918 clause 16.1). The work plan rows of this item were not read.
+
+### Release 19
+
+- **Advanced Media Delivery, AMD (SA4, CT4):** for MBS User Services, in-session unicast repair for MBS object distribution, time synchronisation (SIB9 and user-domain time services), and deployment guidelines for operating MBS User Services over eMBMS (TR 21.919 clause 11.6). The change histories show TS 26.502 V19.0.0 (CR 0033, CR 0034 and CR 0035), TS 26.517 V19.0.0 (CR 0030 on the target service area, CR 0031 consolidated additions) and TS 29.581 V19.0.0 (CR 0052, in-session unicast repair). The study FS_AMD, TR 26.802 clause 8.4, recommends these extensions.
+- **DTT4MBS (SA1, TS 22.261):** a requirement that the 5G system supports interworking of 5G multicast/broadcast with non-3GPP digital terrestrial broadcast networks, with a note that any impact on those standards is out of scope (TS 22.261 V19.15.0 clause 6.13.2; CR 0639, SA#97, V19.0.0). V18.19.0 has no such requirement. TR 21.919 clause 25.5.1 gives no summary.
+- **Broadcast over NR NTN (TS 23.247, TS 38.300):** see the note under Release 19 in the MBS section.
+
+### Release 20
+
+Unverified against a Release 20 TR 21.920, which is not available; each entry is read from a change history.
+
+- **TEI20_5MBS_Roam-ARC (SA2):** TS 23.247 V20.0.0 adds clauses 6.22 and 6.23: a roaming UE joins a multicast MBS session of the VPLMN with a local breakout PDU session, and receives a broadcast session of the VPLMN from the service announcement (CR 0389 "MBS Roaming", SP-260751, SA#113).
+- **MBSF APIs (CT3):** TS 29.580 V20.0.0 lists the feature 5MBS3, described as the Release 20 enhancements: retrieval and reporting of the MBS User Service Announcement bundle, an indication of whether transport security protection is required, the profiles to which the content conforms, and the expected MIME content types (clause 6.2.8; CR 0086 "Enhancements to the MBSF APIs", CP-262115). V19.6.0 has no such feature. The change history does not name a work item.
+- **FS_AMD_Ph2 (SA4):** TR 26.802 V20.0.0 clause 8.5 recommends for stage 2 and stage 3 a combined multicast, broadcast and unicast delivery with selective unicast proxying and content steering, and explicit error signalling for permanently or temporarily unavailable resources. These are recommendations of a study.
+
 ## MBS User Services
 
 ### Release 18
@@ -172,6 +208,7 @@ These work items are not MBS work items, but the work plan, or for NR_NTN_Ph3 it
 <details>
 <summary>Documents, versions and clauses each section rests on</summary>
 
+- **Novelties by release:** TR 21.917 clauses 6.3.4.3 to 6.3.4.6; TR 21.918 clauses 12.1 to 12.3 and 16.1; TR 21.919 clauses 11.6 and 25.5.1; change histories of TS 23.247 V20.0.0, TS 26.502 V19.6.0, TS 26.517 V19.3.0, TS 29.580 V20.0.0, TS 29.581 V20.0.0, TS 29.532 V20.0.0, TS 24.575 V19.0.0 and TS 22.261 V19.15.0; TS 29.580 clause 6.2.8; TS 23.247 V17.12.0 and V18.8.0 clause lists; TR 26.802 V20.0.0 clause 8.4 and 8.5.
 - **Work plan:** 3GPP work plan of 28 September 2026 (Work_plan_3gpp_2026_09_28.xlsx), the rows listed above, read by Unique_ID: name, acronym, release, responsible group, completion, finish date, impacted specifications and WID.
 - **MBS User Services WIDs:** SP-200238 and SP-211335, clause 5 (expected output); CP-220402, clause 5 (new specifications TS 29.580 and TS 29.581); CP-232031, clause 5; CP-252191, clause 5.
 - **MBS WIDs:** SP-201106, clause 5; CP-220402, clause 5; CP-230201, clause 5; CP-230183 (presentation of TS 24.575); SP-231712, clause 5; RP-220428 and RP-232993, clause 5; RP-251954, clause 4; SP-260330, clause 5.

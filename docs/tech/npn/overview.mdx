@@ -2,7 +2,7 @@
 title: Non-Public Networks Overview
 sidebar_position: 0
 hide_title: true
-description: Placeholder for the Non-Public Networks technical analysis deep-dive; structure only, content to follow.
+description: "Private 5G networks (Non-Public Networks): the standalone and public-network-integrated models, identity and onboarding, non-3GPP access, QoS and slicing for production, and spectrum."
 sidebar_label: Overview
 ---
 
@@ -48,7 +48,7 @@ how isolation or access control is achieved:
 
 | Aspect | SNPN (Stand-alone Non-Public Network) | PNI-NPN (Public Network Integrated NPN) |
 |---|---|---|
-| Who operates the core | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN -- i.e. the public network operator's core. |
+| Who operates the core | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN, i.e. the public network operator's core. |
 | How the network is identified | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: self-assignment (the NID is chosen individually by the SNPN at deployment time and is not guaranteed unique) and coordinated assignment (the NID is assigned so that it, alone or in combination with the PLMN ID, is globally unique). | Identified as part of the host PLMN. |
 | How isolation / access control is achieved | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
 
@@ -117,25 +117,16 @@ question.
   23.501 (clause 5.30, V20.3.0); security in TS 33.501; requirements in TS 22.261
   (clause 6.25, V20.8.1) and (for professional media) [TS 22.263](https://www.3gpp.org/dynareport/22263.htm).
 - **Release 17**: Credentials Holder, external AAA authentication, UE
-  onboarding and remote provisioning.
-- **Release 18 and later**: NPN enhancements (eNPN Phase 2): mobility and
+  onboarding and remote provisioning, IMS voice and emergency services and PWS for SNPN.
+- **Release 18**: NPN enhancements (eNPN Phase 2): mobility and
   service continuity between SNPNs using equivalent SNPN lists (TS 23.501 V20.3.0,
   clause 5.30.2.11), broader non-3GPP access support for SNPN (clauses 5.30.2.12 to
   5.30.2.14), and access to localised services via a hosting network (Annex N).
+- **Release 19**: security of a PLMN that hosts an NPN (TS 33.501), interconnect of
+  SNPNs (stage 1, TS 22.261), ProSe in NPN (TS 23.501, TS 23.304) and CAG-based access
+  control for NR Femto (TR 21.919 clauses 10.5 to 10.7 and 14.2).
+- **Release 20**: phase 2 of the security work for a PLMN hosting an NPN (TS 33.501);
+  unverified against a release description, which does not exist yet.
 
 **Related:** [Time-Sensitive Communications (TSC)](/tech/tsc)
 · [Standards: Non-Public Networks](/standards/npn)
-
-### Intro
-
-*(Placeholder: plain-language explanation of what this topic is and why it exists.)*
-
-### Architecture
-
-*(Placeholder: one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
-
-### Features
-
-*(Placeholder: compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*

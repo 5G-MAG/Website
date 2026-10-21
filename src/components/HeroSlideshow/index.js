@@ -217,6 +217,8 @@ export default function HeroSlideshow() {
 
   useEffect(() => {
     if (paused || slides.length < 2) return;
+    // Visitors who ask for reduced motion get no automatic rotation (WCAG 2.2.2).
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const t = setInterval(() => setActive((i) => (i + 1) % slides.length), 8000);
     return () => clearInterval(t);
   }, [paused, slides.length]);
@@ -242,7 +244,7 @@ export default function HeroSlideshow() {
           headings below rotate every 8s and, on release slides, aren't an H1
           at all, so the document needs one heading that doesn't depend on
           which slide happens to be active. */}
-      <h1 className="sr-only">5G-MAG — The Media Connectivity Association</h1>
+      <h1 className="sr-only">5G-MAG: The Media Connectivity Association</h1>
       {slides.map((s, i) => (
         <div
           key={i}
@@ -266,7 +268,7 @@ export default function HeroSlideshow() {
               <div>
                 <img
                   src={logoUrl}
-                  alt="5G-MAG — The Media Connectivity Association"
+                  alt="5G-MAG: The Media Connectivity Association"
                   style={{
                     height: '68px',
                     width: 'auto',

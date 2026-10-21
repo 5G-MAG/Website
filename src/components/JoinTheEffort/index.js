@@ -1,5 +1,5 @@
 import Link from '@docusaurus/Link';
-import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
+import { SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON } from '@site/src/theme/socialIcons';
 import styles from '@site/src/pages/tech/index.module.css';
 

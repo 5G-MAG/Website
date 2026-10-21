@@ -45,9 +45,20 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 
 :::
 
-Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TR 36.976 V19.0.0.
+Sources: the 3GPP release descriptions TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.918 V18.0.0 and TR 21.919 V19.0.0, the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TR 36.976 V19.0.0.
 
 This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.041](https://www.3gpp.org/dynareport/23041.htm), [TS 29.168](https://www.3gpp.org/dynareport/29168.htm), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Public Warning", "PWS" or "Cell Broadcast". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
+
+## Release descriptions
+
+The 3GPP release descriptions (TR 21.915 to TR 21.919) state what each release added to public warning. Work item acronyms and clauses are those of the TR. TR 21.920 (Release 20) was not available; the Release 20 items are in the Release 20 section below, taken from the work plan.
+
+- **Release 15 (TR 21.915 V15.0.0):** the 5G System (5GS Phase 1) supports the Public Warning System, either through service-based interfaces between the Cell Broadcast Centre Function and the AMF or through an interworking function between the CBC and the AMF (clause 5.5.2.2.7). The NG interface carries a warning message transmission function to transfer or cancel warning messages and to report failed or reloadable areas (clause 5.5.3.5.3).
+- **Release 16 (TR 21.916 V16.2.0):** ePWS (Enhancements of Public Warning System, with study FS_ePWS) adds requirements in TS 22.268 and protocol solutions in TS 23.041, covering Message Identifiers for ePWS-UEs such as IoT devices and language-independent content in Warning Notifications (clause 12.1). LTE_eMTC5 (Additional MTC enhancements for LTE) adds ETWS/CMAS notification indication in connected mode for non-Cat-M UEs in CE mode A/B (clause 7.3). The work item LTE_terr_bcast (LTE-based 5G terrestrial broadcast) produced TR 36.976 (clause 19.3.1).
+- **Release 17 (TR 21.917 V17.0.1):** NG_RAN_PRN_enh (Enhancement of Private Network support for NG-RAN) supports PWS over SNPN; the statement that ETWS and CMAS are not supported over SNPN is removed from TS 38.300 (clause 6.2.3.2). The work item NPN_PWS (NPN support of PWS) is listed in clause 17.13 without a summary.
+- **Release 18 (TR 21.918 V18.0.0):** no work item specific to public warning is described; the change requests are listed under Release 18 below.
+- **Release 19 (TR 21.919 V19.0.0):** PWS_NTN adds PWS over satellite E-UTRAN and satellite NG-RAN, ETWS geo-fencing and duplicate detection when a PLMN uses a shared MCC (clause 5.3.1; the TR notes PWS over satellite NG-RAN was introduced from Rel-17). IoT_NTN_Ph3 adds, for NB-IoT, system information blocks for primary and secondary ETWS notifications and for CMAS notifications, paging and direct indication enhancements, and the acceptable cell concept so that a UE can camp on a cell only to receive PWS broadcasts (clause 5.1.3). VMR_Ph2 states that PWS functionality with a mobile WAB (MWAB) is described in TS 23.041 (clause 14.3). TEI19_ProSe_NPN includes Stage-3 details for relaying PWS messages in ProSe over NPN (clause 10.7).
+- **Release 20:** the TR is not available. See the Release 20 section below; items there come from the work plan and the change history of the specifications, and the work item status was not checked against a Release 20 release description.
 
 ## Release 21
 

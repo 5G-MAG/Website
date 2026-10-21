@@ -83,6 +83,17 @@ Repository: [camaraproject/DedicatedNetworks](https://github.com/camaraproject/D
 | [r1.2](https://github.com/camaraproject/DedicatedNetworks/releases/tag/r1.2) | 2025-09-18 | Public release | dedicated-network v0.1.0; dedicated-network-accesses v0.1.0; dedicated-network-profiles v0.1.0 |
 | [r1.1](https://github.com/camaraproject/DedicatedNetworks/releases/tag/r1.1) | 2025-07-21 | Pre-release | dedicated-network v0.1.0-rc.1; dedicated-network-accesses v0.1.0-rc.1; dedicated-network-profiles v0.1.0-rc.1 |
 
+## What each release added
+
+A short summary, taken from the 3GPP release descriptions (TR 21.915 to TR 21.919), of what the work items below changed in the exposure specifications this topic maps onto. The tables that follow list the work items and change requests themselves.
+
+- **Release 15:** the Common API Framework (CAPIF, work item CAPIF): stage 2 in TS 23.222 and stage 3 in TS 29.222, with onboarding, publishing, discovery, authentication, authorisation, logging, auditing and topology hiding for northbound APIs (TR 21.915 clause 11.2.1).
+- **Release 16:** eCAPIF (TS 23.222, TS 29.222) adds support for API providers in a third-party trust domain, interconnection between CAPIF providers, and dynamic routing of API invocations (TR 21.916 clause 9.3). eNAPIs aligns the NEF and SCEF northbound APIs with CAPIF registration and updates the HTTP and OpenAPI conventions (TR 21.916 clause 9.2). SEAL introduces the Service Enabler Architecture Layer in TS 23.434, with group, location, configuration, network resource, key and identity management (TR 21.916 clause 9.4).
+- **Release 17:** eSEAL enhances those SEAL services and adds the Network Slice Capability Enablement (NSCE) service, with protocol aspects in TS 24.549 (TR 21.917 clause 6.2.1.1). NBI17 is stage 3 maintenance of the northbound and application layer APIs, with no new stage 1 or stage 2 requirements (TR 21.917 clause 6.2.1.3).
+- **Release 18:** SNAAPP adds resource-owner-aware northbound API access to CAPIF, based on the OAuth authorization code grant in the CAPIF_Security API of TS 29.222 (TR 21.918 clause 10.2). SEAL_Ph3 adds the Notification Management, Data Delivery and Application Data Analytics Enablement services and extends the others (TR 21.918 clause 10.5). SEALDD specifies the data delivery enabler (TR 21.918 clause 10.6). NSCALE extends NSCE with further slice capability exposure functions (TR 21.918 clause 13.7). NBI18 is further stage 3 maintenance (TR 21.918 clause 10.7).
+- **Release 19:** CAPIF_Ph3 adds authorisation at API operation or resource level, collective authorisation from a resource owner, open discovery of service APIs before onboarding, resource owner authorisation and revocation between the CAPIF core function and the resource owner function, and extended CAPIF interconnection (TR 21.919 clause 10.3). SEALDD_Ph2 extends data delivery (TR 21.919 clause 10.2). NBI19 is further stage 3 maintenance (TR 21.919 clause 10.1). The Release 19 description (V19.0.0) may be an early version of that document.
+- **Release 20:** there is no TR 21.920 in the archive used for this page. The Release 20 work items are listed below from the 3GPP work plan; what each one adds has not been checked against a release description or a specification.
+
 ## 3GPP work items and change requests
 
 ### Release 20

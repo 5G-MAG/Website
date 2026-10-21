@@ -1103,3 +1103,11 @@ See https://github.com/facebook/docusaurus/pull/11142
   color: var(--ifm-color-emphasis-700);
   font-size: 0.9rem;
 }
+
+/* Below the desktop breakpoint the mega-menu panels are never opened (the sidebar menu takes over), but their
+   absolutely positioned boxes still widened the page: a phone scrolled sideways on every page. */
+@media (max-width: 996px) {
+  .navDropdownMenu {
+    display: none;
+  }
+}

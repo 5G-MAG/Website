@@ -2,7 +2,7 @@
 title: 'Sample: Multi-Angle Replay Viewer (Template)'
 hide_title: true
 sidebar_position: 1
-description: A structural sample demonstrating the proposed layout for showcase-style tutorials — not a real, verified application.
+description: A structural sample demonstrating the proposed layout for showcase-style tutorials, not a real, verified application.
 # Internal template, not a real showcase: keep it out of the sidebar,
 # sitemap and search index until a real application replaces it. The page
 # stays reachable by direct URL for authors using it as the model.
@@ -26,27 +26,27 @@ Every section below is illustrative placeholder content, written only to demonst
 
 ## The idea
 
-It's the 82nd minute and the only camera you're watching is whichever one the broadcast director picked. <strong>What if the viewer picked instead?</strong> Pitch-side, tactical overhead, or locked on their favourite player — same live moment, their choice of angle, switched instantly during a replay.
+It's the 82nd minute and the only camera you're watching is whichever one the broadcast director picked. <strong>What if the viewer picked instead?</strong> Pitch-side, tactical overhead, or locked on their favourite player, same live moment, their choice of angle, switched instantly during a replay.
 
-_(Illustrative scenario — pick whatever real use case you want the actual showcase to demonstrate. The point of this section is one punchy paragraph that makes someone want to keep reading, not a requirements list.)_
+_(Illustrative scenario, pick whatever real use case you want the actual showcase to demonstrate. The point of this section is one punchy paragraph that makes someone want to keep reading, not a requirements list.)_
 
 ## What you'll build
 
-A small web viewer that plays a live 5GMS stream and lets the viewer switch between synchronized camera angles during a replay window, with every switch reported back as a consumption event.
+A small web viewer that plays a live 5GMS stream and lets the viewer switch between synchronised camera angles during a replay window, with every switch reported back as a consumption event.
 
 <div class="showcase-hero-placeholder">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M9 9l6 3l-6 3z" /></svg>
 <strong>Screenshot or short screen recording goes here</strong>
-<span>A real showcase leads with this, above the fold — the payoff sells the build before the reader commits to it.</span>
+<span>A real showcase leads with this, above the fold, the payoff sells the build before the reader commits to it.</span>
 </div>
 
 :::note[Status]
-Sample only — not built, not verified. A real showcase page should state the last-verified date and the exact component versions it was tested against, e.g. "Verified 2026-07-04 against AF 1.3.0 / AS 1.2.0."
+Sample only, not built, not verified. A real showcase page should state the last-verified date and the exact component versions it was tested against, e.g. "Verified 2026-07-04 against AF 1.3.0 / AS 1.2.0."
 :::
 
 ## Architecture
 
-_(Placeholder for one diagram showing the components combined and how data flows between them — for a showcase this replaces several paragraphs of prose, since the point is "these N pieces work together," not the detail of any one piece. The cards below are illustrative navigation, not a substitute for that diagram.)_
+_(Placeholder for one diagram showing the components combined and how data flows between them, for a showcase this replaces several paragraphs of prose, since the point is "these N pieces work together," not the detail of any one piece. The cards below are illustrative navigation, not a substitute for that diagram.)_
 
 <div class="community-tiles">
 <a class="community-tile" href="/reference-tools/5gms/tutorials/end-to-end">
@@ -64,13 +64,13 @@ _(Placeholder for one diagram showing the components combined and how data flows
 <div class="community-tile" style={{cursor: 'default'}}>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19v-8a2 2 0 0 1 2 -2h4v10m-6 0h16m-6 0v-6a2 2 0 0 1 2 -2h4v8" /></svg>
 <strong>Web viewer</strong>
-<span class="tile-desc">The new code this showcase actually adds — everything else is reused.</span>
+<span class="tile-desc">The new code this showcase actually adds, everything else is reused.</span>
 </div>
 </div>
 
 ## Prerequisites
 
-- Complete the [5GMSd (with Docker) tutorial](/reference-tools/5gms/tutorials/end-to-end) — this showcase builds on that deployment rather than repeating its setup.
+- Complete the [5GMSd (with Docker) tutorial](/reference-tools/5gms/tutorials/end-to-end), this showcase builds on that deployment rather than repeating its setup.
 - Complete [5G Media Streaming with Consumption Reporting](/reference-tools/5gms/tutorials/consumption-reporting).
 - _(Any showcase-specific requirement, e.g. a particular content set with multiple camera angles already encoded.)_
 
@@ -78,7 +78,7 @@ _(Placeholder for one diagram showing the components combined and how data flows
 
 ### Step 1: (illustrative)
 
-_(Real steps go here, in the same terse, code-block-heavy style already used in the existing Tutorials — that part of the format doesn't need to change.)_
+_(Real steps go here, in the same terse, code-block-heavy style already used in the existing Tutorials, that part of the format doesn't need to change.)_
 
 ### Step 2: (illustrative)
 

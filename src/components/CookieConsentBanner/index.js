@@ -34,7 +34,7 @@ export default function CookieConsentBanner() {
     <div className={styles.banner} role="dialog" aria-live="polite" aria-label="Cookie consent">
       <p className={styles.text}>
         We use analytics cookies to understand how visitors use this site. We only set them with
-        your consent — see our <Link to="/privacy">privacy notice</Link> for details.
+        your consent; see our <Link to="/privacy">privacy notice</Link> for details.
       </p>
       <div className={styles.actions}>
         <button type="button" className={styles.decline} onClick={handleDecline}>

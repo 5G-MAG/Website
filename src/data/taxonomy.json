@@ -194,7 +194,7 @@
       "tech_url": "/tech/xr",
       "standards_url": "/standards/xr",
       "image": "/assets/images/projects/xr.png",
-      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
+      "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "basket": "immersive-media",
       "repos": [
         "rt-xr-unity-player",
@@ -789,7 +789,7 @@
       "doc_url": null,
       "tech_url": null,
       "standards_url": null,
-      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools; they are not first-class reference-tool projects with their own docs page",
       "basket": null,
       "excludedReason": "External fork/dependency, not a 5G-MAG-authored topic.",
       "repos": []
@@ -1439,7 +1439,7 @@
       {
         "repo_slug": "cmcd-toolkit",
         "display_name": "CMCD Toolkit",
-        "description": "Tools to collect and analyze CMCD (Common Media Client Data) v2 locally and across different cloud providers.",
+        "description": "Tools to collect and analyse CMCD (Common Media Client Data) v2 locally and across different cloud providers.",
         "repo_url": "https://github.com/5G-MAG/cmcd-toolkit",
         "branch": "main",
         "license": "Apache-2.0",
@@ -1609,7 +1609,7 @@
         "description": "5G-MAG maintains a fork of srsRAN_4G, adapted for 5G Multicast Broadcast Services (MBS) support.",
         "repo_url": "https://github.com/5G-MAG/srsRAN_4G_mbs",
         "branch": "5mbs",
-        "license": "AGPL-3.0",
+        "license": "AGPLv3.0",
         "standards": [
           "3GPP"
         ],
@@ -1628,7 +1628,7 @@
         "description": "5G-MAG maintains a fork of srsRAN Project, adapted for 5G Multicast Broadcast Services (MBS) support.",
         "repo_url": "https://github.com/5G-MAG/srsRAN_Project_mbs",
         "branch": "5mbs",
-        "license": "AGPL-3.0",
+        "license": "AGPLv3.0",
         "standards": [
           "3GPP"
         ],
@@ -1939,7 +1939,7 @@
       {
         "repo_slug": "rt-media-origin",
         "display_name": "Media Origin Server and Packager",
-        "description": "A media origin server component for Content Delivery Protocols and Tools testing (JavaScript/TypeScript web application). No public description has been published on GitHub yet.",
+        "description": "A media origin server component for Content Delivery Protocols and Tools testing (JavaScript/TypeScript web application).",
         "repo_url": "https://github.com/5G-MAG/rt-media-origin",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
@@ -2140,7 +2140,7 @@
         "description": "Fast glTF loader extensions for immersive media assets in Unity.",
         "repo_url": "https://github.com/5G-MAG/rt-xr-gITFast",
         "branch": "main",
-        "license": "Apache 2.0",
+        "license": "Apache-2.0",
         "standards": [
           "MPEG"
         ],
@@ -2250,7 +2250,7 @@
       {
         "repo_slug": "rt-vdmc-web-decoder-player",
         "display_name": "V-DMC Web Decoder/Player",
-        "description": "Web-based decoder and player for Dynamic Mesh Coding (V-DMC) content. Repository is new; no public description has been published on GitHub yet.",
+        "description": "Web-based decoder and player for Dynamic Mesh Coding (V-DMC) content.",
         "repo_url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player",
         "branch": "main",
         "license": "5G-MAG PL v1.0",

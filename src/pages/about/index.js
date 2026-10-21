@@ -31,7 +31,7 @@ export default function About() {
   return (
     <Layout
       title="About Us"
-      description="5G-MAG works with its members to shape global standards and turn them into deployable solutions, through open specifications and open-source software. A neutral, not-for-profit platform at the intersection of Media and Connectivity."
+      description="5G-MAG works with its members to shape global standards and turn them into working implementations, through open specifications and open-source software. A neutral, not-for-profit platform at the intersection of Media and Connectivity."
     >
       <HubHero
         title="About Us"
@@ -65,8 +65,8 @@ export default function About() {
               it soon becomes a commodity.
             </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
-              We work with our members to shape global standards and turn them into deployable
-              solutions, through open specifications and open-source software. A neutral,
+              We work with our members to shape global standards and turn them into working
+              implementations, through open specifications and open-source software. A neutral,
               not-for-profit platform to enable collaboration, share resources and efforts, and bring
               new media experiences to users faster.
             </p>
@@ -121,7 +121,7 @@ export default function About() {
             </div>
             <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
               Three workgroups carry the work: Technology and Standards, Development and Ecosystem,
-              and Promotion and Communication. <Link to="/structure">How 5G-MAG is organized &rarr;</Link>
+              and Promotion and Communication. <Link to="/structure">How 5G-MAG is organised &rarr;</Link>
             </p>
           </div>
         </section>

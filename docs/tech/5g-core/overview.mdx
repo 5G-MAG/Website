@@ -49,6 +49,17 @@ The 5G Core is made of Network Functions, each offering services through service
 
 These three descriptions are those of the project's own README; the specifications above define the services.
 
+## What later releases changed
+
+Each service was first specified in the release shown on the [Standards page](/standards/5g-core); the Category B change requests in the specifications record later additions. For the operations used here:
+
+- **`Npcf_PolicyAuthorization`:** Release 16 added QoS monitoring for service data flows (TS 29.514 V20.1.0 change history, CR 0142); Release 18 added multi-modal, PDU set and L4S support for XR and media services (TR 21.918 clause 14.8; CRs 0473, 0488, 0508, 0528); Release 19 added the MPS for Messaging indication on N5 (TR 21.919 clause 20.6; CR 0682).
+- **`Nbsf_Management`:** Release 16 allowed several UE addresses in one binding and binding update (TS 29.521 V20.1.0 change history, CRs 0037, 0038); Release 17 added subscription to PCF registration and discovery of a PCF for a UE (CRs 0113, 0130) and the PCF for an MBS Session binding (CRs 0158 to 0161), with the MBSF named as a consumer of discovery (CR 0164).
+- **`Nmbsmf_TMGI` and `Nmbsmf_MBSSession`:** TS 29.532 was approved at version 17.0.0; Release 18 added the Associated Session ID in Create, RedCap UE information and MOCN support (TS 29.532 V20.0.0 change history, CRs 0054, 0085, 0086).
+- **`Nnrf_NFDiscovery`:** Release 17 added SCP domain routing information (TS 29.510 V20.1.0 change history, CR 0417) and MB-SMF registration and discovery (CRs 0552, 0577, 0636); Release 18 added shared data (TR 21.918 clause 10.9; CR 0905); Release 19 added selective parameter omission in responses (TR 21.919 clause 22.3).
+
+Release 20 items in the change histories were not mapped to work items and are not listed here.
+
 ## Related
 
 - [Standards: 5G Core Service Consumers](/standards/5g-core)

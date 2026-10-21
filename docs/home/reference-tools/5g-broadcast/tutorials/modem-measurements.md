@@ -131,5 +131,5 @@ Each line is one measurement interval. Reading the first row against the column 
 
 ## Next steps
 
-- To synchronize the system clock from GPS, see [GPS Time Synchronization for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization).
+- To synchronise the system clock from GPS, see [GPS Time Synchronization for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization).
 - Return to the [Tutorials index](./).

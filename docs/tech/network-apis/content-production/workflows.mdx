@@ -52,7 +52,7 @@ The **Network API Platform** of a Network Operator is accessed directly from **A
 
 ### Collaboration scenario #2: Invoking Network APIs via an Aggregator
 
-The **Network API Platform** of a Network Operator is accessed via an **Aggregator API Platform**. The Aggregator Platforms harmonize capabilities offered by different Network Providers and routes customer requests to them.
+The **Network API Platform** of a Network Operator is accessed via an **Aggregator API Platform**. The Aggregator Platforms harmonise capabilities offered by different Network Providers and routes customer requests to them.
 
 <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_collaboration_2.png')} alt="Diagram of Collaboration scenario 2: API Consumers invoking Network APIs via an Aggregator API Platform that harmonizes and routes requests to different Network Operators." width="60%"/>
 
@@ -188,7 +188,7 @@ Through the Network API Platform:
 
 <div style={{border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', padding: '0.75rem 1rem', margin: '1rem 0'}}>
 <p><b>Practical example</b></p>
-<p>In a typical scenario, the journalist arrives at the location where the uplink video contribution should start. The desired network conditions can be checked and booked on the spot so the transmission can start with the desired QoS. If known in advance, the booking may have been done before arriving at the event. If network conditions are guaranteed (i.e. the booked service is being used), the media flow can be optimized by passing the details to the media application. For instance, if the network is able to guarantee X Mbps, the user can configure an encoder so it stays within margins avoiding packet loss.</p>
+<p>In a typical scenario, the journalist arrives at the location where the uplink video contribution should start. The desired network conditions can be checked and booked on the spot so the transmission can start with the desired QoS. If known in advance, the booking may have been done before arriving at the event. If network conditions are guaranteed (i.e. the booked service is being used), the media flow can be optimised by passing the details to the media application. For instance, if the network is able to guarantee X Mbps, the user can configure an encoder so it stays within margins avoiding packet loss.</p>
 </div>
 
 ### After the event
@@ -331,9 +331,9 @@ A series of actions can be expected "During the Event" as changes, reconfigurati
 <p>Requirement to invoke <b>ASSIGNMENT API</b>. See details above.</p>
 </div>
 
-### Dynamic prioritization of QoS for different media flows
+### Dynamic prioritisation of QoS for different media flows
 
-In a setup with multiple cameras, the media producer would like to ensure that a subset of them is always prioritized with the highest QoS profile. Each individual camera should be entitled to use that high QoS profile (i.e. the original booking should take into account that X devices will be requesting QoS profile Y), but not all of them will be using it concurrently. Therefore:
+In a setup with multiple cameras, the media producer would like to ensure that a subset of them is always prioritised with the highest QoS profile. Each individual camera should be entitled to use that high QoS profile (i.e. the original booking should take into account that X devices will be requesting QoS profile Y), but not all of them will be using it concurrently. Therefore:
 
 - Through the Network API Platform, the production crew should be able to dynamically attach or detach a device to a QoS profile.
 
@@ -451,7 +451,7 @@ In the requirement tables that follow, the **API** column is intentionally left 
 | Information during runtime for troubleshooting                                                                |
 | Information after the session (logging information) for post-processing                                       |
 
-### Time Synchronization
+### Time Synchronisation
 
 | Requirement                                          | API |
 | ---------------------------------------------------- | --- |
@@ -461,7 +461,7 @@ In the requirement tables that follow, the **API** column is intentionally left 
 
 | Requirement                                                                                                                                                       | API |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| Ability to establish a voice service across the intercom devices deployed at the production location or between the production center and the production location |
+| Ability to establish a voice service across the intercom devices deployed at the production location or between the production centre and the production location |
 
 :::note
 Focus on the QoS for Intercom - a voice service offered by the network may not be so relevant (alternative solutions, WebRTC). But multicast, Mission Critical Push To Talk (MCPTT) may be of use.
@@ -481,7 +481,7 @@ Focus on the QoS for Intercom - a voice service offered by the network may not b
 
 | Requirement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | API                                                                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API consumers must authenticate before invoking CAMARA APIs. CAMARA uses **OAuth 2.0** with the network operator's authorization server, either the client credentials flow or **CIBA** (Client Initiated Backchannel Authentication) for user-consent flows. The authentication mechanism is defined by the **CAMARA Security and Interoperability Profile** (in the IdentityAndConsentManagement repository). The API consumer obtains an access token from the operator's authorization server before making any API call, with OAuth scopes that depend on the API being called (for example `quality-on-demand:sessions:create` for QoD). | Operator authorization server (OAuth 2.0 / CIBA); no dedicated CAMARA API for credential issuance; credentials are provisioned through the operator's developer portal or Network API Platform. |
+| API consumers must authenticate before invoking CAMARA APIs. CAMARA uses **OAuth 2.0** with the network operator's authorisation server, either the client credentials flow or **CIBA** (Client Initiated Backchannel Authentication) for user-consent flows. The authentication mechanism is defined by the **CAMARA Security and Interoperability Profile** (in the IdentityAndConsentManagement repository). The API consumer obtains an access token from the operator's authorisation server before making any API call, with OAuth scopes that depend on the API being called (for example `quality-on-demand:sessions:create` for QoD). | Operator authorisation server (OAuth 2.0 / CIBA); no dedicated CAMARA API for credential issuance; credentials are provisioned through the operator's developer portal or Network API Platform. |
 
 ### Discovery of network capabilities
 

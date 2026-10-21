@@ -528,3 +528,13 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
+  .slideContentWrapper,
+  .slideEyebrowPillDot {
+    animation: none;
+  }
+}

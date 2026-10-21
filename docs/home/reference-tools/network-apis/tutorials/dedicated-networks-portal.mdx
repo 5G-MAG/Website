@@ -6,6 +6,8 @@ sidebar_position: 3
 description: "Step by step with the CAMARA Dedicated Networks API Portal: find a service area, reserve a dedicated network, give a device access to it, book in one step, and dismantle it."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 import DedicatedNetworksWorkflow from '@site/docs/tech/network-apis/content-production/_dedicated-networks-workflow.mdx';
 
 <div class="topic-banner">
@@ -24,9 +26,11 @@ In this tutorial you run the CAMARA Dedicated Networks API Portal and use it, ag
 Read the README of [rt-camara-examples](https://github.com/5G-MAG/rt-camara-examples#readme) and the [portal's own README](https://github.com/5G-MAG/rt-camara-examples/blob/main/management-portal/DedicatedNetworks/README.md) before you start. They list what the portal needs and every setting.
 :::
 
-| Repository | What it is | Used in |
-|---|---|---|
-| [rt-camara-examples](https://github.com/5G-MAG/rt-camara-examples) | The portal (`management-portal/DedicatedNetworks`), the MCP server and the Insomnia collections | All sections |
+## Components
+
+<RepoCards slugs={['rt-camara-examples']} />
+
+In `rt-camara-examples`: the portal (`management-portal/DedicatedNetworks`), the MCP server and the Insomnia collections.
 
 | You want | Go to |
 |---|---|

@@ -6,6 +6,8 @@ sidebar_position: 1
 description: "Step by step with the VOPS Conformance Validator: install it, make AVC HD and HEVC HD streams with an encoder, check them against their operation point, break them on purpose, and read the JSON report and the XML description."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,9 +30,9 @@ The [VOPS Conformance Validator](https://github.com/5G-MAG/vops-conformance-vali
 The repository below has a README that lists the commands and the options. Read [vops-conformance-validator](https://github.com/5G-MAG/vops-conformance-validator#readme) before you start.
 :::
 
-| Repository | What it is | Used in |
-|---|---|---|
-| [vops-conformance-validator](https://github.com/5G-MAG/vops-conformance-validator) | The validator: the parsers, the XSD rules for each operation point and `config.yaml` | All sections |
+<RepoCards slugs={['vops-conformance-validator']} />
+
+In `vops-conformance-validator`: the validator, with the parsers, the XSD rules for each operation point and `config.yaml`.
 
 | You want | Go to |
 |---|---|

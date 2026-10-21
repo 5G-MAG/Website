@@ -106,7 +106,7 @@ function PodcastPromo() {
       <div className="container">
         <h2 className={styles.sectionTitle}>Podcast</h2>
         <p className={styles.sectionSubtitle}>
-          The Handshake by 5G-MAG — connecting technology with the people behind it.
+          The Handshake by 5G-MAG: connecting technology with the people behind it.
         </p>
         <div style={{ textAlign: 'center' }}>
           <Link className="button button--primary button--lg" to="/podcast">

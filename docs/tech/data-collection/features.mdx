@@ -115,7 +115,7 @@ The aggregation functions are None, Count, Mean, Maximum, Minimum and Sum (TS 26
 
 An event consumer, the NWDAF or an Event Consumer AF, subscribes to a type of event exposed by the Data Collection AF (TS 26.531 V19.0.0 clause 4.6.1). It may add user, location or application filters to see only a subset of what the Data Access Profiles permit (TS 26.531 V19.0.0 clause 4.6.1). Subscribing to an event type that is not yet provisioned is allowed, but yields no notifications until it is provisioned (TS 26.531 V19.0.0 clause 4.6.1).
 
-The Data Collection AF exposes a batch of recent events to consumers as an event exposure notification (TS 26.531 V19.0.0 clause 4.6.1). When an event is synthesised from several records, its timestamp says when it was synthesised (TS 26.531 V19.0.0 clause 4.6.1). When an authorization URL is present in the data exposure restrictions, a subscription request without a valid access token is redirected to an authorization server, which performs the authorization for the requested Data Access Profile (TS 26.531 V19.0.0 clause 4.5.2 and clause 5.8 (step 3)).
+The Data Collection AF exposes a batch of recent events to consumers as an event exposure notification (TS 26.531 V19.0.0 clause 4.6.1). When an event is synthesised from several records, its timestamp says when it was synthesised (TS 26.531 V19.0.0 clause 4.6.1). When an authorisation URL is present in the data exposure restrictions, a subscription request without a valid access token is redirected to an authorisation server, which performs the authorisation for the requested Data Access Profile (TS 26.531 V19.0.0 clause 4.5.2 and clause 5.8 (step 3)).
 
 ## Consent, security and precedence
 
@@ -174,7 +174,7 @@ The 5GMS Application Provider configures the collection and processing of 5GMS U
 
 - **Release 17:** five downlink event types; TS 26.501 V17.10.0 clause 4.7.4.2 lists one uplink event type (uplink Network Assistance invocations), while clauses 6.8.2 and 6.8.3 also define uplink media streaming access reporting by the 5GMSu AS and its exposure; R2 is not instantiated; the access reporting parameters are in TS 26.501 clauses 5.11.4 and 6.8.4.
 - **Release 18:** ANBR-based Network Assistance reporting at R2, for downlink and uplink. TS 26.512 specifies the event collection and record data types itself, in clause 18.
-- **Release 19:** no change request subject in the change history of TS 26.501 or TS 26.512 names data collection, but TS 26.512 V19.3.0 adds clause 18.3.3 (Exposure of client data: CMCD information packed into QoEMetricsEvent records), which V18.7.0 does not have.
+- **Release 19:** the Advanced Media Delivery work (AMD_PRO-MED, TR 21.919 clause 11.6) specifies Common Media Client Data reporting based on CTA-5004; the change history of TS 26.512 V19.3.0 tags change requests with AMD_PRO-MED, among them CR 0104 "Corrections to CMCD phase 1". No change request subject in the change history of TS 26.501 or TS 26.512 names data collection, but TS 26.512 V19.3.0 adds clause 18.3.3 (Exposure of client data: CMCD information packed into QoEMetricsEvent records), which V18.7.0 does not have.
 
 </details>
 

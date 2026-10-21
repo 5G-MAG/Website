@@ -32,10 +32,6 @@ As a result, content providers are increasingly interested in understanding how 
 
 When it comes to monitoring QoS, content providers typically have sight of the two ends of the distribution chain: the source (often a content delivery network, or CDN, in this context) and the application running on a user device, such as a smartphone. If poor performance is detected, the content provider can often rule out the CDN as a cause by inspecting the CDN logs. Content providers can also record radio access network (RAN) performance indicators such as cell ID, signal strength and quality, but have no direct visibility of the underlying network; any issues not attributable to the CDN or insufficient signal are effectively lumped into "the network", which appears to them as "The Cloud". The next section sets out this observability gap, and the metrics used to probe it, in more detail.
 
-:::note
-Figure to be added: a diagram of the distribution chain, showing the CDN (source), the network ("The Cloud" from the content provider's perspective) and the client application on the consumer device.
-:::
-
 ## What we are doing
 
 At 5G-MAG we’re investigating the possibility of logging relevant performance data through the client application and sharing it with the network operator. Standard ways of feeding back and sharing data would make the process easier and encourage such collaboration.

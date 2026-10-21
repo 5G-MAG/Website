@@ -40,6 +40,12 @@ This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The wor
 | TR 26.956 | 19.0.0 |  | Version 19.0.0 created by MCC for publishing upon approval in TSG SA |  |
 | TR 26.956 | 19.0.1 |  | Editorial corrections (auto numbering removed from code lines) |  |
 
+### Related Release 19 work
+
+The Release 19 description (TR 21.919 V19.0.0, which may be an early version) has no entry for FS_Beyond2D. It describes a related normative item: VOPS (Video Operating Points - Harmonization and Stereo MV-HEVC), which consolidates video operation points into the new TS 26.265 and adds stereoscopic operation points based on MV-HEVC (TR 21.919 clause 11.5). TR 26.956 lists MV-HEVC as the coding approach it evaluates for stereoscopic video; see the [Technology page](/tech/beyond-2d).
+
+Release 20: no normative follow-on to FS_Beyond2D was found; this is not confirmed against a primary source.
+
 ## TR 26.956 before change control
 
 <details>

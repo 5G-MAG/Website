@@ -40,7 +40,7 @@ The Connectivity Insights Subscriptions API definition (YAML) is available at: [
 
 - **POST /subscriptions** with the request body containing `sink`, `protocol`, `types` and a `config` with `subscriptionDetail` (`device`, `applicationServer`, `applicationServerPorts`, `applicationProfileId`) and optionally `subscriptionExpireTime`, `subscriptionMaxEvents` and `initialEvent`. Response contains the subscription `id`.
   - Dependency: Requires `applicationProfileId` from a previous call to the [**Application Profiles API**](./camara-application-profiles) (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml CreateSubscriptionDetail required applicationProfileId, applicationServer).
-- **GET /subscriptions** - Operation to list subscriptions authorized to be retrieved by the provided access token (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` GET description).
+- **GET /subscriptions** - Operation to list subscriptions authorised to be retrieved by the provided access token (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` GET description).
 - `GET /subscriptions/{subscriptionId}` - Retrieve a given subscription by ID (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions/{subscriptionId}` GET description).
 - `DELETE /subscriptions/{subscriptionId}` - Delete a given subscription by ID (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions/{subscriptionId}` DELETE description)
 
@@ -81,7 +81,7 @@ The APIs are likely to be invoked to obtain information about the ability of the
 
 Potential improvements:
 
-- If used to monitor resources for which QoS was requested (via a different API) harmonization of Application Profile and QoS Profile for consistency.
+- If used to monitor resources for which QoS was requested (via a different API) harmonisation of Application Profile and QoS Profile for consistency.
 - an indication of the actual performance parameters (quantitative) for those defined in the Application Profile may provide better insight for potential remedies. E.g. latency cannot be fulfilled, but please respond with the actual latency the link device-AS is experiencing.
 
 ---
@@ -273,5 +273,3 @@ The `data` object carries the network-quality assessment (the same qualitative p
 :::note
 The event type and payload structure above are taken from the CAMARA Connectivity Insights Subscriptions API definition. Confirm the exact values against the [`connectivity-insights-subscriptions.yaml`](https://github.com/camaraproject/ConnectivityInsights/blob/main/code/API_definitions/connectivity-insights-subscriptions.yaml) for the version you are integrating against, as they can change between releases (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml ApiEventType; EventNetworkQuality; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.3 Event Versioning).
 :::
-
-Only Dedicated Networks has a reference implementation among these CAMARA APIs today; this one does not yet.

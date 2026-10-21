@@ -49,7 +49,7 @@ export default function FiveGMBS() {
                 <p>
                   5G-MAG implements the MBS user service layer defined in 3GPP{' '}
                   <a href="https://www.3gpp.org/dynareport/26502.htm">TS 26.502</a>, covering service
-                  announcement, session management, and media delivery, across a chain of 10
+                  announcement, session management, and media delivery, across the
                   repositories from the application-provider tooling down to the RAN and UE.
                 </p>
     </ProjectHome>

@@ -97,7 +97,7 @@ export default function Testbeds() {
                   desc={
                     <>
                       Access arrangements differ per testbed (some are open, others available on
-                      request or through the community channels) — see{' '}
+                      request or through the community channels); see{' '}
                       <Link to="/community">Developer Community</Link> for how to get in touch.
                     </>
                   }

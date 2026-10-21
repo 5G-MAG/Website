@@ -22,7 +22,7 @@ export default function ProjectReleases({ name }) {
   if (!project) {
     return (
       <p className={styles.updatedAt}>
-        No release data available for this project yet — check the project&apos;s GitHub
+        No release data available for this project yet; check the project&apos;s GitHub
         repositories directly in the meantime.
       </p>
     );
@@ -75,7 +75,8 @@ export default function ProjectReleases({ name }) {
                 >
                   <img
                     src={r.author_avatar}
-                    alt={r.author_login}
+                    alt=""
+                    loading="lazy"
                     className={styles.releaseAuthorAvatar}
                   />
                   <span>{r.author_login}</span>

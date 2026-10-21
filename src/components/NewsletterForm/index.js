@@ -25,7 +25,7 @@ export default function NewsletterForm() {
         title="5G-MAG Update! sign up"
       />
       <p className={styles.fallback}>
-        Form not showing up? Some browsers block embedded signup forms —{' '}
+        Form not showing up? Some browsers block embedded signup forms:{' '}
         <a href={BREVO_IFRAME_SRC} target="_blank" rel="noreferrer">
           open the subscribe form directly
         </a>

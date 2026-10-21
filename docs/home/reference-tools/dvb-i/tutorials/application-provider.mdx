@@ -6,6 +6,8 @@ sidebar_position: 2
 description: "Step by step with the DVB-I Application Provider: run it, add a channel in the admin portal, publish a service list and a programme guide, and check the XML against the DVB-I schema."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
@@ -22,11 +24,12 @@ The [DVB-I Application Provider](https://github.com/5G-MAG/rt-dvb-i-application-
 Read the README of [rt-dvb-i-application-provider](https://github.com/5G-MAG/rt-dvb-i-application-provider#readme) before you start; it points to `DEPLOYMENT.md` for the settings you need before anyone else can reach the server. The other repositories below are only needed in the sections that name them.
 :::
 
-| Repository | What it is | Used in |
-|---|---|---|
-| [rt-dvb-i-application-provider](https://github.com/5G-MAG/rt-dvb-i-application-provider) | The provider: the service list at `/service-list.xml`, the guide at `/epg/*` and the admin portal | All sections |
-| [rt-dvb-i-application](https://github.com/5G-MAG/rt-dvb-i-application) | The browser client that plays the list | [Tutorial: DVB-I Application](./dvb-i-application) |
-| [rt-dvb-i-service-list-registry](https://github.com/5G-MAG/rt-dvb-i-service-list-registry) | The registry that tells clients where the list is | [Tutorial: DVB-I Service List Registry](./service-list-registry) |
+<RepoCards slugs={['rt-dvb-i-application-provider', 'rt-dvb-i-application', 'rt-dvb-i-service-list-registry']} />
+
+Where the other repositories are used:
+
+- `rt-dvb-i-application`: [Tutorial: DVB-I Application](./dvb-i-application)
+- `rt-dvb-i-service-list-registry`: [Tutorial: DVB-I Service List Registry](./service-list-registry)
 
 | You want | Go to |
 |---|---|
@@ -222,7 +225,7 @@ Press **Compliance** for a longer set of checks against TS 103 770 and DVB docum
    ==== ALL VALID (1 not checked, see above) ====
    ```
 
-   (The listing is shortened at the dots. The line that says `NOT CHECKED` is about the 5G broadcast extension, which no DVB schema defines; the DVB-I over 5G tutorials come later.)
+   (The listing is shortened at the dots. The line that says `NOT CHECKED` is about the 5G broadcast extension, which no DVB schema defines; the [DVB-I over 5G with 5G Broadcast](./dvb-i-over-5g-broadcast) tutorial covers it.)
 
 3. Check the list you published yourself with the `check.py` of [Tutorial: DVB-I Service List Registry](./service-list-registry#5-check-a-response-against-the-schema):
 

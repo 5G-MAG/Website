@@ -59,7 +59,7 @@ export const NEWS_PREVIEW = [
   },
   {
     date: '2026-09-15',
-    title: 'Future Media Townhall 2026 — Speaker Slides Now Available',
+    title: 'Future Media Townhall 2026: Speaker Slides Now Available',
     href: '/news/fmt-2026-slides-available',
     image: '/assets/images/news/fmt-2026-slides-available.png',
   },

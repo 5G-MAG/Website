@@ -34,12 +34,6 @@ This API separates the booking of resources from the device assignment: you crea
 
 ## Workflow and Architecture
 
-This is a high-level figure with the entities involving APIs and the devices involved:
-
-:::note[Diagram forthcoming]
-An architecture diagram showing the media application (ASP) invoking the Network API Platform to create a booking and assign devices will be added here.
-:::
-
 ### General Workflow
 
 In the procedure flow below, each step is tagged with the actor that performs it: **ASP** (Application Service Provider, the media application side) or **CSP** (Communication Service Provider, the network operator side). Coloured bands group the steps into the phases Pre-conditions, Before using the network, During operation, and Dismantling.
@@ -198,7 +192,7 @@ This API is the right choice when resources must be reserved before the exact de
 - A crew books capacity for N cameras for a venue and a time window (`POST /qos-bookings` with `numDevices`), before knowing which physical units will be deployed.
 - On site, each camera's SIM is attached to the booking (`POST /qos-bookings/{bookingId}/devices/assign`) as it comes online.
 - If a camera fails, its device is released (`POST /qos-bookings/{bookingId}/devices/release`) and a back-up is assigned, all against the same booking, so the reservation is never lost.
-- The on-air / preview / standby prioritisation in the [Workflows](./workflows#dynamic-prioritization-of-qos-for-different-media-flows) page is realised by assigning and releasing devices across bookings that carry different QoS profiles, without re-reserving.
+- The on-air / preview / standby prioritisation in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page is realised by assigning and releasing devices across bookings that carry different QoS profiles, without re-reserving.
 
 For a single, known contribution feed where the device and application server are fixed at booking time, the device-bound [QoS Booking](./using-qos-booking) API is simpler; for a full venue deployment with area discovery, [Dedicated Networks](./using-dedicated-networks) is more complete. This API sits between the two.
 

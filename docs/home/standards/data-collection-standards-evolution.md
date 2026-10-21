@@ -23,11 +23,16 @@ pagination_next: null
 
 - **Release 17:** the EVEX work item creates TS 26.531 and TS 26.532.
 - **Release 18:** change requests under EVEX, TEI18 and 5GMS_Pro_Ph2.
-- **Release 19:** the Release 18 content carried forward; TS 26.532 V19.1.0 updates the API info and externalDocs fields.
+- **Release 19:** the Release 18 content carried forward; TS 26.532 V19.1.0 updates the API info and externalDocs fields. The Advanced Media Delivery work (AMD_PRO-MED) adds Common Media Client Data reporting in TS 26.512.
+- **Release 20:** no work item in the work plan lists TS 26.531 or TS 26.532; TS 29.517 is listed under AIML_CN_Ph2-CT (scope not verified).
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests as listed in the change history of TS 26.531 V19.0.0 and TS 26.532 V19.1.0, and in the 3GPP Change Request database of 25 September 2026.
+Work items as listed in the 3GPP work plan of 28 September 2026; release descriptions from TR 21.917, TR 21.918 and TR 21.919. Change requests as listed in the change history of TS 26.531 V19.0.0 and TS 26.532 V19.1.0, and in the 3GPP Change Request database of 25 September 2026.
+
+## Release 20
+
+The work plan of 28 September 2026 lists no Release 20 work item for TS 26.531 or TS 26.532. It lists work item AIML_CN_Ph2-CT ("CT aspects for Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2", CP-262196) against TS 29.517, TS 29.510 and TS 29.522; TS 29.517 is the Application Function Event Exposure service that the Data Collection AF realises. The scope of that work item was not read in a primary source and is unverified. The change history of TS 29.517 V20.1.0 records Release 20 change requests on abnormal user plane traffic information (CR 0168, CR 0174, CR 0177); it does not name the work item for them.
 
 ## Release 19
 
@@ -36,6 +41,8 @@ Work items as listed in the 3GPP work plan of 28 September 2026. Change requests
 | [AMD_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1070057) | Stage 3 for Advanced Media Delivery | Normative | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (with TS 26.510, TS 26.511, TS 26.512, TS 26.517) | Complete, Dec 2025 | [SP-250265](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_107_Incheon_2025-03/Docs/SP-250265.zip) |
 
 The work plan lists TS 26.532 for AMD_PRO-MED; the change history of TS 26.532 V19.1.0 records no change request under it.
+
+What the release description adds (TR 21.919 clause 11.6, Advanced Media Delivery): at Stage 2, TS 26.501 is enhanced with in-band reporting for Common Client Metadata, enabling collection of playback metrics for analytics and exposure via NWDAF; at Stage 3, standardised Common Media Client Data reporting based on CTA-5004 is specified. The change history of TS 26.512 V19.3.0 tags change requests with AMD_PRO-MED, among them CR 0104 "Corrections to CMCD phase 1".
 
 | Specification | Version | CR | Subject |
 | --- | --- | --- | --- |
@@ -48,6 +55,13 @@ The work plan lists TS 26.532 for AMD_PRO-MED; the change history of TS 26.532 V
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [5GMS_Pro_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1000018) | 5G Media Streaming Protocols Phase 2 | Normative | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (with TS 26.510, TS 26.512, TS 26.517, TS 26.247) | Complete, Jun 2024 | [SP-230976](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_101_Bangalore_2023-09/Docs/SP-230976.zip) |
+
+What the release descriptions add:
+
+- 5GMS_Pro_Ph2 (TR 21.918 clause 17.9) lists the specification of data types for data reporting of ANBR-based Network Assistance invocations and, in liaison with CT3, of data types for exposure of events relating to invocation of AF-based and ANBR-based Network Assistance; it names TS 26.532 among the updated specifications.
+- 5GMS_Ph2 (TR 21.918 clause 17.12) states that the data collection, reporting and exposure feature applies to both downlink and uplink media streaming (TS 26.501 clauses 4.7, 5.11 and 6.8).
+- TS 26.531 V18.0.0 clause 5.5 adds steps 13 and 14 (the UE Application may instruct the Direct Data Collection Client to prioritise immediate delivery of a report; the client may flag a report as requiring expedited processing); V17.3.0 has neither step. In TS 26.532 V18.5.0, the `expedite` property of a data report (clause 7.3.2.3), the MS_ANBR_NETWORK_ASSISTANCE data domain (clause 7.3.3.1) and the reporting context identifiers (clause 4.1) are absent from V17.3.0.
+- Related SA2 and CT work: eNetAE (TR 21.918 clause 26.2) lists the impact of user consent on data collection and storage for the Nnwdaf, Ndccf and Nnef services.
 
 The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technical Enhancements and Improvements for Rel-18"), with these exceptions: TS 26.531 CR 0007 and TS 26.532 CR 0005 are also tagged ADAE, and TS 26.531 CR 0008 and TS 26.532 CRs 0014 and 0015 carry no tag.
 
@@ -74,6 +88,12 @@ The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technic
 | [EVEX](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960051) | 5GMS AF Event Exposure | Normative | [TS 26.531](https://www.3gpp.org/dynareport/26531.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (with TS 26.501, TS 26.512) | Complete, Jun 2022 | [SP-210374](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_92E_Electronic_2021_06/Docs/SP-210374.zip) |
 
 The work plan also lists the CT3 part of EVEX, which changed TS 29.517, TS 29.522 and TS 29.591.
+
+What the release descriptions add:
+
+- TR 21.917 clause 15.6 summarises EVEX. It relates the work to the SA2 work item eNA_Ph2 (UE data collection and event exposure by an AF to event consumers such as the NWDAF) and to the CT3 work item EVEX. The summary describes the Data Collection AF, the Direct and Indirect Data Collection Clients, the Provisioning AF and the optional NEF, and the extension of the 5GMS M1 API in TS 26.512 with Data Access Profiles.
+- TR 21.917 clause 9.4.3 (eNA_Ph2) lists "UE data as an input for analytics generation (via AF)" and "User consent for UE data collection/analysis" among its framework enhancements.
+- TS 29.517 CR 0069 "Support UE Application event exposure via Data Collection AF" (CT#96, June 2022) is in V17.6.0 (change history of TS 29.517 V20.1.0).
 
 Both specifications were placed under change control at SA#96 (June 2022) as version 17.0.0.
 

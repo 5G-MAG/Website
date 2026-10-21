@@ -27,7 +27,7 @@ export default function useWeb3FormSubmit(accessKey, subject) {
     if (!accessKey || accessKey === PLACEHOLDER_WEB3FORMS_KEY) {
       setStatus('error');
       setErrorMessage(
-        'This form is not fully configured yet — it needs a real Web3Forms access key.'
+        'This form is not fully configured yet; it needs a real Web3Forms access key.'
       );
       return;
     }
@@ -63,11 +63,11 @@ export default function useWeb3FormSubmit(accessKey, subject) {
         form.reset();
       } else {
         setStatus('error');
-        setErrorMessage(result.message || 'Something went wrong — please try again.');
+        setErrorMessage(result.message || 'Something went wrong; please try again.');
       }
     } catch {
       setStatus('error');
-      setErrorMessage('Could not reach the form service — check your connection and try again.');
+      setErrorMessage('Could not reach the form service; check your connection and try again.');
     }
   }
 

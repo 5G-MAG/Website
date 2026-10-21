@@ -6,6 +6,8 @@ sidebar_position: 1
 description: "Step by step with the AI and ML Evaluation Framework: install the codec pipeline, evaluate the wav2vec 2.0 speech recognition model uncompressed and compressed with NNCodec, and read the result file against TR 26.847 clause 5.2."
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -30,9 +32,16 @@ This is the model data testbed of 3GPP TR 26.847 V19.0.0 (clause 4.3, figure 4.3
 Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md) before you start; it lists the installation, every option of the pipeline and the result columns. The [main README](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework#readme) shows the layout of the repository and marks the project as under development.
 :::
 
-| Repository | What it is | Used in |
+## Components
+
+<RepoCards slugs={['rt-ai-ml-evaluation-framework']} />
+
+In `rt-ai-ml-evaluation-framework`: the framework; the pipeline is in `scripts/asr/compression`.
+
+Other software the tutorial uses:
+
+| Software | What it is | Used in |
 |---|---|---|
-| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the pipeline is in `scripts/asr/compression` | All sections |
 | [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, the compression method used here (version 0.3.1) | [1. Install the pipeline](#1-install-the-pipeline) and [3. Compress the model with NNCodec](#3-compress-the-model-with-nncodec) |
 
 | You want | Go to |

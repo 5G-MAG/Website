@@ -22,11 +22,11 @@ import { AVATAR_SPECS, AVATAR_LAYER_ORDER } from '@site/src/data/specs/avatar';
 
 ## Overview
 
-5G-MAG tracks standardisation of avatar communications and the associated immersive voice and audio in 5G systems: the Avatar Representation Format (ARF), an MPEG format for interoperable 3D avatars, MPEG-I Scene Description integration, and Immersive Voice and Audio Services (IVAS), the 3GPP immersive audio codec used alongside them. For the technical analysis of how avatar communication works, see the Tech page linked below. Check the [Standards](https://github.com/5G-MAG/Standards/) repository for the current status of this work as it develops.
+5G-MAG tracks standardisation of avatar communications and the associated immersive voice and audio in 5G systems: the Avatar Representation Format (ARF), an MPEG format for interoperable 3D avatars, MPEG-I Scene Description integration, and Immersive Voice and Audio Services (IVAS), the 3GPP immersive audio codec used alongside them. For how avatar communication works, see the Technology page linked below. Check the [Standards](https://github.com/5G-MAG/Standards/) repository for the current status of this work as it develops.
 
 ## Specifications by role
 
-The standardisation spans MPEG (avatar representation and scene placement) and 3GPP/IETF (real-time transport and immersive audio). The table groups the key specifications by the part of the system they govern; see [Conversational Avatar Communication with MPEG ARF](/tech/avatar) for the technical analysis of how these pieces fit together.
+The standardisation spans MPEG (avatar representation and scene placement) and 3GPP/IETF (real-time transport and immersive audio). The table groups the key specifications by the part of the system they govern; see [Conversational Avatar Communication with MPEG ARF](/tech/avatar) for how these pieces fit together.
 
 | Role                       | Specifications                                                    |
 | -------------------------- | ------------------------------------------------------------------ |
@@ -61,6 +61,14 @@ TS 26.264 V19.4.1 (IMS-based AR Real-Time Communication, Release 19) specifies a
 ## What TR 26.813 states
 
 TR 26.813 V20.0.0, clause 1: "The present document documents formats for representing and animating Avatars." It adds: "It also provides recommendations on the integration of Avatars in 3GPP services and enablers for immersive communications and the Metaverse." The work plan lists two studies on it: FS_AVATAR (Release 19, complete, March 2025) and FS_Avatar_Ph2_MED (Release 20, complete, September 2026).
+
+## Novelties by release
+
+- **Release 18:** IBACS creates TS 26.264, with the AR-MTSI client (TR 21.918 clause 14.6); IVAS_Codec creates the IVAS specifications TS 26.250 to TS 26.258 (clause 17.10); ISAR adds split rendering formats to TS 26.253 and TS 26.258 (clause 14.4).
+- **Release 19:** AvCall-MED adds avatar calls to TS 26.264: ARF base avatars, 3D and 2D avatars, data channel animation messages, SDP and data channel avatar negotiation with sender, network or receiver side rendering, and the Mbar_Management service of the Base Avatar Repository (TR 21.919 clause 12.4). FS_AVATAR produces TR 26.813. IVAS_Codec_Ph2 adds the fixed-point code TS 26.251 and updated conformance in TS 26.252 (clause 11.3).
+- **Release 20:** FS_Avatar_Ph2_MED, a study on TR 26.813. Other Release 20 avatar work has not been verified against a primary source and is not listed.
+
+The change requests behind each release are in [Standards Evolution](/standards/avatar/evolution).
 
 ## Related
 

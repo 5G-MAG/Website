@@ -35,7 +35,7 @@ export default function ContactForm({ web3formsKey, subject, submitLabel = 'Send
   if (status === 'success') {
     return (
       <div className={styles.notice}>
-        <strong>Thanks — your message has been sent.</strong>
+        <strong>Thanks, your message has been sent.</strong>
         <p>We&apos;ll get back to you as soon as we can.</p>
         {successNote && <p>{successNote}</p>}
       </div>
@@ -66,7 +66,7 @@ export default function ContactForm({ web3formsKey, subject, submitLabel = 'Send
 
       <label className={styles.field}>
         <span>
-          Organization <span className={styles.optional}>(optional)</span>
+          Organisation <span className={styles.optional}>(optional)</span>
         </span>
         <input type="text" name="organization" autoComplete="organization" />
       </label>
