@@ -577,8 +577,8 @@
     {
       "name": "Video Operation Points",
       "type": "project",
-      "displayName": "Video Interoperability Profiles",
-      "projectTitle": "Video Interoperability Profiles",
+      "displayName": "Video Operation Points",
+      "projectTitle": "Video Operation Points",
       "doc_url": null,
       "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
