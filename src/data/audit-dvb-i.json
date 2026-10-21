@@ -3,7 +3,7 @@
  "title": "DVB-I over 5G Systems",
  "audited": "2026-10-22",
  "tier": "T0",
- "method": "code read against every statement of the specifications on the project page, judged against the draft ETSI TS 103 770 V1.3.1 (DVB A177r8); statements a component cannot meet by construction marked absent by group",
+ "method": "code read against every statement of the specifications on the project page, judged against the draft ETSI TS 103 770 V1.3.1 (DVB A177r8); statements a component cannot meet by construction marked absent by group; entries touched by later fixes re-read at rt-dvb-i-application-provider e3cfb1e, rt-dvb-i-service-list-registry d0ab0ea and rt-dvb-i-application bb15220",
  "releases": {
   "all": "DVB-I over 5G Systems"
  },
@@ -214,7 +214,7 @@
       {
        "case": "Invoke MBMS Client for a service instance with an mbms:// locator",
        "verdict": "absent",
-       "what": "The client never invokes an MBMS Client; a service instance carrying an MBMS locator in the local 5G extension yields no playable instance and the user is told a browser cannot join an MBMS bearer.",
+       "what": "The client never invokes an MBMS Client. A service instance carrying an MBMS locator in the local 5G extension yields no playable instance of its own; the unicast fallback the extension names becomes a separate unicast instance of lower priority, so a service with a fallback plays over unicast, and one without it is shown as 5G only with a message that a browser cannot join an MBMS bearer.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -918,7 +918,7 @@
       {
        "case": "Use a Service List Registry",
        "verdict": "implemented",
-       "what": "The user can query a registry by country and load a list from the results.",
+       "what": "The user can query a registry by country and load a list from the results. The registry's address is entered by the user; none is built in.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1752,7 +1752,7 @@
       {
        "case": "Service: availability and capability determined before indicating availability",
        "verdict": "differs",
-       "what": "Availability is judged from the signalled availability period and broadcast, multicast and 5G-only services are marked unplayable, but codec or DRM support is not determined in advance.",
+       "what": "Availability is judged from the signalled availability period; broadcast and multicast services, and 5G services that name no unicast fallback, are marked unplayable, but codec or DRM support is not determined in advance.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1971,7 +1971,7 @@
       {
        "case": "Choose an instance by precedence on selection and on errors",
        "verdict": "implemented",
-       "what": "Instances are sorted by priority and tried in order; when one fails the next is tried.",
+       "what": "Instances are sorted by priority and tried in order; when one fails the next is tried. An instance without @priority counts as 0, the schema default.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1997,7 +1997,7 @@
       {
        "case": "Discard instances the client cannot present (broadcast, multicast, 5G)",
        "verdict": "implemented",
-       "what": "Broadcast-only and 5G-only instances yield no playable instance and multicast instances are skipped.",
+       "what": "Broadcast-only and 5G-only instances yield no playable instance and multicast instances are skipped; the unicast fallback named by the local 5G extension is a separate playable instance of lower priority.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -3415,8 +3415,8 @@
       },
       {
        "case": "Media Type application/xml",
-       "verdict": "implemented",
-       "what": "The list is sent as application/xml.",
+       "verdict": "differs",
+       "what": "The list is always sent as application/vnd.dvb.dvbisl+xml, the media type of TS 103 770 V1.2.1 clause 5.1.2. The draft names application/xml and allows application/vnd.dvb.dvbisl+xml only in certain situations, such as a device not identified as a DVB-I client, and the server does not tell the two apart.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -3428,8 +3428,8 @@
       },
       {
        "case": "Media Type application/vnd.dvb.dvbisl+xml",
-       "verdict": "absent",
-       "what": "The server never sends the application/vnd.dvb.dvbisl+xml media type.",
+       "verdict": "implemented",
+       "what": "The list is sent as application/vnd.dvb.dvbisl+xml on every request, whether or not the client identifies itself as a DVB-I client. The draft allows this media type in certain situations only; V1.2.1 requires it in every case.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5029,7 +5029,7 @@
       {
        "case": "List version incremented on save",
        "verdict": "differs",
-       "what": "The list version is incremented only by PUT /api/config; logo upload and delete and history restore change the published list without incrementing it (restore reinstates an older version number).",
+       "what": "The list version is raised by PUT /api/config and by a history restore, to one above the highest version held (the current list and every history snapshot), so a published number is not reused. A logo upload or delete still changes the published list without raising it.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5042,7 +5042,7 @@
       {
        "case": "Version incremented on every published change",
        "verdict": "differs",
-       "what": "Logo upload and delete, and restoring a history snapshot, change the published list without incrementing its version (a restore reverts it to the snapshot's number).",
+       "what": "A history restore now publishes a version above every version held, but a logo upload or delete changes the published list without raising its version.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5187,7 +5187,7 @@
       {
        "case": "Service version incremented on edit",
        "verdict": "differs",
-       "what": "The editor raises a service's version when the service form is saved, but a logo upload or delete, a history restore (older version) and a direct PUT republish the service without raising it.",
+       "what": "A service's version is raised when its content changes through a save (PUT) or a history restore, to one above the highest version published for that service in the current list and the history snapshots, so a number is not reused; a logo upload or delete republishes the service without raising it.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -6512,8 +6512,8 @@
       },
       {
        "case": "RegionList version on edit",
-       "verdict": "differs",
-       "what": "RegionList @version is the list version, raised by PUT /api/config, but a history restore republishes a snapshot with its older version number without incrementing.",
+       "verdict": "implemented",
+       "what": "RegionList @version is the list version, raised by every PUT /api/config to one above the highest version held, including after a history restore.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -6525,8 +6525,8 @@
       },
       {
        "case": "RegionList version on restore",
-       "verdict": "differs",
-       "what": "Restoring an earlier snapshot republishes that snapshot with its older version number instead of incrementing it.",
+       "verdict": "implemented",
+       "what": "Restoring an earlier snapshot publishes it with a version one above the highest held, not with its older number.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -7570,7 +7570,7 @@
       {
        "case": "ServiceListName equals ServiceList.Name",
        "verdict": "absent",
-       "what": "The name comes from the registry file and is passed through; nothing compares it with the Name in the service list itself.",
+       "what": "The name comes from the registry file and is passed through; nothing compares it with the Name in the service list itself. The stock registry entry and the stock provider list now carry the same name, so the stock pair agrees by its data only.",
        "repo": "rt-dvb-i-service-list-registry",
        "releases": [
         "17",
@@ -7621,8 +7621,8 @@
       },
       {
        "case": "ServiceListURI@contentType for versions up to release 6",
-       "verdict": "differs",
-       "what": "Every URI is written with @contentType application/xml, including URIs without @standardVersion, which default to release 6 and therefore need application/vnd.dvb.dvbisl+xml.",
+       "verdict": "implemented",
+       "what": "Every URI is written with @contentType application/vnd.dvb.dvbisl+xml, which is what the draft requires for URIs up to release 6, including URIs without @standardVersion, which default to release 6. No URI is signalled for a later release, so the 'should be application/xml' case does not arise. V1.2.1 and the draft agree here.",
        "repo": "rt-dvb-i-service-list-registry",
        "releases": [
         "17",
@@ -13772,7 +13772,7 @@
       {
        "case": "HTTP allowed without TLS on a private subnet",
        "verdict": "implemented",
-       "what": "Plain http to a local or private-network endpoint works (default list is http://localhost:4000, reachable through the proxy allow list).",
+       "what": "Plain http to a local or private-network endpoint works (default list is http://localhost:4000, which the proxy allows by default; PROXY_ALLOW_ORIGINS replaces that default).",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
