@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20 02:14 UTC",
+  "updated_at": "2026-10-21 02:08 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -16,19 +16,6 @@
           "author_login": "sygupt",
           "author_avatar": "https://avatars.githubusercontent.com/u/268783277?v=4",
           "created_at": "2026-10-08",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-media-origin",
-          "branch": null,
-          "number": 2,
-          "title": "Merge development into main: radio channels, push transports and documentation",
-          "url": "https://github.com/5G-MAG/rt-media-origin/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-05",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -424,6 +411,19 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 75,
+          "title": "Realign wrap files after recent PR merges",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/75",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-10-20",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-mbs-transport-function",
           "branch": null,
           "number": 81,
@@ -485,19 +485,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-09",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-media-origin",
-          "branch": null,
-          "number": 2,
-          "title": "Merge development into main: radio channels, push transports and documentation",
-          "url": "https://github.com/5G-MAG/rt-media-origin/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-05",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -1008,19 +995,6 @@
           "created_at": "2026-10-08",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-media-origin",
-          "branch": null,
-          "number": 2,
-          "title": "Merge development into main: radio channels, push transports and documentation",
-          "url": "https://github.com/5G-MAG/rt-media-origin/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-05",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -1231,19 +1205,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-media-origin",
-          "branch": null,
-          "number": 2,
-          "title": "Merge development into main: radio channels, push transports and documentation",
-          "url": "https://github.com/5G-MAG/rt-media-origin/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-05",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-libflute",
           "branch": null,
           "number": 98,
@@ -1286,7 +1247,7 @@
     },
     {
       "name": "FLUTE Conformance Validator",
-      "doc_url": null,
+      "doc_url": "/validation/flute/",
       "tagline": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517",
       "pulls": [
         {

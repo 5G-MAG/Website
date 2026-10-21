@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20 02:15 UTC",
+  "updated_at": "2026-10-21 02:08 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1362,7 +1362,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -1372,7 +1372,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-16",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -1522,16 +1522,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "feature/issue66-tunnel-passthrough",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/issue66-tunnel-passthrough",
-              "default": false,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -4099,7 +4099,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-17",
+              "updated_at": "2026-10-20",
               "base": "improvements"
             },
             {
@@ -4109,7 +4109,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-17",
+              "updated_at": "2026-10-20",
               "base": "improvements"
             },
             {
@@ -4396,7 +4396,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -4406,7 +4406,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-16",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -4556,16 +4556,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "feature/issue66-tunnel-passthrough",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/issue66-tunnel-passthrough",
-              "default": false,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -4611,9 +4611,19 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": "2026-07-03",
           "pulls": [
+            {
+              "number": 75,
+              "title": "Realign wrap files after recent PR merges",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/pull/75",
+              "draft": false,
+              "author": "davidjwbbc",
+              "created_at": "2026-10-20",
+              "updated_at": "2026-10-20",
+              "base": "development"
+            },
             {
               "number": 74,
               "title": "mbsf: do not request an MBS Distribution Session again while its creation is waiting",
@@ -4631,7 +4641,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-09",
-              "updated_at": "2026-10-16",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -4785,6 +4795,12 @@
               "last_work_commit": "2026-07-03"
             },
             {
+              "name": "feature/mbs5-announcement",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-19",
@@ -4803,12 +4819,6 @@
               "last_work_commit": "2026-10-16"
             },
             {
-              "name": "feature/mbs5-announcement",
-              "default": false,
-              "last_commit": "2026-10-15",
-              "last_work_commit": "2026-10-15"
-            },
-            {
               "name": "backup/pre-rewrite-20260907",
               "default": false,
               "last_commit": "2026-08-12",
@@ -4822,7 +4832,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -4832,7 +4842,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -4842,7 +4852,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-16",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -4920,25 +4930,25 @@
               "last_work_commit": "2026-07-03"
             },
             {
+              "name": "fix/mbstf-minimum-fdt-expiry",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
+              "name": "fix/mbstf-push-fixed-port",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
             },
             {
-              "name": "fix/mbstf-minimum-fdt-expiry",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
               "name": "development",
-              "default": false,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "fix/mbstf-push-fixed-port",
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
@@ -5920,7 +5930,7 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": null,
           "pulls": [],
           "issues": [],
@@ -5928,26 +5938,14 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-13",
-              "last_work_commit": "2026-05-13"
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "docs/api-versions-and-readmes",
-              "default": false,
-              "last_commit": "2026-10-06",
-              "last_work_commit": "2026-10-06"
-            },
-            {
-              "name": "feat/portal-callbacks",
-              "default": false,
-              "last_commit": "2026-10-05",
-              "last_work_commit": "2026-10-05"
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
             }
           ]
         }
@@ -6426,7 +6424,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-20",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -6436,7 +6434,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-16",
+              "updated_at": "2026-10-20",
               "base": "development"
             },
             {
@@ -6586,16 +6584,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "feature/issue66-tunnel-passthrough",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/issue66-tunnel-passthrough",
-              "default": false,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -6639,7 +6637,7 @@
     },
     {
       "name": "FLUTE Conformance Validator",
-      "doc_url": null,
+      "doc_url": "/validation/flute/",
       "repos": []
     },
     {
@@ -6662,7 +6660,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-17",
+              "updated_at": "2026-10-20",
               "base": "improvements"
             },
             {
@@ -6672,7 +6670,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
-              "updated_at": "2026-10-17",
+              "updated_at": "2026-10-20",
               "base": "improvements"
             },
             {
