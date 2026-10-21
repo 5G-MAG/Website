@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-10-21T19:24:47.443Z",
+  "updated_at": "2026-10-21T21:08:16.448Z",
   "posts": [
+    {
+      "title": "5G-MAG Updates the 3GPP PCG on Its Work from Specifications to Running Code",
+      "date": "2026-10-22",
+      "slug": "pcg57-update",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/pcg57-update.png",
+      "excerpt": "On 21 October 2026, Frédéric Gabin, 5G-MAG Chair, took part in the 3GPP Project Coordination Group meeting (PCG#57) and presented the latest news from 5G-MAG. The contribution, PCG57_25, is listed on the [liaison statements page](/ls)."
+    },
     {
       "title": "Future Media Townhall 2026: Speaker Slides Now Available",
       "date": "2026-09-15",
