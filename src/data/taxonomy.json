@@ -1796,7 +1796,7 @@
         "branch": "main",
         "license": "Multiple",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "3GPP"
         ],
         "dependencies": [
@@ -1817,7 +1817,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "ETSI"
         ],
         "dependencies": [
@@ -1841,7 +1841,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "ETSI"
         ],
         "dependencies": [
@@ -1861,7 +1861,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "ETSI"
         ],
         "dependencies": [
@@ -1883,7 +1883,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "ETSI"
         ],
         "dependencies": [
@@ -1904,7 +1904,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "DVBI",
+          "DVB-I",
           "ETSI"
         ],
         "dependencies": [
