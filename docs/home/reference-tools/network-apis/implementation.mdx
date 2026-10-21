@@ -2,8 +2,11 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: "Status of the Network APIs reference tools (CAMARA): not yet audited, with the status from the repository README."
+description: "What the Network APIs reference tools (CAMARA) implement as an API client, from an audit of the repository on main against the CAMARA OpenAPI specifications."
 ---
+
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-network-apis.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,20 +25,30 @@ description: "Status of the Network APIs reference tools (CAMARA): not yet audit
 :::tip[In short]
 
 - **What the tools are:** example files, tools and configurations for working with CAMARA network APIs, as a client: a browser portal, an MCP server and API collections for Insomnia.
-- **Status:** not yet audited.
-- **Source of this page:** the repository README; no code audit has been done yet.
+- **What this covers:** the repository (rt-camara-examples) as an API consumer, judged against the CAMARA OpenAPI specifications for Dedicated Networks, QoS Booking, QoS Profiles, QoS Provisioning, Quality on Demand and QoS Booking and Assignment, as they stand on the main branch of each API repository. Judged on the `main` branch of the repository on 2026-10-22.
+- **Source of this page:** every requirement is split into the cases its text defines; each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that need the common CAMARA schemas that were not available (Device, Area and Point), and cases that obligate only the API provider, are not shown as consumer cases.
 
 :::
 
 CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) that defines portable network APIs, so that an application can request network behaviour through common interfaces rather than operator-specific ones. For what the APIs and the 3GPP specifications behind them define, see the [Technology](/tech/network-apis) and the [Standards](/standards/network-apis). For how to run the tools, see the [Tutorials](./tutorials).
 
+## What the Reference Tools implement
+
+- **Dedicated Networks, portal and MCP server:** both call the service areas, network profiles, networks and accesses APIs with a client-credentials token, and the portal has a generic webhook receiver for events. They follow an earlier form of the API: one `device` per access, not a `devices` list, and list responses read as bare arrays, not as the paged objects (`items` and `pagination`) the current specification defines. The network name is kept only as a local label and is not sent.
+- **Dedicated Networks, Insomnia collection:** the create request sends a `devices` list, while the add and remove requests send a single `device` object.
+- **QoS Booking, QoS Booking and Assignment, QoS Provisioning and Quality on Demand:** these exist as Insomnia requests, with no authentication block and no code that reads a response. The booking create request omits the required `serviceArea`, the assign request sends `device` where the API declares `devices`, the release request uses DELETE where the API defines POST, the extend-session request sends `requestedDuration` where the API declares `requestedAdditionalDuration`, and several requests send `networkAccessIdentifier`, which the specification says is not supported in this version.
+- **QoS profiles:** the portal retrieves the list and the detail of a profile and shows its top-level properties; nested values appear only as text.
+- **Authorisation:** only the two-legged client-credentials flow is used; the three-legged cases, and the cases about handling responses and events by name, are absent.
+
 ## Implementation status
 
-Not yet audited. According to its README, the repository rt-camara-examples provides the Dedicated Networks API in the portal and in the MCP server, and Insomnia collections that also cover Quality on Demand and QoS Booking. Which parts of these APIs are covered has not been audited.
+Open a feature, then a requirement, to see each case and why. Filter by component and release.
+
+<ImplementationCases data={AUDIT} />
 
 :::info[Full audit for members]
 
-When an audit of this project exists, the full audit (each requirement with the code behind each verdict) will be available to 5G-MAG members through [Developer Tools](/developer-tools).
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
 
 [Become a member](/membership) · [Request access](/early-access)
 
