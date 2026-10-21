@@ -2,10 +2,8 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 0
-description: Explains the Beyond 2D Evaluation Framework's test scenarios, codecs, and metrics for benchmarking stereoscopic, point-cloud, and multi-view-plus-depth video.
+description: What the Beyond 2D Evaluation Framework repository contains, framework by framework, read from its README and directory tree, and how it relates to 3GPP TR 26.956.
 ---
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -18,62 +16,78 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange')}>Developer Exchange</a>.
+:::tip[In short]
 
-**Category:** Evaluation Testbeds
+- **What this covers:** the Beyond 2D Evaluation Framework repository, read from its README, its folder READMEs and its directory tree.
+- **What it is:** scripts and configuration files for reproducible evaluation in the 3GPP SA4 Feasibility Study on Beyond 2D Video (FS_Beyond2D), which will result in TR 26.956.
+- **What works today:** two frameworks, one for multi-view plus depth (MVD) built around the TMIV encoder and decoder, and one for V-PCC point clouds built around the MPEG V-PCC test model. The README lists three scenarios whose descriptions are still to be written.
+- **Standards:** the 5G Media Streaming specifications explored here (TS 26.501, TS 26.512) fall on no component of this repository, so there is no case-by-case audit against them.
 
-This page describes the specifications within the scope of the Beyond 2D tools and the context for how they are meant to be used.
+:::
 
-The Beyond 2D Evaluation Framework supports the systematic assessment of next-generation video formats that go past a single flat 2D image, such as multi-view video plus depth, point clouds, and other immersive representations. The emphasis is on evaluation and characterization: providing a repeatable way to compare encoding, delivery, and rendering pipelines for these formats so that results can feed into standardisation. This aligns directly with 3GPP's feasibility study FS_Beyond2D and the resulting technical report TR 26.956, "Evaluation and Characterization of Beyond 2D Video Formats and Codecs," which this work tracks.
+For the technology background, see [Beyond 2D Video Experiences on the Tech portal](/tech/beyond-2d). For how to run the tools, see the [Tutorials](/testbeds/beyond-2d/tutorials).
 
-From an implementer's point of view, the value here is a common, transparent test setup rather than a shipping playback product: defined test content, processing steps, and metrics that let you benchmark candidate formats and codecs on a like-for-like basis. Where volumetric coding is in scope, the framework relates to Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5); for delivery evaluation it touches common packaging such as the Common Media Application Format (CMAF). Because this is an evaluation-focused effort tied to an active 3GPP study, the set of dedicated reference tools is smaller than for 5G-MAG's product-oriented projects, and it overlaps with the volumetric tooling; this page states that scope plainly rather than over-claiming a large standalone toolset.
+## What it is
 
-For the authoritative, current list of repositories and their status, see the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page; roadmap items are tracked from the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases). For related encoding and rendering tools, see the [MPEG V3C Immersive Platform](/reference-tools/v3c) project.
+The repository is an evaluation toolset, not a service or a player. Its README describes it as scripts and configuration files for reproducible evaluation in FS_Beyond2D. The study covers several Beyond 2D representations and service scenarios, and it is based on the SP-240479 study item description. Source sequences, bitstreams and rendered pose trace videos are not in the repository; the README says they are on separate servers, listed in the technical report.
 
-## What This Project Implements
+The README states that the repository has two frameworks, each with its own instructions: the `mvd` folder and the `point_cloud` folder.
 
-The Beyond 2D Evaluation Framework is a test setup, not a shipping player. It provides a repeatable way to run candidate formats and codecs through the same pipeline and compare the results. It is organised around the evaluation scenarios from the 3GPP study, which the reference repository lists as:
+## Scenarios
 
-1. **UE-to-UE stereoscopic video live streaming** (stereoscopic format, live/device-to-device).
-2. **Streaming of professionally produced volumetric video**, a single asset containing people (point-cloud format, on-demand).
-3. **On-demand streaming of multi-view plus depth** (MV+D format, on-demand).
+The README lists three scenarios and says their descriptions are still to be written.
 
-The repository separates the multi-view-plus-depth (`mvd`) and point-cloud content, reflecting the different processing chains each family needs.
+- **Scenario 1:** UE-to-UE stereoscopic video live streaming. The repository has no folder or script for it, so it is planned.
+- **Scenario 2:** streaming of professionally produced volumetric video with a single asset containing people.
+- **Scenario 3:** on-demand streaming of multi-view plus depth.
 
-### Formats, codecs, and metrics
+The README does not say which folder serves which scenario. The `mvd` folder is the multi-view plus depth framework, which matches the wording of Scenario 3; the `point_cloud` folder handles V-PCC content, which the README does not tie to a numbered scenario.
 
-| Format family         | Coding approaches                             | V3C relation                     |
-| --------------------- | --------------------------------------------- | -------------------------------- |
-| Stereoscopic          | MV-HEVC; simulcast/frame-compatible anchor    | Not V3C-based                    |
-| Multi-view plus depth | MV-HEVC; MIV (ISO/IEC 23090-12)               | MIV is a V3C profile             |
-| Dense point cloud     | V-PCC (ISO/IEC 23090-5); G-PCC for comparison | V-PCC is part of ISO/IEC 23090-5 |
-| Dynamic meshes        | V-DMC (ISO/IEC 23090-29), described alongside V-PCC for the volumetric scenario | V-DMC is V3C-related |
+## Multi-view plus depth framework
 
-The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH assumption), decode, and render, then measures quality on both source views and rendered pose-trace views. Reported metrics include PSNR, IV-PSNR, and VMAF against bitrate. Because source sequences, coded bitstreams, and rendered pose-trace videos are large, the framework references content on external servers rather than bundling it.
+The `mvd` folder runs a complete experiment as a graph of jobs.
 
-The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page.
+- **How it runs:** a setup script builds the software; the README says it also installs Ubuntu packages when called with `--system`. A configuration script then writes a `build.ninja` file with the dependency graph of all jobs, and running `ninja` completes the experiment. A `--slurm` option runs each job as a batch job on a Slurm cluster, with a small helper script that waits for each job.
+- **What it evaluates:** by default three content items (Bartender, Breakfast, DanceMoves), three coding conditions (A, FV, SCV), four rate points (RP1 to RP4) and input frame counts of 3 and 65. Each can be changed with a command-line option.
+- **Configuration:** a folder of JSON files for each condition and for the TMIV encode, mux and decode steps, JSON files describing the three sequences (with checksum files for two of them), pose trace CSV files, and a CSV of fixed quantisation parameters for texture and geometry at each rate point.
+- **Tools used:** the README says the framework builds TMIV 24.0 and QMIV 2.0 from source, together with the video codecs VVenC, VVdeC, HM and Kvazaar, among other libraries. The configuration script selects HM as the video encoder where it sets one.
+- **Outputs:** intermediate and final MIV bitstreams, coded video sub-bitstreams, reconstructed source view and interpolated pose trace YUV files, objective metric files (`.qmiv`), and TMIV parser logs, log files and bitrate reports for analysis. A script to collect the objective results is included.
+- **Requirements:** the README lists 32 GB of RAM, 1 TB of free disk space and Ubuntu 24.04.02 or later (WSL 2 on Windows), and advises limiting parallel jobs on a single machine because encoding and decoding are memory intensive.
 
-## Getting Started
+## Point cloud framework
 
-1. Read the [Beyond 2D Video Experiences](/tech/beyond-2d) Tech page for the scenarios, formats, and metrics.
-2. Check the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page for the current repository (or repositories) and clone the evaluation framework.
-3. Follow the repository README to obtain the referenced test content and run the per-scenario encode, deliver, decode, and metric steps.
-4. Track open work on the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases).
+The `point_cloud` folder provides tools to generate, decode and analyse V-PCC content. Its README points to three documents in its `doc` folder, one for each stage.
 
-## Roadmap
+- **PLY generation:** converts meshes into point cloud frames (PLY) for five content items (Mitch, JuggleSoccer, Henry, Nathalie, Aliyah). The documentation describes a sampling pass, a quantisation pass and a cleaning pass that removes duplicate points, aiming at about 2 million points per frame, with checksum files to verify the result.
+- **PLY to bin:** encodes each sequence with the MPEG V-PCC test model (TMC2), decodes it, computes objective metrics with the MPEG mmetric software (PCC and PCQM metrics), and writes CSV files and Excel workbooks from a template. The test configuration JSON files define the profiles, frame counts and rates.
+- **Bin to video:** decodes V-PCC bitstreams, or takes point clouds directly, and renders videos with the MPEG 3DG renderer, driven by JSON files for render jobs, camera paths and backgrounds.
+- **Requirements:** the documents list Python 3.11 and CMake 3.26 or above (under 4.0). The tools download and build the test model and the other MPEG software themselves.
+- **Contact and licence:** the folder README gives two InterDigital contacts for issues and carries its own licence notice, which refers to the 5G-MAG reference tools licence.
 
-This page links to the public GitHub project board that tracks Beyond 2D Evaluation Framework work. The board is the authoritative, up-to-date view of planned, in-progress, and completed items.
+## What is in the repository
 
-### General Project Roadmap
+- **README and licence:** the README carries a status badge and the 5G-MAG Public License v1.0.
+- **`mvd`:** the multi-view plus depth framework described above.
+- **`point_cloud`:** the V-PCC framework described above, with its documentation, JSON configuration, sequence configuration files and checksum files.
+- **Content:** none. Source sequences and bitstreams are hosted outside the repository.
 
-The Kanban board below tracks the planned and in-progress work for the Beyond 2D Evaluation Framework (test content, processing pipelines, and evaluation metrics for beyond-2D video formats and codecs). It is maintained live on GitHub.
+## Relation to the standards
 
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/10)
+This project does not implement a 3GPP network function or a media streaming client or server. The 5G Media Streaming specifications explored here (TS 26.501 and TS 26.512) fall on no component of this repository, so there is no case audit against them.
+
+The relevant references are the study and its report:
+
+- **FS_Beyond2D and TR 26.956:** the README names the study (based on SP-240479) and says it will result in TR 26.956. The repository holds the scripts and configuration for evaluating the representations the study covers.
+
+For the standards themselves, see [Beyond 2D on the Standards portal](/standards/beyond-2d).
+
+## Used with other projects
+
+- **MPEG V3C Immersive Platform:** a related project for volumetric encoding and rendering tools. The README does not mention it. See [MPEG V3C Immersive Platform](/reference-tools/v3c).
 
 ## Related
 
-- Tech: [Beyond 2D Video Experiences](/tech/beyond-2d)
-- See also: [MPEG V3C Immersive Platform](/reference-tools/v3c): the related volumetric encoding and rendering tools
-:::note
-Refer to the [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework) repository on GitHub to use or contribute to this testbed. See [How to Contribute](/contributing) for the process.
-:::
+- [Beyond 2D Video Experiences: Technology](/tech/beyond-2d)
+- [Tutorials](/testbeds/beyond-2d/tutorials)
+- [Repositories & Releases](/testbeds/beyond-2d#repositories--releases)
+- Repository: [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework)
