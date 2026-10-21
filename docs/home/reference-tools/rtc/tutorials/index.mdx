@@ -1,0 +1,23 @@
+---
+title: Tutorials
+hide_title: true
+sidebar_position: -1
+description: "Tutorials for the Real-time Media Communication (RTC) work: SWAP signalling between two endpoints through a signalling server, following TS 26.113. The 5G-RTC architecture of TS 26.506 has no Reference Tool yet."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 21v-6" /><path d="M20 6l-3 -3l-3 3" /><path d="M10 18l-3 3l-3 -3" /><path d="M7 3v2" /><path d="M7 9v2" /><path d="M17 3v6" /><path d="M17 21v-2" /><path d="M17 15v-2" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Real-time Media Communication (RTC) Architecture</span>
+<h1>Tutorials</h1>
+</div>
+</div>
+
+The RTC work is focused on 5G-RTC (the architecture of TS 26.506 and the protocols of TS 26.113, which share the provisioning and media session handling APIs of TS 26.510 with 5G Media Streaming) and, in parallel, on SWAP, the signalling protocol of TS 26.113 clause 13.2.4. The only RTC code is the SWAP reference implementation, so the tutorial follows it.
+
+- [Tutorial: SWAP Signalling - register, connect, update and close](./swap-signalling): the SWAP messages between two endpoints through a signalling server, each one checked against the JSON schema of TS 26.113, and the calls of the reference library that send them.
+
+For what the SWAP code implements, see the [Implementation Detail](../implementation) page. For the code, see [Repositories & Releases](/reference-tools/rtc#repositories--releases) on the tool page.

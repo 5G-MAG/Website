@@ -1,0 +1,321 @@
+---
+title: "Tutorial: SWAP Signalling"
+sidebar_label: "SWAP Signalling - register, connect, update and close"
+hide_title: true
+sidebar_position: 1
+description: "Step by step with SWAP, the WebRTC signalling protocol of TS 26.113: the WebSocket address, the messages two endpoints exchange through a signalling server (register, connect, accept, update, close), each checked against the JSON schema of the specification, and the calls of the reference library that send them."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 21v-6" /><path d="M20 6l-3 -3l-3 3" /><path d="M10 18l-3 3l-3 -3" /><path d="M7 3v2" /><path d="M7 9v2" /><path d="M17 3v6" /><path d="M17 21v-2" /><path d="M17 15v-2" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Real-time Media Communication (RTC) Architecture</span>
+<h1>Tutorial: SWAP Signalling</h1>
+</div>
+</div>
+
+Two WebRTC endpoints need a way to exchange their session descriptions before media can flow. SWAP (Simple WebRTC Application Protocol, TS 26.113 V19.2.0, clause 13.2.4) is that way: JSON messages over a WebSocket, relayed by a signalling server. In this tutorial you build each SWAP message of a call (register, connect, accept, update, close), check it against the JSON schema of the specification, and see which call of the reference library sends it.
+
+:::tip[Read the READMEs first]
+Read the README of [rt-3gpp-swap](https://github.com/5G-MAG/rt-3gpp-swap#readme) before you start: it lists what to install and how to start the server. The repository belongs to the [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar) project and holds the SWAP reference implementation, a Node.js signalling server and a client library.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-3gpp-swap](https://github.com/5G-MAG/rt-3gpp-swap) | The SWAP reference implementation: a signalling server and a client library | [2. Get the reference implementation](#2-get-the-reference-implementation) to [7. Reject a request and send an application message](#7-reject-a-request-and-send-an-application-message) |
+
+| You want | Go to |
+|---|---|
+| To know where SWAP sits in the RTC architecture | [1. Where SWAP sits](#1-where-swap-sits) |
+| The code | [2. Get the reference implementation](#2-get-the-reference-implementation) |
+| The address an endpoint connects to | [3. The WebSocket address](#3-the-websocket-address) |
+| To check any SWAP message against the schema | [4. Build and check a message](#4-build-and-check-a-message) |
+| A callee that can be found | [5. Register and connect](#5-register-and-connect) |
+| To change the media of a running call, or end it | [6. Update and close](#6-update-and-close) |
+| To refuse a request, or send your own message type | [7. Reject a request and send an application message](#7-reject-a-request-and-send-an-application-message) |
+
+**You need:** a Linux machine with `git`, Node.js with `npm` (the version the repository's README asks for), and `python3` with the `venv` module. Sections 1 and 3 need nothing installed.
+
+## 1. Where SWAP sits
+
+In the RTC architecture of TS 26.506 V20.0.0 (figure 4.1.1-2, RTC General Architecture), the RTC Application on the UE exchanges signalling with the WebRTC Signalling Function of the RTC AS. That exchange runs over the reference point RTC-4s, the subsidiary reference point of RTC-4 for the signalling between two or more RTC endpoints via the RTC AS (TS 26.506 clause 4.3.3). TS 26.113 clause 4.3.2 says the signalling procedures for RTC-4s are those of the signalling protocol in clause 13.2, and clause 13.2.1 says SWAP supports `collaboration scenario 3` of TS 26.506.
+
+The signalling server an application uses comes from the Service Access Information. TS 26.113 clause 4.3.2 names the `swapEndpoints` list for it, and TS 26.510 V19.2.0 defines that list in the `rtcClientConfiguration` object (clause 9.2.3.1; the Application Provider can provision it with `swapEndpoints` and `enableSwapService`, clause 8.10.3.1). The reference library takes its server address from its own options, so in this tutorial you give it the address yourself.
+
+## 2. Get the reference implementation
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/rt-3gpp-swap.git
+cd rt-3gpp-swap
+```
+
+Install the dependencies and start the signalling server as the README says. The server serves SWAP on the path `/3gpp-swap/v1` and relays messages between the endpoints that connect to it. Leave it running; the next sections use its address, which this page writes as `<SWAP_HOST>` (the host name or address of the machine) and `<SWAP_PORT>` (the port the README gives).
+
+## 3. The WebSocket address
+
+SWAP runs over a WebSocket. TS 26.113 clause 13.2.3 gives the address as the scheme `wss`, then the host and an optional port, an optional deployment prefix starting with `/`, the protocol name `3gpp-swap` and the version `v1`. Clause 13.2.4.1 adds that the upgrade request carries the subprotocol `3gpp.SWAP.v1` in the `Sec-WebSocket-Protocol` header field. An endpoint therefore connects to:
+
+```text
+wss://<SWAP_HOST>:<SWAP_PORT>/3gpp-swap/v1
+```
+
+with the subprotocol `3gpp.SWAP.v1`. The client library builds this address from the host, the port and the optional prefix you give it, and sends the subprotocol itself. Its default scheme is `wss`; to reach a server that serves plain HTTP on your own machine, set the library's `secure` option to `false`, which gives `ws`.
+
+## 4. Build and check a message
+
+Every SWAP message carries three common fields, `source_id`, `message_id` and `message_type`, and the version `version` (TS 26.113 clauses 13.2.4.4.1 and 13.2.4.6; the text calls the first one `source`, the schema `source_id`).
+
+- `source_id` is a random string of at least 10 characters (a UUID is an example, clause 13.2.4.7) that does not change during a session.
+- `message_id` is a positive number that increases with each message the source sends.
+- `message_type` is one of `register`, `response`, `connect`, `accept`, `reject`, `update`, `close`, `application`.
+
+The parameters of each message sit in `payload`. TS 26.113 publishes the JSON schema in clause 13.2.4.6 as the file `TS26113_SWAPMessage.json`, which is in the zip of the specification at the [3GPP archive](https://www.3gpp.org/ftp/Specs/archive/26_series/26.113/) (take the latest version, here `26113-j20.zip`).
+
+Set up a small checker next to the schema:
+
+```bash
+mkdir -p ~/swapcheck
+cd ~/swapcheck
+python3 -m venv venv
+./venv/bin/pip install jsonschema
+unzip -j <path to>/26113-j20.zip TS26113_SWAPMessage.json
+```
+
+Save this as `check_swap.py`:
+
+```python
+import copy, json, sys
+from jsonschema import Draft7Validator
+
+BRANCH = {"register": 0, "response": 1, "connect": 2, "accept": 3,
+          "reject": 4, "application": 5}
+
+schema = json.load(open(sys.argv[1]))
+message = json.load(open(sys.argv[2]))
+
+envelope = copy.deepcopy(schema)
+branches = envelope["properties"].pop("payload")["oneOf"]
+payload = message.pop("payload", None)
+
+problems = [e.message for e in Draft7Validator(envelope).iter_errors(message)]
+kind = str(message.get("message_type", "")).lower()
+if payload is not None and kind in BRANCH:
+    branch = {"definitions": schema["definitions"], **branches[BRANCH[kind]]}
+    problems += [e.message for e in Draft7Validator(branch).iter_errors(payload)]
+print("VALID" if not problems else "INVALID: " + "; ".join(problems))
+```
+
+:::tip[Why the script splits the message]
+In the published schema the `payload` is a `oneOf` of six objects that accept any object, so a message with a payload matches several of them and `jsonschema` (version 4.26.0) reports it invalid. The script therefore checks the common fields on their own, then the payload against the one schema object for its message type (`update` has no schema object of its own, so only its common fields are checked).
+:::
+
+Save the first message, a connect from Alice to Bob (the identifiers are examples), as `connect.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f",
+  "message_id": 1,
+  "message_type": "connect",
+  "payload": {
+    "offer": "<SDP offer>",
+    "matching_criteria": [ { "type": "user", "value": "bob@example.org" } ]
+  }
+}
+```
+
+Check it, and a message with a wrong `message_id` and `message_type`:
+
+```bash
+./venv/bin/python check_swap.py TS26113_SWAPMessage.json connect.json
+```
+
+```text
+VALID
+```
+
+```json
+{
+  "version": 1,
+  "source_id": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f",
+  "message_id": "one",
+  "message_type": "bogus",
+  "payload": {}
+}
+```
+
+Saved as `bad.json`, the second one gives:
+
+```text
+INVALID: 'one' is not of type 'integer'; 'bogus' is not one of ['register', 'connect', 'response', 'accept', 'reject', 'update', 'close', 'application']
+```
+
+The routine for the rest of the page: build the message, save it as a file, run the same command with the file name, expect `VALID`.
+
+:::note[Message type letter case]
+TS 26.113 clause 13.2.4.4.1.3 says the message type is a case-insensitive string. The schema lists lower-case values only, so `CONNECT` is `INVALID` for the check above; send lower case.
+:::
+
+## 5. Register and connect
+
+When the endpoints go through a signalling server, the callee first registers the matching criteria by which a caller can find it (clause 13.2.4.4.2). The criteria types are `ipv4`, `ipv6`, `fqdn`, `service`, `user`, `eas`, `app`, `location`, `qos` and `processing`. Bob registers a `user` criterion; save as `register.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e",
+  "message_id": 1,
+  "message_type": "register",
+  "payload": { "matching_criteria": { "type": "user", "value": "bob@example.org" } }
+}
+```
+
+The server answers every request with a `response` message of type `ack`, or `error` with a description (clause 13.2.4.4.3). Alice then sends the connect message you saved in section 4: it carries her SDP offer and the criteria of the endpoint she wants. The server relays it to the registered endpoint that matches all of them and acknowledges it to Alice. When several endpoints match, the specification says the server selects one at random.
+
+Bob accepts with the answer SDP and the identifier of the target, Alice (clause 13.2.4.4.5); save as `accept.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e",
+  "message_id": 2,
+  "message_type": "accept",
+  "payload": { "target": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f", "answer": "<SDP answer>" }
+}
+```
+
+Check the three files:
+
+```bash
+for m in register connect accept; do ./venv/bin/python check_swap.py TS26113_SWAPMessage.json $m.json; done
+```
+
+```text
+VALID
+VALID
+VALID
+```
+
+With the library, the same exchange is: Bob's application registers its criteria; Alice's application creates its offer with the library's helper, which waits until ICE gathering is complete (SWAP version 1 has no ICE trickling, clause 13.2.4.3), and sends it with `connectOffer`; Bob's side emits a `connect` event; its application calls `accept` with the target and its answer.
+
+:::note[The target identifier]
+The text of clauses 13.2.4.4.5 to 13.2.4.4.9 lists `target` as a parameter of accept, update, reject, close and application, and of response; the schema of clause 13.2.4.6 does not list it, and accepts it as an additional property. The examples on this page put it in `payload`.
+:::
+
+## 6. Update and close
+
+Either endpoint can change the media of a running call with an `update` message that carries the new SDP, which may add, change or remove streams, and also disable one direction of the media while the session stays active (clause 13.2.4.4.6). The other endpoint replies with an `accept` that carries its SDP. Alice sends; save as `update.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f",
+  "message_id": 2,
+  "message_type": "update",
+  "payload": { "target": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e", "sdp": "<updated SDP>" }
+}
+```
+
+To end the whole session, either endpoint sends `close` (clause 13.2.4.4.8). Alice sends; save as `close.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f",
+  "message_id": 3,
+  "message_type": "close",
+  "payload": { "target": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e" }
+}
+```
+
+The receiver replies with an `accept` without an SDP, after which the session is torn down; save Bob's reply as `accept-close.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e",
+  "message_id": 3,
+  "message_type": "accept",
+  "payload": { "target": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f" }
+}
+```
+
+```bash
+for m in update close accept-close; do ./venv/bin/python check_swap.py TS26113_SWAPMessage.json $m.json; done
+```
+
+```text
+VALID
+VALID
+VALID
+```
+
+With the library: `update` sends the SDP you give it, and the other side emits an `update` event that its application accepts with `accept`. `close` with the target ends the session; the other side emits a `close` event and removes the session. Because the library does not send the reply to a received `close` by itself, have the application call `accept` with the target and no answer when the `close` event arrives.
+
+## 7. Reject a request and send an application message
+
+<details>
+<summary>Reject an offer or an update</summary>
+
+An endpoint that does not accept a connect or an update sends `reject` with the identifier of the request, an error identifier and a description (clause 13.2.4.4.7). Save as `reject.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e",
+  "message_id": 2,
+  "message_type": "reject",
+  "payload": { "target": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f", "request": 1, "error_id": "busy", "description": "The endpoint is busy" }
+}
+```
+
+With the library, the application calls `reject`; pass the identifier of the request you refuse, so the message carries it.
+
+</details>
+
+<details>
+<summary>Send an application message</summary>
+
+Once a session exists, the endpoints can exchange messages of their own. The `type` is a URN that identifies the message type, and `value` is an object (clause 13.2.4.4.9). Save as `application.json`:
+
+```json
+{
+  "version": 1,
+  "source_id": "3f1c9a52-7d0e-4c1b-9a64-0a1b2c3d4e5f",
+  "message_id": 4,
+  "message_type": "application",
+  "payload": { "target": "b7e2d4a8-5c31-4f60-8e29-6d7a8b9c0d1e", "type": "urn:example:chat", "value": { "text": "hello" } }
+}
+```
+
+With the library, `sendApp` sends the type and the value, and the other side emits an `application` event.
+
+</details>
+
+```bash
+for m in reject application; do ./venv/bin/python check_swap.py TS26113_SWAPMessage.json $m.json; done
+```
+
+```text
+VALID
+VALID
+```
+
+When the server cannot process or forward a message, it answers with an `error` response. TS 26.113 clause 13.2.4.7 defines four error types, each identified by a URL on `forge.3gpp.org/sa4/swap`: `message_unknown` (Message type unknown), `message_malformatted` (Message malformatted), `target_unknown` (Target cannot be located) and `unauthorized` (Unauthorized). The reference server puts the title and the detail of the error into the `description` of the response.
+
+## 8. Stop and clean up
+
+Stop the signalling server with Ctrl+C in its terminal. To remove the files of this page, delete `~/rt-3gpp-swap` and `~/swapcheck`.
+
+<details>
+<summary>What was run for this page</summary>
+
+The repository [rt-3gpp-swap](https://github.com/5G-MAG/rt-3gpp-swap) was not cloned for this page, because this machine had no access to it, so none of its commands, options or outputs appear on this page as run. The names of the library calls (`connectOffer`, `accept`, `reject`, `update`, `close`, `sendApp`), the events, the `secure` option and the behaviour of the server are taken from the code audit behind the [Implementation Detail](../implementation) page, not from a run.
+
+Run: section 4 and the checks in sections 5, 6 and 7 (the messages checked against `TS26113_SWAPMessage.json` of TS 26.113 V19.2.0, with Python 3.14.4 and jsonschema 4.26.0 in a fresh virtual environment; every command above that is a check printed the output shown). Not run: section 2 (clone, install, start), the connection of section 3, and every exchange between a client and the server (registering, connecting, accepting, updating, closing, rejecting, application messages). Sections 1 and 3 are from TS 26.506 V20.0.0, TS 26.113 V19.2.0 and TS 26.510 V19.2.0, read in the specification text.
+
+</details>
