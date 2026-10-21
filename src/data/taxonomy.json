@@ -2042,7 +2042,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "Unity"
@@ -2062,7 +2062,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "rt-common-shared"
@@ -2082,7 +2082,7 @@
         "branch": "main",
         "license": "Multiple",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "rt-common-shared"
@@ -2121,7 +2121,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "MPEG",
+          "MPEG (ISO/IEC)",
           "3GPP"
         ],
         "dependencies": [
@@ -2142,7 +2142,7 @@
         "branch": "main",
         "license": "Apache-2.0",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "glTF"
@@ -2159,7 +2159,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "MPEG",
+          "MPEG (ISO/IEC)",
           "3GPP"
         ],
         "dependencies": [
@@ -2180,7 +2180,7 @@
         "branch": "main",
         "license": "Multiple",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "glTF"
@@ -2197,7 +2197,7 @@
         "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
-          "MPEG"
+          "MPEG (ISO/IEC)"
         ],
         "dependencies": [
           "Blender"
