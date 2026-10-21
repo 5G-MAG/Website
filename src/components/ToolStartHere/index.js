@@ -24,7 +24,6 @@ export default function ToolStartHere() {
 
   const repos = reposFor(project);
   const metas = repos.map(repoMetaFor).filter(Boolean);
-  const publicCount = metas.filter((m) => m.public).length;
   const licences = [...new Set(metas.map((m) => m.license).filter((l) => l && l !== 'Multiple'))];
   const { count, latestDate } = releaseInfoFor(project);
   const latest = formatDate(latestDate);
@@ -34,17 +33,7 @@ export default function ToolStartHere() {
   const rows = [
     project.tagline && ['What it is', project.tagline],
     latest && ['Latest release', `${latest}${count > 1 ? `, across ${count} releases` : ''}`],
-    metas.length > 0 && [
-      'Code',
-      publicCount === metas.length ? (
-        `All ${metas.length} ${metas.length === 1 ? 'repository is' : 'repositories are'} public.`
-      ) : (
-        <>
-          {publicCount} of {metas.length} repositories are public. The others are in{' '}
-          <Link to="/early-access">Early Access</Link>.
-        </>
-      ),
-    ],
+    metas.length > 0 && ['Code', <a key="repos" href="#repositories--releases">Repositories and releases</a>],
     licences.length > 0 && ['Licence', licences.join(', ')],
   ].filter(Boolean);
 

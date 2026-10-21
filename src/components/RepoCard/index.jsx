@@ -100,9 +100,7 @@ export default function RepoCard({ entry, meta }) {
           </h3>
           <code className={styles.slug}>{repoSlug}</code>
         </div>
-        {isPublic ? (
-          <span className={`${styles.status} ${styles.statusOpen}`}>Open source</span>
-        ) : (
+        {!isPublic && (
           <a className={`${styles.status} ${styles.statusEarly}`} href={earlyAccess}>
             Early Access
           </a>

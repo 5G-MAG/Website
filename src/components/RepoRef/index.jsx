@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 // The compact counterpart of RepoCard, for places where a repository is one row of a search result, an index or a
 // statistics table. It renders what follows the repository name there, so every list shows a repository the same way
-// as the card: the Open source / Early Access status and a link to the repository's page on this site (its own page
+// as the card: the Early Access badge (only where a repository is in Early Access) and a link to the repository's page on this site (its own page
 // where it has one, otherwise the owning project's page at the repository's card, #repo-<slug>). The name itself,
 // linked to GitHub, stays with the caller, which keeps its own row styling.
 
@@ -24,9 +24,8 @@ export function repoPageFor(slug) {
 export function RepoStatus({ slug, priv }) {
   const meta = repoMetaFor(slug);
   const isPublic = meta ? meta.public : !priv;
-  return isPublic ? (
-    <span className={`${styles.status} ${styles.open}`}>Open source</span>
-  ) : (
+  // Whether a repository is private matters only for this badge.
+  return isPublic ? null : (
     <Link className={`${styles.status} ${styles.early}`} to="/early-access">
       Early Access
     </Link>
