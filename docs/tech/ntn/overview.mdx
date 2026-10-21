@@ -41,7 +41,7 @@ support NTN), TS 38.300 (NR overall description, NTN aspects),
 [TR 38.863](https://www.3gpp.org/dynareport/38863.htm) (NTN related RF and
 co-existence aspects). For satellite broadcast delivery, see also ETSI TS 103 720 (5G
 Broadcast system for linear TV and radio), which is relevant to GEO-based NTN broadcast
-scenarios.
+scenarios. Release 19 also adds an LTE downlink-only band (1467 to 1492 MHz, ITU Region 3) for 5G Broadcast via a GSO satellite, with UE and satellite access node RF requirements for a 10 MHz PMCH in TS 36.102 and TS 36.108 (TR 21.919 V19.0.0 clause 5.4.1, work item LTE_band_5G_bcast_GSO).
 
 ### NTN system model and terminology
 
@@ -104,11 +104,17 @@ over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
   delivery only, and receivable in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. Over NR NTN,
   Release 19 adds the NR NTN Intended Service Area, carried from the 5G Core to NG-RAN in
   the MBS service area and to the UE in SIB27, which can restrict the MBS service area to
-  an area smaller than a cell (TS 23.247 V20.0.0 clauses 4.1 and 6.21; TS 38.300 V19.4.0 clause 16.10.1).
+  an area smaller than a cell (TS 23.247 V20.0.0 clauses 4.1 and 6.21; TS 38.300 V19.4.0 clause 16.10.1). TR 21.919 V19.0.0 clause 5.1.1 (NR_NTN_Ph3) describes this as support for multicast and broadcast services when the intended service area is smaller than a cell, through enhanced SIB signalling and core-to-NG-RAN signalling; the specification texts checked define the ISA for the broadcast MBS session only.
 - **Multicast MBS session.** NG-RAN is the decision point for switching between PTP and
   PTM, and the UE receives it in RRC_CONNECTED, or in RRC_INACTIVE with PTM. TS 23.247
   has no NTN clause for the multicast MBS session; TS 38.321 has, since Release 17, a
   multicast DRX HARQ timer for non-terrestrial networks that adds the UE-gNB round trip (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.1; TS 38.321 V17.15.0 and V19.4.0 clause 5.7).
+
+### Release context
+
+- **Release 17, 5GSAT_ARCH.** The 5G Core gained RAT types that distinguish satellite configurations (LEO, MEO, GEO, other), a new 5QI for satellite access and backhaul, and support for satellite backhaul with constant delay only (TR 21.917 V17.0.1 clause 5.1.1).
+- **Release 18, 5GSATB.** Dynamic satellite backhaul categories (DYNAMIC_GEO, DYNAMIC_MEO, DYNAMIC_LEO and DYNAMIC_OTHERSAT) were defined, and a UE can use a UPF on board a GEO satellite for edge computing and local switching (TR 21.918 V18.0.0 clause 5.1).
+- **Release 20, not yet in a TR 21.9xx report.** TS 22.261 V20.8.1 clause 6.46.2 has a requirement that a 5G system supporting satellite access and Broadcast Services delivers Media Broadcast to a UE that is not registered, subject to regulatory requirements and operator policy (change history: CR 0835, Release 20). TS 23.501 V20.3.0 clause 5.43.3 specifies local switching for UE-to-UE communications via a UPF deployed on a GEO satellite, for 5G VN DNNs and slices, and its change history lists CR 6613, "Clarification on local switching capability of UPF on board satellites". The 5G Core procedures for the unregistered-UE broadcast requirement were not checked.
 
 ### What each page adds
 
@@ -139,6 +145,7 @@ over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
 - **Feeder link, service link, NTN payload, Mapped Cell ID:** TS 38.300 V19.4.0, clause 3.1.
 - **Transparent and regenerative payload, cells and service links, Tracking Area, GNSS, FDD:** TS 38.300 V19.4.0, clause 16.14.1.
 - **Timing:** TS 38.300 V19.4.0, clause 16.14.2.1.
+- **Release context:** TR 21.917 V17.0.1, clause 5.1.1; TR 21.918 V18.0.0, clause 5.1; TR 21.919 V19.0.0, clauses 5.1.1 and 5.4.1; TS 22.261 V20.8.1, clause 6.46.2 and change history (CR 0835); TS 23.501 V20.3.0, clause 5.43.3 and change history (CR 6613).
 - **MBS over NTN:** TS 23.247 V20.0.0, clauses 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.10.1; TS 38.331 V19.4.0, clause 6.3.1; TS 38.321 V17.15.0 and V19.4.0, clause 5.7. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA or SIB27 text.
 
 </details>

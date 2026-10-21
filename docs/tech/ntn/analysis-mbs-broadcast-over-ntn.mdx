@@ -34,7 +34,7 @@ This documentation is currently **under development and subject to change**. If 
 
 ## Broadcast MBS sessions over NTN
 
-Release 19 states that transmission of a Broadcast MBS Session is supported over NR non-terrestrial networks, and that TS 38.300 specifies the additional NG-RAN procedures for it (TS 23.247 clauses 4.1 and 6.21). Release 18 of TS 23.247 has no NTN text.
+Release 19 states that transmission of a Broadcast MBS Session is supported over NR non-terrestrial networks, and that TS 38.300 specifies the additional NG-RAN procedures for it (TS 23.247 clauses 4.1 and 6.21). Release 18 of TS 23.247 has no NTN text. The Release 19 work item NR_NTN_Ph3 describes this as support for multicast and broadcast services when the intended service area is smaller than a cell, using enhanced SIB signalling and core-to-NG-RAN signalling (TR 21.919 V19.0.0 clause 5.1.1).
 
 The broadcast MBS session itself is the one described in [MBS Broadcast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-broadcast-ran): the same service and content go to all UEs in a geographical area. For MBS broadcast, only the 5GC Shared MBS traffic delivery method with PTM delivery applies (TS 23.247 clause 4.1). The functions involved are those of the [MBS System architecture](/tech/5g-mbs/architecture-system).
 
@@ -114,7 +114,7 @@ TS 38.300 clause 16.10.1 makes no NTN distinction: a UE can receive a broadcast 
 <details>
 <summary>Sources for this page</summary>
 
-- **Broadcast MBS sessions over NTN, delivery methods:** TS 23.247 V20.0.0, clauses 3.1, 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.14.12. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA text.
+- **Broadcast MBS sessions over NTN, delivery methods:** TR 21.919 V19.0.0, clause 5.1.1; TS 23.247 V20.0.0, clauses 3.1, 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.14.12. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA text.
 - **The Intended Service Area in the 5G Core:** TS 23.247 V20.0.0, clauses 6.21, 7.1.1.2 (steps 8 and 11, NOTE 5), 7.3.1 (steps 2, 3 and 9) and 7.3.3 (steps 2 and 3); TS 38.300 V19.4.0, clause 16.14.5.
 - **NGAP:** TS 38.413 V19.4.0, clauses 8.17.1.2, 8.17.2.2, 9.3.1.209 and 9.3.1.273.
 - **System information:** TS 38.300 V19.4.0, clauses 7.3.1 and 16.14.2.2; TS 38.331 V19.4.0, clauses 5.2.2.1, 5.2.2.4.29, 5.9.1.1, 6.2.2, 6.3.1, 6.3.6 and 6.4.
