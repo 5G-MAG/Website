@@ -161,6 +161,8 @@ The first such subscription tells the MB-SMF that the first UE is joining. With 
 
 The SMF considers the UE authorised if the UE is authorised to use multicast MBS services, and the MBS Session ID is in its MBS subscription data or the Any UE indication was received. Otherwise it rejects the join with a cause value (TS 23.247 clause 7.2.1.3, step 4). Before the start time, the SMF may accept the join and indicate the start time, or reject it with a cause and optionally a back-off timer. While the session is inactive, the SMF accepts the join.
 
+Release 20 (TS 23.247 V20.0.0) adds roaming for multicast: a roaming UE may join a multicast session provided by the VPLMN through a local breakout PDU session, and the UE needs permission in its UDM subscription data to access MBS services of a VPLMN (clauses 6.22 and 6.4.2). For a session open only to selected UEs, the AF creating the session in the VPLMN provisions the authorisation through a NEF in the HPLMN of the roaming user and includes the VPLMN ID; the SMF in the VPLMN then authorises the join from the subscription data retrieved from the UDM in the HPLMN and from the VPLMN policies on inbound roaming UEs (clause 6.22). The same issue reads differently elsewhere. Clause 4.1: "For roaming users, reception of Multicast/Broadcast Services of the VPLMN is supported." and "For roaming users, reception of Multicast/Broadcast Services of the HPLMN is not supported in this Release." Clause 7.2.1.2, NOTE 2: "In this release, roaming is not supported, i.e. HPLMN and Serving PLMN are the same and subscribed SNPN and serving SNPN are same." The two statements are quoted as written and not reconciled here.
+
 ### J5. N2 SM information towards NG-RAN
 
 If it accepts the join, the SMF answers the AMF with Nsmf_PDUSession_UpdateSMContext (with Namf_Communication_N1N2MessageTransfer when the join came with a PDU Session Establishment Request). The N2 SM information creates an MBS Session Context in the RAN if none exists, and relates it to the UE's PDU Session context through the MBS Session ID and the mapping between multicast and associated QoS flows. The N1 SM container holds the PDU Session Modification Command (TS 23.247 clause 7.2.1.3, step 5). Based on operator policy, the SMF may prepare for fall-back to 5GC Individual delivery: it maps the multicast QoS flows to unicast QoS flows of the PDU Session, with unused QFIs and the same QoS (step 5).
@@ -232,6 +234,8 @@ For PTP, the gNB schedules a UE-specific PDSCH with a UE-specific PDCCH whose CR
 ## RRC states
 
 A UE that joined an MBS multicast session receives its data in RRC_CONNECTED or, from Release 18, in RRC_INACTIVE, never in RRC_IDLE. TS 38.300 V19.4.0 clause 16.10.5.2: "A UE can be configured to receive data of MBS multicast session only in RRC_CONNECTED state or RRC_INACTIVE state." When the session is deactivated, "the gNB may move the UE in RRC_CONNECTED state to RRC_IDLE or RRC_INACTIVE state", and group notification by paging "is utilized to page all UEs in RRC_IDLE and RRC_INACTIVE states that joined the associated MBS multicast session" (same clause). A UE in RRC_IDLE therefore only listens for that paging, and moves to RRC_CONNECTED to receive.
+
+Reception in RRC_INACTIVE was introduced in Release 18. In TS 23.247 it was added by CR 0149 (support of MBS multicast reception by UEs in RRC_INACTIVE state) and CR 0159 (support for RRC_INACTIVE UEs receiving multicast MBS data), both at V18.1.0 (March 2023); clause 6.17 is present in V18.8.0 and absent from the V17.12.0 issue. In TR 21.918 it belongs to the work item Enhancements of NR MBS, NR_MBS_enh (clause 12.2). Group paging that tells UEs in RRC_INACTIVE they may receive the session data in that state came with CR 0280 at V18.3.0 (clause 6.17; clause 7.2.5.2, step 12 and NOTE 2).
 
 ## Reception in RRC_INACTIVE
 
@@ -341,6 +345,8 @@ Activation and deactivation apply to multicast only. The MB-SMF triggers activat
 6. The MB-SMF asks the MB-UPF, with N4mb Session Modification, to forward the MBS packets (step 15). In PFCP, it sets the FAR Apply Action back to FSSM and/or MBSU (TS 29.244 clause 5.34.2.4).
 
 In NG-RAN, the group notification is addressed with the P-RNTI on the PDCCH. Its paging message contains the MBS session ID and pages all UEs in RRC_IDLE and RRC_INACTIVE that joined the session, without paging them individually (TS 38.300 clause 16.10.5.2). In RRC_IDLE, the UE forwards each TMGI of `pagingGroupList` that matches a session it joined to the upper layers (TS 38.331 clause 5.3.2.3). Unless the notification indicates that reception in RRC_INACTIVE is allowed, the UEs reconnect or resume and move to RRC_CONNECTED (TS 38.300 clause 16.10.5.2).
+
+For UEs that use power saving functions, such as MICO mode with Active Time or extended DRX, Release 18 added coordinated reception (TS 23.247 clauses 6.16 and 7.2.10; absent from V17.12.0). The UE learns the start time and scheduled activation times from the service announcement, wakes up at those times, and joins in RRC_CONNECTED before receiving; when the AMF performs group paging at activation, it also includes the CM-IDLE UEs that use power saving functions (clause 7.2.10).
 
 ### A2. Deactivation
 
@@ -524,6 +530,8 @@ For delivery to UEs in RRC_INACTIVE, the handover and resume procedures above ha
 - **RRC_INACTIVE, Physical layer:** TS 38.212 V19.4.0, clauses 7.3.1.5.1 and 7.3.1.5.2; TS 38.213 V19.5.0, clause 10.1; TS 38.214 V19.5.0, clause 5.1.
 - **RRC_INACTIVE, User plane:** TS 38.323 V19.1.0, clause 7.1; TS 37.324 V19.0.0, clause 4.2.
 - **RRC states:** TS 38.300 V19.4.0, clause 16.10.5.2.
+- **Release 18 attribution (RRC_INACTIVE, power saving, group paging):** TS 23.247 V18.8.0 and V20.0.0, clauses 6.16, 6.17, 7.2.5.2 and 7.2.10, and the change history (CR 0149, CR 0159, CR 0280), compared with V17.12.0; TR 21.918 V18.0.0 clause 12.2 (NR_MBS_enh).
+- **Release 20 (TS 23.247 V20.0.0), roaming for multicast:** clauses 4.1, 6.4.2, 6.22 and 7.2.1.2 (NOTE 2).
 - **Mobility:** TS 23.247 V20.0.0, clauses 6.3.1, 7.2.1.4 and 7.2.3.1 to 7.2.3.8.4; TS 38.300 V19.4.0, clauses 16.10.5.1 and 16.10.5.3.1 to 16.10.5.3.5; TS 38.413 V19.4.0, clauses 8.4.2.2, 8.4.4.2, 8.18.1, 8.18.2 and 9.3.1.210.
 - **Added in Release 19 (shared NG-U path failure, Object Repair):** TS 38.300 V19.4.0, clause 16.10.5.1; TS 38.413 V19.4.0, clause 8.18.5.2; TS 37.483 V19.4.0, clause 8.6.2.2.2; TS 26.502 V19.6.0, clause 5.3; each compared with the Release 18 issue (TS 38.300 V18.11.0, TS 38.413 V18.11.0, TS 37.483 V18.6.0, TS 26.502 V18.6.0).
 
