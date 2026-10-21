@@ -2,8 +2,11 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: "Status of the 5G Broadcast Reference Tools: not yet audited, with the status from the repository READMEs."
+description: "What the 5G Broadcast Reference Tools implement, component by component, from an audit of the repositories on main against ETSI TS 103 720 and the 3GPP specifications it uses."
 ---
+
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-5g-broadcast.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,27 +25,37 @@ description: "Status of the 5G Broadcast Reference Tools: not yet audited, with 
 
 :::tip[In short]
 
-- **What the tools are:** a transmitter (rt-mbms-tx) and a receiver (rt-mbms-modem) for LTE-based 5G Broadcast, with a transmitter variant for Qualcomm reference devices.
-- **Status:** not yet audited. The statements below come from the repository READMEs.
-- **Source of this page:** the READMEs of the `main` branch of the repositories; no code audit has been done yet.
+- **What this covers:** the transmitter (rt-mbms-tx and the variant for Qualcomm reference devices), the MBMS gateway, the BM-SC, the receiver modem and MBMS client, the monitoring application, the application provider and the FLUTE library, judged against ETSI TS 103 720 and the 3GPP specifications it uses (TS 36.211, 36.212, 36.213, 36.300, 36.321, 36.331, 23.246, 25.446, 29.274, 29.281, 29.168 and 23.041) and RFC 6726. Judged on the `main` branch of each repository on 2026-10-22.
+- **Source of this page:** every requirement is split into the cases its clause defines; each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that rest on documents that were not available are not shown. The modem is judged on selected clauses.
+- **Where the tools differ from the specifications:** the sections below state it per component, and the status table gives each case with the reason.
 
 :::
 
 For what the specifications define, see the [Technology](/tech/5g-broadcast) and the [Standards](/standards/5g-broadcast). For how to run the tools, see the [Tutorials](./tutorials) and the [Developer Exchange](./tutorials#developer-exchange).
 
+## What the Reference Tools implement
+
+The statements below describe the `main` branch of each repository on 2026-10-22.
+
+- **Transmitter (rt-mbms-tx):** a standalone LTE-based 5G Broadcast transmitter, an srsRAN-based eNodeB with FeMBMS and an optional MBMS-dedicated cell mode (off by default). Control plane data comes from configuration files; there is no M2 interface and no MCE, and a single MCH can be transmitted. It transmits only the 1.25 kHz MBSFN numerology; 15 kHz and 7.5 kHz are not reached. It builds only SIB1-MBMS and uses SI-RNTI 0xFFF9. PSS and SSS are sent in every even radio frame, where TS 36.211 allows them in frames with n_f mod 4 = 0. The MCCH content is hard-coded and no change notification is sent.
+- **Transmitter for Qualcomm reference devices (rt-mbms-tx-for-qrd-and-crd):** a legacy mixed cell that operates as a 5G Broadcast transmitter for Qualcomm Reference Design (QRD) devices and does not need uplink connectivity from the receiving devices. It uses 15 kHz MBSFN with extended cyclic prefix, has no FeMBMS and no dedicated cell mode, broadcasts SIB7 when mapped and uses SI-RNTI 0xFFFF.
+- **MBMS gateway:** the basic MBMS-GW inside the transmitters has no Sm interface and a fixed TEID. The separate gateway (rt-mbms-gw) has the Sm GTPv2-C sender with retransmission, sends M1-U to UDP port 2153 rather than 2152, and takes the multicast address from configuration.
+- **BM-SC (rt-mbms-bmsc):** has no SGmb interface; it drives the gateway through a TCP command. It announces only broadcast services, always sends a session duration of 0 to the gateway, uses announcement Profile 1a, and the TMGI of a content session is configurable.
+- **Receiver modem (rt-mbms-modem):** converts a 5G Broadcast signal, received as I/Q samples from a software defined radio or from a recorded file, into multicast IP packets. It decodes the MIB, SIB1-MBMS, SIB13 and the MCCH; other system information is logged. PMCH decoding covers 15, 7.5 and 1.25 kHz, not 2.5 or 0.37 kHz. It has no cell reselection and no PWS reception. The MCCH is decoded once with no change notification, only the first MBSFN area of SIB13 is read, only the Release 9 MCCH periods are taken, and there is no transport block size scaling for the PMCH.
+- **MBMS client (rt-mbms-client):** reassembles FLUTE, parses the service announcement, serves HTTP and rewrites DASH and HLS manifests. It calls a `tv_config` resource that the modem does not serve. The Android port reads a bundled service announcement.
+- **Monitoring application (rt-mbms-application):** a monitor and dashboard.
+- **Application provider (rt-mbms-application-provider):** an xMB-C client and an SBc-AP origination front end towards a plain TCP bridge. Serial numbers are allocated in memory, and its SBc-AP PDU wrapper omits the open-type length determinant that X.691 requires.
+- **FLUTE library (rt-libflute):** FLUTE version 1. It sends version 1 where RFC 6726 requires 2, a new FDT instance replaces one that is still being sent, and neither the FDT nor the packets are authenticated.
+
 ## Implementation status
 
-Not yet audited. The status of each repository, from its README:
+Open a feature, then a requirement, to see each case and why. Filter by component and release.
 
-- **rt-mbms-tx:** a standalone LTE-based 5G Broadcast transmitter, based on the srsRAN 4G eNodeB and modified to include a feature set of 3GPP Release 17. Control plane data comes from configuration files (there is no M2 interface) and a single MCH can be transmitted.
-- **rt-mbms-modem:** converts a 5G Broadcast signal, received as I/Q samples from a software defined radio or from a recorded file, into multicast IP packets.
-- **rt-mbms-tx-for-qrd-and-crd:** an extension of an MBMS-enabled eNodeB that operates as a 5G Broadcast transmitter for Qualcomm Reference Design (QRD) devices; it does not need uplink connectivity from the receiving devices.
-
-Support for the features of later releases is not yet audited.
+<ImplementationCases data={AUDIT} />
 
 :::info[Full audit for members]
 
-When an audit of this project exists, the full audit (each requirement with the code behind each verdict) will be available to 5G-MAG members through [Developer Tools](/developer-tools).
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
 
 [Become a member](/membership) · [Request access](/early-access)
 
