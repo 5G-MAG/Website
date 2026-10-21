@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20",
+  "updated_at": "2026-10-21",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -131,7 +131,7 @@
     "rt-camara-examples": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-19",
+      "last_work_commit": "2026-10-20",
       "open_pulls_last_year": 0
     },
     "rt-cmmf-encoder": {
@@ -282,7 +282,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
       "last_work_commit": "2026-10-16",
-      "open_pulls_last_year": 2
+      "open_pulls_last_year": 3
     },
     "rt-mbs-transport-function": {
       "status": "Actively Maintained",

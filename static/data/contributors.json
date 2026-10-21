@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20 02:14 UTC",
+  "updated_at": "2026-10-21 02:07 UTC",
   "repo_count": 42,
   "contributors": [
     {
@@ -13,7 +13,7 @@
       "login": "jordijoangimenez",
       "avatar_url": "https://avatars.githubusercontent.com/u/87380947?v=4",
       "html_url": "https://github.com/jordijoangimenez",
-      "contributions": 535,
+      "contributions": 583,
       "repo_count": 36
     },
     {
@@ -106,6 +106,13 @@
       "html_url": "https://github.com/leroyb-idcc",
       "contributions": 12,
       "repo_count": 3
+    },
+    {
+      "login": "aaronmontilla",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47569421?v=4",
+      "html_url": "https://github.com/aaronmontilla",
+      "contributions": 8,
+      "repo_count": 2
     },
     {
       "login": "jsroldan",
@@ -202,13 +209,6 @@
       "login": "sygupt",
       "avatar_url": "https://avatars.githubusercontent.com/u/268783277?v=4",
       "html_url": "https://github.com/sygupt",
-      "contributions": 1,
-      "repo_count": 1
-    },
-    {
-      "login": "aaronmontilla",
-      "avatar_url": "https://avatars.githubusercontent.com/u/47569421?v=4",
-      "html_url": "https://github.com/aaronmontilla",
       "contributions": 1,
       "repo_count": 1
     },
