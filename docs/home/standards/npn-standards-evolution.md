@@ -40,6 +40,8 @@ This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.
 | [FS_PLMNNPN_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090017) | Study on security for PLMN hosting a NPN phase 2 | Study | TR 33.758 | Complete, Jun 2026 | [SP-251239](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_109_Beijing_2025-09/Docs/SP-251239.zip) |
 | [PLMNNPN_Ph2-SEC](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120086) | Security for a PLMN Hosting a Non-Public Network (NPN) Phase 2 | Normative | TS 33.501 | Complete, Sep 2026 | [SP-260660](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_112_Singapore_2026-06/Docs/SP-260660.zip) |
 
+The change history of TS 23.501 V20.2.0 lists CR 6585, "Corrections to access of HPLMN services in PNI-NPN providing localized services" (category F, SP-260438, SA#112). It does not name a work item.
+
 ## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |

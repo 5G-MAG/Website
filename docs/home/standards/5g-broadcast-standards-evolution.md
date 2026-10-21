@@ -2,7 +2,7 @@
 hide_title: true
 title: 5G Broadcast - Standards Evolution
 slug: /standards/5g-broadcast/evolution
-description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 19.
+description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 20.
 sidebar_label: Release history
 ---
 
@@ -186,7 +186,14 @@ TR 21.919 lists the item DTT4MBS (970043, Interworking of Non-3GPP Digital Terre
 
 Further release description clauses for the RAN work items above: LTE_terr_bcast, TR 21.916 clause 19.3.1; LTE_terr_bcast_bands_part1, TR 21.917 clause 14.2.1; LTE_terr_bcast_Ph2, TR 21.919 clause 19.1; LTE_band_5G_bcast_GSO, TR 21.919 clause 5.4.1 (UE RF requirements for a 10 MHz PMCH in TS 36.102 and Satellite Access Node requirements in TS 36.108).
 
-Release 20: TR 21.920 is not yet available, and no Release 20 LTE-based 5G Broadcast work item was confirmed in a primary source. This is unverified.
+## Release 20 (work plan of 28 September 2026)
+
+TR 21.920 is not yet available. The 3GPP work plan of 28 September 2026 lists one Release 20 work item for LTE-based 5G Broadcast, in RAN WG4:
+
+- **LTE_band_246_5G_bcast_GSO_BWs** (Unique_ID 1110101): "Adding new channel bandwidths for LTE band 246 for 5G broadcast for region 3 utilizing geosynchronous satellite", with the parts LTE_band_246_5G_bcast_GSO_BWs-Core (1111101) and LTE_band_246_5G_bcast_GSO_BWs-Perf (1112101). Its WID is RP-261671 (the work plan records the change from RP-261484 on 28 September 2026). It continues the Release 19 item LTE_band_5G_bcast_GSO described above.
+- **Specifications:** the work plan row lists none. The change histories show two change requests, both from RAN#113 (RP-261792): CR 0147 r1 to TS 36.102 V20.0.0, "Introduction of 3MHz and 5MHz channel bandwidths for LTE-based 5G Broadcast operation in band 246", and CR 0059 r1 to TS 36.108 V20.0.0, "Adding new channel bandwidths for LTE band 246 for 5G broadcast for region 3 utilizing, Rel-20".
+
+The work plan lists no Release 20 item for TS 26.346 or TS 26.347.
 
 ---
 

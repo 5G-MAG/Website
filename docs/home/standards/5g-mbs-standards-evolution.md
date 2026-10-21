@@ -66,6 +66,7 @@ Unverified against a Release 20 TR 21.920, which is not available; each entry is
 - **TEI20_5MBS_Roam-ARC (SA2):** TS 23.247 V20.0.0 adds clauses 6.22 and 6.23: a roaming UE joins a multicast MBS session of the VPLMN with a local breakout PDU session, and receives a broadcast session of the VPLMN from the service announcement (CR 0389 "MBS Roaming", SP-260751, SA#113).
 - **MBSF APIs (CT3):** TS 29.580 V20.0.0 lists the feature 5MBS3, described as the Release 20 enhancements: retrieval and reporting of the MBS User Service Announcement bundle, an indication of whether transport security protection is required, the profiles to which the content conforms, and the expected MIME content types (clause 6.2.8; CR 0086 "Enhancements to the MBSF APIs", CP-262115). V19.6.0 has no such feature. The change history does not name a work item.
 - **FS_AMD_Ph2 (SA4):** TR 26.802 V20.0.0 clause 8.5 recommends for stage 2 and stage 3 a combined multicast, broadcast and unicast delivery with selective unicast proxying and content steering, and explicit error signalling for permanently or temporarily unavailable resources. These are recommendations of a study.
+- **MBS user data ingest (CT3):** TS 29.522 V20.1.0 (NEF northbound APIs) lists CR 1908 r2 "Enhancements to the MBSUserDataIngestSession API" (CT#113, CP-262181). The change history does not name a work item.
 
 ## MBS User Services
 

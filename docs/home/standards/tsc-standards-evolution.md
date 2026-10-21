@@ -44,6 +44,8 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 | TS 29.565 | 20.1.0 | 0197 | Miscellaneous corrections to the TSC QoSandTSCAssistance API | TEI20, IIoT, TRS_URLLC, SBIProtoc20-CT |
 | TS 29.565 | 20.1.0 | 0198 | Update of info and externalDocs fields | TEI20 |
 
+The work plan of 28 September 2026 lists no Release 20 item whose specifications include TS 29.565. It lists two of the work items named above: SBIProtoc20-CT, "Service Based Interface Protocol Improvements for Release 20" (Unique_ID 1110002, CP-260164), and SMPC20-CT, "Rel-20 Enhancements of SM Policy" (Unique_ID 1120026, CT3, CP-261142; TS 29.512, TS 29.514, TS 29.522, TS 29.122 and TS 29.513). TEI20 is the parent "(Small) Technical Enhancements and Improvements for Rel-20" (Unique_ID 1089999). The work plan has no row for the work items IIoT or TRS_URLLC in Release 20.
+
 ## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
