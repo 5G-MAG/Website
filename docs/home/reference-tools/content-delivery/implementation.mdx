@@ -2,8 +2,11 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 5
-description: Status of the Content Delivery Protocols and Tools Reference Tools; the code audit of this project is not yet done.
+description: What the Content Delivery Protocols and Tools Reference Tools implement, from an audit of the repositories on main against the FLUTE, CMMF, DASH and HLS specifications.
 ---
+
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-content-delivery.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -20,17 +23,34 @@ description: Status of the Content Delivery Protocols and Tools Reference Tools;
 
 :::tip[In short]
 
-- **Status:** not yet audited. The audit of the FLUTE library will be done on the `main` branch of the repository; this page shows the state described by each repository's README until then.
-- **FLUTE library (rt-libflute):** a library for sending and receiving files with FLUTE, used by the 5G Multicast Broadcast Services and 5G Broadcast Reference Tools.
-- **Media origin, test application and CMMF encoder:** described below, each not yet audited. The CMMF encoder has no code yet according to its README.
+- **What this covers:** the FLUTE library (rt-libflute) as sender and receiver, the media origin (rt-media-origin) and the CMMF encoder (rt-cmmf-encoder), judged against RFC 3926, 3450, 3451 and 5052, ETSI TS 126 346 and TS 126 517 (FLUTE for MBMS download and the MBS Distribution Session), ETSI TS 103 973 (CMMF) and the HLS and DASH specifications it packages for. Judged on the `main` branch of each repository on 2026-10-22.
+- **Source of this page:** every requirement is split into the cases its clause defines; each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that only the output of ffmpeg or a running system can settle are not shown.
+- **Reference Media Application:** the Android test app and test rig is a test tool for the origin and is not audited against a specification.
 
 :::
 
 For what the specifications define, see the [Standards page](/standards/content-delivery/flute) and the [Technology](/tech/content-delivery/features). For how to run the tools, see the [Tutorials](/reference-tools/content-delivery/tutorials).
 
+## What the Reference Tools implement
+
+- **FLUTE sender:** sends files with FLUTE over ALC and LCT using the Compact No-Code FEC scheme, with an FDT instance, MD5 digests, Cache-Control and ETag entries, gzip content encoding and a rate limit. It has no congestion control (the CCI field is always zero), no session description and no content-encoded FDT, and it does not support FEC Encoding IDs 129 and 130 or the Close Session and Close Object flags. Several outputs differ from TS 26.346: it writes `Transfer-Length` on every file, sends a gzip stream under the `deflate` label, computes `Content-MD5` before encoding, writes `Content-Type` only when it is set, never writes `Max-Number-of-Encoding-Symbols` or `Scheme-Specific-Info`, and replaces an unfinished FDT instance at once instead of waiting.
+- **FLUTE receiver:** reassembles files from ALC packets, parses the FDT, checks `Content-MD5` and inflates gzip content. It accepts only a 32-bit CCI, does not read the T and R flags with their SCT and ERT fields, handles 16-bit TSI and TOI only, inflates only objects whose decoded size is at most 16384 bytes, does not read content encoding or `Content-Type` at FDT instance level, does not support interleaved FDT instances, ignores the `EXT_FTI` of a file's own packets, does not support `max-stale`, and does not read `Complete` or `FullFDT`. It takes its session parameters as arguments and reads no session description.
+- **Media origin:** packages content with ffmpeg and serves DASH, HLS and CMAF over HTTP, with now-playing metadata added to HLS playlists. Most of the manifest and segment format is produced by ffmpeg and is outside what the repository decides. Where the repository decides, it differs in a few points: now-playing values are screened only for a few characters and are not normalised, the output directory is emptied at once when a channel starts, the live window is an operator setting, and segments carry a long-lived cache header though live segments are deleted after a few segments.
+- **CMMF encoder:** no encoder code exists on `main`; the repository holds a README, a licence and a banner image, so every requirement of ETSI TS 103 973 is absent. No CMMF receiver exists.
+
 ## Implementation status
 
-Not yet audited. Each tool has its own page, linked from its section below.
+Open a feature, then a requirement, to see each case and why. Filter by component and release.
+
+<ImplementationCases data={AUDIT} />
+
+:::info[Full audit for members]
+
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
+
+[Become a member](/membership) · [Request access](/early-access)
+
+:::
 
 ## CMMF Encoder {/* #cmmf-encoder */}
 
@@ -47,14 +67,6 @@ Not yet audited. Each tool has its own page, linked from its section below.
 ## Reference Media Application {/* #media-application */}
 
 [rt-media-android-application](/reference-tools/content-delivery#repo-rt-media-android-application) is an Android test app and a laptop test rig that check that each delivery method of the media origin arrives on a phone, plays, and matches the origin's configuration. See the [Reference Media Application page](./media-application).
-
-:::info[Full audit for members]
-
-When the audit of this project is complete, the full audit, with the code behind each verdict, will be available to 5G-MAG members through [Developer Tools](/developer-tools).
-
-[Become a member](/membership) · [Request access](/early-access)
-
-:::
 
 ## Used with other projects
 
