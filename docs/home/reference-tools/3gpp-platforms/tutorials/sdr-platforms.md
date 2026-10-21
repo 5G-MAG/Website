@@ -19,7 +19,7 @@ description: Covers installing and verifying BladeRF, LimeSDR and HackRF One SDR
 </div>
 </div>
 
-This page covers installing and verifying the Software Defined Radio (SDR) hardware used with the srsRAN-based 5G Broadcast tools, including the `rt-mbms-modem` receiver. It walks through installing the SDR drivers, checking that the device is detected, and setting the right configuration for each supported board. The SDRs covered here are BladeRF, LimeSDR and HackRF One.
+This page covers installing and verifying the Software Defined Radio (SDR) hardware used with the srsRAN-based 5G Broadcast tools, including the [`rt-mbms-modem`](/reference-tools/5g-broadcast#repo-rt-mbms-modem) receiver. It walks through installing the SDR drivers, checking that the device is detected, and setting the right configuration for each supported board. The SDRs covered here are BladeRF, LimeSDR and HackRF One.
 
 Recommended order: install the drivers, verify the device is detected (the "Check SDR availability" section below), and only then set the device-specific configuration.
 

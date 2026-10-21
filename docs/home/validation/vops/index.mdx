@@ -7,8 +7,15 @@ description: Checks that an AVC or HEVC video bitstream conforms to an operation
 ---
 import FigurePair from '@site/src/components/FigurePair';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectDeck from '@site/src/components/ProjectDeck';
+import { REPO_METADATA } from '@site/src/data/baskets';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
+export const REPO_COUNT = (REPO_METADATA['vops'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -117,19 +124,38 @@ $ python -m sa4_bitstream_validator validate bitstream_path 3GPP-MV-HEVC-Main-St
 
 </details>
 
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">TS 26.265</span>
+</div>
+</div>
+
+3GPP [TS 26.265](https://www.3gpp.org/dynareport/26265.htm) (Media Delivery: Video Capabilities and Operation Points), V19.3.0, Release 19, annex B.2.3 (the conformance validator).
+
+See [Video Operation Points on the Standards portal](/standards/vops) for version history and 5G-MAG's own standards contributions. For the technical analysis, see [Video Operation Points on the Tech portal](/tech/vops).
+
+<ProjectDeck slug="vops" />
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
 ## Repositories & Releases
 
 <ProjectRepositories project="vops" />
 
-| Area | Details |
-| --- | --- |
-| **Implementation Detail** | What the validator covers and its operation points: [Implementation Detail](./implementation) |
-| **Tutorials** | Install and run it: [Tutorials](./tutorials) |
-| **Resources** | Repository and releases: [Repositories & Releases](/validation/vops#repositories--releases) |
-| **Technical documentation** | [Video Operation Points on the Tech portal](/tech/vops) |
-| **Standards** | [Video Operation Points on the Standards portal](/standards/vops) |
+## Developer Updates
 
-See [Standards: VOPS Conformance Validator](/standards/vops) for the specification.
+<CommunityStats name="VOPS Conformance Validator" />
+
+### Open Pull Requests
+
+<ProjectOpenPRs name="VOPS Conformance Validator" />
 
 <details>
 <summary>Sources for this page</summary>

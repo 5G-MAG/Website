@@ -2,7 +2,6 @@
 hide_title: true
 sidebar_class_name: project-index-link
 title: 6G AI Traffic Characterization
-sidebar_label: Overview
 sidebar_position: -1
 description: "The testbed 3GPP SA4 uses to measure the traffic of AI media services for the 6G media study (TR 26.870): what it measures and how."
 ---
@@ -10,15 +9,15 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.['6g-testbed']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['6g-testbed'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 8l-4 4l4 4" />
   <path d="M17 8l3.111 3.111" />
   <path d="M14 4l-2.175 8.7" />
@@ -66,7 +65,7 @@ The 6G media study records the traffic characteristics of AI media services from
   note="Annex B.2 of TR 26.870 describes the testbed architecture as a list and has no architecture figure; this pipeline (clause D.4.2) is its only figure of the software, and it names classes and functions of the repository's code. The diagram above shows the whole testbed. Click the figure to enlarge it."
 />
 
-<div class="godeeper-grid godeeper-grid--4col">
+<div class="godeeper-grid">
 
 <a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/scope')}>
 <div class="godeeper-card__band">
@@ -98,19 +97,24 @@ The 6G media study records the traffic characteristics of AI media services from
 </div>
 </a>
 
-<a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/tutorials/introduction-6g-testbed')}>
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z"/><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z"/><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0"/><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5"/></svg>
-<h3>Run it</h3>
-</div>
-<div class="godeeper-card__body">
-<p>Install, run a scenario, reproduce SA4 results.</p>
-</div>
-</a>
-
 </div>
 
-## Get involved
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">TR 26.870</span>
+</div>
+</div>
+
+3GPP TR 26.870 (the 6G media study, FS_6G_MED, Release 20), a draft (V0.6.1, September 2026). Its annexes B to E describe the testbed, the method, the scenarios and the network emulator.
+
+See [6G on the Standards portal](/standards/6g) for version history and 5G-MAG's own standards contributions.
+
+## Slide Deck
 
 <div class="event-post-grid" style={{maxWidth: '340px'}}>
 <a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} target="_blank" rel="noreferrer">
@@ -119,21 +123,21 @@ The 6G media study records the traffic characteristics of AI media services from
 </a>
 </div>
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
-
-<ProjectVideos videos={projectVideos} name="AI Traffic Characterization" />
-
-### Repositories & Releases
-
-<ProjectRepositories project="6g-testbed" />
-
-### Contributors & How to Contribute
+## Contributors & How to Contribute
 
 <ProjectContributors />
 
-### Developer Updates
+## Repositories & Releases
+
+<ProjectRepositories project="6g-testbed" />
+
+## Developer Updates
 
 <CommunityStats name="AI Traffic Characterization" />
+
+### Open Pull Requests
+
+<ProjectOpenPRs name="AI Traffic Characterization" />
 
 <details>
 <summary>Sources for this page</summary>

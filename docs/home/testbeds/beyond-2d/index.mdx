@@ -9,13 +9,13 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
 import ProjectDeck from '@site/src/components/ProjectDeck';
 
-export const projectVideos = (youtubePlaylists.projects?.['beyond-2d']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['beyond-2d'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -27,8 +27,6 @@ export const projectVideos = (youtubePlaylists.projects?.['beyond-2d']?.videos |
 <h1>Beyond 2D Evaluation Framework</h1>
 </div>
 </div>
-
-See also: <a href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange')}>Developer Exchange</a>.
 
 ## What it does
 
@@ -54,9 +52,7 @@ The framework enables standardised benchmarking of encoding, streaming, and rend
   note="The mapping follows the repository's multi-view plus depth (MVD) scripts, which run the TMIV encoder and decoder and compute objective metrics; the repository README still marks its three scenarios as under construction, and the point cloud folder is not mapped. Click the figure to enlarge it."
 />
 
-## Repositories & Releases
-
-<ProjectRepositories project="beyond-2d" />
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
 ## Standards implemented
 
@@ -79,30 +75,22 @@ ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C), referenced for eval
 
 See [Beyond 2D on the Standards portal](/standards/beyond-2d) for related work items and specs.
 
+<ProjectDeck slug="beyond-2d" />
+
 ## Contributors & How to Contribute
 
 <ProjectContributors />
+
+## Repositories & Releases
+
+<ProjectRepositories project="beyond-2d" />
 
 ## Developer Updates
 
 <CommunityStats name="Beyond 2D Evaluation Framework" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="Beyond 2D Evaluation Framework" />
 
-The slide deck below introduces the Beyond 2D Evaluation Framework: what it evaluates, the test methodology, and how the results feed 3GPP and MPEG standardisation. For what's implemented and the project roadmap, see [Implementation Detail](./implementation); for the code, use the buttons above (Resources, Tutorials).
-
-<ProjectDeck slug="beyond-2d" heading={false} />
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
-
-<ProjectVideos videos={projectVideos} name="Beyond 2D Evaluation Framework" />
-
-| Area                        | Details                                                                                        |
-| --------------------------- | ---------------------------------------------------------------------------------------------- |
-| **Implementation Detail**                   | Focus areas, repositories, and relationship to standards: [Implementation Detail](./implementation)                      |
-| **Technical documentation** | Volumetric and beyond-2D analysis: [Volumetric Video on the Tech portal](/tech/v3c)     |
-| **Standards**               | Beyond-2D work items and specs: [Beyond-2D on the Standards portal](/standards/beyond-2d) |
-| **Related project**         | V3C encoding and rendering tools: [MPEG V3C Immersive Platform](/reference-tools/v3c)               |
-
+For the technical analysis, see [Beyond 2D Video Experiences on the Tech portal](/tech/beyond-2d). A related project is the [MPEG V3C Immersive Platform](/reference-tools/v3c).

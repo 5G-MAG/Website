@@ -1,0 +1,43 @@
+---
+title: FLUTE Library
+hide_title: true
+sidebar_position: 3
+description: "The FLUTE Library (rt-libflute): a FLUTE server and client for file delivery over unidirectional transport, used by 5G Broadcast and 5G MBS."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols and Tools</span>
+<h1>FLUTE Library</h1>
+</div>
+</div>
+
+**Role in the chain:** Deliver. Repository: [rt-libflute](/reference-tools/content-delivery#repo-rt-libflute) (its card on the project page, with links to GitHub).
+
+## What it is
+
+The FLUTE Library is an implementation of a FLUTE server and client. It comes with two demo applications, a receiver and a transmitter, and its README describes optional IPSec protection of the transmission and a test suite. Its README marks it as under development. The status, feature by feature, is on the [Implementation Detail](./implementation#libflute) page.
+
+## Specification basis
+
+FLUTE (File Delivery over Unidirectional Transport), IETF RFC 3926, as profiled by 3GPP TS 26.346 (MBMS) and TS 26.517 (MBS). See [FLUTE requirements by profile](/standards/content-delivery/flute). The [FLUTE Conformance Validator](/validation/flute) tests the library against these profiles.
+
+## Where it is used
+
+[5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) (the MBS Transport Function sends and the MBS Client receives with it) and [5G Broadcast](/reference-tools/5g-broadcast) (the BM-SC sends and the MBMS Client receives with it).
+
+## Tutorials
+
+[Tutorials](./tutorials), which build and run the library for FLUTE delivery of DASH/CMAF content.
+
+## Related
+
+- [Content Delivery Protocols and Tools](/reference-tools/content-delivery) and its tool map
+- [Implementation Detail](./implementation#libflute)

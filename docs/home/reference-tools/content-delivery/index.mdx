@@ -5,16 +5,14 @@ title: Content Delivery Protocols and Tools
 sidebar_position: -1
 description: Landing page for the DASH, HLS, and CMAF content delivery reference tools, with links to implementation detail, roadmap, repositories, and releases.
 ---
+import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
-
-export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -32,9 +30,21 @@ export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 
 <ProjectSlide image="/assets/images/projects/content-delivery-reference-tools.png" alt="Content Delivery Protocols and Tools: Reference Tools slide">
 
-These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments. For the architectures these transports plug into and the per-feature FLUTE audit, see [Implementation Detail](./implementation).
+Content Delivery Protocols and Tools are the Reference Tools for the application layer of delivery: how media is encoded, packaged, served, carried over 5G and received. This page lists each tool, the specification behind it and where it is used, and each tool has its own page. FLUTE (file delivery, in rt-libflute) is implemented here; ROUTE (real-time object delivery) is implemented in the MBMS Client of [5G Broadcast](/reference-tools/5g-broadcast) (repository rt-mbms-client), and this project is used with it. Useful for developers validating DASH/HLS players, packagers and Content Delivery Network (CDN) integrations in 5G environments. For the status of each tool, see [Implementation Detail](./implementation).
 
 </ProjectSlide>
+
+## Tool map
+
+Each row is one role. Follow the tool name to its page, or the repository name to its card further down this page.
+
+| Role | Tool | Repository | Specification | Tutorial | Also used by |
+|---|---|---|---|---|---|
+| Encode | [CMMF Encoder](./cmmf-encoder) | [rt-cmmf-encoder](#repo-rt-cmmf-encoder) | ETSI TS 103 973 | Not yet published | [5GMS](/reference-tools/5gms) |
+| Package and serve | [Media Origin](./media-origin) | [rt-media-origin](#repo-rt-media-origin) | DASH, HLS and CMAF over HTTP or push (formats it packages, no specification of its own) | [Media Origin](./tutorials/media-origin) | [5GMS](/reference-tools/5gms), [5G MBS](/reference-tools/5g-mbs), [V3C](/reference-tools/v3c) |
+| Deliver | [FLUTE Library](./libflute) | [rt-libflute](#repo-rt-libflute) | IETF RFC 3926, 3GPP TS 26.346 | [FLUTE](./tutorials) | [5G MBS](/reference-tools/5g-mbs), [5G Broadcast](/reference-tools/5g-broadcast) |
+| Receive and test | [Reference Media Application](./media-application) | [rt-media-android-application](#repo-rt-media-android-application) | No specification of its own | [Reference Media Application](./tutorials/media-application) | None documented |
+| Verify | [FLUTE Conformance Validator](/validation/flute) | On request, see its page | IETF RFC 3926, 3GPP TS 26.346 annex L.4, 3GPP TS 26.517 clause 6.2 | [FLUTE validator](/validation/flute/tutorials) | Part of the Validation Tools |
 
 ## What's Built
 
@@ -52,7 +62,7 @@ These tools address the application-layer delivery protocols that sit above the 
   note="The media origin, the reference media application, the CMMF encoder and the conformance validator are not on the figure: no specification figure shows them. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below. For what the FLUTE library implements, feature by feature, see [Implementation Detail](./implementation).
+For what the FLUTE library implements, feature by feature, see [Implementation Detail](./implementation). The repositories are listed under [Repositories & Releases](#repositories--releases).
 
 ## Standards implemented
 
@@ -61,15 +71,13 @@ These tools address the application-layer delivery protocols that sit above the 
 <img src={useBaseUrl('/assets/logos/IETF.png')} alt="IETF" />
 <span class="standard-card__label">RFC 3926 (FLUTE)</span>
 </div>
-<div class="standard-card">
-<img src={useBaseUrl('/assets/logos/IETF.png')} alt="IETF" />
-<span class="standard-card__label">RFC 9223 (ROUTE)</span>
-</div>
 </div>
 
-**Implemented specifications:** IETF RFC 3926/RFC 6726 (FLUTE) and RFC 9223 (ROUTE): the transports the tools implement. DASH (ISO/IEC 23009-1), HLS (RFC 8216) and CMAF (ISO/IEC 23000-19) are the formats these transports carry as opaque segments and manifests, not something the tools implement themselves.
+**Implemented specifications:** IETF RFC 3926/RFC 6726 (FLUTE) in rt-libflute. ETSI TS 103 973 (CMMF) is the basis of the CMMF Encoder. DASH (ISO/IEC 23009-1), HLS (RFC 8216) and CMAF (ISO/IEC 23000-19) are the formats the media origin packages and these transports carry, not specifications the tools implement themselves. ROUTE (IETF RFC 9223) is implemented in the MBMS Client of [5G Broadcast](/reference-tools/5g-broadcast).
 
 See [Content Delivery Protocols and Tools on the Standards portal](/standards/content-delivery) for the full specification list.
+
+<ProjectDeck slug="content-delivery" />
 
 ## Contributors & How to Contribute
 

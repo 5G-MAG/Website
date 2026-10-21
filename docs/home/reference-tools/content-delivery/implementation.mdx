@@ -1,7 +1,7 @@
 ---
 title: Implementation Detail
 hide_title: true
-sidebar_position: 2
+sidebar_position: 5
 description: Status of the Content Delivery Protocols and Tools Reference Tools; the code audit of this project is not yet done.
 ---
 
@@ -22,7 +22,7 @@ description: Status of the Content Delivery Protocols and Tools Reference Tools;
 
 - **Status:** not yet audited. The audit of the FLUTE library will be done on the `main` branch of the repository; this page shows the state described by each repository's README until then.
 - **FLUTE library (rt-libflute):** a library for sending and receiving files with FLUTE, used by the 5G Multicast Broadcast Services and 5G Broadcast Reference Tools.
-- **Media origin, test application and CMMF encoder:** described below, each not yet audited.
+- **Media origin, test application and CMMF encoder:** described below, each not yet audited. The CMMF encoder has no code yet according to its README.
 
 :::
 
@@ -30,12 +30,23 @@ For what the specifications define, see the [Standards page](/standards/content-
 
 ## Implementation status
 
-Not yet audited.
+Not yet audited. Each tool has its own page, linked from its section below.
 
-- **rt-libflute:** a FLUTE library, marked "Under Development" in its README.
-- **rt-media-origin:** a config-driven media origin that packages content with ffmpeg as DASH, HLS or CMAF and delivers it over HTTP or real-time push protocols, with FLUTE metadata for multicast. Its README marks it as working.
-- **rt-media-android-application:** an Android test app and a laptop test rig that check that each delivery method of the media origin arrives on a phone, plays, and matches the origin's configuration.
-- **rt-cmmf-encoder:** encodes packaged media into Coded Multisource Media Format bitstreams for multisource delivery, per ETSI TS 103 973. Its README marks it as experimental.
+## CMMF Encoder {/* #cmmf-encoder */}
+
+[rt-cmmf-encoder](/reference-tools/content-delivery#repo-rt-cmmf-encoder) encodes packaged media into Coded Multisource Media Format bitstreams for multisource delivery, per ETSI TS 103 973. Its README marks it as experimental and says that the repository is at its initial commit, with no encoder code yet. See the [CMMF Encoder page](./cmmf-encoder).
+
+## Media Origin {/* #media-origin */}
+
+[rt-media-origin](/reference-tools/content-delivery#repo-rt-media-origin) is a config-driven media origin that packages content with ffmpeg as DASH, HLS or CMAF and delivers it over HTTP or real-time push protocols. Its README marks it as working. Sending over FLUTE is out of its scope: a FLUTE sender reads the packaged output folder. See the [Media Origin page](./media-origin).
+
+## FLUTE Library {/* #libflute */}
+
+[rt-libflute](/reference-tools/content-delivery#repo-rt-libflute) is a FLUTE library with a transmitter and a receiver, marked "Under Development" in its README. See the [FLUTE Library page](./libflute).
+
+## Reference Media Application {/* #media-application */}
+
+[rt-media-android-application](/reference-tools/content-delivery#repo-rt-media-android-application) is an Android test app and a laptop test rig that check that each delivery method of the media origin arrives on a phone, plays, and matches the origin's configuration. See the [Reference Media Application page](./media-application).
 
 :::info[Full audit for members]
 

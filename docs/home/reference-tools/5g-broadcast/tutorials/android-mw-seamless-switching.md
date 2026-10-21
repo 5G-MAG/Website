@@ -103,12 +103,12 @@ into the URL address bar:
 _Figure: the same HLS stream played over plain unicast in Safari._
 
 Whenever a new file is added to the `watchfolder` located on the webserver, a background process called `flute-ffmpeg`
-is notified. `flute-ffmpeg` uses the `rt-libflute` library to FLUTE encode the files and sends them via a dedicated
+is notified. `flute-ffmpeg` uses the [`rt-libflute`](/reference-tools/content-delivery/libflute) library to FLUTE encode the files and sends them via a dedicated
 network tunnel as a multicast to the `srsmbms` process. For that reason the `srsmbms` process acts as an MBMS gateway
 and exposes the `sgi_mb` interface.
 
 The `rt-mbms-tx-for-qrd-and-crd` repository acts as a 5G Broadcast transmitter hosting the `srsmbms`, `srsepc`
-and `srsenb` processes. It is based on srsRAN with additional changes from the 5G-MAG developer community to support transmission to LTE-based 5G Broadcast enabled UEs.
+and `srsenb` processes. It is based on [srsRAN](/reference-tools/3gpp-platforms) with additional changes from the 5G-MAG developer community to support transmission to LTE-based 5G Broadcast enabled UEs.
 
 On the receiver side the `rt-mbms-mw-android` is running on a QRD or CRD device. It is responsible for receiving
 the media files delivered via 5G Broadcast. The files are exposed to a media player such as the Exoplayer via a local

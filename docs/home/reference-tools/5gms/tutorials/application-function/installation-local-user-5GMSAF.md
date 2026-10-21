@@ -73,7 +73,7 @@ The following are needed:
 
 Notes:
 
-- <a name="footnote-1" id="footnote-1"></a>[1]: `meson` must be at least version 0.63.0 to patch open5gs properly, therefore it is suggested that this be installed using the python pip module to pull the latest version rather than relying on the packaged version from your operating system.
+- <a name="footnote-1" id="footnote-1"></a>[1]: `meson` must be at least version 0.63.0 to patch [open5gs](/reference-tools/3gpp-platforms#repo-open5gs) properly, therefore it is suggested that this be installed using the python pip module to pull the latest version rather than relying on the packaged version from your operating system.
 
 These can be installed using your system package manager, for example:
 

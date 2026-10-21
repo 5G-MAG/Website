@@ -1,0 +1,45 @@
+---
+title: CMMF Encoder
+hide_title: true
+sidebar_position: 1
+description: "The CMMF Encoder (rt-cmmf-encoder): encodes packaged media into Coded Multisource Media Format bitstreams, per ETSI TS 103 973."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols and Tools</span>
+<h1>CMMF Encoder</h1>
+</div>
+</div>
+
+**Role in the chain:** Encode. Repository: [rt-cmmf-encoder](/reference-tools/content-delivery#repo-rt-cmmf-encoder) (its card on the project page, with links to GitHub).
+
+## What it is
+
+The CMMF Encoder encodes packaged media into Coded Multisource Media Format (CMMF) bitstreams for multisource delivery. CMMF is a container format for carrying coded media from more than one source. It supplements existing packaging, such as ISO BMFF or CMAF, rather than replacing it, and it carries no manifest of its own. The repository is the encoder side only: source data in, CMMF bitstreams out. The decoder and the delivery architecture are out of scope.
+
+Its README marks it as experimental and says that the repository is at its initial commit, so no encoder code has landed yet. The status is on the [Implementation Detail](./implementation#cmmf-encoder) page.
+
+## Specification basis
+
+ETSI TS 103 973 V1.1.1 (2024-10), Coded Multisource Media Format (CMMF) for Content Distribution and Delivery. The README names code type xCD-1, which the specification defines in its annex A. For the specification, see [CMMF on the Standards portal](/standards/cmmf).
+
+## Where it is used
+
+[5G Media Streaming (5GMS)](/reference-tools/5gms) lists this repository among the repositories it cross-references.
+
+## Tutorials
+
+Not yet published.
+
+## Related
+
+- [Content Delivery Protocols and Tools](/reference-tools/content-delivery) and its tool map
+- [Implementation Detail](./implementation#cmmf-encoder)

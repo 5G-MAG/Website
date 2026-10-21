@@ -1,0 +1,47 @@
+---
+title: Media Origin
+hide_title: true
+sidebar_position: 2
+description: "The Media Origin (rt-media-origin): a config-driven media origin that packages content as DASH, HLS or CMAF and delivers it over HTTP or real-time push protocols."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols and Tools</span>
+<h1>Media Origin</h1>
+</div>
+</div>
+
+**Role in the chain:** Package and serve. Repository: [rt-media-origin](/reference-tools/content-delivery#repo-rt-media-origin) (its card on the project page, with links to GitHub).
+
+## What it is
+
+The Media Origin is a config-driven origin for 5G-MAG demos. One configuration file and one process package each channel with ffmpeg as DASH, HLS or CMAF, and deliver it over HTTP or a push transport (SRT, RIST, RTMP, RTSP, RTP or MoQ). A browser dashboard edits the configuration and starts and stops the channels, and a Docker image runs the origin on any machine.
+
+Sending over FLUTE is out of scope for the origin: according to its README, a FLUTE sender reads the packaged output folder. The status is on the [Implementation Detail](./implementation#media-origin) page.
+
+The repository is private; see [Early Access](/early-access).
+
+## Specification basis
+
+The origin implements no specification of its own. It packages with ffmpeg, and the manifest checks in its repository cite RFC 8216 (HTTP Live Streaming), ISO/IEC 23009-1 (DASH), ISO/IEC 23000-19 (CMAF), ETSI TS 103 285 and RFC 6381 (codec strings). The README does not pin the editions, and the checks test signalling and structure, not bitstreams.
+
+## Where it is used
+
+[5G Media Streaming (5GMS)](/reference-tools/5gms), [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) and [MPEG V3C Immersive Platform](/reference-tools/v3c) list this repository among the repositories they cross-reference. The [Reference Media Application](./media-application) plays and tests what it sends.
+
+## Tutorials
+
+[Tutorial: Media Origin](./tutorials/media-origin), a step-by-step run in Docker.
+
+## Related
+
+- [Content Delivery Protocols and Tools](/reference-tools/content-delivery) and its tool map
+- [Implementation Detail](./implementation#media-origin)

@@ -1,4 +1,5 @@
 import React from 'react';
+import { REPO_PAGES } from '@site/src/data/repoPages';
 import { ALL_REPOS, ALL_PROJECTS, BASKET_ACCENT, repoMetaFor, displayNameOf } from '@site/src/data/baskets';
 import releasesData from '@site/static/data/releases.json';
 import styles from './styles.module.css';
@@ -35,6 +36,10 @@ function formatAge(days) {
 // documented case -- shared infra/reference-consumer repos with no domain
 // of their own, e.g. 5G Core Service Consumers) has no accent to give it;
 // that card is left untinted rather than inventing one.
+// Repository slug -> the page of the project that owns it (its Reference Tool, Testbed or Validator
+// page), so a "Depends on" tag naming another 5G-MAG repository links to the page about it.
+const PAGE_BY_REPO = new Map(ALL_REPOS.map((r) => [r.slug, r.originHref]));
+
 const BASKET_BY_PROJECT_NAME = new Map(ALL_PROJECTS.map((p) => [displayNameOf(p), p.basket]));
 
 // Compact per-repo card: license/standards/software/dependency tags only --
@@ -61,6 +66,7 @@ function RepoCard({ entry, meta }) {
 
   return (
     <div
+      id={`repo-${repoSlug}`}
       className={styles.repoCard}
       style={accent ? { '--repo-accent': accent } : undefined}
     >
@@ -119,11 +125,21 @@ function RepoCard({ entry, meta }) {
         {dependencies.length > 0 && (
           <span className={styles.tagGroup}>
             <span className={styles.tagLabel}>Depends on</span>
-            {dependencies.map((d) => (
-              <span key={d} className={`${styles.tag} ${styles.tagDependency}`}>
-                {d}
-              </span>
-            ))}
+            {dependencies.map((d) => {
+              const childPage = REPO_PAGES[d];
+              const page = childPage || PAGE_BY_REPO.get(d);
+              return (
+                <span key={d} className={`${styles.tag} ${styles.tagDependency}`}>
+                  {page && d !== repoSlug ? (
+                    <a href={childPage || `${page}/#repo-${d}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                      {d}
+                    </a>
+                  ) : (
+                    d
+                  )}
+                </span>
+              );
+            })}
           </span>
         )}
         {license && (

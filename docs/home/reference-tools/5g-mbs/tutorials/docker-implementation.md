@@ -29,7 +29,7 @@ Two Docker Compose deployments of the MBS capable 5G Core are available:
 <span class="repo-card__role">Docker Compose recipes for the MBS-capable 5G Core, plus the Python test suite used later in this tutorial.</span>
 </a>
 
-- The `internal` deployment connects all the developed Network Functions for MBS with one srsRAN gNB and one srsRAN UE
+- The `internal` deployment connects all the developed Network Functions for MBS with one [srsRAN](/reference-tools/3gpp-platforms) gNB and one srsRAN UE
   running using the ZeroMQ driver
 - The `external` deployment deploys _only_ the developed Network Functions for MBS waiting for an external gNB connection
 

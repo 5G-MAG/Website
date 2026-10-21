@@ -9,12 +9,12 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
 
-export const projectVideos = (youtubePlaylists.projects?.['ai-ml']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['ai-ml'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -31,8 +31,6 @@ export const projectVideos = (youtubePlaylists.projects?.['ai-ml']?.videos || []
 <h1>AI/ML Evaluation Framework</h1>
 </div>
 </div>
-
-See also: <a href={useBaseUrl('/testbeds/ai-ml/tutorials#developer-exchange')}>Developer Exchange</a>.
 
 :::note
 The reference tooling is currently private and under testing. [Request early access](/early-access).
@@ -62,9 +60,7 @@ The repository README describes the purpose as to "establish an evaluation frame
   note="The mapping of boxes to the repository is for its maintainers to confirm; the split inferencing testbed of figure 4.2-1 is not drawn. Click the figure to enlarge it."
 />
 
-## Repositories & Releases
-
-<ProjectRepositories project="ai-ml" />
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
 ## Standards implemented
 
@@ -81,34 +77,29 @@ The specifications below are listed as background context, not as a prerequisite
 
 See [AI/ML on the Standards portal](/standards/ai-ml) for version history and 5G-MAG's own standards contributions.
 
+## Slide Deck
+
+<div class="event-post-grid" style={{maxWidth: '340px'}}>
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/ai-ml-slides-cover.jpg')} alt="AI/ML Evaluation Framework slide deck cover" />
+<span class="event-post-title">Slide deck: AI/ML Evaluation Framework overview</span>
+</a>
+</div>
+
 ## Contributors & How to Contribute
 
 <ProjectContributors />
+
+## Repositories & Releases
+
+<ProjectRepositories project="ai-ml" />
 
 ## Developer Updates
 
 <CommunityStats name="AI/ML Evaluation Framework" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="AI/ML Evaluation Framework" />
 
-<div class="event-post-grid">
-
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/ai-ml-slides-cover.jpg')} alt="AI/ML Evaluation Framework slide deck cover" />
-<span class="event-post-title">Slide deck: AI/ML Evaluation Framework overview</span>
-</a>
-
-</div>
-
-| Area                        | Details                                                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Implementation Detail**                    | Focus areas, repositories, and relationship to standards: [Implementation Detail](./implementation)                                                  |
-| **Technical documentation**  | How 3GPP's network-side and UE-side AI/ML tracks fit together: [AI/ML Evaluation Framework on the Tech portal](/tech/ai-ml)          |
-| **Standards**                | AI/ML in 5G media standardisation: [AI/ML on the Standards portal](/standards/ai-ml)                                        |
-| **Related project**          | AI traffic classification testbed: [6G AI Traffic Characterization Testbed](../6g-testbed)                                             |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
-
-<ProjectVideos videos={projectVideos} name="AI/ML Evaluation Framework" />
+For how 3GPP's network-side and UE-side AI/ML tracks fit together, see [AI/ML Evaluation Framework on the Tech portal](/tech/ai-ml). A related project is the [6G AI Traffic Characterization Testbed](/testbeds/6g-testbed).

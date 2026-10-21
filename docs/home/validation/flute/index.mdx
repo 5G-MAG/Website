@@ -6,6 +6,13 @@ sidebar_position: -1
 description: "Tests a FLUTE implementation (rt-libflute) against the FLUTE profiles of IETF RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517, release by release."
 ---
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { REPO_METADATA } from '@site/src/data/baskets';
+
+export const REPO_COUNT = (REPO_METADATA['flute'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -51,18 +58,40 @@ The validator tests rt-libflute only: its two test harnesses are built against t
 
 The repository is available on request; see [Early Access](/early-access).
 
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<span class="standard-card__text">IETF</span>
+<span class="standard-card__label">RFC 3926</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">TS 26.346, TS 26.517</span>
+</div>
+</div>
+
+IETF RFC 3926 (FLUTE), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) annex L.4 (MBMS download profile) and 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) clause 6.2 (MBS profile): see [Profiles](#profiles) for the releases tested.
+
+See [FLUTE requirements by profile](/standards/content-delivery/flute) on the Standards portal. For the technical analysis, see [Content Delivery Protocols and Tools on the Tech portal](/tech/content-delivery). The library it tests is [Content Delivery Protocols and Tools (rt-libflute)](/reference-tools/content-delivery).
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
 ## Repositories & Releases
 
 <ProjectRepositories project="flute" />
 
-| Area | Details |
-| --- | --- |
-| **Implementation Detail** | How it works, the releases it covers and what a verdict means: [Implementation Detail](./implementation) |
-| **Tutorials** | Install it and test a library: [Tutorials](./tutorials) |
-| **Resources** | Repository and releases: [Repositories & Releases](/validation/flute#repositories--releases) |
-| **Technical documentation** | [Content Delivery Protocols and Tools on the Tech portal](/tech/content-delivery) |
-| **Standards** | [FLUTE requirements by profile](/standards/content-delivery/flute) |
-| **The library it tests** | [Content Delivery Protocols and Tools (rt-libflute)](/reference-tools/content-delivery) |
+## Developer Updates
+
+<CommunityStats name="FLUTE Conformance Validator" />
+
+### Open Pull Requests
+
+<ProjectOpenPRs name="FLUTE Conformance Validator" />
 
 <details>
 <summary>Sources for this page</summary>
