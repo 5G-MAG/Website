@@ -6,6 +6,8 @@ description: What the VOPS Conformance Validator checks, the operation points it
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-vops.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -25,6 +27,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page sets out what the VOPS Conformance Validator covers, as stated in its repository README.
 
+:::tip[In short]
+
+- **What the tool checks:** the bitstream requirements of the AVC, HEVC and MV-HEVC operation points of TS 26.265 V19.3.0 (formats, colour, frame packing, layers and levels). It does not decode, encode or check a receiver.
+- **What is covered:** most checks exist, but several requirements are checked only partly or not at all: bit depth, frame rates, projection, the AVC 120 Mbps limit, the 4:2:0 and aspect-ratio checks for UHD, and AVC-HD has none of the representation-format checks that the HEVC HD operation point has. Some stereo checks do not make a failing stream fail.
+- **Source of this page:** an audit of the `main` branch of the repository on 2026-10-21: every requirement split into the cases its clause defines, each case read against the XSD rules and the parser by one reader and then independently by a second, with a third reading where they disagreed. The H.264 and H.265 texts were not available, so codec-level values are taken as the rules give them.
+
+:::
+
+
 ## What This Project Implements
 
 The validator verifies that an input video bitstream conforms to a given operation point defined in 3GPP TS 26.265 (Media Delivery: Video Capabilities and Operation Points). It parses the bitstream into an XML description, checks that description against XSD 1.1 schemas, one set per operation point, and reports every passing and failing assertion.
@@ -35,22 +46,25 @@ It is a conformance tool, not an implementation of the specification: it tests b
 
 ### Operation points
 
-| Operation point | Codec | Status | Tested |
-| --- | --- | --- | --- |
-| `3GPP-AVC-HD` | AVC | Implemented | Needs testing |
-| `3GPP-HEVC-HD` | HEVC | Implemented | Needs testing |
-| `3GPP-HEVC-HDR` | HEVC | Implemented | Needs testing |
-| `3GPP-HEVC-UHD` | HEVC | Implemented | Needs testing |
-| `3GPP-HEVC-UHD-HDR` | HEVC | Implemented | Needs testing |
-| `3GPP-HEVC-Stereo` | HEVC | Implemented | Needs testing |
-| `3GPP-MV-HEVC-Main-Stereo` | MV-HEVC | Implemented | Needs testing |
-| `3GPP-MV-HEVC-Ext-Stereo` | MV-HEVC | Implemented | Needs testing |
-
-The README states that "Implemented" means the XSD schemas and parser support exist, and that validation against actual bitstreams may reveal issues. Every operation point still needs testing with its conformance bitstreams.
+The validator carries a rule set for each of the eight operation points of TS 26.265 (`3GPP-AVC-HD`, `3GPP-HEVC-HD`, `3GPP-HEVC-HDR`, `3GPP-HEVC-UHD`, `3GPP-HEVC-UHD-HDR`, `3GPP-HEVC-Stereo`, `3GPP-MV-HEVC-Main-Stereo` and `3GPP-MV-HEVC-Ext-Stereo`). The README states that "implemented" means the XSD schemas and the parser exist, and that validation against real bitstreams may reveal issues.
 
 ### Boundary with 3GPP
 
 TS 26.265 V19.3.0, clause B.2.3: "The detailed semantics and the format of the report is for further study." The JSON report format is therefore this tool's own, not one the specification defines.
+
+## Implementation status
+
+Open a feature, then a requirement, to see each case and why. Filter by component and release.
+
+<ImplementationCases data={AUDIT} />
+
+:::info[Full audit for members]
+
+The full audit, with the rules and code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
+
+[Become a member](/membership) · [Request access](/early-access)
+
+:::
 
 ## Key GitHub repository
 

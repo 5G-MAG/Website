@@ -1,0 +1,1398 @@
+{
+ "area": "vops",
+ "title": "VOPS Conformance Validator",
+ "audited": "2026-10-21",
+ "tier": "T0",
+ "method": "code read against every statement of the specifications on the project page; statements a component cannot meet by construction marked absent by group",
+ "releases": {
+  "all": "VOPS Conformance Validator"
+ },
+ "held": {
+  "cases": 2,
+  "reasons": [
+   "a specification or code outside the audit that could not be read",
+   "the specification is inconsistent here (members only)"
+  ]
+ },
+ "releaseStatus": {
+  "baseline": "20",
+  "issues": {
+   "19": "TS 26.265 V19.3.0",
+   "20": "TS 26.265 V19.3.0"
+  },
+  "profiles": [
+   "all"
+  ],
+  "matrix": {
+   "all": {
+    "19": {
+     "implemented": 36,
+     "differs": 43,
+     "absent": 20,
+     "inconsistent": 0
+    },
+    "20": {
+     "implemented": 36,
+     "differs": 43,
+     "absent": 20,
+     "inconsistent": 0
+    }
+   }
+  }
+ },
+ "components": {
+  "bitstream": {
+   "short": "Bitstream checks",
+   "name": "Bitstream requirement checks (AVC, HEVC and MV-HEVC parsers and the XSD rules of each operation point)",
+   "builtAgainst": "",
+   "repos": [
+    {
+     "repo": "vops-conformance-validator",
+     "version": ""
+    }
+   ]
+  },
+  "validator": {
+   "short": "Validator",
+   "name": "Conformance Validator (command line, operation point selection, JSON report; B.2.3)",
+   "builtAgainst": "",
+   "repos": [
+    {
+     "repo": "vops-conformance-validator",
+     "version": ""
+    }
+   ]
+  },
+  "receiver": {
+   "short": "Receiver",
+   "name": "Receiver (decoder and renderer of an operation point; none exists)",
+   "builtAgainst": "",
+   "repos": []
+  }
+ },
+ "features": [
+  {
+   "name": "Capabilities and operation points",
+   "summary": "",
+   "requirements": [
+    {
+     "id": "bitstream-26.265-4.5.3",
+     "name": "Common Bitstream Constraints / HEVC Bitstreams",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.5.3"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "general_progressive_source_flag = 1 (progressive constraints)",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_interlaced_source_flag = 0 (progressive constraints)",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 0 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_non_packed_constraint_flag = 1 (progressive constraints)",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_frame_only_constraint_flag = 1 (progressive constraints)",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_progressive_source_flag = 1 (frame-packing constraints)",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires the flag to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_interlaced_source_flag = 0 (frame-packing constraints)",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires the flag to be present and equal to 0 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_non_packed_constraint_flag = 0 (frame-packing constraints)",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires the flag to be present and equal to 0 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "general_frame_only_constraint_flag = 1 (frame-packing constraints)",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires the flag to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "frame packing arrangement SEI present",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires at least one frame packing arrangement SEI message (payload type 45) in the bitstream.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "frame_packing_arrangement_type 3 or 4",
+       "verdict": "differs",
+       "what": "The XSD requires frame_packing_arrangement_type to exist and be 3 or 4. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "quincunx_sampling_flag = 0",
+       "verdict": "differs",
+       "what": "The XSD requires quincunx_sampling_flag to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "content_interpretation_type 1 or 2",
+       "verdict": "differs",
+       "what": "The XSD requires content_interpretation_type to exist and be 1 or 2. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "frame0_flipped_flag = 0",
+       "verdict": "differs",
+       "what": "The XSD requires frame0_flipped_flag to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "field_views_flag = 0",
+       "verdict": "differs",
+       "what": "The XSD requires field_views_flag to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "current_frame_is_frame0_flag = 0",
+       "verdict": "differs",
+       "what": "The XSD requires current_frame_is_frame0_flag to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "the four grid positions = 0",
+       "verdict": "differs",
+       "what": "Four XSD asserts require the two frame0 and two frame1 grid positions to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "upsampled_aspect_ratio_flag = 0",
+       "verdict": "differs",
+       "what": "The XSD requires upsampled_aspect_ratio_flag to exist and be 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "VPS NAL units may be present",
+       "verdict": "implemented",
+       "what": "The XSD NAL unit model accepts a VPS NAL unit, and the single-layer rule sets do not require or forbid one.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "Bitstream valid when the receiver ignores the VPS",
+       "verdict": "absent",
+       "what": "No rule checks that the bitstream stays valid without the VPS; the MV-HEVC rule set even requires a VPS, which is a different (multi-layer) case.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "vui_parameters_present_flag = 1",
+       "verdict": "implemented",
+       "what": "The rules require the layer-0 SPS to carry the flag, equal to 1.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "aspect_ratio_info_present_flag should be 1",
+       "verdict": "implemented",
+       "what": "The rule is marked as a recommendation: a bitstream without aspect ratio information gets a warning and still passes.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "video_signal_type_present_flag and colour_description_present_flag = 1",
+       "verdict": "implemented",
+       "what": "The rules require both flags to be present and equal to 1.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "video_full_range_flag = 0",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 0.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "overscan_info_present_flag = 0",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 0.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "chroma_loc_info_present_flag = 1",
+       "verdict": "implemented",
+       "what": "The rules require the flag to be present and equal to 1.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "timing values consistent with allowed frame rates",
+       "verdict": "absent",
+       "what": "The timing values are parsed but no rule compares vui_num_units_in_tick and vui_time_scale with the allowed frame rates or with system-level timing.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "frame rate does not change between RAPs",
+       "verdict": "absent",
+       "what": "No rule compares the frame rate across random access points.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "fixed_frame_rate_flag = 1 when present",
+       "verdict": "absent",
+       "what": "No rule checks a fixed frame rate flag; the HEVC VUI parser has no such element (only the AVC one does).",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.5.3"
+      },
+      {
+       "case": "NOTE: the hero eye, if provided in the representation format, may be indicated with ...",
+       "verdict": "differs",
+       "what": "The sentence extracted is the hero-eye NOTE (permissive, nothing to check) joined to 'spatial_flipping_flag shall be set to 0'. The stereo XSD asserts that flag, but the assert is multi-line with outer whitespace and never fails the run.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "The rule compares string of the matching SPS elements; with several SPS NAL units in layer 0 an XPath 2.0 string over more than one node raises a type error, so such a bitstream would fail this rule (checked with elementpath, the XPath engine behind xmlschema; the validator itself was not run).",
+      "The rule compares string of the matching SPS elements; with several SPS NAL units in layer 0 an XPath 2.0 string over more than one node raises a type error, so such a bitstream would fail this rule (checked with elementpath, the XPath engine behind xmlschema; the validator itself was not run).",
+      "Presence is tested once for the whole bitstream, not per coded video sequence; clause 6.3.5.2 says frame packing information is not required for all coded video sequences.",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The SEI rules use XPath general comparison over all frame packing SEI messages, so a bitstream passes if any one message satisfies the test, not every message; and string over several messages raises a type error (checked with elementpath).",
+      "The rule compares string of the matching SPS elements; with several SPS NAL units in layer 0 an XPath 2.0 string over more than one node raises a type error, so such a bitstream would fail this rule (checked with elementpath, the XPath engine behind xmlschema; the validator itself was not run)."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.2.2.2",
+     "name": "3GPP AVC HD Operation Point / Bitstream Requirements",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.2.2.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "High Progressive Profile, Level 4.0",
+       "verdict": "implemented",
+       "what": "The rules require profile_idc 100, constraint_set4_flag 1 and level_idc 40.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "no more than 16 slices per picture",
+       "verdict": "differs",
+       "what": "The XSD requires MaxPictureSliceCount to exist and be <= 16, but the assert is multi-line (a violation is listed in errors, never made a failure), the variable is emitted only with --include-internal-vars (without it the assert is false for every stream), and it is counted per frame_num value over NAL types 1 and 5, not per picture, so pictures sharing a frame_num merge.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "motion vector length limits (should)",
+       "verdict": "differs",
+       "what": "The two log2_max_mv_length assertions (<=11, <=9) are marked provision=recommendation and guarded by the VUI bitstream_restriction_flag, but they are multi-line with outer whitespace, so a violation never reaches warning_assertions and only appears as a generic error; actual motion vector values are not checked.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "maximum VCL bit rate 120 Mbps",
+       "verdict": "absent",
+       "what": "No rule checks the VCL bit rate or the cpbBrVclFactor and cpbBrNalFactor values.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "HD format colour, chroma format, SAR, chroma location, range, bit depth, frame rate",
+       "verdict": "absent",
+       "what": "The AVC operation point has no rule for any parameter of the 3GPP HD representation format (colour values, 4:2:0, sample aspect ratio, chroma location, range, bit depth, frame rate, resolution).",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "decodable with AVC-FullHD-Dec",
+       "verdict": "implemented",
+       "what": "Decoding is not tested; the rules check the profile and level that define the capability (Progressive High, level 4.0).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.2.2.2"
+      },
+      {
+       "case": "A 3GPP-AVC-HD Bitstream shall conform to the following requirements",
+       "verdict": "differs",
+       "what": "Umbrella. High Progressive (profile_idc=100, constraint_set4_flag=1), level_idc=40 and the slice limit are asserted; not covered: the 120 Mbps VCL rate with cpbBrVclFactor/NalFactor (_vcl_bit_rate is parsed but no rule), the HD format checks (see HD cases), and decodability.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Level is tested for equality with 40. The H.264 text was not read, so the exact meaning of constraint_set4_flag for Progressive High is not confirmed here."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.2.2",
+     "name": "3GPP HEVC HD Operation Point / Bitstream Requirements",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.2.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "Main 10, Main Tier, Level 4.1 with progressive and VUI constraints",
+       "verdict": "implemented",
+       "what": "The operation point loads the Main 10 / Main Tier / level 4.1 rules together with the progressive and VUI rules; Main 10 is accepted by profile_idc 2 or compatibility flag 2.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "HD format: progressive, 4:2:0, SAR 1, colour 1/1/1, chroma location 0, restricted range",
+       "verdict": "differs",
+       "what": "HD loads progressive, VUI (range 0), chroma_format_idc 1, colour 1/1/1 and chroma location 0 rules, but hd-common requires aspect_ratio_idc to exist and equal 1 while the sentence says 'if present'; a stream without aspect_ratio_info is rejected (the parser emits aspect_ratio_idc only when aspect_ratio_info_present_flag is 1).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "HD format bit depth, frame rate, frame packing, resolution",
+       "verdict": "absent",
+       "what": "No rule checks bit depth, permitted frame rates, absence of frame packing SEI or the resolution.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "decodable with HEVC-FullHD-Dec",
+       "verdict": "implemented",
+       "what": "Decoding is not tested; the rules check the profile, tier and level that define the capability: Main 10, Main Tier, level 4.1, with the progressive constraints.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "chroma_format_idc = 1",
+       "verdict": "implemented",
+       "what": "The rules require chroma_format_idc to be present and equal to 1 in the layer-0 SPS.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "aspect_ratio_idc = 1 if present",
+       "verdict": "differs",
+       "what": "The rules require aspect_ratio_idc to be present and equal to 1; a bitstream with no aspect ratio information, which \"if present\" allows, fails the check.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "colour_primaries, transfer_characteristics, matrix_coeffs = 1",
+       "verdict": "implemented",
+       "what": "The SDR colour rules require all three values to be present and equal to 1.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "chroma_sample_loc_type_top_field = 0",
+       "verdict": "implemented",
+       "what": "The SDR colour rules require the value to be present and equal to 0.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.2.2"
+      },
+      {
+       "case": "A 3GPP-HEVC-HD Bitstream shall conform to the following requirements:",
+       "verdict": "differs",
+       "what": "Umbrella. Main 10, Main tier, level_idc=123 (exact equality, not <=), progressive and VUI constraints, 4:2:0, SAR 1, colour 1/1/1 and chroma loc 0 are asserted; not covered: bit depth, frame rates, VUI timing consistency, decodability.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Level is tested for equality with 123 (4.1), not as \"at most 4.1\". The H.265 text was not read."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.3.2",
+     "name": "3GPP HEVC HDR Operation Point / Bitstream Requirements",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.3.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "Main 10, Main Tier, Level 4.1 with progressive and VUI constraints",
+       "verdict": "implemented",
+       "what": "The operation point loads the Main 10 / Main Tier / level 4.1 rules together with the progressive and VUI rules; Main 10 is accepted by profile_idc 2 or compatibility flag 2.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "HDR format: progressive, 4:2:0, SAR 1, colour 9 with 14/16/18, chroma location 2, restricted range",
+       "verdict": "differs",
+       "what": "HDR loads progressive, VUI, chroma_format_idc 1, colour 9 with 14/16/18 and 9, chroma location 2, but requires aspect_ratio_idc to exist while the sentence says 'if present'; a stream without it is rejected.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "HDR format 10-bit depth, frame rate, frame packing, resolution",
+       "verdict": "absent",
+       "what": "No rule checks the 10-bit depth, permitted frame rates, absence of frame packing SEI or the resolution.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "decodable with HEVC-FullHD-Dec",
+       "verdict": "implemented",
+       "what": "Decoding is not tested; the rules check the profile, tier and level that define the capability: Main 10, Main Tier, level 4.1, with the progressive constraints.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "colour_primaries 9, matrix_coeffs 9, transfer_characteristics 14/16/18",
+       "verdict": "implemented",
+       "what": "The HDR colour rules require these values to be present and match.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "chroma_sample_loc_type_top_field = 2",
+       "verdict": "implemented",
+       "what": "The HDR colour rules require the value to be present and equal to 2.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.3.2"
+      },
+      {
+       "case": "A 3GPP-HEVC-HDR Bitstream shall conform to the following requirements:",
+       "verdict": "differs",
+       "what": "Umbrella. Main 10, Main tier, level 4.1, progressive and VUI constraints, 4:2:0, SAR 1, colour 9/{14,16,18}/9 and chroma loc 2 are asserted; not covered: 10-bit only, frame rates, VUI timing consistency, decodability.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Level is tested for equality with 123 (4.1), not as \"at most 4.1\". The H.265 text was not read."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.4.2",
+     "name": "3GPP HEVC UHD / Bitstream Requirements",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.4.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "Main 10, Main Tier, Level 5.1 with progressive and VUI constraints",
+       "verdict": "implemented",
+       "what": "The operation point loads the Main 10 / Main Tier / level 5.1 rules with the progressive and VUI rules.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.4.2"
+      },
+      {
+       "case": "HDR colour values and chroma location (UHD-HDR operation point)",
+       "verdict": "implemented",
+       "what": "Only the 3GPP-HEVC-UHD-HDR operation point adds the HDR colour rules (colour 9, transfer 14/16/18, matrix 9, chroma location 2); the 3GPP-HEVC-UHD operation point itself has no colour rule.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.4.2"
+      },
+      {
+       "case": "HDR format 10-bit depth, frame rate, frame packing, resolution",
+       "verdict": "absent",
+       "what": "No rule checks the 10-bit depth, permitted frame rates, absence of frame packing SEI or the resolution.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.4.2"
+      },
+      {
+       "case": "decodable with HEVC-UHD-Dec",
+       "verdict": "implemented",
+       "what": "Decoding is not tested; the rules check Main 10, Main Tier, level 5.1 with the progressive constraints that define the capability.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.4.2"
+      },
+      {
+       "case": "A 3GPP-HEVC-UHD Bitstream shall conform to the following requirements:",
+       "verdict": "differs",
+       "what": "Umbrella. Main 10, Main tier, level_idc=153, progressive and VUI constraints are asserted; the additional restrictions (chroma_format_idc=1, aspect_ratio_idc=1) are not in any UHD configuration, colour 9/.../9 and chroma loc 2 only in 3GPP-HEVC-UHD-HDR (not plain 3GPP-HEVC-UHD), and 10-bit/frame rates are never checked.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Level is tested for equality with 153 (5.1). The H.265 text was not read.",
+      "Neither UHD operation point loads the 4:2:0 and aspect ratio rule file (3gpp-hevc-hd-common.xsd)."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.5.2",
+     "name": "3GPP HEVC Stereo / Bitstream Requirements",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.5.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "stereoscopic format: progressive, 4:2:0, colour values, chroma location, restricted range",
+       "verdict": "differs",
+       "what": "Stereo loads progressive flags (frame-packing form), chroma_format_idc 1 and video_full_range_flag 0 (working single-line asserts), but the colour and chroma-location alternatives are one multi-line assert with outer whitespace, so a violation is listed in errors and never fails the run.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "stereoscopic format picture and sample aspect ratio, resolution, bit depth, frame rate",
+       "verdict": "absent",
+       "what": "No rule in the Stereo operation point checks picture or sample aspect ratio, resolution, bit depth or frame rate.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "Main 10, Main Tier, Level 5.2 with VUI and frame-packing constraints",
+       "verdict": "differs",
+       "what": "Stereo loads Main 10, Main Tier, level_idc 156 and the frame-packing and VUI rules (these single-line asserts work), but the FPA SEI parameter asserts and the colour assert are multi-line with outer whitespace and never fail the run; constancy of FPA parameters over the bitstream is not checked.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "decodable with HEVC-Stereo-Dec",
+       "verdict": "differs",
+       "what": "Decoding is not tested. The code checks Main 10, Main Tier, level_idc 156 and the frame-packing and VUI rules, but the FPA parameter constraints (part of the capability) and the colour rule do not fail the run, and 'HEVC-Stereo-Dec' is not defined anywhere (5.3.2 and Table 6.1-1 give HEVC-Frame-Packed-Stereo-Dec, Level 6.0).",
+       "repo": "vops-conformance-validator",
+       "conflict": "Clause 6.3.5.2: \"the Bitstream shall be decodable by a decoder with HEVC-Stereo-Dec decoding capabilities as defined in clause 5.3.2\" versus clause 5.3.2, which defines no HEVC-Stereo-Dec and gives HEVC-Frame-Packed-Stereo-Dec at Main 10, Main Tier, Level 6.0, while clause 6.3.5.2 asks for Level 5.2.",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "chroma_format_idc = 1",
+       "verdict": "implemented",
+       "what": "The Stereo rule set requires chroma_format_idc to be present and equal to 1.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "BT.709 branch: colour_primaries, transfer_characteristics, matrix_coeffs = 1",
+       "verdict": "differs",
+       "what": "The first alternative of the single colour assert requires colour_primaries, transfer_characteristics and matrix_coeffs all 1. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "BT.709 branch: chroma_sample_loc_type_top_field = 0",
+       "verdict": "differs",
+       "what": "The BT.709 alternative of the single colour assert requires chroma_sample_loc_type_top_field 0. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "BT.2020 branch: colour_primaries 9, matrix_coeffs 9, transfer 14/16/18",
+       "verdict": "differs",
+       "what": "The second alternative of the single colour assert requires colour_primaries 9, transfer 14/16/18 and matrix_coeffs 9. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "BT.2020 branch: chroma_sample_loc_type_top_field = 2",
+       "verdict": "differs",
+       "what": "The BT.2020 alternative of the single colour assert requires chroma_sample_loc_type_top_field 2. The rule is a multi-line assert whose test starts and ends with whitespace, so a violation is listed in errors but never becomes a failing assertion: validation_success stays true.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.5.2"
+      },
+      {
+       "case": "A 3GPP-HEVC-Stereo Bitstream shall conform to the following requirements",
+       "verdict": "differs",
+       "what": "Umbrella. Main 10/Main tier/level 5.2, 4:2:0, VUI rules and the frame-packing flag/SEI rules are present, but the stereo-colour and frame-packing SEI assertions start with a newline so failures are not matched (success stays true), and 4.4.3.4 format items (bit depth, frame rates, resolution cap) and decodability are not checked.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Level is tested for equality with 156 (5.2). The H.265 text was not read."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.6.4",
+     "name": "3GPP MV-HEVC Stereo / 3GPP MV-HEVC-Main Stereo",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.6.4"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "common MV-HEVC stereo requirements (clause 6.3.6.2)",
+       "verdict": "differs",
+       "what": "The operation point loads the MV-HEVC stereo rules (VPS layer sets, scalability, default output layer, chroma 4:2:0, 3D reference displays SEI), VUI, progressive and stereo-colour rules, but 6.3.6.2 is only partly met: aspect_ratio_idc must exist (spec: if present), no check of exactly two output layers in the second OLS, progressive flags only on the nuh_layer_id=0 SPS, ScalabilityId needs --include-internal-vars, and the colour assert never fails the run (multi-line with outer whitespace).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.6.4"
+      },
+      {
+       "case": "dual-layer capability MV-HEVC-Main-Dual-layers-UHD420-Dec",
+       "verdict": "differs",
+       "what": "The Main rule set requires a layer-0 SPS of Main or Main 10 and a second-layer profile_tier_level of Multiview Main only (profile 6); the other second-layer profiles clause 5.3.3 lists (Main, Main 10) are rejected; it requires at least one non-base layer, not exactly two layers, and level 5.1 Main Tier for both.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.6.4"
+      }
+     ],
+     "noted": [
+      "Not checked: exactly two output layers in the second OLS, progressive flags of the second layer, bit depth, frame rate. Clause 6.3.6.2 is not labelled in the corpus text (it is run into 6.3.6.1).",
+      "The file itself carries a TODO for the exactly-one-enhancement-layer check. The H.265 profile numbers were not read, so the profile_idc values are taken as the rules give them."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-6.3.6.5",
+     "name": "3GPP MV-HEVC Stereo / 3GPP MV-HEVC-Ext Stereo",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.6.5"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "common MV-HEVC stereo requirements (clause 6.3.6.2)",
+       "verdict": "differs",
+       "what": "The operation point loads the MV-HEVC stereo rules (VPS layer sets, scalability, default output layer, chroma 4:2:0, 3D reference displays SEI), VUI, progressive and stereo-colour rules, but 6.3.6.2 is only partly met: aspect_ratio_idc must exist (spec: if present), no check of exactly two output layers in the second OLS, progressive flags only on the nuh_layer_id=0 SPS, ScalabilityId needs --include-internal-vars, and the colour assert never fails the run (multi-line with outer whitespace).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.6.5"
+      },
+      {
+       "case": "dual-layer capability MV-HEVC-Ext-Dual-layers-UHD420-Dec",
+       "verdict": "differs",
+       "what": "The Ext rule set requires a Main or Main 10 base layer with a second layer of Multiview Extended (profile_idc 12 or 13) only; clause 5.3.3 says the Ext capability also covers every Main-dual combination, and these are rejected; it requires at least one non-base layer, not exactly two, and level 5.1 Main Tier for both.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ],
+       "locator": "clause 6.3.6.5"
+      }
+     ],
+     "noted": [
+      "Not checked: exactly two output layers in the second OLS, progressive flags of the second layer, bit depth, frame rate.",
+      "The file carries a TODO for the exactly-one-enhancement-layer check. The H.265 text was not read, so the profile_idc values 12 and 13 are taken as the rules give them."
+     ]
+    },
+    {
+     "id": "bitstream-26.265-4.4.3.2",
+     "name": "3GPP Video Representation Formats / High-Definition",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.4.3.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "The pixel aspect ratio shall be 1 (square pixel), i.e. only the value 1 as defined in ...",
+       "verdict": "differs",
+       "what": "HEVC-HD and HEVC-HDR assert aspect_ratio_idc exists and equals 1 on the base layer SPS; no equivalent for 3GPP-AVC-HD, which also uses the HD format (6.2.2.2).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The values shall be either 8 or 10 bit.",
+       "verdict": "absent",
+       "what": "No rule set asserts bit_depth_luma_minus8 or bit_depth_chroma_minus8 (parsed, defined in avc_common.xsd/hevc_common.xsd, never tested). Only the profile is checked (HEVC general_profile_idc=2 / AVC profile_idc=100), which is a declaration, not a bit-depth check; Main 10 would also admit 9 bits and differing luma/chroma depth.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 [6], clause 8.7, shall be set to 0 (chroma samples are horizontally ...",
+       "verdict": "differs",
+       "what": "HEVC-HD asserts chroma_sample_loc_type_top_field exists and equals 0; AVC-HD has no chroma sample location check.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "3GPP HD formats shall conform to Rec.",
+       "verdict": "differs",
+       "what": "Umbrella sentence. 3GPP-HEVC-HD checks progressive, 4:2:0, SAR 1 (strictly, see other cases), colour 1/1/1, range and chroma location; bit depth, frame rates and projection are not checked, and 3GPP-AVC-HD checks only profile 100, constraint_set4_flag and level 40 (no colour, chroma format, SAR or range rule).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The restricted video range shall be used.",
+       "verdict": "differs",
+       "what": "HEVC-HD asserts video_full_range_flag exists and equals 0 via the VUI constraints; AVC-HD has no video_full_range_flag check.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "No projection shall be used.",
+       "verdict": "absent",
+       "what": "Nothing tests for projection; the SEI parser only handles payload types 45 and 176 (others returned as unsupported) so projection SEI messages are not even parsed.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The chroma format indicator shall be 4:2:0.",
+       "verdict": "differs",
+       "what": "HEVC-HD and HEVC-HDR assert chroma_format_idc=1 on the base layer SPS; AVC-HD has no chroma_format_idc check (High profile also allows 4:0:0).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "No frame packing shall be applied.",
+       "verdict": "differs",
+       "what": "HEVC-HD asserts general_non_packed_constraint_flag=1 (the signalled flag only; no test that a frame packing SEI is absent); AVC-HD has no frame-packing check.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The bit depth shall be the same for all samples.",
+       "verdict": "absent",
+       "what": "No rule set asserts bit_depth_luma_minus8 or bit_depth_chroma_minus8 (parsed, defined in avc_common.xsd/hevc_common.xsd, never tested). Only the profile is checked (HEVC general_profile_idc=2 / AVC profile_idc=100), which is a declaration, not a bit-depth check; Main 10 would also admit 9 bits and differing luma/chroma depth.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 shall be progressive.",
+       "verdict": "implemented",
+       "what": "HEVC-HD asserts general_progressive_source_flag=1, general_interlaced_source_flag=0 and frame_only=1 on the base layer SPS (declared source scan type); AVC-HD declares Progressive High through profile_idc=100 and constraint_set4_flag=1 (frame_mbs_only_flag itself not asserted). Flags are checked as signalled, not against picture content.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "- Only the Non-Constant Luminance YCbCr signal format is included.",
+       "verdict": "differs",
+       "what": "HEVC-HD asserts matrix_coeffs=1 (BT.709 non-constant luminance); AVC-HD has no matrix_coefficients check although avc_common.xsd defines the element.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "- Only the following formats are included 24/P, 25/P, 30/P, 50/P and 60/P. Interlace ...",
+       "verdict": "differs",
+       "what": "Interlace exclusion is checked (HEVC general_interlaced_source_flag 0 and frame_only 1; AVC constraint_set4_flag 1), but the list of frame rates 24/25/30/50/60 is not: no rule reads timing (vui_num_units_in_tick, vui_time_scale); progressive segmented frame is not separately tested.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "bitstream-26.265-4.4.3.3",
+     "name": "3GPP Video Representation Formats / High Dynamic Range",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.4.3.3"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "- Only 10-bit representations are used",
+       "verdict": "absent",
+       "what": "No rule set asserts bit_depth_luma_minus8 or bit_depth_chroma_minus8 (parsed, defined in avc_common.xsd/hevc_common.xsd, never tested). Only the profile is checked (HEVC general_profile_idc=2 / AVC profile_idc=100), which is a declaration, not a bit-depth check; Main 10 would also admit 9 bits and differing luma/chroma depth. Main 10 admits 8-bit; HDR requires 10-bit only.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "- Only the Non-Constant Luminance YCbCr signal format is used",
+       "verdict": "implemented",
+       "what": "The HDR operation points (3GPP-HEVC-HDR, 3GPP-HEVC-UHD-HDR) load hdr-colour, whose single-line asserts require base-layer matrix_coeffs to exist and equal 9 (non-constant luminance in BT.2020), and these work.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The permitted value shall be 10 bit.",
+       "verdict": "absent",
+       "what": "No rule set asserts bit_depth_luma_minus8 or bit_depth_chroma_minus8 (parsed, defined in avc_common.xsd/hevc_common.xsd, never tested). Only the profile is checked (HEVC general_profile_idc=2 / AVC profile_idc=100), which is a declaration, not a bit-depth check; Main 10 would also admit 9 bits and differing luma/chroma depth. Main 10 admits 8-bit; HDR requires 10-bit only.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "3GPP HDR TV formats shall conform to ITU-R BT-2100-2 [3] with the following ...",
+       "verdict": "differs",
+       "what": "Umbrella sentence. HDR operation points assert 4:2:0 (HDR only), SAR 1, colour 9/{14,16,18}/9 and chroma location 2; 10-bit only, frame rates and projection are not checked, and the UHD-HDR entry loads neither chroma_format_idc nor SAR rules.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 [6], clause 8.7 shall be set to 2 (chroma samples are co-sited with the ...",
+       "verdict": "implemented",
+       "what": "The HDR operation points load hdr-colour, whose single-line asserts require base-layer chroma_sample_loc_type_top_field to exist and equal 2.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "- Only 4:2:0 colour subsampling is used",
+       "verdict": "differs",
+       "what": "HEVC-HDR asserts chroma_format_idc=1 through the HD-common rule set; 3GPP-HEVC-UHD-HDR and 3GPP-HEVC-UHD (also using the HDR format per 6.3.4.2) do not include it.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "bitstream-26.265-4.5.2",
+     "name": "Common Bitstream Constraints / AVC Bitstreams",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.5.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "NOTE: This constraint should be indicated by using values of ...",
+       "verdict": "differs",
+       "what": "3GPP-AVC-HD loads recommendation-tagged asserts log2_max_mv_length_horizontal <= 11 and vertical <= 9 (guarded by bitstream_restriction_flag), but they are multi-line with outer whitespace, so a violation never reaches warning_assertions and appears only as a generic error.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "receiver-26.265-6.3.6.4",
+     "name": "3GPP MV-HEVC Stereo / 3GPP MV-HEVC-Main Stereo",
+     "release": "all",
+     "component": "receiver",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.6.4"
+     },
+     "repos": [],
+     "cases": [
+      {
+       "case": "Receivers conforming to the 3GPP-MV-HEVC-Main Stereo operation points shall conform to ...",
+       "verdict": "absent",
+       "what": "The validator checks bitstreams only; it has no receiver or decoder check and does not decode.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "receiver-26.265-6.3.6.5",
+     "name": "3GPP MV-HEVC Stereo / 3GPP MV-HEVC-Ext Stereo",
+     "release": "all",
+     "component": "receiver",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 6.3.6.5"
+     },
+     "repos": [],
+     "cases": [
+      {
+       "case": "Receivers conforming to the 3GPP-MV-HEVC-Ext Stereo operation points shall conform to ...",
+       "verdict": "absent",
+       "what": "The validator checks bitstreams only; it has no receiver or decoder check and does not decode.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "bitstream-26.265-4.4.3.4",
+     "name": "3GPP Video Representation Formats / Stereoscopic format",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.4.3.4"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "Shall be set to 16:9, 1:1.",
+       "verdict": "absent",
+       "what": "Picture aspect ratio (16:9, 1:1) is not tested; aspect_ratio_idc concerns sample aspect ratio and is only tested in the MV-HEVC rule set (=1). No rule on picture size, cropping or display window.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 [6] shall be progressive",
+       "verdict": "implemented",
+       "what": "HEVC-Stereo asserts general_progressive_source_flag=1, interlaced=0, frame_only=1 on the base layer; MV-HEVC stereo configurations include the progressive constraints rule set (declared source scan type, as signalled).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "The chroma format indicator shall 4:2:0.",
+       "verdict": "implemented",
+       "what": "HEVC-Stereo asserts base layer chroma_format_idc exists and equals 1; MV-HEVC stereo asserts it over NALUnit/SequenceParameterSet (any layer).",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 [6], clause 8.7 shall be set to 0.",
+       "verdict": "differs",
+       "what": "The stereo colour assert requires chroma_sample_loc_type_top_field 0 with colour, but it is multi-line with outer whitespace, so a violation is listed in errors and never fails the run.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "A video signal for the left and for the right eye is provided whereby the signals ...",
+       "verdict": "absent",
+       "what": "No rule compares the parameters of the two views (layer 0 and layer 1 SPS/VPS representation formats) for equality; the MV-HEVC rules only test that some SPS has chroma_format_idc=1 and aspect_ratio_idc=1, and the view ids.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      },
+      {
+       "case": "ITU-T H.273 [6], clause 8.7, shall be set to 2.",
+       "verdict": "differs",
+       "what": "The stereo colour assert requires chroma_sample_loc_type_top_field 2 with the BT.2020 combinations, but it is multi-line with outer whitespace, so a violation is listed in errors and never fails the run.",
+       "repo": "vops-conformance-validator",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "bitstream-26.265-4.4.2",
+     "name": "Video representation formats / Video signal parameters",
+     "release": "all",
+     "component": "bitstream",
+     "spec": {
+      "doc": "TS 26.265",
+      "version": "V19.3.0",
+      "locator": "clause 4.4.2"
+     },
+     "repos": [
+      "vops-conformance-validator"
+     ],
+     "cases": [
+      {
+       "case": "8 or 10 bits Luma and chroma components shall use the same bit-depth",
+       "verdict": "absent",
+       "what": "No rule set asserts bit_depth_luma_minus8 or bit_depth_chroma_minus8 (parsed, defined in avc_common.xsd/hevc_common.xsd, never tested). Only the profile is checked (HEVC general_profile_idc=2 / AVC profile_idc=100), which is a declaration, not a bit-depth check; Main 10 would also admit 9 bits and differing luma/chroma depth.",
+       "releases": [
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    }
+   ]
+  }
+ ]
+}
