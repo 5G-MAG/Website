@@ -13,6 +13,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 
@@ -39,6 +40,20 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'CAMARA API consumer and 3GPP network exposure',
+      src: '/img/tech/network-apis/generated/5gmag-network-apis-status.svg',
+      width: 1200, height: 652,
+      title: 'A CAMARA API consumer application, and the 3GPP network exposure behind the CAMARA APIs, with the repository',
+      source: 'A 5G-MAG drawing based on 3GPP TS 23.501 V20.3.0 (clauses 6.2.4, 6.2.5, 6.2.10), TS 29.522 V20.1.0 (clauses 4.2, 4.3, 4.4.9), TS 23.222 V20.1.0 (clause 6.3, annex B.2) and TS 23.434 V20.1.0 (clauses 14 and 16), and the rt-camara-examples README',
+      alt: 'On the left, in a frame for the CAMARA project, the CAMARA API consumer application calls the CAMARA APIs (Dedicated Networks, Quality on Demand, QoS Booking) of a CAMARA API provider, an operator or an aggregator. The consumer application is mapped to the repository rt-camara-examples. On the right, in a frame for 3GPP network exposure, the Application Function (the CAPIF API invoker) calls the Network Exposure Function (the CAPIF API exposing function) over Nnef. The Network Exposure Function calls the Policy Control Function with Npcf_PolicyAuthorization. The CAPIF core function connects to the Application Function (CAPIF-1/1e) and to the Network Exposure Function (CAPIF-3). The SEAL services for network resource management and network slice capability enablement use the NEF APIs. A dotted line from the CAMARA API provider to the Application Function marks a typical realisation that CAMARA does not mandate. The CAMARA boxes other than the consumer application, and all 3GPP boxes, have no repository.',
+    },
+  ]}
+  note="This is a 5G-MAG drawing, not a redrawn specification figure. The CAMARA boxes come from the CAMARA project and the repository README, which is read here as the API consumer side only. The dotted line is the usual realisation of a CAMARA API on the 3GPP side; CAMARA does not mandate it, and an operator may realise an API differently. The other 5G Core functions the NEF interacts with are not drawn. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 

@@ -109,11 +109,6 @@ export const SHOWCASE_BASKETS = {
             { name: 'Network assistance: bit rate recommendation', status: 'no' }, // 4.0.5
             { name: 'Dynamic policies (5-tuple only)', status: 'partial' }, // 4.0.6
           ],
-          tutorial: {
-            label: 'Network Assistance and Dynamic Policies',
-            to: `${TUT}network-assistance-and-dynamic-policies`,
-            inPreparation: true,
-          },
         },
         pipeline: [
           { title: 'Improved QoS Support for Media Streaming: ECN and L4S', needs: 'Dynamic policies: ECN marking for L4S', status: 'no' }, // slide 8; 4.0.6

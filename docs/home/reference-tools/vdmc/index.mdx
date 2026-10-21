@@ -13,6 +13,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['vdmc'] || []).length;
 
@@ -34,6 +35,20 @@ The reference tool, a web decoder and player for V-DMC content, is in early deve
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'V-DMC decoder and player pipeline',
+      src: '/img/tech/vdmc/generated/5gmag-vdmc-status.svg',
+      width: 1200, height: 593,
+      title: 'From a V-DMC bitstream to rendering: the processes of ISO/IEC 23090-29 and the rendering step of TR 26.956',
+      source: 'A 5G-MAG drawing based on ISO/IEC 23090-29:2026 (clauses 6 to 12, by clause title) and 3GPP TR 26.956 V19.0.1 (clauses 4.3.5.3 and 7.3.3)',
+      alt: 'The V-DMC bitstream (clause 7) enters the decoding process (clause 9), which holds atlas data decoding, video decoding (occupancy, geometry, attribute and packed video), basemesh decoding and displacement decoding. The decoded data pass through pre-reconstruction (clause 10), reconstruction (clause 11), post-reconstruction (clause 12) and rendering, which is implementation dependent. No box has a repository: none is mapped yet.',
+    },
+  ]}
+  note="This is a 5G-MAG drawing, not a redrawn specification figure. The arrows follow the order of clauses 9 to 12 of ISO/IEC 23090-29; the adaptation process (clause 13) is not drawn. No repository is mapped yet. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 

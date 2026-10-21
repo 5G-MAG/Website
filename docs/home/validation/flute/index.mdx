@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['flute'] || []).length;
 
@@ -57,6 +58,22 @@ Each 3GPP profile is tested per release, against the latest edition of that rele
 The validator tests rt-libflute only: its two test harnesses are built against the library's own interface, although the checks of the packets on the wire do not depend on the library. The reference it checks against is a reading of the documents, recorded in the repository, not a test specification published by 3GPP or the IETF. Some statements cannot be checked, for example those that oblige the network or the application, and each is listed with its reason.
 
 The repository is available on request; see [Early Access](/early-access).
+
+## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'FLUTE Conformance Validator',
+      src: '/img/tech/flute/generated/5gmag-flute-validator-status.svg',
+      width: 1200, height: 755,
+      title: 'The FLUTE Conformance Validator and the FLUTE session it checks, with repositories',
+      source: 'A 5G-MAG drawing based on IETF RFC 3926, 3GPP TS 26.346 V19.3.0 (figures 9 and 10, annex L.4), 3GPP TS 26.517 V19.3.0 (clause 6.2) and the flute-conformance-validator README',
+      alt: 'A FLUTE sender under test sends a FLUTE session on the network (FDT Instances and files in ALC/LCT packets over UDP) to a FLUTE receiver under test. The sender and the receiver are mapped to the repository rt-libflute. The FLUTE Conformance Validator, mapped to the repository flute-conformance-validator, has a transmitter configuration that configures the sender, a packet builder that sends what the transmitter cannot send, a wire decoder that reads the session, and a receiver check that runs the receiver. Each feeds a result per profile with a verdict on each normative statement, judged against a profile reference: Profile::None (RFC 3926), Profile::MBMS::Download (TS 26.346 annex L.4) and Profile::MBS (TS 26.517 clause 6.2).',
+    },
+  ]}
+  note="This is a 5G-MAG drawing, not a redrawn specification figure. The validator tests rt-libflute only, as its README says; the sender and the receiver are the library's transmitter and receiver. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
