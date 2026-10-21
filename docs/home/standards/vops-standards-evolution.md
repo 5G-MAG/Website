@@ -27,7 +27,7 @@ This page is the detailed, release-by-release companion to [Standards: Video Ope
 :::tip[At a glance]
 
 - **Release 19:** work item VOPS; 5 change requests.
-- **Release 20:** no work item in the work plan lists TS 26.265.
+- **Release 20:** no work item in the work plan lists TS 26.265; the study FS_AVFOPS_MED on advanced video formats and operation points (TR 26.966) is listed.
 - **Release 15 to 18:** earlier video operation points in TS 26.116, TS 26.118 and TS 26.511, which the VOPS work item consolidates.
 
 :::
@@ -38,7 +38,7 @@ This page covers [TS 26.265](https://www.3gpp.org/dynareport/26265.htm). The wor
 
 ## Release 20
 
-The work plan of 28 September 2026 lists no Release 20 work item for TS 26.265.
+Release 20 (work plan of 28 September 2026): no work item lists TS 26.265. The work plan lists the study FS_AVFOPS_MED (UID 1090042, Study of Advanced Video Formats and Operation Points, S4, TR 26.966, SP-251202, 100%, finish 9 September 2026). The work plan does not state its relation to TS 26.265, and no change history of TR 26.966 was available.
 
 ## Release 19
 

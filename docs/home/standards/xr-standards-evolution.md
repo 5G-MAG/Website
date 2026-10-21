@@ -32,7 +32,19 @@ Amendment 1 to the second edition changes, among others, clause 7.3.2 (the carri
 
 ## 3GPP work by release
 
-Sources: the 3GPP release descriptions TR 21.915 (Release 15), TR 21.916 (Release 16), TR 21.917 (Release 17), TR 21.918 (Release 18) and TR 21.919 (Release 19), and the change histories of the specifications named. Work items of other working groups that the release descriptions group under XR are listed last in each release. Release 20 work is not covered here: the Release 20 work items that touch XR have not been verified against a primary source.
+Sources: the 3GPP release descriptions TR 21.915 (Release 15), TR 21.916 (Release 16), TR 21.917 (Release 17), TR 21.918 (Release 18) and TR 21.919 (Release 19), and the change histories of the specifications named. Work items of other working groups that the release descriptions group under XR are listed last in each release. The Release 20 section lists the work items of the 3GPP work plan of 28 September 2026; no Release 20 release description (TR 21.920) was available, so it gives only the work plan title, group, specifications and completion.
+
+### Release 20
+
+Release 20 (work plan of 28 September 2026); completion percentages and dates are those of the work plan.
+
+| Work item | Title | Specifications | Work plan status |
+| --- | --- | --- | --- |
+| XRM_Ph3-APP (parent XRM_Ph3, UID 1120081) | Application enabler for XR Services Phase 3 | TS 23.433, TS 23.542 | Stage 2 100%, finish 9 Sep 2026 (WID SP-251696); parent 34%, finish 3 Mar 2027; CT aspects (XRM_Ph3_APP-CT, CP-261150, TS 24.543, TS 24.583, TS 29.548, TS 29.583) 0% |
+| FS_XRM_Ph3_APP | Study on Application enabler for XR Services Phase 3 | TR 23.700-51 | 100%, finish 12 Dec 2025 (SP-251042) |
+| Metaverse_Ph2 (stage 2: Metaverse_Ph2-APP) | Mobile metaverse services Phase 2 | TS 23.437, TS 23.438 | Stage 2 100%, finish 12 Dec 2025; parent 75%, finish 3 Mar 2027 (SP-250392); CT aspects 66% (CP-261145) |
+| NR_XR_Ph4-Core | Core part: XR (eXtended Reality) for NR Phase 4 | none listed in the work plan | 57%, finish 3 Mar 2027 (RP-262249), RAN2 |
+| AvCall_Ph2-MED | Avatar Communications phase 2 | TS 26.264 | 0%, planned 3 Mar 2027 (SP-260910); see [Avatar](/standards/avatar/evolution) |
 
 ### Release 19
 

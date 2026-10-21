@@ -48,7 +48,7 @@ The work items below are those that the 3GPP release descriptions (TR 21.915 to 
 | 18 | 5GMS_Pro_Ph2 | Support for 5GMS over MBS and hybrid 5GMS services; updates to TS 26.247 among others | TR 21.918 clause 17.9 |
 | 19 | AMD | In-session unicast repair for MBS object distribution (stage 2 in TS 26.502, stage 3 for MBS and MBMS sessions); the Coded Multi-Source Media Format (ETSI TS 103 973) listed among the stage 3 items | TR 21.919 clause 11.6 |
 
-Release 20: no work item that changes TS 26.346 or TS 26.517 was found, and there is no TR 21.920 in the archive used for this page. This is not confirmed against a primary source.
+Release 20 (work plan of 28 September 2026): no work item lists TS 26.346, TS 26.347, TS 26.348 or TS 26.517. There is no TR 21.920 in the archive used for this page, so a Release 20 change that no work plan row lists is not excluded.
 
 Not stated in the release descriptions: which clauses of TS 26.346 the Release 17 to Release 19 work items changed beyond the Change Requests listed below; for those, the change history of the specification is the source.
 

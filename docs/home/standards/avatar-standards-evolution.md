@@ -21,7 +21,7 @@ This page is the detailed, release-by-release companion to [Standards: Conversat
 
 :::tip[At a glance]
 
-- **Release 20:** study FS_Avatar_Ph2_MED on TR 26.813.
+- **Release 20:** study FS_Avatar_Ph2_MED on TR 26.813; work item AvCall_Ph2-MED on TS 26.264.
 - **Release 19:** AvCall-MED adds avatar calls to TS 26.264 (ARF base avatars, 2D and 3D avatars, data channel animation, the Base Avatar Repository); FS_AVATAR produces TR 26.813; IVAS_Codec_Ph2 adds the fixed-point IVAS code.
 - **Release 18:** IBACS creates TS 26.264 (AR-MTSI client); IVAS_Codec creates the IVAS specifications; ISAR adds split rendering formats to the IVAS specifications.
 
@@ -33,9 +33,13 @@ This page covers [TR 26.813](https://www.3gpp.org/dynareport/26813.htm), [TS 26.
 
 ## Release 20
 
+Release 20 (work plan of 28 September 2026); completion percentages and dates are those of the work plan.
+
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [FS_Avatar_Ph2_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1100009) | Study on Avatar communication Phase 2 | Study | [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) | Complete, Sep 2026 | [SP-251663](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_110_Baltimore_2025-12/Docs/SP-251663.zip) |
+| [AvCall_Ph2-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130007) | Avatar Communications phase 2 | Normative | [TS 26.264](https://www.3gpp.org/dynareport/26264.htm) | 0% complete, planned 8 Sep 2026 to 3 Mar 2027 | SP-260910 |
+| [AIML_IMS-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1080049) | Media aspects for AI/ML in IMS services | Normative | [TS 26.264](https://www.3gpp.org/dynareport/26264.htm) (with TS 26.114) | 100% complete, 6 Jun 2026 | SP-250878 |
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |

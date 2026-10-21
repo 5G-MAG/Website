@@ -35,19 +35,19 @@ This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.
 
 ## Release 20
 
-There is no TR 21.920 in the archive yet. The items below come from the work plan of 28 September 2026 and from the change history and text of TS 23.288 V20.2.0; scopes that were not read in a primary source are marked unverified.
+Release 20 (work plan of 28 September 2026); completion percentages are those of the work plan. There is no TR 21.920 in the archive yet. The items below come from the work plan of 28 September 2026 and from the change history and text of TS 23.288 V20.2.0; scopes that were not read in a primary source are marked unverified.
 
 | Work item | Title | Specifications (work plan) | What was verified |
 | --- | --- | --- | --- |
-| AIML_CN_Ph2 (SP-251669) | Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2 | TS 23.288 (Stage 2 part AIML_CN_Ph2-ARC); the CT part AIML_CN_Ph2-CT lists TS 29.510, TS 29.517 and TS 29.522 | Title and listing only. The 3GPP portal entry gives no description; the scope is unverified. |
-| TEI20_Metrics (SP-251207) | Model Evaluation Metrics Enhancement | TS 23.288 | TS 23.288 V20.2.0 clause 5C: the accuracy information includes an accuracy or loss value and its compute method, and the loss value is computed from the differences between actual and predicted values; V19.8.0 clause 5C names only the accuracy value. Clauses 6.2F.2 and 7.9.2 name the desired ML model metrics. The change history records CR 1542 "Model Evaluation Metrics Enhancement" in V20.0.0 (SP-260092); the link between the CR and the work item is by identical title. |
-| TEI20_UDCE (SP-260298) | UPF Data Collection Enhancement | TS 23.288, TS 23.501 | Title and listing only; unverified. |
+| AIML_CN_Ph2 (UID 1120116, SP-251669; 98%, finish 3 Mar 2027) | Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2 | TS 23.288 (Stage 2 part AIML_CN_Ph2-ARC); the CT part AIML_CN_Ph2-CT lists TS 29.510, TS 29.517 and TS 29.522 | Title and listing only. The 3GPP portal entry gives no description; the scope is unverified. |
+| TEI20_Metrics (UID 1110082, SP-251207; 100%, finish 6 Jun 2026) | Model Evaluation Metrics Enhancement | TS 23.288 | TS 23.288 V20.2.0 clause 5C: the accuracy information includes an accuracy or loss value and its compute method, and the loss value is computed from the differences between actual and predicted values; V19.8.0 clause 5C names only the accuracy value. Clauses 6.2F.2 and 7.9.2 name the desired ML model metrics. The change history records CR 1542 "Model Evaluation Metrics Enhancement" in V20.0.0 (SP-260092); the link between the CR and the work item is by identical title. |
+| TEI20_UDCE (UID 1120039, SP-260298; 91%, finish 3 Mar 2027) | UPF Data Collection Enhancement | TS 23.288, TS 23.501 | Title and listing only; unverified. |
 
 TS 23.288 V20.2.0 also adds clause 6.24 (Abnormal User Plane Traffic Analytics) and clause 6.25 (Traffic pattern analytics), which V19.8.0 does not have; the change history records CRs 1547, 1553, 1554 and 1555 in V20.0.0 and CR 1573 in V20.1.0. The change history does not name the work item, so the attribution is unverified.
 
 The SA4 reports themselves point to Release 20 next steps. TR 26.927 V19.0.0 clause 7 recommends, for collaboration scenario 3 (IMS services), stage 3 normative work in Release 20 on AI/ML model distribution and operation in IMS, including extending TS 26.114 and TS 26.264, and, for a new study in Release 20 or beyond, further study of the traffic characteristics of the AI/ML data components and of possible QoS identifiers. TR 26.847 V19.0.0 clause 6 recommends a new evaluation study covering AI/ML traffic characteristics and KPIs for the evaluation scenarios. These are recommendations in the reports, not decisions; the work plan entry below is the only Release 20 item found that names TS 26.264.
 
-The work plan lists the Release 20 work item AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (SP-250878), against TS 26.264; its scope is unverified. TR 21.919 clause 8.2.1 states that Stage 1 of AIML_MT_Ph2 (AI/ML Model Transfer Phase 2) was moved to the next release.
+The work plan lists the Release 20 work item AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (UID 1080049, SP-250878, S4, 100%, finish 6 June 2026), against TS 26.114 and TS 26.264; its scope is unverified. The change history of TS 26.114 V20.0.0 records CR 0609 "CR for AI/ML in IMS" (SA#112, SP-260396, category B); the change history does not name the work item, so the link to AIML_IMS-MED is by subject. TR 21.919 clause 8.2.1 states that Stage 1 of AIML_MT_Ph2 (AI/ML Model Transfer Phase 2) was moved to the next release.
 
 ## Release 19
 

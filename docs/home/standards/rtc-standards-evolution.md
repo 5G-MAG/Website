@@ -31,15 +31,17 @@ Work items as listed in the 3GPP work plan of 28 September 2026. Change requests
 
 ## Release 20
 
+Release 20 (work plan of 28 September 2026); completion percentages and dates are those of the work plan.
+
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
-| [Energy_ARCH-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120097) | System architecture for application energy consumption information collection and reporting Stage 2 | Normative | TS 26.506 (with TS 26.501, TS 23.367, TS 33.367) | Complete in the work plan, Sep 2026 | SP-260418 |
-| [Energy_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130006) | Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3 | Normative | TS 26.113 (with TS 26.510, TS 26.512, TS 26.527) | In progress, target Mar 2027 | SP-261003 |
-| [FS_Q4RTC_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1100007) | Study on QUIC-based Media Delivery for Real-time Communication | Study | TR 26.836 | In progress, target Mar 2027 | SP-251661 |
+| [Energy_ARCH-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120097) | System architecture for application energy consumption information collection and reporting Stage 2 | Normative | TS 26.506 (with TS 26.501, TS 23.367, TS 33.367) | 100% complete, finish 9 Sep 2026 | SP-260418 |
+| [Energy_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130006) | Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3 | Normative | TS 26.113 (with TS 26.510, TS 26.512, TS 26.527) | 0% complete, planned 8 Sep 2026 to 3 Mar 2027 | SP-261003 |
+| [FS_Q4RTC_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1100007) | Study on QUIC-based Media Delivery for Real-time Communication | Study | TR 26.836 | 42% complete, planned 3 Mar 2027 | SP-251661 |
 
 | Specification | Version | CR | Subject |
 | --- | --- | --- | --- |
-| TS 26.506 | 20.0.0 | 0013 | [Energy_ARCH-MED] Instantiate energy architecture in RTC System |
+| TS 26.506 | 20.0.0 | 0013 | [Energy_ARCH-MED] Instantiate energy architecture in RTC System (SP-260786, SA#113) |
 
 ## Release 19
 

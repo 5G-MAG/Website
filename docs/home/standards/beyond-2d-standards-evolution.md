@@ -21,6 +21,7 @@ This page is the detailed, release-by-release companion to [Standards: Beyond 2D
 
 :::tip[At a glance]
 
+- **Release 20:** studies FS_3DGS_MED (TR 26.958) and FS_AVFOPS_MED (TR 26.966) in the work plan.
 - **Release 19:** work item FS_Beyond2D; 2 versions without a change request.
 
 :::
@@ -44,7 +45,12 @@ This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The wor
 
 The Release 19 description (TR 21.919 V19.0.0, which may be an early version) has no entry for FS_Beyond2D. It describes a related normative item: VOPS (Video Operating Points - Harmonization and Stereo MV-HEVC), which consolidates video operation points into the new TS 26.265 and adds stereoscopic operation points based on MV-HEVC (TR 21.919 clause 11.5). TR 26.956 lists MV-HEVC as the coding approach it evaluates for stereoscopic video; see the [Technology page](/tech/beyond-2d).
 
-Release 20: no normative follow-on to FS_Beyond2D was found; this is not confirmed against a primary source.
+Release 20 (work plan of 28 September 2026): no normative follow-on to FS_Beyond2D is listed. The work plan lists two Release 20 studies of SA4 on related video and 3D formats; it does not state their relation to FS_Beyond2D, and no TR 21.920 was available.
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [FS_3DGS_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090043) | Study on 3D Gaussian splats | Study | TR 26.958 | 60% complete, planned 3 Mar 2027 | SP-251190 |
+| [FS_AVFOPS_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090042) | Study of Advanced Video Formats and Operation Points | Study | TR 26.966 | 100% complete, 9 Sep 2026 | SP-251202 |
 
 ## TR 26.956 before change control
 

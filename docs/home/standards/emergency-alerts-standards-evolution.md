@@ -24,7 +24,7 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 :::tip[At a glance]
 
 - **Release 21:** 1 change request.
-- **Release 20:** work items MLT-REQ, CPAS-CT; 12 change requests.
+- **Release 20:** work items MLT-REQ, CPAS, CPAS-REQ, CPAS-CT; 12 change requests.
 - **Release 19:** work items VMR_Ph2, PWS_NTN; 16 change requests.
 - **Release 18:** work items 5GProtoc18, 5GProtoc18-non3GPP; 20 change requests.
 - **Release 17:** work items NPN_PWS, 5GProtoc17, 5GProtoc17-non3GPP; 17 change requests.
@@ -68,10 +68,14 @@ The 3GPP release descriptions (TR 21.915 to TR 21.919) state what each release a
 
 ## Release 20
 
+Release 20 (work plan of 28 September 2026). Percentages and dates are those of the work plan; the work plan lists TS 23.304 under the parent work item CPAS, and TS 23.041 under CPAS-CT.
+
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [MLT-REQ](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130012) | Stage 1 for Multilingual Template-based alerts | Normative | [TS 22.268](https://www.3gpp.org/dynareport/22268.htm) | 0% complete, planned Sep 2026 | [SP-261004](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_113_Madrid_2026-09/Docs/SP-261004.zip) |
 | [CPAS-CT](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1110012) | CT aspects of CPAS | Normative | [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) | 90% complete, planned Dec 2026 | [CP-260046](https://www.3gpp.org/ftp/tsg_ct/TSG_CT/CT_111_Fukuoka-2026-03/Docs/CP-260046.zip) |
+| [CPAS](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1110066) | Security Assurance Specification (CPAS) | Normative | TS 23.304 (as listed in the work plan) | 90% complete, planned Dec 2026 | SP-250627 |
+| [CPAS-REQ](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1080047) | CPAS specific requirement | Normative | TS 23.304 (as listed in the work plan) | 100% complete, Jun 2025 | SP-250627 |
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
