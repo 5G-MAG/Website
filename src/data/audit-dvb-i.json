@@ -3,7 +3,7 @@
  "title": "DVB-I over 5G Systems",
  "audited": "2026-10-22",
  "tier": "T0",
- "method": "code read against every statement of the specifications on the project page, judged against the draft ETSI TS 103 770 V1.3.1 (DVB A177r8); statements a component cannot meet by construction marked absent by group; entries touched by later fixes re-read at rt-dvb-i-application-provider e3cfb1e, rt-dvb-i-service-list-registry d0ab0ea and rt-dvb-i-application bb15220",
+ "method": "code read against every statement of the specifications on the project page. The audit leads with the published edition ETSI TS 103 770 V1.2.1 (2024-09): the provider and registry entries, and the client entries whose clauses read the same in both editions or exist only in the draft, are judged against V1.2.1, with the differences of the draft DVB A177r8 (V1.3.1 draft) noted per case; statements that exist only in the draft are listed as draft-only and not counted. The remaining 82 client entries (browser client, Exo player and Android client) are still judged against the draft A177r8 and are being re-based onto V1.2.1 in a second wave. Statements a component cannot meet by construction are marked absent by group; entries touched by later fixes were re-read at rt-dvb-i-application-provider e3cfb1e, rt-dvb-i-service-list-registry d0ab0ea and rt-dvb-i-application bb15220",
  "releases": {
   "all": "DVB-I over 5G Systems"
  },
@@ -16,10 +16,10 @@
  "releaseStatus": {
   "baseline": "20",
   "issues": {
-   "17": "ETSI TS 103 770 V1.3.1 draft (A177r8)",
-   "18": "ETSI TS 103 770 V1.3.1 draft (A177r8)",
-   "19": "ETSI TS 103 770 V1.3.1 draft (A177r8)",
-   "20": "ETSI TS 103 770 V1.3.1 draft (A177r8)"
+   "17": "ETSI TS 103 770 V1.2.1 (2024-09)",
+   "18": "ETSI TS 103 770 V1.2.1 (2024-09)",
+   "19": "ETSI TS 103 770 V1.2.1 (2024-09)",
+   "20": "ETSI TS 103 770 V1.2.1 (2024-09)"
   },
   "profiles": [],
   "matrix": {}
@@ -130,12 +130,12 @@
    "requirements": [
     {
      "id": "app-770-4.3.4.3.3",
-     "name": "Response and client interpretation / Identifier based extensibility",
+     "name": "Response and client interpretation / Identifier based extensibility (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.3"
      },
      "repos": [
@@ -153,10 +153,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.3"
+       "locator": "clause 4.3.4.3.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-9.3.3",
@@ -165,7 +168,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 9.3.3"
      },
      "repos": [
@@ -242,12 +245,12 @@
     },
     {
      "id": "exo-770-4.3.4.3.3",
-     "name": "Response and client interpretation / Identifier based extensibility",
+     "name": "Response and client interpretation / Identifier based extensibility (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.3"
      },
      "repos": [
@@ -265,10 +268,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.3"
+       "locator": "clause 4.3.4.3.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-9.3.3",
@@ -277,7 +283,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 9.3.3"
      },
      "repos": [
@@ -354,12 +360,12 @@
     },
     {
      "id": "android-770-4.3.4.3.3",
-     "name": "Response and client interpretation / Identifier based extensibility",
+     "name": "Response and client interpretation / Identifier based extensibility (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.3"
      },
      "repos": [
@@ -377,10 +383,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.3"
+       "locator": "clause 4.3.4.3.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-9.3.3",
@@ -389,7 +398,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 9.3.3"
      },
      "repos": [
@@ -471,7 +480,7 @@
      "component": "mbmsclient",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 9.3.2"
      },
      "repos": [
@@ -501,7 +510,7 @@
      "component": "mbmsclient",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 9.3.3"
      },
      "repos": [
@@ -588,12 +597,12 @@
     },
     {
      "id": "app-770-4.3.4.3.2.2.2",
-     "name": "Structure of the xsd document / Elements within global, domain or local",
+     "name": "Structure of the xsd document / Elements within global, domain or local (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.2.2"
      },
      "repos": [
@@ -611,7 +620,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       },
       {
        "case": "Occurrence of query elements",
@@ -624,10 +634,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.3.4.3.2.4",
@@ -661,12 +674,12 @@
     },
     {
      "id": "app-770-4.6.1.1",
-     "name": "Metadata versioning / Overview",
+     "name": "Metadata versioning / Overview (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.1"
      },
      "repos": [
@@ -684,19 +697,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.6.1.2",
-     "name": "Metadata versioning / ServiceList URL format and handling",
+     "name": "Metadata versioning / ServiceList URL format and handling (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.2"
      },
      "repos": [
@@ -714,19 +730,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.6.1.4",
-     "name": "Metadata versioning / Service List Registry signalling",
+     "name": "Metadata versioning / Service List Registry signalling (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.4"
      },
      "repos": [
@@ -744,7 +763,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       },
       {
        "case": "ServiceListURI without standardVersion read as v1.2.1",
@@ -757,19 +777,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.6.2",
-     "name": "Versioning / Client versioning",
+     "name": "Versioning / Client versioning (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.2"
      },
      "repos": [
@@ -787,7 +810,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "Request a list by version in the URI path",
@@ -800,7 +824,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "Select by ServiceList.StandardVersion",
@@ -813,11 +838,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "A browser may prevent a page from setting User-Agent (the clause allows this in some application environments), but the client does not attempt it even where it controls the header, as in its own proxy."
+      "A browser may prevent a page from setting User-Agent (the clause allows this in some application environments), but the client does not attempt it even where it controls the header, as in its own proxy.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
@@ -958,12 +985,12 @@
     },
     {
      "id": "app-770-5.1.3.9.3",
-     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT)",
+     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT) (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.9.3"
      },
      "repos": [
@@ -982,19 +1009,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.1.3.10",
-     "name": "Service List discovery / Removal of an installed service list",
+     "name": "Service List discovery / Removal of an installed service list (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.10"
      },
      "repos": [
@@ -1012,7 +1042,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "Re-run installation UI after removal",
@@ -1025,7 +1056,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "Block installation of specific lists",
@@ -1038,10 +1070,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.1.6",
@@ -1310,12 +1345,12 @@
     },
     {
      "id": "app-770-5.2.3.2.4",
-     "name": "Applications and media presentation / Application in series with media",
+     "name": "Applications and media presentation / Application in series with media (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.2.4"
      },
      "repos": [
@@ -1333,7 +1368,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Do not present on application failure",
@@ -1346,7 +1382,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Do not retry before the retry time",
@@ -1359,7 +1396,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Instance not presented before retry time",
@@ -1372,7 +1410,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Only instance: service not presented before retry time",
@@ -1385,7 +1424,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Consider other instances by precedence after failure",
@@ -1398,7 +1438,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Service not presented before retry time",
@@ -1411,7 +1452,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "User interface for unavailable service",
@@ -1424,7 +1466,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Infinite retry value",
@@ -1437,10 +1480,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.2.3.3",
@@ -1500,12 +1546,12 @@
     },
     {
      "id": "app-770-5.2.3.6.1",
-     "name": "Applications associated with the entire Service List / Service List installation applications",
+     "name": "Applications associated with the entire Service List / Service List installation applications (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.1"
      },
      "repos": [
@@ -1523,7 +1569,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "Pass installationtoken to renewal and withdrawal applications",
@@ -1536,7 +1583,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "Append installation query to manifest and application URLs",
@@ -1549,19 +1597,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.2.3.6.2",
-     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement",
+     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.2"
      },
      "repos": [
@@ -1579,7 +1630,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "Retry renewurl on 404 with backoff",
@@ -1592,7 +1644,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "Retry renewurl on empty document",
@@ -1605,7 +1658,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "Run renewal application before the signalled time",
@@ -1618,7 +1672,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "Re-run renewal application",
@@ -1631,7 +1686,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "Consent withdrawn after failed renewal",
@@ -1644,19 +1700,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.2.3.6.3",
-     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent",
+     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.3"
      },
      "repos": [
@@ -1674,7 +1733,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       },
       {
        "case": "User interface to launch withdrawal application",
@@ -1687,19 +1747,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.2.3.7",
-     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and",
+     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.7"
      },
      "repos": [
@@ -1717,10 +1780,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.7"
+       "locator": "clause 5.2.3.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.2.4.1",
@@ -1901,7 +1967,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.2"
      },
      "repos": [
@@ -1931,7 +1997,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.3"
      },
      "repos": [
@@ -2175,7 +2241,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.2"
      },
      "repos": [
@@ -2295,7 +2361,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.10"
      },
      "repos": [
@@ -2532,7 +2598,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.1"
      },
      "repos": [
@@ -2561,7 +2627,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.2"
      },
      "repos": [
@@ -2615,7 +2681,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.3.2"
      },
      "repos": [
@@ -2693,7 +2759,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.4"
      },
      "repos": [
@@ -2807,12 +2873,12 @@
     },
     {
      "id": "app-770-I.2",
-     "name": "WebSocket server and JSON-RPC implementation",
+     "name": "WebSocket server and JSON-RPC implementation (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.2"
      },
      "repos": [
@@ -2830,7 +2896,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       },
       {
        "case": "• References in that clause to “HbbTV applications” shall also apply to linked ...",
@@ -2843,7 +2910,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       },
       {
        "case": "• Clause 9.9.2.1 of ETSI TS 102 796 [21] concerning discovery of the WebSocket server ...",
@@ -2856,19 +2924,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-I.3",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -2886,19 +2957,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-I.4",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -2916,7 +2990,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       },
       {
        "case": "If a DVB-I client is able to communicate this information then linked applications ...",
@@ -2929,10 +3004,13 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-4.1",
@@ -2941,7 +3019,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.1"
      },
      "repos": [
@@ -2979,12 +3057,12 @@
     },
     {
      "id": "provider-770-4.6.1.1",
-     "name": "Metadata versioning / Overview",
+     "name": "Metadata versioning / Overview (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.1"
      },
      "repos": [
@@ -3002,7 +3080,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       },
       {
        "case": "ServiceList.StandardVersion element",
@@ -3015,7 +3094,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       },
       {
        "case": "Unversioned list is V1.2.1",
@@ -3028,7 +3108,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       },
       {
        "case": "Server-hosted resources and endpoints",
@@ -3041,7 +3122,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       },
       {
        "case": "Operator-supplied resource URLs",
@@ -3054,7 +3136,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       },
       {
        "case": "XML namespaces of list and endpoints",
@@ -3067,19 +3150,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-4.6.1.2",
-     "name": "Metadata versioning / ServiceList URL format and handling",
+     "name": "Metadata versioning / ServiceList URL format and handling (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.2"
      },
      "repos": [
@@ -3097,7 +3183,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "base_URL of the versioned URL format",
@@ -3110,7 +3197,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "standard_version of the versioned URL format",
@@ -3123,7 +3211,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "Example URL with standard_version 8",
@@ -3136,7 +3225,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "Versioned URLs linking to one or several documents",
@@ -3149,7 +3239,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "Version from URL wins over User-Agent",
@@ -3162,7 +3253,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "List adapted to User-Agent version",
@@ -3175,7 +3267,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "Vary: user-agent header",
@@ -3188,7 +3281,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       },
       {
        "case": "Account for the variety of User-Agent values",
@@ -3201,19 +3295,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-4.6.1.3",
-     "name": "Metadata versioning / Service List signalling",
+     "name": "Metadata versioning / Service List signalling (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.3"
      },
      "repos": [
@@ -3231,19 +3328,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.3"
+       "locator": "clause 4.6.1.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-4.6.2",
-     "name": "Versioning / Client versioning",
+     "name": "Versioning / Client versioning (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.2"
      },
      "repos": [
@@ -3261,10 +3361,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.1.1",
@@ -3273,7 +3376,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.1"
      },
      "repos": [
@@ -3380,7 +3483,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.2"
      },
      "repos": [
@@ -3403,7 +3506,7 @@
       {
        "case": "Service List URL format",
        "verdict": "differs",
-       "what": "The list is available over HTTP at /service-list.xml, not at a URL in the format of clause 4.6.1.2.",
+       "what": "The list is available over HTTP at /service-list.xml, not at a URL in the format of clause 4.6.1.2. Draft r8 only: the URL format of clause 4.6.1.2. V1.2.1 defines no Service List URL format.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -3411,12 +3514,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.2"
+       "locator": "clause 5.1.2",
+       "draftOnly": true
       },
       {
        "case": "Media Type application/xml",
        "verdict": "differs",
-       "what": "The list is always sent as application/vnd.dvb.dvbisl+xml, the media type of TS 103 770 V1.2.1 clause 5.1.2. The draft names application/xml and allows application/vnd.dvb.dvbisl+xml only in certain situations, such as a device not identified as a DVB-I client, and the server does not tell the two apart.",
+       "what": "The list is always sent as application/vnd.dvb.dvbisl+xml. Draft r8 names application/xml and allows application/vnd.dvb.dvbisl+xml only in some situations, such as a device not identified as a DVB-I client. V1.2.1 clause 5.1.2 names only application/vnd.dvb.dvbisl+xml, so the difference does not arise against the published edition.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -3424,12 +3528,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.2"
+       "locator": "clause 5.1.2",
+       "draftOnly": true
       },
       {
        "case": "Media Type application/vnd.dvb.dvbisl+xml",
        "verdict": "implemented",
-       "what": "The list is sent as application/vnd.dvb.dvbisl+xml on every request, whether or not the client identifies itself as a DVB-I client. The draft allows this media type in certain situations only; V1.2.1 requires it in every case.",
+       "what": "The list is sent as application/vnd.dvb.dvbisl+xml on every request, whether or not the client identifies itself as a DVB-I client. V1.2.1 clause 5.1.2 requires this media type in every case; the draft r8 allows it only in certain situations.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -3462,7 +3567,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.3.2"
      },
      "repos": [
@@ -3486,12 +3591,12 @@
     },
     {
      "id": "provider-770-5.1.3.9.2",
-     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Pointer Record (PTR)",
+     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Pointer Record (PTR) (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.9.2"
      },
      "repos": [
@@ -3508,7 +3613,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.2"
+       "locator": "clause 5.1.3.9.2",
+       "draftOnly": true
       },
       {
        "case": "It may be up to 63 bytes.",
@@ -3520,19 +3626,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.2"
+       "locator": "clause 5.1.3.9.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.1.3.9.3",
-     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT)",
+     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT) (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.9.3"
      },
      "repos": [
@@ -3549,7 +3658,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       },
       {
        "case": "Additional keys may be defined elsewhere to provide further information on the service ...",
@@ -3561,7 +3671,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       },
       {
        "case": "According IETF RFC 6763 [53], the TXT record is intended to be small, i.e. it should ...",
@@ -3573,10 +3684,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.1.4",
@@ -3585,7 +3699,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.4"
      },
      "repos": [
@@ -3639,7 +3753,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.5"
      },
      "repos": [
@@ -3756,7 +3870,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.6"
      },
      "repos": [
@@ -3825,7 +3939,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.2"
      },
      "repos": [
@@ -3854,7 +3968,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.1"
      },
      "repos": [
@@ -3949,7 +4063,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Service-level 'not active' application (LinkedApplicationCS 2)",
@@ -3998,7 +4113,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Launch location preroll for type 1.3",
@@ -4011,7 +4127,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Launch location install for type 4.1",
@@ -4024,7 +4141,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Launch location withdrawal-of-agreement for type 4.2",
@@ -4037,7 +4155,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Launch location renewal-of-agreement for type 4.3",
@@ -4050,7 +4169,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       },
       {
        "case": "Application at one level only",
@@ -4075,8 +4195,8 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 5.2.3.2.2"
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.2"
      },
      "repos": [
       "rt-dvb-i-application-provider"
@@ -4099,12 +4219,12 @@
     },
     {
      "id": "provider-770-5.2.3.2.4",
-     "name": "Applications and media presentation / Application in series with media",
+     "name": "Applications and media presentation / Application in series with media (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.2.4"
      },
      "repos": [
@@ -4122,7 +4242,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Application in series together with another application for one instance",
@@ -4135,7 +4256,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "Same application in several service instances",
@@ -4148,10 +4270,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.2.3.3",
@@ -4160,7 +4285,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.3"
      },
      "repos": [
@@ -4189,7 +4314,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
@@ -4207,7 +4332,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.4.1"
+       "locator": "clause 5.2.4.1",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -4219,7 +4345,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.5.2"
      },
      "repos": [
@@ -4261,7 +4387,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.5.3"
      },
      "repos": [
@@ -4290,7 +4416,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.6.1"
      },
      "repos": [
@@ -4355,7 +4481,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.6.2"
      },
      "repos": [
@@ -4463,7 +4589,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.6.3"
      },
      "repos": [
@@ -4528,7 +4654,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.6.4"
      },
      "repos": [
@@ -4593,7 +4719,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.7.3"
      },
      "repos": [
@@ -4634,7 +4760,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.1"
      },
      "repos": [
@@ -4668,8 +4794,8 @@
       },
       {
        "case": "Unavailable variant: no image or a substitute",
-       "verdict": "implemented",
-       "what": "The server does not read image_variant, so an unavailable variant is answered with the endpoint's one image, which the sentence allows as a substitute.",
+       "verdict": "differs",
+       "what": "V1.2.1 says that when the requested image variant is unavailable the response shall not contain any image for that item. The server ignores image_variant and answers with the endpoint's one image, so it differs from V1.2.1. Draft r8 allows an alternative at the endpoint's discretion, under which this was judged implemented.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -4751,7 +4877,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.2"
      },
      "repos": [
@@ -4793,7 +4919,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.3"
      },
      "repos": [
@@ -4910,7 +5036,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.9.2"
      },
      "repos": [
@@ -4940,7 +5066,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.10"
      },
      "repos": [
@@ -4993,7 +5119,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.1"
      },
      "repos": [
@@ -5011,7 +5137,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.1"
+       "locator": "clause 5.5.1",
+       "draftOnly": true
       },
       {
        "case": "List id not changed",
@@ -5029,7 +5156,7 @@
       {
        "case": "List version incremented on save",
        "verdict": "differs",
-       "what": "The list version is raised by PUT /api/config and by a history restore, to one above the highest version held (the current list and every history snapshot), so a published number is not reused. A logo upload or delete still changes the published list without raising it.",
+       "what": "The list version is raised by PUT /api/config and by a history restore, to one above the highest version held (the current list and every history snapshot), so a published number is not reused. A logo upload or delete still changes the published list without raising it. V1.2.1 does not define what a 'published change' is (draft r8 has the same words), so a logo upload or delete that republishes without a version bump is judged a difference by the plain reading of the sentence.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5042,7 +5169,7 @@
       {
        "case": "Version incremented on every published change",
        "verdict": "differs",
-       "what": "A history restore now publishes a version above every version held, but a logo upload or delete changes the published list without raising its version.",
+       "what": "A history restore now publishes a version above every version held, but a logo upload or delete changes the published list without raising its version. V1.2.1 does not define what a 'published change' is (draft r8 has the same words), so a logo upload or delete that republishes without a version bump is judged a difference by the plain reading of the sentence.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5075,7 +5202,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.2"
      },
      "repos": [
@@ -5169,7 +5296,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.2"
+       "locator": "clause 5.5.2",
+       "draftOnly": true
       },
       {
        "case": "Different minimum ages for different countries",
@@ -5187,7 +5315,7 @@
       {
        "case": "Service version incremented on edit",
        "verdict": "differs",
-       "what": "A service's version is raised when its content changes through a save (PUT) or a history restore, to one above the highest version published for that service in the current list and the history snapshots, so a number is not reused; a logo upload or delete republishes the service without raising it.",
+       "what": "A service's version is raised when its content changes through a save (PUT) or a history restore, to one above the highest version published for that service in the current list and the history snapshots, so a number is not reused; a logo upload or delete republishes the service without raising it. V1.2.1 does not define what a 'published change' is (draft r8 has the same words), so a logo upload or delete that republishes without a version bump is judged a difference by the plain reading of the sentence.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5200,7 +5328,7 @@
       {
        "case": "Version incremented on every published change",
        "verdict": "differs",
-       "what": "Uploading or deleting a logo changes the published service without raising its version.",
+       "what": "Uploading or deleting a logo changes the published service without raising its version. V1.2.1 does not define what a 'published change' is (draft r8 has the same words), so a logo upload or delete that republishes without a version bump is judged a difference by the plain reading of the sentence.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5233,7 +5361,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.2"
+       "locator": "clause 5.5.2",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -5247,7 +5376,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.4"
      },
      "repos": [
@@ -5301,7 +5430,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.5"
      },
      "repos": [
@@ -5357,7 +5486,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.7"
      },
      "repos": [
@@ -5437,7 +5566,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.10"
      },
      "repos": [
@@ -5491,7 +5620,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.12"
      },
      "repos": [
@@ -5534,7 +5663,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.1"
      },
      "repos": [
@@ -5563,7 +5692,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.2"
      },
      "repos": [
@@ -5701,7 +5830,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.4"
      },
      "repos": [
@@ -5742,7 +5871,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.5"
      },
      "repos": [
@@ -5784,7 +5913,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.6"
      },
      "repos": [
@@ -5794,7 +5923,7 @@
       {
        "case": "MinimumBitRate and CMCD elements",
        "verdict": "absent",
-       "what": "The generated delivery parameters carry neither MinimumBitRate nor a CMCD element.",
+       "what": "The generated delivery parameters carry no MinimumBitRate (V1.2.1). Draft r8 adds a CMCD element, which is also absent.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -5814,7 +5943,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.20"
      },
      "repos": [
@@ -5857,7 +5986,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.20"
+       "locator": "clause 5.5.20",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -5869,7 +5999,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.23"
      },
      "repos": [
@@ -5899,7 +6029,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.24"
      },
      "repos": [
@@ -5928,7 +6058,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.28"
      },
      "repos": [
@@ -6010,7 +6140,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.29"
      },
      "repos": [
@@ -6074,12 +6204,12 @@
     },
     {
      "id": "provider-770-5.5.30",
-     "name": "Service Lists / CMCDInitialisationType",
+     "name": "Service Lists / CMCDInitialisationType (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.5.30"
      },
      "repos": [
@@ -6097,7 +6227,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.30"
+       "locator": "clause 5.5.30",
+       "draftOnly": true
       },
       {
        "case": "CMCD delivery mode URNs (request, event)",
@@ -6110,7 +6241,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.30"
+       "locator": "clause 5.5.30",
+       "draftOnly": true
       },
       {
        "case": "CMCD delivery mode URNs (header, query, body)",
@@ -6123,19 +6255,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.30"
+       "locator": "clause 5.5.30",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.5.31",
-     "name": "Service Lists / InstallationRequirementsType",
+     "name": "Service Lists / InstallationRequirementsType (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.5.31"
      },
      "repos": [
@@ -6153,10 +6288,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.5.31"
+       "locator": "clause 5.5.31",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-5.6.2.1",
@@ -6165,7 +6303,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.2.1"
      },
      "repos": [
@@ -6546,7 +6684,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.1"
      },
      "repos": [
@@ -6667,7 +6805,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.2"
      },
      "repos": [
@@ -6721,7 +6859,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.3.2"
      },
      "repos": [
@@ -6799,7 +6937,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.4"
      },
      "repos": [
@@ -6828,7 +6966,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.5"
      },
      "repos": [
@@ -6897,7 +7035,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.3"
      },
      "repos": [
@@ -6953,7 +7091,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.1.2"
      },
      "repos": [
@@ -6996,7 +7134,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.3.1"
      },
      "repos": [
@@ -7021,12 +7159,12 @@
     },
     {
      "id": "registry-770-4.6.1.4",
-     "name": "Metadata versioning / Service List Registry signalling",
+     "name": "Metadata versioning / Service List Registry signalling (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.4"
      },
      "repos": [
@@ -7044,10 +7182,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-5.1.3.2",
@@ -7056,7 +7197,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.3.2"
      },
      "repos": [
@@ -7308,7 +7449,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.2"
+       "locator": "clause 5.1.3.2",
+       "draftOnly": true
       },
       {
        "case": "• if an undefined query parameter is provided with a request to a Service List .",
@@ -7438,7 +7580,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.2"
+       "locator": "clause 5.1.3.2",
+       "draftOnly": true
       },
       {
        "case": "image_variant selects the image variant of returned URLs",
@@ -7451,7 +7594,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.2"
+       "locator": "clause 5.1.3.2",
+       "draftOnly": true
       },
       {
        "case": "For example, if two TargetCountry parameter values are included in the query, for ...",
@@ -7487,7 +7631,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.2"
      },
      "repos": [
@@ -7530,7 +7674,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.3"
      },
      "repos": [
@@ -7560,7 +7704,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.5"
      },
      "repos": [
@@ -7604,7 +7748,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.5"
+       "locator": "clause 5.3.5",
+       "draftOnly": true
       },
       {
        "case": "Unversioned ServiceListURI first",
@@ -7617,12 +7762,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.5"
+       "locator": "clause 5.3.5",
+       "draftOnly": true
       },
       {
        "case": "ServiceListURI@contentType for versions up to release 6",
        "verdict": "implemented",
-       "what": "Every URI is written with @contentType application/vnd.dvb.dvbisl+xml, which is what the draft requires for URIs up to release 6, including URIs without @standardVersion, which default to release 6. No URI is signalled for a later release, so the 'should be application/xml' case does not arise. V1.2.1 and the draft agree here.",
+       "what": "Every URI is written with @contentType application/vnd.dvb.dvbisl+xml, which satisfies the draft r8 rule (that type for URIs up to release 6, otherwise application/xml; no URI is signalled for a later release). V1.2.1 has no such rule; its examples use application/vnd.dvb.dvbisl+xml.",
        "repo": "rt-dvb-i-service-list-registry",
        "releases": [
         "17",
@@ -7630,7 +7776,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.5"
+       "locator": "clause 5.3.5",
+       "draftOnly": true
       },
       {
        "case": "Required delivery methods indicated",
@@ -7696,7 +7843,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.1"
      },
      "repos": [
@@ -7726,7 +7873,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.2"
      },
      "repos": [
@@ -7756,7 +7903,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.8"
      },
      "repos": [
@@ -7774,7 +7921,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.6.8"
+       "locator": "clause 5.3.6.8",
+       "draftOnly": true
       },
       {
        "case": "@xmlAitApplicationType for AIT content",
@@ -7837,12 +7985,12 @@
     },
     {
      "id": "exo-770-4.3.4.3.2.2.2",
-     "name": "Structure of the xsd document / Elements within global, domain or local",
+     "name": "Structure of the xsd document / Elements within global, domain or local (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.2.2"
      },
      "repos": [
@@ -7860,7 +8008,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       },
       {
        "case": "Element occurrence gives mandatory, optional, unique or array",
@@ -7873,10 +8022,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.3.4.3.2.4",
@@ -7910,12 +8062,12 @@
     },
     {
      "id": "exo-770-4.6.1.1",
-     "name": "Metadata versioning / Overview",
+     "name": "Metadata versioning / Overview (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.1"
      },
      "repos": [
@@ -7933,19 +8085,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.6.1.2",
-     "name": "Metadata versioning / ServiceList URL format and handling",
+     "name": "Metadata versioning / ServiceList URL format and handling (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.2"
      },
      "repos": [
@@ -7963,19 +8118,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.6.1.4",
-     "name": "Metadata versioning / Service List Registry signalling",
+     "name": "Metadata versioning / Service List Registry signalling (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.4"
      },
      "repos": [
@@ -7993,7 +8151,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       },
       {
        "case": "Unversioned ServiceListURI taken as V1.2.1",
@@ -8006,19 +8165,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.6.2",
-     "name": "Versioning / Client versioning",
+     "name": "Versioning / Client versioning (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.2"
      },
      "repos": [
@@ -8036,7 +8198,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "Request a list by version in the URL path",
@@ -8049,7 +8212,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "Select a list by ServiceList.StandardVersion",
@@ -8062,11 +8226,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "NetworkOps.java downloads one fixed list URL (Exoplayer.patch:255)."
+      "NetworkOps.java downloads one fixed list URL (Exoplayer.patch:255).",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
@@ -8209,12 +8375,12 @@
     },
     {
      "id": "exo-770-5.1.3.9.3",
-     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT)",
+     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT) (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.9.3"
      },
      "repos": [
@@ -8233,19 +8399,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.1.3.10",
-     "name": "Service List discovery / Removal of an installed service list",
+     "name": "Service List discovery / Removal of an installed service list (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.10"
      },
      "repos": [
@@ -8263,7 +8432,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "Re-run of the installation UI after removal",
@@ -8276,7 +8446,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "Block future installation of specific lists",
@@ -8289,10 +8460,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.1.6",
@@ -8552,12 +8726,12 @@
     },
     {
      "id": "exo-770-5.2.3.2.4",
-     "name": "Applications and media presentation / Application in series with media",
+     "name": "Applications and media presentation / Application in series with media (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.2.4"
      },
      "repos": [
@@ -8575,7 +8749,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "1) The DVB-I client shall not present the service or service instance where the ...",
@@ -8588,7 +8763,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "- a decimal number of seconds for which the DVB-I client shall not retry (including zero).",
@@ -8601,7 +8777,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " If the application is signalled at the service instance level then the DVB-I client ...",
@@ -8614,7 +8791,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "If this is the only service instance within the service then the DVB-I client shall ...",
@@ -8627,7 +8805,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "If there are other service instances within the service but outside the scope of the ...",
@@ -8640,7 +8819,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " If the application is signalled at the service level then the DVB-I client shall not ...",
@@ -8653,7 +8833,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " The DVB-I client should show a similar user interface to what would be shown for ...",
@@ -8666,7 +8847,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "- the string \"infinite\" indicating that the DVB-I client shall not attempt to select ...",
@@ -8679,10 +8861,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.2.3.3",
@@ -8742,12 +8927,12 @@
     },
     {
      "id": "exo-770-5.2.3.6.1",
-     "name": "Applications associated with the entire Service List / Service List installation applications",
+     "name": "Applications associated with the entire Service List / Service List installation applications (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.1"
      },
      "repos": [
@@ -8765,7 +8950,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "• installationtoken - A token that shall be passed to any \"application for renewal of ...",
@@ -8778,7 +8964,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "The DVB-I client shall take the key-value pairs from the query property, convert them ...",
@@ -8791,19 +8978,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.2.3.6.2",
-     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement",
+     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.2"
      },
      "repos": [
@@ -8821,7 +9011,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns a 404 response code or fails before an HTTP ...",
@@ -8834,7 +9025,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns an empty document then the DVB-I client shall try ...",
@@ -8847,7 +9039,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns a document of type text/plain containing a UTC ...",
@@ -8860,7 +9053,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "- If the signalled time from the renewurl URL is still in the future then the DVB-I ...",
@@ -8873,7 +9067,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "- Otherwise the DVB-I client shall consider that consent has been withdrawn, return to ...",
@@ -8886,19 +9081,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.2.3.6.3",
-     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent",
+     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.3"
      },
      "repos": [
@@ -8916,7 +9114,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client that supports service list installation applications shall include, in ...",
@@ -8929,19 +9128,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.2.3.7",
-     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and",
+     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.7"
      },
      "repos": [
@@ -8959,10 +9161,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.7"
+       "locator": "clause 5.2.3.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.2.4.1",
@@ -9130,7 +9335,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.2"
      },
      "repos": [
@@ -9160,7 +9365,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.3"
      },
      "repos": [
@@ -9375,7 +9580,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.2"
      },
      "repos": [
@@ -9495,7 +9700,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.10"
      },
      "repos": [
@@ -9732,7 +9937,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.1"
      },
      "repos": [
@@ -9761,7 +9966,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.2"
      },
      "repos": [
@@ -9815,7 +10020,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.3.2"
      },
      "repos": [
@@ -9893,7 +10098,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.4"
      },
      "repos": [
@@ -10007,12 +10212,12 @@
     },
     {
      "id": "exo-770-I.2",
-     "name": "WebSocket server and JSON-RPC implementation",
+     "name": "WebSocket server and JSON-RPC implementation (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.2"
      },
      "repos": [
@@ -10030,7 +10235,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       },
       {
        "case": "• References in that clause to “HbbTV applications” shall also apply to linked ...",
@@ -10043,7 +10249,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       },
       {
        "case": "• Clause 9.9.2.1 of ETSI TS 102 796 [21] concerning discovery of the WebSocket server ...",
@@ -10056,19 +10263,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.2"
+       "locator": "clause I.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-I.3",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -10086,19 +10296,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-I.4",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -10116,7 +10329,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       },
       {
        "case": "If a DVB-I client is able to communicate this information then linked applications ...",
@@ -10129,10 +10343,13 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.1",
@@ -10191,12 +10408,12 @@
     },
     {
      "id": "android-770-4.3.4.3.2.2.2",
-     "name": "Structure of the xsd document / Elements within global, domain or local",
+     "name": "Structure of the xsd document / Elements within global, domain or local (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.2.2"
      },
      "repos": [
@@ -10214,7 +10431,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       },
       {
        "case": "The occurrence of each element of the query is used to indicated whether the argument ...",
@@ -10227,10 +10445,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.2.2"
+       "locator": "clause 4.3.4.3.2.2.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.3.4.3.2.4",
@@ -10264,12 +10485,12 @@
     },
     {
      "id": "android-770-4.6.1.1",
-     "name": "Metadata versioning / Overview",
+     "name": "Metadata versioning / Overview (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.1"
      },
      "repos": [
@@ -10287,19 +10508,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.1"
+       "locator": "clause 4.6.1.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.6.1.2",
-     "name": "Metadata versioning / ServiceList URL format and handling",
+     "name": "Metadata versioning / ServiceList URL format and handling (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.2"
      },
      "repos": [
@@ -10317,19 +10541,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.2"
+       "locator": "clause 4.6.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.6.1.4",
-     "name": "Metadata versioning / Service List Registry signalling",
+     "name": "Metadata versioning / Service List Registry signalling (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.1.4"
      },
      "repos": [
@@ -10347,7 +10574,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       },
       {
        "case": "When ServiceListURI@standardVersion is unspecified the client should interpret such ...",
@@ -10360,19 +10588,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1.4"
+       "locator": "clause 4.6.1.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.6.2",
-     "name": "Versioning / Client versioning",
+     "name": "Versioning / Client versioning (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.6.2"
      },
      "repos": [
@@ -10390,7 +10621,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "A client may request Service Lists compatible with a particular DVB-I standard version ...",
@@ -10403,7 +10635,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       },
       {
        "case": "• One or more ServiceList.StandardVersion elements in a Service List as defined in ...",
@@ -10416,10 +10649,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2"
+       "locator": "clause 4.6.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.1.2",
@@ -10560,12 +10796,12 @@
     },
     {
      "id": "android-770-5.1.3.9.3",
-     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT)",
+     "name": "Announcement of service lists and service list registries via mDNS/DNS-SD / Text Record (TXT) (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.9.3"
      },
      "repos": [
@@ -10584,19 +10820,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.9.3"
+       "locator": "clause 5.1.3.9.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.1.3.10",
-     "name": "Service List discovery / Removal of an installed service list",
+     "name": "Service List discovery / Removal of an installed service list (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.1.3.10"
      },
      "repos": [
@@ -10614,7 +10853,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "This may automatically re-run the service list installation UI or it may leave the ...",
@@ -10627,7 +10867,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client should include an implementation-specific mechanism to block future ...",
@@ -10640,10 +10881,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.3.10"
+       "locator": "clause 5.1.3.10",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.1.6",
@@ -10900,12 +11144,12 @@
     },
     {
      "id": "android-770-5.2.3.2.4",
-     "name": "Applications and media presentation / Application in series with media",
+     "name": "Applications and media presentation / Application in series with media (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.2.4"
      },
      "repos": [
@@ -10923,7 +11167,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "1) The DVB-I client shall not present the service or service instance where the ...",
@@ -10936,7 +11181,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "- a decimal number of seconds for which the DVB-I client shall not retry (including zero).",
@@ -10949,7 +11195,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " If the application is signalled at the service instance level then the DVB-I client ...",
@@ -10962,7 +11209,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "If this is the only service instance within the service then the DVB-I client shall ...",
@@ -10975,7 +11223,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "If there are other service instances within the service but outside the scope of the ...",
@@ -10988,7 +11237,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " If the application is signalled at the service level then the DVB-I client shall not ...",
@@ -11001,7 +11251,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": " The DVB-I client should show a similar user interface to what would be shown for ...",
@@ -11014,7 +11265,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       },
       {
        "case": "- the string \"infinite\" indicating that the DVB-I client shall not attempt to select ...",
@@ -11027,11 +11279,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.2.4"
+       "locator": "clause 5.2.3.2.4",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "An instance that signals a LinkedApplicationCS term 1.3 application is played without running it; this is not judged by this statement."
+      "An instance that signals a LinkedApplicationCS term 1.3 application is played without running it; this is not judged by this statement.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
@@ -11091,12 +11345,12 @@
     },
     {
      "id": "android-770-5.2.3.6.1",
-     "name": "Applications associated with the entire Service List / Service List installation applications",
+     "name": "Applications associated with the entire Service List / Service List installation applications (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.1"
      },
      "repos": [
@@ -11114,7 +11368,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "• installationtoken - A token that shall be passed to any \"application for renewal of ...",
@@ -11127,7 +11382,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       },
       {
        "case": "The DVB-I client shall take the key-value pairs from the query property, convert them ...",
@@ -11140,19 +11396,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.1"
+       "locator": "clause 5.2.3.6.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.2.3.6.2",
-     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement",
+     "name": "Applications associated with the entire Service List / Applications for renewal of user agreement (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.2"
      },
      "repos": [
@@ -11170,7 +11429,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns a 404 response code or fails before an HTTP ...",
@@ -11183,7 +11443,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns an empty document then the DVB-I client shall try ...",
@@ -11196,7 +11457,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "• If an HTTP GET of the URL returns a document of type text/plain containing a UTC ...",
@@ -11209,7 +11471,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "- If the signalled time from the renewurl URL is still in the future then the DVB-I ...",
@@ -11222,7 +11485,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       },
       {
        "case": "- Otherwise the DVB-I client shall consider that consent has been withdrawn, return to ...",
@@ -11235,19 +11499,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.2"
+       "locator": "clause 5.2.3.6.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.2.3.6.3",
-     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent",
+     "name": "Applications associated with the entire Service List / Applications for withdrawal of user agreement or consent (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.6.3"
      },
      "repos": [
@@ -11265,7 +11532,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client that supports service list installation applications shall include, in ...",
@@ -11278,19 +11546,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.6.3"
+       "locator": "clause 5.2.3.6.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.2.3.7",
-     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and",
+     "name": "Signalling of applications in the Service List / Passing information between a web technology based linked application and (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.2.3.7"
      },
      "repos": [
@@ -11308,10 +11579,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.7"
+       "locator": "clause 5.2.3.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.2.4.1",
@@ -11479,7 +11753,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.2"
      },
      "repos": [
@@ -11510,7 +11784,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.3"
      },
      "repos": [
@@ -11739,7 +12013,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.3.6.2"
      },
      "repos": [
@@ -11861,7 +12135,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.10"
      },
      "repos": [
@@ -12267,7 +12541,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.1"
      },
      "repos": [
@@ -12296,7 +12570,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.2"
      },
      "repos": [
@@ -12349,7 +12623,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.3.2"
      },
      "repos": [
@@ -12426,7 +12700,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.4.4"
      },
      "repos": [
@@ -12539,12 +12813,12 @@
     },
     {
      "id": "android-770-I.3",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -12562,19 +12836,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-I.4",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -12592,10 +12869,13 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     }
    ]
   },
@@ -12610,7 +12890,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.1"
      },
      "repos": [
@@ -12731,7 +13011,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.2"
      },
      "repos": [
@@ -12851,12 +13131,12 @@
     },
     {
      "id": "app-770-4.3.4.1",
-     "name": "Customised queries / Overview",
+     "name": "Customised queries / Overview (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.1"
      },
      "repos": [
@@ -12874,7 +13154,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a query on a specification version",
@@ -12887,7 +13168,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise by adding customerID",
@@ -12900,7 +13182,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a media asset query by adding a format",
@@ -12913,7 +13196,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a service list",
@@ -12926,7 +13210,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Revert to baseline queries on a support issue",
@@ -12939,7 +13224,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Ignore elements not supported",
@@ -12952,22 +13238,24 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       }
      ],
      "noted": [
       "The web client appends a legacy serviceId argument next to sid, start and end on every schedule request, which is not a baseline query argument.",
-      "The web client appends a legacy serviceId argument next to sid, start and end on every schedule request, which is not a baseline query argument."
+      "The web client appends a legacy serviceId argument next to sid, start and end on every schedule request, which is not a baseline query argument.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
      "id": "app-770-4.3.4.2",
-     "name": "Customised queries / Query",
+     "name": "Customised queries / Query (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.2"
      },
      "repos": [
@@ -12985,7 +13273,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       },
       {
        "case": "querycapabilities at service list, service provider or content guide endpoints",
@@ -12998,19 +13287,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.3.4.3.1",
-     "name": "Response and client interpretation / General",
+     "name": "Response and client interpretation / General (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.1"
      },
      "repos": [
@@ -13028,7 +13320,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       },
       {
        "case": "Client may query querycapabilities",
@@ -13041,21 +13334,23 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "The web client appends a legacy serviceId argument next to sid, start and end on every schedule request, which is not a baseline query argument."
+      "The web client appends a legacy serviceId argument next to sid, start and end on every schedule request, which is not a baseline query argument.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
      "id": "app-770-4.3.5.1",
-     "name": "HTTP response headers / Signature related headers",
+     "name": "HTTP response headers / Signature related headers (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.5.1"
      },
      "repos": [
@@ -13074,10 +13369,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.5.1"
+       "locator": "clause 4.3.5.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.4",
@@ -13206,7 +13504,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.2.2"
      },
      "repos": [
@@ -13272,7 +13570,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.2.2"
      },
      "repos": [
@@ -13338,7 +13636,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.3.2"
      },
      "repos": [
@@ -13368,7 +13666,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.4.2"
      },
      "repos": [
@@ -13513,12 +13811,12 @@
     },
     {
      "id": "app-770-6.5.6",
-     "name": "Schedule information requests / Determining the current on-air event",
+     "name": "Schedule information requests / Determining the current on-air event (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 6.5.6"
      },
      "repos": [
@@ -13536,7 +13834,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       },
       {
        "case": "Now/Next requests to update the banner or poll",
@@ -13549,11 +13848,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "The refresh is."
+      "The refresh is.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
@@ -13563,7 +13864,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.6.2"
      },
      "repos": [
@@ -13616,7 +13917,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.9"
      },
      "repos": [
@@ -13749,7 +14050,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 7.3"
      },
      "repos": [
@@ -13800,12 +14101,12 @@
     },
     {
      "id": "app-770-7.4.1",
-     "name": "Use of DNS features / DNSSEC",
+     "name": "Use of DNS features / DNSSEC (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.1"
      },
      "repos": [
@@ -13823,21 +14124,23 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.1"
+       "locator": "clause 7.4.1",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "The Node server of the web client calls dns.lookup only to refuse private addresses for its proxy; the browser does the resolving for the client itself."
+      "The Node server of the web client calls dns.lookup only to refuse private addresses for its proxy; the browser does the resolving for the client itself.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
      "id": "app-770-7.4.2",
-     "name": "Use of DNS features / DNS round robin",
+     "name": "Use of DNS features / DNS round robin (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.2"
      },
      "repos": [
@@ -13855,7 +14158,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       },
       {
        "case": "Try another address when the endpoint is not available",
@@ -13868,22 +14172,24 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       }
      ],
      "noted": [
       "The Node server of the web client calls dns.lookup only to refuse private addresses for its proxy; the browser does the resolving for the client itself.",
-      "The Node server of the web client calls dns.lookup only to refuse private addresses for its proxy; the browser does the resolving for the client itself."
+      "The Node server of the web client calls dns.lookup only to refuse private addresses for its proxy; the browser does the resolving for the client itself.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
      "id": "app-770-7.6.2.3",
-     "name": "Components of a Signature Policy / Signature Policy semantics",
+     "name": "Components of a Signature Policy / Signature Policy semantics (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.3"
      },
      "repos": [
@@ -13902,7 +14208,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "The document or data shall only be used by the DVB-I client is signature validation ...",
@@ -13914,7 +14221,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "Any non-success enforcement shall result in report being submitted to any endpoints ...",
@@ -13926,7 +14234,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CAFingerprint The fingerprint of the Certificate Authority whose certificate must be ...",
@@ -13938,7 +14247,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CN The common name, optionally wildcarded, of a host endpoint which is Mandatory ...",
@@ -13950,19 +14260,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-7.6.2.5",
-     "name": "Components of a Signature Policy / Reporting",
+     "name": "Components of a Signature Policy / Reporting (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.5"
      },
      "repos": [
@@ -13981,7 +14294,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "The report format shall be as defined in clause 2.1.3 of the W3C Reporting API [56] ...",
@@ -13993,7 +14307,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The type property shall be set to “signature-verification-issue”",
@@ -14005,7 +14320,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The url property shall contain the URL to the resource which failed signature ...",
@@ -14017,7 +14333,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The user-agent property shall contain the same user agent string as that used in the ...",
@@ -14029,7 +14346,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The destination, timestamp and attempts properties shall be as defined in clause ...",
@@ -14041,7 +14359,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The body property shall contain an object with the following properties:",
@@ -14053,7 +14372,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "- An optional signature-present property which shall only be included and set to ...",
@@ -14065,19 +14385,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-7.7.1.2",
-     "name": "Signature methods / Detached JWS",
+     "name": "Signature methods / Detached JWS (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.7.1.2"
      },
      "repos": [
@@ -14096,7 +14419,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       },
       {
        "case": "• \"b64\" A boolean value indicating if the payload is provided in Base 64 coded form in ...",
@@ -14108,10 +14432,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-8.2",
@@ -14120,7 +14447,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.2"
      },
      "repos": [
@@ -14149,7 +14476,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.4.1"
      },
      "repos": [
@@ -14197,12 +14524,12 @@
     },
     {
      "id": "app-770-8.5.4.2",
-     "name": "Other Service Characteristics / CMCD",
+     "name": "Other Service Characteristics / CMCD (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 8.5.4.2"
      },
      "repos": [
@@ -14220,11 +14547,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 8.5.4.2"
+       "locator": "clause 8.5.4.2",
+       "draftOnly": true
       }
      ],
      "noted": [
-      "Which other keys the players send is decided by dash.js and hls.js defaults, which are not part of the audit."
+      "Which other keys the players send is decided by dash.js and hls.js defaults, which are not part of the audit.",
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
      ]
     },
     {
@@ -14234,7 +14563,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.1"
      },
      "repos": [
@@ -14259,12 +14588,12 @@
     },
     {
      "id": "provider-770-4.3.5.1",
-     "name": "HTTP response headers / Signature related headers",
+     "name": "HTTP response headers / Signature related headers (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.5.1"
      },
      "repos": [
@@ -14281,10 +14610,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.5.1"
+       "locator": "clause 4.3.5.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-4.4",
@@ -14293,7 +14625,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.4"
      },
      "repos": [
@@ -14349,7 +14681,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.2.2"
      },
      "repos": [
@@ -14466,7 +14798,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.4.3"
      },
      "repos": [
@@ -14509,7 +14841,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.2.2"
      },
      "repos": [
@@ -14601,7 +14933,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.4.2"
      },
      "repos": [
@@ -14657,7 +14989,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.4.4"
      },
      "repos": [
@@ -14752,8 +15084,8 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 6.5.5.3"
+      "version": "V1.2.1",
+      "locator": "clause 6.5.5"
      },
      "repos": [
       "rt-dvb-i-application-provider"
@@ -14770,7 +15102,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       }
      ],
      "noted": []
@@ -14782,7 +15114,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.6.2"
      },
      "repos": [
@@ -14926,7 +15258,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.6.3"
      },
      "repos": [
@@ -15001,7 +15333,7 @@
       {
        "case": "BroadcastEvent.Program@crid linkage",
        "verdict": "absent",
-       "what": "BroadcastEvent is never written; events are ScheduleEvent elements whose Program@crid is the programme CRID.",
+       "what": "BroadcastEvent is never written; events are ScheduleEvent elements whose Program@crid is the programme CRID. Draft r8 only: BroadcastEvent. V1.2.1 links ScheduleEvent.Program@crid instead, covered by the association case above.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -15009,7 +15341,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.6.3"
+       "locator": "clause 6.6.3",
+       "draftOnly": true
       },
       {
        "case": "OnDemandProgram.Program@crid",
@@ -15073,7 +15406,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.3"
      },
      "repos": [
@@ -15114,7 +15447,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.4"
      },
      "repos": [
@@ -15222,7 +15555,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.6"
      },
      "repos": [
@@ -15280,7 +15613,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.7"
      },
      "repos": [
@@ -15429,7 +15762,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.8.2"
      },
      "repos": [
@@ -15565,7 +15898,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.8.3"
      },
      "repos": [
@@ -15673,7 +16006,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.8.4"
      },
      "repos": [
@@ -15716,7 +16049,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.9"
      },
      "repos": [
@@ -15759,7 +16092,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.10"
      },
      "repos": [
@@ -15777,7 +16110,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.10"
+       "locator": "clause 6.10.10",
+       "draftOnly": true
       },
       {
        "case": "MixType and AudioLanguage purpose",
@@ -15795,7 +16129,7 @@
       {
        "case": "No @purpose on accessibility audio language",
        "verdict": "absent",
-       "what": "The content guide writes no AudioLanguage element, so the condition is not met.",
+       "what": "V1.2.1 says the AudioLanguage element should not indicate the presence of audio description; the content guide writes no AudioLanguage element, so the condition is not met. Draft r8 tightens this to the @purpose attribute not being used for the language of an accessibility feature.",
        "repo": "rt-dvb-i-application-provider",
        "releases": [
         "17",
@@ -15817,7 +16151,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.11"
      },
      "repos": [
@@ -15835,7 +16169,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.11"
+       "locator": "clause 6.10.11",
+       "draftOnly": true
       },
       {
        "case": "The value specified <!--SD --> shall be used to determine SD/HD/4K/8K content ..",
@@ -15899,7 +16234,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.13"
      },
      "repos": [
@@ -15955,7 +16290,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.14"
      },
      "repos": [
@@ -16167,7 +16502,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.15"
      },
      "repos": [
@@ -16198,7 +16533,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.15"
+       "locator": "clause 6.10.15",
+       "draftOnly": true
       },
       {
        "case": "Minimum age 255 where age ratings are not used",
@@ -16290,7 +16626,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.16"
      },
      "repos": [
@@ -16321,7 +16657,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.16"
+       "locator": "clause 6.10.16",
+       "draftOnly": true
       },
       {
        "case": "OnDemandProgram Genre for media availability",
@@ -16398,7 +16735,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.17.3"
      },
      "repos": [
@@ -16464,12 +16801,12 @@
     },
     {
      "id": "provider-770-6.10.18",
-     "name": "Metadata profile / BroadcastEvent element",
+     "name": "Metadata profile / BroadcastEvent element (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 6.10.18"
      },
      "repos": [
@@ -16487,7 +16824,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.18"
+       "locator": "clause 6.10.18",
+       "draftOnly": true
       },
       {
        "case": "PublishedStartTime omitted when not scheduled (BroadcastEvent)",
@@ -16500,7 +16838,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.18"
+       "locator": "clause 6.10.18",
+       "draftOnly": true
       },
       {
        "case": "PublishedDuration omitted when not scheduled (BroadcastEvent)",
@@ -16513,7 +16852,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.18"
+       "locator": "clause 6.10.18",
+       "draftOnly": true
       },
       {
        "case": "ActualStartTime only with PublishedStartTime (BroadcastEvent)",
@@ -16526,7 +16866,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.18"
+       "locator": "clause 6.10.18",
+       "draftOnly": true
       },
       {
        "case": "ActualDuration only with PublishedDuration (BroadcastEvent)",
@@ -16539,10 +16880,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.10.18"
+       "locator": "clause 6.10.18",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-7.3",
@@ -16551,7 +16895,7 @@
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 7.3"
      },
      "repos": [
@@ -16576,12 +16920,12 @@
     },
     {
      "id": "provider-770-7.5.2",
-     "name": "Content Digest / Digest values",
+     "name": "Content Digest / Digest values (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.5.2"
      },
      "repos": [
@@ -16598,19 +16942,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.2"
+       "locator": "clause 7.5.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-7.5.3",
-     "name": "Content Digest / Considerations",
+     "name": "Content Digest / Considerations (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.5.3"
      },
      "repos": [
@@ -16627,7 +16974,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       },
       {
        "case": "Complex algorithms used for digests and cryprographic functions may have performance ...",
@@ -16639,7 +16987,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       },
       {
        "case": "Choice of algorithms and when to use them should be carefully considered based on the ...",
@@ -16651,19 +17000,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-7.6.2.3",
-     "name": "Components of a Signature Policy / Signature Policy semantics",
+     "name": "Components of a Signature Policy / Signature Policy semantics (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.3"
      },
      "repos": [
@@ -16680,7 +17032,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "The document or data shall only be used by the DVB-I client is signature validation ...",
@@ -16692,7 +17045,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "Any non-success enforcement shall result in report being submitted to any endpoints ...",
@@ -16704,7 +17058,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CAFingerprint The fingerprint of the Certificate Authority whose certificate must be ...",
@@ -16716,7 +17071,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CN The common name, optionally wildcarded, of a host endpoint which is Mandatory ...",
@@ -16728,19 +17084,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-7.6.2.5",
-     "name": "Components of a Signature Policy / Reporting",
+     "name": "Components of a Signature Policy / Reporting (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.5"
      },
      "repos": [
@@ -16757,7 +17116,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "The report format shall be as defined in clause 2.1.3 of the W3C Reporting API [56] ...",
@@ -16769,7 +17129,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The type property shall be set to “signature-verification-issue”",
@@ -16781,7 +17142,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The url property shall contain the URL to the resource which failed signature ...",
@@ -16793,7 +17155,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The user-agent property shall contain the same user agent string as that used in the ...",
@@ -16805,7 +17168,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The destination, timestamp and attempts properties shall be as defined in clause ...",
@@ -16817,7 +17181,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The body property shall contain an object with the following properties:",
@@ -16829,7 +17194,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "- An optional signature-present property which shall only be included and set to ...",
@@ -16841,19 +17207,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "provider-770-7.7.1.2",
-     "name": "Signature methods / Detached JWS",
+     "name": "Signature methods / Detached JWS (draft A177r8 only)",
      "release": "all",
      "component": "provider",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.7.1.2"
      },
      "repos": [
@@ -16870,7 +17239,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       },
       {
        "case": "• \"b64\" A boolean value indicating if the payload is provided in Base 64 coded form in ...",
@@ -16882,10 +17252,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-4.3.2.1",
@@ -16894,7 +17267,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.1"
      },
      "repos": [
@@ -16919,12 +17292,12 @@
     },
     {
      "id": "registry-770-4.3.5.1",
-     "name": "HTTP response headers / Signature related headers",
+     "name": "HTTP response headers / Signature related headers (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.5.1"
      },
      "repos": [
@@ -16941,10 +17314,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.5.1"
+       "locator": "clause 4.3.5.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-7.3",
@@ -16953,7 +17329,7 @@
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 7.3"
      },
      "repos": [
@@ -16978,12 +17354,12 @@
     },
     {
      "id": "registry-770-7.5.2",
-     "name": "Content Digest / Digest values",
+     "name": "Content Digest / Digest values (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.5.2"
      },
      "repos": [
@@ -17000,19 +17376,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.2"
+       "locator": "clause 7.5.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-7.5.3",
-     "name": "Content Digest / Considerations",
+     "name": "Content Digest / Considerations (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.5.3"
      },
      "repos": [
@@ -17029,7 +17408,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       },
       {
        "case": "Complex algorithms used for digests and cryprographic functions may have performance ...",
@@ -17041,7 +17421,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       },
       {
        "case": "Choice of algorithms and when to use them should be carefully considered based on the ...",
@@ -17053,19 +17434,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.5.3"
+       "locator": "clause 7.5.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-7.6.2.3",
-     "name": "Components of a Signature Policy / Signature Policy semantics",
+     "name": "Components of a Signature Policy / Signature Policy semantics (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.3"
      },
      "repos": [
@@ -17082,7 +17466,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "The document or data shall only be used by the DVB-I client is signature validation ...",
@@ -17094,7 +17479,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "Any non-success enforcement shall result in report being submitted to any endpoints ...",
@@ -17106,7 +17492,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CAFingerprint The fingerprint of the Certificate Authority whose certificate must be ...",
@@ -17118,7 +17505,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CN The common name, optionally wildcarded, of a host endpoint which is Mandatory ...",
@@ -17130,19 +17518,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-7.6.2.5",
-     "name": "Components of a Signature Policy / Reporting",
+     "name": "Components of a Signature Policy / Reporting (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.5"
      },
      "repos": [
@@ -17159,7 +17550,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "The report format shall be as defined in clause 2.1.3 of the W3C Reporting API [56] ...",
@@ -17171,7 +17563,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The type property shall be set to “signature-verification-issue”",
@@ -17183,7 +17576,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The url property shall contain the URL to the resource which failed signature ...",
@@ -17195,7 +17589,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The user-agent property shall contain the same user agent string as that used in the ...",
@@ -17207,7 +17602,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The destination, timestamp and attempts properties shall be as defined in clause ...",
@@ -17219,7 +17615,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The body property shall contain an object with the following properties:",
@@ -17231,7 +17628,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "- An optional signature-present property which shall only be included and set to ...",
@@ -17243,19 +17641,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "registry-770-7.7.1.2",
-     "name": "Signature methods / Detached JWS",
+     "name": "Signature methods / Detached JWS (draft A177r8 only)",
      "release": "all",
      "component": "registry",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.7.1.2"
      },
      "repos": [
@@ -17272,7 +17673,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       },
       {
        "case": "• \"b64\" A boolean value indicating if the payload is provided in Base 64 coded form in ...",
@@ -17284,10 +17686,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.3.2.1",
@@ -17296,7 +17701,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.1"
      },
      "repos": [
@@ -17417,7 +17822,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.2"
      },
      "repos": [
@@ -17524,12 +17929,12 @@
     },
     {
      "id": "exo-770-4.3.4.1",
-     "name": "Customised queries / Overview",
+     "name": "Customised queries / Overview (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.1"
      },
      "repos": [
@@ -17547,7 +17952,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a query on a specification version",
@@ -17560,7 +17966,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise by adding customerID",
@@ -17573,7 +17980,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a media asset query by adding a format",
@@ -17586,7 +17994,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a service list",
@@ -17599,7 +18008,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Revert to baseline queries on a support issue",
@@ -17612,7 +18022,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Ignore elements not supported",
@@ -17625,19 +18036,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.3.4.2",
-     "name": "Customised queries / Query",
+     "name": "Customised queries / Query (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.2"
      },
      "repos": [
@@ -17655,7 +18069,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       },
       {
        "case": "querycapabilities at service list, service provider or content guide endpoints",
@@ -17668,19 +18083,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.3.4.3.1",
-     "name": "Response and client interpretation / General",
+     "name": "Response and client interpretation / General (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.1"
      },
      "repos": [
@@ -17698,7 +18116,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       },
       {
        "case": "Client may query querycapabilities",
@@ -17711,19 +18130,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.3.5.1",
-     "name": "HTTP response headers / Signature related headers",
+     "name": "HTTP response headers / Signature related headers (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.5.1"
      },
      "repos": [
@@ -17742,10 +18164,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.5.1"
+       "locator": "clause 4.3.5.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.4",
@@ -17859,7 +18284,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.2.2"
      },
      "repos": [
@@ -17937,7 +18362,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.2.2"
      },
      "repos": [
@@ -18003,7 +18428,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.3.2"
      },
      "repos": [
@@ -18033,7 +18458,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.4.2"
      },
      "repos": [
@@ -18165,12 +18590,12 @@
     },
     {
      "id": "exo-770-6.5.6",
-     "name": "Schedule information requests / Determining the current on-air event",
+     "name": "Schedule information requests / Determining the current on-air event (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 6.5.6"
      },
      "repos": [
@@ -18188,7 +18613,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       },
       {
        "case": "Now/Next requests to update the banner",
@@ -18201,10 +18627,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-6.6.2",
@@ -18213,7 +18642,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.6.2"
      },
      "repos": [
@@ -18266,7 +18695,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.9"
      },
      "repos": [
@@ -18399,7 +18828,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 7.3"
      },
      "repos": [
@@ -18450,12 +18879,12 @@
     },
     {
      "id": "exo-770-7.4.1",
-     "name": "Use of DNS features / DNSSEC",
+     "name": "Use of DNS features / DNSSEC (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.1"
      },
      "repos": [
@@ -18473,19 +18902,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.1"
+       "locator": "clause 7.4.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-7.4.2",
-     "name": "Use of DNS features / DNS round robin",
+     "name": "Use of DNS features / DNS round robin (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.2"
      },
      "repos": [
@@ -18503,7 +18935,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       },
       {
        "case": "Try another address when the endpoint is not available",
@@ -18516,19 +18949,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-7.6.2.3",
-     "name": "Components of a Signature Policy / Signature Policy semantics",
+     "name": "Components of a Signature Policy / Signature Policy semantics (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.3"
      },
      "repos": [
@@ -18547,7 +18983,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "The document or data shall only be used by the DVB-I client is signature validation ...",
@@ -18559,7 +18996,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "Any non-success enforcement shall result in report being submitted to any endpoints ...",
@@ -18571,7 +19009,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CAFingerprint The fingerprint of the Certificate Authority whose certificate must be ...",
@@ -18583,7 +19022,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CN The common name, optionally wildcarded, of a host endpoint which is Mandatory ...",
@@ -18595,19 +19035,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-7.6.2.5",
-     "name": "Components of a Signature Policy / Reporting",
+     "name": "Components of a Signature Policy / Reporting (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.5"
      },
      "repos": [
@@ -18626,7 +19069,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "The report format shall be as defined in clause 2.1.3 of the W3C Reporting API [56] ...",
@@ -18638,7 +19082,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The type property shall be set to “signature-verification-issue”",
@@ -18650,7 +19095,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The url property shall contain the URL to the resource which failed signature ...",
@@ -18662,7 +19108,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The user-agent property shall contain the same user agent string as that used in the ...",
@@ -18674,7 +19121,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The destination, timestamp and attempts properties shall be as defined in clause ...",
@@ -18686,7 +19134,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The body property shall contain an object with the following properties:",
@@ -18698,7 +19147,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "- An optional signature-present property which shall only be included and set to ...",
@@ -18710,19 +19160,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-7.7.1.2",
-     "name": "Signature methods / Detached JWS",
+     "name": "Signature methods / Detached JWS (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.7.1.2"
      },
      "repos": [
@@ -18741,7 +19194,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       },
       {
        "case": "• \"b64\" A boolean value indicating if the payload is provided in Base 64 coded form in ...",
@@ -18753,10 +19207,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-8.2",
@@ -18765,7 +19222,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.2"
      },
      "repos": [
@@ -18794,7 +19251,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.4.1"
      },
      "repos": [
@@ -18842,12 +19299,12 @@
     },
     {
      "id": "exo-770-8.5.4.2",
-     "name": "Other Service Characteristics / CMCD",
+     "name": "Other Service Characteristics / CMCD (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 8.5.4.2"
      },
      "repos": [
@@ -18865,10 +19322,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 8.5.4.2"
+       "locator": "clause 8.5.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.3.2.1",
@@ -18877,7 +19337,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.1"
      },
      "repos": [
@@ -18997,7 +19457,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.2.2"
      },
      "repos": [
@@ -19104,12 +19564,12 @@
     },
     {
      "id": "android-770-4.3.4.1",
-     "name": "Customised queries / Overview",
+     "name": "Customised queries / Overview (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.1"
      },
      "repos": [
@@ -19127,7 +19587,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a query on a specification version",
@@ -19140,7 +19601,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise by adding customerID",
@@ -19153,7 +19615,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a media asset query by adding a format",
@@ -19166,7 +19629,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Customise a service list",
@@ -19179,7 +19643,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Revert to baseline queries on a support issue",
@@ -19192,7 +19657,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       },
       {
        "case": "Ignore elements not supported",
@@ -19205,19 +19671,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.1"
+       "locator": "clause 4.3.4.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.3.4.2",
-     "name": "Customised queries / Query",
+     "name": "Customised queries / Query (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.2"
      },
      "repos": [
@@ -19235,7 +19704,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       },
       {
        "case": "querycapabilities at service list, service provider or content guide endpoints",
@@ -19248,19 +19718,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.2"
+       "locator": "clause 4.3.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.3.4.3.1",
-     "name": "Response and client interpretation / General",
+     "name": "Response and client interpretation / General (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.1"
      },
      "repos": [
@@ -19278,7 +19751,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       },
       {
        "case": "Client may query querycapabilities",
@@ -19291,19 +19765,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.1"
+       "locator": "clause 4.3.4.3.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.3.5.1",
-     "name": "HTTP response headers / Signature related headers",
+     "name": "HTTP response headers / Signature related headers (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.5.1"
      },
      "repos": [
@@ -19322,10 +19799,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.5.1"
+       "locator": "clause 4.3.5.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.4",
@@ -19467,7 +19947,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.2.2"
      },
      "repos": [
@@ -19533,7 +20013,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.2.2"
      },
      "repos": [
@@ -19599,7 +20079,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.3.2"
      },
      "repos": [
@@ -19630,7 +20110,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.5.4.2"
      },
      "repos": [
@@ -19761,12 +20241,12 @@
     },
     {
      "id": "android-770-6.5.6",
-     "name": "Schedule information requests / Determining the current on-air event",
+     "name": "Schedule information requests / Determining the current on-air event (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 6.5.6"
      },
      "repos": [
@@ -19784,7 +20264,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       },
       {
        "case": "Now/Next requests to update the banner",
@@ -19797,10 +20278,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.6"
+       "locator": "clause 6.5.6",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-6.6.2",
@@ -19809,7 +20293,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.6.2"
      },
      "repos": [
@@ -19862,7 +20346,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.9"
      },
      "repos": [
@@ -19996,7 +20480,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 7.3"
      },
      "repos": [
@@ -20047,12 +20531,12 @@
     },
     {
      "id": "android-770-7.4.1",
-     "name": "Use of DNS features / DNSSEC",
+     "name": "Use of DNS features / DNSSEC (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.1"
      },
      "repos": [
@@ -20070,19 +20554,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.1"
+       "locator": "clause 7.4.1",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-7.4.2",
-     "name": "Use of DNS features / DNS round robin",
+     "name": "Use of DNS features / DNS round robin (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.4.2"
      },
      "repos": [
@@ -20100,7 +20587,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       },
       {
        "case": "Try another address when the endpoint is not available",
@@ -20113,19 +20601,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.4.2"
+       "locator": "clause 7.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-7.6.2.3",
-     "name": "Components of a Signature Policy / Signature Policy semantics",
+     "name": "Components of a Signature Policy / Signature Policy semantics (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.3"
      },
      "repos": [
@@ -20144,7 +20635,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "The document or data shall only be used by the DVB-I client is signature validation ...",
@@ -20156,7 +20648,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "Any non-success enforcement shall result in report being submitted to any endpoints ...",
@@ -20168,7 +20661,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CAFingerprint The fingerprint of the Certificate Authority whose certificate must be ...",
@@ -20180,7 +20674,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       },
       {
        "case": "CN The common name, optionally wildcarded, of a host endpoint which is Mandatory ...",
@@ -20192,19 +20687,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.3"
+       "locator": "clause 7.6.2.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-7.6.2.5",
-     "name": "Components of a Signature Policy / Reporting",
+     "name": "Components of a Signature Policy / Reporting (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.6.2.5"
      },
      "repos": [
@@ -20223,7 +20721,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "The report format shall be as defined in clause 2.1.3 of the W3C Reporting API [56] ...",
@@ -20235,7 +20734,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The type property shall be set to “signature-verification-issue”",
@@ -20247,7 +20747,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The url property shall contain the URL to the resource which failed signature ...",
@@ -20259,7 +20760,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The user-agent property shall contain the same user agent string as that used in the ...",
@@ -20271,7 +20773,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The destination, timestamp and attempts properties shall be as defined in clause ...",
@@ -20283,7 +20786,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "• The body property shall contain an object with the following properties:",
@@ -20295,7 +20799,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       },
       {
        "case": "- An optional signature-present property which shall only be included and set to ...",
@@ -20307,19 +20812,22 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.6.2.5"
+       "locator": "clause 7.6.2.5",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-7.7.1.2",
-     "name": "Signature methods / Detached JWS",
+     "name": "Signature methods / Detached JWS (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 7.7.1.2"
      },
      "repos": [
@@ -20338,7 +20846,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       },
       {
        "case": "• \"b64\" A boolean value indicating if the payload is provided in Base 64 coded form in ...",
@@ -20350,10 +20859,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 7.7.1.2"
+       "locator": "clause 7.7.1.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-8.2",
@@ -20362,7 +20874,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.2"
      },
      "repos": [
@@ -20391,7 +20903,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.4.1"
      },
      "repos": [
@@ -20439,12 +20951,12 @@
     },
     {
      "id": "android-770-8.5.4.2",
-     "name": "Other Service Characteristics / CMCD",
+     "name": "Other Service Characteristics / CMCD (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 8.5.4.2"
      },
      "repos": [
@@ -20462,10 +20974,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 8.5.4.2"
+       "locator": "clause 8.5.4.2",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     }
    ]
   },
@@ -20475,12 +20990,12 @@
    "requirements": [
     {
      "id": "app-770-I.3-general",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -20498,19 +21013,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-I.4-general",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -20528,7 +21046,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       },
       {
        "case": "• For application UI access services, the DVB-I client may support the access service ...",
@@ -20541,19 +21060,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-I.3-general",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -20571,19 +21093,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-I.4-general",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -20601,7 +21126,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       },
       {
        "case": "• For application UI access services, the DVB-I client may support the access service ...",
@@ -20614,19 +21140,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-I.3-general",
-     "name": "Exchange of information about media component selection",
+     "name": "Exchange of information about media component selection (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.3"
      },
      "repos": [
@@ -20644,19 +21173,22 @@
         "19",
         "20"
        ],
-       "locator": "clause I.3"
+       "locator": "clause I.3",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-I.4-general",
-     "name": "Exchange of information about default accessibility",
+     "name": "Exchange of information about default accessibility (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause I.4"
      },
      "repos": [
@@ -20674,7 +21206,8 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       },
       {
        "case": "• For application UI access services, the DVB-I client may support the access service ...",
@@ -20687,10 +21220,13 @@
         "19",
         "20"
        ],
-       "locator": "clause I.4"
+       "locator": "clause I.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     }
    ]
   }

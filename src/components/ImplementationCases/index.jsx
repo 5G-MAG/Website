@@ -13,29 +13,38 @@ const VERDICT = {
   inconsistent: { label: 'Specification inconsistent', mark: '?', cls: 'inc' },
 };
 
-const tally = (cases) => ({
+// A case with `draftOnly` is in a draft edition of the specification, not in the published one the audit leads with
+// (for DVB-I: A177r8, not ETSI TS 103 770 V1.2.1). It is listed, but never counted.
+const published = (cases) => cases.filter((c) => !c.draftOnly);
+
+const tally = (all) => {
+  const cases = published(all);
+  return {
   total: cases.length,
   implemented: cases.filter((c) => c.verdict === 'implemented').length,
   differs: cases.filter((c) => c.verdict === 'differs').length,
   absent: cases.filter((c) => c.verdict === 'absent').length,
   inconsistent: cases.filter((c) => c.verdict === 'inconsistent').length,
-});
+  draft: all.length - cases.length,
+  };
+};
 
 function Count({ cases }) {
   const t = tally(cases);
   return (
     <span className={styles.count}>
-      <b>{t.implemented} of {t.total}</b> implemented
+      {t.total ? <><b>{t.implemented} of {t.total}</b> implemented</> : <b>Draft only</b>}
       {t.differs ? ` · ${t.differs} differ${t.differs === 1 ? 's' : ''}` : ''}
       {t.absent ? ` · ${t.absent} absent` : ''}
       {t.inconsistent ? ` · ${t.inconsistent} where the specification is inconsistent` : ''}
+      {t.draft ? `${t.total ? ' · ' : ' '}${t.draft} in the draft only, not counted` : ''}
     </span>
   );
 }
 
 // One block per case, in clause order; a long strip becomes a proportional bar.
 function Strip({ cases }) {
-  if (cases.length > 14) {
+  if (published(cases).length > 14) {
     const t = tally(cases);
     return (
       <span className={styles.bar} aria-hidden="true">
@@ -45,7 +54,7 @@ function Strip({ cases }) {
   }
   return (
     <span className={styles.strip} aria-hidden="true">
-      {cases.map((c, i) => <span key={i} className={styles[VERDICT[c.verdict].cls]} />)}
+      {published(cases).map((c, i) => <span key={i} className={styles[VERDICT[c.verdict].cls]} />)}
     </span>
   );
 }
@@ -81,8 +90,10 @@ function Item({ kind, title, text, conflict, repo }) {
 
 function Requirement({ r, comp, rel }) {
   const [open, setOpen] = useState(false);
-  const works = r.cases.filter((c) => c.verdict === 'implemented');
-  const not = r.cases.filter((c) => c.verdict !== 'implemented');
+  const pub = published(r.cases);
+  const draft = r.cases.filter((c) => c.draftOnly);
+  const works = pub.filter((c) => c.verdict === 'implemented');
+  const not = pub.filter((c) => c.verdict !== 'implemented');
   const repos = r.repos || [];
   const many = repos.length > 1;
   return (
@@ -101,6 +112,7 @@ function Requirement({ r, comp, rel }) {
       </div>
       {open && (
         <div className={styles.body}>
+          {pub.length ? (
           <div className={styles.cols}>
             <div>
               <h4 className={styles.colh}>What works</h4>
@@ -120,6 +132,13 @@ function Requirement({ r, comp, rel }) {
               )}
             </div>
           </div>
+          ) : null}
+          {draft.length ? (
+            <div>
+              <h4 className={styles.colh}>In the draft only (not in the published edition, not counted)</h4>
+              <ul className={styles.items}>{draft.map((c) => <Item key={c.case} kind={c.verdict} title={c.case} text={c.what} conflict={c.conflict} repo={c.repo || (repos.length === 1 ? repos[0] : null)} />)}</ul>
+            </div>
+          ) : null}
           {r.noted && r.noted.length ? (
             <div>
               <h4 className={styles.colh}>Noted</h4>
@@ -180,6 +199,7 @@ export default function ImplementationCases({ data, only }) {
       .filter((r) => r.cases.length),
   })).filter((f) => f.shown.length), [data, comp, rel, only, at]);
   const all = features.flatMap((f) => f.shown.flatMap((r) => r.cases));
+  const nReq = features.reduce((n, f) => n + f.shown.filter((r) => published(r.cases).length).length, 0);
   // a link to one feature (#content-hosting) opens it
   useEffect(() => {
     const el = window.location.hash && document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
@@ -231,7 +251,7 @@ export default function ImplementationCases({ data, only }) {
       <div className={styles.total}>
         <Strip cases={all} />
         <Count cases={all} />
-        <span className={styles.over}>cases, over {features.reduce((n, f) => n + f.shown.length, 0)} requirements</span>
+        <span className={styles.over}>cases, over {nReq} requirements</span>
       </div>
 
       <p className={styles.key}>
