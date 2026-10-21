@@ -28,7 +28,7 @@ See also: <a href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#develop
 :::tip[In short]
 
 - **Platform description:** 5G-MAG maintains forks of Open5GS, the srsRAN Project and srsRAN_4G, each with a variant for MBS, so that the other reference tools have a network to run against. This part is not yet audited.
-- **5G Core service consumers:** reusable libraries to invoke service operations on 5GC network functions. The BSF and MB-SMF libraries and the NRF discovery they use are audited on the `main` branch of `rt-5gc-service-consumers`; the PCF library is not yet audited.
+- **5G Core service consumers:** reusable libraries to invoke service operations on 5GC network functions. The BSF, PCF and MB-SMF libraries and the NRF discovery they use are audited on the `main` branch of `rt-5gc-service-consumers`. The PCF library covers the core of policy authorization only, with no optional feature negotiated.
 
 :::
 
@@ -211,9 +211,12 @@ Each library implements only the consumer (client) side of its APIs, so it assum
 
 ### Implementation status of the service consumer libraries
 
-This status comes from an audit of the `main` branch of `rt-5gc-service-consumers` on 2026-10-21. Each requirement of the 5G Core service specifications is split into the cases its clause defines, and each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. It covers **libscbsf** (BSF), **libscmbsmf** (MB-SMF) and the NRF discovery they use. **libscpcf** (PCF, `Npcf_PolicyAuthorization`) is not yet audited. Cases that depend on Open5GS, which is not part of this repository, are not shown; some shown cases could be read only up to that boundary.
+This status comes from an audit of the `main` branch of `rt-5gc-service-consumers` on 2026-10-22. Each requirement of the 5G Core service specifications is split into the cases its clause defines, and each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. It covers **libscbsf** (BSF), **libscpcf** (PCF, `Npcf_PolicyAuthorization`), **libscmbsmf** (MB-SMF) and the NRF discovery they use. Cases that depend on Open5GS, which is not part of this repository, are not shown; some shown cases could be read only up to that boundary.
 
 - **libscbsf:** looks up the PCF binding of a UE with a GET on `pcfBindings` by IPv4 address or IPv6 prefix. It has no query by SUPI, GPSI, DNN or S-NSSAI, and no register, update, deregister or subscribe operation. Any reply other than 200 is reported to the application as "no binding".
+- **libscpcf, application sessions:** creates (POST), updates (PATCH) and deletes (POST to delete) an application session, and serves the event notification callback. A session is created with the notification URI, the IPv4 address of the UE, the supported-features value 0, an event subscription list, sponsored connectivity set to disabled, a fixed resource priority and the media components the application builds. The session is removed locally after any answer to a delete.
+- **libscpcf, event subscriptions:** subscribes with a PUT and unsubscribes with a DELETE on the events subscription. A change to the subscription goes through the same PUT, which merges the events list only; the event subscription is never changed by a PATCH. Unsubscribing removes the whole subscription.
+- **libscpcf, not implemented:** the library never negotiates an optional feature, so every procedure and attribute that exists only under an optional feature is not implemented. It does not send the SUPI, GPSI, DNN, slice information or an IPv6 address. The notification server accepts only the notify operation and rejects the terminate operation, so a termination request from the PCF is not served. Redirects are not followed, Retry-After is not read, and the error body of the PCF is not interpreted.
 - **libscmbsmf, sessions:** create, update and delete an MBS session; create, update and delete a status subscription; receive the StatusNotify notification. ContextUpdate and the context status operations, and multipart content, are not implemented.
 - **libscmbsmf, TMGIs:** allocate and deallocate TMGIs. Refreshing a TMGI is in the code but no public call reaches it.
 - **Needs fix:**
