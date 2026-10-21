@@ -121,7 +121,7 @@ against the specifications as published today, not as they stood when the report
 | 2.4.17 | Announce the location of content guide endpoints | TS 103 770 clause 9.3.1, table 106: class `DVB-I_Content_Guide:1` | **Addressed**, by carrying the documents themselves |
 | 2.6.7 | Receive-only-mode reception from a 5G Broadcast system | ETSI TS 103 720 clause 5.4.8 makes receive-only mode mandatory for LTE-based 5G Broadcast services | **Addressed** at the bearer |
 | 2.6.6 | Free-to-air delivery over a 5G Broadcast system | Follows from the same clause: ROM needs neither PLMN registration nor a USIM. Announcement to such receivers is 3GPP TS 26.346 clause 5.2.3.1.1 | **Addressed** at the bearer |
-| 2.4.2 | An entry point referencing a service list registry | TS 103 770 clause 5.1.3.1 defines three discovery approaches (built-in URL, registry, CICAM); none is 5G-specific | **Partly**: the registry exists, the 5G entry point does not |
+| 2.4.2 | An entry point referencing a service list registry | TS 103 770 clause 5.1.3.1 defines three discovery approaches (built-in URL, registry, CICAM); none is 5G-specific; the A177r8 draft keeps the same three principal approaches in clause 5.1.3.1 and adds mDNS/DNS-SD announcement in clause 5.1.3.9, also not 5G-specific | **Partly**: the registry exists, the 5G entry point does not |
 | 2.4.3 (DVB C100 clause 2.4.3; ETSI TS 103 770 V1.2.1 clause 9.3.1; ETSI TS 103 770 V1.2.1 clause 9.3.3) | Announce the *location* of one or more service lists in the broadcast signal | Clause 9.3 carries the list itself rather than a pointer to it | **Partly**, by a different means |
 | 2.4.7 | **The service list shall define a service instance type for 5G Broadcast** | No service instance type. The `mbms://` locator itself fits `IdentifierBasedDeliveryParameters` (TS 103 770 clause 5.5.4, table 16), on 5G-MAG's reading | **Open**: the locator has an element, the type does not |
 | 2.4.10 | Identify an editorial service from radio-layer parameters (frequency plus TMGI) | Nothing. TS 103 770 does not mention TMGI | **Open** |
@@ -203,8 +203,8 @@ document that owns it. This is an engineering assessment by 5G-MAG, not a statem
 
 **Versions checked:** ETSI TS 103 770 V1.2.1 (2024-09), ETSI TR 103 972 V1.1.1 (2023-07), ETSI
 TS 103 720 V1.2.1 (2023-06), ETSI TS 129 116 V19.0.0 (2025-10), ETSI TS 126 512 V19.3.0, ETSI
-TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V19.0.0, and the DVB A177r8 draft of TS 103 770 V1.3.1
-(June 2026).
+TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V19.0.0, and, for the DVB side, the DVB A177r8 draft of TS 103 770 V1.3.1
+(30 June 2026). The draft is a DVB document; this page has not verified that ETSI has published it. The latest published ETSI version remains V1.2.1.
 
 ### Headline
 
@@ -219,7 +219,7 @@ TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V19.0.0, an
 One gap was closed a month *before* the report was published. Five more closed afterwards, three of them in a 3GPP document that did not exist in its current form when the report was written (ETSI TS 103 720 V1.2.1 clause 7.4; ETSI TR 103 972 V1.1.1 clause 6.2.4).
 
 The asymmetry matters more than the count. The 3GPP-derived documents account for six of the seven
-closures. The DVB side has been reissued once in the same period, closing the seventh, and added no 5G-specific signalling to the service list itself (ETSI TS 103 770 V1.2.1 clause 9.3.1).
+closures. The DVB side has been reissued once in the same period, closing the seventh, and added no 5G-specific signalling to the service list itself. The A177r8 draft adds none either: its clause 9.3 (carriage in an MBMS system, table 106) matches V1.2.1 in substance, and it names no service instance type for 5G Broadcast or 5GMS (ETSI TS 103 770 V1.2.1 clause 9.3.1; DVB A177r8 draft clause 9.3.1).
 
 ### 5G Broadcast scenario (TR 103 972 clause 6.2.4)
 
@@ -296,7 +296,7 @@ Every status above was checked against the document that owns the requirement or
 listed under "Versions checked", not against a summary or an earlier issue. Where a clause number in
 the report no longer resolves, the current location is given.
 
-Three points are worth stating. DVB BlueBook C100 numbers the requirements; the page quotes them as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering was checked against C100 clause 2 (DVB C100 clause 2). The form of the `mbms://` URL was checked in 3GPP TS 26.347 V19.0.0 clause 8.2.2; TS 103 770 clause 9.3.2 refers to its clause 6.2, which is the File Delivery Application Service API. And nothing here establishes whether DVB intends to close the remaining gaps in a future issue: the A177r8 draft does not, but a draft is not a plan of record, and the question belongs to DVB (ETSI TS 103 770 V1.2.1 clause 9.3.2; TS 26.347 V19.0.0 clause 6.2).
+Three points are worth stating. DVB BlueBook C100 numbers the requirements; the page quotes them as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering was checked against C100 clause 2 (DVB C100 clause 2). The form of the `mbms://` URL was checked in 3GPP TS 26.347 V19.0.0 clause 8.2.2; TS 103 770 clause 9.3.2 refers to its clause 6.2, which is the File Delivery Application Service API. And nothing here establishes whether DVB intends to close the remaining gaps in a future issue: the A177r8 draft does not (its clauses 5.5.4, 5.5.18 and 9.3 define no 5G instance type, and its text does not mention TMGI), but a draft is not a plan of record, and the question belongs to DVB (ETSI TS 103 770 V1.2.1 clause 9.3.2; TS 26.347 V19.0.0 clause 6.2).
 :::
 
 ## How it works
@@ -328,7 +328,7 @@ This is the client-side bootstrap sequence from a cold start to content-guide da
 | 5 (ETSI TS 103 770 V1.2.1 clause 5.2.1). Hybrid clients only: match instances of the same service | If the client also receives DVB-T/C/S directly, it matches instances using the metadata gathered during DVB-T/C/S installation (DVB Triplet, Network ID) together with the Service List, so a service is not listed twice. | 5.2.1 (Service Instance Matching) |
 | 6 (ETSI TS 103 770 V1.2.1 clause 6.5; ETSI TS 103 770 V1.2.1 clause 6.6). Request Content Guide data | HTTP GET to the Content Guide Server referenced in the Service List entry; timestamp-filtered or now/next-filtered schedule, or full programme information, on demand. | 6.5 (Schedule Information Requests); 6.6 (Programme Information Request) |
 
-Verified against primary sources: checked directly against ETSI TS 103 770 V1.2.1 (2024-09), downloaded from the ETSI deliverable server, and cross-checked against the DVB A177r8 / draft ETSI TS 103 770 V1.3.1 text (dated June 2026). The draft differs on steps 1 and 2: it adds mDNS/DNS-SD discovery (its clause 5.1.3.9) and the `image_variant` query parameter, neither of which is in V1.2.1. Instance selection follows clause 5.2.13 (step 4), with `@priority` applied after its discard rules; "Service Instance Matching" (clause 5.2.1) is a distinct, hybrid-only step, not the general instance-selection mechanism.
+Verified against primary sources: checked directly against ETSI TS 103 770 V1.2.1 (2024-09), downloaded from the ETSI deliverable server, and cross-checked against the DVB A177r8 / draft ETSI TS 103 770 V1.3.1 text (dated June 2026). The draft differs on steps 1 and 2: it adds mDNS/DNS-SD discovery of service lists and registries on the local network (its clause 5.1.3.9), which is not in V1.2.1, and it moves the `image_variant` query parameter, already in V1.2.1, into a new clause on images (clause 5.2.8.2.1). It also adds `?querycapabilities` for customised queries (clause 4.3.4) and a version in the service list URL, the registry offering and the service list itself (clause 4.6.1). Instance selection follows clause 5.2.13 (step 4), with `@priority` applied after its discard rules; "Service Instance Matching" (clause 5.2.1) is a distinct, hybrid-only step, not the general instance-selection mechanism.
 
 ### Delivery over 5G Systems
 
