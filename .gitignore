@@ -5,3 +5,8 @@ build/
 *.log
 .DS_Store
 .idea
+
+# Generated on every start and build by scripts/build-ai-registry.js (never edit or commit them)
+/static/ai-context.json
+/static/llms.txt
+/static/.well-known/
