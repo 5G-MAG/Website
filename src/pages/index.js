@@ -7,6 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import NextUp from '@site/src/components/NextUp';
+import StandardsBasedOn from '@site/src/components/StandardsBasedOn';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import { HOME_WORK } from '@site/src/data/discoverWork';
 import MembersMarquee from '@site/src/components/MembersMarquee';
@@ -314,6 +315,8 @@ export default function Home() {
 
       {/* What is coming up next, filled from the events agenda. */}
       <NextUp />
+
+      <StandardsBasedOn />
 
       {/* A dedicated, prominent search band right below the hero -- modeled
           on dvb.org's homepage, which puts search here rather than leaving
