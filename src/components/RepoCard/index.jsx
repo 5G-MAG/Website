@@ -71,7 +71,7 @@ function TagRow({ label, items, className, render }) {
 }
 
 // `entry` is one ALL_REPOS row; `meta` is the repository's repoMetadata record where one is curated.
-export default function RepoCard({ entry, meta }) {
+export default function RepoCard({ entry, meta, compact = false }) {
   const repoSlug = entry.slug;
   const displayName = meta?.display_name || entry.name;
   const repoUrl = meta?.repo_url || entry.url;
@@ -89,7 +89,7 @@ export default function RepoCard({ entry, meta }) {
   useAnchors(`repo-${repoSlug}`);
 
   return (
-    <article id={`repo-${repoSlug}`} className={styles.card} style={accent ? { '--repo-accent': accent } : undefined}>
+    <article id={`repo-${repoSlug}`} className={compact ? `${styles.card} ${styles.compact}` : styles.card} style={accent ? { '--repo-accent': accent } : undefined}>
       <header className={styles.head}>
         <span className={styles.iconTile}>
           <OriginIcon name={entry.originIcon} />
@@ -109,14 +109,14 @@ export default function RepoCard({ entry, meta }) {
         )}
       </header>
 
-      {description && <p className={styles.description}>{description}</p>}
+      {!compact && description && <p className={styles.description}>{description}</p>}
 
       <div className={styles.tags}>
         <TagRow label="Standards" items={standards} className={styles.tagStandard} />
         <TagRow label="Runs on" items={software} className={styles.tagSoftware} />
         <TagRow
           label="Depends on"
-          items={dependencies}
+          items={compact ? [] : dependencies}
           className={styles.tagDependency}
           render={(d) => {
             const childPage = REPO_PAGES[d];
@@ -153,12 +153,16 @@ export default function RepoCard({ entry, meta }) {
             About this tool
           </a>
         )}
-        <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/issues`} target="_blank" rel="noreferrer">
-          Issues
-        </a>
-        <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/pulls`} target="_blank" rel="noreferrer">
-          Pull Requests
-        </a>
+        {!compact && (
+          <>
+            <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/issues`} target="_blank" rel="noreferrer">
+              Issues
+            </a>
+            <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/pulls`} target="_blank" rel="noreferrer">
+              Pull Requests
+            </a>
+          </>
+        )}
         <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/releases`} target="_blank" rel="noreferrer">
           Releases
         </a>

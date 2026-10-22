@@ -3,7 +3,7 @@ import RepoCard from '@site/src/components/RepoCard';
 import cardStyles from '@site/src/components/RepoCard/styles.module.css';
 import { ALL_REPOS, ALL_PROJECTS, repoMetaFor, displayNameOf } from '@site/src/data/baskets';
 
-export default function ProjectRepositories({ project }) {
+export default function ProjectRepositories({ project, compact = false }) {
   // `project` is the folder-name slug shared by every reference-tools/
   // testbeds page (e.g. "5gms" for both /reference-tools/5gms/ and this
   // component) -- resolved back to the real taxonomy project so its own
@@ -55,9 +55,9 @@ export default function ProjectRepositories({ project }) {
       {clusters.map((cluster) => (
         <div key={cluster.label || 'own'} className={cluster.label ? cardStyles.cluster : undefined}>
           {cluster.label && <h3 className={cardStyles.clusterHeading}>Also used by {cluster.label}</h3>}
-          <div className={cardStyles.grid}>
+          <div className={compact ? `${cardStyles.grid} ${cardStyles.gridCompact}` : cardStyles.grid}>
             {cluster.repos.map((entry) => (
-              <RepoCard key={entry.key} entry={entry} meta={repoMetaFor(entry.slug)} />
+              <RepoCard key={entry.key} entry={entry} meta={repoMetaFor(entry.slug)} compact={compact} />
             ))}
           </div>
         </div>

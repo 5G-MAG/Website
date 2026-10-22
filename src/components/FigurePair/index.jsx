@@ -23,7 +23,7 @@ function Item({ fig, onOpen }) {
   );
 }
 
-export default function FigurePair({ figures, note }) {
+export default function FigurePair({ figures, note, stacked = false }) {
   const [open, setOpen] = useState(null);
   const dialog = useRef(null);
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function FigurePair({ figures, note }) {
   }, [open]);
   return (
     <div className={styles.wrap}>
-      <div className={styles.pair}>
+      <div className={stacked ? `${styles.pair} ${styles.stacked}` : styles.pair}>
         {figures.map((f) => (
           <Item key={f.src} fig={f} onOpen={(fig, url) => setOpen({ ...fig, url })} />
         ))}

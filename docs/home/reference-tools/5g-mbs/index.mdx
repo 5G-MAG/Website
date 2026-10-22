@@ -6,7 +6,6 @@ sidebar_position: -1
 start_here: false
 description: Landing page for the 5G MBS reference tools (3GPP Rel-17/18), linking to implementation detail, repositories, packages, releases, tutorials and community stats.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
@@ -24,11 +23,7 @@ export const MBS_STATUS = [...US_AUDIT.features].flatMap((f) => f.requirements).
   component: ENTITY_OF(r),
   rows: [{ statuses: r.cases.map((c) => STATE_OF[c.verdict]).filter(Boolean) }],
 }));
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
-
-export const REPO_COUNT = (REPO_METADATA['5g-mbs'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -51,9 +46,14 @@ The reference tools cover the MBS User Services of [TS 26.502](https://www.3gpp.
 
 </ProjectSlide>
 
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
 ## What's Built
 
 <FigurePair
+  stacked
   figures={[
     {
       label: 'MBS User Services',
@@ -75,30 +75,10 @@ The reference tools cover the MBS User Services of [TS 26.502](https://www.3gpp.
   note="Boxes without a badge are not mapped to a repository. Click a figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below. For what is implemented, case by case, see [Implementation Detail](./implementation).
-
-## Standards implemented
-
-<div class="standard-card-row">
-<div class="standard-card">
-<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
-<span class="standard-card__label">3GPP</span>
-</div>
-</div>
-
-**Implemented specifications:** 3GPP TS 26.502 (5G multicast-broadcast services; User service architecture), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (Architectural enhancements for 5G multicast-broadcast services; Stage 2), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) (NR; NR and NG-RAN Overall Description; Stage 2, for the RAN broadcast procedures), TS 29.580 (5G System; Multicast/Broadcast Service Function Services; Stage 3, for Nmb10), TS 29.581 (5G System; Multicast/Broadcast Service Transport Services; Stage 3, for Nmb2/Nmb8/Nmb9), TS 29.532 (5G System; 5G Multicast-Broadcast Session Management Services; Stage 3, for Nmbsmf_TMGI/Nmbsmf_MBSSession).
-
-See [5G Multicast Broadcast Services (MBS) on the Standards portal](/standards/5g-mbs) for version history and 5G-MAG's own standards contributions.
-
-<ProjectDeck slug="5g-mbs" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
 
 ## Repositories & Releases
 
-<ProjectRepositories project="5g-mbs" />
+<ProjectRepositories project="5g-mbs" compact />
 
 ## Developer Updates
 
@@ -107,14 +87,3 @@ See [5G Multicast Broadcast Services (MBS) on the Standards portal](/standards/5
 ### Open Pull Requests
 
 <ProjectOpenPRs name="5G Multicast Broadcast Services (MBS)" />
-
-This page tracks the roadmap for the 5G Multicast Broadcast Services (5MBS) reference tools. The work is organised into two workstreams that build on each other: first the 5G Core (5GC) functions (MB-SMF, MB-UPF, AMF and basic multicast support), then the MBS User Services layer (MBSF, MBSTF and the MBS Application Function/Application Server) that runs on top of them.
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the 5G Multicast Broadcast Services (5MBS) reference tools (5G Core multicast functions and the MBS User Services layer). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/13)
-
-**Developer Kanban Boards:**
-
-- **5MBS: 5G Core functions**: initial implementation of MB-SMF, MB-UPF, AMF and basic multicast support in the 5G Core: [Kanban board](https://github.com/orgs/5G-MAG/projects/19/views/2)
-- **5MBS: MBS User Services**: initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media multicast/broadcast. This builds on top of the 5G Core functions indicated above: [Kanban board](https://github.com/orgs/5G-MAG/projects/43/views/1)
