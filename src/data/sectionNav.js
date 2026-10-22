@@ -209,6 +209,7 @@ export const SECTION_NAV = [
       { label: 'Industry Surveys', href: '/surveys' },
       { label: 'Feedback to SDOs', href: '/standards#feedback' },
       { label: 'Liaison Statements & Inputs', href: '/ls' },
+      { label: 'Contributions to Other Industry Fora', href: '/standards/industry-fora' },
       { label: 'Workshops for Standards', href: '/workshops' },
     ],
   },

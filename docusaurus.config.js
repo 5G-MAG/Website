@@ -457,6 +457,7 @@ const config = {
             { label: 'Overview', to: '/standards' },
             { label: 'Requirements towards SDOs', to: '/standards/requirements' },
             { label: 'Liaison Statements & Inputs', to: '/ls' },
+            { label: 'Contributions to Other Industry Fora', to: '/standards/industry-fora' },
           ],
         },
         {

@@ -245,6 +245,12 @@ const WHATS_HERE = [
     icon: icon(LS_ICON_PATH),
   },
   {
+    title: 'Contributions to Other Industry Fora',
+    desc: 'Where the Project Office contributes to CAMARA, the MPEG glTF Validator and the Khronos Group.',
+    href: '/standards/industry-fora',
+    icon: icon(LS_ICON_PATH),
+  },
+  {
     title: 'Workshops for Standards',
     desc: 'The workshops that fed directly into 3GPP study and work items.',
     href: '/events',
