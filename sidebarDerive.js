@@ -102,8 +102,6 @@ export function deriveLinkItems(relDir, urlPrefix, routeBasePathPrefix = '') {
     if (!/\.mdx?$/.test(entry.name)) continue;
     const raw = fs.readFileSync(abs, 'utf8');
     const { data } = matter(raw);
-    // a page the section's header link already opens (class project-index-link) is not repeated as a child
-    if (data.sidebar_class_name === 'project-index-link') continue;
     const slugified = entry.name.replace(/\.mdx?$/, '');
     // `slug` frontmatter, when set, is relative to the plugin instance's
     // own routeBasePath -- always starts with '/' by this codebase's own
