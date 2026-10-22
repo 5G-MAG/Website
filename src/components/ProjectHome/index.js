@@ -5,8 +5,7 @@ import ProjectDestinationCards from '@site/src/components/ProjectDestinationCard
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import ProjectDeck from '@site/src/components/ProjectDeck';
-import { PROJECT_DECKS } from '@site/src/data/projectDecks';
+import ProjectDeckBand from '@site/src/components/ProjectDeckBand';
 import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
@@ -77,6 +76,8 @@ export default function ProjectHome({
           </div>
         </section>
 
+        <ProjectDeckBand slug={slug} />
+
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <ProjectDestinationCards
@@ -89,16 +90,7 @@ export default function ProjectHome({
           </div>
         </section>
 
-        {PROJECT_DECKS[slug] && (
-          <section className={styles.section}>
-            <div className="container">
-              <h2 className={styles.sectionTitle}>Slide Deck</h2>
-              <ProjectDeck slug={slug} heading={false} />
-            </div>
-          </section>
-        )}
-
-        <section className={`${styles.section}${PROJECT_DECKS[slug] ? ' ' + styles.sectionAlt : ''}`}>
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Open Source, Built Together</h2>
             <ProjectContributors />

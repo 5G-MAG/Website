@@ -1,0 +1,74 @@
+.band {
+  background: linear-gradient(135deg, #001532 0%, #006d8e 100%);
+  color: #fff;
+  padding: 3.2rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 2.5rem 3.5rem;
+  align-items: center;
+}
+
+.cover {
+  display: block;
+  margin: 0 28px 28px 0;
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    14px 14px 0 -2px rgba(255, 255, 255, 0.22),
+    28px 28px 0 -4px rgba(255, 255, 255, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.eyebrow {
+  color: #4cc3ea;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #fff;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e3f3fa;
+  margin: 0 0 1.5rem;
+  max-width: 34rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--cta-accent, #fab900);
+  color: #001431;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.button:hover {
+  color: #001431;
+  text-decoration: none;
+  filter: brightness(1.05);
+}
+
+.button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
