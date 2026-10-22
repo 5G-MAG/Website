@@ -23,7 +23,6 @@ export const MBS_STATUS = [...US_AUDIT.features].flatMap((f) => f.requirements).
   component: ENTITY_OF(r),
   rows: [{ statuses: r.cases.map((c) => STATE_OF[c.verdict]).filter(Boolean) }],
 }));
-import ProjectSlide from '@site/src/components/ProjectSlide';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -40,11 +39,7 @@ import ProjectSlide from '@site/src/components/ProjectSlide';
 </div>
 </div>
 
-<ProjectSlide image="/assets/images/projects/5g-mbs-reference-tools.png" alt="5G Multicast Broadcast Services (MBS): Reference Tools slide">
-
 The reference tools cover the MBS User Services of [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) and the MBS functions of the 5G Core and NG-RAN.
-
-</ProjectSlide>
 
 ## Contributors & How to Contribute
 
