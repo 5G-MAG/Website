@@ -15,7 +15,7 @@ description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, 
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<span class="topic-banner__kicker">Media delivery over 5G Multicast Broadcast Services</span>
 <h1>MBS End-to-End: Operating MBS User Services, MBS 5GC, NG-RAN and UE</h1>
 </div>
 </div>

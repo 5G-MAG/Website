@@ -16,7 +16,7 @@ description: Walks through use cases for sharing 3D/AR assets via MMS or messagi
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">XR/3D Scenes with MPEG-I Scene Description</span>
+<span class="topic-banner__kicker">XR Media &amp; 3D Scenes</span>
 <h1>Immersive and 3D Media message</h1>
 </div>
 </div>

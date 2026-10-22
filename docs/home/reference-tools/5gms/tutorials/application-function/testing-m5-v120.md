@@ -11,7 +11,7 @@ description: Curl-based tests for the M5 ServiceAccessInformation API on 5GMSd A
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Media Streaming (5GMS) Architecture</span>
+<span class="topic-banner__kicker">Media Streaming and Advanced Media Delivery</span>
 <h1>Testing: M5 Interface (5GMSd Application Function v1.2.x)</h1>
 </div>
 </div>

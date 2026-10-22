@@ -14,7 +14,7 @@ description: Introduces libscBSF, the BSF service consumer library, noting its d
   <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Core Service Consumers</span>
+<span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>Using the 5GC Service Consumer libraries: libscBSF</h1>
 </div>
 </div>

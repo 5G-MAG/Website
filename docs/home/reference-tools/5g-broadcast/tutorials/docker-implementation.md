@@ -15,7 +15,7 @@ description: Guide to running the rt-mbms receiver stack (modem, middleware, web
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast for TV and Radio Services</span>
+<span class="topic-banner__kicker">Media delivery over 5G Broadcast</span>
 <h1>Docker support for rt-mbms client components (Linux)</h1>
 </div>
 </div>

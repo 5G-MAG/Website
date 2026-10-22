@@ -15,7 +15,7 @@ description: Explains how to capture an SDR signal to a sample file, or replay o
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast for TV and Radio Services</span>
+<span class="topic-banner__kicker">Media delivery over 5G Broadcast</span>
 <h1>MBMS Modem with Sample Files</h1>
 </div>
 </div>

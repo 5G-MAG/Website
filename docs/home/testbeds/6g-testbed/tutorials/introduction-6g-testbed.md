@@ -17,7 +17,7 @@ description: How to install and run the 6G AI Traffic Characterization Testbed, 
   <path d="M21 15v6" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">6G AI Traffic Characterization</span>
+<span class="topic-banner__kicker">AI Traffic Characterization</span>
 <h1>6G AI Traffic Characterization Testbed</h1>
 </div>
 </div>

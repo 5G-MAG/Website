@@ -11,7 +11,7 @@ description: Guide to building, installing and running the 5GMSd Application Fun
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Media Streaming (5GMS) Architecture</span>
+<span class="topic-banner__kicker">Media Streaming and Advanced Media Delivery</span>
 <h1>Installing the 5GMSd Application Function as a Local User</h1>
 </div>
 </div>

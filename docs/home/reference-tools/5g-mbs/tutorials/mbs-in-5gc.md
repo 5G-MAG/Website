@@ -15,7 +15,7 @@ description: Builds an MBS Broadcast Session on the 5G Core and traces multicast
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<span class="topic-banner__kicker">Media delivery over 5G Multicast Broadcast Services</span>
 <h1>Initial support of MBS in the 5GC</h1>
 </div>
 </div>

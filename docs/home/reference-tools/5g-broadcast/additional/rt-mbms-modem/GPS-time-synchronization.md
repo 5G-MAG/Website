@@ -15,7 +15,7 @@ description: Guide to disciplining the rt-mbms-modem receiver's clock to GPS tim
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast for TV and Radio Services</span>
+<span class="topic-banner__kicker">Media delivery over 5G Broadcast</span>
 <h1>GPS Time Synchronization for rt-mbms-modem</h1>
 </div>
 </div>

@@ -15,7 +15,7 @@ description: Tests the MBS Transport Function with curl and Wireshark across sin
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<span class="topic-banner__kicker">Media delivery over 5G Multicast Broadcast Services</span>
 <h1>MBS Transport Function (MBSTF) Testing</h1>
 </div>
 </div>

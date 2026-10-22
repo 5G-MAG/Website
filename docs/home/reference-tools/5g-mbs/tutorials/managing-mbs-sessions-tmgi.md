@@ -15,7 +15,7 @@ description: Shows how to create, refresh and manage MBS Broadcast Sessions, TMG
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<span class="topic-banner__kicker">Media delivery over 5G Multicast Broadcast Services</span>
 <h1>MB-SMF Testing: Managing MBS Sessions and TMGIs</h1>
 </div>
 </div>
