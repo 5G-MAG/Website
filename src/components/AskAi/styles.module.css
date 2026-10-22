@@ -17,13 +17,17 @@
   margin-bottom: 0.6rem;
 }
 
+.details .row {
+  margin: 0;
+}
+
 .row {
   text-align: left;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.6rem;
-  margin: 0;
+  margin: 1.25rem 0 0;
   padding: 0.7rem 1rem;
   background: var(--ifm-color-emphasis-100);
   border: 1px solid var(--ifm-color-emphasis-300);

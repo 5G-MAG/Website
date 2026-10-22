@@ -7,9 +7,10 @@ import styles from './styles.module.css';
 // instructions and that question already in place. Nothing is sent to 5G-MAG and no key or server is involved; the
 // assistant reads the public page with the visitor's own account. ChatGPT and Claude take the text in the link;
 // Gemini does not, so its button copies the text and opens Gemini for the visitor to paste it.
+//   collapsed: show only a one-line link that opens the box (the home page, where the search band is already full).
 //   about: what the assistant should read when the page itself is only a doorway (the home page reads llms.txt, the
 //   site's own summary of every project, as well as the page).
-export default function AskAi({ about }) {
+export default function AskAi({ about, collapsed = false }) {
   const { siteConfig } = useDocusaurusContext();
   const { pathname } = useLocation();
   const [text, setText] = useState('');
@@ -30,12 +31,10 @@ export default function AskAi({ about }) {
     }
   };
 
-  return (
-    <details className={styles.details}>
-      <summary className={styles.summary}>Or ask an AI {about ? 'about 5G-MAG' : 'about this page'}</summary>
-      <div className={styles.row}>
+  const box = (
+    <div className={styles.row}>
       <label className={styles.label} htmlFor="ask-ai-question">
-        Your question
+        {collapsed ? 'Your question' : 'Ask an AI about this page'}
       </label>
       <input
         id="ask-ai-question"
@@ -47,10 +46,20 @@ export default function AskAi({ about }) {
         onChange={(e) => setText(e.target.value)}
       />
       <div className={styles.buttons}>
-        <a className={styles.button} href={link('https://chatgpt.com/?q=')} target="_blank" rel="noopener noreferrer">
+        <a
+          className={styles.button}
+          href={link('https://chatgpt.com/?q=')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           ChatGPT
         </a>
-        <a className={styles.button} href={link('https://claude.ai/new?q=')} target="_blank" rel="noopener noreferrer">
+        <a
+          className={styles.button}
+          href={link('https://claude.ai/new?q=')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Claude
         </a>
         <a
@@ -64,9 +73,19 @@ export default function AskAi({ about }) {
         </a>
       </div>
       <span className={styles.note} role="status">
-        {note || 'Opens your own assistant with your question typed in; Gemini needs you to paste it. Answers can be wrong, so check the links it gives. 5G-MAG does not receive your question.'}
+        {note ||
+          'Opens your own assistant with your question typed in; Gemini needs you to paste it. Answers can be wrong, so check the links it gives. 5G-MAG does not receive your question.'}
       </span>
-      </div>
+    </div>
+  );
+
+  if (!collapsed) return box;
+  return (
+    <details className={styles.details}>
+      <summary className={styles.summary}>
+        Or ask an AI {about ? 'about 5G-MAG' : 'about this page'}
+      </summary>
+      {box}
     </details>
   );
 }

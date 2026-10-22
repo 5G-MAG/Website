@@ -331,7 +331,7 @@ export default function Home() {
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
-          <AskAi about="/llms.txt" />
+          <AskAi about="/llms.txt" collapsed />
           <BasketJumpRow label="Solutions" />
 
           {/* Real photos alternating with icon+title banner cover-slides
