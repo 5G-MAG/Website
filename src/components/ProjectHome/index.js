@@ -24,6 +24,8 @@ export default function ProjectHome({
   cover,
   whyTitle = 'The Problem It Solves',
   why,
+  wrapImage = false,
+  repoRows = false,
   children,
 }) {
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
@@ -48,25 +50,47 @@ export default function ProjectHome({
       <main>
         <section className={styles.section}>
           <div className="container">
+            {wrapImage ? (
+              <>
+                <img
+                  className={styles.introImageFloat}
+                  src={coverImg}
+                  alt={`${name}, project cover`}
+                />
+                <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                  {children}
+                  {project.sdos?.length > 0 && (
+                    <div className={styles.capabilityTags}>
+                      {project.sdos.map((s) => (
+                        <span key={s} className={styles.capabilityTag}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
             <div className={styles.introGrid}>
-              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
-                {children}
-                {project.sdos?.length > 0 && (
-                  <div className={styles.capabilityTags}>
-                    {project.sdos.map((s) => (
-                      <span key={s} className={styles.capabilityTag}>
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                  {children}
+                  {project.sdos?.length > 0 && (
+                    <div className={styles.capabilityTags}>
+                      {project.sdos.map((s) => (
+                        <span key={s} className={styles.capabilityTag}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <img
+                  src={coverImg}
+                  alt={`${name}, project cover`}
+                  style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+                />
               </div>
-              <img
-                src={coverImg}
-                alt={`${name}, project cover`}
-                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
-              />
-            </div>
+            )}
             {why && (
               <div className={styles.whyMattersBlock}>
                 <h2 className={styles.whyMattersTitle}>{whyTitle}</h2>
@@ -100,7 +124,7 @@ export default function ProjectHome({
         {hasRepos && (
           <section id="repositories" className={`${styles.section} ${styles.sectionAlt}`}>
             <div className="container">
-              <ProjectRepoSection projectNames={name} accent={accent} />
+              <ProjectRepoSection projectNames={name} accent={accent} rows={repoRows} />
             </div>
           </section>
         )}

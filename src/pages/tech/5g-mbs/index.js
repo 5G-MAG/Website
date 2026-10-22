@@ -21,6 +21,8 @@ export default function FiveGMBS() {
       analysisHref="/tech/5g-mbs/overview"
       standardsHref="/standards/5g-mbs"
       softwareHref="/reference-tools/5g-mbs"
+      wrapImage
+      repoRows
       why={
         <>
           <p className={styles.whyMattersBody}>

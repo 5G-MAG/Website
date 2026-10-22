@@ -1,4 +1,5 @@
 import RepoCard from '@site/src/components/RepoCard';
+import RepoRows from '@site/src/components/RepoRows';
 import cardStyles from '@site/src/components/RepoCard/styles.module.css';
 import { ALL_REPOS, repoMetaFor } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
@@ -34,7 +35,7 @@ import styles from '@site/src/pages/tech/index.module.css';
 // handle per page. `isTestbed`: true reads the heading as "Testbeds"
 // instead of "Reference Tools" -- raised directly ("given we have
 // testbeds maybe make clear if it is reference tools or testbed").
-export default function ProjectRepoSection({ projectNames }) {
+export default function ProjectRepoSection({ projectNames, rows = false }) {
   const names = Array.isArray(projectNames) ? projectNames : [projectNames];
   const repos = ALL_REPOS.filter((r) => names.includes(r.projectName));
   if (repos.length === 0) return null;
@@ -57,7 +58,7 @@ export default function ProjectRepoSection({ projectNames }) {
       <p className={styles.sectionSubtitle}>
         The real, running software for this technology: what each repository is, what it implements, its latest release and where to find it.
       </p>
-      {clusters.map((cluster) => (
+      {rows ? <RepoRows clusters={clusters} /> : clusters.map((cluster) => (
         <div key={cluster.label || 'own'} className={cluster.label ? cardStyles.cluster : undefined}>
           {cluster.label && <h3 className={cardStyles.clusterHeading}>Also used by {cluster.label}</h3>}
           <div className={cardStyles.grid}>
