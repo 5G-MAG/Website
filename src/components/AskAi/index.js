@@ -31,9 +31,11 @@ export default function AskAi({ about }) {
   };
 
   return (
-    <div className={styles.row}>
+    <details className={styles.details}>
+      <summary className={styles.summary}>Or ask an AI {about ? 'about 5G-MAG' : 'about this page'}</summary>
+      <div className={styles.row}>
       <label className={styles.label} htmlFor="ask-ai-question">
-        Ask an AI about this page
+        Your question
       </label>
       <input
         id="ask-ai-question"
@@ -64,6 +66,7 @@ export default function AskAi({ about }) {
       <span className={styles.note} role="status">
         {note || 'Opens your own assistant with your question typed in; Gemini needs you to paste it. Answers can be wrong, so check the links it gives. 5G-MAG does not receive your question.'}
       </span>
-    </div>
+      </div>
+    </details>
   );
 }

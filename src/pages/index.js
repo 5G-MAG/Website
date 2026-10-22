@@ -317,9 +317,6 @@ export default function Home() {
       {/* What is coming up next, filled from the events agenda. */}
       <NextUp />
 
-      <div className="container">
-        <AskAi about="/llms.txt" />
-      </div>
 
       {/* A dedicated, prominent search band right below the hero -- modeled
           on dvb.org's homepage, which puts search here rather than leaving
@@ -334,6 +331,7 @@ export default function Home() {
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
+          <AskAi about="/llms.txt" />
           <BasketJumpRow label="Solutions" />
 
           {/* Real photos alternating with icon+title banner cover-slides
