@@ -95,7 +95,7 @@ export default function Decks() {
                       cover={`/assets/images/projects/${slug}-deck-cover.jpg`}
                       title={projectTitleOf(project) || d.title}
                       pages={d.pages}
-                      file={`/docs/decks/${slug}.pdf`}
+                      file={`/docs/${slug}.pdf`}
                       page={project.tech_url}
                     />
                   ))}
@@ -112,7 +112,7 @@ export default function Decks() {
                       cover={`/assets/images/projects/${slug}-deck-cover.jpg`}
                       title={(projectOf(slug) && projectTitleOf(projectOf(slug))) || d.title}
                       pages={d.pages}
-                      file={`/docs/decks/${slug}.pdf`}
+                      file={`/docs/${slug}.pdf`}
                       page={projectOf(slug)?.tech_url || projectOf(slug)?.doc_url}
                     />
                   ))}

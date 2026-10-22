@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 // like slides, and one button to the PDF. The band is dark in light and dark mode alike (the hero's gradient).
 export default function ProjectDeckBand({ slug }) {
   const deck = PROJECT_DECKS[slug];
-  const pdf = useBaseUrl(`/docs/decks/${slug}.pdf`);
+  const pdf = useBaseUrl(`/docs/${slug}.pdf`);
   const cover = useBaseUrl(`/assets/images/projects/${slug}-deck-cover.jpg`);
   if (!deck) return null;
   return (

@@ -1,6 +1,6 @@
 // The 5G-MAG project slide decks (built in admin-graphics/slides, one per project), keyed by the
 // project's slug in its /tech/<slug> URL. The PDF and the cover image of its first slide are in
-// static/docs/decks and static/assets/images/projects. `pages` is the number of slides.
+// static/docs and static/assets/images/projects. `pages` is the number of slides.
 export const PROJECT_DECKS = {
   '5gms': { title: '5G Media Streaming (5GMS)', pages: 12 },
   '5g-broadcast': { title: '5G Broadcast - TV and Radio Services', pages: 13 },

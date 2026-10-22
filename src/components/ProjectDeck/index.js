@@ -4,7 +4,7 @@ import { PROJECT_DECKS } from '@site/src/data/projectDecks';
 // The project's slide deck: the cover of its first slide, linking to the PDF.
 export default function ProjectDeck({ slug, heading = true }) {
   const deck = PROJECT_DECKS[slug];
-  const pdf = useBaseUrl(`/docs/decks/${slug}.pdf`);
+  const pdf = useBaseUrl(`/docs/${slug}.pdf`);
   const cover = useBaseUrl(`/assets/images/projects/${slug}-deck-cover.jpg`);
   if (!deck) return null;
   return (
