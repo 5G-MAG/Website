@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21",
+  "updated_at": "2026-10-22",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -54,7 +54,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
       "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 2
+      "open_pulls_last_year": 3
     },
     "rt-5gms-application-function": {
       "status": "Actively Maintained",
@@ -252,7 +252,7 @@
       "status": "Actively Maintained",
       "latest_release": "2024-09-05",
       "last_work_commit": "2025-10-31",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 0
     },
     "rt-mbs-application": {
       "status": "Under Development",
@@ -281,14 +281,14 @@
     "rt-mbs-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-16",
-      "open_pulls_last_year": 3
+      "last_work_commit": "2026-10-21",
+      "open_pulls_last_year": 1
     },
     "rt-mbs-transport-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-16",
-      "open_pulls_last_year": 2
+      "last_work_commit": "2026-10-21",
+      "open_pulls_last_year": 1
     },
     "rt-media-android-application": {
       "status": "Under Development",
@@ -408,7 +408,7 @@
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-10-19",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     }
   }
 }

@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-21 02:08 UTC",
+  "updated_at": "2026-10-22 02:02 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 56,
+          "title": "Exo DVB-I player README fixes",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/56",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-examples",
           "branch": null,
@@ -29,19 +42,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-03",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application-function",
-          "branch": null,
-          "number": 203,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/203",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -258,7 +258,7 @@
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
-      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
+      "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "pulls": [
         {
           "repo": "rt-xr-content",
@@ -411,37 +411,11 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 75,
-          "title": "Realign wrap files after recent PR merges",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/75",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-10-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbs-transport-function",
           "branch": null,
           "number": 81,
           "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/81",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-transport-function",
-          "branch": null,
-          "number": 80,
-          "title": "mbstf: serve every push ingest session on the configured httpPushIngest port",
-          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/80",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -465,19 +439,6 @@
         {
           "repo": "rt-mbs-function",
           "branch": null,
-          "number": 74,
-          "title": "mbsf: do not request an MBS Distribution Session again while its creation is waiting",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/74",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-15",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
           "number": 69,
           "title": "mbsf: MBS5 answers carry Cache-Control max-age, and a 405 carries Allow",
           "url": "https://github.com/5G-MAG/rt-mbs-function/pull/69",
@@ -485,32 +446,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-09",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 60,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/60",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-transport-function",
-          "branch": null,
-          "number": 76,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/76",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -1111,7 +1046,21 @@
       "name": "VOPS Conformance Validator",
       "doc_url": "/validation/vops/",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "vops-conformance-validator",
+          "branch": null,
+          "number": 2,
+          "title": "Fix verdicts and exit status of validate and check",
+          "url": "https://github.com/5G-MAG/vops-conformance-validator/pull/2",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "Common Tools",
@@ -1158,6 +1107,19 @@
       "doc_url": "/reference-tools/dvb-i/",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
       "pulls": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 56,
+          "title": "Exo DVB-I player README fixes",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/56",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-application",
           "branch": null,
@@ -1340,7 +1302,7 @@
     {
       "name": "Dependency",
       "doc_url": null,
-      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools; they are not first-class reference-tool projects with their own docs page",
       "pulls": []
     },
     {
