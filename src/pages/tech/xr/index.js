@@ -19,7 +19,7 @@ export default function XR() {
       icon={ICON}
       accent="#8355c7"
       description="MPEG-I scene description and XR media integration over 5G: the scene format and 5G-MAG's reference tools."
-      analysisHref="/tech/xr/mpeg-i-scene-description"
+      analysisHref="/tech/xr/overview"
       standardsHref="/standards/xr"
       softwareHref="/reference-tools/xr/"
       why={

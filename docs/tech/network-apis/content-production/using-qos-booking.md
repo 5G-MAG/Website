@@ -22,7 +22,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Using CAMARA APIs: QoS Booking for Content Production & Contribution
 
-Find more information about [**QoS Booking API**](../camara-qos-booking).
+Find more information about [**QoS Booking API**](/tech/network-apis/features/qos-booking).
 
 ## Purpose
 
@@ -109,7 +109,7 @@ In the procedure flow below, each step is tagged with the actor that performs it
 
 ### Step 1: Before using the network
 
-Details of the already arranged QoS Profile can be retrieved with **GET /qos-profiles/{name}**, using the [QoS Profiles API](../camara-qos-profiles).
+Details of the already arranged QoS Profile can be retrieved with **GET /qos-profiles/{name}**, using the [QoS Profiles API](/tech/network-apis/features/qos-profiles).
 
 #### 1.1 Requests creation of QoS Booking
 
@@ -156,12 +156,12 @@ Because the booking is bound to a device at creation, it does not suit productio
 
 ## Application server and flow granularity
 
-Unlike QoS Booking and Assignment, this API carries the application server endpoint and ports. That matters for media contribution because a single device may run several flows to different endpoints (for example uplink video to one ingest server and return video from another). Each such flow needs its own QoS treatment, so a device with multiple flows implies multiple bookings, one per flow, each with its own `applicationServer` / ports. See [Details on the Application Server](../network-api-initiatives#details-on-the-application-server).
+Unlike QoS Booking and Assignment, this API carries the application server endpoint and ports. That matters for media contribution because a single device may run several flows to different endpoints (for example uplink video to one ingest server and return video from another). Each such flow needs its own QoS treatment, so a device with multiple flows implies multiple bookings, one per flow, each with its own `applicationServer` / ports. See [Details on the Application Server](/tech/network-apis/overview#details-on-the-application-server).
 
 ## How this maps to 3GPP
 
-A device-bound QoS booking is realised, once the booked device connects, as a QoS Flow on that device's PDU session matched to the specified application-server and device ports. The request drives the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), typically `Nnef_AFsessionWithQoS`; advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)); the QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The referenced QoS profile maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
+A device-bound QoS booking is realised, once the booked device connects, as a QoS Flow on that device's PDU session matched to the specified application-server and device ports. The request drives the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), typically `Nnef_AFsessionWithQoS`; advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)); the QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The referenced QoS profile maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
 
 ## Related
 
-- [QoS Booking API](../camara-qos-booking): the API reference and CAMARA source.
+- [QoS Booking API](/tech/network-apis/features/qos-booking): the API reference and CAMARA source.

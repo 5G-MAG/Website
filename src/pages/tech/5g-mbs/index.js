@@ -18,7 +18,7 @@ export default function FiveGMBS() {
       icon={ICON}
       accent="#e07b1a"
       description="Introduces 3GPP 5G Multicast Broadcast Services (MBS): delivery methods and reference tools."
-      analysisHref="/tech/5g-mbs/overview-mbs"
+      analysisHref="/tech/5g-mbs/overview"
       standardsHref="/standards/5g-mbs"
       softwareHref="/reference-tools/5g-mbs"
       why={

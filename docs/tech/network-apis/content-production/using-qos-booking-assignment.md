@@ -22,7 +22,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Using CAMARA APIs: QoS Booking and Assignment for Content Production & Contribution
 
-Find more information about [**QoS Booking and Assignment API**](../camara-qos-booking-assignment).
+Find more information about [**QoS Booking and Assignment API**](/tech/network-apis/features/qos-booking-assignment).
 
 ## Purpose
 
@@ -126,7 +126,7 @@ In the procedure flow below, each step is tagged with the actor that performs it
 
 The step numbers here follow the procedure flow above.
 
-Details of the already arranged QoS Profile can be retrieved with **GET /qos-profiles/{name}**, using the [QoS Profiles API](../camara-qos-profiles).
+Details of the already arranged QoS Profile can be retrieved with **GET /qos-profiles/{name}**, using the [QoS Profiles API](/tech/network-apis/features/qos-profiles).
 
 #### 1.1 Requests creation of QoS Booking for a given number of devices
 
@@ -155,7 +155,7 @@ A series of operations to manage assignments and delete the QoS Booking are avai
 #### QoS Booking and Assignment - QoS Booking API
 
 - **POST /qos-bookings** with a request body containing `numDevices`, `qosProfile`, `startTime`, `duration`, `serviceArea`, it triggers a new booking in advance and assign this reserved booking profile to one or more devices when the devices are ready. The response includes a `bookingId`.
-  - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](../camara-qos-profiles).
+  - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](/tech/network-apis/features/qos-profiles).
 - **GET /qos-bookings/{bookingId}** - gets booking information for the given bookingId
 - **DELETE /qos-bookings/{bookingId}** - Cancel an existing booking and release resources related to that booking.
 
@@ -209,8 +209,8 @@ The overlap between this API and the [QoS Booking](./using-qos-booking) API is r
 
 ## How this maps to 3GPP
 
-A QoS booking reserves per-device QoS treatment that, on assignment and connection, is realised as a QoS Flow on the device's PDU session. The reservation and assignment requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and the per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The QoS profile referenced maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
+A QoS booking reserves per-device QoS treatment that, on assignment and connection, is realised as a QoS Flow on the device's PDU session. The reservation and assignment requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and the per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The QoS profile referenced maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
 
 ## Related
 
-- [QoS Booking and Assignment API](../camara-qos-booking-assignment): the API reference and CAMARA source.
+- [QoS Booking and Assignment API](/tech/network-apis/features/qos-booking-assignment): the API reference and CAMARA source.

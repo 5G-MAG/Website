@@ -25,7 +25,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Using CAMARA APIs: Dedicated Networks for Content Production & Contribution
 
-Find more information about [**Dedicated Networks API**](../camara-dedicated-networks).
+Find more information about [**Dedicated Networks API**](/tech/network-apis/features/dedicated-networks).
 
 ## Purpose
 
@@ -50,7 +50,7 @@ In the procedure flow below, each step is tagged with the actor that performs it
 ### Step 0: Pre-conditions
 
 - The user (API invoker) must have registered (signed up) with the API provider.
-- qosProfiles have already been defined and made available by the network operator. This is related to the [**QoS Profiles API**](../camara-qos-profiles).
+- qosProfiles have already been defined and made available by the network operator. This is related to the [**QoS Profiles API**](/tech/network-apis/features/qos-profiles).
 - Dedicated Network Service Areas are created by the operator and made available. Each area is associated with one or more Network Profiles.
 - Network Profiles set out the maximum number of devices that can be concurrently served within the area, as well as the aggregate UL and DL throughput that the network operator can offer.
 
@@ -81,7 +81,7 @@ The response below shows one network profile: note the `id` (used in later calls
 ]
 ```
 
-`GET /qos-profiles/{name}`, using the [QoS Profiles API](../camara-qos-profiles), to obtain details of the already arranged QoS Profile.
+`GET /qos-profiles/{name}`, using the [QoS Profiles API](/tech/network-apis/features/qos-profiles), to obtain details of the already arranged QoS Profile.
 
 An example of the QoS Profile, including status:
 
@@ -278,8 +278,8 @@ A Network Profile bundles one or more QoS Profiles with a `maxNumberOfDevices` c
 
 ## How this maps to 3GPP
 
-A Dedicated Network is realised in the 5G Core as reserved connectivity for a set of devices over an area and window. Depending on the operator's implementation this maps to a network slice (identified by an S-NSSAI) and/or a set of QoS Flows provisioned through policy. The reservation and device-access requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Non-public network realisations (a stand-alone NPN, or a PNI-NPN via dedicated DNNs or network slice instances) are defined in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.30. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
+A Dedicated Network is realised in the 5G Core as reserved connectivity for a set of devices over an area and window. Depending on the operator's implementation this maps to a network slice (identified by an S-NSSAI) and/or a set of QoS Flows provisioned through policy. The reservation and device-access requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Non-public network realisations (a stand-alone NPN, or a PNI-NPN via dedicated DNNs or network slice instances) are defined in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.30. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
 
 ## Related
 
-- [Dedicated Networks API](../camara-dedicated-networks): the API reference and CAMARA source.
+- [Dedicated Networks API](/tech/network-apis/features/dedicated-networks): the API reference and CAMARA source.

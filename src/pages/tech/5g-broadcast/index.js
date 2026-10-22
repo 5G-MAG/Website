@@ -19,7 +19,7 @@ export default function FiveGBroadcast() {
       icon={ICON}
       accent="#e07b1a"
       description="Technical entry point for LTE-based 5G Broadcast."
-      analysisHref="/tech/5g-broadcast/deployment-profiles"
+      analysisHref="/tech/5g-broadcast/overview"
       standardsHref="/standards/5g-broadcast"
       softwareHref="/reference-tools/5g-broadcast/"
       why={

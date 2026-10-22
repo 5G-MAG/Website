@@ -15,7 +15,7 @@ export default function DvbI() {
       icon={ICON}
       accent="#00a0d2"
       description="Explains DVB-I service discovery over 5G Broadcast, 5G Media Streaming, and hybrid delivery."
-      analysisHref="/tech/dvb-i/analysis-dvb-i-over-5g-gaps"
+      analysisHref="/tech/dvb-i/overview"
       standardsHref="/standards/dvb-i"
       softwareHref="/reference-tools/dvb-i/"
       why={

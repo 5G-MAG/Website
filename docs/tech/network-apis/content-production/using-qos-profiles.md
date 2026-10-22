@@ -22,7 +22,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Using CAMARA APIs: QoS Profiles for Content Production & Contribution
 
-Find more information about [**QoS Profiles API**](../camara-qos-profiles).
+Find more information about [**QoS Profiles API**](/tech/network-apis/features/qos-profiles).
 
 ## Purpose
 
@@ -37,7 +37,7 @@ A QoS Profile is referenced by name in the request body of the other CAMARA QoS-
 - [QoS Booking and Assignment](./using-qos-booking-assignment)
 - [Dedicated Networks](./using-dedicated-networks)
 
-The profile parameters themselves are retrieved with the [QoS Profiles API](../camara-qos-profiles). This page documents the profile structure using example values.
+The profile parameters themselves are retrieved with the [QoS Profiles API](/tech/network-apis/features/qos-profiles). This page documents the profile structure using example values.
 
 ### Example of a QoS Profile
 
@@ -130,7 +130,7 @@ Potential improvements:
 
 ## The QoS Profile as the shared vocabulary
 
-The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](../camara-qos-profiles) (`GET /qos-profiles` and `GET /qos-profiles/{name}`); the profile name must be known beforehand, and operators are expected to publish the names through the Network API Platform.
+The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (`GET /qos-profiles` and `GET /qos-profiles/{name}`); the profile name must be known beforehand, and operators are expected to publish the names through the Network API Platform.
 
 ## Relationship to the 3GPP QoS model
 
@@ -152,10 +152,10 @@ The individual profile fields relate to 3GPP concepts as follows:
 For a contribution feed the upstream (uplink) fields dominate, because the media flows from the device to the production centre. A profile intended for a single uplink camera would set a high guaranteed upstream rate (several Mbps or more), a low packet delay budget and jitter, and a low packet error loss rate, typically as a GBR treatment. The downlink fields matter mainly for return video, intercom and control.
 
 :::note
-The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS Profiles definition; some API definitions spell it `packetLossErrorRate`. Confirm the exact name against the specific `.yaml` you integrate against, as noted in [Relevant QoS Parameters](../network-api-initiatives#relevant-qos-parameters).
+The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS Profiles definition; some API definitions spell it `packetLossErrorRate`. Confirm the exact name against the specific `.yaml` you integrate against, as noted in [Relevant QoS Parameters](/tech/network-apis/overview#relevant-qos-parameters).
 :::
 
 ## Related
 
-- [Network API Initiatives: Relevant QoS Parameters](../network-api-initiatives#relevant-qos-parameters): the shared parameter definitions.
-- [QoS Profiles API](../camara-qos-profiles): the API reference and CAMARA source.
+- [Network API Initiatives: Relevant QoS Parameters](/tech/network-apis/overview#relevant-qos-parameters): the shared parameter definitions.
+- [QoS Profiles API](/tech/network-apis/features/qos-profiles): the API reference and CAMARA source.

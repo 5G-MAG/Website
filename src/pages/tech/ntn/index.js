@@ -19,7 +19,7 @@ export default function NTN() {
       icon={ICON}
       accent="#1a9e93"
       description="Extending 5G coverage via satellite and HAPS as a delivery layer for MBS multicast and broadcast."
-      analysisHref="/tech/ntn/analysis-mobility-ntn"
+      analysisHref="/tech/ntn/overview"
       standardsHref="/standards/ntn"
       why={
         <>

@@ -61,7 +61,7 @@ const ALL_TOPICS = [
     label: '5G Multicast Broadcast Services (MBS)',
     techHref: '/tech/5g-mbs',
     autogen: '5g-mbs',
-    techOverviewDoc: '5g-mbs/overview-mbs',
+    techOverviewDoc: '5g-mbs/overview',
     standards: [
       { doc: 'standards/5g-mbs', label: 'Standards: 5G Multicast Broadcast Services (MBS)', sidebarLabel: 'Specifications' },
       { doc: 'standards/5g-mbs-standards-evolution', label: 'Standards: 5G MBS - Standards Evolution', sidebarLabel: 'Evolution by release' },
@@ -71,7 +71,7 @@ const ALL_TOPICS = [
     label: 'DVB-I Services over 5G Systems',
     techHref: '/tech/dvb-i',
     // Added 2026-09-27: this topic's own analysis doc
-    // (docs/tech/dvb-i/analysis-dvb-i-over-5g-gaps.mdx) had no `autogen`
+    // (docs/tech/dvb-i/overview.mdx) had no `autogen`
     // entry, unlike every other topic here -- a pre-existing gap that left
     // it with no lateral sidebar at all (found by a site-wide consistency
     // audit), not a deliberate choice.
@@ -81,7 +81,7 @@ const ALL_TOPICS = [
     // one analysis doc, so it IS the overview -- not one choice among
     // several, just wiring the header link to the content that already
     // exists.
-    techOverviewDoc: 'dvb-i/analysis-dvb-i-over-5g-gaps',
+    techOverviewDoc: 'dvb-i/overview',
     standards: [
       { doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' },
       { doc: 'standards/dvb-i-standards-evolution', label: 'Standards: DVB-I - Standards Evolution' },
@@ -204,13 +204,13 @@ const ALL_TOPICS = [
   {
     label: 'Volumetric Video Experiences',
     techHref: '/tech/v3c',
-    autogen: 'volumetric',
+    autogen: 'v3c',
     // Added 2026-09-28 (consistency audit: every project needs a working
     // landing page behind "Technical Analysis"): a placeholder, matching
     // the pattern already used by several other topics (6g, ai-ml, etc.)
     // -- this shared folder's other real doc, beyond-2d.mdx, is the
     // separate Beyond 2D project's own content, not V3C's.
-    techOverviewDoc: 'volumetric/v3c-overview',
+    techOverviewDoc: 'v3c/overview',
     // The folder is shared with Beyond 2D: each project's Technology block holds only its own overview.
     onlyOverview: true,
     standards: [
@@ -251,7 +251,7 @@ const ALL_TOPICS = [
     // one analysis doc, so it IS the overview -- not one choice among
     // several, just wiring the header link to the content that already
     // exists.
-    techOverviewDoc: 'xr/mpeg-i-scene-description',
+    techOverviewDoc: 'xr/overview',
     standards: [
       { doc: 'standards/xr', label: 'Standards: XR Media & 3D Scenes' },
       { doc: 'standards/xr-standards-evolution', label: 'Standards: XR - Standards Evolution' },
@@ -276,7 +276,7 @@ const ALL_TOPICS = [
     // is already explicitly written as this topic's entry point (title
     // "Network API Analysis", sidebar_position -1, introduces the whole
     // section) -- not a new page, just wiring the header link to it.
-    techOverviewDoc: 'network-apis/network-api-initiatives',
+    techOverviewDoc: 'network-apis/overview',
     standards: [
       {
         doc: 'standards/network-apis',

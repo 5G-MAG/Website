@@ -26,7 +26,7 @@ This documentation is currently **under development and subject to change**. It 
 This page is an early skeleton. The mapping below is drafted from the [Workflows and Requirements](./workflows) for Live Media Distribution and from the CAMARA API reference pages. Endpoint and parameter details should be confirmed against the current CAMARA specifications before being relied upon.
 :::
 
-This section maps CAMARA APIs to the Live Segmented Media Distribution context. The candidate APIs are drawn from the list of [**Network API Initiatives under analysis**](../network-api-initiatives), and the mapping follows the phases identified in [**Workflows and Requirements**](./workflows).
+This section maps CAMARA APIs to the Live Segmented Media Distribution context. The candidate APIs are drawn from the list of [**Network API Initiatives under analysis**](/tech/network-apis/overview), and the mapping follows the phases identified in [**Workflows and Requirements**](./workflows).
 
 This analysis reuses the more detailed CAMARA API analysis from [Content Production and Contribution](../content-production/using-camara-apis) and is at an earlier, less mature stage; the differences specific to distribution (large device populations, geofencing) are highlighted where relevant.
 
@@ -48,23 +48,23 @@ The following APIs from the Content Production analysis are the most relevant to
   </tr></thead>
 <tbody>
   <tr>
-    <td markdown="span" align="left"><a href="../camara-quality-on-demand">Quality on Demand</a></td>
+    <td markdown="span" align="left"><a href="/tech/network-apis/features/quality-on-demand">Quality on Demand</a></td>
     <td markdown="span" align="left">Requests stable latency or prioritised throughput for the connection used to deliver media segments to a device.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left"><a href="../camara-qos-profiles">QoS Profiles</a></td>
+    <td markdown="span" align="left"><a href="/tech/network-apis/features/qos-profiles">QoS Profiles</a></td>
     <td markdown="span" align="left">Provides the predefined network performance profiles referenced by the other APIs.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left"><a href="../camara-application-profiles">Application Profiles</a></td>
+    <td markdown="span" align="left"><a href="/tech/network-apis/features/application-profiles">Application Profiles</a></td>
     <td markdown="span" align="left">Defines the application's network quality thresholds, referenced by Connectivity Insights for monitoring.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left"><a href="../camara-connectivity-insights">Connectivity Insights</a></td>
+    <td markdown="span" align="left"><a href="/tech/network-apis/features/connectivity-insights">Connectivity Insights</a></td>
     <td markdown="span" align="left">On-demand check of whether the network can currently meet an application profile's thresholds for a connected device.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left"><a href="../camara-connectivity-insights-subscriptions">Connectivity Insights Subscriptions</a></td>
+    <td markdown="span" align="left"><a href="/tech/network-apis/features/connectivity-insights-subscriptions">Connectivity Insights Subscriptions</a></td>
     <td markdown="span" align="left">Event-subscription variant of Connectivity Insights, for regular network-quality notifications during a session.</td>
   </tr>
 </tbody>
@@ -82,7 +82,7 @@ Phase A (installing and preparing the client application on user devices) involv
 
 The content provider requests network services (for example Quality-on-Demand) for client applications in one or more geographical areas, on a given schedule.
 
-- The [**Quality on Demand API**](../camara-quality-on-demand) can request a QoS session for a device-to-application-server connection. The QoS session is created with **POST /sessions**, referencing a `qosProfile` from the [**QoS Profiles API**](../camara-qos-profiles).
+- The [**Quality on Demand API**](/tech/network-apis/features/quality-on-demand) can request a QoS session for a device-to-application-server connection. The QoS session is created with **POST /sessions**, referencing a `qosProfile` from the [**QoS Profiles API**](/tech/network-apis/features/qos-profiles).
 
 :::note
 The Quality on Demand API does not let the service area be specified in advance; it is created at the location of use. This limitation is discussed for Content Production in the corresponding [Using CAMARA APIs](../content-production/using-camara-apis) page and applies here as well. Whether a reservation-style API is needed for the distribution case is open.
@@ -92,8 +92,8 @@ The Quality on Demand API does not let the service area be specified in advance;
 
 The content provider configures its client applications and then monitors that they are using the requested network capabilities, receiving notifications about potential issues (throughput, delay, and so on).
 
-- **One-shot check.** Create an Application Profile with the [**Application Profiles API**](../camara-application-profiles) (**POST /application-profiles**) carrying the network quality thresholds, then call the [**Connectivity Insights API**](../camara-connectivity-insights) (**POST /check-network-quality**) to obtain a qualitative confidence assessment for a connected device.
-- **Regular notifications.** Using the same Application Profile, the [**Connectivity Insights Subscriptions API**](../camara-connectivity-insights-subscriptions) can be used to subscribe to recurring network-quality notifications during runtime.
+- **One-shot check.** Create an Application Profile with the [**Application Profiles API**](/tech/network-apis/features/application-profiles) (**POST /application-profiles**) carrying the network quality thresholds, then call the [**Connectivity Insights API**](/tech/network-apis/features/connectivity-insights) (**POST /check-network-quality**) to obtain a qualitative confidence assessment for a connected device.
+- **Regular notifications.** Using the same Application Profile, the [**Connectivity Insights Subscriptions API**](/tech/network-apis/features/connectivity-insights-subscriptions) can be used to subscribe to recurring network-quality notifications during runtime.
 
 ### Phase D: Teardown
 
@@ -105,10 +105,10 @@ The content provider configures its client applications and then monitors that t
 
 Monitoring is the centre of gravity for distribution, because the whole work area exists to close the visibility gap described in the [Introduction](./introduction). The CAMARA path has two steps and two flavours:
 
-1. **Declare the requirement once.** The content provider creates an Application Profile with the [Application Profiles API](../camara-application-profiles) (`POST /application-profiles`), carrying the network-quality thresholds the streaming app needs (for example a target packet delay budget and minimum downstream rate consistent with interruption-free segment playback). The profile is declared once and reused.
+1. **Declare the requirement once.** The content provider creates an Application Profile with the [Application Profiles API](/tech/network-apis/features/application-profiles) (`POST /application-profiles`), carrying the network-quality thresholds the streaming app needs (for example a target packet delay budget and minimum downstream rate consistent with interruption-free segment playback). The profile is declared once and reused.
 2. **Ask whether the network meets it.**
-   - _One-shot_: the [Connectivity Insights API](../camara-connectivity-insights) (`POST /check-network-quality`) returns a qualitative assessment of the network's confidence in meeting the profile's thresholds for a connected device, at that moment.
-   - _Recurring_: the [Connectivity Insights Subscriptions API](../camara-connectivity-insights-subscriptions) delivers the same assessment as periodic notifications during a session.
+   - _One-shot_: the [Connectivity Insights API](/tech/network-apis/features/connectivity-insights) (`POST /check-network-quality`) returns a qualitative assessment of the network's confidence in meeting the profile's thresholds for a connected device, at that moment.
+   - _Recurring_: the [Connectivity Insights Subscriptions API](/tech/network-apis/features/connectivity-insights-subscriptions) delivers the same assessment as periodic notifications during a session.
 
 This gives the content provider a network-side view it otherwise lacks. Combined with the app-side measurements it already has (time to last byte per segment, radio indicators, error events), it lets the provider attribute a degraded experience to the network rather than lumping it into "The Cloud". The exchange is inherently two-way: the provider contributes app-side data (via the Application Profile thresholds and, potentially, richer measurement feedback), and the operator contributes its confidence assessment back. Standardising this feedback is what would make the collaboration practical at scale.
 
@@ -122,7 +122,7 @@ The [Workflows](./workflows#geofencing) require verifying whether a UE is inside
 
 ## Underlying 3GPP mechanisms
 
-The QoS requests map to network capability exposure through the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) and Policy Control Function ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)), exactly as on the contribution side. The monitoring and information-sharing capability corresponds to network capability exposure through the NEF and, at the application-enabling layer, to the Service Enabler Architecture Layer for Verticals (SEAL), 3GPP [TS 23.434](https://www.3gpp.org/dynareport/23434.htm) (also published as ETSI TS 123 434), whose enabling services (including network resource management and location management) are candidates for carrying the shared data. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
+The QoS requests map to network capability exposure through the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) and Policy Control Function ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)), exactly as on the contribution side. The monitoring and information-sharing capability corresponds to network capability exposure through the NEF and, at the application-enabling layer, to the Service Enabler Architecture Layer for Verticals (SEAL), 3GPP [TS 23.434](https://www.3gpp.org/dynareport/23434.htm) (also published as ETSI TS 123 434), whose enabling services (including network resource management and location management) are candidates for carrying the shared data. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
 
 ## Open points
 
@@ -133,4 +133,4 @@ The QoS requests map to network capability exposure through the Network Exposure
 ## Related
 
 - [Content Production: Using CAMARA APIs](../content-production/using-camara-apis): the fuller QoS API analysis reused here.
-- [Network API Initiatives](../network-api-initiatives): the CAMARA APIs and the 3GPP interfaces.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and the 3GPP interfaces.

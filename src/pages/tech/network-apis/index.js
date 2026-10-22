@@ -17,7 +17,7 @@ export default function NetworkAPIs() {
       icon={ICON}
       accent="#d1477a"
       description="Introduces 5G-MAG's analysis of CAMARA network APIs for QoS, slicing and connectivity insight in media use cases, and the underlying 3GPP exposure chain."
-      analysisHref="/tech/network-apis/network-api-initiatives"
+      analysisHref="/tech/network-apis/overview"
       standardsHref="/standards/network-apis"
       softwareHref="/reference-tools/network-apis"
       why={

@@ -64,7 +64,7 @@ scenarios. Release 19 also adds an LTE downlink-only band (1467 to 1492 MHz, ITU
   fixed beams). A Tracking Area corresponds to a fixed geographical area, and a Mapped
   Cell ID corresponds to a fixed geographical area (TS 38.300 clauses 3.1 and 16.14.1).
   These cell types drive the handover models on the
-  [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) page.
+  [Mobility Aspects for NTN](/tech/ntn/procedures/mobility) page.
 - **GNSS at the UE.** In this release, the UE supporting NTN is GNSS-capable, and NTN
   is only applicable to FDD (TS 38.300 clause 16.14.1).
 
@@ -93,7 +93,7 @@ Two system information blocks are central to media over NTN:
   [TS 38.331](https://www.3gpp.org/dynareport/38331.htm).
 - **SIB27**, introduced in Release 19 of TS 38.331, contains the intended service
   areas (ISA) of MBS broadcast services in an NTN cell, each given as a polygon or a
-  circle (TS 38.331 V19.4.0 clause 6.3.1); see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn).
+  circle (TS 38.331 V19.4.0 clause 6.3.1); see [MBS Broadcast NTN](/tech/ntn/procedures/mbs-broadcast).
 
 ### Carrying MBS over NTN
 
@@ -118,19 +118,19 @@ over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
 
 ### What each page adds
 
-- [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) sets out
+- [Mobility Aspects for NTN](/tech/ntn/procedures/mobility) sets out
   three deployment models (single NTN operator; common NTN/TN operator; independent
   operators) and what Release 19 specifies for mobility in each: Earth-fixed,
   quasi-Earth-fixed and Earth-moving cells, time- and location-based conditional handover,
   the satellite switch with re-synchronization and the feeder link switchover.
-- [MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)
+- [MBS Multicast over NTN](/tech/ntn/procedures/mbs-multicast)
   sets out requirements for multicast over NTN, with the gNB switching each UE
   between PTP and PTM, against what Release 19 specifies.
-- [Mobility for MBS Multicast over NTN](/tech/ntn/analysis-mobility-mbs-multicast-over-ntn)
+- [Mobility for MBS Multicast over NTN](/tech/ntn/procedures/mbs-multicast-mobility)
   sets out what Release 19 provides, UE by UE, when multicast receivers move over NTN
   (it has no group handover), distinguishing mobility triggered by satellite motion from
   mobility triggered by the UEs.
-- [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
+- [MBS Broadcast over NTN](/tech/ntn/procedures/mbs-broadcast)
   follows the Intended Service Area of a broadcast MBS session from the 5G Core
   to SIB27, the MCCH and the UE.
 

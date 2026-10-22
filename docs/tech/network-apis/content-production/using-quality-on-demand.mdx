@@ -24,7 +24,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Using CAMARA APIs: Quality on Demand for Content Production & Contribution
 
-Find more information about [**Quality on Demand API**](../camara-quality-on-demand).
+Find more information about [**Quality on Demand API**](/tech/network-apis/features/quality-on-demand).
 
 ## Purpose
 
@@ -110,7 +110,7 @@ Quality on Demand has no separate reservation phase. Unlike the booking-based AP
 
 ### Step 1: Before using the network
 
-Details of the already arranged QoS Profile can be retrieved with `GET /qos-profiles/{name}`, using the [QoS Profiles API](../camara-qos-profiles). For the profile structure and an explanation of the fields, see [Using CAMARA APIs: QoS Profiles](./using-qos-profiles).
+Details of the already arranged QoS Profile can be retrieved with `GET /qos-profiles/{name}`, using the [QoS Profiles API](/tech/network-apis/features/qos-profiles). For the profile structure and an explanation of the fields, see [Using CAMARA APIs: QoS Profiles](./using-qos-profiles).
 
 ### Step 2: During operation
 
@@ -155,7 +155,7 @@ Potential improvements:
 
 ## When to use this API
 
-Quality on Demand is the point-of-use API: it creates a QoS session at the device's current location, for a device and application server both known at request time, with no advance reservation and no service-area parameter. That makes it the natural fit for short-notice single-device contribution (a journalist arriving at a breaking-news location and starting an uplink there and then), and the counterpart to it, for a device with no fixed session end, is the indefinite [QoS Provisioning](../camara-qos-provisioning) API.
+Quality on Demand is the point-of-use API: it creates a QoS session at the device's current location, for a device and application server both known at request time, with no advance reservation and no service-area parameter. That makes it the natural fit for short-notice single-device contribution (a journalist arriving at a breaking-news location and starting an uplink there and then), and the counterpart to it, for a device with no fixed session end, is the indefinite [QoS Provisioning](/tech/network-apis/features/qos-provisioning) API.
 
 Because there is no reservation phase, availability is discovered only when `POST /sessions` is attempted. If the network cannot honour the request at that location, the session is refused; the API gives no prior indication and no alternative area. For a planned event where success needs to be assured ahead of time, an advance, area-scoped reservation API is more appropriate: [QoS Booking](./using-qos-booking) (device-bound), [QoS Booking and Assignment](./using-qos-booking-assignment) (device count, assign later) or [Dedicated Networks](./using-dedicated-networks) (with area discovery). The trade-off between point-of-use and advance reservation is set out on the [Using CAMARA APIs](./using-camara-apis#choosing-an-api-for-a-production-scenario) page.
 
@@ -172,8 +172,8 @@ The ability to extend a session is a useful feature that the booking APIs do not
 
 ## How this maps to 3GPP
 
-Creating a QoS session drives the Network Exposure Function (NEF) northbound `Nnef_AFsessionWithQoS` service ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); the NEF requests the Policy Control Function to authorise and install the corresponding QoS Flow on the device's PDU session (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Because the session is created at the point of use, no background data transfer negotiation is involved, unlike the advance-reservation APIs. The referenced QoS profile maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
+Creating a QoS session drives the Network Exposure Function (NEF) northbound `Nnef_AFsessionWithQoS` service ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); the NEF requests the Policy Control Function to authorise and install the corresponding QoS Flow on the device's PDU session (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Because the session is created at the point of use, no background data transfer negotiation is involved, unlike the advance-reservation APIs. The referenced QoS profile maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
 
 ## Related
 
-- [Quality on Demand API](../camara-quality-on-demand): the API reference and CAMARA source.
+- [Quality on Demand API](/tech/network-apis/features/quality-on-demand): the API reference and CAMARA source.

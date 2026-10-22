@@ -52,7 +52,7 @@ The base avatar can be stored and exchanged in two container types: an ISOBMFF c
 
 ### Scene placement via MPEG-I Scene Description
 
-ARF does not, by itself, position an avatar in a room; that is the job of MPEG-I Scene Description (ISO/IEC 23090-14), a set of extensions to Khronos glTF 2.0. Avatar support is defined in clause 8.3 of ISO/IEC 23090-14:2025, second edition (TR 26.813 V20.0.0 clause 6.3.4), which defines a glTF node extension that marks a particular node as the root/skeleton node of a humanoid avatar. In the 5G-MAG documentation this is referred to as the `MPEG_node_avatar` glTF extension, described on the [MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description) page. The Presentation Engine reads the scene, resolves the avatar node, binds the ARF base avatar to it, and then applies the incoming animation stream frame by frame. This is the same Presentation Engine / Media Access Function decoupling used across the other MPEG-I Scene Description tooling.
+ARF does not, by itself, position an avatar in a room; that is the job of MPEG-I Scene Description (ISO/IEC 23090-14), a set of extensions to Khronos glTF 2.0. Avatar support is defined in clause 8.3 of ISO/IEC 23090-14:2025, second edition (TR 26.813 V20.0.0 clause 6.3.4), which defines a glTF node extension that marks a particular node as the root/skeleton node of a humanoid avatar. In the 5G-MAG documentation this is referred to as the `MPEG_node_avatar` glTF extension, described on the [MPEG-I Scene Description](/tech/xr/overview) page. The Presentation Engine reads the scene, resolves the avatar node, binds the ARF base avatar to it, and then applies the incoming animation stream frame by frame. This is the same Presentation Engine / Media Access Function decoupling used across the other MPEG-I Scene Description tooling.
 
 ### End-to-end procedure
 
@@ -85,4 +85,4 @@ The slide deck below introduces the Avatar Communications reference tools and th
 
 [Download the slide deck](pathname:///docs/decks/avatar.pdf)
 
-**Related:** [XR/3D Scenes with MPEG-I Scene Description](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description): the `MPEG_node_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.
+**Related:** [XR/3D Scenes with MPEG-I Scene Description](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/overview): the `MPEG_node_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.

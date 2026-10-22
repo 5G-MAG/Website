@@ -4,10 +4,10 @@
 // its overview from techOverviews.js. Keep it in step with docs/tech when a project gains a page.
 export const TECH_PAGES = {
   '/tech/5g-mbs': {
-    overview: '/tech/5g-mbs/overview-mbs',
-    architecture: '/tech/5g-mbs/architecture-user-services',
-    features: '/tech/5g-mbs/features-user-services',
-    procedures: '/tech/5g-mbs/analysis-mbs-broadcast-ran',
+    overview: '/tech/5g-mbs/overview',
+    architecture: '/tech/5g-mbs/architecture/user-services',
+    features: '/tech/5g-mbs/features/user-services',
+    procedures: '/tech/5g-mbs/procedures/broadcast',
   },
   '/tech/5gms': {
     overview: '/tech/5gms/overview',
@@ -31,6 +31,14 @@ export const TECH_PAGES = {
   },
   '/tech/ntn': {
     overview: '/tech/ntn/overview',
-    procedures: '/tech/ntn/analysis-mbs-broadcast-over-ntn',
+    procedures: '/tech/ntn/procedures/mbs-broadcast',
+  },
+  '/tech/xr': {
+    overview: '/tech/xr/overview',
+    features: '/tech/xr/features',
+  },
+  '/tech/network-apis': {
+    overview: '/tech/network-apis/overview',
+    features: '/tech/network-apis/features/application-profiles',
   },
 };
