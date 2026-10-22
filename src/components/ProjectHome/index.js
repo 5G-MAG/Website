@@ -26,6 +26,7 @@ export default function ProjectHome({
   why,
   wrapImage = true,
   repoRows = true,
+  implemented,
   children,
 }) {
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
@@ -113,6 +114,15 @@ export default function ProjectHome({
             />
           </div>
         </section>
+
+        {implemented && (
+          <section className={`${styles.section} ${styles.sectionAlt}`}>
+            <div className="container">
+              <h2 className={styles.sectionTitle}>Standards Implemented</h2>
+              {implemented}
+            </div>
+          </section>
+        )}
 
         <section className={styles.section}>
           <div className="container">
