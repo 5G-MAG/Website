@@ -27,7 +27,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::
 
-<JumpMenu items={[["MBS in the 5G System and NG-RAN", "mbs-in-the-5g-system-and-ng-ran"], ["Functions in the 5G System", "functions-in-the-5g-system"], ["Reference points and interfaces", "reference-points-and-interfaces"], ["Delivery methods", "delivery-methods"], ["NG-RAN", "ng-ran"], ["Multicast session states", "multicast-session-states"]]} />
+<JumpMenu items={[["MBS in the 5G System and NG-RAN", "mbs-in-the-5g-system-and-ng-ran"], ["MBS communication services", "mbs-communication-services"], ["MBS sessions", "mbs-sessions"], ["Functions in the 5G System", "functions-in-the-5g-system"], ["Reference points and interfaces", "reference-points-and-interfaces"], ["Delivery methods", "delivery-methods"], ["NG-RAN", "ng-ran"], ["Multicast session states", "multicast-session-states"]]} />
 
 ## MBS in the 5G System and NG-RAN
 
@@ -35,7 +35,24 @@ Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessio
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-2.svg" width={939} height={431} spec="TS 23.247 V20.0.0" figure="5.1-2" title="5G System architecture for Multicast and Broadcast Service in reference point representation" alt="UE, NG-RAN, AMF, SMF, UPF, UDM, MB-SMF, MB-UPF, PCF, NEF, MBSF, MBSTF and AF/AS connected by their reference points: Uu, N1, N2, N3, N4, N10, N11 and N19mb, N3mb from NG-RAN to the MB-UPF, N4mb, N11mb, N16mb, N7mb, N29mb, N30, N5, N33 and N6mb, and the MBS reference points Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb12, Nmb13 and Nmb14." />
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.1-1.svg" width={719} height={453} spec="TS 23.247 V20.0.0" figure="4.1-1" title="Delivery methods" alt="MBS traffic enters Replication in the 5GC. One tube, 5GC Shared MBS Traffic delivery over Shared Transport, goes to NG-RAN, which serves two UEs with PTM or PTP over radio. Two other tubes, each a PDU Session, carry 5GC Individual MBS Traffic Delivery through NG-RAN to one UE each." />
+## MBS communication services
+
+TS 23.247 defines two new logical communication services (TS 23.247 V20.0.0 clause 3.1):
+
+- **Multicast communication service**: A 5GS communication service in which the same service and the same specific content data are provided simultaneously to a dedicated set of UEs i.e. not all UEs in the coverage of the MBS service area are authorised to receive the data (TS 23.247 V20.0.0 clause 3.1).
+- **Broadcast communication service**: A 5GS communication service in which the same service and the same specific content data are provided simultaneously to all UEs in a geographical area i.e. all UEs in the broadcast coverage area are authorised to receive the data (TS 23.247 V20.0.0 clause 3.1). The content provider and network may not be aware whether authorised UEs are actually receiving the data being delivered (TS 23.247 V20.0.0 clause 3.1, note 1).
+
+## MBS sessions
+
+TS 23.247 defines MBS sessions as follows (TS 23.247 V20.0.0 clause 3.1):
+
+- **MBS session**: A multicast or broadcast session (TS 23.247 V20.0.0 clause 3.1).
+- **Broadcast MBS session**: An MBS session to deliver a broadcast communication service. A broadcast MBS session is characterised by the content to send and the geographical area over which to distribute it (TS 23.247 V20.0.0 clause 3.1).
+- **Multicast MBS session**: An MBS session to deliver a multicast communication service. A multicast MBS session is characterised by the content to send, the list of UEs that may receive the service and optionally by a geographical area over which to distribute it (TS 23.247 V20.0.0 clause 3.1).
+
+Broadcast and multicast MBS sessions are time-bound (TS 23.247 V20.0.0 clause 4.2.1; TS 23.247 V20.0.0 clause 4.2.2). Their life-cycles are specified in clauses 4.2 and 4.3 of TS 23.247 (TS 23.247 V20.0.0 clause 4.2; TS 23.247 V20.0.0 clause 4.3).
+
+The geographical areas for which the multicast and broadcast MBS sessions are available is determined by the coverage area of the sites/sectors from which the broadcast service is transmitted (TS 23.247 V20.0.0 clause 3.1, note 2). Refer to TS 23.247 clause 3.1 and TS 38.300 for more detail.
 
 ## Functions in the 5G System
 
@@ -140,6 +157,8 @@ Between the 5G Core and NG-RAN there are two delivery methods. TS 23.247 does no
 - **5GC Shared MBS traffic delivery:** the 5G Core receives a single copy of the MBS data packets and delivers a single copy to an NG-RAN node, which delivers it to one or more UEs. It is used for broadcast and multicast MBS sessions, and is required in all MBS deployments (TS 23.247 V20.0.0 clause 4.1; TS 23.247 V20.0.0 clause 3.1).
 - **5GC Individual MBS traffic delivery:** the 5G Core delivers separate copies to individual UEs, each through a PDU Session associated with the Multicast MBS session. It is used only for multicast, and is required for mobility where NG-RAN nodes do not all support MBS (TS 23.247 V20.0.0 clause 4.1; TS 23.247 V20.0.0 clause 3.1).
 
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.1-1.svg" width={719} height={453} spec="TS 23.247 V20.0.0" figure="4.1-1" title="MBS traffic delivery methods" alt="MBS traffic enters Replication in the 5GC. One tube, 5GC Shared MBS Traffic delivery over Shared Transport, goes to NG-RAN, which serves two UEs with PTM or PTP over radio. Two other tubes, each a PDU Session, carry 5GC Individual MBS Traffic Delivery through NG-RAN to one UE each." />
+
 <SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig6.7-1.svg" width={870} height={490} spec="TS 23.247 V20.0.0" figure="6.7-1" title="Schematic showing user plane data transmission" alt="Incoming MBS traffic reaches the MB-UPF. 5GC Shared MBS traffic delivery: N3mb transmission from the MB-UPF to NG-RAN 1, which serves UE 1 and UE 2 by PTP (only for multicast) or PTM over radio. 5GC Individual MBS traffic delivery: N19mb transmission from the MB-UPF to a UPF, which serves UE 3 through NG-RAN 2 in PDU Session A and UE 4 through NG-RAN 3 in PDU Session B." />
 
 Over the radio, NG-RAN has two delivery methods: (TS 23.247 V20.0.0 clause 4.1)
@@ -162,10 +181,6 @@ The MB-UPF is the MBS Session Anchor. When the MBSTF is involved, the MBSTF is t
 ## NG-RAN
 
 The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS uses the same sublayers, with a reduced set of functions: SDAP maps MBS QoS flows to MBS Radio Bearers (MRBs), and PDCP keeps transfer, sequence numbers, header compression, reordering and duplicate discarding (TS 38.300 V19.4.0 clause 16.10.2; TS 38.300 V19.4.0 clause 16.10.3).
-
-<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-1.svg" width={977} height={694} spec="TS 38.300 V19.4.0" figure="16.10.3-1" title="Downlink Layer 2 Architecture for Multicast Session" alt="SDAP, PDCP, RLC and MAC layers between QoS Flows, Radio Bearers, RLC Channels, Logical Channels and Transport Channels. For the Multicast Session, QoS flow handling feeds MRB1, MRB2 and MRB3, each with ROHC; for the PDU Session, it feeds a DRB with ROHC and Security. In RLC, Segm. entities on MTCH serve PTM, and Segm. or Segm. ARQ entities on DTCH serve UE1 and UEn; MRB2 has both kinds. In MAC, Scheduling/Priority Handling, Multiplexing and HARQ for each MTCH, and Unicast Scheduling / Priority Handling with Multiplexing UE1 and Multiplexing UEn for the DTCHs, end on DL-SCH." />
-
-<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-2.svg" width={898} height={746} spec="TS 38.300 V19.4.0" figure="16.10.3-2" title="Downlink Layer 2 Architecture for Broadcast Session" alt="SDAP, PDCP, RLC and MAC layers for the Broadcast session: QoS flow handling feeds two radio bearers with ROHC and Segm., carried on MTCH; MCCH is segmented separately. One Scheduling / Priority Handling and two Multiplexing blocks lead to DL-SCH." />
 
 <details>
 <summary>MBS Radio Bearers (TS 38.300 clause 16.10.3)</summary>
@@ -208,10 +223,11 @@ The first accepted join request establishes the session towards NG-RAN and the U
 <details>
 <summary>Sources for this page</summary>
 
+- **MBS communication services and sessions:** TS 23.247 V20.0.0, clauses 3.1, 4.2 and 4.3.
 - **MBS, functions, reference points and services:** TS 23.247 V20.0.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 8.1 and 9; TS 38.413 V19.4.0, clauses 8.17 and 8.18.
 - **Delivery methods:** TS 23.247 V20.0.0, clauses 3.1, 4.1, 6.7 and 7.2.1.3.
 - **NG-RAN:** TS 38.300 V19.4.0, clauses 3.1, 7.3.1, 8.1, 16.10.2 to 16.10.4 and 16.10.5.4; SIB27 compared with TS 38.300 V18.11.0, clause 7.3.1.
 - **Multicast session states:** TS 23.247 V20.0.0, clauses 4.2.2, 4.3 and 7.2.1.1.
-- **Figures:** TS 23.247 V20.0.0, figures 5.1-1, 6.7-1 and 4.3-1; TS 38.300 V19.4.0, figures 16.10.3-1 and 16.10.3-2.
+- **Figures:** TS 23.247 V20.0.0, figures 4.1-1, 4.3-1, 5.1-1, 5.1-2 and 6.7-1; TS 38.300 V19.4.0, figures 16.10.3-1 and 16.10.3-2.
 
 </details>
