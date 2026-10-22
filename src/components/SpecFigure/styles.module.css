@@ -21,6 +21,9 @@
   display: block;
   width: 100%;
   height: auto;
+  object-fit: contain;
+  /* a tall figure would fill the screen; the full size opens on click */
+  max-height: 420px;
   margin: 0 auto;
   /* the frame is the figure's border; opt out of the site-wide .markdown img card treatment */
   border: 0 !important;
@@ -56,6 +59,11 @@
 }
 
 @media (max-width: 640px) {
+  .frame img {
+    min-width: var(--figure-min-width);
+    max-height: none;
+  }
+
   .hint {
     display: block;
   }

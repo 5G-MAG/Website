@@ -13,11 +13,11 @@ export default function SpecFigure({ src, width, height, spec, figure, title, al
         {/* below 600px a figure's labels get too small to read, so it scrolls inside the frame instead */}
         {/* width and height reserve the figure's space before it loads, so jumping to a section below it lands */}
         <img loading="lazy" src={url} alt={alt || title} width={width} height={height}
-          style={{ maxWidth: width ? `${width}px` : undefined, minWidth: width ? `${Math.min(width, 600)}px` : undefined }} />
+          style={{ maxWidth: width ? `${width}px` : undefined, '--figure-min-width': width ? `${Math.min(width, 600)}px` : undefined }} />
       </a>
       <figcaption className={styles.caption}>
         <span className={styles.title}>{title}</span>
-        <span className={styles.source}>Redrawn from {spec}, figure {figure}</span>
+        <span className={styles.source}>{/-spec\.svg$/.test(src) ? 'From' : 'Redrawn from'} {spec}, figure {figure}</span>
         {width > 600 && <span className={styles.hint}>Scroll sideways, or tap the figure to open it full size.</span>}
       </figcaption>
     </figure>

@@ -66,6 +66,8 @@ export default function remarkToolStartHere() {
         ? 'StandardsStartHere'
         : null;
     if (!name) return;
+    // A page can opt out with `start_here: false` in its front matter.
+    if (matter(String(file.value || '')).data.start_here === false) return;
     const i = tree.children.findIndex(isBanner);
     if (i === -1) return;
     tree.children.splice(i + 1, 0, {
