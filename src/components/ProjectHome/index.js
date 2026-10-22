@@ -1,7 +1,7 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
-import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
+import ProjectPath from '@site/src/components/ProjectPath';
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
@@ -80,7 +80,7 @@ export default function ProjectHome({
 
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <ProjectDestinationCards
+            <ProjectPath
               accent={accent}
               analysisHref={analysisHref}
               standardsHref={standardsHref}

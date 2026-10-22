@@ -1,0 +1,122 @@
+.title {
+  font-size: 1.9rem;
+  margin: 0 0 0.4rem;
+}
+
+.sub {
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 2.2rem;
+  font-size: 1.05rem;
+}
+
+.path {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 2.2rem;
+}
+
+.step {
+  --kd: #0a6e9c;      /* the fill of the number: white text on it passes contrast in both modes */
+  --k: var(--kd);      /* the accent of the text: lighter in dark mode */
+  position: relative;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem 1.2rem;
+}
+
+.step1 { --kd: #0a6e9c; }
+.step2 { --kd: #7b4fd0; }
+.step3 { --kd: #b45f06; }
+
+:global([data-theme='dark']) .step1 { --k: #4cc3ea; }
+:global([data-theme='dark']) .step2 { --k: #b49af2; }
+:global([data-theme='dark']) .step3 { --k: #f0a24a; }
+
+.step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -1.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+@media (max-width: 900px) {
+  .step:not(:last-child)::after {
+    content: '↓';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -2rem;
+    transform: translateX(-50%);
+  }
+}
+
+.num {
+  position: absolute;
+  top: -18px;
+  left: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--kd);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.eyebrow {
+  color: var(--k);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.stepTitle {
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0.3rem;
+  line-height: 1.25;
+}
+
+.desc {
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+.links {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.links a {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.links a:hover {
+  color: var(--k);
+  text-decoration: none;
+}
+
+.arrow {
+  color: var(--k);
+}
+
+.kind {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+}
