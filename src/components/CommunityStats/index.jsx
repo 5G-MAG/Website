@@ -1,8 +1,55 @@
 import communityStatsData from '@site/static/data/community-stats.json';
 import { activityLabel } from '@site/src/utils/communityStats';
 import RepoRef from '@site/src/components/RepoRef';
+import { EarlyAccessLegend, LockIcon, isEarlyAccess } from '@site/src/components/RepoRows';
+import styles from './styles.module.css';
 
-export default function CommunityStats({ name }) {
+// `variant="bars"`: one row per repository, views and clones as bars scaled to the largest repository.
+function Bars({ project }) {
+  const maxViews = Math.max(1, ...project.repos.map((r) => r.total_views || 0));
+  const maxClones = Math.max(1, ...project.repos.map((r) => r.total_clones || 0));
+  const pill = { Active: styles.pillActive, Maintenance: styles.pillMaintenance, Quiet: styles.pillQuiet };
+  return (
+    <>
+      <blockquote>
+        <p>
+          <strong>Last Synced:</strong> {communityStatsData.updated_at}
+        </p>
+      </blockquote>
+      <EarlyAccessLegend />
+      <div className={styles.list}>
+        {project.repos.map((r) => {
+          const act = activityLabel(r.pushed_at);
+          return (
+            <div className={styles.row} key={r.repo}>
+              <div className={styles.name}>
+                <a href={r.repo_url} target="_blank" rel="noreferrer" className={styles.slug}>{r.repo}</a>
+                {isEarlyAccess(r.repo) && <LockIcon />}
+              </div>
+              <div className={styles.bars}>
+                <div className={styles.bar}>
+                  <i className={styles.views} style={{ width: `${(100 * (r.total_views || 0)) / maxViews}%` }} />
+                  <b>{(r.total_views || 0).toLocaleString('en')} views</b>
+                </div>
+                <div className={styles.bar}>
+                  <i className={styles.clones} style={{ width: `${(100 * (r.total_clones || 0)) / maxClones}%` }} />
+                  <b>{(r.total_clones ?? 0).toLocaleString('en')} clones</b>
+                </div>
+              </div>
+              <div className={styles.sf}>
+                <span title="Stars">&#9733; {r.stars}</span>
+                <span title="Forks">&#9095; {r.forks}</span>
+              </div>
+              <span className={`${styles.pill} ${pill[act]}`}>{act}</span>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+export default function CommunityStats({ name, variant }) {
   const project = communityStatsData.projects.find((p) => p.name === name);
 
   if (!project || project.repos.length === 0) {
@@ -28,6 +75,8 @@ export default function CommunityStats({ name }) {
       </table>
     );
   }
+
+  if (variant === 'bars') return <Bars project={project} />;
 
   return (
     <>

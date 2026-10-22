@@ -15,7 +15,7 @@ import styles from './styles.module.css';
 // Requests, Releases). Everything is read from the taxonomy; nothing is typed here.
 
 // releases.json is grouped by project name, not by repo slug.
-function releaseFor(repoSlug) {
+export function releaseFor(repoSlug) {
   for (const project of releasesData.projects) {
     const r = project.releases.find((rel) => rel.repo === repoSlug);
     if (r && r.tag !== 'No Release' && r.date !== '-') return r;
@@ -23,11 +23,11 @@ function releaseFor(repoSlug) {
   return null;
 }
 
-function daysSince(dateStr) {
+export function daysSince(dateStr) {
   return Math.max(0, Math.floor((Date.now() - new Date(`${dateStr}T12:00:00Z`).getTime()) / 86400000));
 }
 
-function formatAge(days) {
+export function formatAge(days) {
   if (days === 0) return 'today';
   if (days === 1) return '1d ago';
   if (days < 7) return `${days}d ago`;
@@ -43,7 +43,7 @@ const PAGE_BY_REPO = new Map(ALL_REPOS.map((r) => [r.slug, r.originHref]));
 // A project with no basket has no accent to give it; its card uses the site's primary colour.
 const BASKET_BY_PROJECT_NAME = new Map(ALL_PROJECTS.map((p) => [displayNameOf(p), p.basket]));
 
-function OriginIcon({ name }) {
+export function OriginIcon({ name }) {
   const paths = name && ICON_CATALOG[name];
   if (!paths || !paths.length) return null;
   return (
@@ -71,7 +71,7 @@ function TagRow({ label, items, className, render }) {
 }
 
 // `entry` is one ALL_REPOS row; `meta` is the repository's repoMetadata record where one is curated.
-export default function RepoCard({ entry, meta, compact = false }) {
+export default function RepoCard({ entry, meta }) {
   const repoSlug = entry.slug;
   const displayName = meta?.display_name || entry.name;
   const repoUrl = meta?.repo_url || entry.url;
@@ -89,7 +89,7 @@ export default function RepoCard({ entry, meta, compact = false }) {
   useAnchors(`repo-${repoSlug}`);
 
   return (
-    <article id={`repo-${repoSlug}`} className={compact ? `${styles.card} ${styles.compact}` : styles.card} style={accent ? { '--repo-accent': accent } : undefined}>
+    <article id={`repo-${repoSlug}`} className={styles.card} style={accent ? { '--repo-accent': accent } : undefined}>
       <header className={styles.head}>
         <span className={styles.iconTile}>
           <OriginIcon name={entry.originIcon} />
@@ -109,14 +109,14 @@ export default function RepoCard({ entry, meta, compact = false }) {
         )}
       </header>
 
-      {!compact && description && <p className={styles.description}>{description}</p>}
+      {description && <p className={styles.description}>{description}</p>}
 
       <div className={styles.tags}>
         <TagRow label="Standards" items={standards} className={styles.tagStandard} />
         <TagRow label="Runs on" items={software} className={styles.tagSoftware} />
         <TagRow
           label="Depends on"
-          items={compact ? [] : dependencies}
+          items={dependencies}
           className={styles.tagDependency}
           render={(d) => {
             const childPage = REPO_PAGES[d];
@@ -153,16 +153,12 @@ export default function RepoCard({ entry, meta, compact = false }) {
             About this tool
           </a>
         )}
-        {!compact && (
-          <>
-            <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/issues`} target="_blank" rel="noreferrer">
-              Issues
-            </a>
-            <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/pulls`} target="_blank" rel="noreferrer">
-              Pull Requests
-            </a>
-          </>
-        )}
+        <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/issues`} target="_blank" rel="noreferrer">
+          Issues
+        </a>
+        <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/pulls`} target="_blank" rel="noreferrer">
+          Pull Requests
+        </a>
         <a className={`${styles.button} ${styles.buttonGhost}`} href={`${repoUrl}/releases`} target="_blank" rel="noreferrer">
           Releases
         </a>

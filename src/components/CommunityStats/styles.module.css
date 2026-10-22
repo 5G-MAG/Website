@@ -1,0 +1,113 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-color);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 6rem 6.5rem;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
+  min-width: 0;
+}
+
+.slug {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.bars {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.bar {
+  position: relative;
+  height: 1.35rem;
+  border-radius: 4px;
+  background: var(--ifm-color-emphasis-100);
+  overflow: hidden;
+}
+
+.bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+}
+
+.views {
+  background: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+}
+
+.clones {
+  background: color-mix(in srgb, var(--ifm-color-info) 45%, transparent);
+}
+
+.bar b {
+  position: relative;
+  padding-left: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sf {
+  display: flex;
+  gap: 0.7rem;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pill {
+  justify-self: end;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 0.12rem 0.6rem;
+}
+
+.pillActive {
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.pillMaintenance {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.pillQuiet {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .pill {
+    justify-self: start;
+  }
+}
