@@ -3,9 +3,11 @@
 // homepage and in the stat rows of About/Developer/Membership/Standards
 // (via src/data/facts.js), so no page carries a hand-copied number.
 //
-//   projects        projects with their own page in taxonomy.json (doc_url):
-//                   Reference Tools and Testbeds, shared infrastructure
-//                   included.
+//   projects        the projects of the Where We Stand chart: entries of
+//                   taxonomy.json that have a development stage and a
+//                   technology area, and are not testbeds. They are the
+//                   projects of the General Deck ("19 projects across 7
+//                   areas"), with or without a tool of their own.
 //   referenceTools  entries of type reference-tool.
 //   testbeds        entries of type testbed or evaluation-framework.
 //   validationTools entries of type validation-tool.
@@ -70,9 +72,9 @@ function apiGet(urlPath) {
 const repoSlug = (r) => (typeof r === 'string' ? r : r.repo_slug || r.name || r.repo);
 
 function projects() {
-  // A project is a top-level entry with an offering page of its own, or that hosts testbeds with pages.
+  // The Where We Stand chart's projects: staged, in a technology area, and not a testbed (a testbed's pages are under /testbeds/).
   const all = readJson('src/data/taxonomy.json').projects;
-  const n = all.filter((p) => !p.parent && !p.auxiliary && (p.doc_url || all.some((c) => c.parent === p.name && c.doc_url))).length;
+  const n = all.filter((p) => p.stages && p.basket && !(p.doc_url || '').startsWith('/testbeds/')).length;
   if (!n) throw new Error('projects: counted 0');
   return n;
 }
