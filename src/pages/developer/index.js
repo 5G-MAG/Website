@@ -180,7 +180,7 @@ export default function Home() {
   // Hooks can't be called inside the CONTRIBUTORS.map callback below
   // (rules-of-hooks); resolve the directory once and concatenate.
   const contributorsBaseUrl = useBaseUrl('/assets/images/contributors/');
-  const overviewPdfUrl = useBaseUrl('/docs/Software_Accelerator.pdf');
+  const overviewPdfUrl = useBaseUrl('/docs/decks/software-accelerator.pdf');
   const location = useLocation();
   const [repoQuery, setRepoQuery] = useState('');
   const filteredRepos = useMemo(() => filterRepos(repoQuery), [repoQuery]);

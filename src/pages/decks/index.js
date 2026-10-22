@@ -3,7 +3,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import { BASKETS, ALL_PROJECTS } from '@site/src/data/baskets';
+import { BASKETS, ALL_PROJECTS, projectTitleOf } from '@site/src/data/baskets';
 import { PROJECT_DECKS } from '@site/src/data/projectDecks';
 import { GENERAL_DECKS } from '@site/src/data/generalDecks';
 import styles from '../tech/index.module.css';
@@ -44,7 +44,9 @@ function DeckTile({ cover, title, pages, file, page, pageLabel, description }) {
 
 // The taxonomy project behind a deck slug (/tech/<slug>): the area it belongs to and its page title.
 function projectOf(slug) {
-  const matches = ALL_PROJECTS.filter((p) => (p.tech_url || '').replace(/\/$/, '').split('/').pop() === slug);
+  const last = (u) => (u || '').replace(/\/$/, '').split('/').pop();
+  // by the last part of its Technical Analysis address, or of its software page when it has no analysis page of that name
+  const matches = ALL_PROJECTS.filter((p) => last(p.tech_url) === slug || last(p.doc_url) === slug);
   return matches.find((p) => p.type === 'project' || p.type === 'reference-tool' || p.type === 'platform') || matches[0] || null;
 }
 
@@ -91,7 +93,7 @@ export default function Decks() {
                     <DeckTile
                       key={slug}
                       cover={`/assets/images/projects/${slug}-deck-cover.jpg`}
-                      title={d.title}
+                      title={projectTitleOf(project) || d.title}
                       pages={d.pages}
                       file={`/docs/decks/${slug}.pdf`}
                       page={project.tech_url}
@@ -108,10 +110,10 @@ export default function Decks() {
                     <DeckTile
                       key={slug}
                       cover={`/assets/images/projects/${slug}-deck-cover.jpg`}
-                      title={d.title}
+                      title={(projectOf(slug) && projectTitleOf(projectOf(slug))) || d.title}
                       pages={d.pages}
                       file={`/docs/decks/${slug}.pdf`}
-                      page={`/tech/${slug}`}
+                      page={projectOf(slug)?.tech_url || projectOf(slug)?.doc_url}
                     />
                   ))}
                 </div>

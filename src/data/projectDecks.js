@@ -21,4 +21,7 @@ export const PROJECT_DECKS = {
   ntn: { title: 'Non-Terrestrial Networks in 5G Systems', pages: 6 },
   npn: { title: 'Non-Public Networks', pages: 6 },
   tsc: { title: 'Time-Sensitive Communications (TSC)', pages: 6 },
+  'ai-ml': { title: 'AI/ML Evaluation Framework', pages: 10 },
+  '6g': { title: '6G AI Traffic Characterization', pages: 11 },
+  '3gpp-platforms': { title: '3GPP RAN and Core Platforms', pages: 12 },
 };
