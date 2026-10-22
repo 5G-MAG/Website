@@ -110,13 +110,14 @@ const PER_TOPIC_STANDARDS_PREFIXES = ALL_TOPICS.flatMap((t) =>
 
 export const SECTION_NAV = [
   {
-    prefixes: ['/about', '/contact', '/partnerships', '/structure', '/privacy'],
+    prefixes: ['/about', '/contact', '/partnerships', '/structure', '/privacy', '/decks'],
     title: 'About Us',
     titleHref: '/about',
     subtitle: 'Who we are, and what we do',
     items: [
       { label: 'Structure', href: '/structure' },
       { label: 'Partnerships', href: '/partnerships' },
+      { label: 'Slide Decks', href: '/decks' },
       { label: 'Contact', href: '/contact' },
     ],
   },

@@ -9,6 +9,7 @@
   },
   "site": "https://www.5g-mag.com",
   "files": {
+    "slideDecks": "https://www.5g-mag.com/decks",
     "llms": "https://www.5g-mag.com/llms.txt",
     "registry": "https://www.5g-mag.com/ai-context.json",
     "sitemap": "https://www.5g-mag.com/sitemap.xml"

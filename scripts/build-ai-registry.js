@@ -100,7 +100,7 @@ const registry = {
     description: TAGLINE,
   },
   site: SITE,
-  files: { llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
+  files: { slideDecks: `${SITE}/decks`, llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
   notes: [
     'access "early-access" means the repository is available to members first; the page of the project says how to request it.',
     'standardsBodies names the bodies of the specifications a project or repository relates to; the exact specifications and versions are on the Specifications page of each project.',
@@ -130,6 +130,8 @@ lines.push('', '## Repositories', '');
 for (const r of registry.repositories) {
   lines.push(`- [${r.slug}](${r.url})${r.description ? `: ${r.description.replace(/\s+/g, ' ').trim()}` : ''}${r.access === 'early-access' ? ' (Early Access)' : ''}`);
 }
+lines.push('', '## Slide decks', '');
+lines.push(`- [Slide Decks](${SITE}/decks): the general decks about the programme and one overview deck for every project, as PDF`);
 lines.push('', '## Machine-readable', '');
 lines.push(`- [ai-context.json](${SITE}/ai-context.json): every project and repository above as JSON, with the page of each, its licence, its standards bodies, its dependencies and its latest release`);
 lines.push(`- [sitemap.xml](${SITE}/sitemap.xml): every page of the site`, '');

@@ -438,6 +438,7 @@ const config = {
             { label: 'About Us', to: '/about' },
             { label: 'Structure', to: '/structure' },
             { label: 'Partnerships', to: '/partnerships' },
+            { label: 'Slide Decks', to: '/decks' },
             { label: 'Contact', to: '/contact' },
             { label: 'Membership', to: '/membership' },
           ],

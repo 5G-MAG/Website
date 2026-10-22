@@ -105,6 +105,10 @@
 - [srsRAN](https://github.com/5G-MAG/srsRAN): Fork of the discontinued srsRAN suite, kept for reference. Superseded by srsRAN_4G for LTE and by rt-srsRAN_Project for 5G NR.
 - [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project): 5G-MAG maintains a fork of srsRAN_Project for the development and adaptation of NG-RAN procedures to support other Reference Tools.
 
+## Slide decks
+
+- [Slide Decks](https://www.5g-mag.com/decks): the general decks about the programme and one overview deck for every project, as PDF
+
 ## Machine-readable
 
 - [ai-context.json](https://www.5g-mag.com/ai-context.json): every project and repository above as JSON, with the page of each, its licence, its standards bodies, its dependencies and its latest release
