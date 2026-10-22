@@ -11,12 +11,20 @@
 }
 
 .row {
-  max-width: 52rem;      /* five tiles to a row, so nine bodies fall as five and four */
-  margin-inline: auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;      /* all nine on one line; they wrap below 1000px */
   justify-content: center;
-  gap: 0.9rem;
+  gap: 0.6rem;
+}
+
+@media (max-width: 1000px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .tile {
+    flex: 0 0 8.5rem;
+  }
 }
 
 .tile {
@@ -25,9 +33,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
-  width: 9.5rem;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 5.5rem;
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 0.4rem;
   background: #fff;
   color: #1c1e21;
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -48,7 +57,7 @@
 }
 
 .caption {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
