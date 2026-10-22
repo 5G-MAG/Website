@@ -121,7 +121,7 @@ const registry = {
     description: TAGLINE,
   },
   site: SITE,
-  files: { wellKnown: `${SITE}/.well-known/ai-context.json`, slideDecks: `${SITE}/decks`, llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
+  files: { slideDecks: `${SITE}/decks`, llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
   notes: [
     'access "early-access" means the repository is available to members first; the page of the project says how to request it.',
     'standardsBodies names the bodies of the specifications a project or repository relates to; the exact specifications and versions are on the Specifications page of each project.',
@@ -130,9 +130,6 @@ const registry = {
   repositories: [...repos.values()],
 };
 fs.writeFileSync(path.join(ROOT, 'static', 'ai-context.json'), JSON.stringify(registry, null, 2) + '\n');
-// The same file at the well-known location, for tools that look there (the site has .nojekyll, so GitHub Pages serves the folder).
-fs.mkdirSync(path.join(ROOT, 'static', '.well-known'), { recursive: true });
-fs.copyFileSync(path.join(ROOT, 'static', 'ai-context.json'), path.join(ROOT, 'static', '.well-known', 'ai-context.json'));
 
 // llms.txt: a short Markdown index, in the order a reader goes: the projects, then the repositories.
 const lines = [];
