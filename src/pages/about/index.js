@@ -47,7 +47,7 @@ export default function About() {
           <a
             key="overview"
             className="button button--outline button--primary"
-            href={useBaseUrl('/docs/general.pdf')}
+            href={useBaseUrl('/docs/Overview.pdf')}
             target="_blank"
             rel="noopener noreferrer"
           >
