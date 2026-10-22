@@ -7,24 +7,19 @@ import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectDeckBand from '@site/src/components/ProjectDeckBand';
+import ProjectRoadmap from '@site/src/components/ProjectRoadmap';
+import { PROJECT_ROADMAPS } from '@site/src/data/projectRoadmaps';
 import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
+import { SDOS } from '@site/src/data/sdos';
 import styles from '@site/src/pages/tech/index.module.css';
-
-// The standards bodies that have a logo on the site; any other body is shown by its name on the same card.
-const SDO_LOGOS = {
-  '3GPP': '/assets/images/partnerships/3gpp-logo.png',
-  IETF: '/assets/logos/IETF.png',
-  'MPEG (ISO/IEC)': '/assets/logos/MPEG.png',
-  DVB: '/assets/images/partnerships/dvb-logo.png',
-};
 
 // The card of one standards body behind a project, from the taxonomy's `sdos`. The logo is decorative: the name
 // is written next to it.
 function SdoCard({ sdo }) {
-  const logo = useBaseUrl(SDO_LOGOS[sdo] || '/');
+  const logo = useBaseUrl(SDOS[sdo]?.logo || '/');
   return (
     <div className="standard-card">
-      {SDO_LOGOS[sdo] ? (
+      {SDOS[sdo]?.logo ? (
         <>
           <img src={logo} alt="" />
           <span className="standard-card__label">{sdo}</span>
@@ -142,6 +137,14 @@ export default function ProjectHome({
             />
           </div>
         </section>
+
+        {PROJECT_ROADMAPS[slug] && (
+          <section className={styles.section}>
+            <div className="container">
+              <ProjectRoadmap slug={slug} accent={accent} />
+            </div>
+          </section>
+        )}
 
         {/* Only a curated block is shown. The taxonomy's sdos name the bodies a project relates to, which is not the same as
             the standards it implements (5G MBS also implements IETF specifications through its FLUTE library). */}
