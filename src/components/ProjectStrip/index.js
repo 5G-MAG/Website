@@ -21,7 +21,7 @@ export default function ProjectStrip({ contained = false }) {
   const spec = family.find((p) => p.standards_url)?.standards_url;
   const software = family.filter((p) => p.doc_url);
   const items = [
-    tech && { label: 'Technology', to: TECH_OVERVIEW[tech] || tech, base: tech },
+    tech && { label: 'Technical Analysis and Blueprints', to: TECH_OVERVIEW[tech] || tech, base: tech },
     spec && { label: 'Specifications', to: spec },
     ...software.map((p) => ({
       label: softwareLabel(p) !== 'Reference Tools' || software.length > 1 ? displayNameOf(p) : 'Software',
@@ -36,7 +36,8 @@ export default function ProjectStrip({ contained = false }) {
   }, null);
   const strip = (
     <nav className={styles.strip} aria-label="Pages of this project">
-      <span className={styles.name}>{projectTitleOf(lead)}</span>
+      {/* under the project hero the title is already on the page: say where the links go; on a documentation page the project's name is the context */}
+      <span className={styles.name}>{contained ? 'Go directly to:' : projectTitleOf(lead)}</span>
       <ul className={styles.list}>
         {items.map((it) => (
           <li key={it.to + it.label}>
