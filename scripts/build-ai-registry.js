@@ -18,6 +18,16 @@ const TAGLINE = (/tagline:\s*'([^']+)'/.exec(config) || [])[1] || '';
 // The label the site's menu gives the software page of a project, by its kind.
 const SOFTWARE_LABEL = { 'reference-tool': 'Reference Tools', platform: 'Reference Tools', 'common-tools': 'Reference Tools', testbed: 'Testbeds', 'evaluation-framework': 'Testbeds', 'validation-tool': 'Validation Tools' };
 
+// Who owns a shared repository (the first project of its entry) and the repositories that have a page of their own,
+// read from the same files the site's components read, so the registry follows them.
+const baskets = fs.readFileSync(path.join(ROOT, 'src', 'data', 'baskets.js'), 'utf8');
+const ownerBlock = baskets.slice(baskets.indexOf('SHARED_REPO_OWNERS = {'));
+const OWNER = {};
+for (const m of ownerBlock.slice(0, ownerBlock.indexOf('};')).matchAll(/^\s*'?([\w.-]+)'?:\s*\[\s*'([^']+)'/gm)) OWNER[m[1]] = m[2];
+const repoPages = fs.readFileSync(path.join(ROOT, 'src', 'data', 'repoPages.js'), 'utf8');
+const OWN_PAGE = {};
+for (const m of repoPages.matchAll(/'([\w.-]+)':\s*'([^']+)'/g)) OWN_PAGE[m[1]] = m[2];
+
 const abs = (p) => (p ? `${SITE}${p.replace(/\/$/, '')}` : null);
 // An id from the page path (reference-tools-5gms, testbeds-beyond-2d, tech-beyond-2d), so a project and its tool never share one.
 const idOf = (p) => (p.doc_url || p.tech_url || p.standards_url || '').replace(/^\/|\/$/g, '').replace(/\//g, '-');
@@ -90,6 +100,17 @@ for (const p of taxonomy.projects) {
   }
 }
 
+// A repository is shown under the project that owns it, first; the others use it.
+for (const r of repos.values()) {
+  const owner = OWNER[r.slug];
+  if (owner && r.projects.includes(owner)) r.projects = [owner, ...r.projects.filter((n) => n !== owner)];
+  const ownerProject = taxonomy.projects.find((p) => p.name === r.projects[0]);
+  if (OWN_PAGE[r.slug]) r.page = abs(OWN_PAGE[r.slug]);
+  else if (ownerProject && ownerProject.doc_url) r.page = `${abs(ownerProject.doc_url)}#repo-${r.slug}`;
+  r.project = r.projects[0];
+  r.alsoUsedBy = r.projects.slice(1);
+}
+
 const registry = {
   about: `Machine-readable map of the 5G-MAG website: its projects, and the repositories behind them. Generated from the site's own data on every build; the pages it links to are the reference.`,
   organisation: {
@@ -100,7 +121,7 @@ const registry = {
     description: TAGLINE,
   },
   site: SITE,
-  files: { slideDecks: `${SITE}/decks`, llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
+  files: { wellKnown: `${SITE}/.well-known/ai-context.json`, slideDecks: `${SITE}/decks`, llms: `${SITE}/llms.txt`, registry: `${SITE}/ai-context.json`, sitemap: `${SITE}/sitemap.xml` },
   notes: [
     'access "early-access" means the repository is available to members first; the page of the project says how to request it.',
     'standardsBodies names the bodies of the specifications a project or repository relates to; the exact specifications and versions are on the Specifications page of each project.',
@@ -109,6 +130,9 @@ const registry = {
   repositories: [...repos.values()],
 };
 fs.writeFileSync(path.join(ROOT, 'static', 'ai-context.json'), JSON.stringify(registry, null, 2) + '\n');
+// The same file at the well-known location, for tools that look there (the site has .nojekyll, so GitHub Pages serves the folder).
+fs.mkdirSync(path.join(ROOT, 'static', '.well-known'), { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'static', 'ai-context.json'), path.join(ROOT, 'static', '.well-known', 'ai-context.json'));
 
 // llms.txt: a short Markdown index, in the order a reader goes: the projects, then the repositories.
 const lines = [];

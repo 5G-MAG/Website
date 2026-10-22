@@ -9,6 +9,7 @@
   },
   "site": "https://www.5g-mag.com",
   "files": {
+    "wellKnown": "https://www.5g-mag.com/.well-known/ai-context.json",
     "slideDecks": "https://www.5g-mag.com/decks",
     "llms": "https://www.5g-mag.com/llms.txt",
     "registry": "https://www.5g-mag.com/ai-context.json",
@@ -619,7 +620,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-function"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-function",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-application-server",
@@ -647,7 +650,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-server"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-server",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-application",
@@ -673,7 +678,11 @@
         "5G Media Streaming (5GMS)",
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": [
+        "DVB-I Services over 5G Systems"
+      ]
     },
     {
       "slug": "rt-5gms-media-session-handler",
@@ -698,7 +707,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-media-session-handler"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-media-session-handler",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-media-stream-handler",
@@ -724,7 +735,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-media-stream-handler"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-media-stream-handler",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-common-android-library",
@@ -748,7 +761,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-common-android-library"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-common-android-library",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-application-provider",
@@ -778,7 +793,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-provider"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-application-provider",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-5gms-examples",
@@ -804,7 +821,9 @@
       "projects": [
         "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-examples"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gms-examples",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "cmcd-toolkit",
@@ -828,7 +847,11 @@
         "5G Media Streaming (5GMS)",
         "UE Data Collection, Reporting and Event Exposure"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-cmcd-toolkit"
+      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-cmcd-toolkit",
+      "project": "5G Media Streaming (5GMS)",
+      "alsoUsedBy": [
+        "UE Data Collection, Reporting and Event Exposure"
+      ]
     },
     {
       "slug": "rt-media-origin",
@@ -848,12 +871,18 @@
       "access": "early-access",
       "latestRelease": null,
       "projects": [
+        "Content Delivery Protocols and Tools",
         "5G Media Streaming (5GMS)",
         "5G Multicast Broadcast Services (MBS)",
-        "MPEG V3C Immersive Platform",
-        "Content Delivery Protocols and Tools"
+        "MPEG V3C Immersive Platform"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-media-origin"
+      "page": "https://www.5g-mag.com/reference-tools/content-delivery/media-origin",
+      "project": "Content Delivery Protocols and Tools",
+      "alsoUsedBy": [
+        "5G Media Streaming (5GMS)",
+        "5G Multicast Broadcast Services (MBS)",
+        "MPEG V3C Immersive Platform"
+      ]
     },
     {
       "slug": "rt-5gc-service-consumers",
@@ -877,11 +906,16 @@
         "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1"
       },
       "projects": [
+        "3GPP RAN and Core Platforms",
         "5G Media Streaming (5GMS)",
-        "5G Multicast Broadcast Services (MBS)",
-        "3GPP RAN and Core Platforms"
+        "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-5gc-service-consumers"
+      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-rt-5gc-service-consumers",
+      "project": "3GPP RAN and Core Platforms",
+      "alsoUsedBy": [
+        "5G Media Streaming (5GMS)",
+        "5G Multicast Broadcast Services (MBS)"
+      ]
     },
     {
       "slug": "rt-cmmf-encoder",
@@ -897,10 +931,14 @@
       "access": "public",
       "latestRelease": null,
       "projects": [
-        "5G Media Streaming (5GMS)",
-        "Content Delivery Protocols and Tools"
+        "Content Delivery Protocols and Tools",
+        "5G Media Streaming (5GMS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5gms#repo-rt-cmmf-encoder"
+      "page": "https://www.5g-mag.com/reference-tools/content-delivery/cmmf-encoder",
+      "project": "Content Delivery Protocols and Tools",
+      "alsoUsedBy": [
+        "5G Media Streaming (5GMS)"
+      ]
     },
     {
       "slug": "rt-mbms-modem",
@@ -927,7 +965,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-modem"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-modem",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-tx",
@@ -955,7 +995,11 @@
         "5G Broadcast - TV and Radio Services",
         "5G Broadcast - Emergency Alerts"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-tx"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-tx",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": [
+        "5G Broadcast - Emergency Alerts"
+      ]
     },
     {
       "slug": "rt-mbms-mw-android",
@@ -980,7 +1024,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-mw-android"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-mw-android",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-libflute",
@@ -1002,11 +1048,16 @@
         "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4"
       },
       "projects": [
+        "Content Delivery Protocols and Tools",
         "5G Broadcast - TV and Radio Services",
-        "5G Multicast Broadcast Services (MBS)",
-        "Content Delivery Protocols and Tools"
+        "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-libflute"
+      "page": "https://www.5g-mag.com/reference-tools/content-delivery/libflute",
+      "project": "Content Delivery Protocols and Tools",
+      "alsoUsedBy": [
+        "5G Broadcast - TV and Radio Services",
+        "5G Multicast Broadcast Services (MBS)"
+      ]
     },
     {
       "slug": "rt-mbms-examples",
@@ -1031,7 +1082,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-examples"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-examples",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-tx-for-qrd-and-crd",
@@ -1059,7 +1112,11 @@
         "5G Broadcast - TV and Radio Services",
         "5G Broadcast - Emergency Alerts"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-tx-for-qrd-and-crd"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-tx-for-qrd-and-crd",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": [
+        "5G Broadcast - Emergency Alerts"
+      ]
     },
     {
       "slug": "rt-mbms-client",
@@ -1082,7 +1139,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-client"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-client",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-application",
@@ -1106,7 +1165,11 @@
         "5G Broadcast - TV and Radio Services",
         "5G Broadcast - Emergency Alerts"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-application"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-application",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": [
+        "5G Broadcast - Emergency Alerts"
+      ]
     },
     {
       "slug": "rt-mbms-application-provider",
@@ -1129,7 +1192,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-application-provider"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-application-provider",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-bmsc",
@@ -1153,7 +1218,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-bmsc"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-bmsc",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-gw",
@@ -1175,7 +1242,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-gw"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-gw",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbms-mw",
@@ -1195,7 +1264,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-mw"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-mbms-mw",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-wui",
@@ -1215,7 +1286,9 @@
       "projects": [
         "5G Broadcast - TV and Radio Services"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-wui"
+      "page": "https://www.5g-mag.com/reference-tools/5g-broadcast#repo-rt-wui",
+      "project": "5G Broadcast - TV and Radio Services",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-pws-cbc",
@@ -1238,7 +1311,9 @@
       "projects": [
         "5G Broadcast - Emergency Alerts"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/emergency-alerts#repo-rt-pws-cbc"
+      "page": "https://www.5g-mag.com/reference-tools/emergency-alerts#repo-rt-pws-cbc",
+      "project": "5G Broadcast - Emergency Alerts",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-xr-unity-player",
@@ -1266,7 +1341,9 @@
       "projects": [
         "XR/3D Scenes with MPEG-I Scene Description"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-unity-player"
+      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-unity-player",
+      "project": "XR/3D Scenes with MPEG-I Scene Description",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-xr-maf-native",
@@ -1290,7 +1367,9 @@
       "projects": [
         "XR/3D Scenes with MPEG-I Scene Description"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-maf-native"
+      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-maf-native",
+      "project": "XR/3D Scenes with MPEG-I Scene Description",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-xr-content",
@@ -1310,7 +1389,9 @@
       "projects": [
         "XR/3D Scenes with MPEG-I Scene Description"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-content"
+      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-content",
+      "project": "XR/3D Scenes with MPEG-I Scene Description",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-xr-blender-exporter",
@@ -1337,7 +1418,9 @@
       "projects": [
         "XR/3D Scenes with MPEG-I Scene Description"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-blender-exporter"
+      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-blender-exporter",
+      "project": "XR/3D Scenes with MPEG-I Scene Description",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-xr-gITFast",
@@ -1357,7 +1440,9 @@
       "projects": [
         "XR/3D Scenes with MPEG-I Scene Description"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-gITFast"
+      "page": "https://www.5g-mag.com/reference-tools/xr#repo-rt-xr-gITFast",
+      "project": "XR/3D Scenes with MPEG-I Scene Description",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbs-function",
@@ -1382,7 +1467,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-function"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-function",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbs-transport-function",
@@ -1407,7 +1494,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-transport-function"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-transport-function",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbs-examples",
@@ -1432,7 +1521,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-examples"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-examples",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "open5gs",
@@ -1457,10 +1548,14 @@
         "url": "https://github.com/5G-MAG/open5gs/releases/tag/v0.1.4-5mbs-v2.7.2-o5gs"
       },
       "projects": [
-        "5G Multicast Broadcast Services (MBS)",
-        "3GPP RAN and Core Platforms"
+        "3GPP RAN and Core Platforms",
+        "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-open5gs"
+      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-open5gs",
+      "project": "3GPP RAN and Core Platforms",
+      "alsoUsedBy": [
+        "5G Multicast Broadcast Services (MBS)"
+      ]
     },
     {
       "slug": "rt-mbs-application-provider",
@@ -1481,7 +1576,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-application-provider"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-application-provider",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbs-client",
@@ -1501,7 +1598,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-client"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-client",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-mbs-application",
@@ -1521,7 +1620,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-application"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-rt-mbs-application",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "srsRAN_4G_mbs",
@@ -1547,7 +1648,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-srsRAN_4G_mbs"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-srsRAN_4G_mbs",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "srsRAN_Project_mbs",
@@ -1574,7 +1677,9 @@
       "projects": [
         "5G Multicast Broadcast Services (MBS)"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-srsRAN_Project_mbs"
+      "page": "https://www.5g-mag.com/reference-tools/5g-mbs#repo-srsRAN_Project_mbs",
+      "project": "5G Multicast Broadcast Services (MBS)",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-data-collection-application-function",
@@ -1604,7 +1709,9 @@
       "projects": [
         "UE Data Collection, Reporting and Event Exposure"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/data-collection#repo-rt-data-collection-application-function"
+      "page": "https://www.5g-mag.com/reference-tools/data-collection#repo-rt-data-collection-application-function",
+      "project": "UE Data Collection, Reporting and Event Exposure",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-v3c-unity-player",
@@ -1631,7 +1738,9 @@
       "projects": [
         "MPEG V3C Immersive Platform"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-unity-player"
+      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-unity-player",
+      "project": "MPEG V3C Immersive Platform",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-v3c-decoder-plugin",
@@ -1658,7 +1767,9 @@
       "projects": [
         "MPEG V3C Immersive Platform"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-decoder-plugin"
+      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-decoder-plugin",
+      "project": "MPEG V3C Immersive Platform",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-v3c-content",
@@ -1685,7 +1796,9 @@
       "projects": [
         "MPEG V3C Immersive Platform"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-content"
+      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-content",
+      "project": "MPEG V3C Immersive Platform",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-v3c-examples",
@@ -1705,7 +1818,9 @@
       "projects": [
         "MPEG V3C Immersive Platform"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-examples"
+      "page": "https://www.5g-mag.com/reference-tools/v3c#repo-rt-v3c-examples",
+      "project": "MPEG V3C Immersive Platform",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-vdmc-web-decoder-player",
@@ -1725,7 +1840,9 @@
       "projects": [
         "Dynamic Mesh Coding"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/vdmc#repo-rt-vdmc-web-decoder-player"
+      "page": "https://www.5g-mag.com/reference-tools/vdmc#repo-rt-vdmc-web-decoder-player",
+      "project": "Dynamic Mesh Coding",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-beyond2d-evaluation-framework",
@@ -1749,7 +1866,9 @@
       "projects": [
         "Beyond 2D Evaluation Framework"
       ],
-      "page": "https://www.5g-mag.com/testbeds/beyond-2d#repo-rt-beyond2d-evaluation-framework"
+      "page": "https://www.5g-mag.com/testbeds/beyond-2d#repo-rt-beyond2d-evaluation-framework",
+      "project": "Beyond 2D Evaluation Framework",
+      "alsoUsedBy": []
     },
     {
       "slug": "6G-Testbed",
@@ -1769,7 +1888,9 @@
       "projects": [
         "AI Traffic Characterization"
       ],
-      "page": "https://www.5g-mag.com/testbeds/6g-testbed#repo-6G-Testbed"
+      "page": "https://www.5g-mag.com/testbeds/6g-testbed#repo-6G-Testbed",
+      "project": "AI Traffic Characterization",
+      "alsoUsedBy": []
     },
     {
       "slug": "netemu-dashboard",
@@ -1788,7 +1909,9 @@
       "projects": [
         "AI Traffic Characterization"
       ],
-      "page": "https://www.5g-mag.com/testbeds/6g-testbed#repo-netemu-dashboard"
+      "page": "https://www.5g-mag.com/testbeds/6g-testbed#repo-netemu-dashboard",
+      "project": "AI Traffic Characterization",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-camara-examples",
@@ -1806,7 +1929,9 @@
       "projects": [
         "CAMARA Connectivity Quality Management APIs"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/network-apis#repo-rt-camara-examples"
+      "page": "https://www.5g-mag.com/reference-tools/network-apis#repo-rt-camara-examples",
+      "project": "CAMARA Connectivity Quality Management APIs",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-avatar-content",
@@ -1830,7 +1955,9 @@
       "projects": [
         "Conversational Avatar Communication with MPEG ARF"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-content"
+      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-content",
+      "project": "Conversational Avatar Communication with MPEG ARF",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-avatar-call",
@@ -1856,7 +1983,9 @@
       "projects": [
         "Conversational Avatar Communication with MPEG ARF"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-call"
+      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-call",
+      "project": "Conversational Avatar Communication with MPEG ARF",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-avatar-unity-tracker",
@@ -1874,7 +2003,9 @@
       "projects": [
         "Conversational Avatar Communication with MPEG ARF"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-unity-tracker"
+      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-avatar-unity-tracker",
+      "project": "Conversational Avatar Communication with MPEG ARF",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-3gpp-swap",
@@ -1896,7 +2027,11 @@
         "Conversational Avatar Communication with MPEG ARF",
         "Real-time Media Communication (RTC) Architecture"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-3gpp-swap"
+      "page": "https://www.5g-mag.com/reference-tools/avatar#repo-rt-3gpp-swap",
+      "project": "Conversational Avatar Communication with MPEG ARF",
+      "alsoUsedBy": [
+        "Real-time Media Communication (RTC) Architecture"
+      ]
     },
     {
       "slug": "rt-ai-ml-evaluation-framework",
@@ -1916,7 +2051,9 @@
       "projects": [
         "AI/ML Evaluation Framework"
       ],
-      "page": "https://www.5g-mag.com/testbeds/ai-ml#repo-rt-ai-ml-evaluation-framework"
+      "page": "https://www.5g-mag.com/testbeds/ai-ml#repo-rt-ai-ml-evaluation-framework",
+      "project": "AI/ML Evaluation Framework",
+      "alsoUsedBy": []
     },
     {
       "slug": "vops-conformance-validator",
@@ -1934,7 +2071,9 @@
       "projects": [
         "VOPS Conformance Validator"
       ],
-      "page": "https://www.5g-mag.com/validation/vops#repo-vops-conformance-validator"
+      "page": "https://www.5g-mag.com/validation/vops#repo-vops-conformance-validator",
+      "project": "VOPS Conformance Validator",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-common-shared",
@@ -1960,7 +2099,9 @@
       "projects": [
         "Common Tools"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/common-tools#repo-rt-common-shared"
+      "page": "https://www.5g-mag.com/reference-tools/common-tools#repo-rt-common-shared",
+      "project": "Common Tools",
+      "alsoUsedBy": []
     },
     {
       "slug": "Standards2Deployments",
@@ -1976,7 +2117,9 @@
       "projects": [
         "Developer Tools"
       ],
-      "page": "https://www.5g-mag.com/developer-tools#repo-Standards2Deployments"
+      "page": "https://www.5g-mag.com/developer-tools#repo-Standards2Deployments",
+      "project": "Developer Tools",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-dvb-i-application",
@@ -2003,7 +2146,9 @@
       "projects": [
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-application"
+      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-application",
+      "project": "DVB-I Services over 5G Systems",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-dvb-i-android-application",
@@ -2026,7 +2171,9 @@
       "projects": [
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-android-application"
+      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-android-application",
+      "project": "DVB-I Services over 5G Systems",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-dvb-i-application-provider",
@@ -2051,7 +2198,9 @@
       "projects": [
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-application-provider"
+      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-application-provider",
+      "project": "DVB-I Services over 5G Systems",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-dvb-i-service-list-registry",
@@ -2075,7 +2224,9 @@
       "projects": [
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-service-list-registry"
+      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-service-list-registry",
+      "project": "DVB-I Services over 5G Systems",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-dvb-i-examples",
@@ -2098,7 +2249,9 @@
       "projects": [
         "DVB-I Services over 5G Systems"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-examples"
+      "page": "https://www.5g-mag.com/reference-tools/dvb-i#repo-rt-dvb-i-examples",
+      "project": "DVB-I Services over 5G Systems",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-media-android-application",
@@ -2121,7 +2274,9 @@
       "projects": [
         "Content Delivery Protocols and Tools"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/content-delivery#repo-rt-media-android-application"
+      "page": "https://www.5g-mag.com/reference-tools/content-delivery/media-application",
+      "project": "Content Delivery Protocols and Tools",
+      "alsoUsedBy": []
     },
     {
       "slug": "flute-conformance-validator",
@@ -2142,7 +2297,9 @@
       "projects": [
         "FLUTE Conformance Validator"
       ],
-      "page": "https://www.5g-mag.com/validation/flute#repo-flute-conformance-validator"
+      "page": "https://www.5g-mag.com/validation/flute#repo-flute-conformance-validator",
+      "project": "FLUTE Conformance Validator",
+      "alsoUsedBy": []
     },
     {
       "slug": "srsRAN_4G",
@@ -2164,7 +2321,9 @@
       "projects": [
         "3GPP RAN and Core Platforms"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-srsRAN_4G"
+      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-srsRAN_4G",
+      "project": "3GPP RAN and Core Platforms",
+      "alsoUsedBy": []
     },
     {
       "slug": "srsRAN",
@@ -2186,7 +2345,9 @@
       "projects": [
         "3GPP RAN and Core Platforms"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-srsRAN"
+      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-srsRAN",
+      "project": "3GPP RAN and Core Platforms",
+      "alsoUsedBy": []
     },
     {
       "slug": "rt-srsRAN_Project",
@@ -2208,7 +2369,9 @@
       "projects": [
         "3GPP RAN and Core Platforms"
       ],
-      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-rt-srsRAN_Project"
+      "page": "https://www.5g-mag.com/reference-tools/3gpp-platforms#repo-rt-srsRAN_Project",
+      "project": "3GPP RAN and Core Platforms",
+      "alsoUsedBy": []
     }
   ]
 }
