@@ -27,7 +27,19 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::
 
-<JumpMenu items={[["Functions", "functions"], ["Reference points", "reference-points"], ["Services and APIs", "services-and-apis"], ["Distribution methods", "distribution-methods"], ["Sessions and their life cycle", "sessions-and-their-life-cycle"], ["How a User Service is provisioned and announced", "how-a-user-service-is-provisioned-and-announced"]]} />
+<JumpMenu items={[["MBS User Services", "mbs-user-services"], ["Functions", "functions"], ["Reference points", "reference-points"], ["Services and APIs", "services-and-apis"], ["Distribution methods", "distribution-methods"], ["Sessions and their life cycle", "sessions-and-their-life-cycle"], ["How a User Service is provisioned and announced", "how-a-user-service-is-provisioned-and-announced"]]} />
+
+## MBS User Services
+
+MBS User Services let high-level applications use the low-level features of the MBS System (TS 26.502 V19.6.0 clause 4.2.2). The functions that provide it are described under Functions below.
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.2.2-1.svg" width={760} height={641} spec="TS 26.502 V19.6.0" figure="4.2.2-1" title="MBS User Services network architecture" alt="The MBSF, holding User Services provisioning and User Service Announcement compilation, with Nmb1 to MB-SMF, Nmb12 to PCF, Nmb10 to the MBS Application Provider (AF/AS), and Nmb5 through the NEF and N33. Below it the MBS AF (User Service Announcement serving, MBS-5 to the MBSF Client, MBS-3 to the MBSF, MBS-1 to the MBS Application Provider), the MBSSF (User Plane client authentication, MBS-10 to the MBSF Client) and the MBS AS (Object repair, MBS-4-UC to the MBSTF Client, and a dashed link without a label to the MBSTF), and the MBSTF (User Services Distribution Methods) with Nmb9 to MB-UPF, MBS-4-MC to the MBSTF Client, Nmb8 to the MBS Application Provider, Nmb2 to the MBSF, MBS-11 to the MBS AF and MBS-9 between the MBSF and the MBS AS." />
+
+The service layer delivers data with two **distribution methods**, the Object Distribution Method and the Packet Distribution Method. Either can use a multicast or a broadcast MBS Session. They provide security and key distribution, reliability control by means of Forward Erasure Correction (FEC), and the associated delivery procedures (TS 26.502 V19.6.0 clause 4.2.3, 3.1).
+
+An **MBS User Service Announcement** gives the MBS Client the service access information it needs to discover an MBS User Service and activate its reception. TS 26.517 defines the protocols and formats used by MBS User Services. Reporting by the MBS Client to the MBSF is for further study.
+
+TS 26.502 does not define the MBS-Aware Application itself.
 
 ## Functions
 
