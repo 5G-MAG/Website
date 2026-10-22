@@ -225,7 +225,7 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "type": "reference-tool",
-      "projectTitle": "Media delivery over 5G Multicast/Broadcast",
+      "projectTitle": "Media delivery over 5G Multicast Broadcast Services",
       "doc_url": "/reference-tools/5g-mbs/",
       "tech_url": "/tech/5g-mbs",
       "standards_url": "/standards/5g-mbs",

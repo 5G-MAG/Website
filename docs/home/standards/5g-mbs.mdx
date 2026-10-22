@@ -1,7 +1,7 @@
 ---
 hide_title: true
 sidebar_label: Specifications
-title: Media delivery over 5G Multicast/Broadcast
+title: Media delivery over 5G Multicast Broadcast Services
 slug: /standards/5g-mbs
 description: The 3GPP specifications for MBS User Services and for MBS in the 5G System and NG-RAN, what each covers, and the last version of each in Release 17, 18, 19 and 20.
 pagination_prev: null
@@ -9,6 +9,7 @@ pagination_next: null
 ---
 
 import SpecIndex from '@site/src/components/SpecIndex';
+import SpecTable from '@site/src/components/SpecTable';
 import JumpMenu from '@site/src/components/JumpMenu';
 import {
   MBS_RELEASES,
@@ -19,29 +20,16 @@ import {
 } from '@site/src/data/specs/5g-mbs';
 
 export const VersionTable = ({ rows, reused = [] }) => (
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Specification</th>
-        {MBS_RELEASES.map((r) => (
-          <th scope="col" key={r}>Release {r}</th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {[...rows, ...reused.map((r) => ({ ...r, reused: true }))].map((s) => (
-        <tr key={s.id}>
-          <th scope="row">
-            <a href={s.url} target="_blank" rel="noreferrer">{s.id}</a>
-            {s.reused ? ' (reused)' : ''}
-          </th>
-          {MBS_RELEASES.map((r) => (
-            <td key={r}>{s.versions[r] || 'none'}</td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <SpecTable
+    columns={['Specification', ...MBS_RELEASES.map((r) => `Release ${r}`)]}
+    rows={[...rows, ...reused.map((r) => ({ ...r, reused: true }))].map((s) => [
+      <>
+        <a href={s.url} target="_blank" rel="noreferrer">{s.id}</a>
+        {s.reused ? ' (reused)' : ''}
+      </>,
+      ...MBS_RELEASES.map((r) => s.versions[r] || 'none'),
+    ])}
+  />
 );
 
 <div class="topic-banner">
@@ -51,7 +39,7 @@ export const VersionTable = ({ rows, reused = [] }) => (
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Media delivery over 5G Multicast/Broadcast</h1>
+<h1>Media delivery over 5G Multicast Broadcast Services</h1>
 </div>
 </div>
 
@@ -64,7 +52,6 @@ Versions are read from the 3GPP specification archive on 3 October 2026. Release
 - **MBS User Services:** TS 26.502 (architecture) and TS 26.517 (protocols and formats), with TS 29.580 and TS 29.581 for the services of the MBSF and the MBSTF. The design in TS 26.502 is primarily motivated by the conclusions of the study TR 26.802.
 - **MBS in the 5G System and NG-RAN:** TS 23.247 (stage 2), TS 29.532 (MB-SMF services), TS 29.537 (PCF services), TS 24.575 (UE pre-configuration) and TS 32.279 (charging); MBS parts in six other 5G System specifications; MBS clauses in TS 38.300, TS 38.331, TS 38.413, TS 38.473 and TS 37.483.
 - **By release:** Release 17 creates TS 26.502, TS 26.517, TS 29.580, TS 29.581, TS 23.247, TS 29.532 and TS 29.537. Release 18 creates TS 24.575 and TS 32.279. All nine have a Release 19 version; TS 29.580, TS 29.581, TS 23.247, TS 29.532 and TS 29.537 have a Release 20 version.
-- **What each release added:** see [Standards: 5G MBS - Standards Evolution](/standards/5g-mbs/evolution#novelties-by-release), which names the Release 17 to 20 additions, among them RRC_INACTIVE multicast, UE pre-configuration, MBS charging and V2X over MBS in Release 18, in-session unicast repair and time synchronisation in Release 19, and MBS roaming in Release 20 (unverified, no TR 21.920).
 
 :::
 
@@ -84,12 +71,15 @@ The last version of each document in each release. The two documents marked "reu
 
 ### Specifications they build on
 
-| Specification | Title | Used by | For |
-| --- | --- | --- | --- |
-| [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) | Architectural enhancements for 5G multicast-broadcast services; Stage 2 | TS 26.502, TS 26.517 | The multicast-broadcast capabilities of the 5G System that convey the User Services (with TS 23.501 and TS 23.502). Listed under [MBS](#mbs) below |
-| [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) | Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs | TS 26.517 | The MBMS Download Profile, which an Object Distribution Method session using FLUTE conforms to; three MBMS delivery methods, combined with modifications into the Packet Distribution Method; the MBMS User Service announcement, to which the MBS User Service Announcement plays an equivalent role |
-| [TS 33.246](https://www.3gpp.org/dynareport/33246.htm) | 3G Security; Security of Multimedia Broadcast/Multicast Service (MBMS) | TS 26.517 | The protocol the MBSF Client uses to retrieve an MBS Service Key from the MBSSF |
-| [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | 5G Media Streaming (5GMS); General description and architecture | TS 26.502 | The 5GMS AF and 5GMS AS, with which the MBS AF and MBS AS may be co-located. The use of MBS User Services with the 5G Media Streaming architecture is for further study |
+<SpecTable
+  columns={['Specification', 'Title', 'Used by', 'For']}
+  rows={[
+    [<><a href="https://www.3gpp.org/dynareport/23247.htm" target="_blank" rel="noreferrer">TS 23.247</a></>, 'Architectural enhancements for 5G multicast-broadcast services; Stage 2', 'TS 26.502, TS 26.517', <>The multicast-broadcast capabilities of the 5G System that convey the User Services (with TS 23.501 and TS 23.502). Listed under <a href="#mbs">MBS</a> below</>],
+    [<><a href="https://www.3gpp.org/dynareport/26346.htm" target="_blank" rel="noreferrer">TS 26.346</a></>, 'Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs', 'TS 26.517', 'The MBMS Download Profile, which an Object Distribution Method session using FLUTE conforms to; three MBMS delivery methods, combined with modifications into the Packet Distribution Method; the MBMS User Service announcement, to which the MBS User Service Announcement plays an equivalent role'],
+    [<><a href="https://www.3gpp.org/dynareport/33246.htm" target="_blank" rel="noreferrer">TS 33.246</a></>, '3G Security; Security of Multimedia Broadcast/Multicast Service (MBMS)', 'TS 26.517', 'The protocol the MBSF Client uses to retrieve an MBS Service Key from the MBSSF'],
+    [<><a href="https://www.3gpp.org/dynareport/26501.htm" target="_blank" rel="noreferrer">TS 26.501</a></>, '5G Media Streaming (5GMS); General description and architecture', 'TS 26.502', 'The 5GMS AF and 5GMS AS, with which the MBS AF and MBS AS may be co-located. The use of MBS User Services with the 5G Media Streaming architecture is for further study'],
+  ]}
+/>
 
 ## MBS
 

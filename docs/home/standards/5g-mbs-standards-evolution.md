@@ -25,7 +25,7 @@ pagination_next: null
 - **MBS User Services, Releases 18 to 20:** CT3 aspects of 5MBS_Ph2 (TS 29.580). In Releases 19 and 20 the user-service specifications are changed by the Advanced Media Delivery work items.
 - **MBS, Release 17:** 5MBS, with its stage 2 (TS 23.247), CT stage 3 and security parts, and NR_MBS for NG-RAN.
 - **MBS, Release 18:** 5MBS_Ph2, NR_MBS_enh, UEConfig5MBS (TS 24.575) and 5MBS_CH (TS 32.279).
-- **MBS, Releases 19 and 20:** DTT4MBS (stage 1, TS 22.261) and TEI20_5MBS_Roam-ARC (TS 23.247).
+- **MBS, Releases 19 and 20:** TEI20_5MBS_Roam-ARC (TS 23.247).
 
 :::
 
