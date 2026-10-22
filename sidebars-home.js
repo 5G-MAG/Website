@@ -82,7 +82,7 @@ ALL_TOPICS.forEach((topic) => {
       label: 'Specifications',
       // the first child, Overview, is the topic's main Standards page; the group itself only opens and closes
       collapsed: false,
-      items: topic.standards.map((s, i) => ({ type: 'doc', id: s.doc, label: i === 0 ? 'Overview' : s.sidebarLabel || s.label.replace(/^Standards: /, '') })),
+      items: topic.standards.map((s, i) => ({ type: 'doc', id: s.doc, label: i === 0 ? 'Specification list' : s.sidebarLabel || s.label.replace(/^Standards: /, '') })),
     });
   }
 

@@ -11,6 +11,8 @@ import styles from './styles.module.css';
 
 const trim = (url) => url.replace(/\/$/, '');
 
+// The names of the links are the names of the side menu (Overview, Architecture, Features, Procedures; Specification list, Release
+// history; Repositories, Implementation status, Tutorials), so a card and the menu say the same thing about the same page.
 // The block every project page shares, in three steps: Learn (Technical Analysis), Standards (Specifications) and Build
 // (Software Accelerator). Each step is a card with a few links into what is behind it, and only the links to pages that
 // exist are shown, so a project with one analysis page and one tool gets a short card, not an empty one.
@@ -30,9 +32,9 @@ export default function ProjectPath({ analysisHref, standardsHref, softwareHref,
   ].filter(([, to]) => to && (to === analysisHref || exists(to)));
 
   const specs = [
-    ['All specifications', standardsHref],
-    ['Evolution by release', standardsHref && `${trim(standardsHref)}/evolution`],
-  ].filter(([label, to]) => to && (label === 'All specifications' || exists(to)));
+    ['Specification list', standardsHref],
+    ['Release history', standardsHref && `${trim(standardsHref)}/evolution`],
+  ].filter(([label, to]) => to && (label === 'Specification list' || exists(to)));
 
   const tools = TOOL_KINDS.flatMap((k) =>
     family.filter((p) => k.test(p) && !p.partOf && (!softwareIsTestbed || trim(p.doc_url || '') === trim(softwareHref || '')))

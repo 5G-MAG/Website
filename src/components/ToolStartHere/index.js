@@ -56,7 +56,7 @@ export default function ToolStartHere() {
         )}
         {implementation && (
           <Link className="button button--outline button--primary button--sm" to={implementation}>
-            Implementation detail
+            Implementation status
           </Link>
         )}
         <Link className="button button--outline button--primary button--sm" to="#repositories--releases">
