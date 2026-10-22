@@ -1,18 +1,28 @@
 .title {
   font-size: 1.9rem;
   margin: 0 0 0.4rem;
+  text-align: center;
 }
 
 .sub {
   color: var(--ifm-color-emphasis-700);
   margin: 0 0 2.2rem;
   font-size: 1.05rem;
+  text-align: center;
 }
 
 .path {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  /* Three steps side by side, or one under the other: never two and one, which would leave an arrow pointing
+     at nothing. The breakpoint is the same one that turns the arrows from right to down. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.2rem;
+}
+
+@media (max-width: 900px) {
+  .path {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .step {
