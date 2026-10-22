@@ -8,6 +8,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "build-news-data": "node scripts/build-news-data.js",
+    "build-ai-registry": "node scripts/build-ai-registry.js",
     "build-events-data": "node scripts/build-events-data.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -22,8 +23,8 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prebuild": "npm run validate-frontmatter && npm run build-news-data && npm run build-events-data",
-    "prestart": "npm run build-news-data && npm run build-events-data",
+    "prebuild": "npm run validate-frontmatter && npm run build-news-data && npm run build-events-data && npm run build-ai-registry",
+    "prestart": "npm run build-news-data && npm run build-events-data && npm run build-ai-registry",
     "postinstall": "patch-package",
     "report:specs": "node scripts/report-spec-versions.js"
   },

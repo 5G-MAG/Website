@@ -37,6 +37,36 @@ const config = {
   // of those are external, manual steps outside this repo.
   url: 'https://www.5g-mag.com',
   baseUrl: '/',
+  // The organisation and the site as structured data, for search engines and AI tools that read JSON-LD instead of guessing
+  // from the text. The per-project and per-repository facts are in /ai-context.json and /llms.txt (scripts/build-ai-registry.js).
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: { type: 'application/ld+json' },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': 'https://www.5g-mag.com/#organization',
+            name: '5G-MAG',
+            alternateName: 'The Media Connectivity Association',
+            url: 'https://www.5g-mag.com',
+            logo: 'https://www.5g-mag.com/assets/logos/5g-mag-logo-with-text.png',
+            sameAs: SOCIAL_LINKS.filter((l) => l.key !== 'slack').map((l) => l.href),
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://www.5g-mag.com/#website',
+            name: '5G-MAG - The Media Connectivity Association',
+            url: 'https://www.5g-mag.com',
+            publisher: { '@id': 'https://www.5g-mag.com/#organization' },
+          },
+        ],
+      }),
+    },
+  ],
+
   organizationName: '5G-MAG',
   projectName: 'Website',
 
