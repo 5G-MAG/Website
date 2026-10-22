@@ -26,7 +26,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::
 
-<JumpMenu items={[["Broadcast MBS session", "broadcast-mbs-session"], ["Multicast join and leave", "multicast-join-and-leave"], ["Multicast session activation and deactivation", "multicast-session-activation-and-deactivation"], ["Mobility and switching between shared and individual delivery", "mobility-and-switching-between-shared-and-individual-delivery"], ["Multicast reception in RRC_INACTIVE", "multicast-reception-in-rrc_inactive"], ["Local and location dependent MBS", "local-and-location-dependent-mbs"], ["QoS and policy control", "qos-and-policy-control"], ["Authorisation and identifiers", "authorisation-and-identifiers"], ["Frequency selection for broadcast", "frequency-selection-for-broadcast"], ["Service announcement and pre-configuration", "service-announcement-and-pre-configuration"], ["Power saving", "power-saving"], ["Broadcast for RedCap UEs", "broadcast-for-redcap-ues"], ["Broadcast over NR NTN", "broadcast-over-nr-ntn"], ["Resource sharing in network sharing", "resource-sharing-in-network-sharing"], ["Access to MBS of the VPLMN while roaming", "access-to-mbs-of-the-vplmn-while-roaming"], ["MBS support for V2X services", "mbs-support-for-v2x-services"], ["Group message delivery", "group-message-delivery"], ["Security", "security"], ["Interworking with EPS and QoE", "interworking-with-eps-and-qoe"]]} />
+<JumpMenu items={[["Broadcast MBS session", "broadcast-mbs-session"], ["Multicast join and leave", "multicast-join-and-leave"], ["Multicast session activation and deactivation", "multicast-session-activation-and-deactivation"], ["Mobility and switching between shared and individual delivery", "mobility-and-switching-between-shared-and-individual-delivery"], ["Multicast reception in RRC_INACTIVE", "multicast-reception-in-rrc_inactive"], ["Local and location dependent MBS", "local-and-location-dependent-mbs"], ["QoS and policy control", "qos-and-policy-control"], ["Authorisation and identifiers", "authorisation-and-identifiers"], ["Frequency selection for broadcast", "frequency-selection-for-broadcast"], ["Service announcement and pre-configuration", "service-announcement-and-pre-configuration"], ["Power saving", "power-saving"], ["Broadcast for RedCap UEs", "broadcast-for-redcap-ues"], ["Broadcast over NR NTN", "broadcast-over-nr-ntn"], ["Resource sharing in network sharing", "resource-sharing-in-network-sharing"], ["Access to MBS of the VPLMN while roaming", "access-to-mbs-of-the-vplmn-while-roaming"], ["MBS support for V2X services", "mbs-support-for-v2x-services"], ["Group message delivery", "group-message-delivery"], ["Security", "security"], ["Interworking with EPS and QoE", "interworking-with-eps-and-qoe"], ["Service area, reliability, mobility and mixed traffic", "service-area-reliability-mobility-and-mixed-traffic"]]} />
 
 TS 23.247 groups the MBS procedures in three: a "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). Each feature below says which of MBS Broadcast and MBS Multicast it applies to, from the clauses that define it.
 
@@ -208,6 +208,30 @@ The MBS security function is implemented in the MBSF and MBSTF, so it applies on
 **Defined in** TS 23.247 clauses 5.2, 6.8 and 6.20
 
 Interworking between MBS and eMBMS applies at the service layer when the same service is provided over both. QoE measurement collection may also be supported for the reception of multicast and broadcast sessions (TS 23.247 V20.0.0 clause 5.2; TS 23.247 V20.0.0 clause 6.20). Clause 6.20 is in TS 23.247 V18.8.0 and not in V17.12.0 (CR 0358, V18.6.0).
+
+## Service area, reliability, mobility and mixed traffic
+
+**Applies to:** MBS Broadcast and MBS Multicast
+
+### How is the coverage area of a service determined?
+
+For both Multicast and Broadcast Services, individual cells may be added to or removed from the service area (TS 23.247 V20.0.0 clause 3.1 (MBS service area, note 2)). The Multicast Service is transmitted only in cells within the multicast service area in which there are UEs that have joined an MBS session (TS 23.247 V20.0.0 clause 4.3; TS 38.300 V19.4.0 clause 16.10.5.2, 16.10.5.3.2). Cells within the broadcast service area transmit the Broadcast Service regardless of whether the service is requested or not (TS 23.247 V20.0.0 clause 3.1 (note 1), 4.2.2).
+
+For broadcast, the MCS is indicated in the DCI that schedules the transmission, from the MCS table configured for MCCH or MTCH (TS 38.212 V19.4.0 clause 7.3.1.5.1; TS 38.214 V19.5.0 clause 5.1.3.1; TS 38.300 V19.4.0 clause 16.10.6.6).
+
+### How is reliability of reception managed?
+
+For multicast, provision of UE feedback and support of retransmissions using PTP or PTM, among other mechanisms, ensure reliability (TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.6, 16.10.5.7). For broadcast, services are delivered with no guarantee of reception (TS 23.247 V20.0.0 clause 3.1 (note 1); TS 38.300 V19.4.0 clause 16.10.6.6), however data repetition (slot-level) is possible for improved performance (TS 38.300 V19.4.0 clause 16.10.6.6).
+
+### How are mobility and service continuity managed?
+
+For multicast, service continuity across cells is supported by handover between the base stations a UE traverses (TS 38.300 V19.4.0 clause 16.10.5.3.2, 16.10.5.3.3; TS 23.247 V20.0.0 clause 6.3.1). For broadcast, neighbour-cell information and cell-reselection mechanisms are available but may not ensure lossless handover (TS 38.300 V19.4.0 clause 16.10.6.5.1; TS 23.247 V20.0.0 clause 6.3.2).
+
+Since Release 18, a UE receiving multicast in RRC_INACTIVE state can also continue when changing cells by cell reselection, without resuming the RRC connection, if it can acquire the PTM configuration of the new cell (TS 38.300 V19.4.0 clause 16.10.5.3.5; TS 23.247 V18.8.0 clause 6.17). See [the multicast procedures, moving between cells in RRC_INACTIVE](/tech/5g-mbs/procedures/multicast).
+
+### Can MBS services be transmitted together with other types of traffic on the 5G network?
+
+Mixed radio carriers can deliver multicast and/or broadcast services alongside other unicast data on the same cell (TS 38.214 V19.5.0 clause 5.1; TS 38.300 V19.4.0 clause 16.10.5.6, 16.10.6.7).
 
 <details>
 <summary>Sources for this page</summary>
