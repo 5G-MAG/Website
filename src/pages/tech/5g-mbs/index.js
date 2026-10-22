@@ -26,10 +26,9 @@ export default function FiveGMBS() {
           <p className={styles.whyMattersBody}>
                 Sending the same content to a stadium full of devices as separate unicast streams
                 consumes network capacity proportional to the audience size, however large it gets.
-                MBS avoids that by building multicast and broadcast directly into the 5G Core and RAN,
-                rather than as a separate overlay the way LTE-based eMBMS was: the network can choose
-                point-to-multipoint delivery, one transmission reaching every device at once, instead
-                of a per-device copy. That is what makes live TV, emergency alerts and mass software
+                MBS avoids that by building multicast and broadcast directly into the 5G Core and RAN:
+                the network can choose point-to-multipoint delivery, one transmission reaching every
+                device at once, instead of a per-device copy. That is what makes live TV, emergency alerts and mass software
                 distribution practical at any audience size, without capacity scaling with the number
                 of receivers.
               </p>
@@ -38,19 +37,12 @@ export default function FiveGMBS() {
     >
       <p>
                   Multicast &amp; Broadcast in 5G (MBS) introduces native point-to-multipoint delivery
-                  into 5G New Radio (NR), standardised from 3GPP Release 17 onwards. Delivery can be
+                  into 5G New Radio (NR), standardised from 3GPP Release 17 onwards, and is integrated
+                  directly into the 5G Core and Radio Access Network (RAN). Delivery can be
                   point-to-multipoint (PTM), one transmission shared by many devices, or point-to-point
-                  (PTP), a separate copy per device, with the network choosing between them. Unlike
-                  LTE-based broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is
-                  integrated directly into the 5G Core and Radio Access Network (RAN), enabling efficient
-                  distribution of identical content to many devices simultaneously, whether for live TV,
-                  emergency alerts, or software updates.
-                </p>
-                <p>
-                  5G-MAG implements the MBS user service layer defined in 3GPP{' '}
-                  <a href="https://www.3gpp.org/dynareport/26502.htm">TS 26.502</a>, covering service
-                  announcement, session management, and media delivery, across the
-                  repositories from the application-provider tooling down to the RAN and UE.
+                  (PTP), a separate copy per device, with the network choosing between them. This
+                  enables efficient distribution of identical content to many devices simultaneously,
+                  whether for live TV, emergency alerts, or software updates.
                 </p>
     </ProjectHome>
   );
