@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['vdmc'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -26,7 +24,7 @@ export const REPO_COUNT = (REPO_METADATA['vdmc'] || []).length;
 </div>
 </div>
 
-The reference tool, a web decoder and player for V-DMC content, is in early development. See the [Tech: Dynamic Mesh Coding](/tech/vdmc) page for what V-DMC itself is.
+The reference tool, a web decoder and player for V-DMC content, is in early development. See the [Technical Analysis](/tech/vdmc/overview) for what V-DMC itself is.
 
 ## Contributors & How to Contribute
 
@@ -47,8 +45,6 @@ The reference tool, a web decoder and player for V-DMC content, is in early deve
   ]}
   note="This is a 5G-MAG drawing, not a redrawn specification figure. The arrows follow the order of clauses 9 to 12 of ISO/IEC 23090-29; the adaptation process (clause 13) is not drawn. No repository is mapped yet. Click the figure to enlarge it."
 />
-
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
 ## Repositories & Releases
 

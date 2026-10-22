@@ -1,9 +1,13 @@
 ---
 hide_title: true
 title: "CMMF (Multisource Delivery)"
+sidebar_label: Specification list
 slug: /standards/cmmf
 description: "ETSI TS 103 973, Coded Multisource Media Format (CMMF): a container for coded media delivered from more than one network source at once."
 ---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+import SpecTable from '@site/src/components/SpecTable';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -15,23 +19,34 @@ description: "ETSI TS 103 973, Coded Multisource Media Format (CMMF): a containe
 </div>
 </div>
 
-## Overview
+ETSI TS 103 973 defines the Coded Multisource Media Format (CMMF), a container format for carrying coded media from more than one network source at once. See [CMMF in the Technical Analysis](/tech/content-delivery/more/cmmf) for how it works.
 
-ETSI TS 103 973 defines the Coded Multisource Media Format (CMMF), a container format for carrying coded media from more than one network source at once. See [CMMF in the Technology pages](/tech/content-delivery/more/cmmf) for how it works.
+3GPP SA4 references CMMF as part of the Release 19 Advanced Media Delivery study (TR 26.804); the Release 19 description of Advanced Media Delivery also lists CMMF among its stage 3 items, for media delivery from multiple service endpoints (TR 21.919 clause 11.6); see [Media Streaming and Advanced Media Delivery: Specifications](/standards/5gms) and [Advanced Media Delivery](/tech/5gms/more/advanced-media-delivery) for that context. 5G-MAG tracks CMMF itself as a repository of [Content Delivery Protocols and Tools](/tech/content-delivery), alongside FLUTE and ROUTE, rather than as a separate project.
 
-3GPP SA4 references CMMF as part of the Release 19 Advanced Media Delivery study (TR 26.804); the Release 19 description of Advanced Media Delivery also lists CMMF among its stage 3 items, for media delivery from multiple service endpoints (TR 21.919 clause 11.6); see [Standards: 5G Media Streaming (5GMS)](/standards/5gms) and [Advanced Media Delivery](/tech/5gms/more/advanced-media-delivery) for that context. 5G-MAG tracks CMMF itself as a repository of [Content Delivery Protocols and Tools](/tech/content-delivery), alongside FLUTE and ROUTE, rather than as a separate project. For the version history behind this specification, see [Standards Evolution](/standards/cmmf/evolution).
+:::tip[At a glance]
 
-## Specification
+- **Specification:** ETSI TS 103 973, the Coded Multisource Media Format (CMMF), at V1.2.2 (May 2026).
+- **In 3GPP:** SA4 references CMMF in the Release 19 Advanced Media Delivery study (TR 26.804) and in its stage 3 items (TR 21.919 clause 11.6).
+- **In 5G-MAG:** CMMF is tracked as a repository of Content Delivery Protocols and Tools, not as a separate project.
 
-| Spec | Title | Status |
-| --- | --- | --- |
-| ETSI TS 103 973 | Coded Multisource Media Format (CMMF) for Content Distribution and Delivery | V1.2.2 (May 2026) |
+:::
 
-For the publication history of the specification, see [Standards Evolution](/standards/cmmf/evolution).
+<JumpMenu items={[["Specifications", "specifications"], ["Related", "related"]]} />
+
+## Specifications
+
+<SpecTable
+  columns={["Specification", "Title", "Status"]}
+  rows={[
+    ["ETSI TS 103 973", "Coded Multisource Media Format (CMMF) for Content Distribution and Delivery", "V1.2.2 (May 2026)"],
+  ]}
+/>
+
+For the publication history of the specification, see the [Release history](/standards/cmmf/evolution).
 
 ## Related
 
-- [Standards: Content Delivery Protocols and Tools](/standards/content-delivery): the wider specification list this container sits alongside
-- [Standards: 5G Media Streaming (5GMS)](/standards/5gms): the 3GPP SA4 Advanced Media Delivery work that references CMMF
-- [Content Delivery Protocols and Tools in the Technology pages](/tech/content-delivery): the CMMF section in context
+- [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery): the wider specification list this container sits alongside
+- [Media Streaming and Advanced Media Delivery: Specifications](/standards/5gms): the 3GPP SA4 Advanced Media Delivery work that references CMMF
+- [Content Delivery Protocols and Tools: Technical Analysis](/tech/content-delivery): the CMMF section in context
 - [Content Delivery Protocols and Tools (Reference Tools)](/reference-tools/content-delivery): the [CMMF Encoder](https://github.com/5G-MAG/rt-cmmf-encoder) reference implementation

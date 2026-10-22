@@ -3,7 +3,7 @@ hide_title: true
 title: CMMF (Multisource Delivery) - Standards Evolution
 slug: /standards/cmmf/evolution
 description: Version history behind ETSI TS 103 973, the Coded Multisource Media Format (CMMF).
-sidebar_label: CMMF release history
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">
@@ -16,7 +16,14 @@ sidebar_label: CMMF release history
 </div>
 </div>
 
-This page is the detailed, version-by-version companion to [Standards: CMMF (Multisource Delivery)](/standards/cmmf): the edition history of ETSI TS 103 973. See that page for the current specification and scope.
+This page is the detailed, version-by-version companion to [CMMF (Multisource Delivery): Specifications](/standards/cmmf): the edition history of ETSI TS 103 973. See that page for the current specification and scope.
+
+:::tip[At a glance]
+
+- **ETSI TS 103 973 publications:** V1.1.1 (October 2024), V1.2.1 (March 2026) and V1.2.2 (May 2026).
+- **No 3GPP release history:** CMMF is specified by ETSI. 3GPP lists it as a reference in Release 19 (TR 21.919 clause 11.6).
+
+:::
 
 ## Version history
 
@@ -28,7 +35,7 @@ The History of ETSI TS 103 973 V1.2.2 (2026-05) lists three publications.
 | V1.2.1 | March 2026 |
 | V1.2.2 | May 2026 |
 
-CMMF is specified by ETSI, not by a 3GPP release, so its history is the list of ETSI publications and not a set of 3GPP work items and change requests. The same list is part of [Content Delivery Protocols and Tools - Standards Evolution](/standards/content-delivery/evolution). The History of the document does not describe what changed between these versions.
+CMMF is specified by ETSI, not by a 3GPP release, so its history is the list of ETSI publications and not a set of 3GPP work items and change requests. The same list is part of [Content Delivery Protocols and Tools: Release history](/standards/content-delivery/evolution). The History of the document does not describe what changed between these versions.
 
 On the 3GPP side, TR 21.919 clause 11.6 (Release 19, Advanced Media Delivery, work item AMD_PRO-MED) lists ETSI TS 103 973 as a reference for the stage 3 work on media delivery from multiple service endpoints. No Release 20 item was checked in a primary source.
 
@@ -39,3 +46,8 @@ On the 3GPP side, TR 21.919 clause 11.6 (Release 19, Advanced Media Delivery, wo
 - TR 21.919 V19.0.0, clause 11.6 (this version may be early).
 
 </details>
+
+## Related
+
+- [CMMF (Multisource Delivery): Specifications](/standards/cmmf)
+- [CMMF (Multisource Delivery): Technical Analysis](/tech/content-delivery)

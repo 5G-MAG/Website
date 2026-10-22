@@ -110,3 +110,8 @@ Both specifications were placed under change control at SA#96 (June 2022) as ver
 | TS 26.532 | 17.2.0 | 0003 | Data Reporting Configuration Inclusion of Data Sampling Rules and Data Reporting Rules |
 | TS 26.532 | 17.3.0 | 0007 | Essential maintenance |
 | TS 26.532 | 17.3.0 | 0008 | Data packaging strategies |
+
+## Related
+
+- [User Data Collection and Reporting: Specifications](/standards/data-collection)
+- [User Data Collection and Reporting: Technical Analysis](/tech/data-collection)

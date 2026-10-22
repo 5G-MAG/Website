@@ -3,17 +3,15 @@ hide_title: true
 sidebar_label: Repositories
 title: CAMARA Connectivity Quality Management APIs
 sidebar_position: -1
-description: Overview of the CAMARA network API reference implementation for QoS, slicing, and connectivity insight APIs; see Implementation Detail for the full API coverage table.
+description: Overview of the CAMARA network API reference implementation for QoS, slicing, and connectivity insight APIs; see Implementation status for the full API coverage table.
 ---
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -31,7 +29,7 @@ export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 
 The tools cover key CAMARA project APIs and their application to media production (live contribution, remote production) and live distribution scenarios. Targeted at developers and network engineers integrating 5G network intelligence into media workflows.
 
-CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)). For the full API coverage table, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
+CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)). For the full API coverage table, see [Implementation status](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
 
 ## Contributors & How to Contribute
 
@@ -53,8 +51,6 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
   note="This is a 5G-MAG drawing, not a redrawn specification figure, and it shows CAMARA only. The roles come from the CAMARA Dedicated Networks workflow, and the API names and the callback from the Dedicated Networks Portal tutorial. The repository README is read as the API consumer side. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="network-apis" />
@@ -72,7 +68,7 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
 </div>
 </div>
 
-CAMARA [Dedicated Networks API](https://github.com/camaraproject/DedicatedNetworks), 3GPP TS 23.434 (Service Enabler Architecture Layer for Verticals (SEAL); Functional architecture and information flows). See the [Implementation Detail](./implementation) page for details.
+CAMARA [Dedicated Networks API](https://github.com/camaraproject/DedicatedNetworks), 3GPP TS 23.434 (Service Enabler Architecture Layer for Verticals (SEAL); Functional architecture and information flows). See the [Implementation status](./implementation) page for details.
 
 See [Network APIs on the Standards portal](/standards/network-apis) for version history and 5G-MAG's own standards contributions.
 

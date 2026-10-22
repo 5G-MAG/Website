@@ -1,5 +1,5 @@
 ---
-title: MPEG-I Scene Description
+title: "XR Media & 3D Scenes Overview"
 hide_title: true
 description: 'Explains the MPEG-I Scene Description model: its glTF 2.0 extensions, Presentation Engine/MAF architecture, buffer API, and editions.'
 sidebar_label: "Overview"
@@ -16,7 +16,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Technical Analysis</span>
-<h1>MPEG-I Scene Description</h1>
+<h1>XR Media &amp; 3D Scenes</h1>
 </div>
 </div>
 
@@ -51,7 +51,7 @@ MPEG-I SD defines the following reference architecture. It shows how a scene flo
   <figcaption>MPEG-I Scene Description reference architecture: Presentation Engine, Media Access Function (MAF) and Buffers.</figcaption>
 </figure>
 
-- The Presentation Engine replaces a traditional 2D media player. It is responsible for multi-modal rendering of a scene composed of audiovisuals and haptics media. It also provides information about the viewer's and object pose to optimize delivery.
+- The Presentation Engine replaces a traditional 2D media player. It is responsible for multi-modal rendering of a scene composed of audiovisuals and haptics media. It also provides information about the viewer's and object pose to optimise delivery.
 - The Presentation Engine delegates media handling to the Media Access Function (MAF), which is responsible for media access and processing. The MAF constructs a suitable media pipeline to transform media from a delivery format into the formats used during rendering, using MIME type and codec parameters (the standard content-type and codec identifiers carried with each media object) to work out which formats it must support and assemble the correct pipeline.
 - The MAF API is used by the Presentation Engine to request immersive media in the scene.
 - The Buffers are fed by the processed media with a format defined through the scene description document in ISO/IEC 23090-14
@@ -112,7 +112,7 @@ This page follows ISO/IEC 23090-14:2025, second edition, published 2025-11. Its 
 
 Amendment 1 to the second edition, "Support of MPEG-I audio, scene understanding and other extensions", is at final draft stage (FDAM 1, dated 2026-05-01). Among its changes, it adds a recommendedSpatialComputingConfig object to the MPEG_anchor extension (clause 8.1).
 
-A given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR Implementation Detail page](/reference-tools/xr/implementation).
+A given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR Implementation status page](/reference-tools/xr/implementation).
 
 ## Relationship to 3GPP delivery
 
@@ -136,5 +136,5 @@ Later releases: TS 26.119 and TS 26.565 were created in Release 18 (MeCAR and SR
 
 ## Related
 
-- [Conversational Avatar Communication with MPEG ARF](/tech/avatar): uses the `MPEG_node_avatar` extension described above for 3D avatar representation.
-- [MPEG V3C Immersive Platform](/tech/v3c)
+- [Conversational Avatar Communication](/tech/avatar): uses the `MPEG_node_avatar` extension described above for 3D avatar representation.
+- [Volumetric Video Experiences](/tech/v3c)

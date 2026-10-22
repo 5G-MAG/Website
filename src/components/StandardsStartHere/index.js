@@ -43,7 +43,7 @@ export default function StandardsStartHere() {
       <div className={styles.actions}>
         {tech && (
           <Link className="button button--primary button--sm" to={tech}>
-            Technology
+            Technical Analysis
           </Link>
         )}
         {software && (

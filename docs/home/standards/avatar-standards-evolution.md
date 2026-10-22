@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Conversational Avatar Communication: Specifications](/standards/avatar): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -138,3 +138,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | 03-2025 | SA#107 | SP-250288 | Version 2.0.0 created by MCC for presentation to TSG SA#107 | 2.0.0 |
 
 </details>
+
+## Related
+
+- [Conversational Avatar Communication: Specifications](/standards/avatar)
+- [Conversational Avatar Communication: Technical Analysis](/tech/avatar)

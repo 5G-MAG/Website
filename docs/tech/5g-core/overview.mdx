@@ -6,6 +6,8 @@ hide_title: true
 description: The 5G Core service APIs that 5G-MAG components consume, which Network Function offers each, and where each is specified.
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,6 +30,8 @@ description: The 5G Core service APIs that 5G-MAG components consume, which Netw
 - **In this section:** This page lists the services consumed from the PCF, BSF, MB-SMF and NRF, and what each library does.
 
 :::
+
+<JumpMenu items={[["The services consumed", "the-services-consumed"], ["What each library consumes", "what-each-library-consumes"], ["What later releases changed", "what-later-releases-changed"]]} />
 
 The 5G Core is made of Network Functions, each offering services through service-based interfaces. A component that needs one of those services acts as the **NF service consumer** of it. The 5G Core Service Consumers libraries package that consumer side so that different 5G-MAG components can reuse it, for example an Application Function calling the PCF, or the MBS Function calling the MB-SMF. Only the Network Functions that 5G Media Streaming and 5G MBS use are covered.
 
@@ -63,6 +67,6 @@ Each service was first specified in the release shown on the [Standards page](/s
 ## Related
 
 - [Standards: 5G Core Service Consumers](/standards/5g-core)
-- [Implementation Detail](/reference-tools/3gpp-platforms/implementation)
-- [Technology: 5G Media Streaming](/tech/5gms)
-- [Technology: 5G Multicast Broadcast Services](/tech/5g-mbs)
+- [Implementation status](/reference-tools/3gpp-platforms/implementation)
+- [Technical Analysis: Media Streaming and Advanced Media Delivery](/tech/5gms)
+- [Technical Analysis: Media delivery over 5G Multicast Broadcast Services](/tech/5g-mbs)

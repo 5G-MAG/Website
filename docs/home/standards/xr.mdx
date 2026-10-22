@@ -6,6 +6,8 @@ description: 'Standards tracking for XR: MPEG-I Scene Description, 3GPP AR/XR sp
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+import SpecTable from '@site/src/components/SpecTable';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { XR_SPECS, XR_LAYER_ORDER } from '@site/src/data/specs/xr';
 
@@ -20,22 +22,46 @@ import { XR_SPECS, XR_LAYER_ORDER } from '@site/src/data/specs/xr';
 </div>
 </div>
 
-## Overview
-
-eXtended Reality (XR) covers virtual, augmented and mixed reality media delivered over 5G. This page groups the relevant MPEG and 3GPP deliverables (scene description, AR/XR device and delivery specifications, split rendering, IVAS immersive audio), then lists the associated 3GPP work items by release. For how these pieces fit together, see the Technology page linked below.
+eXtended Reality (XR) covers virtual, augmented and mixed reality media delivered over 5G. This page groups the relevant MPEG and 3GPP deliverables (scene description, AR/XR device and delivery specifications, split rendering, IVAS immersive audio), then lists the associated 3GPP work items by release. For how these pieces fit together, see the [Technical Analysis](/tech/xr).
 
 5G-MAG tracks this work area as it moves from study to normative specification: MPEG-I Scene Description (ISO/IEC 23090-14 and the MPEG glTF 2.0 extensions), delivery over 5G Media Streaming (TS 26.501, TS 26.512), device capabilities and split rendering (TS 26.119 MeCAR, TS 26.565 Split Rendering Media Service Enabler), and immersive audio (the IVAS codec deliverables and related split-rendering work). This page is a tracking view; confirm against primary sources before relying on a specific status.
 
+:::tip[At a glance]
+
+- **Layers:** scene and media formats (MPEG), delivery (3GPP SA4), device and media capabilities (3GPP SA4), and radio and system (3GPP RAN and SA2).
+- **Scene description:** ISO/IEC 23090-14, second edition published in November 2025; Amendment 1 is at final draft stage.
+- **Devices and split rendering:** TS 26.119 (MeCAR) and TS 26.565 (Split Rendering Media Service Enabler), anchored by the studies TR 26.928 and TR 26.998.
+- **Work items:** the tables under Release by release list the XR work items from Release 15 to Release 20.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["Specifications by layer", "specifications-by-layer"], ["Scene description: ISO/IEC 23090-14", "scene-description-isoiec-23090-14"], ["Release by release", "release-by-release"], ["Related", "related"]]} />
+
+## Specifications
+
+The MPEG and 3GPP deliverables in scope of XR, filterable by the layer they cover. Search matches the specification number, its title and any scope note; the note carries the 3GPP status and working group.
+
+TR 26.928 (Extended Reality (XR) in 5G, Release 16) and TR 26.998 (Release 17, glass-type AR/MR devices) are the studies that anchor the 3GPP work; TR 26.998 defined the **STAR** (Stand-alone AR) and **EDGAR** (Edge-Dependent AR) device classes referenced throughout the later specifications. TS 26.119 (MeCAR, Media Capabilities for Augmented Reality) turns these into concrete, testable device capabilities. See the [Technical Analysis](/tech/xr) for the architecture analysis.
+
+The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies split rendering, dividing the rendering workload between an EDGAR-class device and a network renderer, for non-IMS media services. See the [Technical Analysis](/tech/xr) for the mechanism (SRC/SRS roles, the SWAP control protocol, WebRTC transport).
+
+<SpecIndex specs={XR_SPECS} layerOrder={XR_LAYER_ORDER} />
+
+Note: TS 26.249 (split rendering) and TS 26.566 carry similar but distinct titles, and TR 26.866 and TR 26.996 share the same title on the 3GPP portal; this is portal data, not a transcription error.
+
 ## Specifications by layer
 
-XR delivery over 5G is built from four layers of standardisation. For how they fit together, see [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/overview) and the [XR Technology page](/tech/xr).
+XR delivery over 5G is built from four layers of standardisation. For how they fit together, see [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/overview) and the [Technical Analysis](/tech/xr).
 
-| Layer                                        | Specifications                                                        |
-| --------------------------------------------- | ----------------------------------------------------------------------- |
-| Scene and media formats (MPEG)               | ISO/IEC 23090-14 (Scene Description); ISO/IEC 23090-5 (V3C/MIV)       |
-| Delivery (3GPP SA4)                          | TS 26.501, TS 26.512 (5GMS); TS 26.506 (RTC)                          |
-| Device and media capabilities (3GPP SA4)     | TR 26.928, TR 26.998; TS 26.119 (MeCAR); TS 26.565 (split rendering)  |
-| Radio and system (3GPP RAN and SA2)          | TR 38.835, TR 38.838; 23.700-series                                    |
+<SpecTable
+  columns={["Layer", "Specifications"]}
+  rows={[
+    ["Scene and media formats (MPEG)", "ISO/IEC 23090-14 (Scene Description); ISO/IEC 23090-5 (V3C/MIV)"],
+    ["Delivery (3GPP SA4)", "TS 26.501, TS 26.512 (5GMS); TS 26.506 (RTC)"],
+    ["Device and media capabilities (3GPP SA4)", "TR 26.928, TR 26.998; TS 26.119 (MeCAR); TS 26.565 (split rendering)"],
+    ["Radio and system (3GPP RAN and SA2)", "TR 38.835, TR 38.838; 23.700-series"],
+  ]}
+/>
 
 ## Scene description: ISO/IEC 23090-14
 
@@ -45,94 +71,102 @@ ISO/IEC 23090-14 is Part 14 of the MPEG-I suite (ISO/IEC 23090, Coded representa
 
 Amendment 1 to this edition, "Support of MPEG-I audio, scene understanding and other extensions", is at final draft stage (ISO/IEC 23090-14:2025/FDAM 1, dated 2026-05-01). TS 26.143 V19.1.0 lists the AR, interactivity, avatar, lighting and haptics support among its normative references as "ISO/IEC 23090-14 AMD 2".
 
-For the editions and amendments, see [Standards Evolution](/standards/xr/evolution).
+For the editions and amendments, see [Release history](/standards/xr/evolution).
 
-For the extension-by-extension model and the MAF/Presentation Engine architecture, see the Technology view: [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/overview).
+For the extension-by-extension model and the MAF/Presentation Engine architecture, see the Technical Analysis: [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/overview).
 
-## Specifications in scope
+## Release by release
 
-The MPEG and 3GPP deliverables in scope of XR, filterable by the layer they cover. Search matches the specification number, its title and any scope note; the note carries the 3GPP status and working group.
-
-TR 26.928 (Extended Reality (XR) in 5G, Release 16) and TR 26.998 (Release 17, glass-type AR/MR devices) are the studies that anchor the 3GPP work; TR 26.998 defined the **STAR** (Stand-alone AR) and **EDGAR** (Edge-Dependent AR) device classes referenced throughout the later specifications. TS 26.119 (MeCAR, Media Capabilities for Augmented Reality) turns these into concrete, testable device capabilities. See the [Technology page](/tech/xr) for the architecture analysis.
-
-The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies split rendering, dividing the rendering workload between an EDGAR-class device and a network renderer, for non-IMS media services. See the [Technology page](/tech/xr) for the mechanism (SRC/SRS roles, the SWAP control protocol, WebRTC transport).
-
-<SpecIndex specs={XR_SPECS} layerOrder={XR_LAYER_ORDER} />
-
-Note: TS 26.249 (split rendering) and TS 26.566 carry similar but distinct titles, and TR 26.866 and TR 26.996 share the same title on the 3GPP portal; this is portal data, not a transcription error.
-
-## Related 3GPP Work Items
-
-Work items are the activities that produce the technical reports (TR) and specifications (TS) listed above. The tables below group the XR work items by 3GPP Release, newest first. What each work item adds, with the release description clause, is in [Standards Evolution](/standards/xr/evolution).
+Work items are the activities that produce the technical reports (TR) and specifications (TS) listed above. The tables below group the XR work items by 3GPP Release, newest first. What each work item adds, with the release description clause, is in the [Release history](/standards/xr/evolution).
 
 ### Release 20
 
 Release 20 (work plan of 28 September 2026). The WG column is the group named in the work plan row.
 
-| Work Item | Acronym      | Title                                      | Rel    | WG  |
-| --------- | ------------ | ------------------------------------------ | ------ | --- |
-| 1130007   | AvCall_Ph2-MED | Avatar Communications phase 2            | Rel‑20 | S4  |
-| 1100020   | XRM_Ph3-APP  | Application enabler for XR Services Phase 3 | Rel‑20 | S6  |
-| 1070026   | FS_XRM_Ph3_APP | Study on Application enabler for XR Services Phase 3 | Rel‑20 | S6  |
-| 1070033   | Metaverse_Ph2-APP | Stage 2 for mobile metaverse services Phase 2 | Rel‑20 | S6  |
-| 1081089   | NR_XR_Ph4-Core | Core part: XR (eXtended Reality) for NR Phase 4 | Rel‑20 | R2  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["1130007", "AvCall_Ph2-MED", "Avatar Communications phase 2", "Rel‑20", "S4"],
+    ["1100020", "XRM_Ph3-APP", "Application enabler for XR Services Phase 3", "Rel‑20", "S6"],
+    ["1070026", "FS_XRM_Ph3_APP", "Study on Application enabler for XR Services Phase 3", "Rel‑20", "S6"],
+    ["1070033", "Metaverse_Ph2-APP", "Stage 2 for mobile metaverse services Phase 2", "Rel‑20", "S6"],
+    ["1081089", "NR_XR_Ph4-Core", "Core part: XR (eXtended Reality) for NR Phase 4", "Rel‑20", "R2"],
+  ]}
+/>
 
 ### Release 19
 
-| Work Item | Acronym      | Title                                      | Rel    | WG  |
-| --------- | ------------ | ------------------------------------------ | ------ | --- |
-| 1040022   | FS_ARSpatial | Study on Spatial Computing for AR Services | Rel‑19 | S4  |
-| 1070056   | AvCall-MED   | Avatar Communications in AR Calls          | Rel‑19 | S4  |
-| 1030003   | SR_IMS       | Split rendering over IMS                   | Rel‑19 | S4  |
-| 1060021   | 5G_RTP_Ph2   | 5G Real-time Transport Protocol Configurations, Phase 2 | Rel‑19 | S4  |
-| 1040032   | XRM_Ph2      | Extended Reality and Media service (XRM) Phase 2 | Rel‑19 | S2  |
-| 1020098   | NR_XR_Ph3    | XR (eXtended Reality) for NR Phase 3       | Rel‑19 | R2  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["1040022", "FS_ARSpatial", "Study on Spatial Computing for AR Services", "Rel‑19", "S4"],
+    ["1070056", "AvCall-MED", "Avatar Communications in AR Calls", "Rel‑19", "S4"],
+    ["1030003", "SR_IMS", "Split rendering over IMS", "Rel‑19", "S4"],
+    ["1060021", "5G_RTP_Ph2", "5G Real-time Transport Protocol Configurations, Phase 2", "Rel‑19", "S4"],
+    ["1040032", "XRM_Ph2", "Extended Reality and Media service (XRM) Phase 2", "Rel‑19", "S2"],
+    ["1020098", "NR_XR_Ph3", "XR (eXtended Reality) for NR Phase 3", "Rel‑19", "R2"],
+  ]}
+/>
 
 ### Release 18
 
-| Work Item | Acronym         | Title                                                         | Rel    | WG  |
-| --------- | --------------- | ------------------------------------------------------------- | ------ | --- |
-| 940068    | FS_XRM          | Study on architecture enhancement for XR and media services   | Rel‑18 | S2  |
-| 940087    | FS_NR_XR_enh    | Study on XR (eXtended Reality) enhancements for NR            | Rel‑18 | R2  |
-| 950012    | FS_eiRTCW       | Study on immersive Real-time Communication for WebRTC Phase 2 | Rel‑18 | S4  |
-| 950014    | iRTCW           | Immersive Real-time Communication for WebRTC                  | Rel‑18 | S4  |
-| 950013    | FS_SmarTAR      | Study on Smartly Tethering AR Glasses                         | Rel‑18 | S4  |
-| 950015    | MeCAR           | Media Capabilities for Augmented Reality                      | Rel‑18 | S4  |
-| 960042    | IBACS           | IMS-based AR Conversational Services                          | Rel‑18 | S4  |
-| 960044    | GA4RTAR         | Generic architecture for RT and AR/MR                         | Rel‑18 | S4  |
-| 960045    | SR_MSE          | Split Rendering Media Service Enabler                         | Rel‑18 | S4  |
-| 960046    | 5G_RTP          | Real-time Transport Protocol Configurations                   | Rel‑18 | S4  |
-| 960049    | FS_ARMRQoE      | Study on AR and MR QoE Metrics                                | Rel‑18 | S4  |
-| 960050    | FS_Audio_5GSTAR | Study on Audio Aspects for Glasses-type AR/MR Devices         | Rel‑18 | S4  |
-| 990110    | XRM             | Architecture Enhancements for XR (Extended Reality) and media service | Rel‑18 | S2  |
-| 981039    | NR_XR_enh       | XR (eXtended Reality) enhancements for NR                     | Rel‑18 | R2  |
-| 990025    | ISAR            | Immersive Audio for Split Rendering Scenarios                 | Rel‑18 | S4  |
-| 870013    | FS_XRTraffic  | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | Rel‑18 | S4  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["940068", "FS_XRM", "Study on architecture enhancement for XR and media services", "Rel‑18", "S2"],
+    ["940087", "FS_NR_XR_enh", "Study on XR (eXtended Reality) enhancements for NR", "Rel‑18", "R2"],
+    ["950012", "FS_eiRTCW", "Study on immersive Real-time Communication for WebRTC Phase 2", "Rel‑18", "S4"],
+    ["950014", "iRTCW", "Immersive Real-time Communication for WebRTC", "Rel‑18", "S4"],
+    ["950013", "FS_SmarTAR", "Study on Smartly Tethering AR Glasses", "Rel‑18", "S4"],
+    ["950015", "MeCAR", "Media Capabilities for Augmented Reality", "Rel‑18", "S4"],
+    ["960042", "IBACS", "IMS-based AR Conversational Services", "Rel‑18", "S4"],
+    ["960044", "GA4RTAR", "Generic architecture for RT and AR/MR", "Rel‑18", "S4"],
+    ["960045", "SR_MSE", "Split Rendering Media Service Enabler", "Rel‑18", "S4"],
+    ["960046", "5G_RTP", "Real-time Transport Protocol Configurations", "Rel‑18", "S4"],
+    ["960049", "FS_ARMRQoE", "Study on AR and MR QoE Metrics", "Rel‑18", "S4"],
+    ["960050", "FS_Audio_5GSTAR", "Study on Audio Aspects for Glasses-type AR/MR Devices", "Rel‑18", "S4"],
+    ["990110", "XRM", "Architecture Enhancements for XR (Extended Reality) and media service", "Rel‑18", "S2"],
+    ["981039", "NR_XR_enh", "XR (eXtended Reality) enhancements for NR", "Rel‑18", "R2"],
+    ["990025", "ISAR", "Immersive Audio for Split Rendering Scenarios", "Rel‑18", "S4"],
+    ["870013", "FS_XRTraffic", "Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems", "Rel‑18", "S4"],
+  ]}
+/>
 
 ### Release 17
 
-| Work Item | Acronym       | Title                                                                                 | Rel    | WG  |
-| --------- | ------------- | ------------------------------------------------------------------------------------- | ------ | --- |
-| 860062    | FS_NR_XR_eval | Study on XR (Extended Reality) evaluations for NR                                     | Rel‑17 | R1  |
-| 820003    | ITT4RT        | Support of Immersive Teleconferencing and Telepresence for Remote Terminals           | Rel‑17 | S4  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["860062", "FS_NR_XR_eval", "Study on XR (Extended Reality) evaluations for NR", "Rel‑17", "R1"],
+    ["820003", "ITT4RT", "Support of Immersive Teleconferencing and Telepresence for Remote Terminals", "Rel‑17", "S4"],
+  ]}
+/>
 
 ### Release 16
 
-| Work Item | Acronym | Title                                | Rel    | WG  |
-| --------- | ------- | ------------------------------------ | ------ | --- |
-| 810006    | FS_5GXR | Study on eXtended Reality (XR) in 5G | Rel‑16 | S4  |
-| 840000    | VRQoE   | VR QoE metrics                       | Rel‑16 | S4  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["810006", "FS_5GXR", "Study on eXtended Reality (XR) in 5G", "Rel‑16", "S4"],
+    ["840000", "VRQoE", "VR QoE metrics", "Rel‑16", "S4"],
+  ]}
+/>
 
 ### Release 15
 
-| Work Item | Acronym  | Title                                | Rel    | WG  |
-| --------- | -------- | ------------------------------------ | ------ | --- |
-| 770025    | VRStream | Virtual Reality Profiles for Streaming Media | Rel‑15 | S4  |
+<SpecTable
+  columns={["Work Item", "Acronym", "Title", "Rel", "WG"]}
+  rows={[
+    ["770025", "VRStream", "Virtual Reality Profiles for Streaming Media", "Rel‑15", "S4"],
+  ]}
+/>
 
 ## Related
 
-- [Standards: Conversational Avatar Communication](/standards/avatar)
-- [Standards: MPEG V3C Immersive Platform](/standards/v3c)
-- [Standards: Beyond 2D Video Experiences](/standards/beyond-2d)
-- [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc)
+- [XR Media & 3D Scenes: Release history](/standards/xr/evolution)
+- [XR Media & 3D Scenes: Technical Analysis](/tech/xr)
+- [Conversational Avatar Communication: Specifications](/standards/avatar)
+- [Volumetric Video Experiences: Specifications](/standards/v3c)
+- [Beyond 2D Video Experiences: Specifications](/standards/beyond-2d)
+- [Real-time Media Communication (RTC): Specifications](/standards/rtc)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

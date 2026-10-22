@@ -17,7 +17,15 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the release-by-release companion to [Standards: Content Delivery Protocols and Tools](/standards/content-delivery): when each document was published, and the Change Requests to TS 26.346 and TS 26.517 that touch FLUTE delivery.
+This page is the release-by-release companion to [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery): when each document was published, and the Change Requests to TS 26.346 and TS 26.517 that touch FLUTE delivery.
+
+:::tip[At a glance]
+
+- **IETF:** FLUTE version 1 (RFC 3926, October 2004), FLUTE version 2 (RFC 6726, November 2012) and ROUTE (RFC 9223, April 2022).
+- **3GPP:** work items of Release 15 to Release 19 changed TS 26.346 or TS 26.517; no Release 20 work item lists them in the work plan of 28 September 2026.
+- **ETSI:** CMMF (ETSI TS 103 973) has three publications, V1.1.1 to V1.2.2.
+
+:::
 
 ## IETF documents
 
@@ -93,3 +101,8 @@ Taken from the change history of TS 26.346 V19.3.0, which lists Change Requests 
 - **ETSI TS 103 973:** History of ETSI TS 103 973 V1.2.2.
 
 </details>
+
+## Related
+
+- [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery)
+- [Content Delivery Protocols and Tools: Technical Analysis](/tech/content-delivery)

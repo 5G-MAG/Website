@@ -11,9 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const REPO_COUNT = (REPO_METADATA['6g-testbed'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -42,7 +40,7 @@ export const REPO_COUNT = (REPO_METADATA['6g-testbed'] || []).length;
 
 ## What it does
 
-The 6G media study records the traffic characteristics of AI media services from this testbed's measurements, as the basis for its statements on AI media services. The study obtains the characteristics with the framework of its annexes B, C and D (clause 6.3.3.1); the results are the record of the AI traffic characteristics it collects. What the study covers, and where AI traffic fits in it: [Towards 6G Media](/tech/6g/overview).
+The 6G media study records the traffic characteristics of AI media services from this testbed's measurements, as the basis for its statements on AI media services. The study obtains the characteristics with the framework of its annexes B, C and D (clause 6.3.3.1); the results are the record of the AI traffic characteristics it collects. What the study covers, and where AI traffic fits in it: [Technical Analysis](/tech/6g/overview).
 
 <figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
@@ -103,8 +101,6 @@ The 6G media study records the traffic characteristics of AI media services from
 
 </div>
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="6g-testbed" />
@@ -121,15 +117,6 @@ The 6G media study records the traffic characteristics of AI media services from
 3GPP TR 26.870 (the 6G media study, FS_6G_MED, Release 20), a draft (V0.6.1, September 2026). Its annexes B to E describe the testbed, the method, the scenarios and the network emulator.
 
 See [6G on the Standards portal](/standards/6g) for version history and 5G-MAG's own standards contributions.
-
-## Slide Deck
-
-<div class="event-post-grid" style={{maxWidth: '340px'}}>
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/6g-testbed-slides-cover.jpg')} alt="6G AI Traffic Characterization Testbed slide deck cover" />
-<span class="event-post-title">Slide deck: 6G AI Traffic Characterization Testbed overview</span>
-</a>
-</div>
 
 ## Developer Updates
 

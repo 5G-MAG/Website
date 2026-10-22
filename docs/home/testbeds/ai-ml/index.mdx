@@ -11,9 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const REPO_COUNT = (REPO_METADATA['ai-ml'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -59,8 +57,6 @@ The repository README describes the purpose as to "establish an evaluation frame
   note="The mapping of boxes to the repository is for its maintainers to confirm; the split inferencing testbed of figure 4.2-1 is not drawn. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="ai-ml" />
@@ -79,15 +75,6 @@ The specifications below are listed as background context, not as a prerequisite
 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on Artificial Intelligence and Machine Learning in 5G media services) and its companion evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), both Release 19, plus [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS).
 
 See [AI/ML on the Standards portal](/standards/ai-ml) for version history and 5G-MAG's own standards contributions.
-
-## Slide Deck
-
-<div class="event-post-grid" style={{maxWidth: '340px'}}>
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/ai-ml-slides-cover.jpg')} alt="AI/ML Evaluation Framework slide deck cover" />
-<span class="event-post-title">Slide deck: AI/ML Evaluation Framework overview</span>
-</a>
-</div>
 
 ## Developer Updates
 

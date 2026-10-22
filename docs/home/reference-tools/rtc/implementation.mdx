@@ -22,14 +22,14 @@ import AUDIT from '@site/src/data/audit-rtc.json';
 
 :::tip[In short]
 
-- **What exists:** there is no dedicated RTC Reference Tool yet. The only RTC-related code is `rt-3gpp-swap`, the SWAP reference implementation (a Node.js signalling server and a client library) held in the repository of the [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar) project, which owns it.
+- **What exists:** there is no dedicated RTC Reference Tool yet. The only RTC-related code is `rt-3gpp-swap`, the SWAP reference implementation (a Node.js signalling server and a client library) held in the repository of the [Conversational Avatar Communication](/reference-tools/avatar) project, which owns it.
 - **What SWAP is:** SWAP (Simple WebRTC Application Protocol) is the signalling protocol of TS 26.113 (clause 13.2.4) that lets two real-time communication endpoints set up a call through a signalling server. It runs on the RTC-4s reference point, between the RTC Client and the WebRTC Signalling Function of the RTC AS.
 - **Which specification it follows:** TS 26.113 V19.2.0. Releases 18 to 20 are judged on the same text.
 - **Source of this page:** an audit of the `main` branch of `rt-3gpp-swap` on 2026-10-21. The RTC AF, the Media Session Handler, the ICE function and the other RTC AS functions are not part of it.
 
 :::
 
-For what the specifications define, see the [Technology](/tech/rtc).
+For what the specifications define, see the [Technical Analysis](/tech/rtc/overview).
 
 ## What the SWAP code implements
 
@@ -59,10 +59,4 @@ The full audit, with the code behind each verdict, is available to 5G-MAG member
 
 ## Used with other projects
 
-- [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar): owns the `rt-3gpp-swap` repository.
-
-## Related
-
-- [Technology](/tech/rtc)
-- [RTC standards](/standards/rtc)
-- [Repositories & Releases](/reference-tools/rtc/#repositories--releases)
+- [Conversational Avatar Communication](/reference-tools/avatar): owns the `rt-3gpp-swap` repository.

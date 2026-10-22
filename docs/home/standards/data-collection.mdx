@@ -8,6 +8,7 @@ pagination_prev: null
 pagination_next: null
 ---
 
+import SpecTable from '@site/src/components/SpecTable';
 import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
@@ -40,10 +41,13 @@ The page covers Release 17 to Release 19. No Release 20 work item in the 3GPP wo
 
 The Release column is the release of each document's first version. Titles are each document's cover title; the last column summarises its Scope clause.
 
-| Specification | Title | Release | Covers |
-| --- | --- | :---: | --- |
-| [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) | Data Collection and Reporting; General Description and Architecture | 17 | A generic architecture for collecting and reporting data in the 5G System |
-| [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) | Data Collection and Reporting; Protocols and Formats | 17 | The APIs, resource structures and data models for the collection and reporting of UE data by the Data Collection AF, for event exposure to network consumers |
+<SpecTable
+  columns={["Specification", "Title", "Release", "Covers"]}
+  rows={[
+    [<><a href="https://www.3gpp.org/dynareport/26531.htm" target="_blank" rel="noreferrer">TS 26.531</a></>, "Data Collection and Reporting; General Description and Architecture", "17", "A generic architecture for collecting and reporting data in the 5G System"],
+    [<><a href="https://www.3gpp.org/dynareport/26532.htm" target="_blank" rel="noreferrer">TS 26.532</a></>, "Data Collection and Reporting; Protocols and Formats", "17", "The APIs, resource structures and data models for the collection and reporting of UE data by the Data Collection AF, for event exposure to network consumers"],
+  ]}
+/>
 
 TS 26.531 has the same clause structure in Release 17, 18 and 19. In TS 26.532 the API roots stay at `/v1`; from Release 18 a data reporting configuration is created at `/sessions/{sessionId}/configurations` instead of `/sessions/{sessionId}/configurations/{configurationId}`.
 
@@ -51,15 +55,20 @@ TS 26.531 has the same clause structure in Release 17, 18 and 19. In TS 26.532 t
 
 The Scope clause of each specification names the 5G System documents it is defined against.
 
-| Specification | Title | Group | Named in the Scope of |
-| --- | --- | --- | --- |
-| [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) | System architecture for the 5G System (5GS); Stage 2 | SA2 | TS 26.531, TS 26.532 |
-| [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) | Procedures for the 5G System (5GS) | SA2 | TS 26.531, TS 26.532 |
-| [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) | Architecture enhancements for 5G System (5GS) to support network data analytics services | SA2 | TS 26.531, TS 26.532 |
-| [TS 29.517](https://www.3gpp.org/dynareport/29517.htm) | 5G System; Application Function Event Exposure Service; Stage 3 | CT3 | TS 26.531, TS 26.532 |
-| [TS 29.510](https://www.3gpp.org/dynareport/29510.htm) | 5G System; Network Function Repository Services; Stage 3 | CT4 | TS 26.532 |
+<SpecTable
+  columns={["Specification", "Title", "Group", "Named in the Scope of"]}
+  rows={[
+    [<><a href="https://www.3gpp.org/dynareport/23501.htm" target="_blank" rel="noreferrer">TS 23.501</a></>, "System architecture for the 5G System (5GS); Stage 2", "SA2", "TS 26.531, TS 26.532"],
+    [<><a href="https://www.3gpp.org/dynareport/23502.htm" target="_blank" rel="noreferrer">TS 23.502</a></>, "Procedures for the 5G System (5GS)", "SA2", "TS 26.531, TS 26.532"],
+    [<><a href="https://www.3gpp.org/dynareport/23288.htm" target="_blank" rel="noreferrer">TS 23.288</a></>, "Architecture enhancements for 5G System (5GS) to support network data analytics services", "SA2", "TS 26.531, TS 26.532"],
+    [<><a href="https://www.3gpp.org/dynareport/29517.htm" target="_blank" rel="noreferrer">TS 29.517</a></>, "5G System; Application Function Event Exposure Service; Stage 3", "CT3", "TS 26.531, TS 26.532"],
+    [<><a href="https://www.3gpp.org/dynareport/29510.htm" target="_blank" rel="noreferrer">TS 29.510</a></>, "5G System; Network Function Repository Services; Stage 3", "CT4", "TS 26.532"],
+  ]}
+/>
 
 ## Related
 
-- [Standards: 5G Media Streaming (5GMS)](/standards/5gms)
-- [Standards: AI/ML Evaluation Framework](/standards/ai-ml)
+- [User Data Collection and Reporting: Release history](/standards/data-collection/evolution)
+- [User Data Collection and Reporting: Technical Analysis](/tech/data-collection)
+- [Media Streaming and Advanced Media Delivery: Specifications](/standards/5gms)
+- [AI/ML Evaluation Framework: Specifications](/standards/ai-ml)

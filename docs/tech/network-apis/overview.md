@@ -14,7 +14,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Network APIs for Connectivity Quality</span>
+<span class="topic-banner__kicker">Technical Analysis</span>
 <h1>Network APIs for Connectivity Quality</h1>
 </div>
 </div>
@@ -252,6 +252,6 @@ The application never sees the PCF, SMF or UPF. This is the value CAMARA adds: o
 
 Two further sets of pages apply this to real workflows: [Content Production & Contribution](/tech/network-apis/content-production/introduction) covers professional content production and contribution scenarios, and [Live Media Distribution](/tech/network-apis/live-media-distribution/introduction) covers the visibility gap between content providers and network operators for live distribution.
 
-**Related:** [5G Media Streaming (5GMS)](/tech/5gms)
+**Related:** [Media Streaming and Advanced Media Delivery](/tech/5gms)
 
 ---

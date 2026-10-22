@@ -2,9 +2,11 @@
 title: Conversational Avatar Communication Overview
 sidebar_position: 0
 hide_title: true
-description: "Technology overview of Conversational Avatar Communication: Real-time conversational avatars, animated from user to user"
+description: "Conversational avatars: the avatar data model (ISO/IEC 23090-39 ARF), scene placement, the end-to-end procedure and the interoperability boundaries."
 sidebar_label: Overview
 ---
+
+import JumpMenu from '@site/src/components/JumpMenu';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -34,6 +36,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 - **In this section:** This page covers the avatar data model, scene placement, the end-to-end procedure and interoperability boundaries.
 
 :::
+
+<JumpMenu items={[["The ARF data model", "the-arf-data-model"], ["Scene placement via MPEG-I Scene Description", "scene-placement-via-mpeg-i-scene-description"], ["End-to-end procedure", "end-to-end-procedure"], ["Interfaces and interoperability", "interfaces-and-interoperability"]]} />
 
 ## How it works
 
@@ -85,4 +89,4 @@ The slide deck below introduces the Avatar Communications reference tools and th
 
 [Download the slide deck](pathname:///docs/decks/avatar.pdf)
 
-**Related:** [XR/3D Scenes with MPEG-I Scene Description](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/overview): the `MPEG_node_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.
+**Related:** [XR Media & 3D Scenes](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/overview): the `MPEG_node_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication](/standards/avatar): the standards-tracking view of this topic.

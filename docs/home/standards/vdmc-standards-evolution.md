@@ -17,8 +17,13 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, stage-by-stage companion to [Standards: Dynamic Mesh Coding](/standards/vdmc): the progression of ISO/IEC 23090-29 through MPEG's standardisation stages. See that page for the current specification and scope.
+This page is the detailed, stage-by-stage companion to [Dynamic Mesh Coding: Specifications](/standards/vdmc): the progression of ISO/IEC 23090-29 through MPEG's standardisation stages. See that page for the current specification and scope.
 
 ## Editions and stages
 
-The editions and stages of the ISO/IEC specifications behind this topic are described on the [Standards page](/standards/vdmc).
+The editions and stages of the ISO/IEC specifications behind this topic are described on the [Specifications](/standards/vdmc) page.
+
+## Related
+
+- [Dynamic Mesh Coding: Specifications](/standards/vdmc)
+- [Dynamic Mesh Coding: Technical Analysis](/tech/vdmc)

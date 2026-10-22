@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Non-Public Networks](/standards/npn): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Non-Public Networks: Specifications](/standards/npn): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -361,3 +361,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Feb 2025 | SA#107 | SP-250084 | Presented for information and approval | 1.0.0 |
 
 </details>
+
+## Related
+
+- [Non-Public Networks: Specifications](/standards/npn)
+- [Non-Public Networks: Technical Analysis](/tech/npn)

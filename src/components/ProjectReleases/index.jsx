@@ -35,7 +35,7 @@ export default function ProjectReleases({ name }) {
   if (releases.length === 0) {
     return (
       <p className={styles.updatedAt}>
-        No releases published yet for this project — check back soon.
+        No releases published yet for this project. Check back soon.
       </p>
     );
   }

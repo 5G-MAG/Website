@@ -20,9 +20,9 @@ export const projectVideos = youtubePlaylists.projects?.avatar?.videos || [];
 </div>
 </div>
 
-This page sequences a first, end-to-end run of the avatar call demo: two participants exchanging an MPEG ARF avatar over a call, built from the components and repositories described on the [Implementation Detail](./implementation) page and [Repositories & Releases](/reference-tools/avatar#repositories--releases) on the project index.
+This page sequences a first, end-to-end run of the avatar call demo: two participants exchanging an MPEG ARF avatar over a call, built from the components and repositories described on the [Implementation status](./implementation) page and [Repositories](/reference-tools/avatar#repositories--releases) on the project index.
 
-ARF (ISO/IEC 23090-39) is not yet published as an International Standard (MPEG's report of its 155th meeting records it at Final Draft International Standard) and the reference tooling is still maturing (see [Implementation Detail](./implementation)), so treat this as a sequencing guide rather than a finished, copy-paste recipe. It tells you which repository covers which part of the pipeline and in what order to bring them up. Exact build commands, dependencies, and configuration flags are not documented on this project's Implementation Detail page or repository list, so for those, follow the README in each repository (linked below and on [Repositories & Releases](/reference-tools/avatar#repositories--releases)).
+ARF (ISO/IEC 23090-39) is not yet published as an International Standard (MPEG's report of its 155th meeting records it at Final Draft International Standard) and the reference tooling is still maturing (see [Implementation status](./implementation)), so treat this as a sequencing guide rather than a finished, copy-paste recipe. It tells you which repository covers which part of the pipeline and in what order to bring them up. Exact build commands, dependencies, and configuration flags are not documented on this project's Implementation status page or repository list, so for those, follow the README in each repository (linked below and on [Repositories](/reference-tools/avatar#repositories--releases)).
 
 ## What you'll end up with
 
@@ -30,8 +30,8 @@ A base avatar loaded and bound in the Unity presentation, animated either from t
 
 ## Before you start
 
-- Read [Implementation Detail](./implementation) for the ARF split into the Base Avatar Format (the static asset: skeletons, meshes, blendshapes, skins, landmarks and nodes) and the Animation Stream Format (the Avatar Animation Units that drive it), and for how the tooling is organised into a tracking/animation producer, a transport/packaging path, sample content, and a Unity-based presentation.
-- Check [Repositories & Releases](/reference-tools/avatar#repositories--releases) for the current repository list and status.
+- Read [Implementation status](./implementation) for the ARF split into the Base Avatar Format (the static asset: skeletons, meshes, blendshapes, skins, landmarks and nodes) and the Animation Stream Format (the Avatar Animation Units that drive it), and for how the tooling is organised into a tracking/animation producer, a transport/packaging path, sample content, and a Unity-based presentation.
+- Check [Repositories](/reference-tools/avatar#repositories--releases) for the current repository list and status.
 
 ## 1. Start from the sample content
 
@@ -43,17 +43,17 @@ This repository "holds reference MPEG ARF content for real time avatar communica
 
 Repository: [Avatar Call](https://github.com/5G-MAG/rt-avatar-call) (`rt-avatar-call`)
 
-This repository "supports the development of a reference framework for avatar communication", with the stated goal of demonstrating "WebRTC communication using the MPEG ARF and related animation compression". This is the transport/packaging component from Implementation Detail: it exchanges Animation Stream Format data between the two ends of a call. As with the sample content, this project's own docs do not spell out the exact build steps, dependencies, or how to run it (standalone service, Docker setup, or a library integrated into the Unity presentation): confirm all of that from the repository's README before proceeding.
+This repository "supports the development of a reference framework for avatar communication", with the stated goal of demonstrating "WebRTC communication using the MPEG ARF and related animation compression". This is the transport/packaging component from the Implementation status page: it exchanges Animation Stream Format data between the two ends of a call. As with the sample content, this project's own docs do not spell out the exact build steps, dependencies, or how to run it (standalone service, Docker setup, or a library integrated into the Unity presentation): confirm all of that from the repository's README before proceeding.
 
 ## 3. Load and render the base avatar
 
-Per Implementation Detail, the Unity-based presentation loads a base avatar from its container, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_node_avatar` glTF extension), and applies the incoming animation stream to render it. Neither Implementation Detail nor the repository list identifies a repository dedicated solely to this presentation role: check whether it ships as part of one of the repositories below (most likely [Avatar Unity Tracker](https://github.com/5G-MAG/rt-avatar-unity-tracker), since it is the only Unity-based repository listed) or is not yet published separately.
+Per the Implementation status page, the Unity-based presentation loads a base avatar from its container, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_node_avatar` glTF extension), and applies the incoming animation stream to render it. Neither the Implementation status page nor the repository list identifies a repository dedicated solely to this presentation role: check whether it ships as part of one of the repositories below (most likely [Avatar Unity Tracker](https://github.com/5G-MAG/rt-avatar-unity-tracker), since it is the only Unity-based repository listed) or is not yet published separately.
 
 ## 4. Add live tracking
 
 Repository: [Avatar Unity Tracker](https://github.com/5G-MAG/rt-avatar-unity-tracker) (`rt-avatar-unity-tracker`)
 
-This is a "Sample OpenXR tracker for ARF avatar animation in Unity". This is the tracking/animation producer component from Implementation Detail: it takes camera and tracking input, maps it onto the loaded avatar's landmarks and joints, and emits Animation Stream Format data. Once steps 1-3 work end to end with the sample content, swap this component in to drive the call from a live feed instead of a recording.
+This is a "Sample OpenXR tracker for ARF avatar animation in Unity". This is the tracking/animation producer component from the Implementation status page: it takes camera and tracking input, maps it onto the loaded avatar's landmarks and joints, and emits Animation Stream Format data. Once steps 1-3 work end to end with the sample content, swap this component in to drive the call from a live feed instead of a recording.
 
 ## Where rt-3gpp-swap fits
 
@@ -61,11 +61,11 @@ The [3GPP SWAP](https://github.com/5G-MAG/rt-3gpp-swap) (`rt-3gpp-swap`) reposit
 
 ## Putting it together
 
-In order: get the sample content running through the Unity presentation and the call path first (steps 1-3), confirm the animation renders correctly end to end, then replace the recorded animation with the live tracker (step 4). Because ARF is not yet a final standard, pin every repository to a known, matching specification draft, as noted on [Implementation Detail](./implementation).
+In order: get the sample content running through the Unity presentation and the call path first (steps 1-3), confirm the animation renders correctly end to end, then replace the recorded animation with the live tracker (step 4). Because ARF is not yet a final standard, pin every repository to a known, matching specification draft, as noted on [Implementation status](./implementation).
 
 ## What isn't documented here yet
 
-This project's Implementation Detail page does not currently give exact CLI commands, Docker or build instructions, network ports, or configuration files for any of the repositories above. For those, use the README in each repository linked above, or the [YouTube channel](https://www.youtube.com/@5GMAG), which hosts practical videos from developers on the use of the Reference Tools generally.
+This project's Implementation status page does not currently give exact CLI commands, Docker or build instructions, network ports, or configuration files for any of the repositories above. For those, use the README in each repository linked above, or the [YouTube channel](https://www.youtube.com/@5GMAG), which hosts practical videos from developers on the use of the Reference Tools generally.
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
 
@@ -73,6 +73,3 @@ This project's Implementation Detail page does not currently give exact CLI comm
 
 <ProjectVideos videos={projectVideos} name="Conversational Avatar Communication with MPEG ARF" />
 
-## Related
-
-- [Repositories & Releases](/reference-tools/avatar#repositories--releases) for the current repository list and releases.

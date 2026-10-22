@@ -72,16 +72,11 @@ export default function ProjectRepoSection({ projectNames, rows = true }) {
   );
 }
 
-// The same cards for a chosen list of repositories, by slug, in the order given: e.g. the components a
+// The same rows for a chosen list of repositories, by slug, in the order given: e.g. the components a
 // tutorial needs. A repository listed under several projects shows once, with its owning project's icon.
+// (The name is kept from when these were cards: repositories are rows everywhere, owner decision 2026-10-22.)
 export function RepoCards({ slugs }) {
   const repos = slugs.map((slug) => ALL_REPOS.find((r) => r.slug === slug && r.originName === r.projectName) || ALL_REPOS.find((r) => r.slug === slug)).filter(Boolean);
   if (repos.length === 0) return null;
-  return (
-    <div className={cardStyles.grid}>
-      {repos.map((r) => (
-        <RepoCard key={r.slug} entry={r} meta={repoMetaFor(r.slug)} />
-      ))}
-    </div>
-  );
+  return <RepoRows clusters={[{ label: null, repos }]} />;
 }

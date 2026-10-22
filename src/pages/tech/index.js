@@ -41,7 +41,7 @@ function StageTable({ projects }) {
 const PILLARS = [
   {
     title: 'Specification analysis for real-world applications',
-    body: 'The Technology pages break specification text down into what it actually means for a working deployment.',
+    body: 'The Technical Analysis pages break specification text down into what it actually means for a working deployment.',
     icon: (
       <svg
         viewBox="0 0 24 24"

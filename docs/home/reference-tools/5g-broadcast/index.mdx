@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -30,7 +28,7 @@ export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
 </div>
 </div>
 
-It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised by 3GPP, using the evolved Multimedia Broadcast Multicast Service (eMBMS) and its further-enhanced variant Further evolved Multimedia Broadcast Multicast Service (FeMBMS), also called LTE-based 5G Broadcast. This project provides the reference transmitter and receiver so anyone can test a complete broadcast chain, covering end-to-end 5G Broadcast systems for TV and radio distribution over dedicated broadcast carriers, without a return channel or SIM requirement on the receiver side. The project also covers hybrid broadcast/broadband delivery and integration with DVB-I service discovery. For the deployment configurations and full feature-support detail, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
+It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised by 3GPP, using the evolved Multimedia Broadcast Multicast Service (eMBMS) and its further-enhanced variant Further evolved Multimedia Broadcast Multicast Service (FeMBMS), also called LTE-based 5G Broadcast. This project provides the reference transmitter and receiver so anyone can test a complete broadcast chain, covering end-to-end 5G Broadcast systems for TV and radio distribution over dedicated broadcast carriers, without a return channel or SIM requirement on the receiver side. The project also covers hybrid broadcast/broadband delivery and integration with DVB-I service discovery. For the deployment configurations and full feature-support detail, see [Implementation status](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
 
 <img loading="lazy" src={useBaseUrl('/assets/images/5gbc/reference-tools-broadcast-demo.jpg')} alt="5G Broadcast Reference Tools transmitter hardware, with a phone running the 5G-MAGflix demo app" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
 
@@ -53,10 +51,8 @@ It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised
       alt: 'The reference architecture of the LTE-based 5G Broadcast System. The Reference Tools provide the eNodeB (rt-mbms-tx), the MBMS GW (rt-mbms-gw), the BM-SC (rt-mbms-bmsc), the MBMS Client (rt-mbms-client), the receiver Access Stratum (rt-mbms-modem), the TV/Radio Service Application (rt-mbms-application) and the Content Service Provider (rt-mbms-application-provider). The MME has no repository.',
     },
   ]}
-  note="The Implementation Detail page covers the radio features of the transmitter and modem. Parts without a repository are not provided by the Reference Tools. rt-mbms-tx-for-qrd-and-crd is a second eNodeB-based transmitter and is not drawn separately. Click the figure to enlarge it."
+  note="The Implementation status page covers the radio features of the transmitter and modem. Parts without a repository are not provided by the Reference Tools. rt-mbms-tx-for-qrd-and-crd is a second eNodeB-based transmitter and is not drawn separately. Click the figure to enlarge it."
 />
-
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: the transmitter, modem, middleware and supporting tools, listed below.
 
 ## Repositories & Releases
 

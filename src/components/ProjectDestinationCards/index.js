@@ -5,7 +5,7 @@ import ProjectTools from '@site/src/components/ProjectTools';
 import ListRow, { RowList } from '@site/src/components/ListRow';
 import styles from '@site/src/components/ProjectTools/styles.module.css';
 
-// The block every per-project /tech page opens its "How It Works, Today" section with, as two sections of rows: Documentation (Technology and
+// The block every per-project /tech page opens its "How It Works, Today" section with, as two sections of rows: Documentation (Technical Analysis and
 // Specifications, when they exist), then a Software Accelerator section with the tools that exist, each with its kind (ProjectTools, found
 // from the page's address). Extra props that older call sites still pass (the accent) are ignored; a page that has
 // one section per testbed passes that testbed's page, and only that testbed is listed.
@@ -15,7 +15,7 @@ export default function ProjectDestinationCards({
   softwareHref,
   softwareIsTestbed = false,
 }) {
-  // The Technology row always opens the project's overview, whichever page of the project it sits on.
+  // The Technical Analysis row always opens the project's overview, whichever page of the project it sits on.
   const { pathname } = useLocation();
   const techUrl = TECH_OVERVIEW[analysisHref]
     ? analysisHref

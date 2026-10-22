@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Network APIs for Connectivity Quality: Specifications](/standards/network-apis): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -1425,3 +1425,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Mar 2022 | CT1#95e | CP-220315 | Specification presented for approval, v2.0.0 | 2.0.0 |
 
 </details>
+
+## Related
+
+- [Network APIs for Connectivity Quality: Specifications](/standards/network-apis)
+- [Network APIs for Connectivity Quality: Technical Analysis](/tech/network-apis)

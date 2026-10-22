@@ -3,7 +3,7 @@ hide_title: true
 sidebar_label: Repositories
 title: Content Delivery Protocols and Tools
 sidebar_position: -1
-description: Landing page for the DASH, HLS, and CMAF content delivery reference tools, with links to implementation detail, roadmap, repositories, and releases.
+description: Landing page for the DASH, HLS, and CMAF content delivery reference tools, with links to implementation status, repositories and releases.
 ---
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
@@ -26,11 +26,11 @@ import FigurePair from '@site/src/components/FigurePair';
 </div>
 </div>
 
-Content Delivery Protocols and Tools are the Reference Tools for the application layer of delivery: how media is encoded, packaged, served, carried over 5G and received. This page lists each tool, the specification behind it and where it is used, and each tool has its own page. FLUTE (file delivery, in rt-libflute) is implemented here; ROUTE (real-time object delivery) is implemented in the MBMS Client of [5G Broadcast](/reference-tools/5g-broadcast) (repository rt-mbms-client), and this project is used with it. Useful for developers validating DASH/HLS players, packagers and Content Delivery Network (CDN) integrations in 5G environments. For the status of each tool, see [Implementation Detail](./implementation).
+Content Delivery Protocols and Tools are the Reference Tools for the application layer of delivery: how media is encoded, packaged, served, carried over 5G and received. This page lists each tool, the specification behind it and where it is used, and each tool has its own page. FLUTE (file delivery, in rt-libflute) is implemented here; ROUTE (real-time object delivery) is implemented in the MBMS Client of [5G Broadcast](/reference-tools/5g-broadcast) (repository rt-mbms-client), and this project is used with it. Useful for developers validating DASH/HLS players, packagers and Content Delivery Network (CDN) integrations in 5G environments. For the status of each tool, see [Implementation status](./implementation).
 
 ## Tool map
 
-Each row is one role. Follow the tool name to its page, or the repository name to its card further down this page.
+Each row is one role. Follow the tool name to its page, or the repository name to its entry further down this page.
 
 | Role | Tool | Repository | Specification | Tutorial | Also used by |
 |---|---|---|---|---|---|
@@ -60,7 +60,7 @@ Each row is one role. Follow the tool name to its page, or the repository name t
   note="The media origin, the reference media application, the CMMF encoder and the conformance validator are not on the figure: no specification figure shows them. Click the figure to enlarge it."
 />
 
-For what the FLUTE library implements, feature by feature, see [Implementation Detail](./implementation). The repositories are listed under [Repositories & Releases](#repositories--releases).
+For what the FLUTE library implements, feature by feature, see [Implementation status](./implementation). The repositories are listed under [Repositories](#repositories--releases).
 
 ## Repositories & Releases
 

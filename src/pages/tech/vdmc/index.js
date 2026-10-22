@@ -34,7 +34,7 @@ export default function VDMC() {
                 per-frame displacement offsets and a texture atlas, then hands that data to existing
                 video codecs (HEVC, VVC) rather than defining a new one. That reuse is what makes
                 dynamic mesh content deliverable at all on mobile-class hardware, for the specific
-                case, well-parameterized mesh surfaces, where the point-cloud approach V3C uses is
+                case, well-parameterised mesh surfaces, where the point-cloud approach V3C uses is
                 less efficient.
               </p>
         </>
@@ -52,7 +52,7 @@ export default function VDMC() {
                 </p>
                 <p>
                   This differs from <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>, which is
-                  point-cloud based; V-DMC targets well-parameterized mesh surfaces where point-cloud
+                  point-cloud based; V-DMC targets well-parameterised mesh surfaces where point-cloud
                   methods are less efficient.
                 </p>
     </ProjectHome>

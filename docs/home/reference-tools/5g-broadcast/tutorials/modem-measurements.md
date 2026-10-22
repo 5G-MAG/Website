@@ -23,7 +23,7 @@ description: Shows how to log MBMS Modem signal-quality measurements to a CSV fi
 This tutorial shows how to have the MBMS Modem log signal-quality measurements (CINR, BLER, MCS and related values) to a CSV file, optionally tagged with GPS position and time. This is useful for drive tests and coverage analysis.
 
 :::note
-This page covers measurement logging with position data. If instead you want to discipline the system clock from GPS (for accurate timestamps), see [GPS Time Synchronization for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization). The two are related but separate: this page reads GPS position/time into the measurement file; that page feeds GPS time to the system clock via chrony.
+This page covers measurement logging with position data. If instead you want to discipline the system clock from GPS (for accurate timestamps), see [GPS Time Synchronisation for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization). The two are related but separate: this page reads GPS position/time into the measurement file; that page feeds GPS time to the system clock via chrony.
 :::
 
 ## Configuring a GPS mouse
@@ -131,5 +131,5 @@ Each line is one measurement interval. Reading the first row against the column 
 
 ## Next steps
 
-- To synchronise the system clock from GPS, see [GPS Time Synchronization for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization).
+- To synchronise the system clock from GPS, see [GPS Time Synchronisation for rt-mbms-modem](../additional/rt-mbms-modem/GPS-time-synchronization).
 - Return to the [Tutorials index](./).

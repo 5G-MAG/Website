@@ -6,6 +6,7 @@ description: 3GPP Non-Public Network standards and deployment models (SNPN, PNI-
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { NPN_SPECS, NPN_LAYER_ORDER } from '@site/src/data/specs/npn';
 
@@ -20,20 +21,34 @@ import { NPN_SPECS, NPN_LAYER_ORDER } from '@site/src/data/specs/npn';
 </div>
 </div>
 
-## Overview
-
-5G-MAG tracks 3GPP Non-Public Network (NPN) standards for private 5G media production and contribution. For NPN deployment models, identity/onboarding and QoS considerations, see the Technology page linked below. For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/npn/evolution).
+5G-MAG tracks 3GPP Non-Public Network (NPN) standards for private 5G media production and contribution. For NPN deployment models, identity/onboarding and QoS considerations, see the [Technical Analysis](/tech/npn).
 
 5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution.
 
-## NPN Deployment Models
+:::tip[At a glance]
+
+- **Deployment models:** Standalone NPN (SNPN) and Public Network Integrated NPN (PNI-NPN), both defined in clause 5.30 of TS 23.501.
+- **By release:** Release 16 is the baseline; Releases 17, 18 and 19 extend it; Release 20 has PLMNNPN_Ph2-SEC (TS 33.501).
+- **Media focus:** the VIAPA requirements, device onboarding at scale, and the combination of NPN with TSC and with RTC.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["NPN deployment models", "npn-deployment-models"], ["Release by release", "release-by-release"], ["Related", "related"]]} />
+
+## Specifications
+
+The specifications in scope of Non-Public Networks, grouped by the layer they define: the stage 1 requirements, the system architecture, the stage 3 access and authentication procedures, and the study that fed them.
+
+<SpecIndex specs={NPN_SPECS} layerOrder={NPN_LAYER_ORDER} />
+
+## NPN deployment models
 
 Both deployment models are defined in clause 5.30 of TS 23.501, Support for non-public networks (SNPN in clause 5.30.2 and PNI-NPN in clause 5.30.3).
 
 - **Standalone NPN (SNPN)**: Independent 5G network with its own core, not relying on a public land mobile network (PLMN). Identified by the combination of a PLMN ID and a Network Identifier (NID).
 - **Public Network Integrated NPN (PNI-NPN)**: NPN made available through a PLMN, for example by means of a dedicated Data Network Name (DNN) or one or more network slice instances allocated for the NPN, optionally using a Closed Access Group (CAG) to control which subscribers may access the relevant cells.
 
-## Specifications by release
+## Release by release
 
 The NPN feature set has grown across releases. The following is an orientation, not a substitute for the 3GPP work plan.
 
@@ -43,18 +58,13 @@ The NPN feature set has grown across releases. The following is an orientation, 
 - **Release 19**: security for a PLMN hosting an NPN (PLMNNPN, TS 33.501), interconnect of SNPNs (ISN, TS 22.261 and study TR 22.848), ProSe in NPN (TEI19_ProSe_NPN) and CAG-based access control for NR Femto (5G_Femto).
 - **Release 20**: security for a PLMN hosting an NPN, phase 2 (PLMNNPN_Ph2-SEC, TS 33.501). No Release 20 description (TR 21.920) exists yet, so confirm Release 20 content against the current 3GPP work plan.
 
-The per-release features and the clauses of TR 21.916 to TR 21.919 that describe them are on [Standards Evolution](/standards/npn/evolution).
-
-## Specifications in scope
-
-The specifications in scope of Non-Public Networks, grouped by the layer they define: the stage 1 requirements, the system architecture, the stage 3 access and authentication procedures, and the study that fed them.
-
-<SpecIndex specs={NPN_SPECS} layerOrder={NPN_LAYER_ORDER} />
+The per-release features and the clauses of TR 21.916 to TR 21.919 that describe them are on the [Release history](/standards/npn/evolution) page.
 
 ## Related
 
-- [Technology: Non-Public Networks](/tech/npn)
-- [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis)
-- [Standards: Time-Sensitive Communications (TSC)](/standards/tsc): TSC for professional media production is typically deployed over an NPN
-- [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc): interactive, uplink-heavy contribution over an NPN
+- [Non-Public Networks: Release history](/standards/npn/evolution)
+- [Non-Public Networks: Technical Analysis](/tech/npn)
+- [Network APIs for Connectivity Quality: Specifications](/standards/network-apis)
+- [Time-Sensitive Communications (TSC): Specifications](/standards/tsc): TSC for professional media production is typically deployed over an NPN
+- [Real-time Media Communication (RTC): Specifications](/standards/rtc): interactive, uplink-heavy contribution over an NPN
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

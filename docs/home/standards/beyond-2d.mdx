@@ -6,6 +6,8 @@ description: Summarises 3GPP's FS_Beyond2D study evaluating stereoscopic, multiv
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+import SpecTable from '@site/src/components/SpecTable';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { BEYOND_2D_SPECS, BEYOND_2D_LAYER_ORDER } from '@site/src/data/specs/beyond-2d';
 
@@ -20,9 +22,24 @@ import { BEYOND_2D_SPECS, BEYOND_2D_LAYER_ORDER } from '@site/src/data/specs/bey
 </div>
 </div>
 
-## Overview
-
 Beyond 2D Video covers media formats that go past a flat single-camera picture, such as stereoscopic 3D, multiview, depth-enhanced and volumetric video. 3GPP studied how these formats and their codecs perform over 5G in the feasibility study FS_Beyond2D, captured in TR 26.956. 5G-MAG tracks this work because it sets the evaluation baseline for delivering richer-than-2D experiences. This page lists the related 3GPP work item and technical report, and is for anyone assessing how immersive and 3D video will be carried over 5G. This tracking looks ahead to any later normative SA4 work that might follow.
+
+:::tip[At a glance]
+
+- **The study:** FS_Beyond2D, captured in TR 26.956, is a feasibility and characterisation study, not a normative specification.
+- **Format families:** stereoscopic video, multiview and multi-view plus depth, dense dynamic point clouds and dynamic meshes.
+- **Delivery:** the formats are assessed against 5G Media Streaming (TS 26.501 and TS 26.512).
+- **Release 20:** the work plan of 28 September 2026 lists the studies FS_3DGS_MED (TR 26.958) and FS_AVFOPS_MED (TR 26.966); it does not state their relation to this study.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["What the study covers", "what-the-study-covers"], ["Codecs and how they map to the formats", "codecs-and-how-they-map-to-the-formats"], ["Relationship to 5G Media Streaming", "relationship-to-5g-media-streaming"], ["Related", "related"]]} />
+
+## Specifications
+
+The work item that drove the Beyond 2D Video feasibility study, the technical report it produced, and the 5G Media Streaming specifications the formats are assessed against. The work-item link downloads a .zip contribution package.
+
+<SpecIndex specs={BEYOND_2D_SPECS} layerOrder={BEYOND_2D_LAYER_ORDER} />
 
 ## What the study covers
 
@@ -35,35 +52,34 @@ FS_Beyond2D is a feasibility and characterisation study, not a normative specifi
 
 The report also surveys formats under research (neural radiance fields, light fields, 3D Gaussian splatting) without evaluating them.
 
-See the [Beyond 2D Video Experiences](/tech/beyond-2d) Technology page for the per-family and per-scenario detail.
+See the [Technical Analysis](/tech/beyond-2d) for the per-family and per-scenario detail.
 
 ## Codecs and how they map to the formats
 
 The study evaluates each format with the codecs that are practical for it today; for stereoscopic video, simulcast/frame-compatible HEVC serves as the anchor against MV-HEVC:
 
-| Format family             | Coding approaches evaluated                                                          | Relation to V3C                                    |
-| ------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Stereoscopic              | MV-HEVC; simulcast/frame-compatible HEVC as the anchor                               | Not V3C-based                                       |
-| Multi-view plus depth     | The MIV profile of V3C; the report also notes MV-HEVC as a coding option             | MIV is ISO/IEC 23090-12 (a V3C profile)             |
-| Dense dynamic point cloud | V-PCC; no anchor codec exists for the format, G-PCC is noted as a related technology | V-PCC is part of ISO/IEC 23090-5                    |
-| Dynamic mesh              | V-DMC, described alongside V-PCC for the volumetric scenario                         | V-DMC is ISO/IEC 23090-29 (video-based, V3C-related) |
+<SpecTable
+  columns={["Format family", "Coding approaches evaluated", "Relation to V3C"]}
+  rows={[
+    ["Stereoscopic", "MV-HEVC; simulcast/frame-compatible HEVC as the anchor", "Not V3C-based"],
+    ["Multi-view plus depth", "The MIV profile of V3C; the report also notes MV-HEVC as a coding option", "MIV is ISO/IEC 23090-12 (a V3C profile)"],
+    ["Dense dynamic point cloud", "V-PCC; no anchor codec exists for the format, G-PCC is noted as a related technology", "V-PCC is part of ISO/IEC 23090-5"],
+    ["Dynamic mesh", "V-DMC, described alongside V-PCC for the volumetric scenario", "V-DMC is ISO/IEC 23090-29 (video-based, V3C-related)"],
+  ]}
+/>
 
-This connects to the [MPEG V3C Immersive Platform](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
+This connects to the [Volumetric Video Experiences](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
 
 ## Relationship to 5G Media Streaming
 
-The study assesses these formats against the existing 5G Media Streaming delivery framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). See the [Beyond 2D Video Experiences](/tech/beyond-2d) Technology page for the detailed analysis.
+The study assesses these formats against the existing 5G Media Streaming delivery framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). See the [Technical Analysis](/tech/beyond-2d) for the detailed analysis.
 
-For the release-by-release history behind these specifications, see [Standards Evolution](/standards/beyond-2d/evolution). Release 20 (work plan of 28 September 2026) lists the studies FS_3DGS_MED, Study on 3D Gaussian splats (TR 26.958, 60%, planned 3 March 2027), and FS_AVFOPS_MED, Study of Advanced Video Formats and Operation Points (TR 26.966, 100%); the work plan does not state their relation to this study.
-
-## Specifications in scope
-
-The work item that drove the Beyond 2D Video feasibility study, the technical report it produced, and the 5G Media Streaming specifications the formats are assessed against. The work-item link downloads a .zip contribution package.
-
-<SpecIndex specs={BEYOND_2D_SPECS} layerOrder={BEYOND_2D_LAYER_ORDER} />
+For the release-by-release history behind these specifications, see [Release history](/standards/beyond-2d/evolution). Release 20 (work plan of 28 September 2026) lists the studies FS_3DGS_MED, Study on 3D Gaussian splats (TR 26.958, 60%, planned 3 March 2027), and FS_AVFOPS_MED, Study of Advanced Video Formats and Operation Points (TR 26.966, 100%); the work plan does not state their relation to this study.
 
 ## Related
 
-- [Standards: MPEG V3C Immersive Platform](/standards/v3c)
-- [Standards: XR/3D Scenes with MPEG-I Scene Description](/standards/xr)
+- [Beyond 2D Video Experiences: Release history](/standards/beyond-2d/evolution)
+- [Beyond 2D Video Experiences: Technical Analysis](/tech/beyond-2d)
+- [Volumetric Video Experiences: Specifications](/standards/v3c)
+- [XR Media & 3D Scenes: Specifications](/standards/xr)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

@@ -19,13 +19,13 @@ description: "The Media Origin (rt-media-origin): a config-driven media origin t
 </div>
 </div>
 
-**Role in the chain:** Package and serve. Repository: [rt-media-origin](/reference-tools/content-delivery#repo-rt-media-origin) (its card on the project page, with links to GitHub).
+**Role in the chain:** Package and serve. Repository: [rt-media-origin](/reference-tools/content-delivery#repo-rt-media-origin) (its entry on the project page, with links to GitHub).
 
 ## What it is
 
 The Media Origin is a config-driven origin for 5G-MAG demos. One configuration file and one process package each channel with ffmpeg as DASH, HLS or CMAF, and deliver it over HTTP or a push transport (SRT, RIST, RTMP, RTSP, RTP or MoQ). A browser dashboard edits the configuration and starts and stops the channels, and a Docker image runs the origin on any machine.
 
-Sending over FLUTE is out of scope for the origin: according to its README, a FLUTE sender reads the packaged output folder. The status is on the [Implementation Detail](./implementation#media-origin) page.
+Sending over FLUTE is out of scope for the origin: according to its README, a FLUTE sender reads the packaged output folder. The status is on the [Implementation status](./implementation#media-origin) page.
 
 ## Specification basis
 
@@ -42,4 +42,4 @@ The origin implements no specification of its own. It packages with ffmpeg, and 
 ## Related
 
 - [Content Delivery Protocols and Tools](/reference-tools/content-delivery) and its tool map
-- [Implementation Detail](./implementation#media-origin)
+- [Implementation status](./implementation#media-origin)

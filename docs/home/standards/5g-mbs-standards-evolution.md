@@ -1,7 +1,7 @@
 ---
 hide_title: true
 sidebar_label: Release history
-title: 5G MBS - Standards Evolution
+title: Media delivery over 5G Multicast Broadcast Services - Standards Evolution
 slug: /standards/5g-mbs/evolution
 description: Release by release, the 3GPP work items and study items behind MBS User Services and MBS in the 5G System and NG-RAN, Release 17 to Release 20, with the specifications each changed.
 pagination_prev: null
@@ -15,7 +15,7 @@ pagination_next: null
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>5G MBS - Standards Evolution</h1>
+<h1>Media delivery over 5G Multicast Broadcast Services - Standards Evolution</h1>
 </div>
 </div>
 
@@ -200,9 +200,10 @@ These work items are not MBS work items, but the work plan, or for NR_NTN_Ph3 it
 
 ## Related
 
-- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
-- [Standards: 5G Media Streaming - Standards Evolution](/standards/5gms/evolution)
-- [Standards: 5G Broadcast - Standards Evolution](/standards/5g-broadcast/evolution)
+- [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs)
+- [Media delivery over 5G Multicast Broadcast Services: Technical Analysis](/tech/5g-mbs)
+- [Media Streaming and Advanced Media Delivery: Release history](/standards/5gms/evolution)
+- [Media delivery over 5G Broadcast: Release history](/standards/5g-broadcast/evolution)
 
 ## Sources for this page
 

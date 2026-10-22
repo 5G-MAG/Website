@@ -6,6 +6,8 @@ description: Overview of ETSI TS 103 720 LTE-based 5G Broadcast, its version his
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+import SpecTable from '@site/src/components/SpecTable';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-broadcast';
 
@@ -20,9 +22,7 @@ import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-
 </div>
 </div>
 
-## Overview
-
-5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs).
+5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs).
 
 5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). Current focus:
 
@@ -30,7 +30,36 @@ import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-
 - **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
 - **Completed:** Release 17 alignment (v1.2.1, 2023).
 
-For the release-by-release specification detail behind these updates, including the SA4 service-layer work items for TS 26.346, TS 26.347 and TS 26.348, see [Standards Evolution](/standards/5g-broadcast/evolution). For the technology behind these updates, see [Technology: 5G Broadcast](/tech/5g-broadcast).
+For the release-by-release detail behind these updates, including the SA4 service-layer work items for TS 26.346, TS 26.347 and TS 26.348, see [Release history](/standards/5g-broadcast/evolution). For the technical analysis behind these updates, see [Media delivery over 5G Broadcast: Technical Analysis](/tech/5g-broadcast).
+
+:::tip[At a glance]
+
+- **ETSI TS 103 720:** the 5G Broadcast System for linear TV and radio services, maintained by 5G-MAG. It profiles LTE-based 5G Terrestrial Broadcast from 3GPP.
+- **Versions:** v1.1.1 (December 2020, Release 16 baseline) and v1.2.1 (June 2023, Release 17) are published; v1.3.1 (Release 18) is a work item in progress.
+- **3GPP specifications:** the MBMS and LTE-based 5G Terrestrial Broadcast documents listed under Specifications, with the SA4 service-layer work on TS 26.346, TS 26.347 and TS 26.348.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["About ETSI TS 103 720 - 5G Broadcast System for linear TV and radio services", "about-etsi-ts-103-720---5g-broadcast-system-for-linear-tv-and-radio-services"], ["Related", "related"]]} />
+
+## Specifications
+
+This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are filterable below by the function they cover, following the same physical layer, RRC, RF and architecture split used on the [Release history](/standards/5g-broadcast/evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top. Search matches the specification number, its title and any scope note.
+
+<SpecIndex specs={BROADCAST_SPECS} layerOrder={BROADCAST_LAYER_ORDER} />
+
+### MBMS network interfaces
+
+MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Media Streaming and Advanced Media Delivery: Specifications](/standards/5gms)).
+
+<SpecTable
+  columns={["Interface", "Specification", "Plane", "Connects"]}
+  rows={[
+    ["M1", "TS 25.446 (SYNC)", "User plane", "MBMS-GW to eNB"],
+    ["M2", "TS 36.443 (M2AP)", "Control plane", "MCE to eNB"],
+    ["M3", "TS 36.444 (M3AP)", "Control plane", "MME to MCE"],
+  ]}
+/>
 
 ## About ETSI TS 103 720 - 5G Broadcast System for linear TV and radio services
 
@@ -48,11 +77,14 @@ ETSI TS 103 720 introduces the 5G Broadcast System and its associated features. 
 
 The table summarises the version-to-Release-to-status mapping; the sections below give the detailed changes for each version. The work-in-progress items for each new version are discussed and agreed among members on the [**Kanban - ETSI TS 103 720**](https://github.com/orgs/5G-MAG/projects/32) board (linked once here and under Quick access).
 
-| Version | Date        | 3GPP Release                | Status         |
-| ------- | ----------- | --------------------------- | -------------- |
-| v1.1.1  | 12-2020     | Rel-16 baseline             | Published      |
-| v1.2.1  | 06-2023     | Rel-17                      | Published      |
-| v1.3.1  | in progress | Rel-18                      | Work item open |
+<SpecTable
+  columns={["Version", "Date", "3GPP Release", "Status"]}
+  rows={[
+    ["v1.1.1", "12-2020", "Rel-16 baseline", "Published"],
+    ["v1.2.1", "06-2023", "Rel-17", "Published"],
+    ["v1.3.1", "in progress", "Rel-18", "Work item open"],
+  ]}
+/>
 
 ### Updates towards ETSI TS 103 720 v1.3.1
 
@@ -85,11 +117,14 @@ The additions, discussed and agreed among members on the Kanban board, include:
 
 ETSI TS 103 720 v1.2.1, clause 10, defines four receiver categories: the Base Receiver, the Main Receiver, 5GMS via LTE-based 5G Broadcast and the Emergency Alerts Receiver. Table 10.1-1 assigns MBMS Feature Values, which signal the capability, to the first three:
 
-| Feature value | Category                                     | Mandatory SCS                          |
-| ------------- | -------------------------------------------- | -------------------------------------- |
-| 27            | LTE-based 5G Broadcast **Base Receiver**     | 1.25 kHz mandatory; other SCS optional |
-| 28            | LTE-based 5G Broadcast **Main Receiver**     | All SCS (15, 7.5, 2.5, 1.25, 0.37 kHz) |
-| 30            | **5GMS** via LTE-based 5G Broadcast Receiver | Not specified; clause 7 plus the 5GMS receiver requirements |
+<SpecTable
+  columns={["Feature value", "Category", "Mandatory SCS"]}
+  rows={[
+    ["27", <>LTE-based 5G Broadcast <strong>Base Receiver</strong></>, "1.25 kHz mandatory; other SCS optional"],
+    ["28", <>LTE-based 5G Broadcast <strong>Main Receiver</strong></>, "All SCS (15, 7.5, 2.5, 1.25, 0.37 kHz)"],
+    ["30", <><strong>5GMS</strong> via LTE-based 5G Broadcast Receiver</>, "Not specified; clause 7 plus the 5GMS receiver requirements"],
+  ]}
+/>
 
 The v1.2.1 specification PDF and its work item are linked under Quick access above. For the capabilities each category is aimed at, see [Deployment Profiles](/tech/5g-broadcast/more/deployment-profiles#standardised-receiver-categories-etsi-ts-103-720).
 
@@ -107,28 +142,11 @@ The v1.2.1 specification PDF and its work item are linked under Quick access abo
 
 - [**ETSI TS 103 720 v1.1.1 12-2020**](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.01.01_60/ts_103720v010101p.pdf)
 
----
-
-## Specifications in scope
-
-This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are filterable below by the function they cover, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast/evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top. Search matches the specification number, its title and any scope note.
-
-<SpecIndex specs={BROADCAST_SPECS} layerOrder={BROADCAST_LAYER_ORDER} />
-
-### MBMS network interfaces
-
-MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/standards/5gms)).
-
-| Interface | Specification              | Plane        | Connects       |
-| --------- | --------------------------- | ------------ | -------------- |
-| M1        | TS 25.446 (SYNC)            | User plane   | MBMS-GW to eNB |
-| M2        | TS 36.443 (M2AP)            | Control plane | MCE to eNB     |
-| M3        | TS 36.444 (M3AP)            | Control plane | MME to MCE     |
-
-
 ## Related
 
-- [Standards: DVB-I over 5G](/standards/dvb-i)
-- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
-- [Standards: Content Delivery Protocols and Tools](/standards/content-delivery)
+- [Media delivery over 5G Broadcast: Release history](/standards/5g-broadcast/evolution)
+- [Media delivery over 5G Broadcast: Technical Analysis](/tech/5g-broadcast)
+- [DVB-I Services over 5G: Specifications](/standards/dvb-i)
+- [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs)
+- [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery)
 - [Standardisation](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks

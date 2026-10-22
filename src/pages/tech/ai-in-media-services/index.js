@@ -19,7 +19,8 @@ export default function AIForMedia() {
       icon={ICON}
       accent="#2e9e5b"
       description="AI and ML for media: the AI/ML Evaluation Framework and 6G AI Traffic Characterization."
-      softwareIsTestbed
+      analysisHref="/tech/ai-in-media-services/overview"
+      standardsHref="/standards/ai-in-media-services"
       cover="ai-ml"
       why={
         <>

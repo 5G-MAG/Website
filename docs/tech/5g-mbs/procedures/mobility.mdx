@@ -40,9 +40,9 @@ Mobility procedures described in 3GPP TS 38.300 for multicast reception allow th
 
 - Source gNB transfers to target gNB information about the MBS multicast sessions the UE has joined (UE context information) (TS 38.300 V19.4.0 clause 16.10.5.3.2).
 
-- Source gNB may propose data forwarding for some MRBs to minimize data loss and may exchange the corresponding MRB PDCP Sequence Number with the target gNB during the handover preparation (TS 38.300 V19.4.0 clause 16.10.5.3.2):
+- Source gNB may propose data forwarding for some MRBs to minimise data loss and may exchange the corresponding MRB PDCP Sequence Number with the target gNB during the handover preparation (TS 38.300 V19.4.0 clause 16.10.5.3.2):
   - Lossless handover for multicast service is supported for the handover between MBS supporting cells if the UE is configured with PTP RLC AM entity in target cell MRB of a UE (TS 38.300 V19.4.0 clause 16.10.5.3.2).
-  - The network has to ensure DL PDCP COUNT value synchronization and continuity between the source cell and the target cell (TS 38.300 V19.4.0 clause 16.10.5.3.2).
+  - The network has to ensure DL PDCP COUNT value synchronisation and continuity between the source cell and the target cell (TS 38.300 V19.4.0 clause 16.10.5.3.2).
 
 - For each multicast session with ongoing user data transmission for which no MBS Session Resources exist at the target gNB, the target gNB triggers the setup of MBS user plane resources towards the 5GC using the NGAP Distribution Setup procedure (TS 38.300 V19.4.0 clause 16.10.5.3.2). If the shared delivery for the MBS session has not been established towards the target NG-RAN, the target NG-RAN establishes it with the MB-SMF and MB-UPF (TS 23.247 V20.0.0 clause 6.3.1).
 
@@ -52,7 +52,7 @@ When the UE connects to the target gNB, the target gNB sends an indication that 
 - Upon successful handover completion, the source gNB may trigger the release of the MBS user plane resources towards the 5GC using the NGAP Distribution Release procedure for any multicast session for which there is no remaining
 joined UE in the gNB (TS 38.300 V19.4.0 clause 16.10.5.3.2; TS 38.413 V19.4.0 clause 8.18.2).
 
-- To minimize data loss when both NG-RAN nodes support MBS, data may be forwarded from the source NG-RAN node to the target NG-RAN node, and the MBS progress information (i.e. PDCP number) is exchanged between them in the handover preparation phase; alternatively the NG-RAN nodes share a common user plane entity, denoted as shared NG-U termination, which allows the allocation of identical PDCP numbers to MBS users data delivered to UEs in cells served by different NG-RAN nodes (TS 23.247 V20.0.0 clause 7.2.3.5).
+- To minimise data loss when both NG-RAN nodes support MBS, data may be forwarded from the source NG-RAN node to the target NG-RAN node, and the MBS progress information (i.e. PDCP number) is exchanged between them in the handover preparation phase; alternatively the NG-RAN nodes share a common user plane entity, denoted as shared NG-U termination, which allows the allocation of identical PDCP numbers to MBS users data delivered to UEs in cells served by different NG-RAN nodes (TS 23.247 V20.0.0 clause 7.2.3.5).
 
 ### Signalling in the 5G Core
 

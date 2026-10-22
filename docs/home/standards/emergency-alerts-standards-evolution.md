@@ -19,7 +19,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: 5G Broadcast - Emergency Alerts](/standards/emergency-alerts): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Public Warning Systems: Specifications](/standards/emergency-alerts): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -646,3 +646,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Mar 2020 | RAN#87e | RP-200167 | Clean version based on 2.0.0 for RAN approval. | 2.1.0 |
 
 </details>
+
+## Related
+
+- [Public Warning Systems: Specifications](/standards/emergency-alerts)
+- [Public Warning Systems: Technical Analysis](/tech/emergency-alerts)

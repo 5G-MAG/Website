@@ -6,6 +6,8 @@ description: "Time-Sensitive Communications: the 5G system modelled as a TSN bri
 sidebar_label: Overview
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,7 +30,9 @@ sidebar_label: Overview
 
 :::
 
-## How It Works
+<JumpMenu items={[["The 5G-as-TSN-bridge model", "the-5g-as-tsn-bridge-model"], ["Time synchronisation architecture", "time-synchronisation-architecture"], ["Control plane: TSCTSF, NEF and AF", "control-plane-tsctsf-nef-and-af"], ["Scheduled traffic and gating", "scheduled-traffic-and-gating"], ["Deterministic QoS without a full TSN bridge", "deterministic-qos-without-a-full-tsn-bridge"], ["Release timeline", "release-timeline"]]} />
+
+## How it works
 
 The 5G system is modelled as a TSN bridge, carrying deterministic traffic and shared
 timing between wired IEEE 802.1 TSN segments across a wireless hop.
@@ -138,7 +142,7 @@ schedule or simply deliver deterministic transport to endpoints.
 
 **Related:** [Non-Public Networks](/tech/npn) (TSC media
 transport typically runs over an NPN) ·
-[Real-time Media Communication (RTC) Architecture](/tech/rtc) (the interactive
+[Real-time Media Communication (RTC)](/tech/rtc) (the interactive
 WebRTC-based counterpart, for conversational and collaborative media rather than
 deterministic essence transport) ·
 [Standards: Time-Sensitive Communications (TSC)](/standards/tsc) (the

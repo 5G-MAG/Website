@@ -119,7 +119,7 @@ python run.py --scenario_name=asr --model_name=wav2vec_asr_base_960h \
   --out_dir=$AIML/out --data_dir=$AIML/data
 ```
 
-The number in the file name is the quantization parameter (QP) of NNCodec; the repository has one file for each QP from -7 to -45. `--enc_cfg_file_name` is relative to the `pipeline` folder.
+The number in the file name is the quantisation parameter (QP) of NNCodec; the repository has one file for each QP from -7 to -45. `--enc_cfg_file_name` is relative to the `pipeline` folder.
 
 **Check:** the run prints `enc_time`, a decoding step and `dec_time`, and ends with `Done`. Three files are new in `$AIML/out`: the bitstream `asr_nnc_wav2vec_asr_base_960h__-22.bit`, the decoded model `.dec` (about as large as the anchor) and the result `.csv`.
 

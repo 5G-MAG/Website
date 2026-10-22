@@ -101,13 +101,13 @@ const TOPIC_META = {
     tags: ['Web', 'Docker'],
   },
   'Non-Terrestrial Networks in 5G Systems': {
-    desc: 'Analysis-only today; see the Technology and Specifications for what\'s defined.',
+    desc: 'No tool yet. See the Technical Analysis and Specifications for what is defined.',
   },
   'Non-Public Networks': {
-    desc: 'Analysis-only today; see the Technology and Specifications for what\'s defined.',
+    desc: 'No tool yet. See the Technical Analysis and Specifications for what is defined.',
   },
   'Time-Sensitive Communications (TSC)': {
-    desc: 'Analysis-only today; see the Technology and Specifications for what\'s defined.',
+    desc: 'No tool yet. See the Technical Analysis and Specifications for what is defined.',
   },
   'Common Tools': {
     desc: 'Shared scripts, example configurations and build utilities used across several Reference Tools.',

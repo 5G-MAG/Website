@@ -115,3 +115,8 @@ TS 26.506 was approved at SA#100 in June 2023, and TS 26.113 in June 2024. TR 21
 | TS 26.113 | 18.3.0 | 0007 | Correction of PDU Set Marking in the scope of a Dynamic Policy |
 | TS 26.113 | 18.4.0 | 0016 | CR on SWAP schema inconsistencies |
 | TS 26.113 | 18.4.0 | 0017 | CR on handling of close operation in SWAP |
+
+## Related
+
+- [Real-time Media Communication (RTC): Specifications](/standards/rtc)
+- [Real-time Media Communication (RTC): Technical Analysis](/tech/rtc)

@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, revision-by-revision companion to [Standards: DVB-I Services over 5G Systems](/standards/dvb-i). DVB-I is specified by DVB and published by ETSI; its history is the document history of each specification. The 3GPP parts that DVB-I uses over 5G follow the 3GPP release process and are covered on [Standards Evolution: 5G Media Streaming](/standards/5gms/evolution), [5G MBS](/standards/5g-mbs/evolution) and [5G Broadcast](/standards/5g-broadcast/evolution).
+This page is the detailed, revision-by-revision companion to [DVB-I Services over 5G: Specifications](/standards/dvb-i). DVB-I is specified by DVB and published by ETSI; its history is the document history of each specification. The 3GPP parts that DVB-I uses over 5G follow the 3GPP release process and are covered on [Media Streaming and Advanced Media Delivery: Release history](/standards/5gms/evolution), [Media delivery over 5G Multicast Broadcast Services: Release history](/standards/5g-mbs/evolution) and [Media delivery over 5G Broadcast: Release history](/standards/5g-broadcast/evolution).
 
 :::tip[At a glance]
 
@@ -80,3 +80,8 @@ The History of ETSI TR 103 972 V1.1.1 (2023-07) lists one publication: V1.1.1 (J
 - ETSI TR 103 972 V1.1.1 (2023-07), History, "Document history".
 
 </details>
+
+## Related
+
+- [DVB-I Services over 5G: Specifications](/standards/dvb-i)
+- [DVB-I Services over 5G: Technical Analysis](/tech/dvb-i)

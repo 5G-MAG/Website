@@ -11,10 +11,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -32,13 +30,7 @@ export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 </div>
 </div>
 
-The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming (5GMS) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms. For the full glTF extension support matrices and how the tools map to the standard, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
-
-## Under the hood
-
-<img loading="lazy" src={useBaseUrl('/assets/images/xr/volumetric-capture-demo.jpg')} alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
-
-<em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
+The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming (5GMS) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms. For the full glTF extension support matrices and how the tools map to the standard, see [Implementation status](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
 
 ## Contributors & How to Contribute
 
@@ -60,11 +52,15 @@ The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission
   note="Parts without a repository are not provided by the Reference Tools. The tools implement ISO/IEC 23090-14, whose Presentation Engine and Media Access Function this figure names. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="xr" />
+
+## Under the hood
+
+<img loading="lazy" src={useBaseUrl('/assets/images/xr/volumetric-capture-demo.jpg')} alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
+
+<em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
 
 ## Standards implemented
 
@@ -75,7 +71,7 @@ The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission
 </div>
 </div>
 
-ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Implementation Detail](./implementation). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Implementation Detail](./implementation) for the detail).
+ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Implementation status](./implementation). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Implementation status](./implementation) for the detail).
 
 See [XR on the Standards portal](/standards/xr) for version history and 5G-MAG's own standards contributions.
 

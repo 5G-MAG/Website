@@ -51,7 +51,7 @@ function bubblesForGroup(project, groupKey) {
   }
   if (groupKey === 'technical-analysis') {
     const b = [];
-    if (project.tech_url) b.push({ label: 'Documentation', href: project.tech_url });
+    if (project.tech_url) b.push({ label: 'Technical Analysis', href: project.tech_url });
     if (project.standards_url) b.push({ label: 'Specifications', href: project.standards_url });
     return b;
   }

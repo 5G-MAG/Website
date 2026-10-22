@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['v3c'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -54,8 +52,6 @@ The platform provides an end-to-end pipeline for 3D object and scene delivery, a
   note="This 3GPP study model is general to Beyond 2D formats, and V3C is one such format. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="v3c" />
@@ -77,7 +73,7 @@ The platform provides an end-to-end pipeline for 3D object and scene delivery, a
 </div>
 </div>
 
-**Key specifications:** ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C) container and multiplexing, including video-based point cloud compression (V-PCC)), ISO/IEC 23090-12 (MPEG Immersive Video (MIV)), ISO/IEC 23090-10 (carriage of V3C data). The reference tooling is still maturing; see [Implementation Detail](./implementation) rather than treating this list as a fixed implementation status.
+**Key specifications:** ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C) container and multiplexing, including video-based point cloud compression (V-PCC)), ISO/IEC 23090-12 (MPEG Immersive Video (MIV)), ISO/IEC 23090-10 (carriage of V3C data). The reference tooling is still maturing; see [Implementation status](./implementation) rather than treating this list as a fixed implementation status.
 
 See [MPEG V3C Immersive Platform on the Standards portal](/standards/v3c) for version history and 5G-MAG's own standards contributions.
 

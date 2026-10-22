@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['dvb-i'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -27,7 +25,7 @@ export const REPO_COUNT = (REPO_METADATA['dvb-i'] || []).length;
 </div>
 </div>
 
-DVB-I defines a common service discovery and selection framework that unifies IP-delivered TV services across access networks. The 5G-MAG implementation covers DVB-I service discovery and selection, and hands off to 5G-MAG's other reference tools for the actual 5G unicast (via 5G Media Streaming, 5GMS) and 5G Broadcast (via Further evolved Multimedia Broadcast Multicast Service, FeMBMS) delivery paths, enabling a seamless hybrid broadcast/broadband TV experience. The service list bootstrap step is covered by the [Service List Registry tutorial](./tutorials/service-list-registry) and the other [Tutorials](./tutorials). For the full architecture and specification mapping, see [Implementation Detail](./implementation).
+DVB-I defines a common service discovery and selection framework that unifies IP-delivered TV services across access networks. The 5G-MAG implementation covers DVB-I service discovery and selection, and hands off to 5G-MAG's other reference tools for the actual 5G unicast (via 5G Media Streaming, 5GMS) and 5G Broadcast (via Further evolved Multimedia Broadcast Multicast Service, FeMBMS) delivery paths, enabling a seamless hybrid broadcast/broadband TV experience. The service list bootstrap step is covered by the [Service List Registry tutorial](./tutorials/service-list-registry) and the other [Tutorials](./tutorials). For the full architecture and specification mapping, see [Implementation status](./implementation).
 
 ## Contributors & How to Contribute
 
@@ -57,8 +55,6 @@ DVB-I defines a common service discovery and selection framework that unifies IP
   note="rt-dvb-i-android-application is a second DVB-I Client and rt-5gms-application carries the Exo DVB-I Player; neither is drawn, because one box shows one repository. rt-dvb-i-examples brings the repositories up together and is not a box of either figure. Click a figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="dvb-i" />
@@ -76,7 +72,7 @@ DVB-I defines a common service discovery and selection framework that unifies IP
 </div>
 </div>
 
-**Implemented specifications:** DVB BlueBook A177 / ETSI TS 103 770 (DVB-I service discovery and selection). ETSI TS 103 720 (5G Broadcast) and 3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS) are implemented by the sibling [5G Broadcast](../5g-broadcast/) and [5G Media Streaming](../5gms/) reference tools this project hands off to, not by this project itself: see [Implementation Detail](./implementation).
+**Implemented specifications:** DVB BlueBook A177 / ETSI TS 103 770 (DVB-I service discovery and selection). ETSI TS 103 720 (5G Broadcast) and 3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS) are implemented by the sibling [5G Broadcast](../5g-broadcast/) and [5G Media Streaming](../5gms/) reference tools this project hands off to, not by this project itself: see [Implementation status](./implementation).
 
 See [DVB-I on the Standards portal](/standards/dvb-i) for version history and 5G-MAG's own standards contributions.
 

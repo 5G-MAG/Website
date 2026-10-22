@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Towards 6G Media](/standards/6g): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Towards 6G Media: Specifications](/standards/6g): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -177,3 +177,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Jun 2026 | RAN#112 | RP-261565 | Same as the clean version of v0.5.0, v1.0.0 was approved by RAN#112. | 1.0.0 |
 
 </details>
+
+## Related
+
+- [Towards 6G Media: Specifications](/standards/6g)
+- [Towards 6G Media: Technical Analysis](/tech/6g)

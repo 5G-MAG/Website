@@ -15,6 +15,9 @@ const releases = JSON.parse(fs.readFileSync(path.join(ROOT, 'static', 'data', 'r
 const config = fs.readFileSync(path.join(ROOT, 'docusaurus.config.js'), 'utf8');
 const TAGLINE = (/tagline:\s*'([^']+)'/.exec(config) || [])[1] || '';
 
+// The label the site's menu gives the software page of a project, by its kind.
+const SOFTWARE_LABEL = { 'reference-tool': 'Reference Tools', platform: 'Reference Tools', 'common-tools': 'Reference Tools', testbed: 'Testbeds', 'evaluation-framework': 'Testbeds', 'validation-tool': 'Validation Tools' };
+
 const abs = (p) => (p ? `${SITE}${p.replace(/\/$/, '')}` : null);
 // An id from the page path (reference-tools-5gms, testbeds-beyond-2d, tech-beyond-2d), so a project and its tool never share one.
 const idOf = (p) => (p.doc_url || p.tech_url || p.standards_url || '').replace(/^\/|\/$/g, '').replace(/\//g, '-');
@@ -120,8 +123,8 @@ for (const pr of projects) {
   const parts = [];
   if (pr.pages.technicalAnalysis) parts.push(`[Technical Analysis](${pr.pages.technicalAnalysis})`);
   if (pr.pages.specifications) parts.push(`[Specifications](${pr.pages.specifications})`);
-  if (pr.pages.software) parts.push(`[Software](${pr.pages.software})`);
-  lines.push(`- ${pr.name}${pr.summary ? `: ${pr.summary}` : ''}. ${parts.join(', ')}`);
+  if (pr.pages.software) parts.push(`[${SOFTWARE_LABEL[pr.kind] || 'Software'}](${pr.pages.software})`);
+  lines.push(`- ${pr.title}${pr.summary ? `: ${pr.summary}` : ''}. ${parts.join(', ')}`);
 }
 lines.push('', '## Repositories', '');
 for (const r of registry.repositories) {

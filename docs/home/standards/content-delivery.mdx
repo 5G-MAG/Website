@@ -6,6 +6,7 @@ description: "The specifications behind FLUTE and its three profiles (unprofiled
 sidebar_label: Specification list
 ---
 
+import SpecTable from '@site/src/components/SpecTable';
 import SpecIndex from '@site/src/components/SpecIndex';
 import JumpMenu from '@site/src/components/JumpMenu';
 import { CONTENT_DELIVERY_SPECS, CONTENT_DELIVERY_LAYER_ORDER } from '@site/src/data/specs/content-delivery';
@@ -41,29 +42,32 @@ The page follows the latest Release 19 issues: TS 26.346 V19.3.0 and TS 26.517 V
 
 A tick means the profile requires the document, directly or through the profile it builds on.
 
-| Document | Used for | Unprofiled FLUTE | MBMS download | MBS Object Distribution |
-| --- | --- | :---: | :---: | :---: |
-| RFC 3926 | FLUTE version 1 | ✓ | ✓ | ✓ |
-| RFC 3450 | ALC | ✓ | ✓ | ✓ |
-| RFC 3451 | LCT | ✓ | ✓ | ✓ |
-| RFC 3695 | Compact No-Code FEC (FEC Encoding ID 0) | ✓ | ✓ | ✓ |
-| RFC 5053 | Raptor FEC (FEC Encoding ID 1) | - | ✓ | ✓ |
-| RFC 1952 | GZip content encoding | - | ✓ | ✓ |
-| TS 26.346, clause 7.2 and annex L.4 | FLUTE usage for MBMS download; the MBMS Download Profile | - | ✓ | ✓ |
-| TS 26.346, annex L.6 | Profiled FLUTE FDT schema | - | - | ✓ |
-| TS 26.517, clause 6.2 | FLUTE for the Object Distribution Method | - | - | ✓ |
+<SpecTable
+  columns={["Document", "Used for", "Unprofiled FLUTE", "MBMS download", "MBS Object Distribution"]}
+  rows={[
+    ["RFC 3926", "FLUTE version 1", "✓", "✓", "✓"],
+    ["RFC 3450", "ALC", "✓", "✓", "✓"],
+    ["RFC 3451", "LCT", "✓", "✓", "✓"],
+    ["RFC 3695", "Compact No-Code FEC (FEC Encoding ID 0)", "✓", "✓", "✓"],
+    ["RFC 5053", "Raptor FEC (FEC Encoding ID 1)", "-", "✓", "✓"],
+    ["RFC 1952", "GZip content encoding", "-", "✓", "✓"],
+    ["TS 26.346, clause 7.2 and annex L.4", "FLUTE usage for MBMS download; the MBMS Download Profile", "-", "✓", "✓"],
+    ["TS 26.346, annex L.6", "Profiled FLUTE FDT schema", "-", "-", "✓"],
+    ["TS 26.517, clause 6.2", "FLUTE for the Object Distribution Method", "-", "-", "✓"],
+  ]}
+/>
 
 - **Unprofiled FLUTE:** RFC 3926 builds on RFC 3450 and RFC 3451, and refers to RFC 3695 for FEC Encoding ID 0. It allows content encoding, GZip among others, without requiring it.
 - **MBMS download:** clients and servers implement RFC 3926 with the ALC and LCT features it inherits. Compact No-Code is supported, every UE decodes Raptor, and UEs support GZip decoding.
 - **MBS Object Distribution:** the MBS Distribution Session conforms to the MBMS Download Profile, and the MBSTF uses the profiled FDT schema of annex L.6.
 
-What each profile requires, row by row, is in the [Technology](/tech/content-delivery/features).
+What each profile requires, row by row, is in the [Technical Analysis](/tech/content-delivery/features).
 
 ## Specifications
 
 <SpecIndex specs={CONTENT_DELIVERY_SPECS} layerOrder={CONTENT_DELIVERY_LAYER_ORDER} />
 
-For the release-by-release history, see [Standards Evolution](/standards/content-delivery/evolution).
+For the release-by-release history, see [Release history](/standards/content-delivery/evolution).
 
 <details>
 <summary>Sources for this page</summary>
@@ -76,7 +80,8 @@ For the release-by-release history, see [Standards Evolution](/standards/content
 
 ## Related
 
-- [Technology: Content Delivery Protocols and Tools](/tech/content-delivery/overview)
-- [Standards: CMMF (Multisource Delivery)](/standards/cmmf)
-- [Standards: 5G Broadcast](/standards/5g-broadcast)
-- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
+- [Content Delivery Protocols and Tools: Release history](/standards/content-delivery/evolution)
+- [Content Delivery Protocols and Tools: Technical Analysis](/tech/content-delivery/overview)
+- [CMMF (Multisource Delivery): Specifications](/standards/cmmf)
+- [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast)
+- [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs)

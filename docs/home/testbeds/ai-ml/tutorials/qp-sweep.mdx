@@ -1,9 +1,9 @@
 ---
-title: "AI and ML Evaluation Framework: sweep quantization parameters"
-sidebar_label: "AI and ML Evaluation Framework - sweep quantization parameters and plot the trade-off"
+title: "AI and ML Evaluation Framework: sweep quantisation parameters"
+sidebar_label: "AI and ML Evaluation Framework - sweep quantisation parameters and plot the trade-off"
 hide_title: true
 sidebar_position: 2
-description: "Step by step with the AI and ML Evaluation Framework: run NNCodec over a range of quantization parameters on the wav2vec 2.0 speech recognition model, plot word error rate against compressed size, read the points against the test cases of TR 26.847 clause 5.2.9, and change a codec setting."
+description: "Step by step with the AI and ML Evaluation Framework: run NNCodec over a range of quantisation parameters on the wav2vec 2.0 speech recognition model, plot word error rate against compressed size, read the points against the test cases of TR 26.847 clause 5.2.9, and change a codec setting."
 ---
 
 import { RepoCards } from '@site/src/components/ProjectRepoSection';
@@ -24,7 +24,7 @@ import { RepoCards } from '@site/src/components/ProjectRepoSection';
 </div>
 </div>
 
-In this tutorial you compare test conditions with the AI and ML Evaluation Framework. You run NNCodec on the wav2vec 2.0 speech recognition model at several quantization parameters (QPs), plot the word error rate against the compressed size, read the points against the test case of 3GPP TR 26.847 V19.0.0 clause 5.2.9, and change a codec setting to see its effect.
+In this tutorial you compare test conditions with the AI and ML Evaluation Framework. You run NNCodec on the wav2vec 2.0 speech recognition model at several quantisation parameters (QPs), plot the word error rate against the compressed size, read the points against the test case of 3GPP TR 26.847 V19.0.0 clause 5.2.9, and change a codec setting to see its effect.
 
 TR 26.847 characterises a compression method by a set of test configurations, each giving a pair of the compressed size and the word error rate. The sweep script and the plotter of the framework produce exactly these pairs (Annex B.2). The repository is available on request through [Early Access](/early-access).
 
@@ -148,7 +148,7 @@ The pair (cSize, wer) for each configuration, with werAnc, is how clause 5.2.9 a
 
 ## 6. Change a codec setting
 
-A configuration file is a small JSON file of NNCodec parameters; the README points to the [NNCodec usage page](https://github.com/fraunhoferhhi/nncodec/wiki/Usage) for their meaning. Table 5.2.14-1 of TR 26.847 lists the tools the repository files switch on, among them `use_dq` (dependent scalar quantization). Switch it off for two QPs and compare, keeping the new results in their own folder:
+A configuration file is a small JSON file of NNCodec parameters; the README points to the [NNCodec usage page](https://github.com/fraunhoferhhi/nncodec/wiki/Usage) for their meaning. Table 5.2.14-1 of TR 26.847 lists the tools the repository files switch on, among them `use_dq` (dependent scalar quantisation). Switch it off for two QPs and compare, keeping the new results in their own folder:
 
 ```bash
 cd pipeline

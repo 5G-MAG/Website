@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -31,7 +29,7 @@ export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
 
 See also: <a href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')}>Developer Exchange</a>.
 
-The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment. For the fork mapping and full technical detail, see [Implementation Detail](./implementation).
+The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment. For the fork mapping and full technical detail, see [Implementation status](./implementation).
 
 ## Contributors & How to Contribute
 
@@ -53,15 +51,13 @@ The project provides configurations, scripts, and integration guides for standin
   note="The Open5GS parts are those whose source directories the fork contains. The UE follows the project's own description of srsRAN_4G as the basis of UE functions for MBS. The figure shows the 5G core and NR; the LTE-based 5G Broadcast side of srsRAN_4G has no figure here. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: the 5G-MAG forks of Open5GS and srsRAN, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="3gpp-platforms" />
 
 ## 5G Core Service Consumers
 
-The platforms also include the 5G Core Service Consumers: reusable libraries and command-line tools that let a media application server use 5G Core services such as the Policy Control Function (PCF) and the Binding Support Function (BSF), and the MB-SMF for multicast and broadcast sessions. They are described in [Implementation Detail](/reference-tools/3gpp-platforms/implementation#5g-core-service-consumers) and exercised in the [Tutorials](/reference-tools/3gpp-platforms/tutorials#5g-core-service-consumers).
+The platforms also include the 5G Core Service Consumers: reusable libraries and command-line tools that let a media application server use 5G Core services such as the Policy Control Function (PCF) and the Binding Support Function (BSF), and the MB-SMF for multicast and broadcast sessions. They are described in [Implementation status](/reference-tools/3gpp-platforms/implementation#5g-core-service-consumers) and exercised in the [Tutorials](/reference-tools/3gpp-platforms/tutorials#5g-core-service-consumers).
 
 ## Standards implemented
 

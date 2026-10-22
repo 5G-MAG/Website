@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['flute'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -51,7 +49,7 @@ For each profile it configures the library's transmitter with the values the pro
 | `Profile::MBMS::Download` | 3GPP TS 26.346 annex L.4 | 13 to 19 |
 | `Profile::MBS` | 3GPP TS 26.517 clause 6.2 | 17 to 19 |
 
-Each 3GPP profile is tested per release, against the latest edition of that release. Release 20 has no edition of either document yet (October 2026). [Implementation Detail](./implementation) lists the editions.
+Each 3GPP profile is tested per release, against the latest edition of that release. Release 20 has no edition of either document yet (October 2026). [Implementation status](./implementation) lists the editions.
 
 ## Where it stands
 
@@ -79,8 +77,6 @@ The repository is available on request; see [Early Access](/early-access).
   note="This is a 5G-MAG drawing, not a redrawn specification figure. The validator tests rt-libflute only, as its README says; the sender and the receiver are the library's transmitter and receiver. Click the figure to enlarge it."
 />
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
-
 ## Repositories & Releases
 
 <ProjectRepositories project="flute" />
@@ -100,7 +96,7 @@ The repository is available on request; see [Early Access](/early-access).
 
 IETF RFC 3926 (FLUTE), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) annex L.4 (MBMS download profile) and 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) clause 6.2 (MBS profile): see [Profiles](#profiles) for the releases tested.
 
-See [FLUTE requirements by profile](/standards/content-delivery/flute) on the Standards portal. For the technology background, see [Content Delivery Protocols and Tools on the Technology pages](/tech/content-delivery). The library it tests is [Content Delivery Protocols and Tools (rt-libflute)](/reference-tools/content-delivery).
+See [FLUTE requirements by profile](/standards/content-delivery/flute) on the Standards portal. For the technology background, see the [Technical Analysis](/tech/content-delivery/overview). The library it tests is [Content Delivery Protocols and Tools (rt-libflute)](/reference-tools/content-delivery).
 
 ## Developer Updates
 

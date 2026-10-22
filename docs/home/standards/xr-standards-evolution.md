@@ -17,7 +17,14 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the companion to [Standards: XR/3D Scenes with MPEG-I Scene Description](/standards/xr). It lists the editions and amendments of ISO/IEC 23090-14, MPEG-I Scene Description, and then the 3GPP SA4 work items behind XR, release by release.
+This page is the companion to [XR Media & 3D Scenes: Specifications](/standards/xr). It lists the editions and amendments of ISO/IEC 23090-14, MPEG-I Scene Description, and then the 3GPP SA4 work items behind XR, release by release.
+
+:::tip[At a glance]
+
+- **ISO/IEC 23090-14:** first edition in 2023, second edition in November 2025, and Amendment 1 at final draft stage (1 May 2026).
+- **3GPP:** the work items behind XR are listed by release, from Release 15 to Release 20.
+
+:::
 
 | Document | Date | Content |
 | --- | --- | --- |
@@ -44,7 +51,7 @@ Release 20 (work plan of 28 September 2026); completion percentages and dates ar
 | FS_XRM_Ph3_APP | Study on Application enabler for XR Services Phase 3 | TR 23.700-51 | 100%, finish 12 Dec 2025 (SP-251042) |
 | Metaverse_Ph2 (stage 2: Metaverse_Ph2-APP) | Mobile metaverse services Phase 2 | TS 23.437, TS 23.438 | Stage 2 100%, finish 12 Dec 2025; parent 75%, finish 3 Mar 2027 (SP-250392); CT aspects 66% (CP-261145) |
 | NR_XR_Ph4-Core | Core part: XR (eXtended Reality) for NR Phase 4 | none listed in the work plan | 57%, finish 3 Mar 2027 (RP-262249), RAN2 |
-| AvCall_Ph2-MED | Avatar Communications phase 2 | TS 26.264 | 0%, planned 3 Mar 2027 (SP-260910); see [Avatar](/standards/avatar/evolution) |
+| AvCall_Ph2-MED | Avatar Communications phase 2 | TS 26.264 | 0%, planned 3 Mar 2027 (SP-260910); see [Conversational Avatar Communication: Release history](/standards/avatar/evolution) |
 
 ### Release 19
 
@@ -60,7 +67,7 @@ Release 20 (work plan of 28 September 2026); completion percentages and dates ar
 | NR_XR_Ph3 | XR (eXtended Reality) for NR Phase 3 | RAN specifications | Continuation of the Release 18 RAN work on capacity, QoS and device power consumption (clause 12.3) |
 | Metaverse, XRMobility, XRM_Ph2_App | Localized Mobile Metaverse Services; Supporting UE Mobility for XR Services; Application enablement for XRM Services Phase 2 | S1, S6 work | Listed in clauses 12.1 and 12.2 |
 
-TS 26.119 (MeCAR) CR 0003 "Assignment of IVAS levels to device types" is in V19.1.0, and TS 26.565 CR 0003 "[SR_MSE] Enhancements to SR_MSE" is in V19.0.0 (change histories). The work item FS_ARSpatial (Study on Spatial Computing for AR Services) is listed on the [XR page](/standards/xr); the release description TR 21.919 does not describe it.
+TS 26.119 (MeCAR) CR 0003 "Assignment of IVAS levels to device types" is in V19.1.0, and TS 26.565 CR 0003 "[SR_MSE] Enhancements to SR_MSE" is in V19.0.0 (change histories). The work item FS_ARSpatial (Study on Spatial Computing for AR Services) is listed on the [XR Media & 3D Scenes: Specifications](/standards/xr); the release description TR 21.919 does not describe it.
 
 ### Release 18
 
@@ -72,7 +79,7 @@ TS 26.119 (MeCAR) CR 0003 "Assignment of IVAS levels to device types" is in V19.
 | iRTCW | Immersive Real-time Communication for WebRTC | TS 26.113 | RTC APIs, the SWAP signalling protocol, QoE metric reporting and packet loss handling for WebRTC over 5G (clause 14.5) |
 | IBACS | IMS-based AR Conversational Services | TS 26.264 | The AR-MTSI client, with AR metadata, network media rendering and AR data transport (clause 14.6) |
 | SR_MSE | Split Rendering Media Service Enabler | TS 26.565 | Split rendering media service enabler, with media and metadata formats and several split rendering profiles (clause 14.7) |
-| GA4RTAR | Generic architecture for RT and AR/MR | TS 26.506 | Listed in clause 14.9 without a summary; see [RTC](/standards/rtc/evolution) |
+| GA4RTAR | Generic architecture for RT and AR/MR | TS 26.506 | Listed in clause 14.9 without a summary; see [Real-time Media Communication (RTC): Release history](/standards/rtc/evolution) |
 | XRM | Architecture Enhancements for XR (Extended Reality) and media service | TS 23.501, TS 23.502, TS 23.503 and others (SA2, CT) | PDU Set based QoS handling, PDU Set information marking in the UPF, ECN marking for L4S, exposure of QoS flow information, assistance information to the NG-RAN for power saving (clause 14.8) |
 | NR_XR_enh | XR (eXtended Reality) enhancements for NR | RAN specifications | XR awareness, power saving and capacity in NG-RAN, including a Delay Status Report MAC CE and uplink assistance information from the UE (clause 14.1) |
 | FS_eiRTCW, FS_SmarTAR, FS_ARMRQoE, FS_Audio_5GSTAR | Studies on WebRTC Phase 2, tethering AR glasses, AR and MR QoE metrics, and audio for glasses-type AR/MR devices | Studies | Listed in clauses 14.8 and 14.9 without a summary |
@@ -99,7 +106,7 @@ TS 26.119 V18.0.0 and TS 26.522 V18.0.0 were created in March 2024, TS 26.565 V1
 | --- | --- | --- | --- |
 | VRStream | Virtual Reality Profiles for Streaming Media | TS 26.118 | Three video media profiles (Basic, Main and Advanced), MPEG-H 3D Audio Baseline profile, and system metadata for rendering 360 experiences on 2D screens (TR 21.915 clause 12.4.3) |
 
-The Release 16 study FS_5GXR (TR 26.928) is listed on the [XR page](/standards/xr); the release description TR 21.916 has no summary for it.
+The Release 16 study FS_5GXR (TR 26.928) is listed on the [XR Media & 3D Scenes: Specifications](/standards/xr) page; the release description TR 21.916 has no summary for it.
 
 <details>
 <summary>Sources for this page</summary>
@@ -108,3 +115,8 @@ The Release 16 study FS_5GXR (TR 26.928) is listed on the [XR page](/standards/x
 - ISO/IEC 23090-14:2025/FDAM 1:2025, title page (date 2026-05-01) and the changes to clauses 7.3.2 and 8.1.
 
 </details>
+
+## Related
+
+- [XR Media & 3D Scenes: Specifications](/standards/xr)
+- [XR Media & 3D Scenes: Technical Analysis](/tech/xr)

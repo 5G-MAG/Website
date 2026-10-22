@@ -6,6 +6,8 @@ description: "The 3GPP reports behind AI in Media Services: AI and ML in 5G medi
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -17,26 +19,34 @@ sidebar_label: Specification list
 </div>
 </div>
 
-## Overview
-
 TR 26.927 V19.0.0, clause 4.1: "Recently, AI/ML has been introduced and generalized in media related applications, ranging from legacy applications such as image classification, speech/face recognition, to more recent ones such as video quality enhancement, natural language processing, and generative AI for media." Its clause 4.2 collects media-based AI/ML use cases and scenarios, and its clause 5 the media service architecture for AI/ML.
 
 TR 26.847 V19.0.0, clause 1: "The present document provides details on feasibility evaluations for a given set of scenarios related to AI/ML in media services." Its clause 4 defines the evaluation testbed architectures and anchors.
 
-AI in Media Services has two testbeds, and each has its own Standards page.
+AI in Media Services has two testbeds, and each has its own Specifications page.
 
-## Specifications in scope
+:::tip[At a glance]
 
-- [Standards: AI/ML Evaluation Framework](/standards/ai-ml): TR 26.927 and TR 26.847, on AI and ML in 5G media services, with the specifications they relate to.
-- [Standards: Towards 6G Media](/standards/6g): TR 26.870, the study on media aspects for 6G, which the 6G AI Traffic Characterization Testbed measures for.
+- **Two Specifications pages:** AI/ML Evaluation Framework (TR 26.927 and TR 26.847) and Towards 6G Media (TR 26.870).
+- **Release 19:** TR 26.927 and TR 26.847 are approved and created as version 19.0.0.
+- **Release 20:** stage 3 work on AI/ML in IMS (AIML_IMS-MED) is in the work plan; its scope is unverified.
 
-## Release history
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["Release by release", "release-by-release"], ["Sources", "sources"], ["Related", "related"]]} />
+
+## Specifications
+
+- [AI/ML Evaluation Framework: Specifications](/standards/ai-ml): TR 26.927 and TR 26.847, on AI and ML in 5G media services, with the specifications they relate to.
+- [Towards 6G Media: Specifications](/standards/6g): TR 26.870, the study on media aspects for 6G, which the 6G AI Traffic Characterization Testbed measures for.
+
+## Release by release
 
 - **Release 18:** the SA4 study on AI/ML for media (FS_AI4Media, SP-220328) is listed in TR 21.918 clause 11.3, without a description. The SA1 work item AIML_MT (the study FS_AIML_MT on traffic characteristics of AI/ML model transfer, and its Stage 1) is described in TR 21.918 clause 11.1; TS 22.261 V18.19.0 has the requirements in clause 6.40 and the KPIs in clause 7.10.
 - **Release 19:** TR 26.927 and TR 26.847 are approved at SA#108 and created as version 19.0.0 (change history of each). TR 21.919 clause 29.1 lists FS_AI4Media among the studies without a summary.
 - **Release 20:** TR 26.927 V19.0.0 clause 7 recommends stage 3 work on AI/ML in IMS (TS 26.114, TS 26.264) in Release 20, and further study of the traffic characteristics of AI/ML data components; TR 26.847 V19.0.0 clause 6 recommends a new evaluation study. The work plan of 28 September 2026 lists AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (UID 1080049, SP-250878, S4, 100%, finish 6 June 2026), against TS 26.114 and TS 26.264; its scope is unverified. TS 26.114 V20.0.0 records CR 0609 "CR for AI/ML in IMS" (SP-260396) in its change history, without naming the work item. The 6G media study (TR 26.870, draft V0.6.1) has a clause on AI services and formats (6.3.4), a clause on approaches to collect traffic characteristics (6.3.3.2) and an annex with an initial methodology for AI traffic characteristics (C.2); it is not approved, and its status is unverified beyond that draft.
 
-The release-by-release detail for TR 26.927 and TR 26.847 is on the [AI/ML Evaluation Framework release history](/standards/ai-ml/evolution).
+The release-by-release detail for TR 26.927 and TR 26.847 is on the [AI/ML Evaluation Framework: Release history](/standards/ai-ml/evolution).
 
 ## Sources
 
@@ -47,5 +57,5 @@ The release-by-release detail for TR 26.927 and TR 26.847 is on the [AI/ML Evalu
 
 ## Related
 
-- [Technology: AI in Media Services](/tech/ai-in-media-services)
+- [AI in Media Services: Technical Analysis](/tech/ai-in-media-services)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

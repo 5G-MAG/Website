@@ -6,6 +6,7 @@ description: "Specifications for public warning over 5G Broadcast: ETSI TS 103 7
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
 import SpecIndex from '@site/src/components/SpecIndex';
 import {
   EMERGENCY_ALERTS_SPECS,
@@ -25,8 +26,6 @@ import {
 </div>
 </div>
 
-## Overview
-
 Public warning over 5G Broadcast carries emergency alerts (earthquake and tsunami warnings, and
 CMAS-style civil alerts) to any receiver in coverage, using the same free-to-air LTE-based
 broadcast carrier as linear TV and radio. Because it needs no SIM, no subscription and no return
@@ -39,11 +38,19 @@ Broadcast Service message itself: its structure, message identifiers, serial num
 coding. **3GPP TS 36.331** defines how that message is encoded on the radio interface, as
 SystemInformationBlockType12, and what a UE does on receiving it.
 
-For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/emergency-alerts/evolution).
-
 5G-MAG maintains ETSI TS 103 720 and carries the public warning requirements into it, so feedback from implementing the alert chain in the reference tools feeds directly back into the specification. Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
 
-## Specifications in scope
+:::tip[At a glance]
+
+- **Three layers:** ETSI TS 103 720 profiles PWS support over the E-UTRAN Uu downlink; 3GPP TS 23.041 defines the Cell Broadcast Service message; 3GPP TS 36.331 defines its radio encoding as SystemInformationBlockType12.
+- **Carrier:** the same free-to-air LTE-based broadcast carrier as linear TV and radio, with no SIM, subscription or return channel.
+- **Maintenance:** 5G-MAG maintains ETSI TS 103 720 and carries the public warning requirements into it.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["What the specifications state", "what-the-specifications-state"], ["Release by release", "release-by-release"], ["Related", "related"]]} />
+
+## Specifications
 
 <SpecIndex specs={EMERGENCY_ALERTS_SPECS} layerOrder={EMERGENCY_ALERTS_LAYER_ORDER} />
 
@@ -52,16 +59,6 @@ Receiver behaviour for public warning, and the exact CBS feature coverage, depen
 ETSI TS 103 720 being implemented; work towards v1.3.1 adds PWS-related improvements. Confirm the
 current status against the repositories and the Kanban board before relying on it.
 :::
-
-## Novelties per release
-
-From the 3GPP release descriptions (TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.919 V19.0.0); the full list with clauses is in [Standards Evolution](/standards/emergency-alerts/evolution).
-
-- **Release 15:** the 5G System supports PWS through the CBC Function and AMF, and the NG interface gets a warning message transmission function (TR 21.915 clauses 5.5.2.2.7 and 5.5.3.5.3).
-- **Release 16:** ePWS adds ePWS-UE Message Identifiers and language-independent content (TR 21.916 clause 12.1); LTE_eMTC5 adds ETWS/CMAS notification in connected mode for non-Cat-M UEs (clause 7.3); LTE_terr_bcast produced TR 36.976 (clause 19.3.1).
-- **Release 17:** PWS over SNPN is supported (NG_RAN_PRN_enh, TR 21.917 clause 6.2.3.2).
-- **Release 19:** PWS_NTN adds PWS over satellite E-UTRAN and NG-RAN, ETWS geo-fencing and duplicate detection with a shared MCC (TR 21.919 clause 5.3.1); IoT_NTN_Ph3 adds NB-IoT ETWS and CMAS system information blocks (clause 5.1.3).
-- **Release 20 (work plan of 28 September 2026):** MLT-REQ, Stage 1 for Multilingual Template-based alerts (TS 22.268, UID 1130012, WID SP-261004); CPAS, Security Assurance Specification (UID 1110066, 90%, finish 12 December 2026), with CPAS-REQ and CPAS-CT (TS 23.041). Details are in [Standards Evolution](/standards/emergency-alerts/evolution). No Release 20 release description (TR 21.920) was available.
 
 ## What the specifications state
 
@@ -72,7 +69,19 @@ From the 3GPP release descriptions (TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.
 - **TR 36.976 V19.0.0, clause 1:** "The present document provides an overview and overall description of the LTE-based 5G terrestrial broadcast comprising:" a free-to-air service and a radio network of MBMS-dedicated or FeMBMS/Unicast-mixed cells.
 - **ETSI TS 103 720 V1.2.1, clause 5.15.3.3:** "PWS warning messages shall be sent in the 5G Broadcast System via the Commercial Mobile Alert Service (CMAS) as described in this clause." and "Among the different types of SIB messages, SIB12 contains the CMAS notification for PWS." For PWS, "networks are only allowed to use identifiers between 4352 and 6399 inclusive."
 
+## Release by release
+
+From the 3GPP release descriptions (TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.919 V19.0.0); the full list with clauses is in [Release history](/standards/emergency-alerts/evolution).
+
+- **Release 15:** the 5G System supports PWS through the CBC Function and AMF, and the NG interface gets a warning message transmission function (TR 21.915 clauses 5.5.2.2.7 and 5.5.3.5.3).
+- **Release 16:** ePWS adds ePWS-UE Message Identifiers and language-independent content (TR 21.916 clause 12.1); LTE_eMTC5 adds ETWS/CMAS notification in connected mode for non-Cat-M UEs (clause 7.3); LTE_terr_bcast produced TR 36.976 (clause 19.3.1).
+- **Release 17:** PWS over SNPN is supported (NG_RAN_PRN_enh, TR 21.917 clause 6.2.3.2).
+- **Release 19:** PWS_NTN adds PWS over satellite E-UTRAN and NG-RAN, ETWS geo-fencing and duplicate detection with a shared MCC (TR 21.919 clause 5.3.1); IoT_NTN_Ph3 adds NB-IoT ETWS and CMAS system information blocks (clause 5.1.3).
+- **Release 20 (work plan of 28 September 2026):** MLT-REQ, Stage 1 for Multilingual Template-based alerts (TS 22.268, UID 1130012, WID SP-261004); CPAS, Security Assurance Specification (UID 1110066, 90%, finish 12 December 2026), with CPAS-REQ and CPAS-CT (TS 23.041). Details are in [Release history](/standards/emergency-alerts/evolution). No Release 20 release description (TR 21.920) was available.
+
 ## Related
 
-- [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast): the full 5G Broadcast specification set this builds on
-- [Standards: Content Delivery Protocols and Tools](/standards/content-delivery): the FLUTE transport used for file delivery on the same carrier
+- [Public Warning Systems: Release history](/standards/emergency-alerts/evolution)
+- [Public Warning Systems: Technical Analysis](/tech/emergency-alerts)
+- [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast): the full 5G Broadcast specification set this builds on
+- [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery): the FLUTE transport used for file delivery on the same carrier

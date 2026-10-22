@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Beyond 2D Video Experiences](/standards/beyond-2d): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Beyond 2D Video Experiences: Specifications](/standards/beyond-2d): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -43,7 +43,7 @@ This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The wor
 
 ### Related Release 19 work
 
-The Release 19 description (TR 21.919 V19.0.0, which may be an early version) has no entry for FS_Beyond2D. It describes a related normative item: VOPS (Video Operating Points - Harmonization and Stereo MV-HEVC), which consolidates video operation points into the new TS 26.265 and adds stereoscopic operation points based on MV-HEVC (TR 21.919 clause 11.5). TR 26.956 lists MV-HEVC as the coding approach it evaluates for stereoscopic video; see the [Technology page](/tech/beyond-2d).
+The Release 19 description (TR 21.919 V19.0.0, which may be an early version) has no entry for FS_Beyond2D. It describes a related normative item: VOPS (Video Operating Points - Harmonization and Stereo MV-HEVC), which consolidates video operation points into the new TS 26.265 and adds stereoscopic operation points based on MV-HEVC (TR 21.919 clause 11.5). TR 26.956 lists MV-HEVC as the coding approach it evaluates for stereoscopic video; see the [Technical Analysis](/tech/beyond-2d).
 
 Release 20 (work plan of 28 September 2026): no normative follow-on to FS_Beyond2D is listed. The work plan lists two Release 20 studies of SA4 on related video and 3D formats; it does not state their relation to FS_Beyond2D, and no TR 21.920 was available.
 
@@ -77,3 +77,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Sep 2025 | SA#109 | SP-251492 | Version 2.0.0 created by MCC to be sent to TSG SA for approval | 2.0.0 |
 
 </details>
+
+## Related
+
+- [Beyond 2D Video Experiences: Specifications](/standards/beyond-2d)
+- [Beyond 2D Video Experiences: Technical Analysis](/tech/beyond-2d)

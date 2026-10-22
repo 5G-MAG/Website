@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: AI/ML Evaluation Framework](/standards/ai-ml): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [AI/ML Evaluation Framework: Specifications](/standards/ai-ml): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -215,3 +215,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | May 2025 | SA#108 | SP-250639 | Version 2.0.0 created by MCC to send to TSG SA for approval | 2.0.0 |
 
 </details>
+
+## Related
+
+- [AI/ML Evaluation Framework: Specifications](/standards/ai-ml)
+- [AI/ML Evaluation Framework: Technical Analysis](/tech/ai-ml)

@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -9,13 +10,47 @@ import ProjectDeckBand from '@site/src/components/ProjectDeckBand';
 import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
-// The landing page every project shares (/tech/<project>): hero with the taxonomy tagline, the
-// intro with cover image, why it matters, the Documentation and Software sections, contributors, and repositories.
+// The standards bodies that have a logo on the site; any other body is shown by its name on the same card.
+const SDO_LOGOS = {
+  '3GPP': '/assets/images/partnerships/3gpp-logo.png',
+  IETF: '/assets/logos/IETF.png',
+  'MPEG (ISO/IEC)': '/assets/logos/MPEG.png',
+  DVB: '/assets/images/partnerships/dvb-logo.png',
+};
+
+// The card of one standards body behind a project, from the taxonomy's `sdos`. The logo is decorative: the name
+// is written next to it.
+function SdoCard({ sdo }) {
+  const logo = useBaseUrl(SDO_LOGOS[sdo] || '/');
+  return (
+    <div className="standard-card">
+      {SDO_LOGOS[sdo] ? (
+        <>
+          <img src={logo} alt="" />
+          <span className="standard-card__label">{sdo}</span>
+        </>
+      ) : (
+        <span className="standard-card__text">{sdo}</span>
+      )}
+    </div>
+  );
+}
+
+// The landing page every project shares (/tech/<project>), in this order: hero with the taxonomy tagline, the intro
+// with cover image, why it matters, the overview deck, the three steps (Technical Analysis, Specifications, Software
+// Accelerator), Standards Implemented, Open Source, Built Together, and Repositories.
 // A page passes only what is its own: the intro and "why it matters" prose as children, and its icon and cover.
+//   title, tagline: when the page is not named after the taxonomy project (the 6G study).
+//   repoNames: the names of the tools whose repositories the page lists, when they differ from the project's own.
+//   cover: the image name in /assets/images/projects, or false for a project that has none yet.
+//   implemented: the curated Standards Implemented block; without it the page shows none (the taxonomy's sdos would only be the bodies it relates to).
 export default function ProjectHome({
   techUrl,
   icon,
   accent,
+  title: pageTitle,
+  tagline,
+  repoNames,
   description,
   analysisHref,
   standardsHref,
@@ -31,10 +66,27 @@ export default function ProjectHome({
 }) {
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
   const name = displayNameOf(project);              // the tool's name: it matches the repositories' projectName
-  const title = projectTitleOf(project);            // the project's own name, the title of this page
+  const title = pageTitle || projectTitleOf(project);   // the project's own name, the title of this page
   const slug = techUrl.split('/').pop();
   const coverImg = useBaseUrl(`/assets/images/projects/${cover || slug}.png`);
-  const hasRepos = ALL_REPOS.some((r) => r.projectName === name);
+  const repoProjects = repoNames || name;
+  const repoList = Array.isArray(repoProjects) ? repoProjects : [repoProjects];
+  const hasRepos = ALL_REPOS.some((r) => repoList.includes(r.projectName));
+  const sdos = project.sdos || [];
+  const prose = (
+    <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+      {children}
+      {sdos.length > 0 && (
+        <div className={styles.capabilityTags}>
+          {sdos.map((s) => (
+            <span key={s} className={styles.capabilityTag}>
+              {s}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <Layout title={title} description={description}>
@@ -43,7 +95,7 @@ export default function ProjectHome({
         icon={icon}
         actions={[
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
-            {project.tagline}
+            {tagline || project.tagline}
           </p>,
         ]}
       />
@@ -51,40 +103,16 @@ export default function ProjectHome({
       <main>
         <section className={`${styles.section} ${styles.sectionIntro}`}>
           <div className="container">
-            {wrapImage ? (
+            {cover === false ? (
+              prose
+            ) : wrapImage ? (
               <>
-                <img
-                  className={styles.introImageFloat}
-                  src={coverImg}
-                  alt={`${name}, project cover`}
-                />
-                <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
-                  {children}
-                  {project.sdos?.length > 0 && (
-                    <div className={styles.capabilityTags}>
-                      {project.sdos.map((s) => (
-                        <span key={s} className={styles.capabilityTag}>
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <img className={styles.introImageFloat} src={coverImg} alt={`${name}, project cover`} />
+                {prose}
               </>
             ) : (
-            <div className={styles.introGrid}>
-                <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
-                  {children}
-                  {project.sdos?.length > 0 && (
-                    <div className={styles.capabilityTags}>
-                      {project.sdos.map((s) => (
-                        <span key={s} className={styles.capabilityTag}>
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+              <div className={styles.introGrid}>
+                {prose}
                 <img
                   src={coverImg}
                   alt={`${name}, project cover`}
@@ -115,11 +143,27 @@ export default function ProjectHome({
           </div>
         </section>
 
+        {/* Only a curated block is shown. The taxonomy's sdos name the bodies a project relates to, which is not the same as
+            the standards it implements (5G MBS also implements IETF specifications through its FLUTE library). */}
         {implemented && (
           <section className={`${styles.section} ${styles.sectionAlt}`}>
             <div className="container">
               <h2 className={styles.sectionTitle}>Standards Implemented</h2>
-              {implemented}
+              {implemented || (
+                <>
+                  <div className="standard-card-row">
+                    {sdos.map((s) => (
+                      <SdoCard key={s} sdo={s} />
+                    ))}
+                  </div>
+                  {standardsHref && (
+                    <p>
+                      See <Link to={standardsHref}>{title} on the Standards portal</Link> for the specifications, their version
+                      history and 5G-MAG&apos;s own standards contributions.
+                    </p>
+                  )}
+                </>
+              )}
             </div>
           </section>
         )}
@@ -134,7 +178,7 @@ export default function ProjectHome({
         {hasRepos && (
           <section id="repositories" className={`${styles.section} ${styles.sectionAlt}`}>
             <div className="container">
-              <ProjectRepoSection projectNames={name} accent={accent} rows={repoRows} />
+              <ProjectRepoSection projectNames={repoProjects} rows={repoRows} />
             </div>
           </section>
         )}

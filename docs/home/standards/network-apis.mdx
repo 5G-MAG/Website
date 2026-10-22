@@ -6,6 +6,8 @@ description: How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure m
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+import SpecTable from '@site/src/components/SpecTable';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { NETWORK_APIS_SPECS, NETWORK_APIS_LAYER_ORDER } from '@site/src/data/specs/network-apis';
 
@@ -20,15 +22,23 @@ import { NETWORK_APIS_SPECS, NETWORK_APIS_LAYER_ORDER } from '@site/src/data/spe
 </div>
 </div>
 
-## Overview
-
-5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For how these map together, see the Technology page linked below. For the release-by-release work-item history and CAMARA meta-release tracking behind these specifications, see [Standards Evolution](/standards/network-apis/evolution).
+5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For how these map together, see the [Technical Analysis](/tech/network-apis). For the release-by-release work-item history and CAMARA meta-release tracking behind these specifications, see the [Release history](/standards/network-apis/evolution).
 
 5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto.
 
-## Specifications in scope
+:::tip[At a glance]
 
-The specifications in scope, filterable by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). Search matches the specification number, its title and any scope note. See [Technology: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
+- **3GPP:** northbound exposure through the NEF (TS 29.522) and CAPIF, policy control (TS 29.514), the 5G Media Streaming APIs and the Service Enabler Architecture Layer (SEAL, TS 23.434).
+- **CAMARA:** Quality on Demand, Network Slice Booking, Connectivity Insights and Dedicated Networks, which 5G-MAG analyses for media use cases. Several are still pre-1.0.
+- **Media focus:** contribution and live production uplinks, and live distribution downlinks.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["CAMARA", "camara"], ["Related", "related"]]} />
+
+## Specifications
+
+The specifications in scope, filterable by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). Search matches the specification number, its title and any scope note. See the [Technical Analysis](/tech/network-apis) for the architecture that ties these layers together.
 
 <SpecIndex specs={NETWORK_APIS_SPECS} layerOrder={NETWORK_APIS_LAYER_ORDER} />
 
@@ -36,14 +46,17 @@ The specifications in scope, filterable by the layer of network capability expos
 
 [CAMARA](https://camaraproject.org/) is an open-source initiative under the Linux Foundation with GSMA support to define, develop and test network APIs. 5G-MAG contributes CAMARA API analysis for media use cases, focusing on the following APIs:
 
-| CAMARA API              | What it does for media                                                                                                     |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Quality on Demand (QoD) | Lets an application request a defined QoS profile (bandwidth, latency) for a session, for example a live contribution feed |
-| Network Slice Booking   | Reserves a dedicated network slice in advance for a planned event or production                                            |
-| Connectivity Insights   | Reports on likely network conditions so a workflow can adapt encoding or scheduling                                        |
-| Dedicated Networks      | Provisions and manages an on-site dedicated network for a production                                                       |
+<SpecTable
+  columns={["CAMARA API", "What it does for media"]}
+  rows={[
+    ["Quality on Demand (QoD)", "Lets an application request a defined QoS profile (bandwidth, latency) for a session, for example a live contribution feed"],
+    ["Network Slice Booking", "Reserves a dedicated network slice in advance for a planned event or production"],
+    ["Connectivity Insights", "Reports on likely network conditions so a workflow can adapt encoding or scheduling"],
+    ["Dedicated Networks", "Provisions and manages an on-site dedicated network for a production"],
+  ]}
+/>
 
-See the [Technology: Network APIs](/tech/network-apis) page for detailed CAMARA API profiles.
+See the [Technical Analysis](/tech/network-apis) for detailed CAMARA API profiles.
 
 ### How CAMARA is organised
 
@@ -51,16 +64,21 @@ CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platfo
 
 ### CAMARA APIs to 3GPP mapping (summary)
 
-| CAMARA API                                         | Primary 3GPP northbound mapping                               | Core specification                                                                                                                                               |
-| -------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Quality on Demand / QoS Provisioning / QoS Booking | NEF `AsSessionWithQoS` (AF session with required QoS)         | TS 29.522; PCF `Npcf_PolicyAuthorization` in TS 29.514                                                                                                           |
-| Network Slice Booking                              | Slice provisioning and, at runtime, SEAL NSCE acting as an AF | [TS 28.531](https://www.3gpp.org/dynareport/28531.htm) / [TS 28.541](https://www.3gpp.org/dynareport/28541.htm) (slice management); TS 23.434 / TS 24.549 (NSCE) |
-| Dedicated Networks                                 | Non-public network / slice provisioning plus per-device QoS   | TS 23.501 (NPN); TS 29.522 for QoS                                                                                                                               |
-| Connectivity Insights                              | Network analytics and monitoring exposure                     | NEF analytics/monitoring events (TS 29.522); NWDAF where used ([TS 29.520](https://www.3gpp.org/dynareport/29520.htm))                                           |
+<SpecTable
+  columns={["CAMARA API", "Primary 3GPP northbound mapping", "Core specification"]}
+  rows={[
+    ["Quality on Demand / QoS Provisioning / QoS Booking", <>NEF <code>AsSessionWithQoS</code> (AF session with required QoS)</>, <>TS 29.522; PCF <code>Npcf_PolicyAuthorization</code> in TS 29.514</>],
+    ["Network Slice Booking", "Slice provisioning and, at runtime, SEAL NSCE acting as an AF", <><a href="https://www.3gpp.org/dynareport/28531.htm" target="_blank" rel="noreferrer">TS 28.531</a> / <a href="https://www.3gpp.org/dynareport/28541.htm" target="_blank" rel="noreferrer">TS 28.541</a> (slice management); TS 23.434 / TS 24.549 (NSCE)</>],
+    ["Dedicated Networks", "Non-public network / slice provisioning plus per-device QoS", "TS 23.501 (NPN); TS 29.522 for QoS"],
+    ["Connectivity Insights", "Network analytics and monitoring exposure", <>NEF analytics/monitoring events (TS 29.522); NWDAF where used (<a href="https://www.3gpp.org/dynareport/29520.htm" target="_blank" rel="noreferrer">TS 29.520</a>)</>],
+  ]}
+/>
 
-The mappings above are the general correspondence. See the [technical pages](/tech/network-apis/overview) for the detailed, per-field analysis.
+The mappings above are the general correspondence. See the [Technical Analysis](/tech/network-apis/overview) for the detailed, per-field analysis.
 
 ## Related
 
-- [Standards: 5G Media Streaming](/standards/5gms)
+- [Network APIs for Connectivity Quality: Release history](/standards/network-apis/evolution)
+- [Network APIs for Connectivity Quality: Technical Analysis](/tech/network-apis)
+- [Media Streaming and Advanced Media Delivery: Specifications](/standards/5gms)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

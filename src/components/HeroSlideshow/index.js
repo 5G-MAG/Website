@@ -465,7 +465,7 @@ export default function HeroSlideshow() {
                   {slide.doc_url && (
                     <div className={styles.slideCardFooter}>
                       <Link className="button button--primary" to={slide.doc_url}>
-                        Documentation
+                        Software
                       </Link>
                       <Link
                         className={clsx(

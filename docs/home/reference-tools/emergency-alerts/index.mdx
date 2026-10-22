@@ -10,10 +10,8 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 import FigurePair from '@site/src/components/FigurePair';
 
-export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -28,7 +26,7 @@ export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 </div>
 </div>
 
-The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Implementation Detail](./implementation) page. To see one assembled scenario already running, see the [Tutorials](./tutorials).
+The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Implementation status](./implementation) page. To see one assembled scenario already running, see the [Tutorials](./tutorials).
 
 ## Contributors & How to Contribute
 
@@ -49,8 +47,6 @@ The tools enable authorities and broadcasters to distribute alerts to all receiv
   ]}
   note="Parts without a repository are not provided by the Reference Tools. Parts drawn dashed, with dotted lines, are the ones the specification greys out. Click the figure to enlarge it."
 />
-
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
 ## Repositories & Releases
 

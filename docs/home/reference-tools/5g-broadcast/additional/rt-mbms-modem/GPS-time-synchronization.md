@@ -1,5 +1,5 @@
 ---
-title: GPS Time Synchronization for rt-mbms-modem
+title: GPS Time Synchronisation for rt-mbms-modem
 hide_title: true
 sidebar_position: 0
 description: Guide to disciplining the rt-mbms-modem receiver's clock to GPS time using chrony and gpsd, for accurate drive-test timestamps.
@@ -16,13 +16,13 @@ description: Guide to disciplining the rt-mbms-modem receiver's clock to GPS tim
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Media delivery over 5G Broadcast</span>
-<h1>GPS Time Synchronization for rt-mbms-modem</h1>
+<h1>GPS Time Synchronisation for rt-mbms-modem</h1>
 </div>
 </div>
 
 ## Overview
 
-This page configures the receiver's system clock to be disciplined by GPS time, using `chrony` fed by the GPS daemon (`gpsd`). This is useful when you need accurate, GPS-referenced timestamps, for example when recording drive-test measurements (see [MBMS Modem - Measurements & GPS](../../tutorials/modem-measurements)). It is optional: the modem runs without GPS time synchronization if you do not need GPS-referenced timing.
+This page configures the receiver's system clock to be disciplined by GPS time, using `chrony` fed by the GPS daemon (`gpsd`). This is useful when you need accurate, GPS-referenced timestamps, for example when recording drive-test measurements (see [MBMS Modem - Measurements & GPS](../../tutorials/modem-measurements)). It is optional: the modem runs without GPS time synchronisation if you do not need GPS-referenced timing.
 
 :::note
 Precondition: install, configure and enable `gpsd` by following [this guide](https://github.com/5G-MAG/rt-mbms-modem#measurement-recording-and-gps).

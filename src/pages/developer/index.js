@@ -343,7 +343,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Growing community of developers</h2>
             <p className={styles.sectionSubtitle}>
-              Organizations contributing to the Media Connectivity Software Accelerator.
+              Organisations contributing to the Media Connectivity Software Accelerator.
             </p>
             <div className={styles.membersGrid}>
               {CONTRIBUTORS.map((c) => (

@@ -6,6 +6,8 @@ description: "Private 5G networks (Non-Public Networks): the standalone and publ
 sidebar_label: Overview
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -27,7 +29,9 @@ sidebar_label: Overview
 
 :::
 
-## How It Works
+<JumpMenu items={[["Deployment models in detail", "deployment-models-in-detail"], ["Identity, credentials and onboarding", "identity-credentials-and-onboarding"], ["Access over non-3GPP networks", "access-over-non-3gpp-networks"], ["QoS, slicing and dimensioning for production", "qos-slicing-and-dimensioning-for-production"], ["Spectrum", "spectrum"], ["Release timeline", "release-timeline"]]} />
+
+## How it works
 
 There are two deployment models, and the plain-language names map to the 3GPP terms
 as follows: a standalone NPN is a fully independent private network (Stand-alone

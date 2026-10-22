@@ -1,10 +1,12 @@
 ---
 title: Volumetric Video Experiences Overview
 hide_title: true
-description: "Technology overview of Volumetric Video Experiences: Volumetric video platform for immersive experiences"
+description: "V3C volumetric video: how 3D content is coded with ordinary 2D video codecs, its bitstream components, V-PCC versus MIV, and carriage and delivery."
 sidebar_label: "Overview"
 sidebar_position: 0
 ---
+
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -30,6 +32,8 @@ sidebar_position: 0
 - **In this section:** the coding pipeline, bitstream components, V-PCC versus MIV, carriage and delivery, and an end-to-end pipeline.
 
 :::
+
+<JumpMenu items={[["Bitstream components", "bitstream-components"], ["V-PCC versus MIV", "v-pcc-versus-miv"], ["Carriage, packaging, and delivery", "carriage-packaging-and-delivery"], ["End-to-end pipeline", "end-to-end-pipeline"]]} />
 
 Note this folder also carries the separate [Beyond 2D Video Experiences](/tech/beyond-2d)
 project's own analysis page, since the two are closely related but distinct projects.
@@ -85,7 +89,7 @@ For delivery over mobile networks, the V3C DASH presentation is treated as ordin
 
 ### End-to-end pipeline
 
-A V3C deployment covers five stages: encode source content into a V3C bitstream, package it, deliver it over the transport described above, then decode and render it in real time on the client. On playback, a V3C decoder reconstructs the 3D representation from the atlas and its associated video sub-bitstreams (geometry, occupancy, attributes) before handing it to the presentation layer: a separation of concerns that keeps the V3C-specific decode work independent of whatever engine or renderer presents the result. For the current, authoritative repository list and implementation status, see the [Reference Tools](/reference-tools/v3c/) scope and repositories pages.
+A V3C deployment covers five stages: encode source content into a V3C bitstream, package it, deliver it over the transport described above, then decode and render it in real time on the client. On playback, a V3C decoder reconstructs the 3D representation from the atlas and its associated video sub-bitstreams (geometry, occupancy, attributes) before handing it to the presentation layer: a separation of concerns that keeps the V3C-specific decode work independent of whatever engine or renderer presents the result. For the current, authoritative repository list and implementation status, see the [Implementation status](/reference-tools/v3c/implementation) page and the [Repositories](/reference-tools/v3c/) page.
 
 **Technical paper:** [Efficient delivery and rendering on client devices via MPEG-I standards for emerging volumetric video experiences](https://www.interdigital.com/research_papers/efficient-delivery-and-rendering-on-client-devices-via-mpeg-i-standards-for-emerging-volumetric-video-experiences), by C. Guede (InterDigital), P. Fontaine (InterDigital), J. Mulard (InterDigital), B. Leroy (InterDigital), C. Quinquis (InterDigital), R. Gendrot (InterDigital), S. Gudumasu (InterDigital), V. Allié (InterDigital), B. Kroon (Philips), B. Sonneveldt (Philips), R. Schimanofsky (Philips).
 
@@ -93,9 +97,9 @@ A V3C deployment covers five stages: encode source content into a V3C bitstream,
 
 ## Related
 
-- [MPEG V3C Immersive Platform on the Tech hub](/tech/v3c)
-- [Standards: MPEG V3C Immersive Platform](/standards/v3c)
+- [Volumetric Video Experiences: Technical Analysis](/tech/v3c)
+- [Standards: Volumetric Video Experiences](/standards/v3c)
 - [Standards: Beyond 2D Video Experiences](/standards/beyond-2d)
-- [XR/3D Scenes with MPEG-I Scene Description](/tech/xr)
-- [Reference Tools: MPEG V3C Immersive Platform](/reference-tools/v3c)
+- [XR Media & 3D Scenes](/tech/xr)
+- [Reference Tools: Volumetric Video Experiences](/reference-tools/v3c)
 - [Beyond 2D Video Experiences](/tech/beyond-2d): the related, separate project sharing this folder

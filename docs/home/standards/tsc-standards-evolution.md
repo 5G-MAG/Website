@@ -17,7 +17,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Time-Sensitive Communications (TSC)](/standards/tsc): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Time-Sensitive Communications (TSC): Specifications](/standards/tsc): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -482,3 +482,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Nov 2022 | SA#98-e | SP-221101 | MCC editorial update for presentation to TSG SA for approval` | 2.0.0 |
 
 </details>
+
+## Related
+
+- [Time-Sensitive Communications (TSC): Specifications](/standards/tsc)
+- [Time-Sensitive Communications (TSC): Technical Analysis](/tech/tsc)

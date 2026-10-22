@@ -22,7 +22,7 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Video Operation Points](/standards/vops): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Video Operation Points: Specifications](/standards/vops): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 
@@ -101,3 +101,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Sep 2025 | SA#109 | SP-250972 | Version 2.0.0 created by MCC to be sent to TSG SA for approval | 2.0.0 |
 
 </details>
+
+## Related
+
+- [Video Operation Points: Specifications](/standards/vops)
+- [Video Operation Points: Technical Analysis](/tech/vops)

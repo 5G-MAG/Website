@@ -6,6 +6,7 @@ description: "The 3GPP specification behind Video Operation Points and the VOPS 
 sidebar_label: Specification list
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
 import SpecIndex from '@site/src/components/SpecIndex';
 import { VOPS_SPECS, VOPS_LAYER_ORDER } from '@site/src/data/specs/vops';
 
@@ -25,11 +26,24 @@ import { VOPS_SPECS, VOPS_LAYER_ORDER } from '@site/src/data/specs/vops';
 </div>
 </div>
 
-## Overview
-
 TS 26.265 V19.3.0, Introduction: "The present document defines service-independent video operation points and capabilities." It adds: "These may be referenced in 3GPP service specifications or in third-party services."
 
 TS 26.265 V19.3.0, clause 4.2: "The combination of video coding format and a specific representation format is referred to as Operation Point." The [VOPS Conformance Validator](/validation/vops) holds the conformance validator of annex B.2.3 and is part of the Video Operation Points project.
+
+:::tip[At a glance]
+
+- **Specification:** TS 26.265 V19.3.0 (September 2026), created in Release 19 by the VOPS work item.
+- **Operation points:** table 6.1-1 lists seven, from 3GPP-AVC-HD to 3GPP-MV-HEVC-Ext-Stereo, with video decoding and encoding capabilities.
+- **Conformance:** annex B; the VOPS Conformance Validator is built against V19.2.0.
+- **Release 20:** the work plan of 28 September 2026 lists no work item for TS 26.265.
+
+:::
+
+<JumpMenu items={[["Specifications", "specifications"], ["What the specification defines", "what-the-specification-defines"], ["Conformance annex", "conformance-annex"], ["Versions", "versions"], ["Open points in the specification", "open-points-in-the-specification"], ["Release by release", "release-by-release"], ["Sources for this page", "sources-for-this-page"], ["Related", "related"]]} />
+
+## Specifications
+
+<SpecIndex specs={VOPS_SPECS} layerOrder={VOPS_LAYER_ORDER} />
 
 ## What the specification defines
 
@@ -54,13 +68,11 @@ Clause B.2.3: "The detailed semantics and the format of the report is for furthe
 - Annex A.2.3: "This work is for further study." (mapping of operation points to an encoder API).
 - Operation point names are not used consistently. Table 6.1-1 uses "3GPP-HEVC-HD-HDR" and "3GPP-HEVC-UHD-HDR"; table A.2.2-1 lists "3GPP-HEVC-3DTV" and "3GPP-MV-HEVC-3DTV", names that do not appear in table 6.1-1.
 
-For the release-by-release work-item and change request history behind this specification, see [Standards Evolution](/standards/vops/evolution).
+## Release by release
+
+For the work-item and change request history behind this specification, see the [Release history](/standards/vops/evolution).
 
 TS 26.265 is created in Release 19 by the VOPS work item, which TR 21.919 clause 11.5 describes as consolidating video operation points and capabilities previously scattered across several SA4 specifications and adding MV-HEVC stereo operation points. The release history lists the earlier work in Release 15 to 18 (HDR, VRStream, HLG_HDR, 8K_TV_5G) and notes that the work plan of 28 September 2026 lists no Release 20 work item for TS 26.265. It lists the study FS_AVFOPS_MED, Study of Advanced Video Formats and Operation Points (TR 26.966, 100%, finish 9 September 2026), whose relation to TS 26.265 it does not state.
-
-## Specifications in scope
-
-<SpecIndex specs={VOPS_SPECS} layerOrder={VOPS_LAYER_ORDER} />
 
 ## Sources for this page
 
@@ -68,4 +80,6 @@ All quotations are from 3GPP TS 26.265 V19.3.0 (2026-09), Release 19. The releas
 
 ## Related
 
+- [Video Operation Points: Release history](/standards/vops/evolution)
+- [Video Operation Points: Technical Analysis](/tech/vops)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs

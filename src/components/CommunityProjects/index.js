@@ -314,7 +314,7 @@ function ProjectDetails({ project }) {
           )}
           {project.doc_url && (
             <Link className="button button--outline button--primary button--sm" to={project.doc_url}>
-              Documentation
+              Software
             </Link>
           )}
         </div>

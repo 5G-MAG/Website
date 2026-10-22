@@ -17,8 +17,13 @@ sidebar_label: Release history
 </div>
 </div>
 
-This page is the companion to [Standards: MPEG V3C Immersive Platform](/standards/v3c) for its ISO/IEC specifications: ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25.
+This page is the companion to [Volumetric Video Experiences: Specifications](/standards/v3c) for its ISO/IEC specifications: ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25.
 
 ## Editions and stages
 
-The editions and stages of the ISO/IEC specifications behind this topic are described on the [Standards page](/standards/v3c).
+The editions and stages of the ISO/IEC specifications behind this topic are described on the [Specifications](/standards/v3c) page.
+
+## Related
+
+- [Volumetric Video Experiences: Specifications](/standards/v3c)
+- [Volumetric Video Experiences: Technical Analysis](/tech/v3c)

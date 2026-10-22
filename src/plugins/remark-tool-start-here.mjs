@@ -66,8 +66,12 @@ export default function remarkToolStartHere() {
         ? 'StandardsStartHere'
         : null;
     if (!name) return;
-    // A page can opt out with `start_here: false` in its front matter.
-    if (matter(String(file.value || '')).data.start_here === false) return;
+    const startHere = matter(String(file.value || '')).data.start_here;
+    // A page can opt out with `start_here: false` in its front matter. A tool, testbed or validator page is out by default
+    // (owner decision 2026-10-22: the menu and the page itself lead to the tutorials, as on 5G MBS) and shows the block
+    // only with `start_here: true`.
+    if (startHere === false) return;
+    if (name === 'ToolStartHere' && startHere !== true) return;
     const i = tree.children.findIndex(isBanner);
     if (i === -1) return;
     tree.children.splice(i + 1, 0, {

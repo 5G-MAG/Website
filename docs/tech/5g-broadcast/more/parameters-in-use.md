@@ -91,7 +91,7 @@ ETSI TS 103 720 defines receiver categories (Base, Main, 5GMS and Emergency Aler
 
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for linear TV and radio services
 - [5G Broadcast Deployment Profiles](/tech/5g-broadcast/more/deployment-profiles)
-- [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast)
+- [Standards: Media delivery over 5G Broadcast](/standards/5g-broadcast)
 
 <details>
 <summary>Sources</summary>

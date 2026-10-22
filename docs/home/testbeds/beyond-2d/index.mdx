@@ -11,9 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import FigurePair from '@site/src/components/FigurePair';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const REPO_COUNT = (REPO_METADATA['beyond-2d'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -49,8 +47,6 @@ The framework enables standardised benchmarking of encoding, streaming, and rend
   ]}
   note="The mapping follows the repository's multi-view plus depth (MVD) scripts, which run the TMIV encoder and decoder and compute objective metrics; the point cloud folder is not mapped. Click the figure to enlarge it."
 />
-
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
 ## Repositories & Releases
 
