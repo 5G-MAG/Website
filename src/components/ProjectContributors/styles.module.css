@@ -12,7 +12,7 @@
 }
 
 .card {
-  background: var(--ifm-background-surface-color);
+  background: #fff;      /* logos are drawn for a white ground, in light and dark mode */
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 10px;
   padding: 1.25rem;
@@ -27,7 +27,7 @@
 .label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
+  color: #444950;      /* dark text on the white card, in both modes */
   text-align: center;
   line-height: 1.25;
 }

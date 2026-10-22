@@ -342,7 +342,7 @@
 }
 
 .memberCard {
-  background: var(--ifm-background-surface-color);
+  background: #fff;      /* logos are drawn for a white ground, in light and dark mode */
   border: 1px solid var(--ifm-color-emphasis-300);
   border-top: 3px solid var(--ifm-color-primary);
   border-radius: 10px;
@@ -372,7 +372,7 @@
 .memberCardName {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
+  color: #444950;      /* dark text on the white card, in both modes */
   text-align: center;
   line-height: 1.25;
 }
