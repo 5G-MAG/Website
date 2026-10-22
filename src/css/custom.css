@@ -61,6 +61,7 @@
   --ifm-color-primary-dark: #0090bc;
   --ifm-color-primary-darker: #0088b3;
   --ifm-color-primary-darkest: #006f92;
+  --text-accent: #006f92;
   --ifm-color-primary-light: #0aade0;
   --ifm-color-primary-lighter: #1db6e8;
   --ifm-color-primary-lightest: #47c8f0;
@@ -131,10 +132,11 @@
   --ifm-color-primary-dark: #0090bc;
   --ifm-color-primary-darker: #0088b3;
   --ifm-color-primary-darkest: #006f92;
+  --text-accent: #4fc3ea;      /* accent text on the dark ground: the light-theme #006f92 is only 2.7:1 there */
   --ifm-color-primary-light: #0aade0;
   --ifm-color-primary-lighter: #1db6e8;
   --ifm-color-primary-lightest: #47c8f0;
-  --ifm-color-primary-textsafe: #007a9e;
+  --ifm-color-primary-textsafe: #4fc3ea;
   --brand-text: #00a0d2;
   --accent-ink-mix: 75%;
   --accent-ink-base: #fff;
@@ -1790,4 +1792,25 @@
     max-width: 100%;
     overflow-x: auto;
   }
+}
+
+/* ── Dark theme: text and fills that were too faint on the dark ground (contrast scan of the built site) ── */
+[data-theme='dark'] .onair-kicker {
+  color: #ff7a7e;
+}
+
+[data-theme='dark'] code {
+  color: #b6e9f9;
+}
+
+[data-theme='dark'] .token.comment,
+[data-theme='dark'] .token.prolog,
+[data-theme='dark'] .token.doctype,
+[data-theme='dark'] .token.cdata {
+  color: #9aa8d6 !important;
+}
+
+/* The phase headers take their colour inline; a dark veil keeps the white text at 4.5:1 on every one of them. */
+.p-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32));
 }

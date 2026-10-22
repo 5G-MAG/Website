@@ -27,7 +27,7 @@
 
 .early {
   background: var(--ifm-color-warning);
-  color: var(--ifm-color-warning-contrast-foreground) !important;
+  color: #2b2100 !important;
 }
 
 .early:hover {

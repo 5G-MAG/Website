@@ -860,7 +860,7 @@ a.chartRowName:hover {
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent) 75%, #000);
   border: 1px solid transparent;
   padding: 0.26rem 0.65rem;
   border-radius: 999px;

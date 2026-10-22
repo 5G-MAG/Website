@@ -28,7 +28,7 @@
 .heading {
   margin: 1.5rem 0 0.5rem;
   font-size: 1.05rem;
-  color: var(--ifm-color-primary-darkest);
+  color: var(--text-accent);
 }
 
 .list {
@@ -117,8 +117,8 @@
 
 .button {
   padding: 0.1rem 0.7rem;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 60%, var(--ifm-font-color-base));      /* the accent, pulled towards the text colour so it reads on either ground */
+  border: 1px solid var(--accent, var(--ifm-color-primary));
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -128,5 +128,5 @@
 
 .primary {
   color: #fff !important;
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 70%, #000);      /* darkened so the white text keeps 4.5:1 on the lighter accents */
 }
