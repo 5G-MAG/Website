@@ -7,6 +7,7 @@ sidebar_position: 3
 ---
 
 import SpecFigure from '@site/src/components/SpecFigure';
+import FigureRow from '@site/src/components/FigureRow';
 import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
@@ -52,9 +53,13 @@ The PTP RAN delivery method is not used for broadcast MBS sessions (TS 38.300 V1
 
 This page describes how a gNodeB delivers MBS data at Layer 2 with three labels: delivery mode 1 (multicast), delivery mode 2 (broadcast) and the unicast delivery mode. None of the three is a 3GPP term. TS 38.300 uses "delivery mode" for the 5GC Shared and the 5GC Individual MBS traffic delivery (TS 38.300 V19.4.0 clause 16.10.5.1), and TS 23.247 uses "unicast delivery" for delivery over a PDU Session, which is not the same as the 5GC Individual MBS traffic delivery method (TS 23.247 V20.0.0 clause 4.1, note 2). The unicast delivery mode here means the Layer 2 handling of the point-to-point RAN delivery method (TS 38.300 V19.4.0 clause 16.10.3, 16.10.5.4).
 
+<FigureRow>
+
 <SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-1.svg" width={977} height={694} spec="TS 38.300 V19.4.0" figure="16.10.3-1" title="Downlink Layer 2 Architecture for Multicast Session" alt="SDAP, PDCP, RLC and MAC layers between QoS Flows, Radio Bearers, RLC Channels, Logical Channels and Transport Channels. For the Multicast Session, QoS flow handling feeds MRB1, MRB2 and MRB3, each with ROHC; for the PDU Session, it feeds a DRB with ROHC and Security. In RLC, Segm. entities on MTCH serve PTM, and Segm. or Segm. ARQ entities on DTCH serve UE1 and UEn; MRB2 has both kinds. In MAC, Scheduling/Priority Handling, Multiplexing and HARQ for each MTCH, and Unicast Scheduling / Priority Handling with Multiplexing UE1 and Multiplexing UEn for the DTCHs, end on DL-SCH." />
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-2.svg" width={898} height={746} spec="TS 38.300 V19.4.0" figure="16.10.3-2" title="Downlink Layer 2 Architecture for Broadcast Session" alt="SDAP, PDCP, RLC and MAC layers for the Broadcast session: QoS flow handling feeds two radio bearers with ROHC and Segm., carried on MTCH; MCCH is segmented separately. One Scheduling / Priority Handling and two Multiplexing blocks lead to DL-SCH." />
+
+</FigureRow>
 
 ### Unicast delivery mode
 
