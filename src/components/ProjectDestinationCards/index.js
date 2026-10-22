@@ -27,7 +27,7 @@ export default function ProjectDestinationCards({
       {analysisHref && (
         <ListRow
           href={analysis}
-          title="Technical Analysis and Blueprints"
+          title="Technical Analysis"
           desc="How this technology works, and what it is good for."
           iconKey="doc-report"
         />
