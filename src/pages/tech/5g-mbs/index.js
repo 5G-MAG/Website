@@ -38,7 +38,7 @@ export default function FiveGMBS() {
             </div>
           </div>
           <p>
-            See <Link to="/standards/5g-mbs">Media delivery over 5G Multicast Broadcast Services on the Standards portal</Link> for
+            See <Link to="/standards/5g-mbs">Media delivery over 5G Multicast Broadcast Services: Specification list</Link> for
             version history and 5G-MAG&apos;s own standards contributions.
           </p>
         </>

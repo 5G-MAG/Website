@@ -158,7 +158,7 @@ export default function ProjectHome({
                   </div>
                   {standardsHref && (
                     <p>
-                      See <Link to={standardsHref}>{title} on the Standards portal</Link> for the specifications, their version
+                      See <Link to={standardsHref}>{title}: Specification list</Link> for the specifications, their version
                       history and 5G-MAG&apos;s own standards contributions.
                     </p>
                   )}
