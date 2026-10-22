@@ -10,7 +10,6 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -55,6 +54,10 @@ TS 26.265 defines service-independent video operation points and capabilities, w
 <figcaption>Reference architecture for video Operation points and capabilities. Redrawn from TS 26.265 V19.3.0, figure 4.2-1.</figcaption>
 </figure>
 
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
 ## What's Built
 
 TS 26.265 annex B provides a set of conformance functions: annotated video test signals, reference encoders and configurations, a conformance validator, conforming decoders, and conformance bitstreams. The validator tests whether a bitstream claiming to conform to an operation point does, and if not, which test assertions fail. This testbed is that validator.
@@ -72,6 +75,10 @@ TS 26.265 annex B provides a set of conformance functions: annotated video test 
   ]}
   note="Only the Conformance Validator is mapped to a repository, from the repository README. Click the figure to enlarge it."
 />
+
+## Repositories & Releases
+
+<ProjectRepositories project="vops" />
 
 ## Operation points
 
@@ -139,16 +146,6 @@ $ python -m sa4_bitstream_validator validate bitstream_path 3GPP-MV-HEVC-Main-St
 
 See [Video Operation Points on the Standards portal](/standards/vops) for version history and 5G-MAG's own standards contributions. For the technology background, see [Video Operation Points on the Technology pages](/tech/vops).
 
-<ProjectDeck slug="vops" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="vops" />
-
 ## Developer Updates
 
 <CommunityStats name="VOPS Conformance Validator" />
@@ -156,15 +153,3 @@ See [Video Operation Points on the Standards portal](/standards/vops) for versio
 ### Open Pull Requests
 
 <ProjectOpenPRs name="VOPS Conformance Validator" />
-
-<details>
-<summary>Sources for this page</summary>
-
-- **At a glance and What it does:** TS 26.265 V19.3.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
-- **What's Built:** TS 26.265 V19.3.0, annex B.1 and B.3; the repository README for the mapping.
-- **Operation points:** TS 26.265 V19.3.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
-- **How it works:** the repository README (including the pipeline figure); TS 26.265 V19.3.0, annex B.2.3.
-- **Figures:** redrawn from TS 26.265 V19.3.0, figure 4.2-1; figure B.1-1 is the basis of the What's Built figure.
-- **Status:** the repository README (status badge and operation point table).
-
-</details>

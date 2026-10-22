@@ -11,7 +11,6 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
@@ -32,11 +31,11 @@ export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
 
 See also: <a href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')}>Developer Exchange</a>.
 
-<ProjectSlide image="/assets/images/projects/3gpp-platforms-reference-tools.png" alt="3GPP RAN and Core Platforms: Reference Tools slide">
-
 The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment. For the fork mapping and full technical detail, see [Implementation Detail](./implementation).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -56,6 +55,10 @@ The project provides configurations, scripts, and integration guides for standin
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: the 5G-MAG forks of Open5GS and srsRAN, listed below.
 
+## Repositories & Releases
+
+<ProjectRepositories project="3gpp-platforms" />
+
 ## 5G Core Service Consumers
 
 The platforms also include the 5G Core Service Consumers: reusable libraries and command-line tools that let a media application server use 5G Core services such as the Policy Control Function (PCF) and the Binding Support Function (BSF), and the MB-SMF for multicast and broadcast sessions. They are described in [Implementation Detail](/reference-tools/3gpp-platforms/implementation#5g-core-service-consumers) and exercised in the [Tutorials](/reference-tools/3gpp-platforms/tutorials#5g-core-service-consumers).
@@ -73,14 +76,6 @@ The platforms also include the 5G Core Service Consumers: reusable libraries and
 
 **5G Core Service Consumers, implemented specifications:** 3GPP [TS 29.214](https://www.3gpp.org/dynareport/29214.htm) (Policy and Charging Control Rx interface), [TS 29.513](https://www.3gpp.org/dynareport/29513.htm) (Policy and Charging function interactions), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS); Protocols, for the 5GMS AF interactions with the 5G Core).
 
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="3gpp-platforms" />
-
 ## Developer Updates
 
 <CommunityStats name="3GPP RAN and Core Platforms" />
@@ -88,19 +83,3 @@ The platforms also include the 5G Core Service Consumers: reusable libraries and
 ### Open Pull Requests
 
 <ProjectOpenPRs name="3GPP RAN and Core Platforms" />
-
-Unlike the other reference tools, these platforms are forks that track their own upstream projects (Open5GS, srsRAN) rather than a dedicated 5G-MAG feature roadmap: see [Implementation Detail](./implementation) for the fork mapping that serves as this project's own roadmap.
-
-### 5G Core Service Consumers roadmap
-
-This page tracks the roadmap for the 5G Core Service Consumers. The boards below cover features that are built on top of the reusable service consumer libraries, for example adding Network Assistance and Dynamic QoS Policies to the 5G Media Streaming (5GMS) components, and the initial MBS User Services release.
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the 5G Core Service Consumers (the reusable service consumer libraries and the features built on top of them). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/17)
-
-**Developer Kanban Boards:**
-
-- **5GMS: Network Assistance**: addition of Network Assistance features to the 5GMS components, including integration with the BSF and PCF via reusable service consumer libraries: [Kanban board](https://github.com/orgs/5G-MAG/projects/51)
-- **5GMS: Dynamic QoS Policies**: addition of Dynamic QoS Policies features to the 5GMS components, including integration with the BSF and PCF via reusable service consumer libraries: [Kanban board](https://github.com/orgs/5G-MAG/projects/52)
-- **5MBS: User Services initial release**: initial implementation of MBS User Services, including integration with the MB-SMF via reusable service consumer libraries: [Kanban board](https://github.com/orgs/5G-MAG/projects/43)

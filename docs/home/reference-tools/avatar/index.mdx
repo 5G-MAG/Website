@@ -5,14 +5,12 @@ title: Conversational Avatars with MPEG ARF
 sidebar_position: -1
 description: Introduces the Avatar Communication project's MPEG ARF reference tools for real-time conversational avatars over 5G networks.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['avatar'] || []).length;
@@ -32,15 +30,15 @@ export const REPO_COUNT = (REPO_METADATA['avatar'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>Conversational Avatars with MPEG ARF</h1>
+<h1>Conversational Avatar Communication</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/avatar-reference-tools.png" alt="Conversational Avatar Communication with MPEG ARF: Reference Tools slide">
 
 Avatars are synthesised digital representations of participants, animated in real time from audio and video input, enabling immersive video calls and virtual presence experiences. The 5G-MAG implementation provides codec, rendering, and streaming tools for avatar communications over 5G networks. For the ARF data model, component breakdown and specification status, see [Implementation Detail](./implementation).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -60,6 +58,10 @@ Avatars are synthesised digital representations of participants, animated in rea
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
+## Repositories & Releases
+
+<ProjectRepositories project="avatar" />
+
 ## Standards implemented
 
 <div class="standard-card-row">
@@ -77,16 +79,6 @@ ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF, not yet a published In
 
 See [Conversational Avatar Communication with MPEG ARF on the Standards portal](/standards/avatar) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="avatar" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="avatar" />
-
 ## Developer Updates
 
 <CommunityStats name="Conversational Avatar Communication with MPEG ARF" />
@@ -94,7 +86,3 @@ See [Conversational Avatar Communication with MPEG ARF on the Standards portal](
 ### Open Pull Requests
 
 <ProjectOpenPRs name="Conversational Avatar Communication with MPEG ARF" />
-
-This page links to the public GitHub project board that tracks Conversational Avatar Communication work. The Kanban board below tracks the planned and in-progress work for Conversational Avatar Communication (MPEG ARF capture, transport, and rendering). It is maintained live on GitHub. It was newly split out from the shared Reference Tools Roadmaps board and does not yet carry historical items: items get added to it as work is tracked going forward.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/20)

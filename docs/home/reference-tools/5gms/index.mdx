@@ -6,14 +6,12 @@ sidebar_position: -1
 description: Overview of the 5G-MAG 5GMS reference implementation, its AF/AS components, spec coverage, and links to project resources.
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import FigurePair from '@site/src/components/FigurePair';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 
 {/* Real counts, re-derived from the same data the sections below render
     from, so this summary can't drift from what those sections actually
@@ -27,15 +25,15 @@ export const REPO_COUNT = (REPO_METADATA['5gms'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>5G Media Streaming (5GMS) Architecture</h1>
+<h1>Media Streaming and Advanced Media Delivery</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/5gms-reference-tools.png" alt="5G Media Streaming (5GMS): Reference Tools slide">
 
 The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), against the Release 17 normative baseline ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). For the deployment configurations and full specification detail, see [Implementation Detail](./implementation).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -63,25 +61,6 @@ The tools cover two server-side roles: the Application Function (AF), which hand
 
 For each feature and component, against Release 17 and Release 18/19, see [Implementation Detail](/reference-tools/5gms/implementation).
 
-## Standards implemented
-
-<div class="standard-card-row">
-<div class="standard-card">
-<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
-<span class="standard-card__label">3GPP</span>
-</div>
-</div>
-
-**Implemented specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming (5GMS); General description and architecture), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS); Protocols), against the Release 17 normative baseline. See [Implementation Detail](./implementation) for the full specification list (TS 26.501, TS 26.510, TS 26.511, TS 26.512) and Release-19 tracking.
-
-See [5G Media Streaming (5GMS) on the Standards portal](/standards/5gms) for version history and 5G-MAG's own standards contributions.
-
-<ProjectDeck slug="5gms" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
 ## Repositories & Releases
 
 Each card below already carries its own repository's latest release, as coming from GitHub.
@@ -97,6 +76,19 @@ This project also provides the following prebuilt GitHub Container packages: And
 | com.fivegmag.a5gmsmediastreamhandler | [Package](https://github.com/5G-MAG/rt-5gms-media-stream-handler/packages/) |
 | com.fivegmag.a5gmscommonlibrary | [Package](https://github.com/5G-MAG/rt-5gms-common-android-library/packages/) |
 
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
+
+**Implemented specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming (5GMS); General description and architecture), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS); Protocols), against the Release 17 normative baseline. See [Implementation Detail](./implementation) for the full specification list (TS 26.501, TS 26.510, TS 26.511, TS 26.512) and Release-19 tracking.
+
+See [5G Media Streaming (5GMS) on the Standards portal](/standards/5gms) for version history and 5G-MAG's own standards contributions.
+
 ## Developer Updates
 
 <CommunityStats name="5G Media Streaming (5GMS)" />
@@ -106,5 +98,3 @@ This project also provides the following prebuilt GitHub Container packages: And
 ### Open Pull Requests
 
 <ProjectOpenPRs name="5G Media Streaming (5GMS)" />
-
-See the [Reference Tools Roadmap](https://github.com/orgs/5G-MAG/projects/48) for planned and in-progress work.

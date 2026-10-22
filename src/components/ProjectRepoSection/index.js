@@ -35,7 +35,7 @@ import styles from '@site/src/pages/tech/index.module.css';
 // handle per page. `isTestbed`: true reads the heading as "Testbeds"
 // instead of "Reference Tools" -- raised directly ("given we have
 // testbeds maybe make clear if it is reference tools or testbed").
-export default function ProjectRepoSection({ projectNames, rows = false }) {
+export default function ProjectRepoSection({ projectNames, rows = true }) {
   const names = Array.isArray(projectNames) ? projectNames : [projectNames];
   const repos = ALL_REPOS.filter((r) => names.includes(r.projectName));
   if (repos.length === 0) return null;

@@ -12,8 +12,6 @@ import FigurePair from '@site/src/components/FigurePair';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
-import ProjectDeck from '@site/src/components/ProjectDeck';
 
 export const REPO_COUNT = (REPO_METADATA['beyond-2d'] || []).length;
 
@@ -30,11 +28,11 @@ export const REPO_COUNT = (REPO_METADATA['beyond-2d'] || []).length;
 
 ## What it does
 
-<ProjectSlide image="/assets/images/projects/beyond-2d-testbed.png" alt="Beyond 2D Evaluation Framework: Testbed slide">
-
 The framework enables standardised benchmarking of encoding, streaming, and rendering pipelines for content that goes beyond traditional flat-screen delivery, feeding directly into 3GPP and MPEG standardisation of new immersive video formats.
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -53,6 +51,10 @@ The framework enables standardised benchmarking of encoding, streaming, and rend
 />
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Repositories & Releases
+
+<ProjectRepositories project="beyond-2d" />
 
 ## Standards implemented
 
@@ -75,16 +77,6 @@ ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C), referenced for eval
 
 See [Beyond 2D on the Standards portal](/standards/beyond-2d) for related work items and specs.
 
-<ProjectDeck slug="beyond-2d" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="beyond-2d" />
-
 ## Developer Updates
 
 <CommunityStats name="Beyond 2D Evaluation Framework" />
@@ -92,5 +84,3 @@ See [Beyond 2D on the Standards portal](/standards/beyond-2d) for related work i
 ### Open Pull Requests
 
 <ProjectOpenPRs name="Beyond 2D Evaluation Framework" />
-
-For the technology background, see [Beyond 2D Video Experiences on the Technology pages](/tech/beyond-2d). A related project is the [MPEG V3C Immersive Platform](/reference-tools/v3c).

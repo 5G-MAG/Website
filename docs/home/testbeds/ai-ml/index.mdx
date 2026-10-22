@@ -12,7 +12,6 @@ import FigurePair from '@site/src/components/FigurePair';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['ai-ml'] || []).length;
 
@@ -38,11 +37,11 @@ The reference tooling is under testing.
 
 ## What it does
 
-<ProjectSlide image="/assets/images/projects/ai-ml-testbed.png" alt="AI/ML Evaluation Framework: Testbed slide">
-
 The repository README describes the purpose as to "establish an evaluation framework and use it for the evaluation of scenarios collected for the FS_AI4Media study", with "common testbed architectures and anchors, metrics (e.g. AI/ML task metrics, feasibility/performance metrics), and specific details (such as test configuration and constraints) for each scenario evaluation". 3GPP TR 26.847 V19.0.0 clause 4.1 states: "A common set of architectures is assumed for the evaluation framework, unless specified otherwise, irrespective of the scenario." Its reference [16] is this repository ("5G-MAG repository for AI4Media evaluations").
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -61,6 +60,10 @@ The repository README describes the purpose as to "establish an evaluation frame
 />
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Repositories & Releases
+
+<ProjectRepositories project="ai-ml" />
 
 ## Standards implemented
 
@@ -86,14 +89,6 @@ See [AI/ML on the Standards portal](/standards/ai-ml) for version history and 5G
 </a>
 </div>
 
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="ai-ml" />
-
 ## Developer Updates
 
 <CommunityStats name="AI/ML Evaluation Framework" />
@@ -101,5 +96,3 @@ See [AI/ML on the Standards portal](/standards/ai-ml) for version history and 5G
 ### Open Pull Requests
 
 <ProjectOpenPRs name="AI/ML Evaluation Framework" />
-
-For how 3GPP's network-side and UE-side AI/ML tracks fit together, see [AI/ML Evaluation Framework on the Technology pages](/tech/ai-ml). A related project is the [6G AI Traffic Characterization Testbed](/testbeds/6g-testbed).

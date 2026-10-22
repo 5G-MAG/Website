@@ -5,14 +5,12 @@ title: CAMARA Connectivity Quality Management APIs
 sidebar_position: -1
 description: Overview of the CAMARA network API reference implementation for QoS, slicing, and connectivity insight APIs; see Implementation Detail for the full API coverage table.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
@@ -27,17 +25,17 @@ export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>CAMARA Connectivity Quality Management APIs</h1>
+<h1>Network APIs for Connectivity Quality</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/network-apis-reference-tools.png" alt="CAMARA Connectivity Quality Management APIs: Reference Tools slide">
 
 The tools cover key CAMARA project APIs and their application to media production (live contribution, remote production) and live distribution scenarios. Targeted at developers and network engineers integrating 5G network intelligence into media workflows.
 
 CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)). For the full API coverage table, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -57,6 +55,10 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
+## Repositories & Releases
+
+<ProjectRepositories project="network-apis" />
+
 ## Standards implemented
 
 <div class="standard-card-row">
@@ -74,16 +76,6 @@ CAMARA [Dedicated Networks API](https://github.com/camaraproject/DedicatedNetwor
 
 See [Network APIs on the Standards portal](/standards/network-apis) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="network-apis" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="network-apis" />
-
 ## Developer Updates
 
 <CommunityStats name="CAMARA Connectivity Quality Management APIs" />
@@ -91,11 +83,3 @@ See [Network APIs on the Standards portal](/standards/network-apis) for version 
 ### Open Pull Requests
 
 <ProjectOpenPRs name="CAMARA Connectivity Quality Management APIs" />
-
-This page links to the public GitHub project board that tracks Network APIs work. The Kanban board below tracks the planned and in-progress work for the Network APIs reference implementation (currently the CAMARA Dedicated Networks API). It is maintained live on GitHub. It was newly split out from the shared Reference Tools Roadmaps board and does not yet carry historical items: items get added to it as work is tracked going forward.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/19)
-
-:::note
-Refer to the [Network APIs repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::

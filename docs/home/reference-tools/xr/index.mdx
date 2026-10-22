@@ -6,14 +6,12 @@ sidebar_position: -1
 description: Reference player and server for eXtended Reality (XR) content delivered over 5G networks, implementing MPEG-I Scene Description.
 ---
 
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
@@ -30,21 +28,21 @@ export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>XR/3D Scenes with MPEG-I Scene Description</h1>
+<h1>XR Media & 3D Scenes</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/xr-reference-tools.png" alt="XR/3D Scenes with MPEG-I Scene Description: Reference Tools slide">
 
 The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming (5GMS) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms. For the full glTF extension support matrices and how the tools map to the standard, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
-
-</ProjectSlide>
 
 ## Under the hood
 
 <img loading="lazy" src={useBaseUrl('/assets/images/xr/volumetric-capture-demo.jpg')} alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
 
 <em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -64,6 +62,10 @@ The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
+## Repositories & Releases
+
+<ProjectRepositories project="xr" />
+
 ## Standards implemented
 
 <div class="standard-card-row">
@@ -77,16 +79,6 @@ ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D obj
 
 See [XR on the Standards portal](/standards/xr) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="xr" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="xr" />
-
 ## Developer Updates
 
 <CommunityStats name="XR/3D Scenes with MPEG-I Scene Description" />
@@ -94,13 +86,3 @@ See [XR on the Standards portal](/standards/xr) for version history and 5G-MAG's
 ### Open Pull Requests
 
 <ProjectOpenPRs name="XR/3D Scenes with MPEG-I Scene Description" />
-
-The roadmap for this project is maintained on GitHub Project (Kanban) boards, linked below. Each board tracks the planned and in-progress work for a given release or work area.
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for XR/3D Scenes with MPEG-I Scene Description (XR Player and scene-description support). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/16)
-
-**Developer Kanban Boards:**
-
-- **XR: XR Player ISO/IEC 23090-14 support**: all issues related to the release of version 1.0.0 of the XR repositories dealing with [functionalities defined in ISO/IEC 23090-14](/standards/xr): [Kanban board](https://github.com/orgs/5G-MAG/projects/22)

@@ -5,14 +5,12 @@ title: "Dynamic Mesh Coding with MPEG V-DMC"
 sidebar_position: -1
 description: "Overview of the Dynamic Mesh Coding (V-DMC) reference tool: a web-based decoder and player for ISO/IEC 23090-29 content."
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['vdmc'] || []).length;
@@ -24,15 +22,15 @@ export const REPO_COUNT = (REPO_METADATA['vdmc'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>Dynamic Mesh Coding with MPEG V-DMC</h1>
+<h1>Dynamic Mesh Coding</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/vdmc-reference-tools.png" alt="Dynamic Mesh Coding: Reference Tools slide">
 
 The reference tool, a web decoder and player for V-DMC content, is in early development. See the [Tech: Dynamic Mesh Coding](/tech/vdmc) page for what V-DMC itself is.
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -52,19 +50,13 @@ The reference tool, a web decoder and player for V-DMC content, is in early deve
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
-## Standards implemented
-
-ISO/IEC 23090-29 (Video-based Dynamic Mesh Coding). See [Dynamic Mesh Coding on the Standards portal](/standards/vdmc) for what 5G-MAG tracks.
-
-<ProjectDeck slug="vdmc" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
 ## Repositories & Releases
 
 <ProjectRepositories project="vdmc" />
+
+## Standards implemented
+
+ISO/IEC 23090-29 (Video-based Dynamic Mesh Coding). See [Dynamic Mesh Coding on the Standards portal](/standards/vdmc) for what 5G-MAG tracks.
 
 ## Developer Updates
 
@@ -73,7 +65,3 @@ ISO/IEC 23090-29 (Video-based Dynamic Mesh Coding). See [Dynamic Mesh Coding on 
 ### Open Pull Requests
 
 <ProjectOpenPRs name="Dynamic Mesh Coding" />
-
-:::note
-Refer to the [Dynamic Mesh Coding repository](https://github.com/5G-MAG/rt-vdmc-web-decoder-player) on GitHub to use or contribute to this Reference Tool.
-:::

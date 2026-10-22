@@ -5,14 +5,12 @@ title: '5G Broadcast for Emergency Alerts'
 sidebar_position: -1
 description: Overview of the 5G Broadcast Emergency Alerts reference implementation, delivering Cell Broadcast Service warnings over FeMBMS.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
@@ -26,15 +24,15 @@ export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>5G Broadcast for Emergency Alerts</h1>
+<h1>Public Warning Systems</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/emergency-alerts-reference-tools.png" alt="5G Broadcast - Emergency Alerts: Reference Tools slide">
 
 The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Implementation Detail](./implementation) page. To see one assembled scenario already running, see the [Tutorials](./tutorials).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -54,6 +52,10 @@ The tools enable authorities and broadcasters to distribute alerts to all receiv
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
+## Repositories & Releases
+
+<ProjectRepositories project="emergency-alerts" />
+
 ## Standards implemented
 
 <div class="standard-card-row">
@@ -71,16 +73,6 @@ The tools enable authorities and broadcasters to distribute alerts to all receiv
 
 See [5G Broadcast - Emergency Alerts on the Standards portal](/standards/emergency-alerts) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="emergency-alerts" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="emergency-alerts" />
-
 ## Developer Updates
 
 <CommunityStats name="5G Broadcast - Emergency Alerts" />
@@ -88,13 +80,3 @@ See [5G Broadcast - Emergency Alerts on the Standards portal](/standards/emergen
 ### Open Pull Requests
 
 <ProjectOpenPRs name="5G Broadcast - Emergency Alerts" />
-
-The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see [Implementation Detail](./implementation).
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the 5G Broadcast Emergency Alerts tools (Cell Broadcast Service transport, delivery through the broadcast chain, and receiver presentation of warning messages). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/12)
-
-**Developer Kanban Boards:**
-
-- **MBMS: Public Warning System**: issues and required functionality around support for a Public Warning System, delivered over Multimedia Broadcast Multicast Service (MBMS), as defined in ETSI TS 103 720: [Kanban board](https://github.com/orgs/5G-MAG/projects/20)

@@ -5,14 +5,12 @@ title: '5G Broadcast for TV and Radio Services'
 sidebar_position: -1
 description: Overview of the 5G Broadcast reference tools (rt-mbms-tx, rt-mbms-modem and related repos) implementing ETSI TS 103 720 for TV and radio.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
@@ -28,19 +26,19 @@ export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>5G Broadcast for TV and Radio Services</h1>
+<h1>Media delivery over 5G Broadcast</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/5g-broadcast-reference-tools.png" alt="5G Broadcast - TV and Radio Services: Reference Tools slide">
 
 It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised by 3GPP, using the evolved Multimedia Broadcast Multicast Service (eMBMS) and its further-enhanced variant Further evolved Multimedia Broadcast Multicast Service (FeMBMS), also called LTE-based 5G Broadcast. This project provides the reference transmitter and receiver so anyone can test a complete broadcast chain, covering end-to-end 5G Broadcast systems for TV and radio distribution over dedicated broadcast carriers, without a return channel or SIM requirement on the receiver side. The project also covers hybrid broadcast/broadband delivery and integration with DVB-I service discovery. For the deployment configurations and full feature-support detail, see [Implementation Detail](./implementation); to see one assembled scenario already running, see the [Tutorials](./tutorials).
-
-</ProjectSlide>
 
 <img loading="lazy" src={useBaseUrl('/assets/images/5gbc/reference-tools-broadcast-demo.jpg')} alt="5G Broadcast Reference Tools transmitter hardware, with a phone running the 5G-MAGflix demo app" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
 
 <em>The 5G Broadcast Reference Tools transmitter, with the "5G-MAGflix" demo app receiving a live broadcast stream.</em>
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -59,6 +57,10 @@ It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised
 />
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: the transmitter, modem, middleware and supporting tools, listed below.
+
+## Repositories & Releases
+
+<ProjectRepositories project="5g-broadcast" />
 
 ## Standards implemented
 
@@ -81,16 +83,6 @@ ETSI TS 103 720 (5G Broadcast System for linear TV and radio services; LTE-based
 
 See [5G Broadcast on the Standards portal](/standards/5g-broadcast) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="5g-broadcast" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="5g-broadcast" />
-
 ## Developer Updates
 
 <CommunityStats name="5G Broadcast - TV and Radio Services" />
@@ -98,16 +90,3 @@ See [5G Broadcast on the Standards portal](/standards/5g-broadcast) for version 
 ### Open Pull Requests
 
 <ProjectOpenPRs name="5G Broadcast - TV and Radio Services" />
-
-This page tracks the planned and in-progress work for the 5G Broadcast Reference Tools. The general roadmap gives the overall direction; the developer boards below break the work down by component. Each links to a GitHub Kanban board, where the current status is authoritative.
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the 5G Broadcast Reference Tools (hybrid TV/Radio delivery, transmitter and receiver components). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/7)
-
-**Developer Kanban Boards:**
-
-- **Seamless switching between broadcast and unicast**: seamless switching between LTE-based 5G Broadcast and OTT unicast: [Kanban board](https://github.com/orgs/5G-MAG/projects/7)
-- **MBMS Modem - Rel 17 Support**: the required issues and features requests to make the MBMS Modem Rel 17 compliant: [Kanban board](https://github.com/orgs/5G-MAG/projects/24)
-- **5G Broadcast Transmitters**: any improvements to rt-mbms-tx and rt-mbms-tx-for-qrd-and-crd: [Kanban board](https://github.com/orgs/5G-MAG/projects/54)
-- **Web User Interface**: any improvements to rt-wui: [Kanban board](https://github.com/orgs/5G-MAG/projects/28)

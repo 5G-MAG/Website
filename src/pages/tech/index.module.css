@@ -4,6 +4,10 @@
   padding: 4rem 0;
 }
 
+.sectionIntro {
+  padding: 1.5rem 0 3rem;
+}
+
 .sectionAlt {
   background: var(--ifm-color-emphasis-100);
 }

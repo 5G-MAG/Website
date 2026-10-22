@@ -5,14 +5,12 @@ title: MPEG V3C Immersive Platform
 sidebar_position: -1
 description: Overview of the MPEG V3C Immersive Platform, MPEG V3C reference tools for volumetric video encoding, streaming, and Unity-based rendering.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['v3c'] || []).length;
@@ -30,15 +28,15 @@ export const REPO_COUNT = (REPO_METADATA['v3c'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>MPEG V3C Immersive Platform</h1>
+<h1>Volumetric Video Experiences</h1>
 </div>
 </div>
-
-<ProjectSlide image="/assets/images/projects/v3c-reference-tools.png" alt="MPEG V3C Immersive Platform: Reference Tools slide">
 
 The platform provides an end-to-end pipeline for 3D object and scene delivery, allowing viewers to move freely around volumetric content. To see one assembled scenario already running, see the [Tutorials](./tutorials).
 
-</ProjectSlide>
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -57,6 +55,10 @@ The platform provides an end-to-end pipeline for 3D object and scene delivery, a
 />
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+## Repositories & Releases
+
+<ProjectRepositories project="v3c" />
 
 ## Standards implemented
 
@@ -79,16 +81,6 @@ The platform provides an end-to-end pipeline for 3D object and scene delivery, a
 
 See [MPEG V3C Immersive Platform on the Standards portal](/standards/v3c) for version history and 5G-MAG's own standards contributions.
 
-<ProjectDeck slug="v3c" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="v3c" />
-
 ## Developer Updates
 
 <CommunityStats name="MPEG V3C Immersive Platform" />
@@ -96,13 +88,3 @@ See [MPEG V3C Immersive Platform on the Standards portal](/standards/v3c) for ve
 ### Open Pull Requests
 
 <ProjectOpenPRs name="MPEG V3C Immersive Platform" />
-
-This page links to the public GitHub project boards that track MPEG V3C Immersive Platform work. The boards are the authoritative, up-to-date view of planned, in-progress, and completed items; the summaries here just point you to them.
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the MPEG V3C Immersive Platform (Visual Volumetric Video-based Coding support and related tooling). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/15)
-
-**Developer Kanban Boards:**
-
-- **V3C: V3C Decoder Plugin implemented with ISO/IEC 23090-5 support**: all issues related to the V3C repositories with ISO/IEC 23090-5 support: [Kanban board](https://github.com/orgs/5G-MAG/projects/38)

@@ -49,7 +49,7 @@ function Bars({ project }) {
   );
 }
 
-export default function CommunityStats({ name, variant }) {
+export default function CommunityStats({ name, variant = 'bars' }) {
   const project = communityStatsData.projects.find((p) => p.name === name);
 
   if (!project || project.repos.length === 0) {

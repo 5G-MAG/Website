@@ -5,14 +5,12 @@ title: UE Data Collection, Reporting and Event Exposure
 sidebar_position: -1
 description: The data collection Reference Tools, what they implement against TS 26.531 and TS 26.532, and links to the repositories and tutorials.
 ---
-import ProjectDeck from '@site/src/components/ProjectDeck';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import ProjectSlide from '@site/src/components/ProjectSlide';
 import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['data-collection'] || []).length;
@@ -28,13 +26,15 @@ export const REPO_COUNT = (REPO_METADATA['data-collection'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>UE Data Collection, Reporting and Event Exposure</h1>
+<h1>User Data Collection and Reporting</h1>
 </div>
 </div>
 
-<ProjectSlide image="/assets/images/projects/data-collection-reference-tools.png" alt="UE Data Collection, Reporting and Event Exposure: Reference Tools slide">
 The tools provide the Data Collection AF: a library and a standalone Application Function that serve provisioning (R1), data reporting (R2 to R4) and event exposure (R5, R6), against Release 18 ([TS 26.531](https://www.3gpp.org/dynareport/26531.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)). Its integration with 5G Media Streaming is in progress. For each feature and component, see [Implementation Detail](./implementation).
-</ProjectSlide>
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
 
 ## What's Built
 
@@ -62,6 +62,10 @@ The tools provide the Data Collection AF: a library and a standalone Application
 
 For each feature and component, see [Implementation Detail](/reference-tools/data-collection/implementation).
 
+## Repositories & Releases
+
+<ProjectRepositories project="data-collection" />
+
 ## Standards implemented
 
 <div class="standard-card-row">
@@ -75,16 +79,6 @@ For each feature and component, see [Implementation Detail](/reference-tools/dat
 
 See [UE Data Collection on the Standards portal](/standards/data-collection) for the specifications and their evolution.
 
-<ProjectDeck slug="data-collection" />
-
-## Contributors & How to Contribute
-
-<ProjectContributors />
-
-## Repositories & Releases
-
-<ProjectRepositories project="data-collection" />
-
 ## Developer Updates
 
 <CommunityStats name="UE Data Collection, Reporting and Event Exposure" />
@@ -92,13 +86,3 @@ See [UE Data Collection on the Standards portal](/standards/data-collection) for
 ### Open Pull Requests
 
 <ProjectOpenPRs name="UE Data Collection, Reporting and Event Exposure" />
-
-The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see [Implementation Detail](./implementation).
-
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the UE Data Collection, Reporting and Event Exposure framework (the DCAF service-provider library, its Application Function, and the R1/R2/R6 provisioning, reporting, and event-exposure interfaces). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/8)
-
-**Developer Kanban Boards:**
-
-- **UE data collection, reporting and event exposure**: reference implementation of the generic Data Collection AF and its instantiation in the 5G Media Streaming (5GMS) Application Function: [Kanban board](https://github.com/orgs/5G-MAG/projects/30)

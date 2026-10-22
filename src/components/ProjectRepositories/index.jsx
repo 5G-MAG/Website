@@ -5,7 +5,7 @@ import cardStyles from '@site/src/components/RepoCard/styles.module.css';
 import { ALL_REPOS, ALL_PROJECTS, repoMetaFor, displayNameOf } from '@site/src/data/baskets';
 
 // `rows`: one row per repository instead of a card (see RepoRows).
-export default function ProjectRepositories({ project, rows = false }) {
+export default function ProjectRepositories({ project, rows = true }) {
   // `project` is the folder-name slug shared by every reference-tools/
   // testbeds page (e.g. "5gms" for both /reference-tools/5gms/ and this
   // component) -- resolved back to the real taxonomy project so its own

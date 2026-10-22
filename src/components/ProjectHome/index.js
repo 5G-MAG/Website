@@ -24,8 +24,8 @@ export default function ProjectHome({
   cover,
   whyTitle = 'The Problem It Solves',
   why,
-  wrapImage = false,
-  repoRows = false,
+  wrapImage = true,
+  repoRows = true,
   children,
 }) {
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
@@ -48,7 +48,7 @@ export default function ProjectHome({
       />
 
       <main>
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sectionIntro}`}>
           <div className="container">
             {wrapImage ? (
               <>
