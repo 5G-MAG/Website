@@ -42,7 +42,7 @@
 }
 
 .row {
-  --accent: var(--repo-accent, var(--ifm-color-primary));
+  --accent: var(--repo-accent, #6b7a86); /* a project with no technology area: grey */
   border-left: 4px solid var(--accent);
   display: flex;
   align-items: center;
