@@ -2309,15 +2309,25 @@
       "logo": "/assets/images/partnerships/3gpp-logo.png",
       "href": "https://www.3gpp.org"
     },
-    "MPEG (ISO/IEC)": {
-      "logo": "/assets/logos/MPEG.png",
-      "href": "https://www.mpeg.org"
+    "CAMARA Project": {
+      "logo": "/assets/logos/CAMARA.png",
+      "href": "https://camaraproject.org"
+    },
+    "CTA WAVE": {
+      "logo": "/assets/logos/CTA-WAVE.jpg",
+      "label": "CTA WAVE Project",
+      "href": "https://cta.tech/Resources/Standards/WAVE-Project"
+    },
+    "DASH-IF": {
+      "logo": "/assets/logos/DASH-IF.jpg",
+      "href": "https://dashif.org"
     },
     "DVB": {
       "logo": "/assets/images/partnerships/dvb-logo.png",
       "href": "https://dvb.org"
     },
     "ETSI": {
+      "logo": "/assets/logos/ETSI.png",
       "href": "https://www.etsi.org"
     },
     "IETF": {
@@ -2329,14 +2339,9 @@
       "href": "https://www.khronos.org",
       "note": "glTF"
     },
-    "CTA WAVE": {
-      "href": "https://cta.tech/Resources/Standards/WAVE-Project"
-    },
-    "DASH-IF": {
-      "href": "https://dashif.org"
-    },
-    "CAMARA Project": {
-      "href": "https://camaraproject.org"
+    "MPEG (ISO/IEC)": {
+      "logo": "/assets/logos/MPEG.png",
+      "href": "https://www.mpeg.org"
     }
   },
   "iconCatalog": {

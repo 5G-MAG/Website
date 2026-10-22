@@ -7,6 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import NextUp from '@site/src/components/NextUp';
+import AskAi from '@site/src/components/AskAi';
 import StandardsBasedOn from '@site/src/components/StandardsBasedOn';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import { HOME_WORK } from '@site/src/data/discoverWork';
@@ -37,7 +38,7 @@ const LATEST_NEWS = [...newsData.posts]
   .slice(0, 3)
   .map((post) => ({ title: post.title, image: post.image, href: `/news/${post.slug}` }));
 
-const VIDEO_COUNT = 10;
+const VIDEO_COUNT = 5;
 
 // A handful of the most recent Developer Exchange sessions -- shown until
 // the client-side effect below swaps in a random sample, and also the
@@ -316,7 +317,9 @@ export default function Home() {
       {/* What is coming up next, filled from the events agenda. */}
       <NextUp />
 
-      <StandardsBasedOn />
+      <div className="container">
+        <AskAi about="/llms.txt" />
+      </div>
 
       {/* A dedicated, prominent search band right below the hero -- modeled
           on dvb.org's homepage, which puts search here rather than leaving
@@ -473,6 +476,9 @@ export default function Home() {
             <EventsAgendaPreview events={EVENTS_AGENDA} />
           </div>
         </section>
+
+        {/* The standards bodies behind what we are developing, right before the Software Accelerator's releases. */}
+        <StandardsBasedOn />
 
         {/* Latest Releases */}
         <section className={styles.section}>

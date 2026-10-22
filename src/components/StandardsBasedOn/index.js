@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 function Tile({ name }) {
   const sdo = SDOS[name];
   const logo = useBaseUrl(sdo.logo || '/');
-  const label = sdo.note ? `${name} (${sdo.note})` : name;
+  const label = sdo.label || (sdo.note ? `${name} (${sdo.note})` : name);
   return (
     <a className={styles.tile} href={sdo.href} target="_blank" rel="noopener noreferrer" aria-label={label}>
       {sdo.logo ? <img src={logo} alt="" className={styles.logo} /> : null}

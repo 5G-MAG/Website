@@ -1,0 +1,56 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0;
+  padding: 0.7rem 1rem;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.input {
+  flex: 1 1 18rem;
+  min-width: 0;
+  padding: 0.35rem 0.8rem;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-500);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.button {
+  padding: 0.2rem 0.85rem;
+  color: var(--ifm-font-color-base);
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-500);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
+}
+
+.note {
+  flex: 1 1 100%;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+}

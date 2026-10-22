@@ -7,6 +7,7 @@ import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectDeckBand from '@site/src/components/ProjectDeckBand';
+import AskAi from '@site/src/components/AskAi';
 import ProjectRoadmap from '@site/src/components/ProjectRoadmap';
 import { PROJECT_ROADMAPS } from '@site/src/data/projectRoadmaps';
 import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
@@ -115,6 +116,7 @@ export default function ProjectHome({
                 />
               </div>
             )}
+            <AskAi />
             {why && (
               <div className={styles.whyMattersBlock}>
                 <h2 className={styles.whyMattersTitle}>{whyTitle}</h2>

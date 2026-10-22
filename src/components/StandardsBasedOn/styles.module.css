@@ -11,6 +11,8 @@
 }
 
 .row {
+  max-width: 52rem;      /* five tiles to a row, so nine bodies fall as five and four */
+  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
