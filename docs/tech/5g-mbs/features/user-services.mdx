@@ -14,7 +14,6 @@ import JumpMenu from '@site/src/components/JumpMenu';
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Media delivery over 5G Multicast/Broadcast</span>
 <h1>Features: MBS User Services</h1>
 </div>
 </div>
@@ -23,16 +22,19 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 - **MBS User Services:** provisioning, object and packet distribution, announcement, object repair, AL-FEC, security, eMBMS interworking and more.
 - **Each feature** shows the clause that defines it and, folded, the services, APIs or procedures that realise it.
+- **Grouped** by what they do: provisioning and control, content delivery, announcement and discovery, delivery quality, and cross-cutting features.
 
 :::
 
-<JumpMenu items={[["Provisioning of MBS User Services", "provisioning-of-mbs-user-services"], ["Distribution Session control in the MBSTF", "distribution-session-control-in-the-mbstf"], ["Object Distribution Method", "object-distribution-method"], ["Packet Distribution Method", "packet-distribution-method"], ["User Service Announcement", "user-service-announcement"], ["Object repair", "object-repair"], ["Time synchronisation", "time-synchronisation"], ["Application Layer FEC", "application-layer-fec"], ["Security", "security"], ["Service areas, location-dependent and multiplexed sessions", "service-areas-location-dependent-and-multiplexed-sessions"], ["Status notifications", "status-notifications"], ["Interworking with eMBMS", "interworking-with-embms"], ["Conformance profiles", "conformance-profiles"], ["For further study", "for-further-study"]]} />
+<JumpMenu items={[["Provisioning and control", "provisioning-and-control"], ["Content delivery", "content-delivery"], ["Announcement and discovery", "announcement-and-discovery"], ["Delivery quality", "delivery-quality"], ["Cross-cutting", "cross-cutting"]]} />
 
-## Provisioning of MBS User Services
+## Provisioning and control
+
+### Provisioning of MBS User Services
 
 **Defined in** TS 26.502 clauses 4.5 and 7.2 · **procedure** clause 5.3
 
-The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. Release 18 added to the Nmbsf_MBSUserDataIngestSession API the Associated Session ID, the NR RedCap UE information and active periods given as a repetition rule (feature 5MBS2), and Release 20 adds the feature 5MBS3: retrieval and reporting of the User Service Announcement bundle, a transport security protection indication, the conformance profiles of the content and the expected MIME content types (TS 29.580 V20.0.0 clause 6.2.8; the feature 5MBS3 is not in V19.6.0). The change history names no work item for the Release 20 change request, CR 0086 (CP-262115). It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3).
+The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. Release 18 added to the Nmbsf_MBSUserDataIngestSession API the Associated Session ID, and active periods given as a repetition rule (feature 5MBS2), and Release 20 adds the feature 5MBS3: retrieval and reporting of the User Service Announcement bundle, a transport security protection indication, the conformance profiles of the content and the expected MIME content types (TS 29.580 V20.0.0 clause 6.2.8; the feature 5MBS3 is not in V19.6.0). The change history names no work item for the Release 20 change request, CR 0086 (CP-262115). It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3).
 
 <details>
 <summary>Services and APIs</summary>
@@ -47,7 +49,7 @@ The MBS Application Provider provisions an MBS User Service, then MBS User Data 
 
 </details>
 
-## Distribution Session control in the MBSTF
+### Distribution Session control in the MBSTF
 
 **Defined in** TS 26.502 clauses 4.3.3 and 7.3 · **procedures** clauses 4.6.1, 5.3 and 5.5
 
@@ -62,7 +64,9 @@ The MBSF creates, updates and destroys MBS Distribution Sessions in the MBSTF at
 
 </details>
 
-## Object Distribution Method
+## Content delivery
+
+### Object Distribution Method
 
 **Defined in** TS 26.502 clause 6.1 · **protocols** TS 26.517 clause 6
 
@@ -80,7 +84,7 @@ Delivers discrete binary objects over an MBS Session, in four operating modes: s
 
 </details>
 
-## Packet Distribution Method
+### Packet Distribution Method
 
 **Defined in** TS 26.502 clause 6.2 · **protocols** TS 26.517 clause 7
 
@@ -97,7 +101,9 @@ Delivers packet streams over an MBS Session. TS 26.502 states it is particularly
 
 </details>
 
-## User Service Announcement
+## Announcement and discovery
+
+### User Service Announcement
 
 **Defined in** TS 26.502 clauses 4.2.4, 4.5.7 and 4.5.8 · **procedures** clauses 5.3A and 5.4 · **format** TS 26.517 clause 5
 
@@ -115,7 +121,9 @@ The MBSF compiles an MBS User Service Announcement that describes the current Di
 
 </details>
 
-## Object repair
+## Delivery quality
+
+### Object repair
 
 **Defined in** TS 26.502 clauses 4.2.6 and 4.3.4 · **procedures** clauses 5.6.2 and 5.6.3 · **protocols** TS 26.517 clauses 6.2.4 and 10
 
@@ -136,31 +144,33 @@ With the Object Distribution Method, the MBS AS provides a byte-range Object Rep
 
 </details>
 
-## Time synchronisation
-
-**Defined in** TS 26.502 clause 4.2.7 · **format** TS 26.517 clause 5.2.11 and annex C.3
-
-Added in Release 19. The MBS Client is required to be time-synchronised with the 5G System with a precision of at least ±1 s to support certain MBS User Service functions. The network provides at least one of two options: NR SIB9, which conveys a UTC wallclock to an accuracy of 10 ms, or a time service hosted by the MBS AS. If both are offered, the MBS Client should preferably use SIB9. The Time Synchronization Parameters of a Distribution Session in the User Service Announcement indicate whether SIB9 is transmitted and list the time service endpoints, each identified by a DASH UTC timing scheme (TS 26.502 V19.6.0 clause 4.2.7; TS 26.517 V19.3.0 clause 5.2.11, C.3; TS 26.502 V18.7.0 (comparison)).
-
-## Application Layer FEC
+### Application Layer FEC
 
 **Defined in** TS 26.502 clauses 4.3.3.2 and 4.3.3.3, table 4.5.6-1
 
 The MBSTF has an optional AL-FEC subfunction for both distribution methods. The FEC configuration of a Distribution Session identifies the scheme with a term from the RMT vocabulary of FEC Encoding IDs, and gives the overhead as a proportion of the MBS data (TS 26.502 V19.6.0 clause 4.3.3.2, 4.3.3.3, table 4.5.6-1).
 
-## Security
+### Time synchronisation
+
+**Defined in** TS 26.502 clause 4.2.7 · **format** TS 26.517 clause 5.2.11 and annex C.3
+
+Added in Release 19. The MBS Client is required to be time-synchronised with the 5G System with a precision of at least ±1 s to support certain MBS User Service functions. The network provides at least one of two options: NR SIB9, which conveys a UTC wallclock to an accuracy of 10 ms, or a time service hosted by the MBS AS. If both are offered, the MBS Client should preferably use SIB9. The Time Synchronization Parameters of a Distribution Session in the User Service Announcement indicate whether SIB9 is transmitted and list the time service endpoints, each identified by a DASH UTC timing scheme (TS 26.502 V19.6.0 clause 4.2.7; TS 26.517 V19.3.0 clause 5.2.11, C.3; TS 26.502 V18.7.0 (comparison)).
+
+## Cross-cutting
+
+### Security
 
 **Defined in** TS 26.502 clauses 4.3.4A and 4.8 · **protocol** TS 26.517 clause 11
 
 Security protection of MBS traffic uses a control plane procedure, for multicast only, or a user plane procedure, for multicast and broadcast, as defined in TS 33.501 annex W. The MBSSF, co-located with the MBSF or the MBSTF, generates, manages and distributes the MBS Service Keys and MBS Traffic Keys. The MBS Application Provider requests protection with the Transport security protection flag of a Distribution Session. At MBS-10, the MBSF Client retrieves the MBS Service Key from the MBSSF with the protocol of TS 33.246 clause 6.3.
 
-## Service areas, location-dependent and multiplexed sessions
+### Service areas, location-dependent and multiplexed sessions
 
 **Defined in** TS 26.502 clause 4.5.2 and table 4.5.6-1 · **announcement** TS 26.517 clause 5.2.9
 
-A Distribution Session may specify target service areas, outside which MBS data is not transmitted. In the User Service Announcement, each target service area is expressed as a list of NR Cell Identifiers, a list of Tracking Area Identifiers or a list of polygon or circle shapes (added in Release 19). Location-dependent variants of a service share the same MBS Session Identifier with disjoint target service areas. With the Multiplexed service flag, Distribution Sessions with the same (or empty) target service areas are multiplexed onto one MBS Session. Target UE classes, added in Release 18, state whether a broadcast session is intended for reduced capability (RedCap) UEs, full capability UEs or both (TS 26.502 V18.6.0 clause 4.5.2, which V17.13.0 does not have; TS 26.502 V19.6.0 clause 4.5.2, table 4.5.6-1; TS 26.517 V19.3.0 clause 5.2.9; TS 26.517 V18.7.0 (comparison)).
+A Distribution Session may specify target service areas, outside which MBS data is not transmitted. In the User Service Announcement, each target service area is expressed as a list of NR Cell Identifiers, a list of Tracking Area Identifiers or a list of polygon or circle shapes (added in Release 19). Location-dependent variants of a service share the same MBS Session Identifier with disjoint target service areas. With the Multiplexed service flag, Distribution Sessions with the same (or empty) target service areas are multiplexed onto one MBS Session.
 
-## Status notifications
+### Status notifications
 
 **Defined in** TS 26.502 clause 4.6.2, table 4.6.2-1
 
@@ -176,7 +186,7 @@ The MBSF notifies the MBS Application Provider, or the NEF, of events such as se
 
 </details>
 
-## Interworking with eMBMS
+### Interworking with eMBMS
 
 **Defined in** TS 26.502 clause 4.9 and informative annex D
 

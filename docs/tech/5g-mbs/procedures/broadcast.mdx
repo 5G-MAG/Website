@@ -14,7 +14,6 @@ import JumpMenu from '@site/src/components/JumpMenu';
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Media delivery over 5G Multicast/Broadcast</span>
 <h1>MBS Broadcast - End-to-End Procedures</h1>
 </div>
 </div>
@@ -118,9 +117,9 @@ At the MB-SMF, Nmbsmf_TMGI_Allocate is an HTTP POST on the TMGI collection resou
 
 ### N3. MBS Session creation at the MB-SMF
 
-The AF provides a description of the MBS session to the NEF/MBSF with Nnef_MBSSession_Create, including the MBS service type (multicast or broadcast) and the MBS Service Information. For broadcast, it may add FSA IDs, an Associated Session Identifier and NR RedCap UE Information (TS 23.247 clause 7.1.1.2, step 8). MBS Session Create with the MBS service type set to broadcast indicates the impending start of the transmission, so that resources are set up in the MB-UPF and in NG-RAN for 5GC Shared MBS traffic delivery (clause 7.3.1).
+The AF provides a description of the MBS session to the NEF/MBSF with Nnef_MBSSession_Create, including the MBS service type (multicast or broadcast) and the MBS Service Information. For broadcast, it may add FSA IDs, and an Associated Session Identifier (TS 23.247 clause 7.1.1.2, step 8). MBS Session Create with the MBS service type set to broadcast indicates the impending start of the transmission, so that resources are set up in the MB-UPF and in NG-RAN for 5GC Shared MBS traffic delivery (clause 7.3.1).
 
-The Associated Session Identifier and the NR RedCap UE Information are Release 18 additions. The Associated Session ID lets NG-RAN identify broadcast MBS sessions that deliver the same content through different core networks in RAN sharing (TR 21.918 V18.0.0 clause 12.2); it was added to the Nmbsmf_MBSSession_Create request by TS 29.532 CR 0054 (V18.1.0, CT#100) and to the TS 29.580 data types by CR 0022 (V18.2.0), under the TS 29.580 feature `5MBS2`, which also covers the NR RedCap UE Information. In TS 23.247 the support for broadcast sessions intended for NR (e)RedCap UEs is clause 6.19, introduced by CR 0341 (V18.5.0); the MB-SMF forwards the parameter to NG-RAN in the N2 SM information (clause 7.3.1, step 2).
+The Associated Session Identifier is a Release 18 addition. The Associated Session ID lets NG-RAN identify broadcast MBS sessions that deliver the same content through different core networks in RAN sharing (TR 21.918 V18.0.0 clause 12.2); it was added to the Nmbsmf_MBSSession_Create request by TS 29.532 CR 0054 (V18.1.0, CT#100) and to the TS 29.580 data types by CR 0022 (V18.2.0), under the TS 29.580 feature `5MBS2`.
 
 The NEF/MBSF checks the authorisation, selects the MB-SMF as ingress control node, and sends Nmbsmf_MBSSession_Create, forwarding all the parameters received from the AF. If the MBSF decides to insert an MBSTF into the user plane, it also requests the allocation of an ingress transport address (TS 23.247 clause 7.1.1.2, steps 9 to 11). If no FSA ID was received, the MB-SMF selects FSA IDs from local configuration (step 11). It derives the QoS parameters locally from the MBS Service Information (step 13).
 
@@ -142,7 +141,7 @@ The MB-SMF returns the possibly allocated ingress address to the NEF/MBSF, and f
 
 ### N5. Broadcast context in the AMFs
 
-For broadcast, the MB-SMF continues the procedure towards the AMF and NG-RAN (TS 23.247 clause 7.1.1.2, step 17). It may use the NRF to discover the AMFs that support MBS in the MBS service area. It sends Namf_MBSBroadcast_ContextCreate to the selected AMFs in parallel, with the TMGI, the N2 SM information (LL SSM if any, 5G QoS Profile, NR RedCap UE Information if any), the MBS service area and the FSA IDs. It may include a maximum response time (TS 23.247 clause 7.3.1, step 2). For NR NTN, when the MBS service area contains an NR NTN Intended Service Area, the MB-SMF selects the AMFs from the TAIs and forwards the MBS service area, including the NR NTN Intended Service Area (step 2, added in Release 19).
+For broadcast, the MB-SMF continues the procedure towards the AMF and NG-RAN (TS 23.247 clause 7.1.1.2, step 17). It may use the NRF to discover the AMFs that support MBS in the MBS service area. It sends Namf_MBSBroadcast_ContextCreate to the selected AMFs in parallel, with the TMGI, the N2 SM information (LL SSM if any, 5G QoS Profile), the MBS service area and the FSA IDs. It may include a maximum response time (TS 23.247 clause 7.3.1, step 2). For NR NTN, when the MBS service area contains an NR NTN Intended Service Area, the MB-SMF selects the AMFs from the TAIs and forwards the MBS service area, including the NR NTN Intended Service Area (step 2, added in Release 19).
 
 At the AMF, ContextCreate is an HTTP POST on the broadcast MBS session contexts collection, `/mbs-contexts`. It carries an N2 MBS Session Management container, the NGAP MBS Session Setup or Modification Request Transfer IE. There is only one broadcast MBS session context per MBS session, or per MBS session and Area Session ID (TS 29.518 clause 5.6.2.2, table 6.5.3.1-1).
 
@@ -207,7 +206,7 @@ In SIB1, the field `si-SchedulingInfo-v1700` holds a list of `SchedulingInfo2-r1
 
 ## Step 3: SIB20
 
-SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast. Its fields are `mcch-Config-r17` and `cfr-ConfigMCCH-MTCH-r17`, and, in a Release 18 extension, `cfr-ConfigMCCH-MTCH-RedCap-r18` and `mcch-ConfigRedCap-r18`. `MCCH-Config-r17` holds the MCCH repetition period and offset, the window start slot, the window duration and the modification period. The common frequency resource (`CFR-ConfigMCCH-MTCH`, TS 38.331 clause 6.3.6) is used for MCCH, multicast MCCH and MTCH reception.
+SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast. Its fields are `mcch-Config-r17` and `cfr-ConfigMCCH-MTCH-r17`. `MCCH-Config-r17` holds the MCCH repetition period and offset, the window start slot, the window duration and the modification period. The common frequency resource (`CFR-ConfigMCCH-MTCH`, TS 38.331 clause 6.3.6) is used for MCCH, multicast MCCH and MTCH reception.
 
 TS 38.331 clause 5.9.1.1 states that the configuration the UE needs to receive the MCCH is provided in SIB1 and SIB20. A UE may acquire MBS broadcast only if it can do so without disrupting unicast, SDT or MBS multicast reception.
 

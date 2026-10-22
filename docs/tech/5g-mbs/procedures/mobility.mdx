@@ -6,25 +6,30 @@ sidebar_label: "Multicast Mobility"
 sidebar_position: 3
 ---
 
+import SpecFigure from '@site/src/components/SpecFigure';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Media delivery over 5G Multicast/Broadcast</span>
 <h1>MBS Multicast - Mobility</h1>
 </div>
 </div>
 
+
 :::tip[At a glance]
 
 - **Goal:** the UE continues receiving its multicast services via PTM or PTP in the new cell after handover.
+- **Three cases**, as TS 23.247 lists them: between two cells that support MBS, from a cell that supports MBS to one that does not, and from a cell that does not to one that does.
 - **Lossless handover** between cells that support MBS requires a PTP RLC AM entity in the target cell MRB, and DL PDCP COUNT synchronisation and continuity between the cells.
 - **Delivery switching:** the target gNB's MBS support indication, in the Path Switch Request (Xn) or Handover Request Acknowledge (NG), tells the 5G Core whether to use 5GC Shared or 5GC Individual delivery.
-- **Resources:** the target gNB sets up shared resources with the NGAP Distribution Setup procedure; the source gNB may release them with Distribution Release when no joined UE remains.
+- **Resources:** for a session with ongoing user data transmission and no MBS Session Resources at the target gNB, the target gNB sets them up with the NGAP Distribution Setup procedure; the source gNB may release them with Distribution Release when no joined UE remains.
 
 :::
+
+The mobility of a multicast MBS session is supported when the UE moves from a NG-RAN node that supports MBS to a target NG-RAN node that supports MBS, or between a NG-RAN node that supports MBS and a target NG-RAN node that does not support MBS, and vice versa (TS 23.247 V20.0.0 clause 6.3.1).
 
 ## Mobility between 2 cells supporting Multicast
 
@@ -38,31 +43,66 @@ Mobility procedures described in 3GPP TS 38.300 for multicast reception allow th
   - Lossless handover for multicast service is supported for the handover between MBS supporting cells if the UE is configured with PTP RLC AM entity in target cell MRB of a UE (TS 38.300 V19.4.0 clause 16.10.5.3.2).
   - The network has to ensure DL PDCP COUNT value synchronization and continuity between the source cell and the target cell (TS 38.300 V19.4.0 clause 16.10.5.3.2).
 
+- For each multicast session with ongoing user data transmission for which no MBS Session Resources exist at the target gNB, the target gNB triggers the setup of MBS user plane resources towards the 5GC using the NGAP Distribution Setup procedure (TS 38.300 V19.4.0 clause 16.10.5.3.2). If the shared delivery for the MBS session has not been established towards the target NG-RAN, the target NG-RAN establishes it with the MB-SMF and MB-UPF (TS 23.247 V20.0.0 clause 6.3.1).
+
 - During handover execution, the MBS configuration decided at target gNB is sent to the UE via the source gNB within an RRC container (3GPP TS 38.331) (TS 38.300 V19.4.0 clause 16.10.5.3.2).
 When the UE connects to the target gNB, the target gNB sends an indication that it is an MBS-supporting node to the SMF in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover) (TS 38.300 V19.4.0 clause 16.10.5.3.2; TS 23.247 V20.0.0 clause 7.2.3.2; TS 23.247 V20.0.0 clause 7.2.3.3).
 
 - Upon successful handover completion, the source gNB may trigger the release of the MBS user plane resources towards the 5GC using the NGAP Distribution Release procedure for any multicast session for which there is no remaining
 joined UE in the gNB (TS 38.300 V19.4.0 clause 16.10.5.3.2; TS 38.413 V19.4.0 clause 8.18.2).
 
-## Mobility between 1 cell supporting Multicast and 1 cell not supporting Multicast
+- To minimize data loss when both NG-RAN nodes support MBS, data may be forwarded from the source NG-RAN node to the target NG-RAN node, and the MBS progress information (i.e. PDCP number) is exchanged between them in the handover preparation phase; alternatively the NG-RAN nodes share a common user plane entity, denoted as shared NG-U termination, which allows the allocation of identical PDCP numbers to MBS users data delivered to UEs in cells served by different NG-RAN nodes (TS 23.247 V20.0.0 clause 7.2.3.5).
 
-Mobility procedures described in 3GPP TS 38.300 for multicast reception allow the UE to continue receiving multicast service(s) via PTM or PTP in a new cell after handover (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+### Signalling in the 5G Core
 
-### Procedure
+Each of the two figures shows both Case A, where the target NG-RAN supports MBS, and Case B, where it does not (TS 23.247 V20.0.0 clauses 7.2.3.2 and 7.2.3.3).
 
-- Target gNB sets up PDU Session Resources mapped to the MBS multicast session (TS 38.300 V19.4.0 clause 16.10.5.3.3).
-- The 5GC infers from the absence of an "MBS-support" indication from gNB in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover) that MBS multicast data packets delivery has to be switched to 5GC individual MBS traffic delivery (3GPP TS 23.247) (TS 38.300 V19.4.0 clause 16.10.5.3.3; TS 23.247 V20.0.0 clause 6.3.1).
-- For mobility from MBS non-supporting cell to MBS-supporting cell, the existing Xn/NG handover procedures apply (TS 38.300 V19.4.0 clause 16.10.5.3.3):
-  - 5GC detects that MBS multicast data packets delivery can be switched from 5GC Individual MBS traffic delivery to 5GC Shared MBS traffic delivery (TS 38.300 V19.4.0 clause 16.10.5.3.3).
-  - After Xn handover, the SMF triggers switching MBS multicast data packets delivery from 5GC Individual to 5GC Shared MBS traffic delivery by providing MBS Session IDs joined by the UE to the target gNB by means of the PDU Session Resource Modification procedure (TS 38.300 V19.4.0 clause 16.10.5.3.3).
-  - For NG handover, the SMF provides the MBS Session IDs joined by the UE to the target gNB by means of NGAP Handover Request (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig7.2.3.2-1.svg" width={1141} height={696} spec="TS 23.247 V20.0.0" figure="7.2.3.2-1" title="Xn based handover with MBS Session" alt="Message sequence between UE, source NG-RAN, target NG-RAN, AMF, SMF, UPF, MB-SMF and MB-UPF: 0a. Handover preparation, 0b. Establishment of resources for 5GC Shared MBS traffic delivery, 0c. Handover execution, 1. Path Switch Request, 2. Nsmf_PDUSession_UpdateSMContext request, 3. N4 Session Modification (Case A, the target NG-RAN supports 5G MBS), 4. Establishment of 5GC Individual MBS traffic delivery (Case B, the target NG-RAN does not support 5G MBS), 5. Nsmf_PDUSession_UpdateSMContext response, 6. Path Switch Request ACK, with End Markers on the data path." />
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig7.2.3.3-1.svg" width={1189} height={860} spec="TS 23.247 V20.0.0" figure="7.2.3.3-1" title="N2 based handover with MBS Session" alt="Message sequence between UE, source NG-RAN, target NG-RAN, S-AMF, T-AMF, SMF, UPF (PSA), MB-SMF and MB-UPF: 1. Handover Required, 2. Namf_Communication_CreateUEContext request, 3. Nsmf_PDUSession_UpdateSMContext request/response, 4a. Handover Request, 4b. Establishment of resources for 5GC Shared MBS traffic delivery, 5. Handover Request ACK, 6. Nsmf_PDUSession_UpdateSMContext request/response, 7. Namf_Communication_CreateUEContext response, 8 and 9. Handover Command, 10. Handover Confirm, 11. Handover Notify, 12. Nsmf_PDUSession_UpdateSMContext request, 13. N4 Session Modification (Case A, the target NG-RAN supports 5G MBS), 14. Establishment of 5GC Individual MBS traffic delivery (Case B, the target NG-RAN does not support 5G MBS), 15. Nsmf_PDUSession_UpdateSMContext response, with End Markers and direct and indirect data forwarding." />
 
 ## Mobility from 1 cell supporting Multicast to 1 cell not supporting Multicast
-
-Mobility procedures described in 3GPP TS 38.300 for multicast reception allow the UE to continue receiving multicast service(s) via PTM or PTP in a new cell after handover (TS 38.300 V19.4.0 clause 16.10.5.3.3).
 
 ### Procedure
 
 - Mobility from a multicast-supporting cell to a multicast non-supporting cell can be achieved by switching the MRB to a DRB in the source gNB before a handover (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+  - A UE may be handed over to a target gNB not supporting MBS without prior reconfiguration from MRB to the DRB in the source gNB. In this case, the AS configuration may not be comprehended by the target gNB causing full configuration (TS 38.300 V19.4.0 clause 16.10.5.3.3, note).
+
+- Target gNB sets up PDU Session Resources mapped to the MBS multicast session (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+
+- The 5GC infers from the absence of an "MBS-support" indication from gNB in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover) that MBS multicast data packets delivery has to be switched to 5GC individual MBS traffic delivery (3GPP TS 23.247) (TS 38.300 V19.4.0 clause 16.10.5.3.3; TS 23.247 V20.0.0 clause 6.3.1).
+
+- During the handover procedure, the delivery method is switched from 5GC Shared MBS traffic delivery to 5GC Individual MBS traffic delivery, i.e. the N3 tunnel of the PDU Session for 5GC Individual MBS traffic delivery needs to be established towards the target NG-RAN node, and the SMF and the MB-SMF shall activate the GTP tunnel between the UPF and the MB-UPF for 5GC Individual MBS traffic delivery, if needed (TS 23.247 V20.0.0 clause 6.3.1).
+
+- If data forwarding is applied, the source gNB infers from the handover preparation response message that the target gNB does not support MBS and changes the QFI(s) in the forwarded packets to the associated PDU Session QFI(s) if respective mapping information is available (TS 38.300 V19.4.0 clause 16.10.5.3.3). The multicast MBS session data is forwarded from the source NG-RAN node to the target NG-RAN node via data forwarding tunnels allocated by the target NG-RAN node associated with the mapped unicast QoS flows within the associated PDU session (TS 23.247 V20.0.0 clause 7.2.3.5).
+
+The signalling in the 5G Core is Case B of the two figures above (TS 23.247 V20.0.0 clauses 7.2.3.2 and 7.2.3.3).
+
+## Mobility from 1 cell not supporting Multicast to 1 cell supporting Multicast
+
+### Procedure
+
+- For mobility from MBS non-supporting cell to MBS-supporting cell, the existing Xn/NG handover procedures apply (TS 38.300 V19.4.0 clause 16.10.5.3.3), and the PDU sessions, including the one associated with the MBS session and used for 5GC Individual MBS traffic delivery, are handed over to the target NG-RAN node (TS 23.247 V20.0.0 clause 6.3.1).
+  - The 5GC infers from the presence of the "MBS-support" indicator from gNB in the Path Switch Request message (Xn handover) or in the Handover Request Acknowledge message (NG handover) that MBS multicast data packets delivery can be switched from 5GC Individual MBS traffic delivery to 5GC Shared MBS traffic delivery (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+  - After Xn handover, the SMF triggers switching MBS multicast data packets delivery from 5GC Individual to 5GC Shared MBS traffic delivery by providing MBS Session IDs joined by the UE to the target gNB by means of the PDU Session Resource Modification procedure (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+  - For NG handover, the SMF provides the MBS Session IDs joined by the UE to the target gNB by means of NGAP Handover Request (TS 38.300 V19.4.0 clause 16.10.5.3.3).
+
+- When the MBS Session Context is given to the target NG-RAN node by the SMF, if the shared delivery for the MBS session has not been established towards the target NG-RAN, the target NG-RAN establishes the shared delivery for the MBS Session with MB-SMF and MB-UPF (TS 23.247 V20.0.0 clause 6.3.1).
+
+- For an Xn based handover, after successful handover, if the target NG-RAN node supports MBS, the SMF triggers modification of the associated PDU Session at the target NG-RAN node by including the multicast MBS session related information in the N2 SM Information. Based on the response of the PDU session modification procedure, the SMF changes the MBS session data delivery method from 5GC Individual to 5GC Shared MBS traffic delivery and sends an N4 Session Modification message to the UPF to configure the UPF to not forward the received multicast MBS session data via the associated PDU Session (TS 23.247 V20.0.0 clause 7.2.3.4).
+
+- For an N2 based handover, the SMF includes the multicast MBS session related information in the N2 SM Information during the handover preparation phase and sends it to the target NG-RAN; based on the MBS support information received from the target NG-RAN, the SMF determines the delivery method and changes 5GC Individual to 5GC Shared MBS traffic delivery (TS 23.247 V20.0.0 clause 7.2.3.4).
+
+- Directly after the handover the target NG-RAN node still receives MBS session data via individual delivery. The UPF forwards the multicast MBS session data within the associated PDU session, including the sequence number received from the MB-UPF, to the target NG-RAN node, and the shared delivery towards the target RAN node is being established as described in clause 7.2.1.4 (TS 23.247 V20.0.0 clause 7.2.3.5).
+
+TS 23.247 V20.0.0 clause 7.2.3.4 describes this case in text and has no figure.
 
 See also: [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/procedures/multicast), which covers mobility in more detail, and [Features - MBS System](/tech/5g-mbs/features/system).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Mobility:** TS 38.300 V19.4.0, clauses 16.10.5.3.2 and 16.10.5.3.3; TS 23.247 V20.0.0, clauses 6.3.1, 7.2.3.1 to 7.2.3.5; TS 38.413 V19.4.0, clause 8.18.2.
+- **Figures:** TS 23.247 V20.0.0, figures 7.2.3.2-1 and 7.2.3.3-1, redrawn in the 5G-MAG style.
+
+</details>
