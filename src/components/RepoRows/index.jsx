@@ -1,5 +1,6 @@
 import React from 'react';
-import { OriginIcon, releaseFor, daysSince, formatAge } from '@site/src/components/RepoCard';
+import Link from '@docusaurus/Link';
+import { OriginIcon, accentFor, releaseFor, daysSince, formatAge } from '@site/src/components/RepoCard';
 import { repoMetaFor } from '@site/src/data/baskets';
 import useAnchors from '@site/src/utils/useAnchors';
 import styles from './styles.module.css';
@@ -16,6 +17,15 @@ export function LockIcon() {
       <rect x="5" y="11" width="14" height="10" rx="2" />
       <path d="M8 11V7a4 4 0 0 1 8 0v4" />
     </svg>
+  );
+}
+
+// The lock on a repository: a link to the Early Access page.
+export function EarlyAccessLock() {
+  return (
+    <Link to="/early-access" className={styles.lockLink} title="Early Access: see how to get access">
+      <LockIcon />
+    </Link>
   );
 }
 
@@ -37,14 +47,15 @@ function Row({ entry }) {
   const name = meta?.display_name || entry.name;
   const url = meta?.repo_url || entry.url;
   const release = releaseFor(entry.slug);
+  const accent = accentFor(entry);
   useAnchors(`repo-${entry.slug}`);
   return (
-    <div className={styles.row} id={`repo-${entry.slug}`}>
+    <div className={styles.row} id={`repo-${entry.slug}`} style={accent ? { '--repo-accent': accent } : undefined}>
       <span className={styles.icon}><OriginIcon name={entry.originIcon} /></span>
       <div className={styles.name}>
         <b>{name}</b>
         <code className={styles.slug}>{entry.slug}</code>
-        {isEarlyAccess(entry.slug) && <LockIcon />}
+        {isEarlyAccess(entry.slug) && <EarlyAccessLock />}
       </div>
       <span className={styles.grow} />
       {release ? (

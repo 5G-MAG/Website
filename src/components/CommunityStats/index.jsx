@@ -1,7 +1,7 @@
 import communityStatsData from '@site/static/data/community-stats.json';
 import { activityLabel } from '@site/src/utils/communityStats';
 import RepoRef from '@site/src/components/RepoRef';
-import { EarlyAccessLegend, LockIcon, isEarlyAccess } from '@site/src/components/RepoRows';
+import { EarlyAccessLegend, EarlyAccessLock, isEarlyAccess } from '@site/src/components/RepoRows';
 import styles from './styles.module.css';
 
 // `variant="bars"`: one row per repository, views and clones as bars scaled to the largest repository.
@@ -24,7 +24,7 @@ function Bars({ project }) {
             <div className={styles.row} key={r.repo}>
               <div className={styles.name}>
                 <a href={r.repo_url} target="_blank" rel="noreferrer" className={styles.slug}>{r.repo}</a>
-                {isEarlyAccess(r.repo) && <LockIcon />}
+                {isEarlyAccess(r.repo) && <EarlyAccessLock />}
               </div>
               <div className={styles.bars}>
                 <div className={styles.bar}>

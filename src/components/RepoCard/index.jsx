@@ -43,6 +43,12 @@ const PAGE_BY_REPO = new Map(ALL_REPOS.map((r) => [r.slug, r.originHref]));
 // A project with no basket has no accent to give it; its card uses the site's primary colour.
 const BASKET_BY_PROJECT_NAME = new Map(ALL_PROJECTS.map((p) => [displayNameOf(p), p.basket]));
 
+// The owning project's accent colour, or null when its project has no technology area to take one from.
+export function accentFor(entry) {
+  const basket = BASKET_BY_PROJECT_NAME.get(entry.originName);
+  return basket ? BASKET_ACCENT[basket] : null;
+}
+
 export function OriginIcon({ name }) {
   const paths = name && ICON_CATALOG[name];
   if (!paths || !paths.length) return null;
@@ -81,8 +87,7 @@ export default function RepoCard({ entry, meta }) {
   const dependencies = meta?.dependencies || [];
   const license = meta?.license;
   const isPublic = meta ? meta.public : true;
-  const basket = BASKET_BY_PROJECT_NAME.get(entry.originName);
-  const accent = basket ? BASKET_ACCENT[basket] : null;
+  const accent = accentFor(entry);
   const release = releaseFor(repoSlug);
   const ownPage = REPO_PAGES[repoSlug];
   const earlyAccess = useBaseUrl('/early-access');
