@@ -119,6 +119,15 @@
       "href": "/fmt",
       "flagship": true,
       "image": "/assets/images/fmt/fmt-2026-banner.png"
+    },
+    {
+      "date": "2026-11-26",
+      "endDate": "2026-11-27",
+      "title": "5G-MAG at FOKUS FUSECO Forum",
+      "type": "Conference",
+      "location": "Berlin, Fraunhofer FOKUS",
+      "href": "/events/agenda/fokus-fuseco-forum-2026",
+      "image": "/assets/images/events/fokus-fuseco-forum-2026.png"
     }
   ]
 }
