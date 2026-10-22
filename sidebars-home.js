@@ -34,12 +34,12 @@ const projectSidebars = {};
 ALL_TOPICS.forEach((topic) => {
   const slug = topic.techHref.replace('/tech/', '');
   const items = [
-    { type: 'link', label: 'All Projects', href: '/tech#where-we-stand' },
+    { type: 'link', label: 'Project home', href: topic.techHref },
   ];
 
   items.push({
     type: 'category',
-    label: 'Technology',
+    label: 'Technical Analysis',
     collapsed: false,
     // A folder shared by two projects (volumetric) lists only the project's own overview.
     items: deriveLinkItems(`docs/tech/${topic.autogen}`, `/tech/${topic.autogen}`, '/tech').filter(

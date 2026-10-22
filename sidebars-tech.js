@@ -14,10 +14,7 @@ import { deriveLinkItems, resolveDocHref } from './sidebarDerive.js';
 // Testbed), Specifications -- the same as sidebars-home.js's own
 // per-project sidebars, real vs. link swapped depending on which plugin
 // instance owns which page (a sidebar can only hold real docs from its OWN
-// plugin instance). "All Projects" always leads back out to /tech's own
-// Where We Stand chart, which links into every project's own destinations
-// -- the site's real "switch project" surface now that this sidebar no
-// longer lists every project itself.
+// plugin instance). "Project home" leads back to the project's own landing page; projects are switched in the top menus.
 //
 // Reference Tools/Testbed and Specifications are nonetheless real,
 // expandable categories here too (2026-09-28, direct instruction: "I want
@@ -45,14 +42,14 @@ const sidebars = {
 ALL_TOPICS.forEach((topic) => {
   const slug = topic.techHref.replace('/tech/', '');
   const items = [
-    { type: 'link', label: 'All Projects', href: '/tech#where-we-stand' },
+    { type: 'link', label: 'Project home', href: topic.techHref },
   ];
 
   items.push(
     topic.autogen
       ? {
           type: 'category',
-          label: 'Technology',
+          label: 'Technical Analysis',
           collapsed: false,
           ...(topic.techOverviewDoc ? { link: { type: 'doc', id: topic.techOverviewDoc } } : {}),
           items: topic.onlyOverview
@@ -61,7 +58,7 @@ ALL_TOPICS.forEach((topic) => {
         }
       : {
           type: 'link',
-          label: 'Technology',
+          label: 'Technical Analysis',
           href: topic.techOverviewDoc ? `/tech/${topic.techOverviewDoc}` : topic.techHref,
         }
   );
