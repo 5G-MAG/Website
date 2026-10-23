@@ -57,6 +57,15 @@ jobs:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         continue-on-error: true
 
+      # What the Developers' Internal Call looks at, per project (/internal-call): new pull requests and issues, repositories
+      # ready to release, discussions and stalled items. Runs after the repository activity it reads. Needs SYNC_TOKEN: it also
+      # reads the private repositories (their titles are never written to the file).
+      - name: Fetch the agenda data of the Developers' Internal Call
+        run: node scripts/fetch-internal-call.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
       # What GitHub says about each repository (description, licence, language, topics, private or public, last push), and the
       # repositories of the organisation that no project lists. The site reads it, so none of it is typed twice.
       - name: Fetch repository metadata
@@ -100,6 +109,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/repo-activity.json static/data/repo-metadata.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json static/data/repo-status.json static/badges/status
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/repo-activity.json static/data/internal-call.json static/data/repo-metadata.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json static/data/repo-status.json static/badges/status
           git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats and roadmap data"
           git push
