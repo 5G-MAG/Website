@@ -8,6 +8,7 @@ import ProjectPath from '@site/src/components/ProjectPath';
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import SdoLogos from '@site/src/components/SdoLogos';
 import ProjectDeckBand from '@site/src/components/ProjectDeckBand';
 import AskAi from '@site/src/components/AskAi';
 import ProjectRoadmap from '@site/src/components/ProjectRoadmap';
@@ -87,15 +88,7 @@ export default function ProjectHome({
   const prose = (
     <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
       {children}
-      {sdos.length > 0 && (
-        <div className={styles.capabilityTags}>
-          {sdos.map((s) => (
-            <span key={s} className={styles.capabilityTag}>
-              {s}
-            </span>
-          ))}
-        </div>
-      )}
+      <SdoLogos names={sdos} />
     </div>
   );
 

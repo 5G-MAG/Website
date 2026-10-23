@@ -1,22 +1,9 @@
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import { SDOS, SDO_ORDER } from '@site/src/data/sdos';
+import { SDO_ORDER } from '@site/src/data/sdos';
+import { SdoTile } from '@site/src/components/SdoLogos';
 import styles from './styles.module.css';
 
-// The front-page row: the standards bodies behind the technologies 5G-MAG is developing. The logos sit on white tiles
-// in both themes because several are dark on transparent.
-function Tile({ name }) {
-  const sdo = SDOS[name];
-  const logo = useBaseUrl(sdo.logo || '/');
-  const label = sdo.label || (sdo.note ? `${name} (${sdo.note})` : name);
-  return (
-    <a className={styles.tile} href={sdo.href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-      {sdo.logo ? <img src={logo} alt="" className={styles.logo} /> : null}
-      <span className={sdo.logo ? styles.caption : styles.name}>{label}</span>
-    </a>
-  );
-}
-
+// The front-page row: the standards bodies behind the technologies 5G-MAG is developing, on the same tiles as the project pages.
 export default function StandardsBasedOn() {
   return (
     <section className={styles.band} aria-labelledby="based-on-title">
@@ -26,7 +13,7 @@ export default function StandardsBasedOn() {
         </h2>
         <div className={styles.row}>
           {SDO_ORDER.map((name) => (
-            <Tile key={name} name={name} />
+            <SdoTile key={name} name={name} className={styles.tile} />
           ))}
         </div>
         <p className={styles.more}>

@@ -266,7 +266,8 @@
       },
       "icon": "broadcast-waves",
       "sdos": [
-        "3GPP"
+        "3GPP",
+        "IETF"
       ]
     },
     {

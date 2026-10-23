@@ -1,5 +1,4 @@
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import ProjectHome from '@site/src/components/ProjectHome';
 import styles from '../index.module.css';
 
@@ -14,8 +13,6 @@ const ICON = (
 );
 
 export default function FiveGMBS() {
-  const logo = useBaseUrl('/assets/images/partnerships/3gpp-logo.png');
-  const ietfLogo = useBaseUrl('/assets/logos/IETF.png');
   return (
     <ProjectHome
       techUrl="/tech/5g-mbs"
@@ -27,16 +24,6 @@ export default function FiveGMBS() {
       softwareHref="/reference-tools/5g-mbs"
       implemented={
         <>
-          <div className="standard-card-row">
-            <div className="standard-card">
-              <img src={logo} alt="" />
-              <span className="standard-card__label">3GPP</span>
-            </div>
-            <div className="standard-card">
-              <img src={ietfLogo} alt="" />
-              <span className="standard-card__label">IETF</span>
-            </div>
-          </div>
           <p>
             See <Link to="/standards/5g-mbs">Media delivery over 5G Multicast Broadcast Services: Specification list</Link> for
             version history and 5G-MAG&apos;s own standards contributions.
