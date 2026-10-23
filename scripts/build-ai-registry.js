@@ -59,6 +59,15 @@ const metaFor = (slug, areaSlug) => {
   return null;
 };
 
+// What GitHub itself says about each repository (scripts/fetch-repo-metadata.js, refreshed daily): private or public, licence,
+// language, topics and last push. Where it has an entry it wins over the taxonomy's hand-written flags.
+let github = {};
+try {
+  github = JSON.parse(fs.readFileSync(path.join(ROOT, 'static', 'data', 'repo-metadata.json'), 'utf8')).repos || {};
+} catch (e) {
+  github = {};
+}
+
 const projects = [];
 const repos = new Map();
 for (const p of taxonomy.projects) {
@@ -82,13 +91,17 @@ for (const p of taxonomy.projects) {
       repos.set(rs, {
         slug: rs,
         name: m?.display_name || rs,
-        description: m?.description || null,
+        description: m?.description || github[rs]?.description || null,
         url: m?.repo_url || `https://github.com/5G-MAG/${rs}`,
-        licence: m?.license || null,
+        licence: m?.license || github[rs]?.license || null,
+        licenceSpdx: github[rs]?.license || null,
+        language: github[rs]?.language || null,
+        topics: github[rs]?.topics || [],
+        lastPush: github[rs]?.pushed_at || null,
         standardsBodies: m?.standards || [],
         runsOn: m?.software || [],
         dependsOn: m?.dependencies || [],
-        access: m && m.public === false ? 'early-access' : 'public',
+        access: (github[rs] ? github[rs].private : m && m.public === false) ? 'early-access' : 'public',
         latestRelease: latest[rs] || null,
         projects: [],
         page: null,
@@ -114,8 +127,9 @@ for (const r of repos.values()) {
 const registry = {
   about: `Machine-readable map of the 5G-MAG website: its projects, and the repositories behind them. Generated from the site's own data on every build; the pages it links to are the reference.`,
   organisation: {
-    name: '5G-MAG',
-    legalName: 'The Media Connectivity Association',
+    name: 'The Media Connectivity Association',
+    alternateName: '5G-MAG',
+    softwareAccelerator: 'Media Connectivity Software Accelerator',
     url: SITE,
     github: 'https://github.com/5G-MAG',
     description: TAGLINE,
@@ -136,7 +150,7 @@ const lines = [];
 lines.push('# 5G-MAG', '');
 lines.push(`> ${TAGLINE}`, '');
 lines.push(
-  '5G-MAG, The Media Connectivity Association, publishes technical analysis of media specifications (3GPP, ETSI, MPEG, DVB and others), tracks those specifications release by release, and builds open-source software that implements them. Each project below has a Technical Analysis page, a Specifications page and, where software exists, a page for its Reference Tools, Testbeds or Validation Tools.',
+  'The Media Connectivity Association (5G-MAG) is a neutral, not-for-profit association that works across mobile, broadcast and fixed networks, not only 5G. It publishes technical analysis of media specifications (3GPP, ETSI, MPEG, DVB, Khronos, CAMARA and others), tracks those specifications release by release, and builds open-source software that implements them in the Media Connectivity Software Accelerator. Main topics: media streaming, AI and machine learning for media, 6G, XR and 3D scenes, broadcast and multicast, real-time communication, network APIs, and testbeds and validation tools. Each project below has a Technical Analysis page, a Specifications page and, where software exists, a page for its Reference Tools, Testbeds or Validation Tools.',
   ''
 );
 lines.push('## Projects', '');

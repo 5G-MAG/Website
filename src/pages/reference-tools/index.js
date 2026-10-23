@@ -287,7 +287,7 @@ export default function ReferenceTools() {
   return (
     <Layout
       title="Reference Tools"
-      description="Directory of 5G-MAG Reference Tools projects and their repositories, grouped by technology area."
+      description="The Media Connectivity Software Accelerator's Reference Tools: open-source projects and repositories, grouped by technology area."
     >
       <HubHero
         title="Reference Tools"

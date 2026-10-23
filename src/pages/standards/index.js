@@ -300,7 +300,7 @@ export default function Standards() {
   return (
     <Layout
       title="Standardisation"
-      description="How 5G-MAG submits feedback on 3GPP, MPEG and ETSI specifications as GitHub issues, and its position papers to SDO workshops."
+      description="How The Media Connectivity Association feeds 3GPP, MPEG, DVB, ETSI and other bodies: feedback, requirements, liaisons and contributions."
     >
       <HubHero
         title="Standardisation"

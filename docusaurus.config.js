@@ -2,6 +2,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import { SOCIAL_LINKS } from './src/data/socialLinks.js';
 import remarkToolStartHere from './src/plugins/remark-tool-start-here.mjs';
+import seoIndex from './src/plugins/seo-index.mjs';
 
 // Docusaurus footer columns only render plain text links; this builds an
 // icon+label link via the `html` escape hatch (column items support
@@ -20,7 +21,7 @@ function socialFooterItem(label, href, svgInner) {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '5G-MAG - The Media Connectivity Association',
+  title: 'The Media Connectivity Association',      // the suffix of every page title: the association's own name, which 5G-MAG is the short form of
   tagline: 'We bridge standards and deployments. We transform specifications into open-source software to boost deployability.',
   favicon: 'img/favicon.ico',
 
@@ -49,17 +50,28 @@ const config = {
           {
             '@type': 'Organization',
             '@id': 'https://www.5g-mag.com/#organization',
-            name: '5G-MAG',
-            alternateName: 'The Media Connectivity Association',
+            name: 'The Media Connectivity Association',
+            alternateName: ['5G-MAG', '5G Media Action Group'],
+            description:
+              'A neutral, not-for-profit association that bridges media and connectivity standards and deployments, and turns specifications into open-source software through the Media Connectivity Software Accelerator.',
             url: 'https://www.5g-mag.com',
+            knowsAbout: ['Media streaming', 'Artificial intelligence and machine learning for media', '6G', 'Testbeds and validation tools', 'Media delivery', 'Broadcast and multicast', 'Real-time communication', 'Network APIs', 'XR and 3D media', 'Open standards', 'Open-source software', 'DVB-I', '3GPP', 'MPEG', 'glTF'],
+            brand: {
+              '@type': 'Brand',
+              name: 'Media Connectivity Software Accelerator',
+              url: 'https://www.5g-mag.com/developer',
+              description: 'Open-source reference tools, testbeds and validation tools that turn media and connectivity specifications into working software.',
+            },
             logo: 'https://www.5g-mag.com/assets/logos/5g-mag-logo-with-text.png',
             sameAs: SOCIAL_LINKS.filter((l) => l.key !== 'slack').map((l) => l.href),
           },
           {
             '@type': 'WebSite',
             '@id': 'https://www.5g-mag.com/#website',
-            name: '5G-MAG - The Media Connectivity Association',
+            name: 'The Media Connectivity Association',
+            alternateName: '5G-MAG',
             url: 'https://www.5g-mag.com',
+            inLanguage: 'en',
             publisher: { '@id': 'https://www.5g-mag.com/#organization' },
           },
         ],
@@ -91,6 +103,8 @@ const config = {
   clientModules: [require.resolve('./src/clientModules/openDetailsOnHash.js')],
 
   plugins: [
+    // After the build: /llms-full.txt and /pages.json, the list of every indexable page with its title and description.
+    seoIndex,
     // One Deploy page per project, /deployments/<slug>, where <slug> is the last segment of the project's Reference
     // Tools or testbed page (projectSlugOf in src/data/baskets.js). Placeholders until assets are published.
     function projectDeployPages(context) {
@@ -307,7 +321,7 @@ const config = {
         path: 'events-blog',
         routeBasePath: 'events/agenda',
         blogTitle: 'Events Agenda',
-        blogDescription: 'Events where 5G-MAG participates, presents or is invited to attend.',
+        blogDescription: 'Events where The Media Connectivity Association (5G-MAG) participates, presents or is invited to attend: conferences, workshops and webinars.',
         blogSidebarTitle: 'Agenda',
         postsPerPage: 20,
         showReadingTime: false,
@@ -350,12 +364,14 @@ const config = {
           path: 'blog',
           routeBasePath: 'news',
           blogTitle: 'News',
-          blogDescription: 'Announcements and updates from 5G-MAG.',
+          blogDescription: 'News from The Media Connectivity Association (5G-MAG): announcements, releases of the Media Connectivity Software Accelerator, events and updates.',
           blogSidebarTitle: 'Recent news',
           postsPerPage: 10,
           showReadingTime: true,
         },
         theme: { customCss: './src/css/custom.css' },
+        // Pages a search engine should not list: the site's own search results and the 404 page.
+        sitemap: { ignorePatterns: ['/search/**', '/404/**', '/404.html'], changefreq: 'weekly', priority: 0.5 },
       },
     ],
   ],
@@ -389,6 +405,12 @@ const config = {
 
   themeConfig: {
     image: 'img/social-card.png',
+    // Read by search engines, link previews and AI tools: the association's name, and what kind of site this is.
+    metadata: [
+      { property: 'og:site_name', content: 'The Media Connectivity Association' },
+      { property: 'og:type', content: 'website' },
+      { name: 'application-name', content: 'The Media Connectivity Association' },
+    ],
     // Light by default for every first-time visitor, regardless of their
     // OS/browser dark-mode preference (respectPrefersColorScheme: false)
     // -- the manual toggle in the navbar still works and is remembered

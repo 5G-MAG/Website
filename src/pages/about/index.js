@@ -31,7 +31,7 @@ export default function About() {
   return (
     <Layout
       title="About Us"
-      description="5G-MAG works with its members to shape global standards and turn them into working implementations, through open specifications and open-source software. A neutral, not-for-profit platform at the intersection of Media and Connectivity."
+      description="The Media Connectivity Association (5G-MAG) works with its members to shape global standards and turn them into working implementations."
     >
       <HubHero
         title="About Us"

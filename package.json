@@ -10,6 +10,7 @@
     "build-news-data": "node scripts/build-news-data.js",
     "build-ai-registry": "node scripts/build-ai-registry.js",
     "build-events-data": "node scripts/build-events-data.js",
+    "fetch-repo-metadata": "node scripts/fetch-repo-metadata.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

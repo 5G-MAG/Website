@@ -190,7 +190,7 @@ export default function Deploy() {
   return (
     <Layout
       title="Deployments"
-      description="Demos, interoperability plugfests and trials that help 5G-MAG technology reach deployment."
+      description="Demos, interoperability plugfests and trials that help standards-based media technology reach deployment."
     >
       <HubHero
         title="Deployments"

@@ -40,7 +40,7 @@ export const SHOWCASE_BASKETS = {
     title: 'Content Delivery and Streaming',
     headline: 'Better streaming services, end to end',
     description:
-      'Application showcases for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and where to learn, implement, test and deploy it.',
+      'Content delivery and streaming showcases: QoE and audience analytics, CDN and edge delivery, network-assisted streaming and the specifications behind each.',
     lead:
       'Media services may need more from networks than a bit pipe: insight into what viewers experience, help when the network can give it, delivery at scale, and a way to bring content in and keep it protected.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
     topics: [
@@ -185,10 +185,11 @@ export const SHOWCASE_BASKETS = {
   'towards-6g': {
     basket: 'towards-6g',
     title: 'Towards 6G Media',
+    seoTitle: 'Towards 6G Media: Study and Work Topics',
     headline: 'Study on Media Aspects for 6G System',
     heroDiagram: 'sixgai',
     description:
-      'The 3GPP SA4 study on media aspects for 6G (TR 26.870, Release 20), its work topics, and the AI in Media Services project.',
+      'Towards 6G media: the 3GPP SA4 study on media aspects of 6G (TR 26.870, Release 20), its work topics and the AI in Media Services testbeds.',
     // TR 26.870 V0.6.1 (2026-09): title page, Introduction, clause 1 Scope and the headings of clause 6
     lead:
       'This study aims to identify media-related opportunities and gaps in the context of 6G. It builds on service requirements defined by SA1 and architectural enhancements defined by SA2.\n\nIts work topics are Media Delivery Architecture, 6G media, Media aspects related to SA2 topics, Media for ubiquitous access, Trusted and private communication for media, Software and asset management, and Real-time communication system enhancements. The conclusions of the study will form the basis for further detailed studies as well as normative work.\n\nThe part 5G-MAG builds is AI in Media Services, with two testbeds: 6G AI Traffic Characterization, which measures the traffic of AI media services for the study, and the AI/ML Evaluation Framework, which evaluates the scenarios of TR 26.847 (AI and ML in 5G media services).',

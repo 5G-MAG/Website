@@ -18,7 +18,7 @@ export default function FiveGBroadcast() {
       techUrl="/tech/5g-broadcast"
       icon={ICON}
       accent="#e07b1a"
-      description="Technical entry point for LTE-based 5G Broadcast."
+      description="5G Broadcast for TV and radio: the 3GPP-based, LTE and 5G broadcast delivery system, its specifications and the open-source reference tools."
       analysisHref="/tech/5g-broadcast/overview"
       standardsHref="/standards/5g-broadcast"
       softwareHref="/reference-tools/5g-broadcast/"

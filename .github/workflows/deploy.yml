@@ -51,3 +51,8 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # The search engines that take IndexNow hear about the new and changed pages at once. A failure here must not fail the deploy.
+      - name: Tell the search engines (IndexNow)
+        run: node scripts/indexnow.js
+        continue-on-error: true

@@ -105,7 +105,7 @@ export default function Home() {
   return (
     <Layout
       title="Technical Docs and Standards Work"
-      description="Specification analysis, implementation explainers and standards feedback work from 5G-MAG members, organised by technology area."
+      description="Technical analysis, specification tracking and standards feedback from The Media Connectivity Association members, by technology area."
     >
       <HubHero
         title="Technology"

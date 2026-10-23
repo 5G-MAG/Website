@@ -1,5 +1,6 @@
 import taxonomyData from './taxonomy.json';
 import releasesData from '../../static/data/releases.json';
+import repoGithubData from '../../static/data/repo-metadata.json';      // what GitHub says about each repository (scripts/fetch-repo-metadata.js)
 
 // src/data/taxonomy.json is the single, concentrated master for 5G-MAG's
 // topic taxonomy -- baskets AND projects (basket, status, doc_url/tech_url/
@@ -386,9 +387,33 @@ export function reposFor(project) {
 export function repoMetaFor(repoSlug) {
   for (const entries of Object.values(REPO_METADATA)) {
     const entry = entries.find((e) => e.repo_slug === repoSlug);
-    if (entry) return entry;
+    if (entry) return withGithub(entry, repoSlug);
   }
   return null;
+}
+
+// What GitHub says about a repository, from the daily fetch: whether it is private (so the Early Access mark follows the
+// repository, not a flag typed in the taxonomy), its licence, language, topics and last push. The taxonomy keeps what only
+// a person can write (the display name, the description, the standards); GitHub's own description fills in only where the
+// taxonomy has none.
+export function githubFor(repoSlug) {
+  return repoGithubData.repos?.[repoSlug] || null;
+}
+
+function withGithub(entry, repoSlug) {
+  const gh = githubFor(repoSlug);
+  if (!gh) return entry;
+  return {
+    ...entry,
+    public: !gh.private,
+    license: entry.license || gh.license,
+    licenseSpdx: gh.license,
+    description: entry.description || gh.description || '',
+    language: gh.language,
+    topics: gh.topics,
+    pushedAt: gh.pushed_at,
+    archived: gh.archived,
+  };
 }
 
 // Every real repo across every real (doc_url'd) project, one flat list --
@@ -437,6 +462,11 @@ export const ALL_REPOS = ALL_PROJECTS.filter((p) => p.doc_url)
         name: meta?.display_name || slug,
         description: meta?.description || '',
         url: meta?.repo_url || `https://github.com/5G-MAG/${slug}`,
+        language: meta?.language || null,
+        licenseSpdx: meta?.licenseSpdx || null,
+        topics: meta?.topics || [],
+        pushedAt: meta?.pushedAt || null,
+        isPublic: meta ? meta.public : true,
         software: meta?.software || [],
         projectName: displayNameOf(p),
         projectHref: p.doc_url.replace(/\/$/, ''),

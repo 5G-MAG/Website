@@ -233,8 +233,8 @@ export default function AreaPage({ basketKey }) {
   const lead = content?.lead || PLACEHOLDER_LEAD;
   return (
     <Layout
-      title={basket.title}
-      description={content?.description || `${basket.title}: what 5G-MAG members are building in this area, and the projects behind it.`}
+      title={content?.seoTitle || basket.title}
+      description={content?.description || `${basket.title}: what The Media Connectivity Association members are building in this area, and the projects behind it.`}
     >
       <header className={styles.hero}>
         <div className={`container ${styles.heroIn}`}>

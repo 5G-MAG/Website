@@ -9,7 +9,7 @@ export default function FiveGMS() {
       techUrl="/tech/5gms"
       icon={ICON}
       accent="#00a0d2"
-      description="Introduces the 3GPP 5G Media Streaming (5GMS) framework, why it exists, and the 5G-MAG reference tools that implement it."
+      description="5G Media Streaming (5GMS): the 3GPP architecture for adaptive media streaming over mobile networks, and the open-source reference tools that implement it."
       analysisHref="/tech/5gms/overview"
       standardsHref="/standards/5gms"
       softwareHref="/reference-tools/5gms"

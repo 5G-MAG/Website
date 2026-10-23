@@ -55,7 +55,7 @@ export default function Membership() {
   return (
     <Layout
       title="Membership"
-      description="Join, collaborate and sponsor software development with 5G-MAG, scale your projects with the industry."
+      description="Join The Media Connectivity Association (5G-MAG): collaborate on standards, sponsor open-source software and scale your projects with the industry."
     >
       <HubHero
         title="Membership"

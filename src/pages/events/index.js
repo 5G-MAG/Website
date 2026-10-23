@@ -89,7 +89,7 @@ export default function Events() {
   return (
     <Layout
       title="Events"
-      description="Where to meet 5G-MAG: recurring industry events and the Future Media Townhall."
+      description="Where to meet The Media Connectivity Association: industry events, workshops, webinars and the Future Media Townhall."
     >
       <HubHero
         title="Events"

@@ -195,8 +195,8 @@ export default function Home() {
   }, [location.search]);
   return (
     <Layout
-      title="Software Accelerator"
-      description="Open-source reference implementations: from specifications to working code"
+      title="Media Connectivity Software Accelerator"
+      description="The Media Connectivity Software Accelerator: open-source reference tools, testbeds and validation tools that turn specifications into working code."
     >
       <HubHero
         title="Media Connectivity Software Accelerator"

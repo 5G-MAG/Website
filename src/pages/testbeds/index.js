@@ -45,8 +45,8 @@ export default function Testbeds() {
 
   return (
     <Layout
-      title="Testbeds"
-      description="Overview of 5G-MAG testbeds and evaluation frameworks for 6G traffic characterization, AI/ML, and beyond-2D video quality assessment."
+      title="Testbeds for AI, 6G and Media Evaluation"
+      description="Open testbeds and evaluation frameworks from The Media Connectivity Association: 6G AI traffic characterization, AI/ML evaluation and beyond-2D video quality."
     >
       <HubHero
         title="Testbeds and Evaluation Frameworks"

@@ -1,0 +1,1019 @@
+{
+  "updated_at": "2026-10-23",
+  "repos": {
+    "6G-Testbed": {
+      "description": "6G AI Traffic Characterization Testbed",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "ai-traffic-characterization"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/6G-Testbed"
+    },
+    "Standards2Deployments": {
+      "description": "Repo for 5G-MAG members to enhance standards profiling for software development.",
+      "license": null,
+      "language": "Python",
+      "topics": [],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/Standards2Deployments"
+    },
+    "cmcd-toolkit": {
+      "description": "CMCD Toolkit",
+      "license": "Apache-2.0",
+      "language": "JavaScript",
+      "topics": [
+        "5g-media-streaming-5gms",
+        "ue-data-collection-reporting-and-event-exposure"
+      ],
+      "homepage": "https://tech.qualabs.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-02-18",
+      "url": "https://github.com/5G-MAG/cmcd-toolkit"
+    },
+    "flute-conformance-validator": {
+      "description": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517.",
+      "license": null,
+      "language": null,
+      "topics": [],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/flute-conformance-validator"
+    },
+    "netemu-dashboard": {
+      "description": "Network Emulator Dashboard: web UI and REST API for network impairment profiles with the 6G-Testbed netemu",
+      "license": null,
+      "language": "HTML",
+      "topics": [],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/netemu-dashboard"
+    },
+    "open5gs": {
+      "description": "5G-MAG's fork of Open5GS",
+      "license": "AGPL-3.0",
+      "language": "C",
+      "topics": [
+        "3gpp-ran-and-core-platforms",
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/open5gs"
+    },
+    "rt-3gpp-swap": {
+      "description": "3GPP SWAP Protocol",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "conversational-avatar-communication-with-mpeg-arf",
+        "real-time-media-communication-rtc-architecture"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-3gpp-swap"
+    },
+    "rt-5gc-service-consumers": {
+      "description": "5G Core Service Consumers",
+      "license": null,
+      "language": "C",
+      "topics": [
+        "3gpp-ran-and-core-platforms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
+    },
+    "rt-5gms-application": {
+      "description": "5GMS-Aware Application",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/rt-5gms-application"
+    },
+    "rt-5gms-application-function": {
+      "description": "5GMS Application Function (AF)",
+      "license": null,
+      "language": "C",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/rt-5gms-application-function"
+    },
+    "rt-5gms-application-provider": {
+      "description": "5GMS Application Provider",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "master",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-application-provider"
+    },
+    "rt-5gms-application-server": {
+      "description": "5GMS Application Server (AS)",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-application-server"
+    },
+    "rt-5gms-common-android-library": {
+      "description": "5GMS Common Android Library",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-common-android-library"
+    },
+    "rt-5gms-examples": {
+      "description": "5GMS Tools and Examples",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-examples"
+    },
+    "rt-5gms-media-session-handler": {
+      "description": "5GMS Media Session Handler",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
+    },
+    "rt-5gms-media-stream-handler": {
+      "description": "5GMS Media Stream Handler",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [
+        "5g-media-streaming-5gms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
+    },
+    "rt-ai-ml-evaluation-framework": {
+      "description": "AI and ML Evaluation Framework",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "ai-ml-evaluation-framework"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework"
+    },
+    "rt-avatar-call": {
+      "description": "Avatar Call",
+      "license": null,
+      "language": "C#",
+      "topics": [
+        "conversational-avatar-communication-with-mpeg-arf"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-avatar-call"
+    },
+    "rt-avatar-content": {
+      "description": "Content for Avatar Call",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "conversational-avatar-communication-with-mpeg-arf"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-avatar-content"
+    },
+    "rt-avatar-unity-tracker": {
+      "description": "Avatar Unity Tracker",
+      "license": null,
+      "language": null,
+      "topics": [
+        "conversational-avatar-communication-with-mpeg-arf"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-avatar-unity-tracker"
+    },
+    "rt-beyond2d-evaluation-framework": {
+      "description": "Beyond 2D Video Evaluation Framework",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "beyond-2d-evaluation-framework"
+      ],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework"
+    },
+    "rt-camara-examples": {
+      "description": "CAMARA API Tools and Examples",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "camara-connectivity-quality-management-apis"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/rt-camara-examples"
+    },
+    "rt-cmmf-encoder": {
+      "description": "CMMF Encoder",
+      "license": null,
+      "language": null,
+      "topics": [
+        "content-delivery-protocols"
+      ],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-cmmf-encoder"
+    },
+    "rt-common-shared": {
+      "description": "Common Shared Tools",
+      "license": null,
+      "language": "Mustache",
+      "topics": [
+        "common-tools"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-common-shared"
+    },
+    "rt-data-collection-application-function": {
+      "description": "Generic 3GPP Data Collection AF",
+      "license": null,
+      "language": "C",
+      "topics": [
+        "ue-data-collection-reporting-and-event-exposure"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-data-collection-application-function"
+    },
+    "rt-dvb-i-android-application": {
+      "description": "Native Android DVB-I client following ETSI TS 103 770, with Media3 ExoPlayer",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-dvb-i-android-application"
+    },
+    "rt-dvb-i-application": {
+      "description": "A browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them, per ETSI TS 103 770.",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [],
+      "homepage": "https://www.5g-mag.com/reference-tools/dvb-i",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/rt-dvb-i-application"
+    },
+    "rt-dvb-i-application-provider": {
+      "description": "Publishes a DVB-I service list and its content guide, and gives an editor for maintaining them, per ETSI TS 103 770.",
+      "license": null,
+      "language": "HTML",
+      "topics": [],
+      "homepage": "https://www.5g-mag.com/reference-tools/dvb-i",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/rt-dvb-i-application-provider"
+    },
+    "rt-dvb-i-examples": {
+      "description": "Runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list per ETSI TS 103 770.",
+      "license": null,
+      "language": "Shell",
+      "topics": [],
+      "homepage": "https://www.5g-mag.com/reference-tools/dvb-i",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-dvb-i-examples"
+    },
+    "rt-dvb-i-service-list-registry": {
+      "description": "Answers DVB-I client queries with a list of Service List Entry Points, per ETSI TS 103 770 V1.2.1 clause 5.1.3.2.",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [],
+      "homepage": "https://www.5g-mag.com/reference-tools/dvb-i",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/rt-dvb-i-service-list-registry"
+    },
+    "rt-libflute": {
+      "description": "FLUTE Protocol and Profiles",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services",
+        "5g-multicast-broadcast-services-mbs",
+        "content-delivery-protocols"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-20",
+      "url": "https://github.com/5G-MAG/rt-libflute"
+    },
+    "rt-mbms-application": {
+      "description": "MBMS-Aware Application",
+      "license": null,
+      "language": "CSS",
+      "topics": [
+        "5g-broadcast-emergency-alerts",
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-application"
+    },
+    "rt-mbms-application-provider": {
+      "description": "5G Broadcast Application Provider",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-application-provider"
+    },
+    "rt-mbms-bmsc": {
+      "description": "Broadcast-Multicast Service Center (BM-SC)",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-bmsc"
+    },
+    "rt-mbms-client": {
+      "description": "MBMS Client",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-client"
+    },
+    "rt-mbms-examples": {
+      "description": "MBMS Tools and Examples",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-examples"
+    },
+    "rt-mbms-gw": {
+      "description": "MBMS Gateway",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-gw"
+    },
+    "rt-mbms-modem": {
+      "description": "MBMS Modem",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-modem"
+    },
+    "rt-mbms-mw": {
+      "description": "MBMS Middleware",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "broadcast"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2025-10-31",
+      "url": "https://github.com/5G-MAG/rt-mbms-mw"
+    },
+    "rt-mbms-mw-android": {
+      "description": "MBMS Android Middleware",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-mw-android"
+    },
+    "rt-mbms-tx": {
+      "description": "5G Broadcast Transmitter",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-emergency-alerts",
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-tx"
+    },
+    "rt-mbms-tx-for-qrd-and-crd": {
+      "description": "5G Broadcast Transmitter for QRD and CRD",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-broadcast-emergency-alerts",
+        "5g-broadcast-tv-and-radio-services"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd"
+    },
+    "rt-mbs-application": {
+      "description": "MBS-Aware Application",
+      "license": null,
+      "language": "CSS",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbs-application"
+    },
+    "rt-mbs-application-provider": {
+      "description": "MBS Application Provider",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbs-application-provider"
+    },
+    "rt-mbs-client": {
+      "description": "MBS Client",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-mbs-client"
+    },
+    "rt-mbs-examples": {
+      "description": "MBS Tools and Examples",
+      "license": null,
+      "language": "Shell",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/rt-mbs-examples"
+    },
+    "rt-mbs-function": {
+      "description": "MBS Function (MBSF)",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/rt-mbs-function"
+    },
+    "rt-mbs-transport-function": {
+      "description": "MBS Transport Function (MBSTF)",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-22",
+      "url": "https://github.com/5G-MAG/rt-mbs-transport-function"
+    },
+    "rt-media-android-application": {
+      "description": "Reference Media Application: Android app and test rig for rt-media-origin delivery methods",
+      "license": null,
+      "language": "Kotlin",
+      "topics": [
+        "content-delivery-protocols"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-20",
+      "url": "https://github.com/5G-MAG/rt-media-android-application"
+    },
+    "rt-media-origin": {
+      "description": "Media Origin Server and Packager",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "content-delivery-protocols"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-20",
+      "url": "https://github.com/5G-MAG/rt-media-origin"
+    },
+    "rt-pws-cbc": {
+      "description": "Cell Broadcast Centre (CBC)",
+      "license": null,
+      "language": "JavaScript",
+      "topics": [
+        "5g-broadcast-emergency-alerts"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-pws-cbc"
+    },
+    "rt-srsRAN_Project": {
+      "description": "5G-MAG's fork of srsRAN Project",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2025-10-24",
+      "url": "https://github.com/5G-MAG/rt-srsRAN_Project"
+    },
+    "rt-v3c-content": {
+      "description": "Content for V3C Immersive Platform",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "mpeg-v3c-immersive-platform"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-v3c-content"
+    },
+    "rt-v3c-decoder-plugin": {
+      "description": "V3C Decoder Plugin",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "mpeg-v3c-immersive-platform"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin"
+    },
+    "rt-v3c-examples": {
+      "description": "V3C Tools and Examples",
+      "license": null,
+      "language": null,
+      "topics": [
+        "mpeg-v3c-immersive-platform"
+      ],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2025-02-27",
+      "url": "https://github.com/5G-MAG/rt-v3c-examples"
+    },
+    "rt-v3c-unity-player": {
+      "description": "V3C Unity Player",
+      "license": null,
+      "language": "C#",
+      "topics": [
+        "mpeg-v3c-immersive-platform"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-v3c-unity-player"
+    },
+    "rt-vdmc-web-decoder-player": {
+      "description": "V-DMC Web Decoder/Player",
+      "license": null,
+      "language": null,
+      "topics": [
+        "dynamic-mesh-coding"
+      ],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player"
+    },
+    "rt-wui": {
+      "description": "A graphical webinterface with a control display for MBMS Modem, MBMS Middleware. The webinterface provides basic browser-based HLS playback of the HLS manifest and segments provided by the MBMS Middleware using hls.js.",
+      "license": null,
+      "language": "CSS",
+      "topics": [
+        "broadcast"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "development",
+      "pushed_at": "2025-08-08",
+      "url": "https://github.com/5G-MAG/rt-wui"
+    },
+    "rt-xr-blender-exporter": {
+      "description": "XR/3D Scene Authoring (Blender)",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "xr-3d-scenes-with-mpeg-i-scene-description"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-xr-blender-exporter"
+    },
+    "rt-xr-content": {
+      "description": "XR/3D Scenes and Test Content",
+      "license": null,
+      "language": "Python",
+      "topics": [
+        "xr-3d-scenes-with-mpeg-i-scene-description"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-xr-content"
+    },
+    "rt-xr-gITFast": {
+      "description": "glTF Extensions",
+      "license": null,
+      "language": "C#",
+      "topics": [
+        "xr-3d-scenes-with-mpeg-i-scene-description"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "rt-xr/development",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-xr-gITFast"
+    },
+    "rt-xr-maf-native": {
+      "description": "XR Media Pipelines",
+      "license": null,
+      "language": "C++",
+      "topics": [
+        "xr-3d-scenes-with-mpeg-i-scene-description"
+      ],
+      "homepage": "https://5g-mag.github.io/Getting-Started/pages/xr-media-integration-in-5g/",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-xr-maf-native"
+    },
+    "rt-xr-unity-player": {
+      "description": "XR Unity Player",
+      "license": null,
+      "language": "C#",
+      "topics": [
+        "xr-3d-scenes-with-mpeg-i-scene-description"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/rt-xr-unity-player"
+    },
+    "srsRAN": {
+      "description": "5G-MAG's fork of srsRAN (discontinued version prior to srsRAN_4G)",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "3gpp-ran-and-core-platforms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "fembms",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/srsRAN"
+    },
+    "srsRAN_4G": {
+      "description": "5G-MAG's fork of srsRAN_4G",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "3gpp-ran-and-core-platforms"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": false,
+      "archived": false,
+      "default_branch": "master",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/srsRAN_4G"
+    },
+    "srsRAN_4G_mbs": {
+      "description": "UE with support for MBS",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "5mbs",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
+    },
+    "srsRAN_Project_mbs": {
+      "description": "gNodeB with support for MBS",
+      "license": "AGPL-3.0",
+      "language": "C++",
+      "topics": [
+        "5g-multicast-broadcast-services-mbs"
+      ],
+      "homepage": "https://developer.5g-mag.com",
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-19",
+      "url": "https://github.com/5G-MAG/srsRAN_Project_mbs"
+    },
+    "vops-conformance-validator": {
+      "description": "Validates AVC and HEVC video bitstreams against the operation points of 3GPP TS 26.265 (VOPS)",
+      "license": "BSD-3-Clause-Clear",
+      "language": "Python",
+      "topics": [
+        "3gpp",
+        "avc",
+        "conformance",
+        "hevc",
+        "video"
+      ],
+      "homepage": "https://www.5g-mag.com/testbeds",
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-21",
+      "url": "https://github.com/5G-MAG/vops-conformance-validator"
+    }
+  },
+  "untracked": [
+    {
+      "name": ".github",
+      "description": "Admin repo to handle org profile",
+      "private": false
+    },
+    {
+      "name": "5g-mag.github.io",
+      "description": "Main page",
+      "private": false
+    },
+    {
+      "name": "5GC_APIs",
+      "description": "RESTful APIs of main Network Functions in the 3GPP 5G Core Network",
+      "private": false
+    },
+    {
+      "name": "admin-5gmagazine",
+      "description": null,
+      "private": true
+    },
+    {
+      "name": "admin-graphics",
+      "description": null,
+      "private": true
+    },
+    {
+      "name": "Getting-Started",
+      "description": "5G-MAG: Everything related to 5G-MAG Reference Tools",
+      "private": false
+    },
+    {
+      "name": "glTF-Validator",
+      "description": "Tool to validate glTF assets.",
+      "private": false
+    },
+    {
+      "name": "Requests-for-Feedback",
+      "description": "Publications related to 5G-MAG's areas of work which are open for comments from the community.",
+      "private": false
+    },
+    {
+      "name": "Roadmaps",
+      "description": null,
+      "private": true
+    },
+    {
+      "name": "rt-avatar-bar",
+      "description": "Base Avatar Repository  - the service that stores and controls distribution of user base avatar models ",
+      "private": true
+    },
+    {
+      "name": "Standards",
+      "description": "5G-MAG: Feedback to SDOs and references related to 5G-MAG work",
+      "private": false
+    },
+    {
+      "name": "Tech",
+      "description": "5G-MAG: Technical documentation and outcomes related to 5G-MAG work",
+      "private": false
+    },
+    {
+      "name": "Website",
+      "description": null,
+      "private": false
+    }
+  ],
+  "drift": []
+}

@@ -17,9 +17,10 @@ export default function AiMl() {
   return (
     <ProjectHome
       techUrl="/tech/ai-ml"
+      title="AI and ML for Media Services"
       icon={ICON}
       accent="#2e9e5b"
-      description="AI/ML for media in 3GPP: NWDAF network-side analytics (SA2), the SA4 studies on AI/ML in 5G media services, and the reference tools evaluating AI/ML models for media."
+      description="AI and ML for media in 3GPP: network analytics, SA4 studies and an open evaluation framework for AI/ML models in media services."
       analysisHref="/tech/ai-ml/overview"
       standardsHref="/standards/ai-ml"
       softwareHref="/testbeds/ai-ml/"

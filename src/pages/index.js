@@ -309,8 +309,8 @@ export default function Home() {
 
   return (
     <Layout
-      title={siteConfig.title}
-      description="5G-MAG is a not-for-profit association bridging media and connectivity standards to working implementations, from specification analysis to open-source reference tools."
+      title="Bridging media and connectivity standards and deployments"
+      description="The Media Connectivity Association (5G-MAG): open standards and the Media Connectivity Software Accelerator for media streaming, AI, 6G, XR and broadcast."
     >
       <HeroSlideshow />
 

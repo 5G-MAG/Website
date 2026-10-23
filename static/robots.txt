@@ -1,4 +1,12 @@
+# The Media Connectivity Association (5G-MAG): every page is open to search engines and AI assistants,
+# except the site's own search results.
 User-agent: *
 Allow: /
+Disallow: /search
 
 Sitemap: https://www.5g-mag.com/sitemap.xml
+
+# For AI assistants: a short index, a list of every page, and a machine-readable map of the projects and repositories.
+# https://www.5g-mag.com/llms.txt
+# https://www.5g-mag.com/llms-full.txt
+# https://www.5g-mag.com/ai-context.json

@@ -1,6 +1,8 @@
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Head from '@docusaurus/Head';
 import Layout from '@theme/Layout';
+import { PageMetadata } from '@docusaurus/theme-common';
 import HubHero from '@site/src/components/HubHero';
 import ProjectPath from '@site/src/components/ProjectPath';
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
@@ -65,10 +67,23 @@ export default function ProjectHome({
   const title = pageTitle || projectTitleOf(project);   // the project's own name, the title of this page
   const slug = techUrl.split('/').pop();
   const coverImg = useBaseUrl(`/assets/images/projects/${cover || slug}.png`);
+  const coverShare = useBaseUrl(`/assets/images/projects/${cover || slug}.png`, { absolute: true });
   const repoProjects = repoNames || name;
   const repoList = Array.isArray(repoProjects) ? repoProjects : [repoProjects];
   const hasRepos = ALL_REPOS.some((r) => repoList.includes(r.projectName));
   const sdos = project.sdos || [];
+  // The project's public repositories as schema.org SoftwareSourceCode, so a search engine can list the code, its
+  // licence and language. A private repository is not described: its address would lead nowhere for a visitor.
+  const sourceCode = ALL_REPOS.filter((r) => repoList.includes(r.projectName) && r.isPublic).map((r) => ({
+    '@type': 'SoftwareSourceCode',
+    name: r.name,
+    description: r.description || undefined,
+    codeRepository: r.url,
+    programmingLanguage: r.language || undefined,
+    license: r.licenseSpdx ? `https://spdx.org/licenses/${r.licenseSpdx}` : undefined,
+    dateModified: r.pushedAt || undefined,
+    publisher: { '@id': 'https://www.5g-mag.com/#organization' },
+  }));
   const prose = (
     <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
       {children}
@@ -86,6 +101,14 @@ export default function ProjectHome({
 
   return (
     <Layout title={title} description={description}>
+      {cover !== false && <PageMetadata image={coverShare} />}
+      {sourceCode.length > 0 && (
+        <Head>
+          <script type="application/ld+json">
+            {JSON.stringify({ '@context': 'https://schema.org', '@graph': sourceCode })}
+          </script>
+        </Head>
+      )}
       <HubHero
         title={title}
         icon={icon}

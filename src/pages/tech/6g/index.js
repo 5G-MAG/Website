@@ -22,7 +22,7 @@ export default function Towards6GMedia() {
       tagline="Study on Media Aspects for 6G System (TR 26.870)"
       icon={CHIP_ICON}
       accent="#2e9e5b"
-      description="The 3GPP study on media aspects for 6G (TR 26.870), and the testbed it uses to measure the traffic of AI media services."
+      description="Towards 6G media: the 3GPP study on media for 6G (TR 26.870) and an open testbed that measures the traffic of AI media services."
       analysisHref="/tech/6g/overview"
       standardsHref="/standards/6g"
       softwareHref="/testbeds/6g-testbed/"

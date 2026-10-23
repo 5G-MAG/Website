@@ -3,7 +3,7 @@ title: 6G AI Traffic Characterization Testbed
 sidebar_label: 6G AI Traffic Characterization Testbed - install, run and extend
 hide_title: true
 sidebar_position: 0
-description: How to install and run the 6G AI Traffic Characterization Testbed, from a single test to the full matrix used to cross-check SA4 results, including the token, real-time video and agentic tests, and how to use its network emulator on its own and extend it.
+description: "Install and run the 6G AI Traffic Characterization Testbed: from a single test to the full matrix, with its network emulator used alone and extended."
 ---
 
 <div class="topic-banner">
