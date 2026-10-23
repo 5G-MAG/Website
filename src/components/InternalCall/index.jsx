@@ -59,13 +59,13 @@ function Chips({ prs, issues, discs }) {
 }
 
 // The classification of the projects: first the taxonomy baskets (the platforms and shared tools, which belong to no
-// basket, come first), then in each basket the type of tool, as everywhere on the site.
+// basket, come last), then in each basket the type of tool, as everywhere on the site.
 const OTHER = 'other';
 const BASKET_LABEL = { ...Object.fromEntries(taxonomy.baskets.map((b) => [b.key, b.title])), [OTHER]: 'Platforms and shared tools' };
-const BASKET_ORDER = [OTHER, ...taxonomy.baskets.map((b) => b.key)];
+const BASKET_ORDER = [...taxonomy.baskets.map((b) => b.key), OTHER];
 const basketByName = new Map(taxonomy.projects.map((p) => [p.name, p.basket || OTHER]));
 const basketOf = (p) => basketByName.get(p.name) || OTHER;
-const TYPE_ORDER = ['platform', 'reference-tool', 'testbed', 'validation-tool', 'developer-tools', 'common-tools', 'project'];
+const TYPE_ORDER = ['reference-tool', 'testbed', 'validation-tool', 'platform', 'developer-tools', 'common-tools', 'project'];
 const TYPE_PLURAL = {
   platform: 'Platforms',
   'reference-tool': 'Reference Tools',
@@ -140,15 +140,15 @@ export default function InternalCall() {
       </div>
 
       <h2>At a glance, by project</h2>
+      {groups.map((g) => (
+        <React.Fragment key={g.type}>
+          <h3 className={styles.groupTitle}>{g.label} <span className={styles.muted}>({g.count})</span></h3>
       <div className={styles.tableBox}>
         <table className={styles.grid}>
           <thead>
             <tr><th>Project</th><th className={styles.center}>{PR_ICON} Pull requests to review</th><th className={styles.center}>{ISSUE_ICON} New issues (bugs)</th><th className={styles.center}>{DISC_ICON} Discussions</th><th className={styles.center}>Ready to release</th><th className={styles.center}>&#9888; Stalled</th></tr>
           </thead>
           <tbody>
-            {groups.map((g) => (
-              <React.Fragment key={g.type}>
-                <tr><th colSpan={6} className={styles.groupRow}>{g.label} <span className={styles.muted}>({g.count})</span></th></tr>
             {g.subs.map((sub) => (
               <React.Fragment key={sub.type}>
                 <tr><th colSpan={6} className={styles.subRow}>{sub.label}</th></tr>
@@ -171,11 +171,11 @@ export default function InternalCall() {
             })}
               </React.Fragment>
             ))}
-              </React.Fragment>
-            ))}
           </tbody>
         </table>
       </div>
+        </React.Fragment>
+      ))}
 
       <h2>Project by project</h2>
       <p className={styles.muted}>
