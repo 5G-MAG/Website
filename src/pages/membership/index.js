@@ -55,7 +55,7 @@ export default function Membership() {
   return (
     <Layout
       title="Membership"
-      description="Join The Media Connectivity Association (5G-MAG): shape standards and open-source software for connected media, across all areas of work."
+      description="Join The Media Connectivity Association (5G-MAG): shape standards early, get early access to pre-public code, test at plugfests, share open-source costs."
     >
       <HubHero
         title="Membership"
