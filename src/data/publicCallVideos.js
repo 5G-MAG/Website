@@ -1,4 +1,4 @@
-// Hand-verified historical list of every Dev Public Call recording,
+// Hand-verified historical list of every Developers' Public Call recording,
 // newest first. Same reasoning as workshopVideos.js: YouTube's playlist
 // RSS feed only returns the ~15 most recent items, so this is the source
 // of truth for the full history, merged with the live feed for new
@@ -17,7 +17,7 @@
 // page's prose already did before this file existed.
 //
 // 'U9VgiYORNrA' was previously listed on the (now-removed) External
-// Videos page; moved here since it's a Dev Public Call recording.
+// Videos page; moved here since it's a Developers' Public Call recording.
 // Hosted on the Khronos Group's own channel rather than 5G-MAG's, so
 // unlike the other entries it won't reappear via the live feed merge
 // below if ever removed from this list -- it has no other home.

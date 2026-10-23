@@ -262,7 +262,7 @@ export default function Home() {
               <ListRow
                 href="/community"
                 title="3. Ask, or contribute"
-                desc="Join the developer community, come to the Dev Public Call, or send a pull request."
+                desc="Join the developer community, come to the Developers' Public Call, or send a pull request."
                 iconPaths={['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0']}
               />
             </RowList>

@@ -164,7 +164,7 @@ export default function Events() {
 
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Dev Public Call</h2>
+            <h2 className={styles.sectionTitle}>Developers&apos; Public Call</h2>
             <p className={styles.sectionSubtitle}>
               5G-MAG&apos;s open monthly session: anyone can join, no membership required.
             </p>
