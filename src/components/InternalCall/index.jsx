@@ -1,11 +1,13 @@
 import React from 'react';
 import data from '@site/static/data/internal-call.json';
+import taxonomy from '@site/src/data/taxonomy.json';
+import { isTestbed, typeOf } from '@site/src/data/baskets';
 import styles from './styles.module.css';
 
 // The agenda of the Developers' Internal Call, built from static/data/internal-call.json (scripts/fetch-internal-call.js):
 // per project, the repositories ready to release, the new pull requests, issues and discussions, and the stalled items.
 // A pull request and an issue are different things and are drawn differently: its own icon and colour. Items of
-// private repositories carry no title (the data has none), only the repository and the number.
+// private repositories are listed with their titles, like the others.
 
 const ORG = 'https://github.com/5G-MAG';
 const W = data.windows;
@@ -56,12 +58,32 @@ function Chips({ prs, issues, discs }) {
   );
 }
 
-const statusClass = { Ready: 'ready', Waiting: 'waiting', 'No milestone': 'nomilestone' };
+// The classification of the tools: what each project is (taxonomy `type`), in the order the groups are shown.
+const TYPE_ORDER = ['reference-tool', 'testbed', 'validation-tool', 'platform', 'developer-tools', 'common-tools', 'project'];
+const TYPE_PLURAL = {
+  'reference-tool': 'Reference Tools',
+  testbed: 'Testbeds and Evaluation Frameworks',
+  'validation-tool': 'Validation Tools',
+  platform: 'Platforms',
+  'developer-tools': 'Developer Tools',
+  'common-tools': 'Common Tools',
+  project: 'Projects',
+};
+// A testbed and an evaluation framework are one group, as everywhere on the site (isTestbed in baskets.js).
+const groupOf = (p) => (isTestbed(p) ? 'testbed' : typeOf(p));
+const typeByName = new Map(taxonomy.projects.map((p) => [p.name, groupOf(p)]));
+const classOf = (p) => typeByName.get(p.name) || 'project';
+const groupsOf = (list) => TYPE_ORDER
+  .map((type) => ({ type, label: TYPE_PLURAL[type], list: list.filter((p) => classOf(p) === type) }))
+  .filter((g) => g.list.length > 0);
+const hasWork = (p) => p.new.length || p.release.length || p.stalled.length || p.discussions.length;
+
+const statusClass = { Ready: 'ready', Waiting: 'waiting', 'No milestone': 'nomilestone', 'No release': 'nomilestone' };
 
 export default function InternalCall() {
   const projects = data.projects;
   const stalledTotal = projects.reduce((s, p) => s + p.stalled.length, 0);
-  const backlogTotal = projects.reduce((s, p) => s + p.backlog, 0);
+  const unanswered = projects.reduce((s, p) => s + p.stalled.filter((i) => i.unanswered).length, 0);
   const prsStalled = projects.reduce((s, p) => s + p.stalled.filter((i) => i.kind === 'pull').length, 0);
   const bugsStalled = stalledTotal - prsStalled;
   const releases = projects.flatMap((p) => p.release);
@@ -79,14 +101,14 @@ export default function InternalCall() {
     ['1:25', '5 min', 'Next steps and owners', ''],
   ];
 
-  const active = projects.filter((p) => p.new.length || p.release.length || p.stalled.length || p.discussions.length);
+  const groups = groupsOf(projects);
 
   return (
     <div className={styles.page}>
-      <p className={styles.updated}>Data of {data.updated_at}. Every repository linked to a project is counted, private ones too; the titles of items in private repositories are never shown.</p>
+      <p className={styles.updated}>Data of {data.updated_at}. Every repository linked to a project is counted, private ones too, and every title is shown.</p>
 
       <div className={styles.notice} role="note">
-        <strong>&#9888; {plural(stalledTotal, 'stalled item')}.</strong> {plural(prsStalled, 'pull request')} with no update for {W.STALE_DAYS} days or more and {plural(bugsStalled, 'bug')} with no update for {W.BUG_DAYS} days or more. They are not on the agenda; each project below carries a folded warning with its own. A further <strong>{backlogTotal} issues</strong> have had no update for a year or more: a backlog to clean up, counted here and not listed.
+        <strong>&#9888; {plural(stalledTotal, 'stalled item')}.</strong> Every open pull request and issue with no activity for {W.ACTIVE_DAYS} days: {plural(prsStalled, 'pull request')} and {plural(bugsStalled, 'issue')}, of which {unanswered} nobody has answered. They are not on the agenda; each project below carries a folded list with its own.
       </div>
 
       <h2>Suggested Agenda for the call: 90 minutes</h2>
@@ -107,15 +129,19 @@ export default function InternalCall() {
             <tr><th>Project</th><th className={styles.center}>{PR_ICON} Pull requests to review</th><th className={styles.center}>{ISSUE_ICON} New issues (bugs)</th><th className={styles.center}>{DISC_ICON} Discussions</th><th className={styles.center}>Ready to release</th><th className={styles.center}>&#9888; Stalled</th></tr>
           </thead>
           <tbody>
-            {active.map((p) => {
+            {groups.map((g) => (
+              <React.Fragment key={g.type}>
+                <tr><th colSpan={6} className={styles.groupRow}>{g.label} <span className={styles.muted}>({g.list.length})</span></th></tr>
+            {g.list.map((p) => {
               const prs = p.new.filter(isReview).length;
+              const drafts = p.new.filter((i) => i.kind === 'pull' && i.draft).length;
               const issues = issuesOf(p);
               const bugs = issues.filter((i) => i.bug).length;
               const num = (n) => (n > 0 ? <strong>{n}</strong> : <span className={styles.muted}>0</span>);
               return (
                 <tr key={p.name}>
-                  <td><strong>{p.name}</strong></td>
-                  <td className={styles.center}>{num(prs)}</td>
+                  <td>{p.doc_url ? <a href={p.doc_url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}</td>
+                  <td className={styles.center}>{num(prs)}{drafts > 0 && <span className={styles.muted}> (+{drafts} draft{drafts === 1 ? '' : 's'})</span>}</td>
                   <td className={styles.center}>{num(issues.length)}{bugs > 0 && <span className={styles.muted}> ({bugs})</span>}</td>
                   <td className={styles.center}>{num(p.discussions.length)}</td>
                   <td className={styles.center}>{num(p.release.filter((r) => r.status === 'Ready').length)}</td>
@@ -123,6 +149,8 @@ export default function InternalCall() {
                 </tr>
               );
             })}
+              </React.Fragment>
+            ))}
           </tbody>
         </table>
       </div>
@@ -130,19 +158,27 @@ export default function InternalCall() {
       <h2>Project by project</h2>
       <p className={styles.muted}>
         One block per project: its release status, then its pull requests, issues and discussions, then its stalled items.
-        A <span className={`${styles.kind} ${styles.pr}`}>pull request</span> is a proposed change to the code, raised in the last {W.NEW_DAYS} days and ready for review (drafts are not counted);
-        an <span className={`${styles.kind} ${styles.issue}`}>issue</span> is a reported problem or request, raised in the last {W.NEW_DAYS} days, bugs first;
+        A <span className={`${styles.kind} ${styles.pr}`}>pull request</span> is a proposed change to the code, raised or updated in the last {W.ACTIVE_DAYS} days and ready for review (drafts are listed too, marked as drafts, and are not counted);
+        an <span className={`${styles.kind} ${styles.issue}`}>issue</span> is a reported problem or request, raised or updated in the last {W.ACTIVE_DAYS} days, bugs first; every older open one is under stalled;
         a <span className={`${styles.kind} ${styles.disc}`}>discussion</span> is a GitHub Discussion updated in the last {W.RECENT_DAYS} days.
         Release status: <span className={`${styles.status} ${styles.ready}`}>Ready</span> no pull request is open for the next milestone;{' '}
         <span className={`${styles.status} ${styles.waiting}`}>Waiting</span> some are, and the numbers are listed;{' '}
-        <span className={`${styles.status} ${styles.nomilestone}`}>No milestone</span> none is open, so nothing can be said. The next milestone is the open one with the lowest version number.
+        <span className={`${styles.status} ${styles.nomilestone}`}>No milestone</span> none is open, so nothing can be said; <span className={`${styles.status} ${styles.nomilestone}`}>No release</span> the repository has never had a release. The next milestone is the open one with the lowest version number.
       </p>
-      {active.map((p) => {
+      {groups.map((g) => (
+        <React.Fragment key={g.type}>
+      <h3 className={styles.groupTitle}>{g.label}</h3>
+      {g.list.filter((p) => !hasWork(p)).length > 0 && (
+        <p className={styles.muted}>Nothing to look at: {g.list.filter((p) => !hasWork(p)).map((p) => p.name).join(', ')}.</p>
+      )}
+      {g.list.filter(hasWork).map((p) => {
         const prs = p.new.filter(isReview);
         const issues = issuesOf(p);
         const discs = discItems(p);
+        const drafts = p.new.filter((i) => i.kind === 'pull' && i.draft);
         const items = [
           ...prs.map((i) => ({ i, date: i.date.slice(0, 10) })),
+          ...drafts.map((i) => ({ i, date: i.date.slice(0, 10) })),
           ...issues.map((i) => ({ i, date: i.date })),
           ...discs.map((i) => ({ i, date: i.date })),
         ];
@@ -171,7 +207,7 @@ export default function InternalCall() {
                           <td><Repo name={r.repo} /></td>
                           <td>{r.milestone ? <a href={`${ORG}/${r.repo}/milestones`} target="_blank" rel="noreferrer">{r.milestone}</a> : <span className={styles.muted}>none open</span>}</td>
                           <td className={styles.center}><a href={`${ORG}/${r.repo}/compare/main...development`} target="_blank" rel="noreferrer">{r.ahead}</a></td>
-                          <td>{r.status === 'No milestone' ? <span className={styles.muted}>no milestone</span> : r.pending.length === 0 ? '0' : r.pending.map((n, k) => (
+                          <td>{(r.status === 'No milestone' || r.status === 'No release') ? <span className={styles.muted}>none</span> : r.pending.length === 0 ? '0' : r.pending.map((n, k) => (
                             <React.Fragment key={n}>{k > 0 && ', '}<a href={`${ORG}/${r.repo}/pull/${n}`} target="_blank" rel="noreferrer">#{n}</a></React.Fragment>
                           ))}</td>
                         </tr>
@@ -197,7 +233,7 @@ export default function InternalCall() {
                   <summary><span className={styles.warn}>&#9888; {p.stalled.length} stalled</span> <span className={styles.muted}>kept off the agenda: open to see</span></summary>
                   <table className={styles.grid}>
                     <thead><tr><th>Kind</th><th>Repository and title</th><th>Idle</th></tr></thead>
-                    <tbody>{p.stalled.map((i) => <Row key={`s${i.repo}${i.number}`} item={i} right={`${i.idle} days`} />)}</tbody>
+                    <tbody>{p.stalled.map((i) => <Row key={`s${i.repo}${i.number}`} item={i} right={i.unanswered ? `${i.idle} days, no reply` : `${i.idle} days`} />)}</tbody>
                   </table>
                 </details>
               )}
@@ -205,6 +241,8 @@ export default function InternalCall() {
           </section>
         );
       })}
+        </React.Fragment>
+      ))}
     </div>
   );
 }

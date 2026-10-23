@@ -82,3 +82,12 @@ details.card[open] > summary.cardHead { border-bottom: 1px solid var(--ifm-color
 .cardBody > .part:first-child { border-top: 0; }
 .more > .grid { margin-top: 0.3rem; }
 .nowrap { white-space: nowrap; }
+
+.groupRow {
+  text-align: left;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.groupTitle {
+  margin-top: 2rem;
+}

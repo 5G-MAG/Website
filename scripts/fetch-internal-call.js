@@ -2,28 +2,27 @@
 // Writes static/data/internal-call.json for the Developers' Internal Call page (/internal-call): per project, what
 // the call should look at, read from GitHub for every repository the taxonomy lists, public or private.
 //
-//   new          pull requests and issues raised in the last NEW_DAYS days (drafts are listed apart from pull requests)
+//   new          pull requests and issues raised or updated in the last ACTIVE_DAYS days (drafts are marked as drafts)
 //   release      repositories with work merged into `development` in the last RECENT_DAYS days that is not yet in
 //                `main`: Ready (no open pull request for the next milestone), Waiting (some are) or No milestone
+//                A repository that has never had a release is listed as No release.
 //   discussions  GitHub Discussions updated in the last RECENT_DAYS days
-//   stalled      a pull request with no update for STALE_DAYS days, or a bug with no update for BUG_DAYS days
-//   backlog      the number of other issues with no update for BACKLOG_DAYS days or more
+//   stalled      every other open pull request and issue, so that nothing open is left out; an issue nobody has
+//                commented on is marked as unanswered
 //
-// Titles of items in private repositories are never written: the page is public, so they carry the repository
-// and the number only. Pull requests that only apply the README format are left out. A repository belongs to the
-// first project that lists it. Needs repo-activity.json (fetch-repo-activity.js runs before) and SYNC_TOKEN or
-// GITHUB_TOKEN.
+// Items of private repositories are listed with their titles, like the others (at the site owner's request). A
+// repository belongs to the project of type platform that lists it, else to the first project that lists it. Pull
+// requests that only apply the README format are left out. Needs repo-activity.json (fetch-repo-activity.js runs
+// before) and SYNC_TOKEN or GITHUB_TOKEN.
 const https = require('https');
+const { PROJECTS } = require('./lib/projects');
 const fs = require('fs');
 const path = require('path');
 
 const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
-const NEW_DAYS = 14;
+const ACTIVE_DAYS = 30;
 const RECENT_DAYS = 30;
-const STALE_DAYS = 30;
-const BUG_DAYS = 90;
-const BACKLOG_DAYS = 365;
 const README_FORMAT = 'docs: apply the 5G-MAG README format';
 const DATA = path.join(__dirname, '..', 'static', 'data');
 
@@ -91,12 +90,16 @@ async function main() {
   if (!TOKEN) throw new Error('SYNC_TOKEN or GITHUB_TOKEN is required.');
   const activity = JSON.parse(fs.readFileSync(path.join(DATA, 'repo-activity.json'), 'utf8'));
   const owner = new Map();
-  for (const p of activity.projects) for (const r of p.repos) if (!owner.has(r.repo)) owner.set(r.repo, p.name);
+  // A platform claims its repositories first: open5gs belongs to 3GPP RAN and Core Platforms, not to the project
+  // that builds on it.
+  const platforms = new Set(PROJECTS.filter((q) => q.type === 'platform').map((q) => q.name));
+  const ordered = [...activity.projects.filter((p) => platforms.has(p.name)), ...activity.projects.filter((p) => !platforms.has(p.name))];
+  for (const p of ordered) for (const r of p.repos) if (!owner.has(r.repo)) owner.set(r.repo, p.name);
 
-  const out = { updated_at: today.toISOString().slice(0, 16).replace('T', ' ') + ' UTC', windows: { NEW_DAYS, RECENT_DAYS, STALE_DAYS, BUG_DAYS, BACKLOG_DAYS }, projects: [] };
+  const out = { updated_at: today.toISOString().slice(0, 16).replace('T', ' ') + ' UTC', windows: { ACTIVE_DAYS, RECENT_DAYS }, projects: [] };
   const byName = new Map();
   for (const p of activity.projects) {
-    const entry = { name: p.name, doc_url: p.doc_url, new: [], release: [], discussions: [], stalled: [], backlog: 0 };
+    const entry = { name: p.name, doc_url: p.doc_url, new: [], release: [], discussions: [], stalled: [] };
     byName.set(p.name, entry);
     out.projects.push(entry);
   }
@@ -108,7 +111,7 @@ async function main() {
       done.add(r.repo);
       const entry = byName.get(owner.get(r.repo));
       const priv = Boolean(r.private);
-      const item = (kind, n, title, url, extra) => ({ kind, repo: r.repo, number: n, title: priv ? null : title, url, ...extra });
+      const item = (kind, n, title, url, extra) => ({ kind, repo: r.repo, number: n, title, url, ...extra });
       try {
         // issues: the real update date and labels (repo-activity.json has neither)
         const issues = r.issues.length
@@ -117,14 +120,14 @@ async function main() {
         for (const i of issues) {
           const bug = i.labels.some((l) => l.name === 'bug');
           const idle = days(i.updated_at);
-          if (days(i.created_at) <= NEW_DAYS) entry.new.push(item('issue', i.number, i.title, i.html_url, { bug, date: i.created_at.slice(0, 10) }));
-          if (bug && idle >= BUG_DAYS) entry.stalled.push(item('issue', i.number, i.title, i.html_url, { bug: true, idle }));
-          else if (idle >= BACKLOG_DAYS) entry.backlog += 1;
+          if (days(i.created_at) <= ACTIVE_DAYS || idle <= ACTIVE_DAYS) entry.new.push(item('issue', i.number, i.title, i.html_url, { bug, date: i.created_at.slice(0, 10) }));
+          else entry.stalled.push(item('issue', i.number, i.title, i.html_url, { bug, idle, unanswered: i.comments === 0 }));
         }
         for (const q of r.pulls) {
           if (q.title.startsWith(README_FORMAT)) continue;
-          if (days(q.created_at) <= NEW_DAYS) entry.new.push(item('pull', q.number, q.title, q.url, { draft: q.draft, date: q.created_at }));
-          if (days(q.updated_at || q.created_at) >= STALE_DAYS) entry.stalled.push(item('pull', q.number, q.title, q.url, { draft: q.draft, idle: days(q.updated_at || q.created_at) }));
+          const idle = days(q.updated_at || q.created_at);
+          if (days(q.created_at) <= ACTIVE_DAYS || idle <= ACTIVE_DAYS) entry.new.push(item('pull', q.number, q.title, q.url, { draft: q.draft, date: q.created_at }));
+          else entry.stalled.push(item('pull', q.number, q.title, q.url, { draft: q.draft, idle }));
         }
         // release readiness
         const names = (r.branches || []).map((b) => b.name);
@@ -149,9 +152,17 @@ async function main() {
             }
           }
         }
+        // a repository that has never had a release is listed too, whatever its recent activity
+        if (!r.latest_release && !entry.release.some((x) => x.repo === r.repo)) {
+          const ahead = names.includes('development') && main && main.name !== 'development'
+            ? (await request('GET', `/repos/${ORG}/${r.repo}/compare/${main.name}...development`)).ahead_by
+            : 0;
+          const milestones = (await pages(`/repos/${ORG}/${r.repo}/milestones?state=open`)).sort(cmpVersion);
+          entry.release.push({ repo: r.repo, private: priv, status: 'No release', ahead, milestone: milestones.length ? milestones[0].title : null, pending: [], latest_release: null });
+        }
         // discussions
         for (const d of await discussions(r.repo)) {
-          if (days(d.updatedAt) <= RECENT_DAYS) entry.discussions.push({ repo: r.repo, title: priv ? null : d.title, url: d.url, date: d.updatedAt.slice(0, 10), comments: d.comments.totalCount });
+          if (days(d.updatedAt) <= RECENT_DAYS) entry.discussions.push({ repo: r.repo, title: d.title, url: d.url, date: d.updatedAt.slice(0, 10), comments: d.comments.totalCount });
         }
       } catch (e) {
         console.warn(`  skip ${r.repo}: ${e.message}`);
@@ -162,7 +173,7 @@ async function main() {
     e.new.sort((a, b) => b.date.localeCompare(a.date));
     e.stalled.sort((a, b) => b.idle - a.idle);
     e.discussions.sort((a, b) => b.date.localeCompare(a.date));
-    const order = { Ready: 0, Waiting: 1, 'No milestone': 2 };
+    const order = { Ready: 0, Waiting: 1, 'No milestone': 2, 'No release': 3 };
     e.release.sort((a, b) => order[a.status] - order[b.status] || b.ahead - a.ahead);
   }
   fs.writeFileSync(path.join(DATA, 'internal-call.json'), `${JSON.stringify(out)}\n`);
