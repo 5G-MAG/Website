@@ -310,7 +310,7 @@ export default function Home() {
   return (
     <Layout
       title="5G-MAG"
-      description="Specification analysis, open-source reference tools, testbeds, plugfests and standards feedback: bridging media and connectivity, for generations to come."
+      description="Specification analysis, open-source reference tools, testbeds, plugfests, standards feedback… Bridging media and connectivity, for generations to come."
     >
       <HeroSlideshow />
 

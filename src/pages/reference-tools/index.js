@@ -287,7 +287,7 @@ export default function ReferenceTools() {
   return (
     <Layout
       title="Reference Tools"
-      description="The Media Connectivity Software Accelerator's Reference Tools: open-source code for streaming, immersive media, broadcast, real-time, production, NTN and 6G."
+      description="The Media Connectivity Software Accelerator's Reference Tools: open-source code for streaming, immersive media, broadcast, real-time, production, NTN, 6G…"
     >
       <HubHero
         title="Reference Tools"

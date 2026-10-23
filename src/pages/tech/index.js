@@ -105,7 +105,7 @@ export default function Home() {
   return (
     <Layout
       title="Technical Docs and Standards Work"
-      description="Technical analysis and specification tracking across streaming, immersive media, broadcast, real-time communications, production, NTN and 6G media."
+      description="Technical analysis and specification tracking across streaming, immersive media, broadcast, real-time communications, production, NTN, 6G media…"
     >
       <HubHero
         title="Technology"

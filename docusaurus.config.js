@@ -54,7 +54,7 @@ const config = {
             alternateName: ['5G-MAG', '5G Media Action Group'],
             slogan: 'Bridging Standards and Deployments',
             description:
-              'A neutral, not-for-profit association that bridges media and connectivity standards and deployments, across content delivery and streaming, immersive media, broadcast and multicast, real-time communications, connected media production, non-terrestrial networks and 6G media, and turns specifications into open-source software through the Media Connectivity Software Accelerator.',
+              'A neutral, not-for-profit association that bridges media and connectivity standards and deployments, across content delivery and streaming, immersive media, broadcast and multicast, real-time communications, connected media production, non-terrestrial networks, 6G media, among other areas, and turns specifications into open-source software through the Media Connectivity Software Accelerator.',
             url: 'https://www.5g-mag.com',
             knowsAbout: ['Content delivery and streaming', 'Immersive media (XR and 3D scenes)', 'Broadcast and multicast', 'Real-time communications', 'Connected media production', 'Non-terrestrial networks', 'Towards 6G media', 'AI in media services', 'Network APIs', 'Testbeds and validation tools', 'Open standards', 'Open-source software', 'DVB-I', '3GPP', 'MPEG', 'glTF'],
             brand: {
