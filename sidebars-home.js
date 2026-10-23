@@ -206,6 +206,7 @@ const sidebars = {
     'community/using-this-documentation',
     'contributing',
     'community/release-process',
+    'public-call',
   ],
 
   // Per-project sidebars (Standards + Reference Tools/Testbed docs), one

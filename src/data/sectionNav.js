@@ -133,7 +133,7 @@ export const SECTION_NAV = [
   // The Software Accelerator: the programme and what it builds, kind by kind. Its long name, Media Connectivity
   // Software Accelerator, heads the panel of the top bar. Tutorials explain how to run the tools, so they sit here too.
   {
-    prefixes: ['/developer', '/reference-tools', '/testbeds', '/validation', '/playgrounds', '/kits', '/developer-tools', '/tutorials', '/early-access', '/community', '/contributing', '/license'],
+    prefixes: ['/developer', '/reference-tools', '/testbeds', '/validation', '/playgrounds', '/kits', '/developer-tools', '/tutorials', '/early-access', '/community', '/contributing', '/license', '/public-call'],
     title: 'Software Accelerator',
     menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',
@@ -146,6 +146,7 @@ export const SECTION_NAV = [
       { label: 'Playgrounds', href: '/playgrounds', group: 'What it builds' },
       { label: 'Developer Tools', href: '/developer-tools', group: 'What it builds' },
       { label: 'Developer Community', href: '/community', group: 'The programme' },
+      { label: 'Dev Public Call', href: '/public-call', group: 'The programme' },
       { label: 'Early Access', href: '/early-access', group: 'The programme' },
       { label: 'License', href: '/license', group: 'The programme' },
     ],
