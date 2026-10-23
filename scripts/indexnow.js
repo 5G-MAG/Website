@@ -14,16 +14,31 @@ const sitemap = fs.readFileSync(path.join(__dirname, '..', 'build', 'sitemap.xml
 const urlList = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).slice(0, 10000);
 
 const body = JSON.stringify({ host: HOST, key: KEY, keyLocation: `https://${HOST}/${KEY}.txt`, urlList });
-const req = https.request(
-  { hostname: 'api.indexnow.org', path: '/indexnow', method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) } },
-  (res) => {
-    res.resume();
-    console.log(`IndexNow: ${urlList.length} URLs sent, answer ${res.statusCode}`);
-    process.exit(res.statusCode < 300 ? 0 : 1);
+
+function send() {
+  return new Promise((resolve, reject) => {
+    const req = https.request(
+      { hostname: 'api.indexnow.org', path: '/indexnow', method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) } },
+      (res) => {
+        res.resume();
+        resolve(res.statusCode);
+      }
+    );
+    req.on('error', reject);
+    req.end(body);
+  });
+}
+
+// Right after a deploy the key file may not be served yet (the engine answers 403); wait and try again.
+(async () => {
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
+    const status = await send();
+    console.log(`IndexNow: ${urlList.length} URLs sent, answer ${status} (attempt ${attempt})`);
+    if (status < 300) return;
+    await new Promise((r) => setTimeout(r, 60000));
   }
-);
-req.on('error', (e) => {
+  process.exit(1);
+})().catch((e) => {
   console.error(e.message);
   process.exit(1);
 });
-req.end(body);
