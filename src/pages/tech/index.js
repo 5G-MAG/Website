@@ -105,7 +105,7 @@ export default function Home() {
   return (
     <Layout
       title="Technical Docs and Standards Work"
-      description="Technical analysis, specification tracking and standards feedback from The Media Connectivity Association members, by technology area."
+      description="Technical analysis and specification tracking across streaming, immersive media, broadcast, real-time communications, production, NTN and 6G media."
     >
       <HubHero
         title="Technology"

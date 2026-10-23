@@ -310,7 +310,7 @@ export default function Home() {
   return (
     <Layout
       title="Bridging media and connectivity standards and deployments"
-      description="The Media Connectivity Association (5G-MAG): open standards and the Media Connectivity Software Accelerator for media streaming, AI, 6G, XR and broadcast."
+      description="The Media Connectivity Association (5G-MAG): from standards to open-source software for streaming, immersive media, broadcast, real-time, production, NTN and 6G."
     >
       <HeroSlideshow />
 

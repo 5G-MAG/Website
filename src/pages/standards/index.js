@@ -300,7 +300,7 @@ export default function Standards() {
   return (
     <Layout
       title="Standardisation"
-      description="How The Media Connectivity Association feeds 3GPP, MPEG, DVB, ETSI and other bodies: feedback, requirements, liaisons and contributions."
+      description="How The Media Connectivity Association feeds 3GPP, MPEG, DVB, ETSI, Khronos, CAMARA and other bodies across all its areas of work."
     >
       <HubHero
         title="Standardisation"
