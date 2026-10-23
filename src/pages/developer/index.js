@@ -17,7 +17,6 @@ import { icon } from '@site/src/components/GodeeperCard';
 import useAnchors from '@site/src/utils/useAnchors';
 import { KINDS } from '@site/src/data/acceleratorKinds';
 import ToolsByKind from '@site/src/components/ToolsByKind';
-import WhatsNew from '@site/src/components/WhatsNew';
 import ListRow, { RowList } from '@site/src/components/ListRow';
 import styles from './index.module.css';
 // Shared with /reference-tools, /tutorials and /testbeds; see the comment
@@ -218,41 +217,6 @@ export default function Home() {
       />
 
       <main>
-        {/* The developer's first three steps, before anything else. */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Get started in three steps</h2>
-            <RowList>
-              <ListRow
-                href="#all-the-tools"
-                title="1. Pick a tool"
-                desc="Reference Tools, Testbeds and Validation Tools, project by project."
-                iconPaths={['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16']}
-              />
-              <ListRow
-                href="/tutorials"
-                title="2. Run it"
-                desc="Follow the step-by-step tutorials, which are on each tool's page."
-                iconPaths={['M7 4v16l13 -8l-13 -8']}
-              />
-              <ListRow
-                href="/community"
-                title="3. Ask, or contribute"
-                desc="Join the developer community, come to the Dev Public Call, or send a pull request."
-                iconPaths={['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0']}
-              />
-            </RowList>
-          </div>
-        </section>
-
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What is new</h2>
-            <p className={styles.sectionSubtitle}>Releases, the next event and the latest news.</p>
-            <WhatsNew />
-          </div>
-        </section>
-
         {/* Why It Matters, first -- why this exists, before the browsable
             destinations below (raised directly: "motivation first and
             then the 3 cards"). */}
@@ -278,6 +242,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* The developer's first three steps, before anything else. */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Get started in three steps</h2>
+            <RowList>
+              <ListRow
+                href="#all-the-tools"
+                title="1. Pick a tool"
+                desc="Reference Tools, Testbeds and Validation Tools, project by project."
+                iconPaths={['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16']}
+              />
+              <ListRow
+                href="/tutorials"
+                title="2. Run it"
+                desc="Follow the step-by-step tutorials, which are on each tool's page."
+                iconPaths={['M7 4v16l13 -8l-13 -8']}
+              />
+              <ListRow
+                href="/community"
+                title="3. Ask, or contribute"
+                desc="Join the developer community, come to the Dev Public Call, or send a pull request."
+                iconPaths={['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0']}
+              />
+            </RowList>
+          </div>
+        </section>
+
+        <OpenSourceFromTheStart />
+
         {/* What the programme builds, kind by kind: the browsable destinations after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
@@ -297,14 +290,6 @@ export default function Home() {
 
         <section className={styles.section}>
           <div className="container">
-            <h2 id="all-the-tools" className={styles.sectionTitle}>All the tools, by kind</h2>
-            <p className={styles.sectionSubtitle}>Every tool of the programme, in one list.</p>
-            <ToolsByKind />
-          </div>
-        </section>
-
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
             <h2 className={styles.sectionTitle}>The programme</h2>
             <p className={styles.sectionSubtitle}>
               The community and the process behind the software: how to join, contribute, licence and get early
@@ -318,16 +303,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Standards and Open Source, then the Accelerator in numbers: the order of
-            the 5G-MAG General Deck's Software Accelerator part (aligned 2026-09-29). */}
-        <OpenSourceFromTheStart />
-        <StatRow
-          alt
-          title="Software Accelerator in numbers"
-          subtitle="Counted daily from the project pages and GitHub."
-          facts={[FACT_PROJECTS, FACT_REPOSITORIES, FACT_CLONES, FACT_DEV_CALL]}
-        />
-
         {/* Contributors -- reordered ahead of License/Early Access
             (2026-09-26, direct instruction: "order of importance after
             reference tools, testbeds and showcase is: Developer Community,
@@ -339,7 +314,7 @@ export default function Home() {
             section (License Model) already uses .sectionAlt, and two tinted
             sections back to back would trade one rhythm problem for
             another. */}
-        <section className={styles.section}>
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Growing community of developers</h2>
             <p className={styles.sectionSubtitle}>
@@ -366,12 +341,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={styles.section}>
+          <div className="container">
+            <h2 id="all-the-tools" className={styles.sectionTitle}>All the tools, by kind</h2>
+            <p className={styles.sectionSubtitle}>Every tool of the programme, in one list.</p>
+            <ToolsByKind />
+          </div>
+        </section>
+
+        <StatRow
+          alt
+          title="Software Accelerator in numbers"
+          subtitle="Counted daily from the project pages and GitHub."
+          facts={[FACT_PROJECTS, FACT_REPOSITORIES, FACT_CLONES, FACT_DEV_CALL]}
+        />
+
         {/* License Model -- content taken from the Overview deck (slide 10,
             "A note on the Open-Source Software Licenses"), not written fresh
             here: same two blocks, "What is the License Model?" and "How to
             Contribute?", reproduced from that slide rather than paraphrased
             from docs/home/license.mdx as before. */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>License Model</h2>
             <p className={styles.sectionSubtitle}>Protecting IPR. Enabling industry collaboration.</p>
@@ -432,14 +422,14 @@ export default function Home() {
         </section>
 
         {/* Early Access */}
-        <section className={styles.section}>
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <EarlyAccessCallout />
           </div>
         </section>
 
         {/* Our work in the field: photos + videos together */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work in the field</h2>
             <p className={styles.sectionSubtitle}>
@@ -492,7 +482,7 @@ export default function Home() {
             comment above). */}
         <section
           id="all-repositories"
-          className={styles.section}
+          className={clsx(styles.section, styles.sectionAlt)}
           style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
         >
           <div className="container">
@@ -557,7 +547,7 @@ export default function Home() {
           </div>
         </section>
 
-        <JoinTheEffort id="community" alt variant="tool" />
+        <JoinTheEffort id="community" variant="tool" />
       </main>
     </Layout>
   );

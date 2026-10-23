@@ -75,6 +75,7 @@ export default function seoIndex() {
         lines.push('');
       }
       fs.writeFileSync(path.join(outDir, 'llms-full.txt'), lines.join('\n'));
+      // eslint-disable-next-line no-undef
       console.log(`[seo-index] ${list.length} pages -> llms-full.txt, pages.json`);
     },
   };

@@ -41,9 +41,9 @@ const STEPS = [
   },
 ];
 
-export default function OpenSourceFromTheStart({ id = 'standards-and-open-source' }) {
+export default function OpenSourceFromTheStart({ id = 'standards-and-open-source', alt = false }) {
   return (
-    <section id={id} className={pageStyles.section}>
+    <section id={id} className={clsx(pageStyles.section, alt && pageStyles.sectionAlt)}>
       <div className="container">
         <h2 className={pageStyles.sectionTitle}>Enabling open-source software from the start of every project</h2>
         <p className={pageStyles.sectionSubtitle}>
