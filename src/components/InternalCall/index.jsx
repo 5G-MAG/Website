@@ -36,7 +36,7 @@ function Row({ item, right }) {
     <tr>
       <td><Kind item={item} /></td>
       <td><Repo name={item.repo} /> <a href={item.url} target="_blank" rel="noreferrer">{label}</a></td>
-      <td className={styles.muted}>{right}</td>
+      <td className={`${styles.muted} ${styles.nowrap}`}>{right}</td>
     </tr>
   );
 }
@@ -79,8 +79,6 @@ export default function InternalCall() {
     ['1:25', '5 min', 'Next steps and owners', ''],
   ];
 
-  const withRelease = projects.filter((p) => p.release.length > 0);
-  const withItems = projects.filter((p) => p.new.length || p.discussions.length);
   const active = projects.filter((p) => p.new.length || p.release.length || p.stalled.length || p.discussions.length);
 
   return (
@@ -93,82 +91,120 @@ export default function InternalCall() {
 
       <h2>Suggested Agenda for the call: 90 minutes</h2>
       <div className={styles.tableBox}>
-        <table><tbody>
+        <table className={styles.grid}>
+          <thead><tr><th>Time</th><th>Length</th><th>Part</th><th>What fits today</th></tr></thead>
+          <tbody>
           {plan.map(([t, m, what, detail]) => (
             <tr key={t}><td className={styles.muted}>{t}</td><td><strong>{m}</strong></td><td>{what}</td><td className={styles.muted}>{detail}</td></tr>
           ))}
         </tbody></table>
       </div>
 
-      <h2>Ready for release, by project</h2>
-      <p className={styles.muted}>
-        Work merged into <code>development</code> in the last {W.RECENT_DAYS} days and not yet in <code>main</code>.{' '}
-        <span className={`${styles.status} ${styles.ready}`}>Ready</span> no pull request is open for the next milestone;{' '}
-        <span className={`${styles.status} ${styles.waiting}`}>Waiting</span> some are, and the numbers are listed;{' '}
-        <span className={`${styles.status} ${styles.nomilestone}`}>No milestone</span> no milestone is open, so nothing can be said. The next milestone is the open one with the lowest version number.
-      </p>
-      {withRelease.map((p) => (
-        <section key={p.name} className={styles.project}>
-          <h3>{p.name}</h3>
-          <div className={styles.tableBox}>
-            <table>
-              <thead><tr><th>Status</th><th>Repository</th><th>Next milestone</th><th>Commits ahead of main</th><th>Open PRs in it</th></tr></thead>
-              <tbody>
-                {p.release.map((r) => (
-                  <tr key={r.repo}>
-                    <td><span className={`${styles.status} ${styles[statusClass[r.status]]}`}>{r.status}</span></td>
-                    <td><Repo name={r.repo} /></td>
-                    <td>{r.milestone ? <a href={`${ORG}/${r.repo}/milestones`} target="_blank" rel="noreferrer">{r.milestone}</a> : <span className={styles.muted}>none open</span>}</td>
-                    <td className={styles.center}><a href={`${ORG}/${r.repo}/compare/main...development`} target="_blank" rel="noreferrer">{r.ahead}</a></td>
-                    <td>{r.status === 'No milestone' ? <span className={styles.muted}>no milestone</span> : r.pending.length === 0 ? '0' : r.pending.map((n, i) => (
-                      <React.Fragment key={n}>{i > 0 && ', '}<a href={`${ORG}/${r.repo}/pull/${n}`} target="_blank" rel="noreferrer">#{n}</a></React.Fragment>
-                    ))}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      ))}
+      <h2>At a glance, by project</h2>
+      <div className={styles.tableBox}>
+        <table className={styles.grid}>
+          <thead>
+            <tr><th>Project</th><th className={styles.center}>{PR_ICON} Pull requests to review</th><th className={styles.center}>{ISSUE_ICON} New issues (bugs)</th><th className={styles.center}>{DISC_ICON} Discussions</th><th className={styles.center}>Ready to release</th><th className={styles.center}>&#9888; Stalled</th></tr>
+          </thead>
+          <tbody>
+            {active.map((p) => {
+              const prs = p.new.filter(isReview).length;
+              const issues = issuesOf(p);
+              const bugs = issues.filter((i) => i.bug).length;
+              const num = (n) => (n > 0 ? <strong>{n}</strong> : <span className={styles.muted}>0</span>);
+              return (
+                <tr key={p.name}>
+                  <td><strong>{p.name}</strong></td>
+                  <td className={styles.center}>{num(prs)}</td>
+                  <td className={styles.center}>{num(issues.length)}{bugs > 0 && <span className={styles.muted}> ({bugs})</span>}</td>
+                  <td className={styles.center}>{num(p.discussions.length)}</td>
+                  <td className={styles.center}>{num(p.release.filter((r) => r.status === 'Ready').length)}</td>
+                  <td className={styles.center}>{p.stalled.length > 0 ? <span className={styles.warn}>&#9888; {p.stalled.length}</span> : <span className={styles.muted}>0</span>}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
 
-      <h2>Pull requests, issues and discussions, by project</h2>
+      <h2>Project by project</h2>
       <p className={styles.muted}>
-        Three different things, each with its own icon and colour:{' '}
-        <span className={`${styles.kind} ${styles.pr}`}>PR</span> a <strong>pull request</strong>, a proposed change to the code, raised in the last {W.NEW_DAYS} days and ready for review (drafts are not counted);{' '}
-        <span className={`${styles.kind} ${styles.issue}`}>issue</span> an <strong>issue</strong>, a reported problem or request, raised in the last {W.NEW_DAYS} days, bugs first;{' '}
-        <span className={`${styles.kind} ${styles.disc}`}>discussion</span> a <strong>GitHub Discussion</strong>, updated in the last {W.RECENT_DAYS} days.
+        One block per project: its release status, then its pull requests, issues and discussions, then its stalled items.
+        A <span className={`${styles.kind} ${styles.pr}`}>pull request</span> is a proposed change to the code, raised in the last {W.NEW_DAYS} days and ready for review (drafts are not counted);
+        an <span className={`${styles.kind} ${styles.issue}`}>issue</span> is a reported problem or request, raised in the last {W.NEW_DAYS} days, bugs first;
+        a <span className={`${styles.kind} ${styles.disc}`}>discussion</span> is a GitHub Discussion updated in the last {W.RECENT_DAYS} days.
+        Release status: <span className={`${styles.status} ${styles.ready}`}>Ready</span> no pull request is open for the next milestone;{' '}
+        <span className={`${styles.status} ${styles.waiting}`}>Waiting</span> some are, and the numbers are listed;{' '}
+        <span className={`${styles.status} ${styles.nomilestone}`}>No milestone</span> none is open, so nothing can be said. The next milestone is the open one with the lowest version number.
       </p>
-      {withItems.map((p) => {
+      {active.map((p) => {
         const prs = p.new.filter(isReview);
         const issues = issuesOf(p);
         const discs = discItems(p);
-        if (!prs.length && !issues.length && !discs.length) return null;
+        const items = [
+          ...prs.map((i) => ({ i, date: i.date.slice(0, 10) })),
+          ...issues.map((i) => ({ i, date: i.date })),
+          ...discs.map((i) => ({ i, date: i.date })),
+        ];
+        const itemTable = (list) => (
+          <table className={styles.grid}>
+            <thead><tr><th>Kind</th><th>Repository and title</th><th>Date</th></tr></thead>
+            <tbody>{list.map(({ i, date }) => <Row key={`${i.kind}${i.repo}${i.number}${i.url}`} item={i} right={date} />)}</tbody>
+          </table>
+        );
         return (
-          <section key={p.name} className={styles.project}>
-            <h3>{p.name}</h3>
-            <Chips prs={prs.length} issues={issues} discs={discs.length} />
-            <details>
-              <summary>Open the {plural(prs.length + issues.length + discs.length, 'item')}</summary>
-              <div className={styles.tableBox}><table><tbody>
-                {prs.map((i) => <Row key={`p${i.repo}${i.number}`} item={i} right={i.date.slice(0, 10)} />)}
-                {issues.map((i) => <Row key={`i${i.repo}${i.number}`} item={i} right={i.date} />)}
-                {discs.map((i) => <Row key={`d${i.url}`} item={i} right={i.date} />)}
-              </tbody></table></div>
-            </details>
+          <section key={p.name} className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3>{p.name}</h3>
+              <Chips prs={prs.length} issues={issues} discs={discs.length} />
+            </div>
+            <div className={styles.cardBody}>
+              {p.release.length > 0 && (
+                <>
+                  <h4 className={styles.part}>Release</h4>
+                  <table className={styles.grid}>
+                    <thead><tr><th>Status</th><th>Repository</th><th>Next milestone</th><th>Commits ahead of main</th><th>Open PRs in it</th></tr></thead>
+                    <tbody>
+                      {p.release.map((r) => (
+                        <tr key={r.repo}>
+                          <td><span className={`${styles.status} ${styles[statusClass[r.status]]}`}>{r.status}</span></td>
+                          <td><Repo name={r.repo} /></td>
+                          <td>{r.milestone ? <a href={`${ORG}/${r.repo}/milestones`} target="_blank" rel="noreferrer">{r.milestone}</a> : <span className={styles.muted}>none open</span>}</td>
+                          <td className={styles.center}><a href={`${ORG}/${r.repo}/compare/main...development`} target="_blank" rel="noreferrer">{r.ahead}</a></td>
+                          <td>{r.status === 'No milestone' ? <span className={styles.muted}>no milestone</span> : r.pending.length === 0 ? '0' : r.pending.map((n, k) => (
+                            <React.Fragment key={n}>{k > 0 && ', '}<a href={`${ORG}/${r.repo}/pull/${n}`} target="_blank" rel="noreferrer">#{n}</a></React.Fragment>
+                          ))}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </>
+              )}
+              {items.length > 0 && (
+                <>
+                  <h4 className={styles.part}>Pull requests, issues and discussions</h4>
+                  {itemTable(items.slice(0, 6))}
+                  {items.length > 6 && (
+                    <details className={styles.more}>
+                      <summary>Show the other {items.length - 6}</summary>
+                      {itemTable(items.slice(6))}
+                    </details>
+                  )}
+                </>
+              )}
+              {p.stalled.length > 0 && (
+                <details className={styles.more}>
+                  <summary><span className={styles.warn}>&#9888; {p.stalled.length} stalled</span> <span className={styles.muted}>kept off the agenda: open to see</span></summary>
+                  <table className={styles.grid}>
+                    <thead><tr><th>Kind</th><th>Repository and title</th><th>Idle</th></tr></thead>
+                    <tbody>{p.stalled.map((i) => <Row key={`s${i.repo}${i.number}`} item={i} right={`${i.idle} days`} />)}</tbody>
+                  </table>
+                </details>
+              )}
+            </div>
           </section>
         );
       })}
-
-      <h2>&#9888; Stalled, by project</h2>
-      <p className={styles.muted}>A pull request with no update for {W.STALE_DAYS} days or more, or a bug with no update for {W.BUG_DAYS} days or more. They stay off the agenda.</p>
-      {active.filter((p) => p.stalled.length).map((p) => (
-        <details key={p.name} className={styles.stalled}>
-          <summary><span className={styles.warn}>&#9888; {p.stalled.length}</span> {p.name}</summary>
-          <div className={styles.tableBox}><table><tbody>
-            {p.stalled.map((i) => <Row key={`s${i.repo}${i.number}`} item={i} right={`${i.idle} days idle`} />)}
-          </tbody></table></div>
-        </details>
-      ))}
     </div>
   );
 }

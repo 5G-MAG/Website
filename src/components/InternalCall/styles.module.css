@@ -57,3 +57,28 @@
 :global([data-theme='dark']) .waiting { background: #1f2a5c; color: #b9c6ff; }
 
 .warn { background: var(--ifm-color-warning-contrast-background); color: var(--ifm-color-warning-contrast-foreground); border-radius: 999px; padding: 0.05rem 0.6rem; font-weight: 700; }
+
+/* tables with visible borders and banded rows */
+.grid { width: 100%; margin: 0; display: table; border-collapse: collapse; font-size: 0.92rem; }
+.grid th, .grid td { border: 1px solid var(--ifm-color-emphasis-300); padding: 0.45rem 0.7rem; text-align: left; vertical-align: top; }
+.grid thead th { background: var(--ifm-color-emphasis-200); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ifm-color-emphasis-800); }
+.grid tbody tr:nth-child(even) td { background: var(--ifm-color-emphasis-100); }
+.grid .center, .grid th.center { text-align: center; }
+.tableBox { border: 1px solid var(--ifm-color-emphasis-400); }
+.tableBox table th, .tableBox table td { border-top: 0; }
+
+.card { margin: 1.2rem 0; border: 1px solid var(--ifm-color-emphasis-400); border-radius: 10px; overflow: hidden; background: var(--ifm-background-color); }
+.cardHead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.6rem 0.9rem; background: var(--ifm-color-emphasis-200); border-bottom: 1px solid var(--ifm-color-emphasis-400); cursor: default; }
+details.card > summary.cardHead { cursor: pointer; list-style: none; border-bottom: 0; }
+details.card[open] > summary.cardHead { border-bottom: 1px solid var(--ifm-color-emphasis-400); }
+.cardHead h3 { margin: 0; font-size: 1.05rem; }
+.cardBody { overflow-x: auto; }
+.cardBody > .grid th:first-child, .cardBody > .grid td:first-child { border-left: 0; }
+.cardBody > .grid th:last-child, .cardBody > .grid td:last-child { border-right: 0; }
+.cardBody > .grid thead th { border-top: 0; }
+.more { padding: 0.4rem 0.9rem; border-top: 1px solid var(--ifm-color-emphasis-400); }
+.more > summary { cursor: pointer; font-weight: 600; margin: 0.2rem 0 0.5rem; }
+.part { margin: 0; padding: 0.4rem 0.9rem; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ifm-color-emphasis-700); background: var(--ifm-color-emphasis-100); border-top: 1px solid var(--ifm-color-emphasis-300); border-bottom: 1px solid var(--ifm-color-emphasis-300); }
+.cardBody > .part:first-child { border-top: 0; }
+.more > .grid { margin-top: 0.3rem; }
+.nowrap { white-space: nowrap; }
