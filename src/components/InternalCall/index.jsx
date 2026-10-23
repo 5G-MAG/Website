@@ -58,24 +58,18 @@ function Chips({ prs, issues, discs }) {
   );
 }
 
-// The classification of the tools: what each project is (taxonomy `type`), in the order the groups are shown.
-const TYPE_ORDER = ['reference-tool', 'testbed', 'validation-tool', 'platform', 'developer-tools', 'common-tools', 'project'];
-const TYPE_PLURAL = {
-  'reference-tool': 'Reference Tools',
-  testbed: 'Testbeds and Evaluation Frameworks',
-  'validation-tool': 'Validation Tools',
-  platform: 'Platforms',
-  'developer-tools': 'Developer Tools',
-  'common-tools': 'Common Tools',
-  project: 'Projects',
-};
-// A testbed and an evaluation framework are one group, as everywhere on the site (isTestbed in baskets.js).
-const groupOf = (p) => (isTestbed(p) ? 'testbed' : typeOf(p));
-const typeByName = new Map(taxonomy.projects.map((p) => [p.name, groupOf(p)]));
-const classOf = (p) => typeByName.get(p.name) || 'project';
-const groupsOf = (list) => TYPE_ORDER
-  .map((type) => ({ type, label: TYPE_PLURAL[type], list: list.filter((p) => classOf(p) === type) }))
+// The classification of the projects: the taxonomy baskets, in the order of taxonomy.json. A project with no basket
+// (a platform, the common tools, the developer tools) goes in a last group of its own.
+const OTHER = 'other';
+const BASKET_LABEL = { ...Object.fromEntries(taxonomy.baskets.map((b) => [b.key, b.title])), [OTHER]: 'Platforms and shared tools' };
+const BASKET_ORDER = [...taxonomy.baskets.map((b) => b.key), OTHER];
+const basketByName = new Map(taxonomy.projects.map((p) => [p.name, p.basket || OTHER]));
+const basketOf = (p) => basketByName.get(p.name) || OTHER;
+const groupsOf = (list) => BASKET_ORDER
+  .map((type) => ({ type, label: BASKET_LABEL[type], list: list.filter((p) => basketOf(p) === type) }))
   .filter((g) => g.list.length > 0);
+// The anchor of a project's block on this page, from the project's own address (its name where it has none).
+const anchorOf = (p) => `project-${(p.doc_url || p.name).replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`;
 const hasWork = (p) => p.new.length || p.release.length || p.stalled.length || p.discussions.length;
 
 const statusClass = { Ready: 'ready', Waiting: 'waiting', 'No milestone': 'nomilestone', 'No release': 'nomilestone' };
@@ -140,7 +134,7 @@ export default function InternalCall() {
               const num = (n) => (n > 0 ? <strong>{n}</strong> : <span className={styles.muted}>0</span>);
               return (
                 <tr key={p.name}>
-                  <td>{p.doc_url ? <a href={p.doc_url}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}</td>
+                  <td>{hasWork(p) ? <a href={`#${anchorOf(p)}`}><strong>{p.name}</strong></a> : <strong>{p.name}</strong>}</td>
                   <td className={styles.center}>{num(prs)}{drafts > 0 && <span className={styles.muted}> (+{drafts} draft{drafts === 1 ? '' : 's'})</span>}</td>
                   <td className={styles.center}>{num(issues.length)}{bugs > 0 && <span className={styles.muted}> ({bugs})</span>}</td>
                   <td className={styles.center}>{num(p.discussions.length)}</td>
@@ -157,7 +151,7 @@ export default function InternalCall() {
 
       <h2>Project by project</h2>
       <p className={styles.muted}>
-        One block per project: its release status, then its pull requests, issues and discussions, then its stalled items.
+        One block per project, grouped by the baskets of the taxonomy: its release status, then its pull requests, issues and discussions, then its stalled items.
         A <span className={`${styles.kind} ${styles.pr}`}>pull request</span> is a proposed change to the code, raised or updated in the last {W.ACTIVE_DAYS} days and ready for review (drafts are listed too, marked as drafts, and are not counted);
         an <span className={`${styles.kind} ${styles.issue}`}>issue</span> is a reported problem or request, raised or updated in the last {W.ACTIVE_DAYS} days, bugs first; every older open one is under stalled;
         a <span className={`${styles.kind} ${styles.disc}`}>discussion</span> is a GitHub Discussion updated in the last {W.RECENT_DAYS} days.
@@ -189,9 +183,9 @@ export default function InternalCall() {
           </table>
         );
         return (
-          <section key={p.name} className={styles.card}>
+          <section key={p.name} id={anchorOf(p)} className={styles.card}>
             <div className={styles.cardHead}>
-              <h3>{p.name}</h3>
+              <h3>{p.name}{p.doc_url && <a className={styles.pageLink} href={p.doc_url}>project page</a>}</h3>
               <Chips prs={prs.length} issues={issues} discs={discs.length} />
             </div>
             <div className={styles.cardBody}>

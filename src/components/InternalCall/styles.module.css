@@ -91,3 +91,5 @@ details.card[open] > summary.cardHead { border-bottom: 1px solid var(--ifm-color
 .groupTitle {
   margin-top: 2rem;
 }
+.pageLink { margin-left: 0.7rem; font-size: 0.8rem; font-weight: 400; }
+.card { scroll-margin-top: 5rem; }
