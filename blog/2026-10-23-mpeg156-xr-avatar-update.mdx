@@ -1,0 +1,72 @@
+---
+title: "5G-MAG Reports Progress on Its XR and Avatar Projects to MPEG"
+description: "5G-MAG provided MPEG with an update on XR Media & 3D Scenes and Conversational Avatar Communication for MPEG#156 in Hangzhou: an XR Scene Player for Android, a scene validator, reference scenes and avatar calls on two phones."
+authors: [5g-mag]
+slug: mpeg156-xr-avatar-update
+image: /assets/images/news/mpeg156-xr-avatar-update.png
+imageAlt: "5G-MAG XR and avatar tools (XR scenes, AR anchoring, validator, avatar calls, SWAP, reference scenes) feeding contribution m78825 to MPEG#156"
+tags: [Announcement]
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+For MPEG#156, held in Hangzhou in October 2026, 5G-MAG provided MPEG Systems (ISO/IEC JTC 1/SC 29/WG 3) with an update on its two immersive-media projects: [XR Media & 3D Scenes](/reference-tools/xr) and [Conversational Avatar Communication](/reference-tools/avatar). The contribution, m78825 "[SD] XR and MPEG-I in 5G-MAG Reference Tools", is listed on the [liaison statements page](/ls).
+
+{/* truncate */}
+
+The two projects turn MPEG-I Scene Description (ISO/IEC 23090-14) and the Avatar Representation Format (ISO/IEC 23090-39) into running, open-source software, and connect them to the 3GPP service specifications.
+
+## XR Media & 3D Scenes
+
+The [XR Media & 3D Scenes](/reference-tools/xr) project composes, positions and synchronises dynamic 3D visual and audio objects in time. Its reference tools cover authoring, reference content, Media Access Function (MAF) pipelines, parsing of the MPEG-I glTF extensions and playback in Unity3D on Windows and Android. The standards basis is ISO/IEC 23090-14, second edition, ISO/IEC 12113 (glTF 2.0) and 3GPP TS 26.119.
+
+What is new in the update:
+
+- **An XR Scene Player for Android.** The smartphone application is in open pull request [#126](https://github.com/5G-MAG/rt-xr-unity-player/pull/126) of the XR Unity Player. Its AR example anchors a video scene to the floor of the room the camera sees, and the app provides media controls, scene details and a content library.
+- **A scene validator.** Open pull request [#45](https://github.com/5G-MAG/rt-xr-content/pull/45) of rt-xr-content checks scenes against the MPEG JSON schemas and rules derived from the specification. Each finding gives its severity, the applicable clause, the rule that was checked and the location in the scene.
+- **Reference scenes.** rt-xr-content includes scenes that combine video textures and spatial audio, scenes for AR anchoring in the real world, and scenes in which user input triggers an animation.
+- **Timed metadata and maintenance.** Open pull requests in rt-xr-maf-native and rt-xr-gITFast address decoding of timed metadata tracks and fixes for Scene Description extensions and interactivity.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-scene-player-phones.png')} alt="The XR Scene Player on an Android phone: a video scene anchored on the floor with the AR and media controls, the scene details, and the content library" style={{width: '100%', height: 'auto', borderRadius: '8px', margin: '1rem 0 0.25rem'}} />
+
+*The XR Scene Player on an Android phone: a video scene anchored on the floor with the AR and media controls, the scene details, and the library.*
+
+<img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-scene-validator.png')} alt="The MPEG-I Scene Description validator: scenes checked, with their MPEG extensions, errors and warnings" style={{width: '100%', height: 'auto', borderRadius: '8px', margin: '1rem 0 0.25rem', border: '1px solid var(--ifm-color-emphasis-300)'}} />
+
+*The scene validator: the scenes of rt-xr-content, checked with their MPEG extensions, errors and warnings.*
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem', margin: '1rem 0 0.25rem'}}>
+  <img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-ref-video-scene.jpg')} alt="A living room scene with a television playing a video, one of the reference scenes with timed video and spatial audio" style={{width: '100%', height: 'auto', borderRadius: '8px'}} />
+  <img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-ref-studio-apartment.jpg')} alt="A studio apartment scene with a wall-mounted screen, used for a media demo" style={{width: '100%', height: 'auto', borderRadius: '8px'}} />
+  <img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-ref-crt-tv.jpg')} alt="A CRT television set playing a movie inside a 3D scene" style={{width: '100%', height: 'auto', borderRadius: '8px'}} />
+  <img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/xr-ref-statuette.jpg')} alt="The Academy Award statuette, used for the AR anchoring demo" style={{width: '100%', height: 'auto', borderRadius: '8px'}} />
+</div>
+
+*Reference scenes of rt-xr-content: a living room with a TV playing a video, a studio apartment media demo, a CRT TV set playing a movie, and the Academy Award statuette anchoring demo. Models: living room, Carlos Miguel Vieira Maciel (CC BY); TV set and Academy Award statuette, Virtual Museums of Małopolska (CC0); studio apartment, zamorev4d (CC BY); Big Buck Bunny, Blender Foundation (CC BY 3.0); video texture and audio source added by MotionSpell (CC BY 4.0).*
+
+Read more on the [technology page](/tech/xr), the [Reference Tools](/reference-tools/xr) and the [specifications](/standards/xr).
+
+## Conversational Avatar Communication
+
+The [Conversational Avatar Communication](/reference-tools/avatar) project animates avatars from user to user in real time. The 5G-MAG implementation demonstrates a one-to-one call using MPEG ARF and the receiver-centric animation mode of 3GPP TS 26.264, in which the receiving device animates and renders the sender's avatar. A two-phone demonstration was shown at MPEG in Geneva on 14 July 2026 and at IBC on 13 September 2026.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/news/mpeg156-gallery/avatar-two-phones-meeting.jpg')} alt="Two phones on 5G-MAG Reference Tools stands, each showing an avatar: the two ends of an avatar call at the MPEG meeting in Geneva" style={{width: '100%', height: 'auto', borderRadius: '8px', margin: '1rem 0 0.25rem'}} />
+
+*The avatar call running on two phones, each showing an avatar, at the MPEG meeting in Geneva on 14 July 2026.*
+
+Releases of 16 October 2026: rt-avatar-call v0.10.154 (command-line build tooling and updated default camera framing), rt-avatar-content v0.10.154, and rt-3gpp-swap v0.9, which closes the identified conformance gaps against clause 13.2.4 of 3GPP TS 26.113. Pre-release v0.10.155-b2 adds initial support for avatars based on Gaussian splatting. Android XR animation generation and fetching of avatars from the Base Avatar Repository are in development, and body-animation support and a call-flow user interface are planned.
+
+Read more on the [technology page](/tech/avatar), the [Reference Tools](/reference-tools/avatar) and the [specifications](/standards/avatar).
+
+## What it means for MPEG
+
+The update gives MPEG implementation evidence rather than demonstrations alone:
+
+- the Scene Description implementation cross-checks the Presentation Engine and MAF separation, the MAF and Buffer APIs, the `MPEG_*` glTF extensions and the carriage of timed media;
+- the validator is a route from normative clauses and JSON schemas to repeatable checks, and can show specification ambiguities or implementation gaps;
+- the reference scenes are candidate test assets for reference software, conformance work, demonstrations and interoperability;
+- the avatar project exercises ARF base avatars and animation streams inside an end-to-end 3GPP conversational service flow.
+
+5G-MAG proposed that MPEG take the contribution into account, evaluate the reference scenes and the validator as inputs to reference software and conformance work (including ISO/IEC 23090-24 where appropriate), use implementation findings as feedback for the maintenance of Scene Description and ARF, and encourage MPEG-I experts and implementers to contribute code, test assets, validation rules and interoperability feedback through the 5G-MAG reference-tool projects.
+
+More on how 5G-MAG feeds implementation experience back to standards bodies is on the [Standardisation](/standards) pages.
