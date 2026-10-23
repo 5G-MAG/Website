@@ -3,7 +3,7 @@ hide_title: true
 title: CMMF (Multisource Delivery) - Standards Evolution
 slug: /standards/cmmf/evolution
 description: Version history behind ETSI TS 103 973, the Coded Multisource Media Format (CMMF).
-sidebar_label: Release history
+sidebar_label: CMMF release history
 ---
 
 <div class="topic-banner">
