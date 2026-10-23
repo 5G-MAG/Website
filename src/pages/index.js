@@ -309,7 +309,7 @@ export default function Home() {
 
   return (
     <Layout
-      title="Bridging Standards and Deployments"
+      title="5G-MAG"
       description="At the intersection of Media and Connectivity, for generations to come: streaming, immersive media, broadcast, real-time, production, NTN and 6G."
     >
       <HeroSlideshow />
