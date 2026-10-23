@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23 02:06 UTC",
+  "updated_at": "2026-10-23 08:12 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -4065,6 +4065,107 @@
               "last_work_commit": "2024-04-14"
             }
           ]
+        },
+        {
+          "repo": "glTF-Validator",
+          "url": "https://github.com/5G-MAG/glTF-Validator",
+          "description": "Tool to validate glTF assets.",
+          "auxiliary": true,
+          "private": false,
+          "pushed_at": "2026-10-20",
+          "latest_release": null,
+          "pulls": [
+            {
+              "number": 9,
+              "title": "MPEG extensions: fixes and missing checks on top of MPEGGroup#1",
+              "url": "https://github.com/5G-MAG/glTF-Validator/pull/9",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "updated_at": "2026-10-21",
+              "base": "main"
+            }
+          ],
+          "issues": [
+            {
+              "number": 8,
+              "title": "MPEG_texture_video: the format and the accessor type must agree",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/8",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 7,
+              "title": "MPEG_accessor_timed: header and buffer rules are missing",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/7",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 6,
+              "title": "MPEG_buffer_circular: checks of the buffer and its tracks are missing",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/6",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 5,
+              "title": "MPEG_media: the timing properties are not checked against each other",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/5",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 4,
+              "title": "MPEG_texture_video: the accessor is not checked for MPEG_accessor_timed",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/4",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 3,
+              "title": "Buffer extensions are not linked: MPEG_buffer_circular.media is never resolved",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/3",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 2,
+              "title": "MPEG_media is registered on Node",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/2",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            },
+            {
+              "number": 1,
+              "title": "MPEG_media: autoplayGroup is typed as a boolean",
+              "url": "https://github.com/5G-MAG/glTF-Validator/issues/1",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-20",
+              "labels": []
+            }
+          ],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2025-12-30",
+              "last_work_commit": "2025-12-30"
+            },
+            {
+              "name": "feature/scene-validator",
+              "default": false,
+              "last_commit": "2026-10-20",
+              "last_work_commit": "2026-10-20"
+            }
+          ]
         }
       ]
     },
@@ -4795,7 +4896,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-22",
-              "updated_at": "2026-10-22",
+              "updated_at": "2026-10-23",
               "base": "development"
             },
             {

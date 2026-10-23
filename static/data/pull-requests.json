@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23 02:06 UTC",
+  "updated_at": "2026-10-23 08:12 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -247,6 +247,19 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "pulls": [
+        {
+          "repo": "glTF-Validator",
+          "branch": null,
+          "number": 9,
+          "title": "MPEG extensions: fixes and missing checks on top of MPEGGroup#1",
+          "url": "https://github.com/5G-MAG/glTF-Validator/pull/9",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-20",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-xr-content",
           "branch": null,

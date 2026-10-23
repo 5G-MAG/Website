@@ -26,6 +26,12 @@
       "last_work_commit": null,
       "open_pulls_last_year": 0
     },
+    "glTF-Validator": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-12-30",
+      "open_pulls_last_year": 1
+    },
     "netemu-dashboard": {
       "status": "Under Development",
       "latest_release": null,
@@ -99,6 +105,12 @@
       "open_pulls_last_year": 0
     },
     "rt-ai-ml-evaluation-framework": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-avatar-bar": {
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": null,
