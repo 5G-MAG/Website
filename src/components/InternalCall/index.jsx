@@ -58,16 +58,39 @@ function Chips({ prs, issues, discs }) {
   );
 }
 
-// The classification of the projects: the taxonomy baskets, in the order of taxonomy.json. A project with no basket
-// (a platform, the common tools, the developer tools) goes in a last group of its own.
+// The classification of the projects: first the taxonomy baskets (the platforms and shared tools, which belong to no
+// basket, come first), then in each basket the type of tool, as everywhere on the site.
 const OTHER = 'other';
 const BASKET_LABEL = { ...Object.fromEntries(taxonomy.baskets.map((b) => [b.key, b.title])), [OTHER]: 'Platforms and shared tools' };
-const BASKET_ORDER = [...taxonomy.baskets.map((b) => b.key), OTHER];
+const BASKET_ORDER = [OTHER, ...taxonomy.baskets.map((b) => b.key)];
 const basketByName = new Map(taxonomy.projects.map((p) => [p.name, p.basket || OTHER]));
 const basketOf = (p) => basketByName.get(p.name) || OTHER;
+const TYPE_ORDER = ['platform', 'reference-tool', 'testbed', 'validation-tool', 'developer-tools', 'common-tools', 'project'];
+const TYPE_PLURAL = {
+  platform: 'Platforms',
+  'reference-tool': 'Reference Tools',
+  testbed: 'Testbeds and Evaluation Frameworks',
+  'validation-tool': 'Validation Tools',
+  'developer-tools': 'Developer Tools',
+  'common-tools': 'Common Tools',
+  project: 'Projects',
+};
+// A testbed and an evaluation framework are one type, as everywhere on the site (isTestbed in baskets.js).
+const typeByName = new Map(taxonomy.projects.map((p) => [p.name, isTestbed(p) ? 'testbed' : typeOf(p)]));
+const typeOfProject = (p) => typeByName.get(p.name) || 'project';
 const groupsOf = (list) => BASKET_ORDER
-  .map((type) => ({ type, label: BASKET_LABEL[type], list: list.filter((p) => basketOf(p) === type) }))
-  .filter((g) => g.list.length > 0);
+  .map((key) => {
+    const inBasket = list.filter((p) => basketOf(p) === key);
+    return {
+      type: key,
+      label: BASKET_LABEL[key],
+      count: inBasket.length,
+      subs: TYPE_ORDER
+        .map((type) => ({ type, label: TYPE_PLURAL[type], list: inBasket.filter((p) => typeOfProject(p) === type) }))
+        .filter((g) => g.list.length > 0),
+    };
+  })
+  .filter((g) => g.count > 0);
 // The anchor of a project's block on this page, from the project's own address (its name where it has none).
 const anchorOf = (p) => `project-${(p.doc_url || p.name).replace(/^\/|\/$/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`;
 const hasWork = (p) => p.new.length || p.release.length || p.stalled.length || p.discussions.length;
@@ -125,8 +148,11 @@ export default function InternalCall() {
           <tbody>
             {groups.map((g) => (
               <React.Fragment key={g.type}>
-                <tr><th colSpan={6} className={styles.groupRow}>{g.label} <span className={styles.muted}>({g.list.length})</span></th></tr>
-            {g.list.map((p) => {
+                <tr><th colSpan={6} className={styles.groupRow}>{g.label} <span className={styles.muted}>({g.count})</span></th></tr>
+            {g.subs.map((sub) => (
+              <React.Fragment key={sub.type}>
+                <tr><th colSpan={6} className={styles.subRow}>{sub.label}</th></tr>
+            {sub.list.map((p) => {
               const prs = p.new.filter(isReview).length;
               const drafts = p.new.filter((i) => i.kind === 'pull' && i.draft).length;
               const issues = issuesOf(p);
@@ -143,6 +169,8 @@ export default function InternalCall() {
                 </tr>
               );
             })}
+              </React.Fragment>
+            ))}
               </React.Fragment>
             ))}
           </tbody>
@@ -162,10 +190,13 @@ export default function InternalCall() {
       {groups.map((g) => (
         <React.Fragment key={g.type}>
       <h3 className={styles.groupTitle}>{g.label}</h3>
-      {g.list.filter((p) => !hasWork(p)).length > 0 && (
-        <p className={styles.muted}>Nothing to look at: {g.list.filter((p) => !hasWork(p)).map((p) => p.name).join(', ')}.</p>
+      {g.subs.map((sub) => (
+        <React.Fragment key={sub.type}>
+      <h4 className={styles.subTitle}>{sub.label}</h4>
+      {sub.list.filter((p) => !hasWork(p)).length > 0 && (
+        <p className={styles.muted}>Nothing to look at: {sub.list.filter((p) => !hasWork(p)).map((p) => p.name).join(', ')}.</p>
       )}
-      {g.list.filter(hasWork).map((p) => {
+      {sub.list.filter(hasWork).map((p) => {
         const prs = p.new.filter(isReview);
         const issues = issuesOf(p);
         const discs = discItems(p);
@@ -235,6 +266,8 @@ export default function InternalCall() {
           </section>
         );
       })}
+        </React.Fragment>
+      ))}
         </React.Fragment>
       ))}
     </div>
