@@ -54,6 +54,18 @@
       "pushed_at": "2026-10-19",
       "url": "https://github.com/5G-MAG/flute-conformance-validator"
     },
+    "glTF-Validator": {
+      "description": "Tool to validate glTF assets.",
+      "license": "Apache-2.0",
+      "language": null,
+      "topics": [],
+      "homepage": null,
+      "private": false,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-20",
+      "url": "https://github.com/5G-MAG/glTF-Validator"
+    },
     "netemu-dashboard": {
       "description": "Network Emulator Dashboard: web UI and REST API for network impairment profiles with the 6G-Testbed netemu",
       "license": null,
@@ -235,6 +247,18 @@
       "default_branch": "main",
       "pushed_at": "2026-10-19",
       "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework"
+    },
+    "rt-avatar-bar": {
+      "description": "Base Avatar Repository  - the service that stores and controls distribution of user base avatar models ",
+      "license": null,
+      "language": "Python",
+      "topics": [],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-10-15",
+      "url": "https://github.com/5G-MAG/rt-avatar-bar"
     },
     "rt-avatar-call": {
       "description": "Avatar Call",
@@ -980,11 +1004,6 @@
       "private": false
     },
     {
-      "name": "glTF-Validator",
-      "description": "Tool to validate glTF assets.",
-      "private": false
-    },
-    {
       "name": "Requests-for-Feedback",
       "description": "Publications related to 5G-MAG's areas of work which are open for comments from the community.",
       "private": false
@@ -992,11 +1011,6 @@
     {
       "name": "Roadmaps",
       "description": null,
-      "private": true
-    },
-    {
-      "name": "rt-avatar-bar",
-      "description": "Base Avatar Repository  - the service that stores and controls distribution of user base avatar models ",
       "private": true
     },
     {

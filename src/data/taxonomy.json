@@ -201,7 +201,8 @@
         "rt-xr-maf-native",
         "rt-xr-content",
         "rt-xr-blender-exporter",
-        "rt-xr-gITFast"
+        "rt-xr-gITFast",
+        "glTF-Validator"
       ],
       "releases_slug": "#repositories--releases",
       "contributors": [
@@ -524,6 +525,7 @@
         "rt-avatar-content",
         "rt-avatar-call",
         "rt-avatar-unity-tracker",
+        "rt-avatar-bar",
         "rt-3gpp-swap"
       ],
       "releases_slug": "#repositories--releases",
@@ -1770,6 +1772,21 @@
         "is_auxiliary": false
       },
       {
+        "repo_slug": "rt-avatar-bar",
+        "display_name": "Base Avatar Repository",
+        "description": "The Base Avatar Repository (BAR): the service that stores a user's base avatar models and releases them, scoped to what a call is entitled to see, following 3GPP TS 26.264 and TR 26.813.",
+        "repo_url": "https://github.com/5G-MAG/rt-avatar-bar",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
         "repo_slug": "rt-3gpp-swap",
         "display_name": "3GPP SWAP Protocol",
         "description": "Reference Tools: This repository is related to \"Conversational Avatar Real-Time Communications\"",
@@ -2209,6 +2226,24 @@
         ],
         "public": true,
         "is_auxiliary": false
+      },
+      {
+        "repo_slug": "glTF-Validator",
+        "display_name": "glTF Validator",
+        "description": "A fork of the MPEG Group's glTF Validator, a tool that checks glTF assets. The XR Reference Tools depend on it to validate scenes that use the MPEG extensions.",
+        "repo_url": "https://github.com/5G-MAG/glTF-Validator",
+        "branch": "main",
+        "license": "Apache-2.0",
+        "standards": [
+          "MPEG (ISO/IEC)",
+          "Khronos"
+        ],
+        "dependencies": [
+          "glTF"
+        ],
+        "software": [],
+        "public": true,
+        "is_auxiliary": true
       }
     ],
     "developer-tools": [
