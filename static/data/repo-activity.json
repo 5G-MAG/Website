@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22 02:02 UTC",
+  "updated_at": "2026-10-23 02:06 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -41,7 +41,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -51,7 +51,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-21",
-              "updated_at": "2026-10-21",
+              "updated_at": "2026-10-22",
               "base": "main"
             },
             {
@@ -61,17 +61,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-03",
-              "updated_at": "2026-10-03",
-              "base": "development"
-            },
-            {
-              "number": 52,
-              "title": "Fixing instructions",
-              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-05-21",
-              "updated_at": "2026-06-18",
+              "updated_at": "2026-10-22",
               "base": "development"
             }
           ],
@@ -134,16 +124,16 @@
               "last_work_commit": "2026-05-26"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
+            },
+            {
               "name": "docs/readme-fixes",
               "default": false,
               "last_commit": "2026-10-21",
               "last_work_commit": "2026-10-21"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-05-26"
             },
             {
               "name": "fix/apply-new-format",
@@ -177,7 +167,7 @@
           "description": "5GMS Application Function (AF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
@@ -409,8 +399,8 @@
             {
               "name": "Feature/DCAF",
               "default": false,
-              "last_commit": "2026-10-21",
-              "last_work_commit": "2026-10-21"
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
             },
             {
               "name": "development",
@@ -1245,10 +1235,10 @@
               "number": 46,
               "title": "Add standalone recipe-cmmf docker-compose recipe with CMMF Entry Point and HTTPS/HTTP2 support",
               "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/46",
-              "draft": true,
+              "draft": false,
               "author": "sygupt",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-15",
+              "updated_at": "2026-10-22",
               "base": "feature/cmmf-dev/docker-example"
             }
           ],
@@ -4610,7 +4600,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -4620,7 +4610,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-09",
-              "updated_at": "2026-10-21",
+              "updated_at": "2026-10-22",
               "base": "development"
             }
           ],
@@ -4764,13 +4754,13 @@
               "last_work_commit": "2026-07-03"
             },
             {
-              "name": "development",
+              "name": "feature/mbs5-announcement",
               "default": false,
-              "last_commit": "2026-10-21",
-              "last_work_commit": "2026-10-21"
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
             },
             {
-              "name": "feature/mbs5-announcement",
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-21",
               "last_work_commit": "2026-10-21"
@@ -4795,9 +4785,19 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-07-03",
           "pulls": [
+            {
+              "number": 84,
+              "title": "mbstf: serve every unicast packet session on the configured packetIngest port",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/84",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-22",
+              "updated_at": "2026-10-22",
+              "base": "development"
+            },
             {
               "number": 81,
               "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
@@ -4810,6 +4810,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 83,
+              "title": "MBSTF: use after free when a Distribution Session create is refused after the session was built",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/83",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-22",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 82,
               "title": "Update development to Open5GS v2.8.0 (improvements) for the new release line",
@@ -4853,6 +4863,16 @@
                 "enhancement",
                 "MBSTF"
               ]
+            },
+            {
+              "number": 27,
+              "title": "MBSTF: HTTP Push configuration for Docker",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/27",
+              "author": "davidjwbbc",
+              "created_at": "2025-08-01",
+              "labels": [
+                "enhancement"
+              ]
             }
           ],
           "branches": [
@@ -4861,6 +4881,12 @@
               "default": true,
               "last_commit": "2026-07-03",
               "last_work_commit": "2026-07-03"
+            },
+            {
+              "name": "fix/mbstf-packet-fixed-port",
+              "default": false,
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
             },
             {
               "name": "development",
@@ -4995,7 +5021,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-10-02",
           "pulls": [
             {
@@ -5005,7 +5031,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
-              "updated_at": "2026-10-09",
+              "updated_at": "2026-10-22",
               "base": "development"
             }
           ],
@@ -5027,6 +5053,12 @@
               "last_work_commit": "2026-09-20"
             },
             {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
@@ -5037,12 +5069,6 @@
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-09",
-              "last_work_commit": "2026-10-09"
             },
             {
               "name": "feature/mbsdeployment",
@@ -5762,7 +5788,7 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-22",
           "latest_release": null,
           "pulls": [
             {
@@ -5793,6 +5819,12 @@
               "default": true,
               "last_commit": "2026-04-24",
               "last_work_commit": "2026-04-24"
+            },
+            {
+              "name": "sa1-media-scenarios",
+              "default": false,
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
             },
             {
               "name": "fix/apply-new-format",
@@ -6091,7 +6123,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-22",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -6101,7 +6133,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-21",
-              "updated_at": "2026-10-21",
+              "updated_at": "2026-10-22",
               "base": "main"
             },
             {
@@ -6111,17 +6143,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-03",
-              "updated_at": "2026-10-03",
-              "base": "development"
-            },
-            {
-              "number": 52,
-              "title": "Fixing instructions",
-              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-05-21",
-              "updated_at": "2026-06-18",
+              "updated_at": "2026-10-22",
               "base": "development"
             }
           ],
@@ -6184,16 +6206,16 @@
               "last_work_commit": "2026-05-26"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-22",
+              "last_work_commit": "2026-10-22"
+            },
+            {
               "name": "docs/readme-fixes",
               "default": false,
               "last_commit": "2026-10-21",
               "last_work_commit": "2026-10-21"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-05-26"
             },
             {
               "name": "fix/apply-new-format",

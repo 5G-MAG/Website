@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22 02:02 UTC",
+  "updated_at": "2026-10-23 02:06 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -25,7 +25,7 @@
           "number": 46,
           "title": "Add standalone recipe-cmmf docker-compose recipe with CMMF Entry Point and HTTPS/HTTP2 support",
           "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/46",
-          "draft": true,
+          "draft": false,
           "author_login": "sygupt",
           "author_avatar": "https://avatars.githubusercontent.com/u/268783277?v=4",
           "created_at": "2026-10-08",
@@ -94,19 +94,6 @@
           "author_login": "shilinding",
           "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
           "created_at": "2026-07-02",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application",
-          "branch": null,
-          "number": 52,
-          "title": "Fixing instructions",
-          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-05-21",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -410,6 +397,19 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
+        {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 84,
+          "title": "mbstf: serve every unicast packet session on the configured packetIngest port",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/84",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-22",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbs-transport-function",
           "branch": null,
@@ -1130,19 +1130,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-03",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application",
-          "branch": null,
-          "number": 52,
-          "title": "Fixing instructions",
-          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-05-21",
           "last_comment_by": null,
           "last_comment_date": null
         }
