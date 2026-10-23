@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T21:08:16.448Z",
+  "updated_at": "2026-10-23T09:25:10.900Z",
   "posts": [
     {
       "title": "5G-MAG Updates the 3GPP PCG on Its Work from Specifications to Running Code",
@@ -39,7 +39,7 @@
         "Announcement"
       ],
       "image": "/assets/images/news/ntn-forum-2026-recap.jpg",
-      "excerpt": "5G-MAG took centre stage at the European Space Agency's (ESA) NTN Forum Colloquium & General Assembly, bringing an end-to-end demonstration of its open-source 3GPP Release 18 [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) reference tools."
+      "excerpt": "5G-MAG took part in the European Space Agency's (ESA) NTN Forum Colloquium & General Assembly, bringing an end-to-end demonstration of its open-source 3GPP Release 18 [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) reference tools."
     },
     {
       "title": "5G-MAG at MPEG/ITU Workshop: driving open-source development for faster technology deployment",
