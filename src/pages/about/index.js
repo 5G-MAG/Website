@@ -21,7 +21,7 @@ const ABOUT_ICON_PATH = (
 );
 
 const HOW_WE_WORK = [
-  { title: 'Member-driven', body: 'We add resources to our members’ efforts.' },
+  { title: 'Member-driven', body: 'We add resources to our members’ efforts, boosting and scaling their projects.' },
   { title: 'Open', body: 'Open to the industry to engage and collaborate.' },
   { title: 'Agile', body: 'At the pace of standards and the market.' },
   { title: 'Pragmatic', body: 'With actionable activities and outcomes.' },

@@ -15,6 +15,8 @@ import {
   FACT_SDO_INPUTS,
   FACT_REFERENCE_TOOLS,
   FACT_TESTBEDS,
+  PROJECT_COUNT,
+  AREA_COUNT,
 } from '@site/src/data/facts';
 import { MEMBERS } from '@site/src/data/members';
 import { BENEFITS } from '@site/src/data/membershipBenefits';
@@ -83,6 +85,25 @@ export default function Membership() {
             "I think what you get should be the first thing to show"),
             ahead of the stats block: the value proposition leads, then
             the proof. */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Boosting and scaling our members&apos; projects</h2>
+            <p className={styles.leadParagraph}>
+              5G-MAG works with its members on {PROJECT_COUNT} projects across {AREA_COUNT} areas. Members set the
+              priorities. Together we boost and scale their projects: adding development resources where they are
+              needed, hosting tools and testbeds, and giving every project a home where it can grow.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem', marginTop: '1.5rem' }}>
+              <Link className="button button--primary" to="#request-membership">
+                Bring your project
+              </Link>
+              <Link className="button button--outline button--primary" to="/tech">
+                See all projects
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What you get that you won&apos;t get alone</h2>

@@ -8,7 +8,7 @@
 import siteStats from '@site/static/data/site-stats.json';
 import communityStats from '@site/static/data/community-stats.json';
 import notOnHubDashboard from '@site/src/data/notOnHubDashboard.json';
-import { ALL_PROJECTS } from '@site/src/data/baskets';
+import { ALL_PROJECTS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import { communityTotals } from '@site/src/utils/communityStats';
 
 const fmt = (n) => n.toLocaleString('en-US');
@@ -32,6 +32,9 @@ export const FACT_VIEWS = { value: fmt(COMMUNITY.views), label: 'Repository page
 export const COMMUNITY_UPDATED = communityStats.updated_at;
 export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issues raised on specifications through GitHub' };
 export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
+// The projects and areas the homepage tiles and Where We Stand show (one source, the taxonomy).
+export const PROJECT_COUNT = WHERE_WE_STAND_ROWS.reduce((n, b) => n + b.projects.length, 0);
+export const AREA_COUNT = WHERE_WE_STAND_ROWS.filter((b) => b.projects.length > 0).length;
 export const FACT_REFERENCE_TOOLS = { value: fmt(siteStats.referenceTools), label: 'Reference Tools projects' };
 export const FACT_TESTBEDS = { value: fmt(siteStats.testbeds), label: 'Testbeds and Evaluation Frameworks' };
 export const FACT_VALIDATION_TOOLS = { value: fmt(siteStats.validationTools), label: 'Validation Tools' };
