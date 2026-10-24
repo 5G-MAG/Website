@@ -26,7 +26,13 @@ function extractExcerpt(body) {
   const lines = beforeTruncate
     .split('\n')
     .filter((line) => line.trim() && !line.trim().startsWith('import '));
-  return lines.join(' ').replace(/\s+/g, ' ').trim();
+  // Markdown links read as their text, and emphasis marks are dropped.
+  return lines
+    .join(' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[*`]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function main() {
