@@ -494,9 +494,6 @@ export default function HeroSlideshow() {
             aria-label={slideLabel(s)}
             title={slideLabel(s)}
           >
-            {i === active && (
-              <span className={styles.slideDotLabel}>{slideLabel(s)}</span>
-            )}
           </button>
         ))}
       </div>

@@ -3,7 +3,7 @@
 .slideshow {
   position: relative;
   overflow: hidden;
-  height: 490px;
+  height: 540px;
 }
 
 .slide {
@@ -150,8 +150,8 @@
 .slideCardHeader {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem 0.9rem;
+  gap: 0.75rem;
+  padding: 1.4rem 1.75rem 1.1rem;
   background: linear-gradient(
     135deg,
     var(--ifm-color-primary-darkest) 0%,
@@ -209,7 +209,7 @@
   display: flex;
   flex: 1;
   min-height: 0;
-  padding: 1rem 1.5rem 0.9rem;
+  padding: 1.25rem 1.75rem 1.1rem;
   gap: 0;
   overflow: hidden;
 }
@@ -241,7 +241,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1.5rem 0.85rem;
+  padding: 1rem 1.75rem 1.1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -459,17 +459,7 @@
 .slideDotActive {
   background: #fff;
   border-color: #fff;
-  min-width: 13px;
-  padding: 0 9px;
-}
-
-.slideDotLabel {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary-darkest);
-  white-space: nowrap;
-  line-height: 1;
-  letter-spacing: 0.03em;
+  min-width: 30px;
 }
 
 @media (max-width: 768px) {
@@ -517,7 +507,15 @@
   }
   .slideOverlayCards {
     align-items: flex-start;
-    padding: 1rem 0;
+    padding: 1rem 0 3.25rem;
+  }
+  /* The pager stays on the slide, over the same background as the card; the
+     slide leaves room for it, so it never covers the card. */
+  .slideDots {
+    bottom: 1rem;
+  }
+  .slideOverlay {
+    padding-bottom: 3.25rem;
   }
   /* Single column -- the desktop 3-row/N-column grid (grid-auto-flow:
      column with a fixed row count) never collapses on its own at narrow
