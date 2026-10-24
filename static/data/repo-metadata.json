@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23",
+  "updated_at": "2026-10-24",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -63,7 +63,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-20",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/glTF-Validator"
     },
     "netemu-dashboard": {
@@ -285,7 +285,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/rt-avatar-content"
     },
     "rt-avatar-unity-tracker": {
@@ -672,7 +672,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-22",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/rt-mbs-function"
     },
     "rt-mbs-transport-function": {
@@ -852,7 +852,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/rt-xr-content"
     },
     "rt-xr-gITFast": {
@@ -866,7 +866,7 @@
       "private": false,
       "archived": false,
       "default_branch": "rt-xr/development",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/rt-xr-gITFast"
     },
     "rt-xr-maf-native": {
@@ -880,7 +880,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-23",
       "url": "https://github.com/5G-MAG/rt-xr-maf-native"
     },
     "rt-xr-unity-player": {

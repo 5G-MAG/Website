@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23",
+  "updated_at": "2026-10-24",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -293,8 +293,8 @@
     "rt-mbs-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-21",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-10-23",
+      "open_pulls_last_year": 0
     },
     "rt-mbs-transport-function": {
       "status": "Actively Maintained",
@@ -371,19 +371,19 @@
     "rt-xr-content": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2025-06-20",
-      "open_pulls_last_year": 3
+      "last_work_commit": "2026-10-23",
+      "open_pulls_last_year": 2
     },
     "rt-xr-gITFast": {
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2025-10-28",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 2
     },
     "rt-xr-maf-native": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2025-08-04",
+      "last_work_commit": "2026-10-23",
       "open_pulls_last_year": 1
     },
     "rt-xr-unity-player": {

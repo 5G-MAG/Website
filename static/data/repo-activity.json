@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-23 09:08 UTC",
+  "updated_at": "2026-10-24 02:05 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1103,31 +1103,6 @@
           ]
         },
         {
-          "repo": "rt-media-origin",
-          "url": "https://github.com/5G-MAG/rt-media-origin",
-          "description": "Media Origin Server and Packager",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-20",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            }
-          ]
-        },
-        {
           "repo": "rt-5gc-service-consumers",
           "url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
           "description": "5G Core Service Consumers",
@@ -1582,220 +1557,6 @@
               "default": false,
               "last_commit": "2025-09-22",
               "last_work_commit": "2025-09-22"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbms-application",
-          "url": "https://github.com/5G-MAG/rt-mbms-application",
-          "description": "MBMS-Aware Application",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-07-26",
-              "last_work_commit": "2026-07-26"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbms-application-provider",
-          "url": "https://github.com/5G-MAG/rt-mbms-application-provider",
-          "description": "5G Broadcast Application Provider",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-08-05"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-08-05",
-              "last_work_commit": "2026-08-05"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbms-bmsc",
-          "url": "https://github.com/5G-MAG/rt-mbms-bmsc",
-          "description": "Broadcast-Multicast Service Center (BM-SC)",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-08-05"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-10-02",
-              "last_work_commit": "2026-10-02"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-08-05",
-              "last_work_commit": "2026-08-05"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbms-client",
-          "url": "https://github.com/5G-MAG/rt-mbms-client",
-          "description": "MBMS Client",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 2,
-              "title": "client: acquire the Service Announcement by every client-side method of TS 26.346",
-              "url": "https://github.com/5G-MAG/rt-mbms-client/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-30",
-              "updated_at": "2026-09-30",
-              "base": "development"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-30"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "gh-pages",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "fix/restore-ber",
-              "default": false,
-              "last_commit": "2026-09-30",
-              "last_work_commit": "2026-09-30"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-07-30",
-              "last_work_commit": "2026-07-30"
-            },
-            {
-              "name": "route-gpac",
-              "default": false,
-              "last_commit": "2021-12-08",
-              "last_work_commit": "2021-12-08"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbms-gw",
-          "url": "https://github.com/5G-MAG/rt-mbms-gw",
-          "description": "MBMS Gateway",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-30",
-              "last_work_commit": "2026-09-30"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -2759,43 +2520,6 @@
       "doc_url": "/reference-tools/emergency-alerts/",
       "repos": [
         {
-          "repo": "rt-mbms-application",
-          "url": "https://github.com/5G-MAG/rt-mbms-application",
-          "description": "MBMS-Aware Application",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-07-26",
-              "last_work_commit": "2026-07-26"
-            }
-          ]
-        },
-        {
           "repo": "rt-mbms-tx",
           "url": "https://github.com/5G-MAG/rt-mbms-tx",
           "description": "5G Broadcast Transmitter",
@@ -3081,37 +2805,6 @@
               "last_work_commit": "2025-04-08"
             }
           ]
-        },
-        {
-          "repo": "rt-pws-cbc",
-          "url": "https://github.com/5G-MAG/rt-pws-cbc",
-          "description": "Cell Broadcast Centre (CBC)",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "development",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-09-23"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "main",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            }
-          ]
         }
       ]
     },
@@ -3268,16 +2961,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-14",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            },
-            {
-              "number": 41,
-              "title": "Reference scenes follow ISO/IEC 23090-14:2024(E)",
-              "url": "https://github.com/5G-MAG/rt-xr-content/pull/41",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
               "updated_at": "2026-10-23",
               "base": "development"
             },
@@ -3434,13 +3117,13 @@
               "last_work_commit": "2026-10-23"
             },
             {
-              "name": "feature/scene-validator",
+              "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-10-23",
+              "last_work_commit": "2026-10-23"
             },
             {
-              "name": "feature/xr_smartphone_app",
+              "name": "feature/scene-validator",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
@@ -3483,7 +3166,7 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-23",
           "latest_release": null,
           "pulls": [
             {
@@ -3498,12 +3181,12 @@
             },
             {
               "number": 15,
-              "title": "docs: apply the 5G-MAG README format",
+              "title": "docs: add FORK.md describing what this fork changes",
               "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/15",
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-10-23",
               "base": "rt-xr/development"
             },
             {
@@ -3526,13 +3209,13 @@
               "last_work_commit": "2025-10-28"
             },
             {
-              "name": "feature/xr_smartphone_app",
+              "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-10-23",
+              "last_work_commit": "2026-10-23"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "feature/xr_smartphone_app",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
@@ -3647,7 +3330,7 @@
           "description": "XR Media Pipelines",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-23",
           "latest_release": null,
           "pulls": [
             {
@@ -3657,16 +3340,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            },
-            {
-              "number": 21,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/21",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
               "updated_at": "2026-10-19",
               "base": "development"
             }
@@ -3805,8 +3478,14 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-08-04",
-              "last_work_commit": "2025-08-04"
+              "last_commit": "2026-10-23",
+              "last_work_commit": "2026-10-23"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-23",
+              "last_work_commit": "2026-10-23"
             },
             {
               "name": "feature/xr_smartphone_app",
@@ -3825,12 +3504,6 @@
               "default": false,
               "last_commit": "2025-10-01",
               "last_work_commit": "2025-10-01"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2025-08-04",
-              "last_work_commit": "2025-08-04"
             }
           ]
         },
@@ -4519,7 +4192,7 @@
           "issues": [
             {
               "number": 54,
-              "title": "Align bbc-patches to a current upstream open5gs release",
+              "title": "Audit bbc-patches against a current upstream open5gs release",
               "url": "https://github.com/5G-MAG/open5gs/issues/54",
               "author": "jordijoangimenez",
               "created_at": "2026-09-22",
@@ -4999,211 +4672,14 @@
           ]
         },
         {
-          "repo": "rt-mbs-application",
-          "url": "https://github.com/5G-MAG/rt-mbs-application",
-          "description": "MBS-Aware Application",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 2,
-              "title": "Fix playable entry-point discovery and a Service Announcement UI overlap",
-              "url": "https://github.com/5G-MAG/rt-mbs-application/pull/2",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "updated_at": "2026-09-30",
-              "base": "development"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-07-28",
-              "last_work_commit": "2026-07-28"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-28"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-09-30",
-              "last_work_commit": "2026-09-30"
-            },
-            {
-              "name": "backup/pre-rewrite-20260907",
-              "default": false,
-              "last_commit": "2026-08-11",
-              "last_work_commit": "2026-08-11"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbs-application-provider",
-          "url": "https://github.com/5G-MAG/rt-mbs-application-provider",
-          "description": "MBS Application Provider",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 3,
-              "title": "Fix TS 29.580 compliance gaps in the User Service tree UI",
-              "url": "https://github.com/5G-MAG/rt-mbs-application-provider/pull/3",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "updated_at": "2026-10-08",
-              "base": "development"
-            }
-          ],
-          "issues": [
-            {
-              "number": 1,
-              "title": "Installation / Testing Findings",
-              "url": "https://github.com/5G-MAG/rt-mbs-application-provider/issues/1",
-              "author": "dsilhavy",
-              "created_at": "2026-07-31",
-              "labels": [
-                "bug",
-                "documentation"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-07-28",
-              "last_work_commit": "2026-07-28"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-28"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-08",
-              "last_work_commit": "2026-10-08"
-            },
-            {
-              "name": "backup/pre-rewrite-20260907",
-              "default": false,
-              "last_commit": "2026-08-09",
-              "last_work_commit": "2026-08-09"
-            }
-          ]
-        },
-        {
-          "repo": "rt-mbs-client",
-          "url": "https://github.com/5G-MAG/rt-mbs-client",
-          "description": "MBS Client",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 3,
-              "title": "Fix MBS Broadcast reception on software TUN interfaces + Service Announcement bootstrap",
-              "url": "https://github.com/5G-MAG/rt-mbs-client/pull/3",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "updated_at": "2026-10-07",
-              "base": "development"
-            }
-          ],
-          "issues": [
-            {
-              "number": 1,
-              "title": "Installation / Testing Findings",
-              "url": "https://github.com/5G-MAG/rt-mbs-client/issues/1",
-              "author": "dsilhavy",
-              "created_at": "2026-07-31",
-              "labels": [
-                "bug",
-                "documentation"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-07-31",
-              "last_work_commit": "2026-07-31"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-07-31"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-07",
-              "last_work_commit": "2026-10-07"
-            },
-            {
-              "name": "backup/pre-rewrite-20260907",
-              "default": false,
-              "last_commit": "2026-08-11",
-              "last_work_commit": "2026-08-11"
-            }
-          ]
-        },
-        {
           "repo": "rt-mbs-function",
           "url": "https://github.com/5G-MAG/rt-mbs-function",
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-22",
+          "pushed_at": "2026-10-23",
           "latest_release": "2026-07-03",
-          "pulls": [
-            {
-              "number": 69,
-              "title": "mbsf: MBS5 answers carry Cache-Control max-age, and a 405 carries Allow",
-              "url": "https://github.com/5G-MAG/rt-mbs-function/pull/69",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-09",
-              "updated_at": "2026-10-22",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 76,
@@ -5344,16 +4820,10 @@
               "last_work_commit": "2026-07-03"
             },
             {
-              "name": "feature/mbs5-announcement",
-              "default": false,
-              "last_commit": "2026-10-22",
-              "last_work_commit": "2026-10-22"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-21",
-              "last_work_commit": "2026-10-21"
+              "last_commit": "2026-10-23",
+              "last_work_commit": "2026-10-23"
             },
             {
               "name": "fix/mbsf-usac-create-retry",
@@ -5519,201 +4989,6 @@
               "default": false,
               "last_commit": "2025-07-25",
               "last_work_commit": "2025-07-25"
-            }
-          ]
-        },
-        {
-          "repo": "rt-media-origin",
-          "url": "https://github.com/5G-MAG/rt-media-origin",
-          "description": "Media Origin Server and Packager",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-20",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            }
-          ]
-        },
-        {
-          "repo": "srsRAN_4G_mbs",
-          "url": "https://github.com/5G-MAG/srsRAN_4G_mbs",
-          "description": "UE with support for MBS",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": "2026-07-14",
-          "pulls": [
-            {
-              "number": 3,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/srsRAN_4G_mbs/pull/3",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "5mbs-development"
-            },
-            {
-              "number": 2,
-              "title": "Fix MBS Broadcast reception: concurrent-session support, MCCH phase-lock, PDCP bootstrap",
-              "url": "https://github.com/5G-MAG/srsRAN_4G_mbs/pull/2",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "updated_at": "2026-10-02",
-              "base": "5mbs-development"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "5mbs",
-              "default": true,
-              "last_commit": "2026-07-07",
-              "last_work_commit": "2026-07-07"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-09-18",
-              "last_work_commit": "2026-09-18"
-            },
-            {
-              "name": "backup/pre-rewrite-20260907",
-              "default": false,
-              "last_commit": "2026-08-12",
-              "last_work_commit": "2026-08-12"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2026-02-25",
-              "last_work_commit": "2026-02-25"
-            },
-            {
-              "name": "master",
-              "default": false,
-              "last_commit": "2024-01-31",
-              "last_work_commit": "2024-01-31"
-            },
-            {
-              "name": "pws-enb",
-              "default": false,
-              "last_commit": "2023-06-19",
-              "last_work_commit": "2023-06-19"
-            },
-            {
-              "name": "fembms",
-              "default": false,
-              "last_commit": "2022-02-08",
-              "last_work_commit": "2022-02-08"
-            }
-          ]
-        },
-        {
-          "repo": "srsRAN_Project_mbs",
-          "url": "https://github.com/5G-MAG/srsRAN_Project_mbs",
-          "description": "gNodeB with support for MBS",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": "2026-07-14",
-          "pulls": [
-            {
-              "number": 2,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "5mbs-development"
-            },
-            {
-              "number": 1,
-              "title": "Fix MBS Broadcast: concurrent-session LCID collision, MCCH/MTCH bugs, and crashes",
-              "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/1",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "updated_at": "2026-10-07",
-              "base": "5mbs-development"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2025-07-28",
-              "last_work_commit": "2025-07-28"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-07",
-              "last_work_commit": "2026-10-07"
-            },
-            {
-              "name": "backup/pre-rewrite-20260907",
-              "default": false,
-              "last_commit": "2026-08-12",
-              "last_work_commit": "2026-08-12"
-            },
-            {
-              "name": "5mbs",
-              "default": false,
-              "last_commit": "2025-10-02",
-              "last_work_commit": "2025-10-02"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2025-10-02",
-              "last_work_commit": "2025-10-02"
-            },
-            {
-              "name": "upv",
-              "default": false,
-              "last_commit": "2025-09-26",
-              "last_work_commit": "2025-09-26"
-            },
-            {
-              "name": "upv-development",
-              "default": false,
-              "last_commit": "2025-09-26",
-              "last_work_commit": "2025-09-26"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2023-07-28",
-              "last_work_commit": "2023-07-28"
             }
           ]
         },
@@ -6048,31 +5323,6 @@
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
       "repos": [
-        {
-          "repo": "rt-media-origin",
-          "url": "https://github.com/5G-MAG/rt-media-origin",
-          "description": "Media Origin Server and Packager",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-20",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            }
-          ]
-        },
         {
           "repo": "rt-v3c-content",
           "url": "https://github.com/5G-MAG/rt-v3c-content",
@@ -6523,18 +5773,6 @@
               "last_work_commit": "2025-09-26"
             }
           ]
-        },
-        {
-          "repo": "rt-v3c-examples",
-          "url": "https://github.com/5G-MAG/rt-v3c-examples",
-          "description": "V3C Tools and Examples",
-          "auxiliary": true,
-          "private": true,
-          "pushed_at": "2025-02-27",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": []
         }
       ]
     },
@@ -6729,410 +5967,12 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "doc_url": "/reference-tools/avatar/",
-      "repos": [
-        {
-          "repo": "rt-3gpp-swap",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap",
-          "description": "3GPP SWAP Protocol",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": "2026-10-16",
-          "pulls": [],
-          "issues": [
-            {
-              "number": 8,
-              "title": "Endpoint selection isn't uniformly random, misapplies qos/processing deprioritization",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/8",
-              "author": "nlsdvl",
-              "created_at": "2026-09-17",
-              "labels": [
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 7,
-              "title": "No enforcement point exists yet for JSEP preliminary-answer suppression",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/7",
-              "author": "nlsdvl",
-              "created_at": "2026-09-17",
-              "labels": [
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 4,
-              "title": "RFC 7807 error details are built, then discarded",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/4",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-14",
-              "labels": [
-                "bug",
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 2,
-              "title": "Close acknowledgment is rejected by the server's own validator — breaks call teardown",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/2",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-14",
-              "labels": [
-                "bug"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29",
-              "last_work_commit": "2026-09-29"
-            }
-          ]
-        },
-        {
-          "repo": "rt-avatar-bar",
-          "url": "https://github.com/5G-MAG/rt-avatar-bar",
-          "description": "Base Avatar Repository  - the service that stores and controls distribution of user base avatar models ",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-15",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-15",
-              "last_work_commit": "2026-10-15"
-            }
-          ]
-        },
-        {
-          "repo": "rt-avatar-call",
-          "url": "https://github.com/5G-MAG/rt-avatar-call",
-          "description": "Avatar Call",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": "2026-10-16",
-          "pulls": [],
-          "issues": [
-            {
-              "number": 49,
-              "title": "Add support for ARF using gaussian splatting",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/49",
-              "author": "nlsdvl",
-              "created_at": "2026-09-18",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 48,
-              "title": "Add support for the updated config AAU format",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/48",
-              "author": "nlsdvl",
-              "created_at": "2026-09-18",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 47,
-              "title": "Camera framer configuration",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/47",
-              "author": "nlsdvl",
-              "created_at": "2026-09-04",
-              "labels": [
-                "documentation"
-              ]
-            },
-            {
-              "number": 44,
-              "title": "Send AAU config when a new remote peer connects",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/44",
-              "author": "nlsdvl",
-              "created_at": "2026-07-24",
-              "labels": []
-            },
-            {
-              "number": 38,
-              "title": "Improve testing when reconnect is set to true",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/38",
-              "author": "nlsdvl",
-              "created_at": "2026-06-25",
-              "labels": []
-            },
-            {
-              "number": 37,
-              "title": "UnityARF does not handle sparse animation samples",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/37",
-              "author": "phgosselin-interdigital",
-              "created_at": "2026-06-24",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 36,
-              "title": "speed up call setup by sending SDP updates on new ICE candidates",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/36",
-              "author": "nlsdvl",
-              "created_at": "2026-06-24",
-              "labels": []
-            },
-            {
-              "number": 33,
-              "title": "Add UI to avatar-call",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/33",
-              "author": "nlsdvl",
-              "created_at": "2026-06-05",
-              "labels": []
-            },
-            {
-              "number": 30,
-              "title": "reference to animation mapper lost when a new call is started",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/30",
-              "author": "nlsdvl",
-              "created_at": "2026-06-02",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 25,
-              "title": "Echo cancellation for local demos ?",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/25",
-              "author": "phgosselin-interdigital",
-              "created_at": "2026-05-12",
-              "labels": []
-            },
-            {
-              "number": 19,
-              "title": "Implement an avatar base repository",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/19",
-              "author": "nlsdvl",
-              "created_at": "2026-03-20",
-              "labels": []
-            },
-            {
-              "number": 18,
-              "title": "Implement avatar call negotiation",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/18",
-              "author": "nlsdvl",
-              "created_at": "2026-03-20",
-              "labels": []
-            },
-            {
-              "number": 17,
-              "title": "Implement urn:3gpp:avatar:v1:animation:control commands",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/17",
-              "author": "nlsdvl",
-              "created_at": "2026-03-20",
-              "labels": []
-            },
-            {
-              "number": 15,
-              "title": "AndroidXR animation unit producer supporting face animation & upper body",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/15",
-              "author": "nlsdvl",
-              "created_at": "2026-03-20",
-              "labels": []
-            },
-            {
-              "number": 13,
-              "title": "Tutorial to create a custom avatar",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/13",
-              "author": "nlsdvl",
-              "created_at": "2026-03-20",
-              "labels": []
-            },
-            {
-              "number": 6,
-              "title": "ARF and OpenXR bind pose incompatibility for body animation",
-              "url": "https://github.com/5G-MAG/rt-avatar-call/issues/6",
-              "author": "nlsdvl",
-              "created_at": "2026-01-16",
-              "labels": []
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/unityarf-1.1.0.155",
-              "default": false,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "feature/android-xr",
-              "default": false,
-              "last_commit": "2026-10-01",
-              "last_work_commit": "2026-10-01"
-            },
-            {
-              "name": "backup/unityarf-1.1.0.155-pre-rebase-20261009",
-              "default": false,
-              "last_commit": "2026-09-25",
-              "last_work_commit": "2026-09-25"
-            }
-          ]
-        },
-        {
-          "repo": "rt-avatar-content",
-          "url": "https://github.com/5G-MAG/rt-avatar-content",
-          "description": "Content for Avatar Call",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-23",
-          "latest_release": "2026-10-16",
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-23",
-              "last_work_commit": "2026-10-23"
-            },
-            {
-              "name": "feature/unityarf-1.1.0.155",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "mouth",
-              "default": false,
-              "last_commit": "2026-06-20",
-              "last_work_commit": "2026-06-20"
-            }
-          ]
-        },
-        {
-          "repo": "rt-avatar-unity-tracker",
-          "url": "https://github.com/5G-MAG/rt-avatar-unity-tracker",
-          "description": "Avatar Unity Tracker",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            }
-          ]
-        }
-      ]
+      "repos": []
     },
     {
       "name": "AI/ML Evaluation Framework",
       "doc_url": "/testbeds/ai-ml/",
-      "repos": [
-        {
-          "repo": "rt-ai-ml-evaluation-framework",
-          "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework",
-          "description": "AI and ML Evaluation Framework",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 4,
-              "title": "Bit incremental transfer",
-              "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/pull/4",
-              "draft": false,
-              "author": "hrtavakoli",
-              "created_at": "2026-03-24",
-              "updated_at": "2026-03-25",
-              "base": "main"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2024-11-15",
-              "last_work_commit": "2024-11-15"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2023-12-15"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "bit_incremental_transfer",
-              "default": false,
-              "last_commit": "2026-03-24",
-              "last_work_commit": "2026-03-24"
-            },
-            {
-              "name": "split_multibranch",
-              "default": false,
-              "last_commit": "2024-07-12",
-              "last_work_commit": "2024-07-12"
-            },
-            {
-              "name": "compression",
-              "default": false,
-              "last_commit": "2024-04-11",
-              "last_work_commit": "2024-04-11"
-            },
-            {
-              "name": "QCOM_split",
-              "default": false,
-              "last_commit": "2023-11-06",
-              "last_work_commit": "2023-11-06"
-            }
-          ]
-        }
-      ]
+      "repos": []
     },
     {
       "name": "VOPS Conformance Validator",
@@ -7154,7 +5994,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-21",
-              "updated_at": "2026-10-21",
+              "updated_at": "2026-10-23",
               "base": "main"
             }
           ],
@@ -7331,50 +6171,7 @@
     {
       "name": "Developer Tools",
       "doc_url": "/developer-tools",
-      "repos": [
-        {
-          "repo": "Standards2Deployments",
-          "url": "https://github.com/5G-MAG/Standards2Deployments",
-          "description": "Repo for 5G-MAG members to enhance standards profiling for software development.",
-          "auxiliary": true,
-          "private": true,
-          "pushed_at": "2026-10-21",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 2,
-              "title": "Refactor validator into library and WebUI with automatic DOCX comparison",
-              "url": "https://github.com/5G-MAG/Standards2Deployments/pull/2",
-              "draft": false,
-              "author": "ErikGaida",
-              "created_at": "2026-10-08",
-              "updated_at": "2026-10-09",
-              "base": "main"
-            }
-          ],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-21",
-              "last_work_commit": "2026-10-21"
-            },
-            {
-              "name": "phase0-config",
-              "default": false,
-              "last_commit": "2026-10-11",
-              "last_work_commit": "2026-10-11"
-            },
-            {
-              "name": "feature/3gpp-validator",
-              "default": false,
-              "last_commit": "2026-10-09",
-              "last_work_commit": "2026-10-09"
-            }
-          ]
-        }
-      ]
+      "repos": []
     },
     {
       "name": "DVB-I Services over 5G Systems",
@@ -7900,111 +6697,13 @@
               "last_work_commit": "2025-09-22"
             }
           ]
-        },
-        {
-          "repo": "rt-media-origin",
-          "url": "https://github.com/5G-MAG/rt-media-origin",
-          "description": "Media Origin Server and Packager",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-20",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            }
-          ]
-        },
-        {
-          "repo": "rt-media-android-application",
-          "url": "https://github.com/5G-MAG/rt-media-android-application",
-          "description": "Reference Media Application: Android app and test rig for rt-media-origin delivery methods",
-          "auxiliary": true,
-          "private": true,
-          "pushed_at": "2026-10-20",
-          "latest_release": null,
-          "pulls": [],
-          "issues": [],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
-            }
-          ]
         }
       ]
     },
     {
       "name": "FLUTE Conformance Validator",
       "doc_url": "/validation/flute/",
-      "repos": [
-        {
-          "repo": "flute-conformance-validator",
-          "url": "https://github.com/5G-MAG/flute-conformance-validator",
-          "description": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517.",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 2,
-              "title": "FLUTE Conformance Validator: test rt-libflute against the FLUTE profiles of RFC 3926, TS 26.346 and TS 26.517",
-              "url": "https://github.com/5G-MAG/flute-conformance-validator/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-15",
-              "updated_at": "2026-10-19",
-              "base": "main"
-            }
-          ],
-          "issues": [
-            {
-              "number": 1,
-              "title": "A conformance validator for the FLUTE profiles of RFC 3926, TS 26.346 and TS 26.517",
-              "url": "https://github.com/5G-MAG/flute-conformance-validator/issues/1",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-15",
-              "labels": [
-                "enhancement"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-15",
-              "last_work_commit": "2026-10-15"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            }
-          ]
-        }
-      ]
+      "repos": []
     },
     {
       "name": "3GPP RAN and Core Platforms",
@@ -8053,7 +6752,7 @@
           "issues": [
             {
               "number": 54,
-              "title": "Align bbc-patches to a current upstream open5gs release",
+              "title": "Audit bbc-patches against a current upstream open5gs release",
               "url": "https://github.com/5G-MAG/open5gs/issues/54",
               "author": "jordijoangimenez",
               "created_at": "2026-09-22",
@@ -8734,81 +7433,7 @@
     {
       "name": "Real-time Media Communication (RTC) Architecture",
       "doc_url": "/reference-tools/rtc/",
-      "repos": [
-        {
-          "repo": "rt-3gpp-swap",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap",
-          "description": "3GPP SWAP Protocol",
-          "auxiliary": false,
-          "private": true,
-          "pushed_at": "2026-10-19",
-          "latest_release": "2026-10-16",
-          "pulls": [],
-          "issues": [
-            {
-              "number": 8,
-              "title": "Endpoint selection isn't uniformly random, misapplies qos/processing deprioritization",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/8",
-              "author": "nlsdvl",
-              "created_at": "2026-09-17",
-              "labels": [
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 7,
-              "title": "No enforcement point exists yet for JSEP preliminary-answer suppression",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/7",
-              "author": "nlsdvl",
-              "created_at": "2026-09-17",
-              "labels": [
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 4,
-              "title": "RFC 7807 error details are built, then discarded",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/4",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-14",
-              "labels": [
-                "bug",
-                "spec-compliance"
-              ]
-            },
-            {
-              "number": 2,
-              "title": "Close acknowledgment is rejected by the server's own validator — breaks call teardown",
-              "url": "https://github.com/5G-MAG/rt-3gpp-swap/issues/2",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-14",
-              "labels": [
-                "bug"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-10-16",
-              "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29",
-              "last_work_commit": "2026-09-29"
-            }
-          ]
-        }
-      ]
+      "repos": []
     }
   ]
 }
