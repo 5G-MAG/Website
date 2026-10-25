@@ -1,11 +1,50 @@
 {
-  "updated_at": "2026-10-24 02:05 UTC",
+  "updated_at": "2026-10-25 01:52 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gms-media-session-handler",
+          "branch": null,
+          "number": 66,
+          "title": "Add media delivery session identification to the Media Session Handler",
+          "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/pull/66",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-10-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-media-stream-handler",
+          "branch": null,
+          "number": 86,
+          "title": "Add media delivery session identification",
+          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/86",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-10-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-common-android-library",
+          "branch": null,
+          "number": 38,
+          "title": "Add media delivery session identifiers to PlaybackRequest and ConsumptionReport",
+          "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/pull/38",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-10-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-application",
           "branch": null,
@@ -257,19 +296,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-xr-content",
-          "branch": null,
-          "number": 45,
-          "title": "tools: add the MPEG-I Scene Description - XR/3D Scene Validator",
-          "url": "https://github.com/5G-MAG/rt-xr-content/pull/45",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-14",
           "last_comment_by": null,
           "last_comment_date": null
         },

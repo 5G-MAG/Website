@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -133,7 +133,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-22",
+      "pushed_at": "2026-10-24",
       "url": "https://github.com/5G-MAG/rt-5gms-application"
     },
     "rt-5gms-application-function": {
@@ -189,7 +189,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-24",
       "url": "https://github.com/5G-MAG/rt-5gms-common-android-library"
     },
     "rt-5gms-examples": {
@@ -217,7 +217,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-24",
       "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
     },
     "rt-5gms-media-stream-handler": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-24",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -852,7 +852,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-23",
+      "pushed_at": "2026-10-24",
       "url": "https://github.com/5G-MAG/rt-xr-content"
     },
     "rt-xr-gITFast": {

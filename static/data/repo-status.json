@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -84,7 +84,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
       "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-5gms-examples": {
       "status": "Actively Maintained",
@@ -96,13 +96,13 @@
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
       "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-5gms-media-stream-handler": {
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
       "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-ai-ml-evaluation-framework": {
       "status": "Under Development",
@@ -372,7 +372,7 @@
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-10-23",
-      "open_pulls_last_year": 2
+      "open_pulls_last_year": 1
     },
     "rt-xr-gITFast": {
       "status": "Under Development",
