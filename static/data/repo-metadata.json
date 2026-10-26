@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25",
+  "updated_at": "2026-10-26",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -217,7 +217,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-24",
+      "pushed_at": "2026-10-25",
       "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
     },
     "rt-5gms-media-stream-handler": {
