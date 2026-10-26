@@ -24,7 +24,7 @@ TS 26.501 describes 5GMS in two ways. The **5GMS architecture**, defined since R
 
 :::tip[At a glance]
 
-- **Reference points:** M1 to M8, in downlink and uplink; Release 19 adds M10 and M13.
+- **Reference points:** M1 to M8, in downlink and uplink; Release 18 adds M11, Release 19 adds M10 and M13.
 - **APIs:** specified in TS 26.512 up to Release 17; from Release 18, provisioning and media session handling are TS 26.510 services.
 - **Generalisation:** the 5GMS AF and AS are realisations of the general Media AF and Media AS.
 
@@ -173,7 +173,7 @@ The generalised architecture first appears in TS 26.501 version 18.5.0 (March 20
 | --- | --- | --- | --- | --- |
 | **Generalised Media Delivery architecture** (TS 26.501 V19.4.0 clause 4.1.2 and Annex I (change history, SP-240039 CR 0074, V18.5.0); TS 26.501 V17.10.0 and V16.15.0 (no clause 4.1.2)) | No | No | Yes, from V18.5.0 | Yes |
 | **Reference points** (TS 26.501 V19.4.0 clause 4.1.2.4 (table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4; TS 26.501 V17.10.0 and V16.15.0 clauses 4.2 and 4.3) | M1 to M8 | M1 to M8 | M1 to M8, and M9 to M12 | M1 to M8, and M9 to M13 |
-| **M3 (AF and AS)** | Internal and not specified | Internal and not specified | An API used by the AF to configure and manage the AS, from TS 26.501 V18.2.0 | Mas_Configuration, exposed by the AS to the AF, and Maf_SessionHandling, exposed by the AF to the AS |
+| **M3 (AF and AS)** | Internal and not specified | Internal and not specified | Internal API used by the AF to configure and manage the AS, from TS 26.501 V18.2.0; API exposed by the AS to the AF to configure and manage it, in V18.9.0 clause 4.2.1 | The same API; the 5GMSd AS also reports aggregated client data to the AF at M3d (V19.4.0 clause 4.2.1) |
 | **Provisioning and session APIs** | TS 26.512 | TS 26.512 | TS 26.510 (created in Release 18), referred to by TS 26.512 | TS 26.510, referred to by TS 26.512 |
 
 <details>
@@ -193,7 +193,7 @@ The generalised architecture first appears in TS 26.501 version 18.5.0 (March 20
 | **M10** | Media AS and Media AS | Distributed service chaining of Media AS instances (TS 26.501 V19.4.0 clause 4.1.2.4 (M10, table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4, NOTE 3). Not defined by the 5GMS architecture in Release 18; mapped to M10d and M10u in Release 19 | Release 18 on |
 | **M11** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media Session Handler and Media Access Function | Inside the Media Client: configuration and media access control | Release 18 on |
 | **M12** | Media Access Function and Media Access Function | Peer-to-peer media transport between clients (TS 26.501 V20.0.0 clause 4.1.2.4). Not defined by the 5GMS architecture | Release 18 on |
-| **M13** | Media Access Function and Media Application Provider | Media functions or resources in the provider's domain (TS 26.501 V19.4.0 clause 4.1.2.4 (M13 and NOTE 5, table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4 (no M13)). Private, beyond the scope of standardisation | Release 19 |
+| **M13** | Media Access Function and Media Application Provider | Media functions or resources in the provider's domain (TS 26.501 V19.4.0 clause 4.1.2.4 (M13 and NOTE 5, table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4 (no M13)). Private, beyond the scope of standardisation | Release 19 on |
 
 </details>
 
@@ -220,7 +220,7 @@ During a session the Media Session Handler also provides dynamic policy, network
 - **Services exposed by the Media AF and the Media Session Handler:** TS 26.510 V19.2.0, clauses 4.2 and 4.3 (tables 4.2-1 and 4.3-1); name mapping from TS 26.501 V20.0.0, table 4.1.2.3-1.
 - **Where each reference point is specified:** TS 26.512 V16.12.0, V17.10.0, V18.7.0 and V19.3.0, clauses 7 to 14; TS 26.510 V18.5.0 and V19.2.0, clauses 8, 9 and 11.
 - **Architecture clauses by release:** clause 4 headings of TS 26.501 V16.15.0, V17.10.0, V18.9.0, V19.4.0 and V20.0.0.
-- **Before and after generalisation:** TS 26.501 V17.10.0, V18.1.0, V18.2.0 and V18.4.0 (clause 4.2.1), V18.5.0 (clause 4.1.2.1), V18.9.0 and V19.4.0 (clauses 4.1.2.1, 4.1.2.4 and change history); TS 26.512 V17.10.0 (clause 7.2), V18.7.0 and V19.3.0 (clause 4.3.2.1).
+- **Before and after generalisation:** TS 26.501 V17.10.0, V18.1.0, V18.2.0 and V18.4.0 (clause 4.2.1), V18.5.0 (clause 4.1.2.1), V18.9.0 and V19.4.0 (clauses 4.1.2.1, 4.1.2.4, 4.2.1 and change history); TS 26.512 V17.10.0 (clause 7.2), V18.7.0 and V19.3.0 (clause 4.3.2.1).
 - **How a downlink session runs:** TS 26.501 V20.0.0, clauses 4.2.2 and 5.2.3; TS 26.512 V19.3.0, clause 4.3.2.1.
 
 </details>

@@ -195,6 +195,8 @@ const config = {
           { from: '/standards/ls', to: '/ls' },
           { from: '/tech/standards/requirements', to: '/standards/requirements' },
           { from: '/tech/5gms/overview-5gms', to: '/tech/5gms/overview' },
+          // Advanced Media Delivery moved out of the "More" folder into the main sidebar (2026-10-26).
+          { from: '/tech/5gms/more/advanced-media-delivery', to: '/tech/5gms/advanced-media-delivery' },
           // /reference-tools/5gms/resources removed (2026-09-27): its real
           // content (Packages table) moved onto the project index, its
           // Repositories/Releases lists were redundant with sections already

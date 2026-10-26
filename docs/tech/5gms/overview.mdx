@@ -42,14 +42,14 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Where it sits in the 5G System
 
-The AF and the AS are data network functions that communicate with the device over the N6 reference point (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions, for example the Policy and Charging Function (PCF). An AF in an external data network may only reach 5G Core functions through the Network Exposure Function.
+The AF and the AS are data network functions that communicate with the device over the N6 reference point (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions. An AF in an external data network may only reach 5G Core functions through the Network Exposure Function.
 
 ## How it grew
 
 - **Release 16:** TS 26.501 V16.15.0 specifies the 5GMS architecture and procedures, and TS 26.512 V16.12.0 the protocols and APIs. The 5GMS3 work item also produced TS 26.117 and TS 26.511, and made CMAF the baseline container format for downlink streaming in TS 26.247 (TR 21.916 clause 13.2.3).
 - **Release 17:** work items on edge extensions and AF event exposure, studies on multicast and on further 5GMS extensions, and delivery via eMBMS (added to TS 26.501 in version 17.1.0). Edge media processing entered TS 26.501 in version 17.0.0 (CR 0030), and the AF event exposure work added the data collection, reporting and exposure feature (TR 21.917 clause 15.6).
-- **Release 18:** work items on 5G Media Streaming Architecture Phase 2 and Protocols Phase 2. Service URL handling and delivery via MBS are added. TS 26.510 is created, and with it media delivery is harmonised across 5GMS and Real-Time media Communication (RTC). TS 26.501 adds a generalised Media Delivery architecture. Uplink streaming, hybrid DASH/HLS operation, Service Operation Points, 5GMS AS configuration at M3 and Background Data Transfer are also added to TS 26.501 (TR 21.918 clause 17.12), and TS 26.117 gains an xHE-AAC audio operation point (TR 21.918 clause 17.11).
-- **Release 19:** Advanced Media Delivery (SP-241011 clause 3; SP-251265 clause 3). 3GPP justified its study by the importance of mobile media delivery, with continued traffic growth and new functions from third-party service providers.
+- **Release 18:** work items on 5G Media Streaming Architecture Phase 2 and Protocols Phase 2. Service URL handling and delivery via MBS are added. TS 26.510 is created, and with it media delivery is harmonised across 5GMS and Real-Time media Communication (RTC). TS 26.501 adds a generalised Media Delivery architecture. Uplink streaming (introduced in principle in Release 16) is extended, and hybrid DASH/HLS operation, Service Operation Points, 5GMS AS configuration at M3 and Background Data Transfer are also added to TS 26.501 (TR 21.918 clause 17.12), and TS 26.117 gains an xHE-AAC audio operation point (TR 21.918 clause 17.11).
+- **Release 19:** Advanced Media Delivery (SP-241011 clause 3; SP-251265 clause 3). 3GPP justified its study by the importance of mobile media delivery, with continued traffic growth and new functions from third-party service providers. The six 5GMS features it added are on the [Advanced Media Delivery](/tech/5gms/advanced-media-delivery) page.
 - **Release 20:** Advanced Media Delivery Phase 2, which continues the study of extensions beyond the Release 19 normative work (SP-251265 clause 3). The change history of TS 26.501 V20.0.0 lists CR 0120, 5G Media Streaming independent of the 5G System, and CR 0115, energy architecture in the 5GMS System. The 3GPP work plan of 28 September 2026 also lists, for Release 20, Energy_ARCH-MED (stage 2, application energy consumption information collection and reporting; TS 26.501 and TS 26.506 among its specifications; finish Sep 2026) and Energy_PRO-MED (stage 3, protocols, network APIs and data types for the same; TS 26.512 and TS 26.510 among its specifications; finish Mar 2027). No TR 21.920 is available, so the scope of Release 20 is unverified beyond these.
 
 The Technical Analysis pages show what each release added, from Release 16 to Release 19.
@@ -60,7 +60,7 @@ The Technical Analysis pages show what each release added, from Release 16 to Re
 - **The main functions:** TS 26.501 V20.0.0, clauses 4.1.1, 4.2.1 and 4.3.1.
 - **Figure:** redrawn from TS 26.501 V20.0.0, figure 4.1.1-2.
 - **Where it sits in the 5G System:** TS 26.501 V20.0.0, clauses 4.1.1, 4.3.1 and 5.7.3.
-- **How it grew:** SID SP-200937 (FS_5GMS_EXT), clause 3; SID SP-241011 (FS_AMD), clause 3; SID SP-251265 (FS_AMD_Ph2), clause 3; TS 26.501 V20.0.0, clause 4.1.2.1 and change history; 3GPP work plan of 28 September 2026 (work item titles).
+- **How it grew:** SID SP-200937 (FS_5GMS_EXT), clause 3; SID SP-241011 (FS_AMD), clause 3; SID SP-251265 (FS_AMD_Ph2), clause 3; TS 26.501 V20.0.0, clause 4.1.2.1 and change history; TR 21.918 clause 17.12; 3GPP work plan of 28 September 2026 (work item titles).
 
 </details>
 

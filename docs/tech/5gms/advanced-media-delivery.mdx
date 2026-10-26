@@ -1,0 +1,177 @@
+---
+title: Advanced Media Delivery
+hide_title: true
+description: What Advanced Media Delivery adds to 5G Media Streaming in Release 19, feature by feature with the clauses that specify it, and the Release 20 work that follows.
+sidebar_label: "Advanced Media Delivery"
+sidebar_position: 3
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 4v16l13 -8l-13 -8"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Media Streaming and Advanced Media Delivery</span>
+<h1>Advanced Media Delivery</h1>
+</div>
+</div>
+
+Advanced Media Delivery (AMD) is the line of 3GPP SA4 work that extends 5G Media Streaming from Release 19. TR 21.919 describes it as "a set of 5G enhancements that significantly improves media streaming and broadcast capabilities through new architectural features, protocols, and APIs across 5GMS and MBS" (TR 21.919 V19.0.0 clause 11.6). This page covers the 5GMS side. The MBS topics are on [Media delivery over 5G Multicast Broadcast Services](/tech/5g-mbs).
+
+:::tip[At a glance]
+
+- **Three work items:** a study (FS_AMD), stage 2 (AMD-ARCH-MED, in TS 26.501) and stage 3 (AMD_PRO-MED, in TS 26.510 and TS 26.512).
+- **Six 5GMS features in Release 19:** Common Media Client Data, multi-access delivery, multiple service locations, encrypted content, improved QoS, and network slicing.
+- **Focus:** the delivery of segmented media objects in the media plane, at reference points M2, M4 and M7.
+- **Release 20:** a second study led to a stage 2 work item, due Dec 2026.
+
+:::
+
+<JumpMenu items={[["The six features", "the-six-features"], ["Common Media Client Data", "common-media-client-data-cmcd"], ["Multi-access delivery", "multi-access-delivery"], ["Multiple service locations", "multiple-service-locations"], ["Encrypted content", "encrypted-content"], ["Improved QoS", "improved-qos"], ["Network slicing", "network-slicing"], ["Release 20", "release-20-amd-phase-2"], ["Where AMD came from", "where-amd-came-from"]]} />
+
+## The six features
+
+"New in Release 19" below means the text is not in TS 26.501 V18.9.0, TS 26.510 V18.5.0 or TS 26.512 V18.7.0. Clause numbers are those of TS 26.501 V19.4.0, TS 26.510 V19.2.0 and TS 26.512 V19.3.0.
+
+| Feature | Direction | Reference points | Stage 2, TS 26.501 | Stage 3 |
+| --- | :---: | --- | --- | --- |
+| **Common Media Client Data (CMCD)** | Downlink | M1d, M3d, M4d, M7d, M11d, R5, R6 | 5.13 | TS 26.512 cl. 7.8.1, 10.5.1, 11.4, 12.4, 13.2.4, 18.3.3, G.5; TS 26.510 cl. 8.11, 9.5 |
+| **Multi-access delivery** | Downlink and uplink | M4d, M4u, M5, M7d, M11d | Annex H | TS 26.512 cl. 4.6.1, 4.9.1A, 5.6.1, 6.2.1.2, 12.4, 13.2.4, 13.2.6 |
+| **Multiple service locations** | Downlink | M2d, M3d, M4d, M10d, M13d | 5.4.4 | TS 26.512 cl. 4.10A, 10.3A, G.4.4, Annex H |
+| **Encrypted content** | Downlink | M2d, M4d, M13d | 5.14 | TS 26.512 cl. 8.8, G.3 |
+| **Improved QoS** | Downlink and uplink | M1, M4, M5, N5, N33 | 4.0.6, 5.7.9, 5.7.10, 6.9.8, 6.9.9 | TS 26.510 cl. 5.3.3.3A.1, 5.3.3.3A.2; TS 26.512 cl. 4.6.0.1, 5.6.2 |
+| **Network slicing** | Downlink and uplink | M1, M4 | 4.0.6 | TS 26.510 cl. 5.2.7.1 |
+
+All six apply to the 5GMS AF, AS and Client of the existing architecture. Release 19 adds three reference points to it: M10d and M10u between instances of the AS, and M13d and M13u between the Media Player or Media Streamer and content the Application Provider hosts outside the 5GMS System (TS 26.501 V19.4.0 clause 4.1.2.4, table 4.1.2.4-1). See [Architecture](/tech/5gms/architecture).
+
+## Common Media Client Data (CMCD)
+
+**Downlink** · CTA-5004, referenced by TS 26.512 as [70]
+
+CMCD lets the Media Player report data about its playback with its media requests. The 5GMS System carries it end to end: the Application Provider configures it, the Media Player reports it in band to the AS, the AS passes it to the AF, and the AF can expose it as events.
+
+TS 26.501 clause 5.13 states the flow: "Client data is initially sent to the 5GMSd AS via reference point M4d, and from there provided to the 5GMSd AF using the QoE metrics reporting mechanism at reference point M3d."
+
+- **Provision (M1d).** The Application Provider lists CMCD in a Metrics Reporting Configuration (TS 26.510 clause 8.11). TS 26.512 table 7.8.1-1 gives four scheme identifiers, one per information class: session, object, request and status, for example `urn:3gpp:5gms:metrics:common-media-client-data:session`. No scheme is defined for uplink.
+- **Report in band (M4d).** The Media Player collects the configured CMCD classes and reports them to the AS "per [70]" (TS 26.512 clause 10.5.1, new in Release 19; for DASH, clause G.5, new in Release 19). A Media Player "shall support at least the sid key".
+- **Report to the AF (M3d).** The AS reports CMCD information to the AF using the API of clause 11.4.1 and the report format of clause 11.4.3.3 (TS 26.512 clause 4.5.9).
+- **Configure the player (M7d, M11d).** The `cmcdReporting` object of the Media Player configuration and the Service URL parameter for the reporting mode (clause 12.4) select the mode. That value "shall take precedence over any client data reporting mode indicated in the currently effective Media Player Entry" (clause 10.5.1).
+- **Expose (R5, R6).** CMCD information is packed into QoE metrics event records (TS 26.512 clause 18.3.3, new in Release 19).
+
+## Multi-access delivery
+
+**Downlink and uplink**
+
+Multi-access delivery lets a UE reach the media source over more than one access network, in series or at the same time. TS 26.501 Annex H (informative, new in Release 19) names three approaches:
+
+- **Multipath transport protocols.** MPTCP or multipath QUIC, which "requires implementation of the protocol(s) on both the UE and on the Application Server".
+- **Application layer coding.** An object coding protocol, so that the Application Server "can remain agnostic of the UEs’ use of multiple access networks".
+- **ATSSS.** The network feature of TS 23.501 that steers, switches and splits traffic over a multi-access PDU Session (clause H.2, "ATSSS mapping into 5GMS architecture").
+
+Clause H.2 describes three steering mechanisms and who is aware of them. Table H.2-1 gives the application awareness for each:
+
+| Steering | Application awareness (TS 26.501 table H.2-1) |
+| --- | --- |
+| ATSSS-LL (low layer) | No. The 5GMS Client and AS are unaware of it |
+| MPTCP | Yes, through the API of RFC 6897, or transparent through standard TCP sockets |
+| MPQUIC | Yes, through the API of the multipath QUIC draft, or transparent |
+
+TS 26.512 specifies the 5GMS side, new in Release 19. TS 26.510 has no multi-access clause.
+
+- **Transport.** The 5GMS AS should expose HTTP/3 endpoints at reference point M4, where QUIC "or its multipath variant" may be used for transport (TS 26.512 clause 6.2.1.2). The Media Player may use a multipath transport protocol to connect to an M4d service location, with subflows that "may span one or more access networks available to the UE" (clause 4.6.1; clause 5.6.1 for the uplink Media Streamer).
+- **Configuration.** The application or Media Session Handler can express "a preference for using a multipath transport protocol at reference point M4d" (clause 4.9.1A). The `multipathMode` property of the Media Player configuration takes `MULTIPATH_PREFERRED` or `MULTIPATH_NOT_PREFERRED` (clause 13.2.4, table 13.2.4-5), and the 3GPP Service URL carries a `multipath-mode` parameter (clause 12.4).
+- **Status.** The Dynamic Status Information reports the transport protocol in use, with the values `TRANSPORT_PROTOCOL_MPTCP` and `TRANSPORT_PROTOCOL_MPQUIC` (clause 13.2.6).
+
+## Multiple service locations
+
+**Downlink**
+
+A service location is an M4d endpoint, identified by its base URL, from which the Media Player acquires content. The AS can expose several, and the Application Provider can host more outside the 5GMS System (TS 26.501 clause 5.4.4, new in Release 19, NOTE 1).
+
+- **Provisioning and configuration.** The Content Hosting Configuration describes "the number of 5GMSd AS service locations to expose at reference point M4d", and may specify affinity groups. The AF then configures the AS instances at M3d, and "in case of partial failure, the configuration shall be removed from all 5GMSd AS instance(s) that succeeded" (clause 5.4.4, steps 2 and 3).
+- **M10d, service chaining.** A 5GMSd AS ingests content from a 5GMSd AS in another 5GMS System, so content need not be ingested repeatedly at M2d. M10d uses the same three protocols as M2d: HTTP pull (TS 26.512 clause 8.2), DASH-IF push (8.3) and HTTP low-latency pull (8.4) (clause 4.10A).
+- **M13d.** The Media Player reaches content the Application Provider hosts. "No specific procedures are defined at reference point M13d" (TS 26.512 clause 4.10B).
+- **In the Media Player.** A Media Access Client that supports several service locations should be able to identify the base URLs, acquire transport resources from one or more locations, and reconstitute the media resource (clause 10.3A.1). It may switch between locations (10.3A.2) or use several concurrently (10.3A.3), for example video from one location and audio from another.
+- **Content Steering.** ETSI TS 103 998 lets a content distributor switch the source a media player uses "either at presentation start-up or at any point during the presentation, by means of a remote steering service". The 5GMS profile is clause G.4.4, and the client capabilities are in clause 10.3A.4.
+- **CMMF.** The Coded Multisource Media Format (ETSI TS 103 973) is specified in the normative Annex H of TS 26.512. It lets a Media Player download CMMF transport resources "from the service locations in parallel" and recover the media resource. CMMF transport resources are produced by the Application Provider or by Content Preparation in the AS, configured by a Content Preparation Template.
+
+## Encrypted content
+
+**Downlink**
+
+The scenario is a 5GMSd AS that encodes, encrypts and packages content while the DRM server stays in the Application Provider domain (TS 26.501 clause 5.14, new in Release 19). The AS then has to obtain from that server what it needs for manifest generation, encoding and packaging. Key rotation during a session is not addressed: the clause says it "is for further study".
+
+- **Key exchange at M2d.** The AS "shall support" CPIX (ETSI TS 103 799) to exchange public keys between its Encryptor/Packager and the external License Server and Authorization Server (TS 26.512 clause 8.8, new in Release 19).
+- **Encrypted DASH at M4d.** A DASH Media Presentation with encrypted content "shall follow the requirements and recommendations in DASH-IF Interoperability Points Part 6" (TS 26.512 clause G.3.2, new in Release 19).
+- **Licences at M13d.** In the call flow of the scenario, the Media Access Client requests licences from the License Server over M13d (TS 26.501 clause 5.14).
+
+## Improved QoS
+
+**Downlink and uplink**
+
+Two functions are added to Dynamic Policy, both set in a Policy Template provisioned at M1 and invoked by the Media Session Handler at M5. New text in Release 19:
+
+- **ECN marking for L4S.** A Policy Template may carry an L4S enablement preference flag, which directs the 5GMS Client to activate ECN marking for L4S when it instantiates the template with the L4S required flag set (TS 26.501 clause 4.0.6). The AF then "shall enable ECN marking for L4S functionality in the 5G System" through the PCF at N5 (Npcf_PolicyAuthorization_Create) or the NEF at N33 (Nnef_AFsessionWithQoS_Create) (TS 26.510 clause 5.3.3.3A.1). Once the policy is active, the 5GMSd AS is required to support L4S according to RFC 9330, RFC 9331 and RFC 9332 at reference point M4d (TS 26.512 clause 4.6.0.1; clause 5.6.2 for uplink). Procedures: TS 26.501 clauses 5.7.9 (downlink) and 6.9.8 (uplink).
+- **QoS monitoring.** A Policy Template may carry a QoS monitoring configuration giving the reporting trigger (event or periodic) and the QoS parameters to monitor (TS 26.501 clause 4.0.6). The AF enables it in the 5G System with the same PCF or NEF operations (TS 26.510 clause 5.3.3.3A.2) and subscribes to the PCF notifications for the results (clause 5.5.3.4). Procedures: TS 26.501 clauses 5.7.10 (downlink) and 6.9.9 (uplink).
+
+## Network slicing
+
+**Downlink and uplink**
+
+Slice and data network selection for downlink streaming was already in TS 26.501 clause 4.4 in Release 16. Release 19 extends the Policy Template. "Multiple Network Slice and/or Data Network tuples may be provisioned if the Policy Template allows media to be delivered in multiple Data Networks and/or network slices at reference point M4" (TS 26.510 clause 5.2.7.1, new in Release 19). TR 26.941 is the network slicing study behind it.
+
+## Release 20: AMD Phase 2
+
+The Release 20 study (FS_AMD_Ph2) continues where the Release 19 normative work stopped (SP-251265 clause 3). Its work topics are:
+
+- Common Client Metadata phase 2, CMCD version 2 (WT#1)
+- Server- and network-assisted media streaming (WT#2)
+- Multiple service locations phase 2 (WT#3)
+- Combined unicast, multicast and broadcast (WT#4)
+- 5G System-independent media streaming (WT#5)
+- Latency measurement and control (WT#6)
+- Network slicing phase 3 (WT#7)
+- Multi-access media delivery phase 2 (WT#8)
+
+The study led to a stage 2 work item (AMD_ARCH_Ph2-MED, SP-260973), with target completion at SA#114 (Dec 2026). Its topics include CMCD version 2, in-band signalling of rate limits, combined unicast, multicast and broadcast delivery, 5G System-independent media streaming, latency measurement and control, and application-driven multi-access delivery with priority for uplink (SP-260973 clauses 3, 4 and 5). TS 26.501 V20.0.0 already lists CR 0120, "5G Media Streaming independent of 5G System", in its change history. The work item scope beyond these descriptions is not verified.
+
+## Where AMD came from
+
+The Release 19 study (FS_AMD) starts from the view that mobile media delivery is as important as ever, with growing traffic and new functionality from third-party service providers. Its primary focus is the delivery of segmented media objects in the media plane: reference points M2, M4 and M7. It is documented in TR 26.804 for 5GMS and TR 26.802 for MBS (SP-241011 clause 3). Two work items took up its recommendations: stage 2 (AMD-ARCH-MED, SP-241963) in TS 26.501 and, for MBS, TS 26.502; and stage 3 (AMD_PRO-MED, SP-250265) in TS 26.510, TS 26.512 and, for MBS, TS 26.517.
+
+<details>
+<summary>The study's 13 key topics</summary>
+
+- Common Client Metadata (SP-241011 clause 4, objective 1 item a)
+- Common server- and network-assisted streaming (item b)
+- Multi-CDN and multi-access media delivery (item c)
+- Modem usage optimised media streaming (item d)
+- DRM and conditional access (item e)
+- In-session unicast repair for MBS object distribution (item f)
+- MBS User Service and delivery protocols for eMBMS (item g)
+- Selected MBMS functionalities not supported in MBS (item h)
+- DASH/HLS interoperability (item i)
+- Further harmonisation of RTC and streaming (item j)
+- Issues identified by Market Representation Partners, including 5G-MAG (item k)
+- Improved QoS support (item l)
+- Impacts and opportunities of QUIC for segmented content delivery (item m)
+
+</details>
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Introduction, work items:** TR 21.919 V19.0.0 clause 11.6; SID SP-241011 (FS_AMD) clauses 3 and 4; WIDs SP-241963 (AMD-ARCH-MED) and SP-250265 (AMD_PRO-MED).
+- **CMCD:** TS 26.501 V19.4.0 clause 5.13; TS 26.510 V19.2.0 clauses 8.11 and 9.5; TS 26.512 V19.3.0 clauses 4.5.9, 7.8.1 (table 7.8.1-1), 10.5.1, 11.4, 12.4, 13.2.4, 18.3.3 and G.5; CTA-5004.
+- **Multi-access delivery:** TS 26.501 V19.4.0 Annex H (clauses H.1, H.2, table H.2-1); TS 26.512 V19.3.0 clauses 4.6.1, 4.9.1A, 5.6.1, 6.2.1.2, 12.4, 13.2.4 (table 13.2.4-5) and 13.2.6; TS 26.510 V19.2.0 has no multi-access clause (search for "multi-access" and "ATSSS" returns no match).
+- **Multiple service locations:** TS 26.501 V19.4.0 clauses 4.1.2.4 and 5.4.4; TS 26.512 V19.3.0 clauses 4.10A, 4.10B, 10.3A, G.4.4 and Annex H; ETSI TS 103 998 and ETSI TS 103 973 as cited there.
+- **Encrypted content:** TS 26.501 V19.4.0 clause 5.14; TS 26.512 V19.3.0 clauses 8.8 and G.3; ETSI TS 103 799.
+- **Improved QoS:** TS 26.501 V19.4.0 clauses 4.0.6, 5.7.9, 5.7.10, 6.9.8 and 6.9.9; TS 26.510 V19.2.0 clauses 5.3.3.3A.1, 5.3.3.3A.2 and 5.5.3.4; TS 26.512 V19.3.0 clauses 4.6.0.1 and 5.6.2.
+- **Network slicing:** TS 26.501 V19.4.0 clause 4.4 (and V16.15.0); TS 26.510 V19.2.0 clause 5.2.7.1.
+- **New in Release 19:** each clause compared with TS 26.501 V18.9.0, TS 26.510 V18.5.0 and TS 26.512 V18.7.0.
+- **Release 20:** SID SP-251265 (FS_AMD_Ph2) clauses 3 and 4; WID SP-260973 (AMD_ARCH_Ph2-MED) clauses 3 to 5; TS 26.501 V20.0.0 change history.
+
+</details>

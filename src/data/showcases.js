@@ -31,7 +31,7 @@ const TUT = '/reference-tools/5gms/tutorials/';
 // Case titles and descriptions use the wording of the 5G-MAG Reference Tools presentation slides noted beside
 // each (slide numbers are for traceability; the source is not named on the site). Topic names use the industry
 // terms. Feature names follow 3GPP TS 26.501 V19.4.0 clause 4.0 ("Media Streaming features"); CMCD as the client
-// data format: TS 26.512 V19.3.0 clause 10.5.1; Release 20 topics as sourced on /tech/5gms/more/advanced-media-delivery
+// data format: TS 26.512 V19.3.0 clause 10.5.1; Release 20 topics as sourced on /tech/5gms/advanced-media-delivery
 // (SP-251265, SP-260973); Object Repair: TS 26.502 V18.6.0 clause 4.2.6.
 export const SHOWCASE_BASKETS = {
   'content-delivery': {
