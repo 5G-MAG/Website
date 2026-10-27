@@ -109,7 +109,7 @@ const ROCKET = [
   'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5',
 ];
 
-// "Not yet possible": a wrench, things still to build.
+// "What could come next": a wrench, things still to build.
 const NOT_YET_ICON = ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'];
 
 // The four things a visitor can do with an item, each on the item's main project: learn about it, implement it,
@@ -329,7 +329,7 @@ export default function AreaPage({ basketKey }) {
               {t.showcase ? <Showcase topic={t} /> : (
                 <p className={styles.muted}>
                   {t.pipeline?.length
-                    ? 'This topic is not possible with the Reference Tools yet. What it needs is listed under Not yet possible, below.'
+                    ? 'This topic is still open for the Reference Tools. What it would need is listed under What could come next, below.'
                     : 'No showcase for this topic yet.'}
                 </p>
               )}
@@ -348,17 +348,17 @@ export default function AreaPage({ basketKey }) {
                     {NOT_YET_ICON.map((d) => <path key={d} d={d} />)}
                   </svg>
                 </span>
-                <Heading as="h2" id="not-yet-possible" className={styles.topicTitle}>Not yet possible</Heading>
+                <Heading as="h2" id="what-could-come-next" className={styles.topicTitle}>What could come next</Heading>
               </div>
               <p className={styles.notYetLead}>
-                What could be built next in this area. Each needs a feature that the Reference Tools do not
-                implement yet, or that is still being specified.
+                Ideas for what could be built next in this area. Each builds on features that the Reference Tools
+                could add, or that are still being specified.
               </p>
               {topics.filter((t) => t.pipeline.length > 0).map((t) => (
                 <NotYetGroup key={t.id} topic={t} />
               ))}
               <div className={boxStyles.inviteBlock}>
-                <h3 className={boxStyles.inviteTitle}>Want to make one of these possible?</h3>
+                <h3 className={boxStyles.inviteTitle}>Want to help build one of these?</h3>
                 <p className={boxStyles.inviteBody}>
                   5G-MAG&apos;s members decide what the Reference Tools do next. Join to bring your topic, or contribute the missing features.
                 </p>

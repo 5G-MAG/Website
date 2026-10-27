@@ -16,7 +16,7 @@
 export const FEATURE_STATUS = {
   yes: 'implemented',
   partial: 'partial',
-  no: 'not implemented',
+  no: 'not implemented yet',
   early: 'early stage',
   incubation: 'incubation',
   unknown: 'to be checked',
