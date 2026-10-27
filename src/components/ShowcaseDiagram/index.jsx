@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { DIAGRAMS } from './diagrams';
 import { AREA_HEROES } from './areaHeroes';
+import { PRODUCTION_DIAGRAMS } from './productionDiagrams';
 
 // A showcase concept diagram. The markup is generated, static and contains no user input. Animated diagrams
 // (SMIL) are paused on their first frame for visitors who ask for reduced motion.
@@ -20,6 +21,7 @@ function widen(markup) {
 }
 
 export default function ShowcaseDiagram({ name, className, wide = false }) {
+  const markup = DIAGRAMS[name] ?? AREA_HEROES[name] ?? PRODUCTION_DIAGRAMS[name];
   const ref = useRef(null);
   useEffect(() => {
     const svg = ref.current?.querySelector('svg');
@@ -37,5 +39,5 @@ export default function ShowcaseDiagram({ name, className, wide = false }) {
     query.addEventListener('change', apply);
     return () => query.removeEventListener('change', apply);
   }, [name]);
-  return <div ref={ref} className={className} dangerouslySetInnerHTML={{ __html: wide ? widen(DIAGRAMS[name] ?? AREA_HEROES[name]) : DIAGRAMS[name] ?? AREA_HEROES[name] }} />;
+  return <div ref={ref} className={className} dangerouslySetInnerHTML={{ __html: wide ? widen(markup) : markup }} />;
 }
