@@ -146,7 +146,18 @@ export default function NetworkApisPlayground() {
             </div>
           </section>
         )}
-        <JoinTheEffort alt variant="tool" />
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>More Playgrounds</h2>
+            <p className={styles.sectionSubtitle}>
+              Each Playground belongs to a project and is listed on the Playgrounds page with the project it comes from.
+            </p>
+            <div className={page.cta}>
+              <Link className="button button--primary" to="/playgrounds">See all Playgrounds</Link>
+            </div>
+          </div>
+        </section>
+        <JoinTheEffort variant="tool" />
       </main>
     </Layout>
   );
