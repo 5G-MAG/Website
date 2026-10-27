@@ -40,13 +40,6 @@ const WAYS = [
   },
 ];
 
-const STEPS = [
-  ['Become a member', 'Membership is open to any organisation. The fee depends on annual revenue. The sandbox is part of membership.'],
-  ['Ask for the sandbox', 'Once you are a member, use the Early Access request and say you want the CAMARA Dedicated Network APIs Playground.'],
-  ['Receive your credentials', 'The Project Office sends the sandbox address and your personal credentials. They are never shown on this site.'],
-  ['Run the examples', 'Use the portal, the AI assistant or Insomnia against the sandbox. The credentials are personal and are not to be shared.'],
-];
-
 export default function NetworkApisPlayground() {
   const [way, setWay] = useState(WAYS[0].id);
   const current = WAYS.find((w) => w.id === way);
@@ -135,35 +128,14 @@ export default function NetworkApisPlayground() {
                 <Link to={current.tutorial.to}>{current.tutorial.label} &rarr;</Link>
               </p>
               <p className={page.note}>
-                To connect to the sandbox you need its address and your credentials. Members get them on request; see how below.
+                To connect to the sandbox you need its address and your credentials. They come with membership, on request.
               </p>
             </div>
           </div>
         </section>
 
-        <section className={styles.section} id="access">
-          <div className="container">
-            <h2 className={styles.sectionTitle}>How to get the sandbox</h2>
-            <p className={styles.sectionSubtitle}>
-              The examples are public. The sandbox is private and is offered to members who ask for it.
-            </p>
-            <ol className={page.steps}>
-              {STEPS.map(([title, text]) => (
-                <li key={title}>
-                  <b>{title}</b>
-                  <span>{text}</span>
-                </li>
-              ))}
-            </ol>
-            <div className={page.cta}>
-              <Link className="button button--primary" to="/membership#request-membership">Become a member</Link>
-              <Link className="button button--outline button--primary" to="/playgrounds">All Playgrounds</Link>
-            </div>
-          </div>
-        </section>
-
         {repos.length > 0 && (
-          <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <section className={styles.section}>
             <div className="container">
               <h2 className={styles.sectionTitle}>The code</h2>
               <p className={styles.sectionSubtitle}>
