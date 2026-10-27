@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26 01:54 UTC",
+  "updated_at": "2026-10-27 02:32 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -786,7 +786,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-25",
+              "updated_at": "2026-10-26",
               "base": "development"
             }
           ],
@@ -924,7 +924,7 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-24",
+          "pushed_at": "2026-10-26",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -934,17 +934,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-24",
-              "base": "development"
-            },
-            {
-              "number": 84,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/84",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-10-26",
               "base": "development"
             }
           ],
@@ -1099,22 +1089,16 @@
               "last_work_commit": "2026-05-26"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-26",
+              "last_work_commit": "2026-05-26"
+            },
+            {
               "name": "feature/media-delivery-session-id",
               "default": false,
               "last_commit": "2026-10-24",
               "last_work_commit": "2026-10-24"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-05-26",
-              "last_work_commit": "2026-05-26"
             },
             {
               "name": "feature/cmcd",
@@ -1254,8 +1238,8 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-24",
-              "base": "main"
+              "updated_at": "2026-10-26",
+              "base": "development"
             }
           ],
           "issues": [],
@@ -1308,7 +1292,7 @@
               "draft": false,
               "author": "sygupt",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-22",
+              "updated_at": "2026-10-26",
               "base": "feature/cmmf-dev/docker-example"
             }
           ],
