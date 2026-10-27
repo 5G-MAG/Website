@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
+import AllTutorials from '@site/src/components/AllTutorials';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard as ProjectCategoryCard, filterCategories as filterProjectCategories } from '../reference-tools';
 
@@ -43,7 +44,7 @@ export default function Tutorials() {
   return (
     <Layout
       title="Tutorials"
-      description="Step-by-step tutorials to run and test the 5G-MAG Reference Tools, project by project."
+      description="Every step-by-step tutorial of the Media Connectivity Software Accelerator to run and test its Reference Tools, Testbeds and Validation Tools, project by project."
     >
       <HubHero
         title="Tutorials"
@@ -92,7 +93,14 @@ export default function Tutorials() {
           </div>
         </section>
 
-        <JoinTheEffort alt variant="tool" />
+        <section className={`${styles.section} ${styles.sectionAlt}`} id="all-tutorials">
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Every tutorial</h2>
+            <AllTutorials />
+          </div>
+        </section>
+
+        <JoinTheEffort variant="tool" />
       </main>
     </Layout>
   );

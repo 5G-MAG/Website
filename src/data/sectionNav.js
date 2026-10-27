@@ -145,6 +145,7 @@ export const SECTION_NAV = [
       { label: 'Validation Tools', href: '/validation', group: 'What it builds' },
       { label: 'Playgrounds', href: '/playgrounds', group: 'What it builds' },
       { label: 'Developer Tools', href: '/developer-tools', group: 'What it builds' },
+      { label: 'Tutorials', href: '/tutorials', group: 'The programme' },
       { label: 'Developer Community', href: '/community', group: 'The programme' },
       { label: "Developers' Public Call", href: '/public-call', group: 'The programme' },
       { label: "Developers' Internal Call", href: '/internal-call', group: 'The programme' },

@@ -106,28 +106,6 @@ const config = {
   plugins: [
     // After the build: /llms-full.txt and /pages.json, the list of every indexable page with its title and description.
     seoIndex,
-    // One Deploy page per project, /deployments/<slug>, where <slug> is the last segment of the project's Reference
-    // Tools or testbed page (projectSlugOf in src/data/baskets.js). Placeholders until assets are published.
-    function projectDeployPages(context) {
-      return {
-        name: 'project-deploy-pages',
-        async contentLoaded({ actions }) {
-          const fs = await import('node:fs');
-          const path = await import('node:path');
-          const taxonomy = JSON.parse(fs.readFileSync(path.join(context.siteDir, 'src/data/taxonomy.json'), 'utf8'));
-          for (const p of taxonomy.projects) {
-            if (!p.doc_url || p.auxiliary) continue;
-            const slug = p.doc_url.replace(/\/$/, '').split('/').pop();
-            actions.addRoute({
-              path: `/deployments/${slug}`,
-              component: '@site/src/components/ProjectDeploy/index.jsx',
-              exact: true,
-              props: { slug },
-            });
-          }
-        },
-      };
-    },
     // Redirect map cut down (2026-07-29): the large PREFIX_MAP this plugin
     // used to carry only protected against bookmarks/search-engine links to
     // this Docusaurus site's OWN old internal paths from its pre-launch
@@ -527,7 +505,7 @@ const config = {
       // The icon credit is the last line of every page, as the Tabler Icons
       // MIT License asks its notice to accompany copies of the icons; the
       // license link points at the copy this site serves.
-      copyright: `Copyright © ${new Date().getFullYear()} 5G-MAG - The Media Connectivity Association<br /><span class="footer__credits">Icons: <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer">Tabler Icons</a>, <a href="/licenses/tabler-icons-LICENSE.txt" target="_blank" rel="noopener noreferrer">MIT License</a></span>`,
+      copyright: `Copyright © ${new Date().getFullYear()} 5G-MAG - The Media Connectivity Association<br /><span class="footer__credits"><a href="/privacy">Privacy Notice</a> · <a href="/all-content">All content</a> · Icons: <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer">Tabler Icons</a>, <a href="/licenses/tabler-icons-LICENSE.txt" target="_blank" rel="noopener noreferrer">MIT License</a></span>`,
     },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   },
