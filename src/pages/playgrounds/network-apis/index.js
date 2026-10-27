@@ -93,7 +93,7 @@ export default function NetworkApisPlayground() {
                 <p><b>Tutorials.</b> Step by step, for the portal and for the MCP server.</p>
                 <span className={page.credit}>
                   <img src={ericsson} alt="Ericsson" />
-                  <span>Sandbox provided by Ericsson</span>
+                  <span>Thank you, Ericsson, for providing the sandbox</span>
                 </span>
               </aside>
             </div>
