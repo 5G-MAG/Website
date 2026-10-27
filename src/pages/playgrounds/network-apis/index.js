@@ -41,8 +41,8 @@ const WAYS = [
 ];
 
 const STEPS = [
-  ['Become a member', 'Membership is open to any organisation. The fee depends on annual revenue.'],
-  ['Request sandbox access', 'Use the Early Access request and say you want the CAMARA Playground.'],
+  ['Become a member', 'Membership is open to any organisation. The fee depends on annual revenue. The sandbox is part of membership.'],
+  ['Ask for the sandbox', 'Once you are a member, use the Early Access request and say you want the CAMARA Dedicated Network APIs Playground.'],
   ['Receive your credentials', 'The Project Office sends the sandbox address and your personal credentials. They are never shown on this site.'],
   ['Run the examples', 'Use the portal, the AI assistant or Insomnia against the sandbox. The credentials are personal and are not to be shared.'],
 ];
@@ -62,12 +62,12 @@ export default function NetworkApisPlayground() {
         title="CAMARA Dedicated Network APIs Playground"
         icon={PLAY_ICON_PATH}
         actions={[
-          <Link key="req" className="button button--primary" to="/early-access">
-            Request sandbox access
+          <Link key="join" className="button button--primary" to="/membership#request-membership">
+            Become a member
           </Link>,
-          <Link key="all" className="button button--outline button--primary" to="/playgrounds">
-            All Playgrounds
-          </Link>,
+          <a key="try" className="button button--outline button--primary" href="#ways">
+            Try the examples
+          </a>,
         ]}
       />
 
@@ -135,7 +135,7 @@ export default function NetworkApisPlayground() {
                 <Link to={current.tutorial.to}>{current.tutorial.label} &rarr;</Link>
               </p>
               <p className={page.note}>
-                To connect to the sandbox you need its address and your credentials. Members request them below.
+                To connect to the sandbox you need its address and your credentials. Members get them on request; see how below.
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function NetworkApisPlayground() {
 
         <section className={styles.section} id="access">
           <div className="container">
-            <h2 className={styles.sectionTitle}>How sandbox access works</h2>
+            <h2 className={styles.sectionTitle}>How to get the sandbox</h2>
             <p className={styles.sectionSubtitle}>
               The examples are public. The sandbox is private and is offered to members who ask for it.
             </p>
@@ -156,8 +156,8 @@ export default function NetworkApisPlayground() {
               ))}
             </ol>
             <div className={page.cta}>
-              <Link className="button button--primary" to="/early-access">Request sandbox access</Link>
-              <Link className="button button--outline button--primary" to="/membership">Become a member</Link>
+              <Link className="button button--primary" to="/membership#request-membership">Become a member</Link>
+              <Link className="button button--outline button--primary" to="/playgrounds">All Playgrounds</Link>
             </div>
           </div>
         </section>
