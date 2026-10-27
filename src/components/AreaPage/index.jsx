@@ -72,7 +72,7 @@ function ProjectRow({ projects }) {
   );
 }
 
-const DOT = { yes: styles.dotYes, partial: styles.dotPartial, early: styles.dotPartial, incubation: styles.dotNo, no: styles.dotNo };
+const DOT = { yes: styles.dotYes, partial: styles.dotPartial, early: styles.dotPartial, incubation: styles.dotPartial, no: styles.dotNo };
 
 function Showcase({ topic }) {
   const s = topic.showcase;
@@ -176,7 +176,7 @@ function Paths({ topic }) {
 }
 
 // One item's place in the Reference Tools, as a coloured pill.
-const PILL = { no: styles.pillNo, partial: styles.pillPartial, early: styles.pillPartial, incubation: styles.pillUnknown, unknown: styles.pillUnknown, yes: styles.pillYes };
+const PILL = { no: styles.pillNo, partial: styles.pillPartial, early: styles.pillPartial, incubation: styles.pillPartial, unknown: styles.pillUnknown, yes: styles.pillYes };
 
 // What cannot be built yet under one topic: a card per item, saying what it would need.
 function NotYetGroup({ topic }) {

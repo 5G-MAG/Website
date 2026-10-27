@@ -10,21 +10,21 @@
 // `project` names each topic's main project by its slug (the last segment of its Reference Tools or testbed page).
 // The topic's Learn, Implement and Deploy buttons open that project's Technology, Reference Tools and Deploy pages.
 //
-// `status` is 'available' or 'early' for a topic's showcase. `pipeline` lists what else could be built (shown as
+// `status` is 'available' or 'incubation' for a topic's showcase. `pipeline` lists what else could be built (shown as
 // "Also possible"), with the feature each needs (`needs: null` when none is identified) and its Reference Tools status.
 
 export const FEATURE_STATUS = {
-  yes: 'implemented',
+  yes: 'available',
   partial: 'partial',
-  no: 'not implemented yet',
-  early: 'early stage',
+  no: 'incubation',
+  early: 'incubation',
   incubation: 'incubation',
   unknown: 'to be checked',
 };
 
 export const SHOWCASE_STATUS = {
   available: 'Available',
-  early: 'Early stage',
+  incubation: 'Incubation',
 };
 
 const TUT = '/reference-tools/5gms/tutorials/';
@@ -88,7 +88,7 @@ export const SHOWCASE_BASKETS = {
           tutorial: { label: '5GMSd + 5G Network', to: `${TUT}end-to-end-with-5g` },
         },
         pipeline: [
-          { title: 'Media Delivery from Multiple Service Endpoints', needs: 'Multiple service locations: Content Steering, CMMF', status: 'early' }, // slide 9; 5.2.6
+          { title: 'Media Delivery from Multiple Service Endpoints', needs: 'Multiple service locations: Content Steering, CMMF', status: 'incubation' }, // slide 9; 5.2.6
           { title: 'Edge processing', needs: 'Edge processing', status: 'no' }, // slide 12; 4.0.10
           { title: 'Distributing Encrypted and High-Value Content', needs: 'Content preparation with DRM', status: 'no' }, // slide 8; 4.0.4, 5.14
           { title: 'Service URLs and deep links', needs: 'Service URL handling', status: 'no' }, // slide 12; 4.0.13
@@ -104,7 +104,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Network Assistance and Dynamic Policies', // slide 7
           about:
             'AF-based and ANBR-based assistance towards the client and the RAN, such as a short delivery boost when the buffer runs low; policy templates instantiated and provisioned through the PCF, one per quality tier (SD, HD, UHD).', // slide 7; 4.0.5, 4.0.6
-          status: 'early',
+          status: 'incubation',
           features: [
             { name: 'Network assistance: delivery boost', status: 'partial' }, // 4.0.5; audit: the AF can request it, no client asks for it
             { name: 'Network assistance: bit rate recommendation', status: 'no' }, // 4.0.5
@@ -146,7 +146,7 @@ export const SHOWCASE_BASKETS = {
             { name: 'Network profiles', status: 'yes' },
             { name: 'Network reservation for a service time', status: 'yes' },
             { name: 'Device access to a network', status: 'yes' },
-            { name: 'Status notifications (callbacks)', status: 'early' },
+            { name: 'Status notifications (callbacks)', status: 'incubation' },
           ],
           tutorial: { label: 'Dedicated Networks Portal', to: '/reference-tools/network-apis/tutorials/dedicated-networks-portal' },
         },
@@ -206,7 +206,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Broadcast What Is Common, Use Unicast Where Needed', // slide 18
           about:
             'Broadcast delivers what is common to all viewers; unicast handles what is individual, personalised, unavailable or interactive. An Android device plays a stream over 5G Broadcast and falls back to unicast when the broadcast signal is unavailable.', // slide 18; 5G Broadcast tutorial
-          status: 'early',
+          status: 'incubation',
           features: [
             { name: 'Seamless switching between unicast and 5G Broadcast (Android)', status: 'yes' }, // 5G Broadcast Tutorials
           ],
@@ -286,7 +286,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Bringing Point-to-Multipoint capabilities to NTN',
           about:
             'Release 19 supports a broadcast MBS session over NR non-terrestrial networks. The session works as it does terrestrially; NTN adds an Intended Service Area, a geographical area signalled for the broadcast service, so a device can start or stop receiving it as it enters or leaves the area.',
-          status: 'early',
+          status: 'incubation',
           features: [
             { name: 'Broadcast MBS session over NR NTN (Release 19)', status: 'unknown' },
             { name: 'Intended Service Area for MBS broadcast', status: 'unknown' },
@@ -314,7 +314,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Compose and deliver dynamic 3D scenes',
           about:
             'Composing, positioning and temporally synchronising dynamic 3D visual and audio objects for XR. The tools deliver scenes made of glTF objects, spatial audio and haptic elements through 5G Media Streaming.',
-          status: 'early',
+          status: 'incubation',
           features: [],
         },
         pipeline: [],
@@ -329,7 +329,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Move freely around volumetric content',
           about:
             'An end-to-end pipeline for 3D object and scene delivery, so viewers can move freely around volumetric video.',
-          status: 'early',
+          status: 'incubation',
           features: [],
         },
         pipeline: [],
@@ -344,7 +344,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Compress moving 3D surfaces for real-time use',
           about:
             'Compressing moving 3D surface meshes for real-time immersive environments. The reference tool, a web decoder and player for V-DMC content, is in early development.',
-          status: 'early',
+          status: 'incubation',
           features: [],
         },
         pipeline: [],
@@ -359,7 +359,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Evaluate formats that go beyond flat video',
           about:
             'Evaluating and characterising stereoscopic video, multi-view video, video plus depth, point clouds and dynamic meshes, with an evaluation framework.',
-          status: 'early',
+          status: 'incubation',
           features: [],
         },
         pipeline: [],
@@ -374,7 +374,7 @@ export const SHOWCASE_BASKETS = {
           title: 'Real-time avatar calls',
           about:
             'Avatars are digital representations of participants, animated in real time from audio and video input, for immersive calls and virtual presence. The tools provide codec, rendering and streaming for avatar communication over 5G.',
-          status: 'early',
+          status: 'incubation',
           features: [],
         },
         pipeline: [],
