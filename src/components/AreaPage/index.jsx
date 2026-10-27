@@ -334,7 +334,11 @@ export default function AreaPage({ basketKey }) {
                     : 'No showcase for this topic yet.'}
                 </p>
               )}
-              <Paths topic={t} />
+              {!t.showcase && t.pipeline?.length > 0 ? (
+                <a className={styles.incubation} href="#what-could-come-next">Incubation</a>
+              ) : (
+                <Paths topic={t} />
+              )}
             </div>
           </section>
         ))}

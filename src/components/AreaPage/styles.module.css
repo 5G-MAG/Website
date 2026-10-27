@@ -634,3 +634,23 @@ a.path:focus-visible .pathArrow {
   color: var(--brand-text);
   background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
 }
+
+/* A topic with no showcase yet: a button to what could come next, in place of the "What would you like to do?" paths. */
+.incubation {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.55rem 1.4rem;
+  border: 2px solid var(--ifm-color-warning-dark);
+  border-radius: 999px;
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-font-color-base);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+}
+
+.incubation:hover {
+  background: var(--ifm-color-warning);
+  color: #2b2100;
+}
