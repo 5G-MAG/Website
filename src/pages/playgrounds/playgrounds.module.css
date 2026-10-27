@@ -1,0 +1,65 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 4px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  color: var(--ifm-font-color-base);
+  text-decoration: none !important;
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.badge {
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.lock {
+  background: var(--ifm-color-warning-contrast-background);
+  border-color: var(--ifm-color-warning-dark);
+  color: var(--ifm-font-color-base);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.cardText {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.more {
+  margin-top: auto;
+  color: var(--text-accent, var(--ifm-color-primary));
+  font-weight: 700;
+}
+
+.soon {
+  margin: 1.25rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+}

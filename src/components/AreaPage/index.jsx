@@ -4,6 +4,7 @@ import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import { playgroundFor } from '@site/src/data/playgrounds';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
 import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
@@ -131,7 +132,7 @@ function pathTargets(project, topic) {
   return {
     learn: topic.learn || project.tech_url,
     implement: project.doc_url,
-    experiment: '/playgrounds',
+    experiment: playgroundFor(topic.project)?.href || '/playgrounds',
     deploy: '/kits',
   };
 }

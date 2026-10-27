@@ -49,7 +49,7 @@ export const KINDS = [
   {
     id: 'playgrounds',
     title: 'Playgrounds',
-    desc: 'Try a technology with nothing to install. Coming soon.',
+    desc: 'Ready kits for trying a technology, some with a members-only sandbox.',
     href: '/playgrounds',
     paths: ['M7 4v16l13 -8l-13 -8'],
   },
