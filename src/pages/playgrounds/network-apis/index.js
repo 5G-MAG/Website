@@ -55,11 +55,11 @@ export default function NetworkApisPlayground() {
 
   return (
     <Layout
-      title="CAMARA Network APIs Playground"
-      description="Try the CAMARA Network APIs: reserve a dedicated network for a live production from a portal or an AI assistant, with the open-source examples and a members-only Ericsson sandbox."
+      title="CAMARA Dedicated Network APIs Playground"
+      description="Try the CAMARA Dedicated Network APIs: reserve a dedicated network for a live production from a portal or an AI assistant, with the open-source examples and a members-only Ericsson sandbox."
     >
       <HubHero
-        title="CAMARA Network APIs Playground"
+        title="CAMARA Dedicated Network APIs Playground"
         icon={PLAY_ICON_PATH}
         actions={[
           <Link key="req" className="button button--primary" to="/early-access">

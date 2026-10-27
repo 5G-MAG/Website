@@ -4,7 +4,7 @@ export const PLAYGROUNDS = [
   {
     slug: 'network-apis',
     project: 'network-apis',          // the project's slug in taxonomy.json (tech_url /tech/<slug>)
-    title: 'CAMARA Network APIs Playground',
+    title: 'CAMARA Dedicated Network APIs Playground',
     summary:
       'Reserve a dedicated network for a live production, from a browser or by asking an AI assistant, against a CAMARA sandbox.',
     href: '/playgrounds/network-apis',
