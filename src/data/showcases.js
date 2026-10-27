@@ -18,6 +18,7 @@ export const FEATURE_STATUS = {
   partial: 'partial',
   no: 'not implemented',
   early: 'early stage',
+  incubation: 'incubation',
   unknown: 'to be checked',
 };
 
@@ -123,29 +124,29 @@ export const SHOWCASE_BASKETS = {
   'connected-media-production': {
     basket: 'connected-media-production',
     title: 'Connected Media Production',
-    headline: 'A production network, on request',
+    headline: 'A media production network, on request',
     description:
-      'Connected media production showcases: reserving a dedicated network for a live production with the CAMARA network APIs, from a browser or from an AI assistant.',
+      'Connected media production showcases: reserving a dedicated network for a live production with the CAMARA Connectivity Management APIs, from a portal to an AI assistant.',
     lead:
-      'Live production on location needs more than a good signal: capacity for every camera, where the crew works and for as long as the show lasts, requested by the production itself and not by a phone call to the operator.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
+      'Live production and uplink streaming on a location needs more than good connectivity, it needs certainty that capacity for every camera, intercom device, will be available where the crew is and for as long as the show lasts.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with the outcomes of the Media Connectivity Software Accelerator.',
     topics: [
       {
         id: 'dedicated-networks-portal',
         project: 'network-apis',
         icon: 'video-camera',
-        title: 'Dedicated networks from the browser',
+        title: 'Dedicated networks reserved from a portal',
         diagram: 'dnportal',
         showcase: {
           title: 'Reserve the Network Before the Cameras Arrive',
           about:
-            'A production team finds a service area on a map, reserves a dedicated network there for a time window, gives each camera access to it, and dismantles both when the show ends. The portal follows the steps of the 5G-MAG tutorial and shows each status change as the operator makes it.',
-          status: 'early',
+            'A production team finds a service area on a map, reserves a dedicated network there for a time window, gives each camera access to it, and leaves when the show ends.',
+          status: 'available',
           features: [
-            { name: 'Service area discovery (point, circle, polygon)', status: 'partial' }, // implementation page: list responses read as bare arrays
-            { name: 'Network profiles', status: 'partial' }, // same
-            { name: 'Network reservation for a service time', status: 'partial' }, // the network name is not sent
-            { name: 'Device access to a network', status: 'partial' }, // one device per access
-            { name: 'Status notifications (callbacks)', status: 'partial' }, // needs a public sink address
+            { name: 'Service area discovery (point, circle, polygon)', status: 'yes' },
+            { name: 'Network profiles', status: 'yes' },
+            { name: 'Network reservation for a service time', status: 'yes' },
+            { name: 'Device access to a network', status: 'yes' },
+            { name: 'Status notifications (callbacks)', status: 'early' },
           ],
           tutorial: { label: 'Dedicated Networks Portal', to: '/reference-tools/network-apis/tutorials/dedicated-networks-portal' },
         },
@@ -155,34 +156,34 @@ export const SHOWCASE_BASKETS = {
         id: 'dedicated-networks-assistant',
         project: 'network-apis',
         icon: 'api-server',
-        title: 'AI-assisted dedicated networks',
+        title: 'AI-assisted dedicated networks reservation',
         diagram: 'dnassistant',
         showcase: {
-          title: 'Let an AI Assistant Handle the Network Booking',
+          title: 'Let an AI Assistant Handle the Network Reservation',
           about:
             'AI-assisted booking: the Dedicated Networks APIs offered as MCP tools to an AI assistant. Asked in plain language, the assistant finds the service area, picks a network profile, reserves the network and gives devices access, and releases them again.',
-          status: 'early',
+          status: 'available',
           features: [
-            { name: 'Service area discovery', status: 'partial' }, // implementation page: list responses read as bare arrays
-            { name: 'Network profiles', status: 'partial' }, // same
-            { name: 'Network reservation for a service time', status: 'partial' }, // the network name is not sent
-            { name: 'Device access to a network', status: 'partial' }, // one device per access
+            { name: 'Service area discovery', status: 'yes' },
+            { name: 'Network profiles', status: 'yes' },
+            { name: 'Network reservation for a service time', status: 'yes' },
+            { name: 'Device access to a network', status: 'yes' },
           ],
-          tutorial: { label: 'Dedicated Networks MCP Server', to: '/reference-tools/network-apis/tutorials/dedicated-networks-mcp-server' },
+          tutorial: { label: 'Dedicated Networks with MCP Server', to: '/reference-tools/network-apis/tutorials/dedicated-networks-mcp-server' },
         },
         pipeline: [],
       },
       {
         id: 'contribution',
         project: '5gms', // its features are 5GMS uplink (content publishing)
-        title: 'Live contribution',
+        title: 'Live contribution, from the smartphone to the video gallery',
         diagram: null,
         showcase: null,
         // The presentation covers downlink only; these use the industry and 3GPP terms.
         pipeline: [
-          { title: 'Mobile contribution', needs: 'Content publishing (uplink)', status: 'no' }, // 4.0.3
-          { title: 'Network assistance for the contribution uplink', needs: 'Network assistance (uplink)', status: 'no' }, // 4.0.5
-          { title: 'From contribution to distribution', needs: 'Content publishing and content hosting', status: 'no' }, // 4.0.3, 4.0.2
+          { title: 'Mobile contribution', needs: 'Content publishing (uplink)', status: 'incubation' }, // 4.0.3
+          { title: 'Network assistance for the contribution uplink', needs: 'Network assistance (uplink)', status: 'incubation' }, // 4.0.5
+          { title: 'From contribution to distribution', needs: 'Content publishing and content hosting', status: 'incubation' }, // 4.0.3, 4.0.2
         ],
       },
     ],
