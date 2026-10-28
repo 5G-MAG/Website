@@ -209,7 +209,7 @@ export const BROADCAST_SPECS = [
     release: '18',
     url: 'https://www.3gpp.org/dynareport/36108.htm',
     layer: 'RF and devices',
-    note: 'satellite counterpart to TS 36.104',
+    note: 'Satellite Access Node requirements, including LTE-based 5G broadcast operation over a geosynchronous satellite',
   },
   {
     id: 'TS 36.181',

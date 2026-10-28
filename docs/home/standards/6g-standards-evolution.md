@@ -29,7 +29,7 @@ This page is the detailed, release-by-release companion to [Towards 6G Media: Sp
 
 :::
 
-Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.870 V20.0.0, TR 26.870 V0.6.1, TR 26.925 V19.0.0, TR 38.914 V20.1.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.870 V20.0.0, TR 26.870 V0.6.1, TR 26.925 V19.0.0, TR 38.914 V20.1.0; for the FS_XRTraffic row also the cover and change history of TR 26.926 V19.0.0.
 
 This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.870](https://www.3gpp.org/dynareport/26870.htm), [TR 26.925](https://www.3gpp.org/dynareport/26925.htm), [TR 38.914](https://www.3gpp.org/dynareport/38914.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
@@ -63,7 +63,7 @@ Release 20 (work plan of 28 September 2026): the FS_6G_ARC and FS_6G_Radio rows 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [MeCAR](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=950015) | Media Capabilities for Augmented Reality | Normative | [TR 26.925](https://www.3gpp.org/dynareport/26925.htm) (with TS 26.511, TS 26.117, TS 26.119) | Complete, Mar 2024 | [SP-220242](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_95E_Electronic_2022_03/Docs/SP-220242.zip) |
-| [FS_XRTraffic](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=870013) | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | Study | [TR 26.925](https://www.3gpp.org/dynareport/26925.htm) | Complete, Sep 2023 | [SP-210043](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_91E_Electronic/Docs/SP-210043.zip) |
+| [FS_XRTraffic](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=870013) | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | Study | [TR 26.925](https://www.3gpp.org/dynareport/26925.htm) (as in the work plan); TR 26.926 has the title of the work item, and its change history tags CR 0001 and CR 0002 with [FS_XRTraffic] (TR 26.926 V19.0.0 cover and annex C) | Complete, Sep 2023 | [SP-210043](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_91E_Electronic/Docs/SP-210043.zip) |
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |

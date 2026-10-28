@@ -54,8 +54,8 @@ how isolation or access control is achieved:
 | Aspect | SNPN (Stand-alone Non-Public Network) | PNI-NPN (Public Network Integrated NPN) |
 |---|---|---|
 | Who operates the core | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN, i.e. the public network operator's core. |
-| How the network is identified | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: self-assignment (the NID is chosen individually by the SNPN at deployment time and is not guaranteed unique) and coordinated assignment (the NID is assigned so that it, alone or in combination with the PLMN ID, is globally unique). | Identified as part of the host PLMN. |
-| How isolation / access control is achieved | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
+| How the network is identified | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: self-assignment (the NID is chosen individually by the SNPN at deployment time and is not guaranteed unique) and coordinated assignment (the NID is assigned so that it, alone or in combination with the PLMN ID, is globally unique). | Hosted by a PLMN: a Closed Access Group (CAG), where used, is identified by a CAG Identifier unique within the scope of a PLMN ID (TS 23.501 V20.3.0 clause 5.30.3.2). |
+| How isolation / access control is achieved | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may access those cells, while UEs that are not allowed to access the NPN via the associated cells are prevented from automatically selecting and accessing them (TS 23.501 V20.3.0 clause 5.30.3.1). The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
 
 ### Identity, credentials and onboarding
 
@@ -86,7 +86,9 @@ security clauses of [TS 33.501](https://www.3gpp.org/dynareport/33501.htm).
 
 An NPN device can reach the 5G core over untrusted or trusted non-3GPP access (for
 example a wired LAN, Wi-Fi, or a fixed backhaul). The stage 3 procedures for
-accessing the 5GC via non-3GPP access networks are defined in TS 24.502. The stage 2
+accessing the 5GC via non-3GPP access networks are defined in TS 24.502 (V20.0.0, clause 1),
+which covers network discovery and selection, access authorisation, and the management of
+the IKEv2 and IPsec security associations. The stage 2
 description of SNPN access over untrusted, trusted and wireline access networks is in
 TS 23.501 V20.3.0, clauses 5.30.2.12 to 5.30.2.14. This is
 relevant where production equipment is cabled but still needs to be a first-class
@@ -128,9 +130,9 @@ question.
   clause 5.30.2.11), broader non-3GPP access support for SNPN (clauses 5.30.2.12 to
   5.30.2.14), and access to localised services via a hosting network (Annex N).
 - **Release 19**: security of a PLMN that hosts an NPN (TS 33.501), interconnect of
-  SNPNs (stage 1, TS 22.261), ProSe in NPN (TS 23.501, TS 23.304) and CAG-based access
+  SNPNs (stage 1, TS 22.261), ProSe in NPN (for an SNPN, TS 23.304 V20.1.0, clause 4.2.9.1, to which TS 23.501 V20.3.0, clause 5.30.2.0 refers) and CAG-based access
   control for NR Femto (TR 21.919 clauses 10.5 to 10.7 and 14.2).
-- **Release 20**: phase 2 of the security work for a PLMN hosting an NPN (TS 33.501);
+- **Release 20**: phase 2 of the security work for a PLMN hosting an NPN: the study FS_PLMNNPN_Ph2 (TR 33.758, which adds the N9 interface and further control plane functions in the PNI-NPN operational domain to the scenarios of TR 33.757) and PLMNNPN_Ph2-SEC (TS 33.501);
   the change history of TS 23.501 V20.3.0 also lists CR 6585, "Corrections to access of HPLMN services in PNI-NPN providing localized services" (category F, SP-260438, new version 20.2.0);
   unverified against a release description, which does not exist yet.
 
@@ -141,8 +143,10 @@ question.
 - **Credentials Holder:** TS 23.501 V20.3.0, clause 5.30.2.9.3.
 - **UE onboarding:** TS 23.501 V20.3.0, clause 5.30.2.10.
 - **Equivalent SNPNs, non-3GPP access and localised services:** TS 23.501 V20.3.0, clauses 5.30.2.11 to 5.30.2.14 and Annex N.
+- **Non-3GPP access, stage 3:** TS 24.502 V20.0.0, clause 1.
+- **ProSe in an SNPN:** TS 23.304 V20.1.0, clause 4.2.9.1; TS 23.501 V20.3.0, clause 5.30.2.0.
 - **Service requirements:** TS 22.261 V20.8.1, clause 6.25.
-- **Release timeline:** TR 21.919 clauses 10.5 to 10.7 and 14.2; TS 23.501 V20.3.0, change history (CR 6585).
+- **Release timeline:** TR 21.919 clauses 10.5 to 10.7 and 14.2; TR 33.758 V20.0.1, clauses 1 and 4; TS 23.501 V20.3.0, change history (CR 6585); the 3GPP work plan of 28 September 2026 for FS_PLMNNPN_Ph2 and PLMNNPN_Ph2-SEC.
 
 </details>
 

@@ -52,10 +52,10 @@ export const AVATAR_SPECS = [
   },
   {
     id: 'draft-ietf-avtcore-rtp-avatar',
-    title: 'RTP payload format for ARF (ISO/IEC 23090-39) avatar animations',
+    title: 'RTP Payload Format for Avatar Representation Format (ARF) Animation Stream',
     url: 'https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-avatar/',
     layer: 'Real-time media transport',
-    note: 'IETF work in progress, not a 3GPP or MPEG deliverable',
+    note: 'IETF work in progress (Internet-Draft, version 02 of August 2026), not a 3GPP or MPEG deliverable; defines RTP payload structures for the animation stream of ISO/IEC 23090-39 (draft-ietf-avtcore-rtp-avatar-02 sections 1 and 5.4)',
   },
   {
     id: 'TS 26.250',

@@ -135,7 +135,7 @@ Check: [**Application Profiles API**](/tech/network-apis/features/application-pr
 
 ## Device object
 
-This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml examples; CAMARA Commonalities main@b1a9f08 Glossary.md Phone Number):
+A device is defined by the common `Device` schema, which needs at least one of `phoneNumber`, `ipv4Address` and `ipv6Address` (`networkAccessIdentifier` is in the schema, but CAMARA does not currently allow its use); the API consumer can give several, and the API provider then uses one of them. The example below combines identifiers for illustration (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Device, DeviceIpv4Address; Glossary.md Phone Number; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml examples):
 
 ```json
 {

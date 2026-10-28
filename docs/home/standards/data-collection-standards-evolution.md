@@ -62,7 +62,7 @@ What the release descriptions add:
 
 - 5GMS_Pro_Ph2 (TR 21.918 clause 17.9) lists the specification of data types for data reporting of ANBR-based Network Assistance invocations and, in liaison with CT3, of data types for exposure of events relating to invocation of AF-based and ANBR-based Network Assistance; it names TS 26.532 among the updated specifications.
 - 5GMS_Ph2 (TR 21.918 clause 17.12) states that the data collection, reporting and exposure feature applies to both downlink and uplink media streaming (TS 26.501 clauses 4.7, 5.11 and 6.8).
-- TS 26.531 V18.0.0 clause 5.5 adds a sentence to step 13 (the UE application may instruct the Direct Data Collection Client to prioritise immediate delivery of a UE data report to the Data Collection AF) and to step 14 (the Direct Data Collection Client may indicate that the data report includes UE data requiring expedited processing by the Data Collection AF); V17.3.0 has steps 13 and 14 without these sentences. In TS 26.532 V18.5.0, the `expedite` property of a data report (clause 7.3.2.3), the MS_ANBR_NETWORK_ASSISTANCE data domain (clause 7.3.3.1) and the reporting context identifiers (clause 4.1) are absent from V17.3.0.
+- TS 26.531 V18.0.0 clause 5.5 adds a sentence to step 13 (the UE application may instruct the Direct Data Collection Client to prioritise immediate delivery of a UE data report to the Data Collection AF) and to step 14 (the Direct Data Collection Client may indicate that the data report includes UE data requiring expedited processing by the Data Collection AF); V17.3.0 has steps 13 and 14 without these sentences. In TS 26.532, the `expedite` property of a data report (clause 7.3.2.3) is first in V18.0.0 (CR 0005), the MS_ANBR_NETWORK_ASSISTANCE data domain (clause 7.3.3.1) is first in V18.1.0 (CR 0004), and the reporting context identifiers (clause 4.1) are first in V18.3.0 (CR 0013); none of the three is in V17.3.0.
 - Related SA2 and CT work: eNetAE (TR 21.918 clause 26.2) lists the impact of user consent on data collection and storage for the Nnwdaf, Ndccf and Nnef services.
 
 The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technical Enhancements and Improvements for Rel-18"), with these exceptions: TS 26.531 CR 0007 and TS 26.532 CR 0005 are also tagged ADAE, and TS 26.531 CR 0008 and TS 26.532 CRs 0014 and 0015 carry no tag.
@@ -89,7 +89,7 @@ The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technic
 | --- | --- | --- | --- | --- | --- |
 | [EVEX](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960051) | 5GMS AF Event Exposure | Normative | [TS 26.531](https://www.3gpp.org/dynareport/26531.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (with TS 26.501, TS 26.512) | Complete, Jun 2022 | [SP-210374](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_92E_Electronic_2021_06/Docs/SP-210374.zip) |
 
-The work plan also lists the CT3 part of EVEX, which changed TS 29.517, TS 29.522 and TS 29.591.
+The work plan also lists the CT3 part of EVEX, which changed TS 29.517, TS 29.522 and TS 29.591. The EVEX work item description, SP-210374 (clause 5), names two new specifications, "Data Collection and Reporting; General Description and Architecture" and "Data Collection and Reporting; Protocols and Formats", and lists TS 26.501 and TS 26.512 as impacted.
 
 What the release descriptions add:
 

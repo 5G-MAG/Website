@@ -13,7 +13,7 @@ export const SIXG_SPECS = [
     title: 'Framework and overall objectives of the future development of IMT for 2030 and beyond',
     url: 'https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.2160-0-202311-I!!PDF-E.pdf',
     layer: 'ITU-R framework',
-    note: 'the framework and overall objectives of IMT-2030, with its usage scenarios and capabilities; approved November 2023, in force',
+    note: 'describes a framework and overall objectives for the development of the terrestrial component of IMT-2030, with its usage scenarios (clause 3) and capabilities (clause 4); edition of 11/2023',
   },
   {
     id: 'TR 38.914',
@@ -36,14 +36,16 @@ export const SIXG_SPECS = [
     title: '6G Service Requirements',
     url: 'https://www.3gpp.org/dynareport/22270.htm',
     layer: 'Use cases and requirements (SA1)',
-    note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1); a draft (V0.3.0)',
+    release: '21',
+    note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1); a draft (V0.3.0, September 2026) that has not been subject to any approval process',
   },
   {
     id: 'TR 23.801-01',
-    title: 'Study on Architecture for 6G System Stage 2',
+    title: 'Study on Architecture for 6G System; Stage 2',
     url: 'https://www.3gpp.org/dynareport/23801-01.htm',
     layer: 'Architecture (SA2)',
-    note: 'the architecture study the SA4 media study aligns with (TR 26.870 V0.6.1, clause 1)',
+    release: '20',
+    note: 'the architecture study the SA4 media study aligns with (TR 26.870 V0.6.1, clause 1); a draft (V0.9.0, September 2026)',
   },
   {
     id: 'TR 26.870',

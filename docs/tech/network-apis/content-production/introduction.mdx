@@ -94,7 +94,7 @@ Read the sections in order:
 
 ## Why network APIs
 
-By default a mobile subscription gives an application best-effort connectivity: the network carries the traffic but makes no commitment on throughput, latency, jitter or loss, and treats the flow the same as any other. Professional contribution needs the opposite: a committed uplink rate and bounded delay. A Network API is the mechanism by which a media application asks the operator to apply such a treatment to its flows, without the developer having to understand the network.
+By default a mobile subscription gives an application best-effort connectivity: the network carries the traffic but makes no commitment on throughput, latency, jitter or loss, and treats the flow the same as any other. Professional contribution needs more than that: a target minimum uplink rate and a maximum packet delay. The CAMARA definitions express the rates as targets, not commitments: `targetMinUpstreamRate` is "a target value" and the network "might not always be able to provide this rate" (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml schemas targetMinUpstreamRate, packetDelayBudget). A Network API is the mechanism by which a media application asks the operator to apply such a treatment to its flows, without the developer having to understand the network.
 
 ## Where CAMARA fits
 
@@ -102,7 +102,7 @@ By default a mobile subscription gives an application best-effort connectivity: 
 
 The capabilities most relevant to contribution, and the CAMARA APIs 5G-MAG analyses for each, are:
 
-- **On-demand quality** (committed uplink throughput, bounded latency and jitter for a contribution feed): the [Quality on Demand](./using-quality-on-demand), [QoS Booking](./using-qos-booking) and [QoS Booking and Assignment](./using-qos-booking-assignment) APIs, all referencing a named [QoS Profile](./using-qos-profiles).
+- **On-demand quality** (a target uplink throughput and limits on latency and jitter for a contribution feed): the [Quality on Demand](./using-quality-on-demand), [QoS Booking](./using-qos-booking) and [QoS Booking and Assignment](./using-qos-booking-assignment) APIs, all referencing a named [QoS Profile](./using-qos-profiles).
 - **Advance reservation for a time and place** (booking resources before an event, at a venue): the [Dedicated Networks](./using-dedicated-networks) and Network Slice Booking APIs, which separate reservation from device assignment.
 - **Connectivity monitoring and assistance** (checking whether the network can meet the flow's needs, and being notified when it cannot): the Connectivity Insights and Connectivity Insights Subscriptions APIs, which reference an Application Profile.
 

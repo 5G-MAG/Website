@@ -127,7 +127,7 @@ The devices in these scenarios may involve the following:
 
 ### Why device identity matters for the APIs
 
-The CAMARA APIs identify a target device through a `device` object that may carry a phone number (MSISDN), a network access identifier, or an IPv4/IPv6 address (see [Details on the device object](/tech/network-apis/overview#details-on-the-device-object)). In these production scenarios the practical identifier is rarely a phone number: contribution UEs are data-only, and a bonding backpack contains several UEs each with its own subscription. A booking or assignment therefore has to be expressed per UE (per SIM), not per physical device. This has two consequences for the workflows:
+The CAMARA APIs identify a target device through a `device` object that may carry a phone number (MSISDN), an IPv4 address or an IPv6 address; the schema also lists a network access identifier, but CAMARA does not currently allow its use (see [Details on the device object](/tech/network-apis/overview#details-on-the-device-object)). In these production scenarios the practical identifier is rarely a phone number: contribution UEs are data-only, and a bonding backpack contains several UEs each with its own subscription. A booking or assignment therefore has to be expressed per UE (per SIM), not per physical device. This has two consequences for the workflows:
 
 - For a single smartphone with one SIM, one `device` object suffices.
 - For a bonding backpack with N SIMs, the aggregate feed uses N separate UEs. Each SIM is a distinct `device` to the network, so QoS is requested N times (or once for N devices where the API supports a device count). The application layer bonds the N links; the network sees N independent flows.

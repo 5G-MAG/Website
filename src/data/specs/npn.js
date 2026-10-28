@@ -43,7 +43,7 @@ export const NPN_SPECS = [
   },
   {
     id: 'TS 24.502',
-    title: 'Access to the 3GPP 5G Core Network (5GCN) via non-3GPP access networks; Stage 3',
+    title: 'Access to the 3GPP 5G Core Network (5GCN) via Non-3GPP Access Networks (N3AN); Stage 3',
     url: 'https://www.3gpp.org/dynareport/24502.htm',
     layer: 'Access and authentication',
   },
@@ -60,7 +60,7 @@ export const NPN_SPECS = [
     url: 'https://www.3gpp.org/dynareport/28807.htm',
     layer: 'Management',
     release: '17',
-    note: 'SA5, work item FS_OAM_NPN; provides conclusions and recommendations on the next steps for the standardization',
+    note: 'SA5; provides conclusions and recommendations on the next steps for the standardization',
   },
   {
     id: 'TS 28.557',
@@ -106,7 +106,7 @@ export const NPN_SPECS = [
     url: 'https://www.3gpp.org/dynareport/23700-08.htm',
     layer: 'Studies',
     release: '18',
-    note: 'SA2 phase 2 successor to TR 23.700-07',
+    note: 'SA2; studies mobility between SNPNs without new network selection, non-3GPP access for SNPN and access to Localized Services',
   },
   {
     id: 'TR 33.858',
@@ -114,7 +114,7 @@ export const NPN_SPECS = [
     url: 'https://www.3gpp.org/dynareport/33858.htm',
     layer: 'Studies',
     release: '18',
-    note: 'SA3 companion to TR 23.700-08',
+    note: 'SA3; studies the security aspects of enhancements developed from the outcome of the study in TR 23.700-08',
   },
   {
     id: 'TR 33.757',
@@ -122,7 +122,15 @@ export const NPN_SPECS = [
     url: 'https://www.3gpp.org/dynareport/33757.htm',
     layer: 'Studies',
     release: '19',
-    note: 'SA3 (SA1 secondary); the confirmed Release-19 NPN-specific study, securing the boundary where a PLMN hosts a PNI-NPN',
+    note: 'SA3; studies the security when a PLMN hosts an NPN with dedicated network functions deployed in the customer domain (a PNI-NPN)',
+  },
+  {
+    id: 'TR 33.758',
+    title: 'Study on security for a PLMN hosting a Non-Public Network (NPN) phase 2',
+    url: 'https://www.3gpp.org/dynareport/33758.htm',
+    layer: 'Studies',
+    release: '20',
+    note: 'SA3; work item FS_PLMNNPN_Ph2; adds the N9 interface and further control plane functions in the PNI-NPN operational domain to the scenarios studied in TR 33.757',
   },
 ];
 

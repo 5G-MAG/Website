@@ -178,7 +178,7 @@ export const MBS_SYSTEM_SPECS = [
     layer: 'MBS parts of 5G System specifications',
     release: '17',
     part: 'Annex W',
-    note: 'Annex W: security for multicast/broadcast service (checked in the Release 17 and Release 18 versions)',
+    note: 'Annex W: security for multicast/broadcast service (present in the last version of each of Releases 17 to 20)',
     versions: { 17: 'V17.16.0', 18: 'V18.12.0', 19: 'V19.7.0', 20: 'V20.3.0' },
   },
   {

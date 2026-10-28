@@ -91,7 +91,7 @@ Potential improvements:
 
 With **POST /slices** and one of the two service-area shapes below (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceAttributes serviceArea; examples CREATE_CIRCLE, CREATE_POLYGON).
 
-A location described as a circle (a centre point plus a radius in metres):
+A location described as a circle (a `center` point and a `radius` in metres, at least 1; CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Area, Circle, Point; the Network Slice Booking definition declares `x-camara-commonalities: 0.8.0`, whereas the held common file is Commonalities 0.9.0):
 
 ```json
 {
@@ -129,7 +129,7 @@ A location described as a circle (a centre point plus a radius in metres):
 }
 ```
 
-or described as a polygon (an ordered list of boundary coordinates):
+or described as a polygon (a `boundary` list of 3 to 15 points, forming a simple polygon that should not intersect itself; CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Polygon, PointList):
 
 ```json
   "serviceArea": {

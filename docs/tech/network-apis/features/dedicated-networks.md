@@ -76,7 +76,7 @@ The Dedicated Networks repository contains several API definitions (YAML) (CAMAR
 
 ## Standardisation context
 
-Dedicated Networks is a multi-part CAMARA API (OpenAPI 3.0.3), split across four YAML definitions in the repository (Areas, Profiles, Networks, Accesses) that together describe one workflow. Its subject matter is private or campus connectivity: a dedicated network reserved for one customer within an operator's network. The API expresses per-device QoS as QoS profile names (`qosProfiles`); an operator may realise a dedicated network through a slice, an isolated deployment, or a combination.
+Dedicated Networks is a multi-part CAMARA API (OpenAPI 3.0.3), split across four YAML definitions in the repository (Areas, Profiles, Networks, Accesses) that together describe one workflow. Its subject matter is the dedicated use of public network connectivity resources: some of these resources are reserved, and to the devices and applications that use them they appear as their own virtual or logical network. The API expresses per-device QoS as QoS profile names (`qosProfiles`). The General Description names three options for realising a dedicated network (a 5G network slice, a Public Network Integrated NPN, or a separate 4G APN or 5G DNN), and the API abstracts the differences between network providers' realisations (CAMARA DedicatedNetworks main@81bcd9d documentation/API_documentation/DedicatedNetworks_GeneralDescription.md, Introduction).
 
 ### The four-part resource model
 
@@ -93,7 +93,7 @@ Only devices with an Accesses resource can use the reserved connectivity, and ea
 
 ### Relationship to Network Slice Booking
 
-Dedicated Networks and [Network Slice Booking](/tech/network-apis/features/network-slice-booking) both reserve network resources for an area and a time window, and the two APIs overlap. Both admit devices one at a time: Dedicated Networks through its Accesses part, Network Slice Booking through the separate Network Slice Assignment API, which assigns a device to an existing slice up to the `maxNumOfDevices` of the slice QoS profile. The difference is in what is reserved and how it is described: a network chosen from a Network Profile with QoS profile names, here, and one slice QoS profile (`sliceQosProfile`) for an aggregation of devices, there. For a production where the on-site devices are known and should be individually authorised, either model can fit (CAMARA NetworkSliceBooking main@fc349ef network-slice-assignment.yaml info.description; CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml info.description; CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description).
+Dedicated Networks and [Network Slice Booking](/tech/network-apis/features/network-slice-booking) both reserve network resources for an area and a time window, and the two APIs overlap. Both let the API consumer choose which devices may use the reservation: Dedicated Networks through its Accesses part, which handles one device or up to 100 devices per operation, and Network Slice Booking through the separate Network Slice Assignment API, which assigns one device at a time to an existing slice, up to the `maxNumOfDevices` of the slice QoS profile (CAMARA DedicatedNetworks main@81bcd9d documentation/API_documentation/DedicatedNetworks_GeneralDescription.md, Bulk operations). The difference is in what is reserved and how it is described: a network chosen from a Network Profile with QoS profile names, here, and one slice QoS profile (`sliceQosProfile`) for an aggregation of devices, there. For a production where the on-site devices are known and should be individually authorised, either model can fit (CAMARA NetworkSliceBooking main@fc349ef network-slice-assignment.yaml info.description; CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml info.description; CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description).
 
 ---
 
@@ -127,7 +127,7 @@ This section records 5G-MAG's practical reading of the API and the open points i
 
 - Separating area discovery, reservation and device access lets the API consumer secure a venue's connectivity ahead of an event, then enrol devices individually as they are confirmed on site (for example cameras arriving one at a time), without needing to know the full device list at reservation time.
 - Only devices included in an Access, and with status `GRANTED`, can use the Dedicated Network when it is `ACTIVATED` (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml DeviceStatus); the Network Profile's `maxNumberOfDevices` and aggregate throughput figures set the ceiling the operator dimensions the reservation for.
-- This API overlaps with [Network Slice Booking](/tech/network-apis/features/network-slice-booking); the choice between them is mainly whether a network described by a Network Profile (Dedicated Networks) or a slice described by one slice QoS profile for the area and window (Network Slice Booking) fits the production; both admit devices individually.
+- This API overlaps with [Network Slice Booking](/tech/network-apis/features/network-slice-booking); the choice between them is mainly whether a network described by a Network Profile (Dedicated Networks) or a slice described by one slice QoS profile for the area and window (Network Slice Booking) fits the production; in both, the API consumer chooses the devices that may use the reservation.
 
 Potential improvements:
 
@@ -149,15 +149,13 @@ The request below filters service areas by location and by an optional profile n
     "latitude": 50.735851,
     "longitude": 7.10066
   },
-  "overlappingArea": {},
-  "coveringArea": {},
-  "byName": "string",
-  "byNetworkProfileId": "string",
   "byQosProfileName": "QCI_1_voice"
 }
 ```
 
-Type of response: a page of areas in `items` (the list can be empty), each with an `id` (used later when requesting a network), the `area` and the network and QoS profiles it supports. The page also carries a `pagination` object, defined in the CAMARA common definitions, which are not held and so not shown here (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-areas.yaml `/retrieve-service-areas` POST 200; ServiceAreasPage; ServiceArea):
+The other filters are `overlappingArea` and `coveringArea` (each a circle or polygon in the common `Area` format, with an `areaType`), `byName` and `byNetworkProfileId`. All the properties given in a request must match for a service area to be returned (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-areas.yaml info.description Querying one or more Areas; RetrieveServiceAreasRequest; CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Area, Circle, Polygon).
+
+Type of response: a page of areas in `items` (the list can be empty), each with an `id` (used later when requesting a network), the `area` and the network and QoS profiles it supports. The page also carries a `pagination` object, which the page schema requires; its four properties `page` (1-indexed), `perPage` (1 to 100, default 20), `totalCount` and `totalPages` are all optional, and `totalCount` and `totalPages` may be omitted where a full count is too costly. The response also carries `x-total-count`, `x-total-pages` and `Link` headers (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-areas.yaml `/retrieve-service-areas` POST 200; ServiceAreasPage; ServiceArea; CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Pagination, Page, PerPage, TotalCount, TotalPages):
 
 ```json
 {
@@ -177,7 +175,13 @@ Type of response: a page of areas in `items` (the list can be empty), each with 
       "networkProfiles": ["string"],
       "qosProfiles": ["QCI_1_voice"]
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 20,
+    "totalCount": 1,
+    "totalPages": 1
+  }
 }
 ```
 
@@ -204,7 +208,13 @@ With **GET /profiles** a list of available network profiles can be retrieved. Th
       "qosProfiles": ["QCI_1_voice"],
       "defaultQosProfile": "QCI_1_voice"
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 20,
+    "totalCount": 1,
+    "totalPages": 1
+  }
 }
 ```
 
@@ -226,9 +236,16 @@ With **POST /networks**, passing either a **networkProfileId** or a **qosProfile
   },
   "serviceAreaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "sink": "https://endpoint.example.com/sink",
-  "sinkCredential": {}
+  "sinkCredential": {
+    "credentialType": "ACCESSTOKEN",
+    "accessToken": "<access_token>",
+    "accessTokenExpiresUtc": "2025-12-31T23:59:59Z",
+    "accessTokenType": "bearer"
+  }
 }
 ```
+
+The `sink` must be an `https` URL, and a `sinkCredential`, if given, needs a `credentialType` of `ACCESSTOKEN` or `PRIVATE_KEY_JWT` (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schemas Sink, SinkCredential, AccessTokenCredential).
 
 Type of response: Information about the **status** of the request (CAMARA DedicatedNetworks main@81bcd9d dedicated-network.yaml `/networks` POST response 201; NetworkInfo id, status).
 
@@ -243,15 +260,19 @@ Type of response: Information about the **status** of the request (CAMARA Dedica
     "end": "2025-11-05T14:14:35.392Z"
   },
   "serviceAreaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "sink": "https://endpoint.example.com/sink",
-  "sinkCredential": {}
+  "sink": "https://endpoint.example.com/sink"
 }
 ```
 
+The response example leaves out `sinkCredential`, whose `accessToken` and `accessTokenType` properties are write-only (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schema AccessTokenCredential).
+
 ## Dedicated Network - Accesses API Usage
 
-This API allows for requesting network access for devices. A device is identified by the CAMARA device object, containing at least one of a phone number, a Network Access Identifier, an IPv4 address or an IPv6 address (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description Identifier for the device; CAMARA Commonalities main@b1a9f08 Glossary.md Phone Number, Network Access Identifier, IP v4 Address).
-A Device Access represents the permission for a specific device to use a Dedicated Network's reserved connectivity resources. Only devices for which a Device Access resource has been created can use the connectivity resources allocated for that network. The usage of resources can be tailored to each device within the constraints of the applicable Network Profile (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description; DeviceStatus GRANTED).
+This API allows for requesting network access for devices. A device is identified by the CAMARA device object, containing at least one of a phone number, an IPv4 address or an IPv6 address; the schema also lists a Network Access Identifier, but CAMARA does not currently allow its use (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description; CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schema Device; CAMARA Commonalities main@b1a9f08 Glossary.md Phone Number, IP v4 Address).
+
+An Access represents the permission for its devices to use a Dedicated Network's reserved connectivity resources, and each device in it has its own status (`REQUESTED`, `GRANTED` or `DENIED`). Only devices that are in an Access with status `GRANTED` can use the connectivity resources allocated for that network, and only while the network is `ACTIVATED`. The usage of resources can be tailored by the Access within the constraints of the applicable Network Profile, and all devices of an Access share its properties (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description; DeviceStatus; documentation/API_documentation/DedicatedNetworks_GeneralDescription.md, States of device's access to the network, Bulk operations).
+
+The operations that act on a list of devices (`POST /accesses`, `POST /accesses/{accessId}/devices/add` and `POST /accesses/{accessId}/devices/remove`) and `DELETE /accesses/{accessId}` are supported only with a two-legged access token; a three-legged token fails authorisation with `403 PERMISSION_DENIED`. The single-device operations (`POST /accesses/{accessId}/devices`, and `GET` or `DELETE /accesses/{accessId}/devices/{accessDeviceId}`) accept a two-legged or a three-legged token, and with a three-legged token the device is identified from the token (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml info.description Identifying the device from the access token; `/accesses/{accessId}` DELETE). The General Description's usage scenarios are business-to-business cases in which the owner of the devices also invokes the API, so a phone number can identify a device with a two-legged token, because no additional consent is needed (CAMARA DedicatedNetworks main@81bcd9d documentation/API_documentation/DedicatedNetworks_GeneralDescription.md, Introduction).
 
 With **POST /accesses** an access to the dedicated network can be created, optionally including devices (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-accesses.yaml `/accesses` POST; CreateAccessRequest)
 
@@ -296,7 +317,7 @@ Type of response: The `id` of the access with its attributes and `stats` (`total
 
 ## Device object
 
-This is how a device is defined:
+A device is defined by at least one of `phoneNumber`, `ipv4Address` and `ipv6Address` (`networkAccessIdentifier` is in the schema, but CAMARA does not currently allow its use). The operator may support only a subset of them; the API consumer can give several, and the API provider then uses one of them without checking that they match. An `ipv4Address` object needs a `publicAddress` and at least one of `privateAddress` and `publicPort` (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Device, DeviceIpv4Address). The example below combines identifiers for illustration:
 
 ```json
 {

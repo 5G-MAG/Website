@@ -64,7 +64,7 @@ The mode is signalled per object, in the LCT Codepoint (RFC 9223 section 4).
 
 ## FEC and repair flows
 
-- **Protection of objects:** the ROUTE repair protocol is FEC-based (RFC 9223 section 9.4). Unlike the FEC Framework of RFC 6363, it protects delivery objects rather than packets. As an extension to FLUTE, one source block may protect several delivery objects.
+- **Protection of objects:** the ROUTE repair protocol is FEC-based (RFC 9223 section 9.4). Unlike the FEC Framework of RFC 6363, which applies FEC to arbitrary packet flows over unreliable transport (RFC 6363 Abstract), it protects delivery objects rather than packets. As an extension to FLUTE, one source block may protect several delivery objects.
 - **Separate flows:** a Repair Flow protects delivery objects from one or more Source Flows (RFC 9223 section 5.5). Receivers not capable of FEC can ignore the repair packets.
 - **FEC scheme:** the FEC Payload ID for Repair Flows is specified in RFC 6330 (RaptorQ). In Source Flows, the FEC Payload ID of the Compact No-Code FEC scheme is a 32-bit start_offset: the octet number of the first octet of the fragment in the delivery object (RFC 9223 section 2.3; RFC 9223 section 2.4).
 - **Telling source from repair:** by different ROUTE sessions, by different LCT channels (TSI values), or, on the same LCT channel, by the most significant PSI bit (RFC 9223 section 9.4).

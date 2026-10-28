@@ -60,7 +60,7 @@ In the procedure flow below, each step is tagged with the actor that performs it
 
 **GET /profiles** to obtain a list of dedicated network profiles with the corresponding **"id": "string"**.
 
-The response is a page: the profiles are in `items` (the `pagination` object, defined in the CAMARA common definitions, is not shown here). The example below shows one network profile: note the `id` (used in later calls), the device cap (`maxNumberOfDevices`, at least 1), the aggregate uplink/downlink throughput, and the QoS profiles it bundles.
+The response is a page: the profiles are in `items`, next to a `pagination` object (`page`, `perPage`, `totalCount` and `totalPages`, all optional in the CAMARA common definitions). The example below shows one network profile: note the `id` (used in later calls), the device cap (`maxNumberOfDevices`, at least 1), the aggregate uplink/downlink throughput, and the QoS profiles it bundles.
 
 ```json
 {
@@ -79,7 +79,13 @@ The response is a page: the profiles are in `items` (the `pagination` object, de
       "qosProfiles": ["QCI_1_voice"],
       "defaultQosProfile": "QCI_1_voice"
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 20,
+    "totalCount": 1,
+    "totalPages": 1
+  }
 }
 ```
 
@@ -138,11 +144,10 @@ An example of the QoS Profile, including status (the values are examples only an
   "serviceClass": "real_time_interactive"
 }
 ```
-```
 
 #### 1.0b. Discovery of available and eligible Network Service Areas
 
-The ASP should create an object with the desired location by means of one of the following parameters:
+The ASP should create an object with the desired location by means of one or more of the following parameters (all the properties given must match): `atLocation`, `overlappingArea` and `coveringArea` (a circle or polygon, each with an `areaType`), `byName`, `byNetworkProfileId` and `byQosProfileName`. For example:
 
 ```json
 {
@@ -150,17 +155,13 @@ The ASP should create an object with the desired location by means of one of the
     "latitude": 50.735851,
     "longitude": 7.10066
   },
-  "overlappingArea": {},
-  "coveringArea": {},
-  "byName": "string",
-  "byNetworkProfileId": "string",
   "byQosProfileName": "QCI_1_voice"
 }
 ```
 
 **POST /retrieve-service-areas** passing this object as body.
 
-This operation should return a page of areas in `items`, each with an **"id": "string"** (the `pagination` object is not shown here), in this form:
+This operation should return a page of areas in `items`, each with an **"id": "string"**, next to a `pagination` object, in this form:
 
 ```json
 {
@@ -169,11 +170,24 @@ This operation should return a page of areas in `items`, each with an **"id": "s
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "name": "string",
       "description": "string",
-      "area": {},
+      "area": {
+        "areaType": "CIRCLE",
+        "center": {
+          "latitude": 50.735851,
+          "longitude": 7.10066
+        },
+        "radius": 100
+      },
       "networkProfiles": ["string"],
       "qosProfiles": ["QCI_1_voice"]
     }
-  ]
+  ],
+  "pagination": {
+    "page": 1,
+    "perPage": 20,
+    "totalCount": 1,
+    "totalPages": 1
+  }
 }
 ```
 
@@ -190,7 +204,12 @@ This operation should return a page of areas in `items`, each with an **"id": "s
   },
   "serviceAreaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "sink": "https://endpoint.example.com/sink",
-  "sinkCredential": {}
+  "sinkCredential": {
+    "credentialType": "ACCESSTOKEN",
+    "accessToken": "<access_token>",
+    "accessTokenExpiresUtc": "2025-12-31T23:59:59Z",
+    "accessTokenType": "bearer"
+  }
 }
 ```
 
@@ -198,11 +217,11 @@ The response should contain a **"status": "REQUESTED"**.
 
 #### 1.2 Assessment of Dedicated Network reservation and change of status
 
-During this phase, **GET /networks** may be used to list the information on the dedicated networks and their status.
+During this phase, **GET /networks** may be used to list the information on the dedicated networks and their status. A network is created in the `REQUESTED` state. It moves to `RESERVED` when the operator commits the resources before the service time starts, then to `ACTIVATED` when the service time is reached (directly from `REQUESTED` if the start time has already been reached when the reservation completes), and to `TERMINATED` when the service time expires or the resources cannot be reserved (CAMARA DedicatedNetworks main@81bcd9d documentation/API_documentation/DedicatedNetworks_GeneralDescription.md, States of the network).
 
 #### 1.3 Assignment of Device Access to the Dedicated Network
 
-**POST /accesses** should be used to create an access to a dedicated network, optionally adding devices in the same call. The body identifies the target network (`networkId`, the `id` returned by **POST /networks**), optionally the devices to add (a `devices` list of `device` objects, each identified by phone number, network access identifier or IP address), and the QoS profiles the devices may use:
+**POST /accesses** should be used to create an access to a dedicated network, optionally adding devices in the same call. The body identifies the target network (`networkId`, the `id` returned by **POST /networks**), optionally the devices to add (a `devices` list of `device` objects, each identified by phone number or IP address; CAMARA does not currently allow the network access identifier), and the QoS profiles the devices may use:
 
 ```json
 {

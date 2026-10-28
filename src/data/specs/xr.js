@@ -92,7 +92,7 @@ export const XR_SPECS = [
     title: 'Study on Application enabler for XR Services',
     url: 'https://www.3gpp.org/dynareport/23700-23.htm',
     layer: 'Use cases',
-    note: 'Draft; WG S6',
+    note: 'Under change control; WG S6',
   },
   {
     id: 'TR 23.700-60',
@@ -107,7 +107,7 @@ export const XR_SPECS = [
       'Study on architecture enhancement for Extended Reality and Media service (XRM); Phase 2',
     url: 'https://www.3gpp.org/dynareport/23700-70.htm',
     layer: 'Use cases',
-    note: 'Draft; WG S2',
+    note: 'Under change control; WG S2',
   },
   {
     id: 'TR 26.862',

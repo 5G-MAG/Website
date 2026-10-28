@@ -17,8 +17,8 @@ export default function FiveGMS() {
         <>
           <p className={styles.whyMattersBody}>
                 Before 5GMS, 3GPP&apos;s streaming architecture was the Packet Switched Streaming
-                (PSS) architecture in TS 26.233, which contains the unicast delivery architecture for RTSP,
-                progressive download and 3GP DASH. TS 26.233 has no version after Release 15 (V15.0.0).
+                (PSS) architecture in TS 26.233; according to TR 26.891, it contains the unicast delivery
+                architecture for RTSP, progressive download and 3GP DASH. TS 26.233 has no version after Release 15 (V15.0.0).
                 The 3GPP study on media distribution over 5G (TR 26.891) concluded that the RTSP/RTP part
                 of PSS is no longer required.
               </p>
@@ -39,7 +39,7 @@ export default function FiveGMS() {
                 extensions.
               </p>
               <p className={styles.whyMattersBody} style={{ fontSize: '0.85rem', opacity: 0.8 }}>
-                Sources: WID SP-180984 (5GMSA, Release 16), clauses 3 and 4; TS 26.501 V19.4.0,
+                Sources: WID SP-180984 (5GMSA, Release 16), clauses 3 and 4; TR 26.891 V16.0.0, clauses 5.3.3 and 8.2; TS 26.233 V15.0.0, clause 1; TS 26.501 V19.4.0,
                 clauses 1 and 4.0.1 to 4.0.14.
               </p>
         </>

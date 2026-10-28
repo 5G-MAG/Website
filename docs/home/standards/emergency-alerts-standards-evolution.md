@@ -45,7 +45,7 @@ This page is the detailed, release-by-release companion to [Public Warning Syste
 
 :::
 
-Sources: the 3GPP release descriptions TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.918 V18.0.0 and TR 21.919 V19.0.0, the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TR 36.976 V19.0.0.
+Sources: the 3GPP release descriptions TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.918 V18.0.0 and TR 21.919 V19.0.0, the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TR 36.976 V19.0.0. The change requests of Releases 99 to 15 were also checked against the change histories of TS 22.268, TS 23.041 and TS 29.168 in the versions up to Release 16. Where a change history gives a different subject or version, the page follows it (exceptions: TS 23.041 CR 0182, whose history entry is cut off, and a leading "CR", hyphenation, "&" for "and", or a spelling slip in a history entry, which are not copied). 17 of the 251 change requests of Releases 99 to 15 are not listed in any of those change histories and come from the Change Request database only.
 
 This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.041](https://www.3gpp.org/dynareport/23041.htm), [TS 29.168](https://www.3gpp.org/dynareport/29168.htm), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Public Warning", "PWS" or "Cell Broadcast". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
@@ -248,8 +248,8 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 22.268 | 15.0.0 |  | Creation of v.15.0.0 identical to v.14.1.0 because of the CRs approved at SP#79 raising the spec from v.14 to v.16 |  |
-| TS 23.041 | 15.0.0 | 0166 | Support PWS in 5GS | 5GS_Ph1-CT |
-| TS 29.168 | 15.0.0 | 0070 | Support for PWS-IWF | 5GS_Ph1-CT |
+| TS 23.041 | 15.0.0 | 0166 | Support of PWS in 5GS | 5GS_Ph1-CT |
+| TS 29.168 | 15.0.0 | 0070 | Modifications needed to address 5GS over SBc | 5GS_Ph1-CT |
 | TS 22.268 | 15.1.0 | 0058 | Alignment of 3GPP PWS specifications to recent FCC WEA regulation changes | TEI15 |
 | TS 23.041 | 15.1.0 | 0167 | PWS message format for NG-RAN in 5G | 5GS_Ph1-CT |
 | TS 23.041 | 15.1.0 | 0168 | AMF to CBC inter-connectivity solution option with and without IWF | 5GS_Ph1-CT |
@@ -268,15 +268,15 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 15.2.0 | 0180 | Addition of reference point between AMF and CBCF | 5GS_Ph1-CT |
 | TS 23.041 | 15.2.0 | 0181 | Removal of Extended Repetition-Period IE for NG-RAN | 5GS_Ph1-CT |
 | TS 23.041 | 15.2.0 | 0182 | Correction to note 2 and removal of editor's note in 9.2.26 | 5GS_Ph1-CT |
-| TS 23.041 | 15.2.0 | 0183 | Removing the use of N2 Container for PWS | 5GS_Ph1-CT |
+| TS 23.041 | 15.2.0 | 0183 | Clarification on no use of container for PWS messages via N2 | 5GS_Ph1-CT |
 | TS 23.041 | 15.3.0 | 0184 | Modifications needed to address NG-RAN over SBc | 5GS_Ph1-CT |
 | TS 23.041 | 15.3.0 | 0185 | Corrections to IE names for NG-RAN | 5GS_Ph1-CT |
 | TS 23.041 | 15.3.0 | 0186 | Solving Editor's notes for PWS | 5GS_Ph1-CT |
 | TS 23.041 | 15.3.0 | 0189 | Warning Area Coordinates in WRITE-REPLACE WARNING REQUEST | TEI15, 5GS_Ph1-CT |
-| TS 23.041 | 15.4.0 | 0192 | Duplicate detection for EUTRAN connected to both EPC and 5GCN | 5GS_Ph1-CT |
+| TS 23.041 | 15.4.0 | 0192 | Duplicate detection for EUTRA connected to both EPC and 5GCN | 5GS_Ph1-CT |
 | TS 23.041 | 15.4.0 | 0193 | Resolving the EN for the PWS restoration procedure for NG-RAN | 5GS_Ph1-CT |
 | TS 23.041 | 15.5.0 | 0194 | Additional Message Identifier to direct UEs to perform geo-fencing of CMAS messages | TEI15 |
-| TS 23.041 | 15.5.0 | 0195 | Correction on Warning Area List and TAIs for NG-RAN | 5GS_Ph1-CT, TEI15 |
+| TS 23.041 | 15.5.0 | 0195 | Corrections on Warning Area List and TAIs for NG-RAN | 5GS_Ph1-CT, TEI15 |
 | TS 23.041 | 15.5.0 | 0198 | Correction on applicability of List of TAIs | 5GS_Ph1-CT |
 
 </details>
@@ -311,10 +311,10 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 13.1.0 | 0155 | ETWS Primary Notification message at E-UTRAN interface | TEI13 |
 | TS 23.041 | 13.1.0 | 0156 | Reference corrections and editorial updates | TEI13 |
 | TS 29.168 | 13.1.0 | 0057 | Inconsistent Criticality information | TEI13 |
-| TS 29.168 | 13.1.0 | 0058 | Failure Indication | WSR_EPS |
-| TS 29.168 | 13.1.0 | 0059 | Style fix and resolution of editor's note | TEI13 |
-| TS 29.168 | 13.1.0 | 0065 | ASN.1 Corrections | ETWS, TEI9 |
 | TS 23.041 | 13.2.0 | 0157 | Failure Indication | WSR_EPS |
+| TS 29.168 | 13.2.0 | 0058 | Failure Indication | WSR_EPS |
+| TS 29.168 | 13.2.0 | 0059 | Style fixes and resolution of editor's note | TEI13 |
+| TS 29.168 | 13.2.0 | 0065 | ASN.1 Corrections | ETWS, TEI9 |
 | TS 23.041 | 13.3.0 | 0159 | Failed cell list parameter content correction | WSR_EPS |
 | TS 29.168 | 13.3.0 | 0067 | Restarted Cell List in PWS RESTART INDICATION | TEI12, REP_WMD |
 
@@ -344,7 +344,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 12.1.0 | 0120 | Correction for Warning Area List | TEI11 |
 | TS 23.041 | 12.1.0 | 0123 | Clause 9.4.3 for E-UTRAN | TEI12, PWS-St3 |
 | TS 23.041 | 12.1.0 | 0124 | Warning message reception in Limited Service | TEI11, ETWS, PWS-St3 |
-| TS 29.168 | 12.1.0 | 0034 | Correction to ASN1 encoding | TEI12 |
+| TS 29.168 | 12.1.0 | 0034 | Corrections to ASN.1 encoding | TEI12 |
 | TS 22.268 | 12.2.0 | 0045 | Rel-11 alignment regarding disabling and enabling of PWS Notifications | TEI12 |
 | TS 22.268 | 12.2.0 | 0046 | PWS integrity protection when roaming internationally | TEI12 |
 | TS 23.041 | 12.2.0 | 0125 | CB Message parameter format on the eUTRAN Radio Network - UE interface | TEI12 |
@@ -356,12 +356,12 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 12.3.0 | 0132 | CellID in E-UTRAN | TEI12 |
 | TS 23.041 | 12.3.0 | 0133 | Clarification on Duplication Detection | TEI12 |
 | TS 23.041 | 12.3.0 | 0134 | Clarification on PWS CB Data for the eUTRAN Radio interface | TEI12 |
-| TS 29.168 | 12.3.0 | 0033 | Report to CBC on Warning Message Delivery |  |
+| TS 29.168 | 12.3.0 | 0033 | Report to CBC on Stop Warning Message Delivery |  |
 | TS 29.168 | 12.3.0 | 0038 | Stop-all Warning Messages |  |
 | TS 23.041 | 12.4.0 | 0137 | eNodeB ID in Stop-Warning Indication | REP_WMD |
 | TS 23.041 | 12.4.0 | 0139 | Removal of cells=all feature from RNC | TEI12 |
 | TS 23.041 | 12.4.0 | 0140 | Stop all indicator clarification | REP_WMD |
-| TS 29.168 | 12.4.0 | 0044 | eNodeB Response Indication | REP_WMD |
+| TS 29.168 | 12.4.0 | 0044 | eNodeB ID List | REP_WMD |
 | TS 29.168 | 12.4.0 | 0045 | Correction of references to clauses | REP_WMD |
 | TS 29.168 | 12.4.0 | 0048 | Unsuccessful Outcome | REP_WMD |
 | TS 23.041 | 12.5.0 | 0135 | Restart Indication | REP_WMD |
@@ -392,7 +392,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | --- | --- | --- | --- | --- |
 | TS 22.268 | 11.0.0 | 0009 | EU-ALERT specific requirements | TEI11 |
 | TS 23.041 | 11.0.0 | 0056 | Message Identifiers for EU-Alert | TEI11 |
-| TS 23.041 | 11.0.0 | 0057 | Message Identifiers for EU-Info | TEI11 |
+| TS 23.041 | 11.0.0 | 0057 | Message Identifier for EU-Info | TEI11 |
 | TS 29.168 | 11.0.0 | 0016 | Error Indication procedure | TEI11 |
 | TS 22.268 | 11.0.1 |  | LTE logo changed into LTE Advanced logo |  |
 | TS 22.268 | 11.1.0 | 0010 | RAT support for EU-Alert | TEI11 |
@@ -442,7 +442,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 23.041 | 10.0.0 | 0054 | Clarification of Scope for CB in LTE | TEI10 |
-| TS 29.168 | 10.0.0 | 0015 | SBC-AP Error Indication Procedure | TEI10 |
+| TS 29.168 | 10.0.0 | 0015 | SBc-AP Error Indication | TEI10 |
 | TS 22.268 | 10.1.0 | 0016 | Korean Public Alert System specific requirements | TEI10 |
 | TS 23.041 | 10.1.0 | 0058 | Correction to CMAS Alert levels | PWS-St3 |
 | TS 29.168 | 10.1.0 | 0017 | Error Indication | TEI10 |
@@ -450,7 +450,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 22.268 | 10.2.0 | 0018 | Updates on Korean Public Alert System specific requirements | TEI10 |
 | TS 22.268 | 10.2.0 | 0022 | CMAS Support in E-UTRAN | PWS |
 | TS 23.041 | 10.2.0 | 0064 | Correction on Message Identifier for Korean Public Alert System | TEI10 |
-| TS 23.041 | 10.2.0 | 0069 | Correction to UE warning message indication with regards to ôdigital signatureö and ôtimestampö | ETWS |
+| TS 23.041 | 10.2.0 | 0069 | Correction to UE warning message indication with regards to “digital signature” and “timestamp” | ETWS |
 | TS 29.168 | 10.2.0 | 0023 | Correction to Assigned Criticality | TEI9 |
 | TS 22.268 | 10.3.0 | 0026 | PWS Security requirement correction | PWS |
 | TS 23.041 | 10.3.0 | 0076 | Redocumentation and alignment of the public warning system | ETWS, PWS-St3 |
@@ -483,21 +483,21 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 22.268 | 9.0.0 |  | One-step-approved by SA#42 |  |
-| TS 23.041 | 9.0.0 | 0028 | Message IDs for Commercial Mobile Alert System (CMAS) | PWS-St3 |
-| TS 29.168 | 9.0.0 | 0007 | Enhancements to Warnig Notifications to support PWS/CMAS Requirements |  |
+| TS 23.041 | 9.0.0 | 0028 | Message IDs for the U.S. Commercial Mobile Alert System (CMAS) | PWS-St3 |
+| TS 29.168 | 9.0.0 | 0007 | Enhancements to Warning Notifications to support PWS/CMAS Requirements |  |
 | TS 22.268 | 9.1.0 |  | ETSI clean-up: apply correct style and layout |  |
 | TS 22.268 | 9.1.0 | 0001 | Fix for a note that is floating out of context | PWS |
 | TS 22.268 | 9.1.0 | 0002 | Proposal to solve conflicting requirements | PWS |
 | TS 22.268 | 9.1.0 | 0004 | Regulatory Requirements Pertaining to Roaming | PWS |
-| TS 22.268 | 9.1.0 | 0005 | Removal of ôsubject to regulatory requirementsö from PWS-UE requirements | PWS |
+| TS 22.268 | 9.1.0 | 0005 | Removal of “subject to regulatory requirements” from PWS-UE requirements | PWS |
 | TS 23.041 | 9.1.0 | 0029 | Message identifiers for PWS | PWS-St3 |
-| TS 23.041 | 9.1.0 | 0031 | Modification of Length Indicator Usage | ETWS |
+| TS 23.041 | 9.1.0 | 0031 | CBS activation time for ETWS information | ETWS |
 | TS 23.041 | 9.1.0 | 0032 | Cell wide Geographical Scope (GS) code 00 | TEI9 |
 | TS 23.041 | 9.1.0 | 0033 | Updates on references | TEI9 |
 | TS 23.041 | 9.1.0 | 0034 | Resolution of editor’s note | TEI9 |
-| TS 23.041 | 9.1.0 | 0035 | Editorial fixes | TEI9 |
+| TS 23.041 | 9.1.0 | 0035 | Fixes for typographical errors | TEI9 |
 | TS 23.041 | 9.1.0 | 0036 | Clarification on duplicate use of “immediate display” | TEI9 |
-| TS 23.041 | 9.1.0 | 0037 | Updating references to stage 1 document | PWS-St3 |
+| TS 23.041 | 9.1.0 | 0037 | Updating of references to stage 1 document | PWS-St3 |
 | TS 29.168 | 9.1.0 | 0011 | Number of Broadcasts | PWS-St3 |
 | TS 22.268 | 9.2.0 | 0006 | Update Reference [4] | PWS |
 | TS 22.268 | 9.2.0 | 0007 | 22.268 Clarify Requirements for Handling of Concurrent PWS Warning Notifications | PWS |
@@ -521,7 +521,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 29.168 | 9.5.0 | 0022 | Correction to Assigned Criticality | TEI9 |
 | TS 23.041 | 9.6.0 | 0059 | Correction to CMAS Alert levels | PWS-St3 |
 | TS 29.168 | 9.6.0 | 0061 | ASN.1 Corrections | ETWS, TEI9 |
-| TS 23.041 | 9.7.0 | 0068 | Correction to UE warning message indication with regards to ôdigital signatureö and ôtimestampö | ETWS |
+| TS 23.041 | 9.7.0 | 0068 | Correction to UE warning message indication with regards to “digital signature” and “timestamp” | ETWS |
 | TS 23.041 | 9.8.0 | 0075 | Redocumentation and alignment of the public warning system | ETWS, PWS-St3 |
 | TS 23.041 | 9.9.0 | 0086 | Alignment and correction of aspects for public warning system for GERAN | ETWS, PWS-St3 |
 | TS 23.041 | 9.10.0 | 0101 | Correction of Warning Message Delivery Procedure in GSM | ETWS, PWS-St3 |
@@ -544,7 +544,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
-| TS 23.041 | 8.0.0 | 0018 | Chages to CBS for the realisation of ETWS. | ETWS |
+| TS 23.041 | 8.0.0 | 0018 | Changes to CBS for the realisation of ETWS | ETWS |
 | TS 23.041 | 8.0.0 | 0019 | Additions to the protocol aspects of CBS for the realisation of ETWS | ETWS |
 | TS 23.041 | 8.0.0 | 0020 | Changes to the radio message format aspect of CBS for the realisation of ETWS | ETWS |
 | TS 23.041 | 8.1.0 | 0021 | Clarification on EPS architecture and ETWS Instruction to terminal | ETWS |
@@ -561,14 +561,14 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 8.3.0 | 0027 | Definition of ETWS Primary Notification message format | ETWS |
 | TS 29.168 | 8.3.0 | 0008 | Missing OMC-ID & other corrections | ETWS |
 | TS 29.168 | 8.3.0 | 0009 | Correction of Warning MesSge Transmission procedure | ETWS |
-| TS 23.041 | 8.4.0 | 0030 | Modification of Length Indicator Usage | ETWS |
+| TS 23.041 | 8.4.0 | 0030 | CBS activation time for ETWS information | ETWS |
 | TS 29.168 | 8.4.0 | 0012 | Correction of the SCTP Payload Protocol value for the SBc-AP | TEI8 |
 | TS 23.041 | 8.5.0 | 0038 | Additional ETWS requirements for the BSC - CBC Cell Broadcast protocol | ETWS |
 | TS 23.041 | 8.5.0 | 0040 | Clarification on ETWS secondary notification | ETWS |
 | TS 23.041 | 8.5.0 | 0042 | Correction of duplicate detection in the UE | ETWS |
 | TS 23.041 | 8.6.0 | 0049 | PLMN handling for ETWS duplicate detection | ETWS |
 | TS 23.041 | 8.6.0 | 0051 | Removal of editor's note for ETWS | ETWS |
-| TS 23.041 | 8.7.0 | 0067 | Correction to UE warning message indication with regards to ôdigital signatureö and ôtimestampö | ETWS |
+| TS 23.041 | 8.7.0 | 0067 | Correction to UE warning message indication with regards to “digital signature” and “timestamp” | ETWS |
 | TS 23.041 | 8.8.0 | 0074 | Redocumentation and alignment of the public warning system | ETWS |
 | TS 23.041 | 8.9.0 | 0085 | Alignment and correction of aspects for public warning system for GERAN | ETWS |
 | TS 23.041 | 8.10.0 | 0100 | Correction of Warning Message Delivery Procedure in GSM | ETWS |
@@ -623,7 +623,7 @@ Release 20 (work plan of 28 September 2026). Percentages and dates are those of 
 | TS 23.041 | 3.1.0 | 0001 | Adaptation of the scope of TS 23.041 from “GSM only” to “GSM and UMTS” | CBS |
 | TS 23.041 | 3.1.0 | 0002 | LCS Utilization of CBS | LCS |
 | TS 23.041 | 3.2.0 | 0003 | Addition of LCS message identifier to support GPS Navigation message | LCS |
-| TS 23.041 | 3.2.0 | 0004 | Adaptation of the scope of TS 23.041 from “GSM only” to “GSM and UMTS” part II | CBS |
+| TS 23.041 | 3.2.0 | 0004 | Adaptation of the scope from “GSM only” to “GSM and UMTS” - Part II | CBS |
 | TS 23.041 | 3.3.0 | 0005 | Defining Assisted GPS Broadcast Identifiers | TEI |
 | TS 23.041 | 3.4.0 | 0006 | Clarification of Geographical Scope | TEI |
 | TS 23.041 | 3.5.0 | 0009 | Update of references | TEI |

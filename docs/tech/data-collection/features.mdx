@@ -57,7 +57,7 @@ Before provisioning, the Provisioning AF creates a Provisioning Session (TS 26.5
 | `/sessions/{sessionId}/configurations` | CreateConfiguration (POST) |
 | `/sessions/{sessionId}/configurations/{configurationId}` | RetrieveConfiguration (GET), UpdateConfiguration (PUT, PATCH), DestroyConfiguration (DELETE) (TS 26.532 V19.1.0 clause 6.2.1 (table 6.2.1-1)) |
 
-The API root is `{apiRoot}/3gpp-ndcaf_data-reporting-provisioning/{apiVersion}` (TS 26.532 V19.1.0 clause 6.2.2.2). In TS 26.532 V17.3.0 the OpenAPI of annex B.3 defines CreateConfiguration as POST on `/sessions/{sessionId}/configurations/{configurationId}`; from V18.5.0 annex B.3 has POST on `/sessions/{sessionId}/configurations` (TS 26.532 V17.3.0 annex B.3 (OpenAPI, CreateConfiguration)).
+The API root is `{apiRoot}/3gpp-ndcaf_data-reporting-provisioning/{apiVersion}` (TS 26.532 V19.1.0 clause 6.2.2.2). In TS 26.532 V17.3.0, V18.0.0 and V18.1.0 the OpenAPI of annex B.3 defines CreateConfiguration as POST on `/sessions/{sessionId}/configurations/{configurationId}`; from V18.2.0 annex B.3 has POST on `/sessions/{sessionId}/configurations` (TS 26.532 V17.3.0, V18.0.0, V18.1.0 and V18.2.0 annex B.3 (OpenAPI, CreateConfiguration)).
 
 </details>
 
@@ -181,7 +181,7 @@ The 5GMS Application Provider configures the collection and processing of 5GMS U
 <details>
 <summary>Sources for this page</summary>
 
-- **Provisioning:** TS 26.531 V19.0.0, clauses 4.6.1 and 4.6.2; TS 26.532 V19.1.0, clauses 4.2.3.2.1, 4.2.3.2.5, 4.2.3.3.2 and 6.2, table 5.4.3.1-1. Release 17 path: TS 26.532 V17.3.0.
+- **Provisioning:** TS 26.531 V19.0.0, clauses 4.6.1 and 4.6.2; TS 26.532 V19.1.0, clauses 4.2.3.2.1, 4.2.3.2.5, 4.2.3.3.2 and 6.2, table 5.4.3.1-1. Path of CreateConfiguration: TS 26.532 V17.3.0, V18.0.0, V18.1.0 and V18.2.0, annex B.3.
 - **Client configuration and reporting sessions:** TS 26.531 V19.0.0, clauses 4.6.3 and 5.4; TS 26.532 V19.1.0, clauses 7.2 and 7.2.3.3.2, table 7.3.2.1-1.
 - **Sampling and reporting rules:** TS 26.531 V19.0.0, clause 4.6.1; TS 26.532 V19.1.0, clause 4.1, tables 5.4.2.1-1, 5.4.2.1A-1, 5.4.2.2-1, 5.4.3.2-1 and 5.4.3.3-1.
 - **Data reports and data domains:** TS 26.531 V19.0.0, clauses 4.1, 4.6.1 and 5.5, table B.2-1; TS 26.532 V19.1.0, table 7.3.3.1-1.

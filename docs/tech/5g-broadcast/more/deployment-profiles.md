@@ -53,65 +53,65 @@ The published v1.2.1 does not include specific frequency bands: its clause 8 (ET
 
 ### Bands and bandwidth
 
-The supported bandwidths for LTE-based 5G Broadcast are 1.4, 3, 5, 6, 7, 8, 10, 15 and 20 MHz; Profile A uses 6, 7 and 8 MHz (ETSI TS 103 720 V1.2.1 clause 8).
+The proposal says that the supported bandwidths are 6, 7 and 8 MHz (profile text). ETSI TS 103 720 V1.2.1 lists 1.4, 3, 5, 6, 7, 8, 10, 15 and 20 MHz as the supported bandwidths for LTE-based 5G Broadcast (ETSI TS 103 720 V1.2.1 clause 8).
 
-The proposal limits the supported spectrum to a subset of operating band n108, 606 to 698 MHz (profile text). A contribution of 5 September 2024 from the source XGN ("US Handset Profile for 5G Broadcast", BROADCAST(24)000031) asks instead that the original proposal for the entire band 108, 470 to 698 MHz, is respected. The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) defers specific band configurations to a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8).
+The proposal limits the supported spectrum to a subset of operating band n108: downlink 606 to 698 MHz, duplex mode SDO, with no uplink band (profile text; its Table 12.7.1-1). A contribution of 5 September 2024 from the source XGN ("US Handset Profile for 5G Broadcast", BROADCAST(24)000031, submitted for decision) asks instead that the proposal respects the entire band 108, 470 to 698 MHz, and says that North America needs to be included in the handset profile. The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) defers specific band configurations to a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8).
 
 ### Radio
 
-Implementation of radio aspects in devices shall follow clause 7.3 (Access Stratum) of ETSI TS 103 720 V1.2.1 and support the following radio-layer capabilities: (ETSI TS 103 720 V1.2.1 clause 7.3)
+The proposal says that implementation of radio aspects in devices shall follow clause 7.3 and support the following features (profile text; clause 7.3 of ETSI TS 103 720 V1.2.1 is "Access Stratum"). The references after an item show where the capability is defined in the specifications; an item marked "profile text only" is stated only in the proposal.
 
 - MBMS-dedicated cells for 100% MBMS allocation (ETSI TS 103 720 V1.2.1 clause 6.4.2; TS 36.300 V19.2.0 clause 15.2.1)
-- Subcarrier spacings: 1.25 kHz, 2.5 kHz and 15 kHz.
+- Subcarrier spacings: 1.25 kHz, 2.5 kHz and 15 kHz (profile text; the subset is stated only in the proposal, and the five spacings that exist are in ETSI TS 103 720 V1.2.1 table 6.4.4-1)
 - Service continuity for roaming/border situations (profile text; ETSI TS 103 720 V1.2.1 clause 7.3.4 describes service continuity in idle mode by cell reselection with MBMS prioritisation, and its clause 5.9 says that roaming does not apply; TS 36.304 V19.3.0 clause 5.2.4.1)
 - Multiple services with different Modulation and Coding Scheme (MCS) within a carrier (TS 36.300 V19.2.0 clause 15.3.3; TS 36.331 V19.4.0 clause 6.3.7; ETSI TS 103 720 V1.2.1 clause 7.4)
-- Support of MCS 1-26 (profile text, according to Table 7.1.7.1-1A of TS 36.213, V18.2.0 in the proposal; the table is in TS 36.213 V19.5.0). ETSI TS 103 720 V1.2.1 table 11.3.1-1, which is informative, gives capacity examples for MCS 0 to 26.
-- Support for dual antenna reception (for numerologies other than 0.37 kHz) (ETSI TS 103 720 V1.2.1 clause 7.3.8)
-- Support of diversity reception with multiple antennas
-- Multi-threading of 5G Broadcast and unicast, i.e. using unicast at the same time when receiving on 5G Broadcast
+- Support of MCS 1-26 (profile text, according to Table 7.1.7.1-1A of TS 36.213, V18.2.0 in the proposal; V18.2.0 was not read for this page, and the table is in TS 36.213 V18.4.0 and V19.5.0). ETSI TS 103 720 V1.2.1 table 11.3.1-1, which is informative, gives capacity examples for MCS 0 to 26.
+- Support for dual antenna reception (the proposal gives no exception; ETSI TS 103 720 V1.2.1 clause 7.3.8 requires it for numerologies other than 0.37 kHz)
+- Support of diversity reception with multiple antennas (profile text only; ETSI TS 103 720 V1.2.1 names dual antenna reception, not diversity reception)
+- Multi-threading of 5G Broadcast and unicast, i.e. using unicast at the same time when receiving on 5G Broadcast (profile text only; ETSI TS 103 720 V1.2.1 clause 7.4 says an MBMS Client should support simultaneous reception of multiple 5G Broadcast Services on the same carrier frequency, which is a different capability)
 
 ### Interfaces and protocols
 
-This subsection covers the delivery methods and transport protocols a Profile A receiver is expected to support. Devices' interfaces shall support the following delivery methods (according to 3GPP TS 26.346 V19.3.0 clauses 7 and 8B): (TS 26.346 V19.3.0 clause 6; ETSI TS 103 720 V1.2.1 clause 5.5.3)
+This subsection covers the delivery methods and transport protocols a Profile A receiver is expected to support. The proposal says that devices' interfaces shall support the following delivery methods (according to 3GPP 26.346 18.0.0 in the proposal; profile text). TS 26.346 defines four delivery methods and describes the transparent delivery method in clause 8B (TS 26.346 V18.0.0 clause 6; TS 26.346 V19.3.0 clause 6; ETSI TS 103 720 V1.2.1 clause 5.5.3):
 
-- MBMS Transparent Delivery Method (TS 26.346 V19.3.0 clause 8B; ETSI TS 103 720 V1.2.1 clause 5.5.3)
-- MBMS Download Delivery Method (TS 26.346 V19.3.0 clause 7; ETSI TS 103 720 V1.2.1 clause 5.5.3)
+- MBMS Transparent Delivery Method (TS 26.346 V18.0.0 clause 8B; TS 26.346 V19.3.0 clause 8B; ETSI TS 103 720 V1.2.1 clause 5.5.3)
+- MBMS Download Delivery Method (TS 26.346 V18.0.0 clause 7; TS 26.346 V19.3.0 clause 7; ETSI TS 103 720 V1.2.1 clause 5.5.3)
 
-The proposal says that devices shall support the following protocols (profile text; TS 26.346 V19.3.0 clause 8B gives RTP and MPEG-2 TS as examples of application protocols over the transparent delivery method; clauses 5.6 and 7.2): (TS 26.346 V19.3.0 clause 5.6; TS 26.346 V19.3.0 clause 7.2; TS 26.346 V19.3.0 clause 8B)
+The proposal says that devices shall support the following protocols (according to 3GPP 26.346 18.0.0 in the proposal; profile text). The notes give what TS 26.346 V18.0.0 and V19.3.0 and ETSI TS 103 720 V1.2.1 say; the clauses named below exist in both versions of TS 26.346:
 
-- RTP (an example of an application protocol over the transparent delivery method; TS 26.346 V19.3.0 clause 8B)
+- RTP (the proposal says over the transparent delivery method; TS 26.346 clause 8B names RTP as an example of an application layer protocol on top of UDP/IP and says that this protocol is out of scope of the specification)
 - DASH (Dynamic Adaptive Streaming over HTTP) (TS 26.346 V19.3.0 clause 5.6; ETSI TS 103 720 V1.2.1 clause 5.3.2)
-- TS over IP (MPEG-2 Transport Stream over IP, an example of an application protocol over the transparent delivery method; TS 26.346 V19.3.0 clause 8B)
-- HLS (HTTP Live Streaming; over download delivery method) (ETSI TS 103 720 V1.2.1 clause 5.3.2; TS 26.346 V19.3.0 clause M.2.2).
+- TS over IP (MPEG-2 Transport Stream over IP; the proposal says over the transparent delivery method; TS 26.346 clause 8B names packetized MPEG-2 TS as an example of an application layer protocol and says that this protocol is out of scope of the specification)
+- HLS (HTTP Live Streaming). The proposal says over the transparent delivery method, but ETSI TS 103 720 V1.2.1 clause 5.3.2 lists HLS among the segment streaming services supported by the download delivery mode, and TS 26.346 clause M.2.2 describes HLS Media Playlists delivered within the MBMS session with FLUTE FDT attributes (ETSI TS 103 720 V1.2.1 clause 5.3.2; TS 26.346 V18.0.0 clause M.2.2; TS 26.346 V19.3.0 clause M.2.2)
 - FLUTE (File Delivery over Unidirectional Transport) (TS 26.346 V19.3.0 clause 7.2)
-- ROUTE (Real-time Object delivery over Unidirectional Transport; over the transparent delivery method) (profile text; ROUTE does not occur in TS 26.346 V19.3.0 or ETSI TS 103 720 V1.2.1)
+- ROUTE (Real-time Object delivery over Unidirectional Transport; over the transparent delivery method) (profile text only; ROUTE does not occur in TS 26.346 V18.0.0 or V19.3.0, TS 26.347 V18.0.0 or V19.0.0, TS 23.246 V18.0.0 or V19.0.0, or ETSI TS 103 720 V1.2.1)
 
-The following functionalities shall be supported (the proposal refers to V18.0.0 of the specifications):
+The proposal says that the following functionalities shall be supported, naming V18.0.0 of each specification (profile text):
 
-- Service announcement (according to 3GPP [23.246](https://www.3gpp.org/dynareport/23246.htm) V19.0.0) (TS 23.246 V19.0.0 clause 4.4.3.1; TS 26.346 V19.3.0 clause 5.2)
-- Bootstrap.multipart file (according to 3GPP 26.346 V19.3.0) (TS 26.346 V19.3.0 clause 5.2.3.1; TS 26.346 V19.3.0 clause L.2.9)
-- MBMS-URL (according to 3GPP [26.347](https://www.3gpp.org/dynareport/26347.htm) V19.0.0)
+- Service announcement (according to 3GPP [23.246](https://www.3gpp.org/dynareport/23246.htm) 18.0.0 in the proposal). The broadcast mode service announcement clause is the same in both versions (TS 23.246 V18.0.0 clause 4.4.3.1; TS 23.246 V19.0.0 clause 4.4.3.1; TS 26.346 V18.0.0 clause 5.2; TS 26.346 V19.3.0 clause 5.2)
+- Bootstrap.multipart file. The proposal says "according to 3GPP 23.246 18.0.0", but the bootstrap.multipart file does not occur in TS 23.246 V18.0.0 or V19.0.0; it is described in TS 26.346 (TS 26.346 V18.0.0 clause 5.2.3.1; TS 26.346 V18.0.0 clause L.2.9; TS 26.346 V19.3.0 clause 5.2.3.1; TS 26.346 V19.3.0 clause L.2.9)
+- MBMS-URL (according to 3GPP [26.347](https://www.3gpp.org/dynareport/26347.htm) 18.0.0 in the proposal). TS 26.347 defines the MBMS-URL and the MBMS URLs, with clause 8.2.4 for receive-only-mode services (TS 26.347 V18.0.0 clauses 3.1, 8 and 8.2.4; TS 26.347 V19.0.0 clauses 3.1, 8 and 8.2.4)
 
 ### Codec
 
 The proposal says that devices shall support the following codecs (profile text); the notes give what the held specifications say (ETSI TS 103 720 V1.2.1 clause 7.5; TS 26.511 V19.0.0 clause 5.4):
 
 - Audio: HE-AAC aacPlus, enhanced aacPlus, AC-3, AAC (profile text). In the held specifications: enhanced aacPlus (HE-AAC v2; should; TS 26.346 V19.3.0 clauses 10.3 and K.2.2.2); for the 5GMS Television profile, the eAAC+ stereo operation point (shall), the xHE-AAC stereo operation point (should) and the IVAS operation point (may) of TS 26.117 (TS 26.511 V19.0.0 clause 5.4.2)
-- Video: H.264/AVC Progressive High Profile Level 3.1 (720p HD operation point; shall) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.1)
-- Video: H.265 (HEVC) Main Profile, Main Tier, Level 3.1 (should) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.2)
-- Video: H.266 VVC (profile text; TS 26.511 V19.0.0 clause 5.4.1 lists H.264 and H.265 only)
-- CMAF, mp4, ISO BMFF (TS 26.346 V19.3.0 clause 5.6; TS 26.511 V19.0.0 clause 5.4.4.1)
-- MPEG-2 TS
+- Video: H.264 High profile (profile text). The held specifications are more specific: H.264/AVC Progressive High Profile Level 3.1 (720p HD operation point; shall) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.1)
+- Video: H.265 (HEVC) (profile text). The held specifications are more specific: Main Profile, Main Tier, Level 3.1 (should) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.2)
+- Video: H.266 VVC (profile text only; TS 26.511 V19.0.0 clause 5.4.1 lists H.264 and H.265 only, and VVC does not occur in TS 26.346 V18.0.0 or V19.3.0)
+- CMAF (Common Media Application Format), mp4, ISO BMFF (ISO base media file format) (profile text; TS 26.346 V19.3.0 clause 5.6; TS 26.511 V19.0.0 clause 5.4.4.1)
+- MPEG-2 TS (profile text; TS 26.346 clause 8B names packetized MPEG-2 TS as an example of an application layer protocol over the transparent delivery method)
 
 ### Miscellaneous
 
-This subsection covers the remaining operational modes and functions. Devices shall support:
+This subsection covers the remaining operational modes and functions. The proposal says that devices shall support (profile text):
 
 - Free-to-air (FTA) mode (ETSI TS 103 720 V1.2.1 clause 4.3.2; TR 36.976 V19.0.0 clause 1)
 - Receive-only-mode (ROM) (ETSI TS 103 720 V1.2.1 clause 7.2)
-- Multi-frequency operation (service offered on different frequencies in different service areas, signalled in SIB15) (ETSI TS 103 720 V1.2.1 clause 5.5.3; ETSI TS 103 720 V1.2.1 clause 6.5)
+- MFN support (profile text; ETSI TS 103 720 V1.2.1 does not use the term MFN, but it describes a service offered on different frequencies in different service areas, signalled in SIB15) (ETSI TS 103 720 V1.2.1 clause 5.5.3; ETSI TS 103 720 V1.2.1 clause 6.5)
 - Single Frequency Network (SFN) support (ETSI TS 103 720 V1.2.1 clause 4.3.2; TS 36.300 V19.2.0 clause 15.3.3)
-- Service discovery strategy: 1. MBMS-URL, 2. Bootstrap.multipart file, 3. Service announcement
-- Public Warning System (PWS) support (according to clause 7.6 of ETSI TS 103 720 V1.2.1, where it is a "should") (ETSI TS 103 720 V1.2.1 clause 7.6)
+- Service discovery strategy: 1. MBMS-URL, 2. Bootstrap.multipart file, 3. Service announcement (profile text only; ETSI TS 103 720 V1.2.1 clause 5.12 describes how a receiver finds services and gives no such order)
+- Public Warning System (PWS) support ("PWS systems (according to clause 7.6)" in the proposal; in clause 7.6 of ETSI TS 103 720 V1.2.1 it is a "should") (ETSI TS 103 720 V1.2.1 clause 7.6)
 
-Time interleaving and frequency interleaving for the PMCH are specified in Release 19 (TS 36.331 V19.4.0 clause 6.3.7, TS 36.213 V19.5.0 clause 11.1); they are not in ETSI TS 103 720 V1.2.1 (TS 36.331 V19.4.0 clause 6.3.7; TS 36.213 V19.5.0 clause 11.1). TFI interleaves a signal across time and frequency to improve robustness, and UHF co-existence lets 5G Broadcast share spectrum with legacy terrestrial broadcast. Time and frequency interleaving are specified in the Release 19 3GPP specifications; check ETSI TS 103 720 for a later revision, and treat co-existence as not covered by the specifications read (TS 36.331 V19.4.0 clause 6.3.7). The proposal states that, if Time-Frequency-Interleaving and the co-existence of legacy broadcast and 5G Broadcast in UHF are introduced in Release 19, both functionalities shall be supported (profile text). See [Operational Parameters in Use](/tech/5g-broadcast/more/parameters-in-use) for the values observed today.
+Time interleaving and frequency interleaving for the PMCH are specified in Release 19 (TS 36.331 V19.4.0 clause 6.3.7, TS 36.213 V19.5.0 clause 11.1); they are not in ETSI TS 103 720 V1.2.1 (TS 36.331 V19.4.0 clause 6.3.7; TS 36.213 V19.5.0 clause 11.1). The 3GPP release description says that time and frequency interleavers (Time-Frequency Interleaving, TFI) enhance transmission robustness in time-varying channels (for example mobile reception) and frequency-selective channels (for example SFN deployments) (TR 21.919 V19.0.0 clause 19.1). Time and frequency interleaving are specified in the Release 19 3GPP specifications; check ETSI TS 103 720 for a later revision. The co-existence of legacy broadcast and 5G Broadcast in UHF is not described in the specifications read for this page. The proposal states that, if Time-Frequency-Interleaving and the co-existence of legacy broadcast and 5G Broadcast in UHF are introduced in Release 19, both functionalities shall be supported (profile text). See [Operational Parameters in Use](/tech/5g-broadcast/more/parameters-in-use) for the values observed today.

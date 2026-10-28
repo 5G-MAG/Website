@@ -186,7 +186,7 @@ The QoS Booking and Assignment API can notify the API consumer asynchronously wh
 
 Notifications are delivered to the callback URL supplied as the `sink` parameter in **POST /qos-bookings**, for both booking and assignment events. Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml info.description Notifications; `/qos-bookings` POST callbacks; EventBookingStatusChanged).
 
-The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1; CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml callbacks application/cloudevents+json).
+The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1; CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml callbacks application/cloudevents+json). A notification carries the required attributes `id`, `source`, `specversion` (`1.0`), `type` and `time`, and a `data` object; if `datacontenttype` is present it must be `application/json`. The `sink` must be an `https` URL (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schemas CloudEvent, Sink).
 
 ### Event types
 

@@ -49,7 +49,7 @@ The Release column is the release of each document's first version. Titles are e
   ]}
 />
 
-TS 26.531 has the same clause structure in Release 17, 18 and 19. In the OpenAPI description of TS 26.532 (annex B.3), the API roots stay at `/v1`; in V18.5.0 the CreateConfiguration operation (POST) is under `/sessions/{sessionId}/configurations`, where V17.3.0 puts it under `/sessions/{sessionId}/configurations/{configurationId}`. The resource clauses (clause 6.2.4) are the same in both.
+TS 26.531 has the same clause structure in Release 17, 18 and 19. In the OpenAPI description of TS 26.532 (annex B.3), the API roots stay at `/v1`; from V18.2.0 (Release 18, June 2024) the CreateConfiguration operation (POST) is under `/sessions/{sessionId}/configurations`, where V17.3.0, V18.0.0 and V18.1.0 put it under `/sessions/{sessionId}/configurations/{configurationId}`. The resource URL in clause 6.2.4 (`.../sessions/{sessionId}/configurations/`) is the same in all of them.
 
 ## 5G System specifications they build on
 
@@ -59,7 +59,7 @@ The Scope clause of each specification names the 5G System documents it is defin
   columns={["Specification", "Title", "Group", "Named in the Scope of"]}
   rows={[
     [<><a href="https://www.3gpp.org/dynareport/23501.htm" target="_blank" rel="noreferrer">TS 23.501</a></>, "System architecture for the 5G System (5GS); Stage 2", "SA2", "TS 26.531, TS 26.532"],
-    [<><a href="https://www.3gpp.org/dynareport/23502.htm" target="_blank" rel="noreferrer">TS 23.502</a></>, "Procedures for the 5G System (5GS)", "SA2", "TS 26.531, TS 26.532"],
+    [<><a href="https://www.3gpp.org/dynareport/23502.htm" target="_blank" rel="noreferrer">TS 23.502</a></>, "Procedures for the 5G System (5GS); Stage 2", "SA2", "TS 26.531, TS 26.532"],
     [<><a href="https://www.3gpp.org/dynareport/23288.htm" target="_blank" rel="noreferrer">TS 23.288</a></>, "Architecture enhancements for 5G System (5GS) to support network data analytics services", "SA2", "TS 26.531, TS 26.532"],
     [<><a href="https://www.3gpp.org/dynareport/29517.htm" target="_blank" rel="noreferrer">TS 29.517</a></>, "5G System; Application Function Event Exposure Service; Stage 3", "CT3", "TS 26.531, TS 26.532"],
     [<><a href="https://www.3gpp.org/dynareport/29510.htm" target="_blank" rel="noreferrer">TS 29.510</a></>, "5G System; Network Function Repository Services; Stage 3", "CT4", "TS 26.532"],

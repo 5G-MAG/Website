@@ -55,15 +55,15 @@ export const AI_ML_SPECS = [
     url: 'https://www.3gpp.org/dynareport/23700-81.htm',
     layer: 'Studies',
     release: '18',
-    note: 'SA2, eNA Phase 3 study; results folded into TS 23.288',
+    note: 'SA2, eNA Phase 3 study of further enhancements to network automation as documented in TS 23.288 (TR 23.700-81 V18.0.0 clause 1)',
   },
   {
     id: 'TR 23.700-80',
-    title: 'Study on 5G system support for AI/ML-based services',
+    title: 'Study on 5G System Support for AI/ML-based Services',
     url: 'https://www.3gpp.org/dynareport/23700-80.htm',
     layer: 'Studies',
     release: '18',
-    note: 'SA2, generic AI/ML operational-support study distinct from the NWDAF-specific eNA study',
+    note: 'SA2, 5GS support for application-layer AI/ML operation (model distribution, transfer and training), based on TS 22.261 clauses 6.40 and 7.10 (TR 23.700-80 V18.0.0 clause 1)',
   },
 ];
 

@@ -21,7 +21,7 @@ This page is the release-by-release companion to [Network APIs for Connectivity 
 
 :::tip[At a glance]
 
-- **Source:** the GitHub releases of each CAMARA repository.
+- **Source:** the GitHub releases of each CAMARA repository, read on 28 October 2026.
 - **Covers:** Quality on Demand, QoS Profiles and QoS Provisioning; QoS Booking and QoS Booking and Assignment; Dedicated Networks.
 - **Pre-releases:** a release candidate, or a release that GitHub marks as a pre-release.
 
@@ -31,12 +31,13 @@ This page is the release-by-release companion to [Network APIs for Connectivity 
 
 Release history of the CAMARA repositories behind the APIs, from the GitHub releases of each repository. The APIs listed for a release are the ones its release notes say it contains. A pre-release is a release candidate or a release that GitHub marks as a pre-release.
 
-### Quality on Demand, QoS Profiles and QoS Provisioning
+### Quality on Demand and QoS Provisioning
 
-Repository: [camaraproject/QualityOnDemand](https://github.com/camaraproject/QualityOnDemand/releases).
+Repository: [camaraproject/QualityOnDemand](https://github.com/camaraproject/QualityOnDemand/releases). The QoS Profiles API was released from this repository up to r4.1, as the rows below show; it has its own repository from then on (see [QoS Profiles](#qos-profiles)).
 
 | Release | Date | Status | APIs in the release |
 | --- | --- | --- | --- |
+| [r4.2](https://github.com/camaraproject/QualityOnDemand/releases/tag/r4.2) | 2026-10-26 | Pre-release | qos-provisioning 0.4.0-rc.2; quality-on-demand 1.2.0-rc.4 |
 | [r4.1](https://github.com/camaraproject/QualityOnDemand/releases/tag/r4.1) | 2026-08-20 | Pre-release | qos-profiles 1.2.0-rc.3; qos-provisioning 0.4.0-rc.1; quality-on-demand 1.2.0-rc.3 |
 | [r3.2](https://github.com/camaraproject/QualityOnDemand/releases/tag/r3.2) | 2025-09-16 | Public release | quality-on-demand v1.1.0; qos-profiles v1.1.0; qos-provisioning v0.3.0 |
 | [r3.1](https://github.com/camaraproject/QualityOnDemand/releases/tag/r3.1) | 2025-07-17 | Pre-release | quality-on-demand v1.1.0-rc.2; qos-profiles v1.1.0-rc.2; qos-provisioning v0.3.0-rc.1 |
@@ -54,6 +55,14 @@ Repository: [camaraproject/QualityOnDemand](https://github.com/camaraproject/Qua
 | [v0.8.1](https://github.com/camaraproject/QualityOnDemand/releases/tag/v0.8.1) | 2023-01-27 | Public release | not stated in the release notes |
 | [v0.8.0](https://github.com/camaraproject/QualityOnDemand/releases/tag/v0.8.0) | 2023-01-18 | Public release | not stated in the release notes |
 | [v0.1.0](https://github.com/camaraproject/QualityOnDemand/releases/tag/v0.1.0) | 2023-01-18 | Public release | not stated in the release notes |
+
+### QoS Profiles
+
+Repository: [camaraproject/QoSProfiles](https://github.com/camaraproject/QoSProfiles/releases). The release notes of its r1.1 say that the API moved from QualityOnDemand to this repository. Earlier releases of qos-profiles are in the Quality on Demand table above.
+
+| Release | Date | Status | APIs in the release |
+| --- | --- | --- | --- |
+| [r1.1](https://github.com/camaraproject/QoSProfiles/releases/tag/r1.1) | 2026-10-20 | Pre-release | qos-profiles 1.2.0-rc.4 |
 
 ### QoS Booking and QoS Booking and Assignment
 

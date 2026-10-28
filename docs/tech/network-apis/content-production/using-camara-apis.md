@@ -316,20 +316,20 @@ The mechanisms which detach the booking of network resources from a particular d
 
 <table>
   <thead><tr>
-    <th scope="col" markdown="span" align="left"><b>Direct usage of the network resources when a device just connects to the network</b></th>
+    <th scope="col" markdown="span" align="left"><b>Usage of the network resources by a device</b></th>
   </tr></thead>
 <tbody>
   <tr>
-    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b>, the network resources are used as soon as a device connects to the network.</td>
+    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b>, the devices assigned to the booked slice with the Network Slice Assignment API use the booked network resources, up to the maximum number of devices in the slice QoS profile.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/qos-booking">QoS Booking API</a></b>, the network resources are used as soon as a device connects to the network.</td>
+    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/qos-booking">QoS Booking API</a></b>, the QoS profile booked for the identified device applies once the booking is <code>ACTIVATED</code>, when its start time comes.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/qos-provisioning">QoS Provisioning API</a></b>, the network resources are used as soon as a device connects to the network.</td>
+    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/qos-provisioning">QoS Provisioning API</a></b>, the network applies the QoS profile to the device whenever the device is connected to the network, until the assignment is revoked.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/quality-on-demand">Quality on Demand API</a></b>, the network resources are used as soon as a device connects to the network.</td>
+    <td markdown="span" align="left">With the <b><a href="/tech/network-apis/features/quality-on-demand">Quality on Demand API</a></b>, the QoS profile applies to the data flow between the identified device and the application server while the session's <code>qosStatus</code> is <code>AVAILABLE</code>.</td>
   </tr>
 </tbody>
 </table>
@@ -376,7 +376,7 @@ Mapping the CAMARA APIs onto the 5G-MAG requirement categories surfaces recurrin
 
 ## API consumer authentication
 
-Before any of the calls above, the API consumer authenticates to the operator's authorisation server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent. Where the API processes personal data and users can exercise their rights through opt-in or opt-out, the CAMARA API definitions make three-legged access tokens mandatory, and the authorisation flows to be used are agreed during onboarding (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description Authorization and authentication). The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
+Before any of the calls above, the API consumer authenticates to the operator's authorisation server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. The profile uses the OIDC Authorization Code Flow and the Client-Initiated Backchannel Authentication (CIBA) flow, which authenticate the end user, and the OAuth 2.0 client credentials grant, which gives a two-legged access token that does not represent a user and can be used only if the API consumer and the API provider have agreed it, taking into account the declared purpose; it also uses the JWT Bearer flow (CAMARA IdentityAndConsentManagement main@f922b8a CAMARA-Security-Interoperability.md Introduction; Client Credentials Flow). Where the API processes personal data and users can exercise their rights through opt-in or opt-out, the CAMARA API definitions make three-legged access tokens mandatory, and the authorisation flows to be used are agreed during onboarding (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description Authorization and authentication). The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
 
 ## Related
 

@@ -47,7 +47,7 @@ TS 23.288 V20.2.0 also adds clause 6.24 (Abnormal User Plane Traffic Analytics) 
 
 The SA4 reports themselves point to Release 20 next steps. TR 26.927 V19.0.0 clause 7 recommends, for collaboration scenario 3 (IMS services), stage 3 normative work in Release 20 on AI/ML model distribution and operation in IMS, including extending TS 26.114 and TS 26.264, and, for a new study in Release 20 or beyond, further study of the traffic characteristics of the AI/ML data components and of possible QoS identifiers. TR 26.847 V19.0.0 clause 6 recommends a new evaluation study covering AI/ML traffic characteristics and KPIs for the evaluation scenarios. These are recommendations in the reports, not decisions; the work plan entry below is the only Release 20 item found that names TS 26.264.
 
-The work plan lists the Release 20 work item AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (UID 1080049, SP-250878, S4, 100%, finish 6 June 2026), against TS 26.114 and TS 26.264; its scope is unverified. The change history of TS 26.114 V20.0.0 records CR 0609 "CR for AI/ML in IMS" (SA#112, SP-260396, category B); the change history does not name the work item, so the link to AIML_IMS-MED is by subject. TR 21.919 clause 8.2.1 states that Stage 1 of AIML_MT_Ph2 (AI/ML Model Transfer Phase 2) was moved to the next release.
+The work plan lists the Release 20 work item AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (UID 1080049, SP-250878, S4, 100%, finish 6 June 2026), against TS 26.114 and TS 26.264; its scope is unverified. The change history of TS 26.114 V20.0.0 records CR 0609 "CR for AI/ML in IMS" (SA#112, SP-260396, category B); the change history does not name the work item, so the link to AIML_IMS-MED is by subject. Compared with V19.3.0, V20.0.0 adds Annex AC (normative), "AI/ML assisted media processing", for discovery and delivery of AI/ML applications and models over the bootstrap data channel, association with RTP media streams, and AI/ML session control (TS 26.114 V20.0.0 Annex AC). TR 21.919 clause 8.2.1 states that Stage 1 of AIML_MT_Ph2 (AI/ML Model Transfer Phase 2) was moved to the next release.
 
 ## Release 19
 
@@ -159,6 +159,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | Feb 2022 | SA2#149E | S2-2201066 | Skeleton document proposal | 0.0.0 |
 | Sep 2022 | SA#97-e | SP-220831 | MCC editorial update for presentation to TSG SA for information | 1.0.0 |
 | Nov 2022 | SA#98-e | SP-221116 | MCC editorial update for presentation to TSG SA for information | 2.0.0 |
+
+The row for version 2.0.0 reproduces the change history of TR 23.700-81 V18.0.0, which says "for information"; the change history of TR 23.700-80 V18.0.0 says "for approval" for its version 2.0.0 at the same meeting.
 
 </details>
 

@@ -145,7 +145,7 @@ The MBS Session Join procedure is how a UE informs the 5G Core of its interest i
 
 ### J1. The associated PDU Session
 
-A PDU Session associated with multicast MBS sessions, the associated PDU Session, is established with the PDU Session Establishment procedure of TS 23.502, with differences (TS 23.247 clause 7.2.1.2). Its DNN and S-NSSAI are those used for the operations on multicast MBS sessions, join and leave. The AMF selects an SMF capable of handling multicast MBS sessions. If the SMF does not have the MBS subscription data of the UE, it retrieves it with Nudm_SDM_Get and subscribes to its changes with Nudm_SDM_Subscribe.
+A PDU Session associated with multicast MBS sessions, the associated PDU Session, is established with the UE Requested PDU Session Establishment procedure (TS 23.502 V20.3.0 clause 4.3.2.2), with differences (TS 23.247 clause 7.2.1.2). Its DNN and S-NSSAI are those used for the operations on multicast MBS sessions, join and leave. The AMF selects an SMF capable of handling multicast MBS sessions. If the SMF does not have the MBS subscription data of the UE, it retrieves it with Nudm_SDM_Get and subscribes to its changes with Nudm_SDM_Subscribe.
 
 ### J2. Join request
 
@@ -401,7 +401,7 @@ In the gNB, F1AP Multicast Distribution Release lets the gNB-DU release the F1-U
 
 ## Mobility
 
-A UE may move from one NG-RAN node to another after it has joined a multicast session. TS 23.247 supports multicast mobility between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction; in both cases minimisation of data loss should be supported (TS 23.247 clauses 6.3.1 and 7.2.3.1). During an active session, mobility between a node that supports MBS and one that does not requires the mobility procedure to provide the appropriate MBS traffic delivery method at the target node. TS 23.247 clauses 7.2.3.2 and 7.2.3.3 add to the Xn and N2 handover procedures of TS 23.502 (clauses 4.9.1.2 and 4.9.1.3 of TS 23.502). In NG-RAN, mobility builds on the existing functions of TS 38.300 clause 9.2, and lets the UE continue receiving its multicast services via PTM or PTP in the new cell after handover (TS 38.300 clauses 16.10.5.3.1 and 16.10.5.3.2).
+A UE may move from one NG-RAN node to another after it has joined a multicast session. TS 23.247 supports multicast mobility between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction; in both cases minimisation of data loss should be supported (TS 23.247 clauses 6.3.1 and 7.2.3.1). During an active session, mobility between a node that supports MBS and one that does not requires the mobility procedure to provide the appropriate MBS traffic delivery method at the target node. TS 23.247 clauses 7.2.3.2 and 7.2.3.3 add to the Xn and N2 handover procedures of TS 23.502 (clauses 4.9.1.2 and 4.9.1.3 of TS 23.502 V20.3.0). In NG-RAN, mobility builds on the existing functions of TS 38.300 clause 9.2, and lets the UE continue receiving its multicast services via PTM or PTP in the new cell after handover (TS 38.300 clauses 16.10.5.3.1 and 16.10.5.3.2).
 
 - H (TS 23.247 V20.0.0 clause 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.2). Handover between nodes that support MBS: Xn (X1 to X7) or N2 (N1 to N4)
 - T (TS 23.247 V20.0.0 clause 6.3.1, 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.3). Handover to a node that does not support MBS (T1 to T3)
@@ -533,6 +533,7 @@ For delivery to UEs in RRC_INACTIVE, the handover and resume procedures above ha
 - **Release 18 attribution (RRC_INACTIVE, power saving, group paging):** TS 23.247 V18.8.0 and V20.0.0, clauses 6.16, 6.17, 7.2.5.2 and 7.2.10, and the change history (CR 0149, CR 0159, CR 0280), compared with V17.12.0; TR 21.918 V18.0.0 clause 12.2 (NR_MBS_enh).
 - **Release 20 (TS 23.247 V20.0.0), roaming for multicast:** clauses 4.1, 6.4.2, 6.22 and 7.2.1.2 (NOTE 2).
 - **Mobility:** TS 23.247 V20.0.0, clauses 6.3.1, 7.2.1.4 and 7.2.3.1 to 7.2.3.8.4; TS 38.300 V19.4.0, clauses 16.10.5.1 and 16.10.5.3.1 to 16.10.5.3.5; TS 38.413 V19.4.0, clauses 8.4.2.2, 8.4.4.2, 8.18.1, 8.18.2 and 9.3.1.210.
+- **Associated PDU Session and handover (TS 23.502):** TS 23.502 V20.3.0, clause 4.3.2.2 (UE Requested PDU Session Establishment), clause 4.9.1.2 (Xn based inter NG-RAN handover) and clause 4.9.1.3 (Inter NG-RAN node N2 based handover).
 - **Added in Release 19 (shared NG-U path failure, Object Repair):** TS 38.300 V19.4.0, clause 16.10.5.1; TS 38.413 V19.4.0, clause 8.18.5.2; TS 37.483 V19.4.0, clause 8.6.2.2.2; TS 26.502 V19.6.0, clause 5.3; each compared with the Release 18 issue (TS 38.300 V18.11.0, TS 38.413 V18.11.0, TS 37.483 V18.6.0, TS 26.502 V18.6.0).
 
 </details>

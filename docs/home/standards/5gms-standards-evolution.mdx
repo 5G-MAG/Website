@@ -33,7 +33,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 Work items as listed in the 3GPP work plan of 28 September 2026. The specifications shown are the 5GMS specifications among those the work plan lists for each item, plus the MBS specifications (TS 26.502, TS 26.517) for the Advanced Media Delivery items.
 
-Note: for FS_5GMS_Multicast the work plan lists its output only as "new". TR 26.802 is its output according to its study description (SP-200238), which names a TR titled "Multicast Architecture Enhancement for 5G Media Streaming".
+Note: for FS_5GMS_Multicast the work plan lists its output only as "new". TR 26.802 is its output according to its study description (SP-200238, clause 5), which names a new TR titled "Multicast Architecture Enhancement for 5G Media Streaming"; TR 21.917 V17.0.1 clause 6.3.4.4 also lists TR 26.802 as the reference of this study.
 
 <JumpMenu items={[["Release 20", "release-20"], ["Release 19", "release-19"], ["Release 18", "release-18"], ["Release 17", "release-17"], ["Release 16", "release-16"], ["What each release added", "what-each-release-added"], ["Other SA4 work items", "other-sa4-work-items-that-changed-5gms-specifications"], ["Related", "related"]]} />
 
@@ -87,7 +87,7 @@ The entries below are the novelties each release description (TR 21.916 to TR 21
   - EVEX: generic UE data collection, reporting and event exposure (TS 26.531 and TS 26.532), its instantiation for 5GMS in TS 26.501 and TS 26.512 (the M1 API is extended with Data Access Profiles), and extensions to TS 29.517, TS 29.522 and TS 29.591 (TR 21.917 clause 15.6).
   - 5GMS_EDGE: TS 26.501 CR 0030 "Support of Edge Media Processing in 5GMS" (SA#94-e, V17.0.0) and CR 0036 "[EVEX] [5GMS_EDGE] Expanded downlink provisioning procedures and domain model" (SA#96, V17.2.0). TR 21.917 gives no summary for 5GMS_EDGE.
   - 5MBUSA: new TS 26.502 for the MBS User Service architecture, and changes to TS 26.501 so that 5GMS downlink streaming can run as an MBMS-Aware Application on eMBMS, with procedures for exclusive eMBMS delivery, consumption reporting, metrics reporting, hybrid delivery and dynamic provisioning (TR 21.917 clause 6.3.4.5; TS 26.501 CR 0034 "5GMS via eMBMS", SA#95-e, V17.1.0).
-  - 5MBP3: new TS 26.517 for the format and protocol of User Service Announcement (reference point M5); stage 3 protocols for the MBS distribution methods based on existing MBMS delivery methods (reference point M4); and extensions to TS 26.512, TS 26.346, TS 26.347 and TS 26.348 to support 5G Media Streaming via eMBMS (TR 21.917 clause 6.3.4.3.3).
+  - 5MBP3: new TS 26.517 for the format and protocol of User Service Announcement (reference point M5); stage 3 protocols for the MBS distribution methods based on existing MBMS delivery methods (reference point M4); and extensions to TS 26.512, TS 26.346, TS 26.347 and TS 26.348 to support 5G Media Streaming via eMBMS (TR 21.917 clause 6.3.4.3.3). The change histories of TS 26.346 V18.0.0 (CR 0660 and CR 0661) and TS 26.347 V18.0.0 (CR 0013) record 5MBP3 change requests approved at SA#96 (SP-220597), each in V17.1.0.
   - FS_5GMS_Multicast: the study concludes that the generic MBS User Service architecture is to be defined in TS 26.502 and is independent of 5GMS (TR 21.917 clause 6.3.4.4).
   - 8K_TV_5G: an 8K TV operation point in TS 26.116 and the corresponding decoding capabilities for 5GMS in TS 26.511 (TR 21.917 clause 15.2).
 - **Release 18.**

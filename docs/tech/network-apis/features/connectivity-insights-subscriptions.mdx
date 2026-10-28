@@ -137,7 +137,7 @@ Check: [**Application Profiles API**](/tech/network-apis/features/application-pr
 
 ## Device object
 
-This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml examples; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description Relevant terms; CAMARA Commonalities main@b1a9f08 Glossary.md Phone Number):
+A device is defined by the common `Device` schema, which needs at least one of `phoneNumber`, `ipv4Address` and `ipv6Address` (`networkAccessIdentifier` is in the schema, but CAMARA does not currently allow its use); the API consumer can give several, and the API provider then uses one of them. The example below combines identifiers for illustration (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Device, DeviceIpv4Address; Glossary.md Phone Number; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml examples; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description Relevant terms):
 
 ```json
 {
@@ -162,10 +162,12 @@ The request below creates a subscription. The key fields are (CAMARA Connectivit
 
 | Parameter        | Description                                                                                                        |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `sink`           | the callback URL to which the network delivers notifications (the consumer's endpoint must accept HTTP POST). (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` POST callbacks notifications; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.2.3) |
-| `sinkCredential` | the credential the API provider uses to authenticate against that endpoint (optional; not used in the example).                |
+| `sink`           | the callback URL (an `https` URL) to which the network delivers notifications (the consumer's endpoint must accept HTTP POST). (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` POST callbacks notifications; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.2.3) |
+| `sinkCredential` | the credential the API provider uses to authenticate against that endpoint (optional; not used in the example); if given, its `credentialType` is `ACCESSTOKEN` or `PRIVATE_KEY_JWT` (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schemas Sink, SinkCredential). |
 | `types`          | the event types the consumer subscribes to (here, network-quality change events). (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml SubscriptionRequest.types; ApiEventType) |
 | `initialEvent`   | when `true`, an event is sent as soon as the subscription is created if the current situation reflects the event request (it counts towards `subscriptionMaxEvents`). |
+| `subscriptionExpireTime` | optional; when the subscription should expire, as an RFC 3339 date-time with a time zone (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schema ConfigBase). |
+| `subscriptionMaxEvents` | optional; the maximum number of events to report, from 1 to 1000000; the subscription ends when it is reached (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schema ConfigBase). |
 
 ```json
 {
@@ -251,7 +253,7 @@ The whole point of this API is asynchronous delivery: once a subscription is cre
 
 Notifications are delivered to the callback URL supplied as the `sink` parameter when the subscription is created with **POST /subscriptions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload. The subscription stops delivering when it expires (`subscriptionExpireTime`) or reaches its event cap (`subscriptionMaxEvents`) (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` POST callbacks notifications; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.2.3, 2.2.5).
 
-The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml callbacks notifications content application/cloudevents+json).
+The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml callbacks notifications content application/cloudevents+json). A notification carries the required attributes `id`, `source`, `specversion` (`1.0`), `type` and `time`, and a `data` object; if `datacontenttype` is present it must be `application/json`. The `sink` must be an `https` URL (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schemas CloudEvent, Sink).
 
 ### Event types
 
@@ -260,7 +262,7 @@ The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification
 | `org.camaraproject.connectivity-insights-subscriptions.v0.network-quality` | The network quality relative to the subscribed application profile changed. (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml ApiEventType; EventNetworkQuality; callbacks notifications description) |
 | `org.camaraproject.connectivity-insights-subscriptions.v0.subscription-started`, `…subscription-updated`, `…subscription-ended` | The subscription lifecycle events, which the API definition says are managed by Commonalities and identical across the CAMARA APIs that support explicit subscriptions. (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml SubscriptionLifecycleEventType; EventSubscriptionStarted; EventSubscriptionUpdated; EventSubscriptionEnded) |
 
-The `data` object carries the network-quality assessment (the same qualitative per-threshold indications returned by the one-shot [Connectivity Insights](/tech/network-apis/features/connectivity-insights) check, plus the `applicationProfileId`). The `v0` segment in the event type is the event version; for an initial API the event version starts at `v0`, and stable APIs use a version greater than 0.
+The `data` object carries the network-quality assessment (the same qualitative per-threshold indications returned by the one-shot [Connectivity Insights](/tech/network-apis/features/connectivity-insights) check, plus the `applicationProfileId`). The lifecycle events carry the `subscriptionId` and a reason: `initiationReason` (`SUBSCRIPTION_CREATED`) for `subscription-started`, `updateReason` (`SUBSCRIPTION_ACTIVE` or `SUBSCRIPTION_INACTIVE`) for `subscription-updated`, and `terminationReason` (`MAX_EVENTS_REACHED`, `NETWORK_TERMINATED`, `SUBSCRIPTION_EXPIRED`, `ACCESS_TOKEN_EXPIRED` or `SUBSCRIPTION_DELETED`) for `subscription-ended` (CAMARA Commonalities main@b1a9f08 CAMARA_event_common.yaml schemas SubscriptionStarted, SubscriptionUpdated, SubscriptionEnded). The `v0` segment in the event type is the event version; for an initial API the event version starts at `v0`, and stable APIs use a version greater than 0.
 
 :::note
 The event type and payload structure above are taken from the CAMARA Connectivity Insights Subscriptions API definition. Confirm the exact values against the [`connectivity-insights-subscriptions.yaml`](https://github.com/camaraproject/ConnectivityInsights/blob/main/code/API_definitions/connectivity-insights-subscriptions.yaml) for the version you are integrating against, as they can change between releases (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml ApiEventType; EventNetworkQuality; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.3 Event Versioning).

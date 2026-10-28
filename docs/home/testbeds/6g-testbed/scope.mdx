@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 :::tip[At a glance]
 
 - **Scenarios:** eleven scenario types (TR 26.870 table D.1.1), from chat to agent-to-agent collaboration, with their call flows in clause D.1.2. The AI gateway of clause D.1.2.11 is defined but its test is still to be provided.
-- **Network profiles:** ten deployment conditions (table D.3.1-1), from an ideal baseline and a 6G HRLLC profile to satellite and congested links, plus a lossy profile to find where a scenario breaks.
+- **Network profiles:** ten deployment conditions (table D.3.1-1), from an ideal baseline and a 6G profile for Hyper Reliable and Low-Latency Communication (HRLLC) to satellite and congested links, plus a lossy profile to find where a scenario breaks.
 - **A test run:** one scenario, one network profile and one execution mode (remote or local), repeated; the output is a metric record (clause C.2).
 - **Source:** TR 26.870 V0.6.1, a draft: annex B, clauses C.2 and D.1 to D.3, and annex E, a temporary annex.
 
@@ -441,7 +441,7 @@ The recommended profile set for AI traffic evaluation studies with this testbed 
 | Profile | Delay | Jitter | Loss | Rate | Role |
 | --- | --- | --- | --- | --- | --- |
 | ideal (`no_emulation` in the repository) | none | none | none | none | Clean baseline for all scenarios |
-| 6g_itu_hrllc | 1 ms | not stated | 0.001 % | 300 Mbit/s | Derived from the HRLLC profile of ITU M.2160 (IMT-2030); buffer of 2000 packets |
+| 6g_itu_hrllc | 1 ms | not stated | 0.001 % | 300 Mbit/s | Derived from the Hyper Reliable and Low-Latency Communication usage scenario of Recommendation ITU-R M.2160 (IMT-2030); buffer of 2000 packets |
 | 5g_urban | 20 ms | 5 ms | 0.1 % | 100 Mbit/s | Representative mobile broadband |
 | wifi_good | 30 ms | 10 ms | 0.1 % | 50 Mbit/s | Non-cellular access comparison point; a fictional average of common Wi-Fi configurations |
 | cell_edge | 120 ms | 30 ms | 1.0 % | 5 Mbit/s | Poor coverage, unstable edge of cell; heavier-tailed jitter, burst loss, small reorder rate |

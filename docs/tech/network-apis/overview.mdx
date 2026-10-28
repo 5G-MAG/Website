@@ -133,17 +133,19 @@ Requests a QoS session (stable latency or prioritised throughput) for the durati
 
 ## Details on the `device` object
 
-A device object in the sense of CAMARA APIs is defined as (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description, components/examples EXAMPLE_4_CREATION_BODY; CAMARA Commonalities main@b1a9f08 Glossary.md):
+A device object in the sense of CAMARA APIs is defined by the common `Device` schema (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Device, DeviceIpv4Address, DeviceIpv6Address; Glossary.md). It needs at least one identifier; an `ipv4Address` object needs a `publicAddress` and at least one of `privateAddress` and `publicPort`. The example below combines several identifiers for illustration (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml components/examples EXAMPLE_4_CREATION_BODY):
 
 ```json
-"device": {
+{
+  "device": {
     "phoneNumber": "+123456789",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
     },
     "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
-  },
+  }
+}
 ```
 
 However, as indicated in the [Production and Contribution Scenarios](/tech/network-apis/content-production/scenarios#single-device-connectivity-single-camera-live-video-production-mobile-journalism-mojo-newsgathering-uplink-video), a device in the context of a Mobile Journalism or Media Production scenario may be:
@@ -191,9 +193,9 @@ The QoS Profiles API adds further fields on top of the core parameters above, fo
 
 The APIs analysed in this section share a set of conventions defined by the CAMARA Commonalities and Identity and Consent Management working groups, rather than being redefined per API (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md section 6.1 and 6.2; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description):
 
-- **Device identification.** `phoneNumber` is an MSISDN; `networkAccessIdentifier` is an identifier in the operator's network; IP address identification is also allowed. The definitions of Quality on Demand, QoS Provisioning and Connectivity Insights Subscriptions state that the Network Access Identifier "is defined for future use and will not be supported with this version of the API" (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description; qos-provisioning.yaml info.description; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description). When a three-legged token identifies the subscriber the `device` object must not be provided (`422 UNNECESSARY_IDENTIFIER` otherwise); when the subscriber cannot be identified from the token or the `device` object, `422 MISSING_IDENTIFIER` is returned (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md Appendix A (when the subject is identified from the token, `device` MUST NOT be provided; 422 MISSING_IDENTIFIER / UNNECESSARY_IDENTIFIER); CAMARA Commonalities main@b1a9f08 Glossary.md).
-- **Authorisation.** OAuth 2.0, with a three-legged token (end-user consent, OpenID Connect / CIBA) identifying the subscriber, or a two-legged (client-credentials) token with the device given explicitly; many of these APIs accept either.
-- **Notifications.** [CloudEvents](https://cloudevents.io/) 1.0 JSON delivered to a `sink` callback URL, authenticated per `sinkCredential` (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1, section 3.1).
+- **Device identification.** The common `Device` schema has four properties, of which at least one must be present: `phoneNumber` (the MSISDN, in E.164 format with a leading `+`), `ipv4Address`, `ipv6Address` and `networkAccessIdentifier` (a subscription identifier managed by each operator). The operator may support only a subset of them; the API consumer can give several, and the API provider then uses one of them without checking that they match. The schema says that CAMARA does not currently allow the use of `networkAccessIdentifier`, and the definitions of Quality on Demand, QoS Provisioning and Connectivity Insights Subscriptions state that it "is defined for future use and will not be supported with this version of the API" (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml schemas Device, PhoneNumber, NetworkAccessIdentifier; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description; qos-provisioning.yaml info.description; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description). When a three-legged token identifies the subscriber the `device` object must not be provided (`422 UNNECESSARY_IDENTIFIER` otherwise); when the subscriber cannot be identified from the token or the `device` object, `422 MISSING_IDENTIFIER` is returned; `422 UNSUPPORTED_IDENTIFIER` is returned when none of the identifiers given is supported (CAMARA Commonalities main@b1a9f08 CAMARA_common.yaml responses DeviceIdentifier422 and examples GENERIC_422_MISSING_IDENTIFIER_DEVICE, GENERIC_422_UNSUPPORTED_IDENTIFIER_DEVICE, GENERIC_422_UNNECESSARY_IDENTIFIER_DEVICE; CAMARA-API-Design-Guide.md Appendix A; Glossary.md).
+- **Authorisation.** OAuth 2.0, with a three-legged token (the OIDC Authorization Code Flow or CIBA, which authenticate the end user) identifying the subscriber, or a two-legged (client credentials) token with the device given explicitly; many of these APIs accept either. The Security and Interoperability Profile lets the client credentials grant be used only if the API consumer and the API provider have agreed it, and the API definitions make a three-legged token mandatory where personal data is processed and users can opt in or out (CAMARA IdentityAndConsentManagement main@f922b8a CAMARA-Security-Interoperability.md Introduction, Client Credentials Flow; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description Authorization and authentication).
+- **Notifications.** [CloudEvents](https://cloudevents.io/) 1.0 JSON delivered to a `sink` callback URL (an `https` URL), authenticated per `sinkCredential` (a `credentialType` of `ACCESSTOKEN` or `PRIVATE_KEY_JWT`); each event has the required attributes `id`, `source`, `specversion`, `type` and `time`, and a `data` object (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1, section 3.1; CAMARA_event_common.yaml schemas CloudEvent, Sink, SinkCredential).
 - **Tracing and errors.** An optional `x-correlator` header is echoed back, and a common error model is used across APIs (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md section 5.8.5, section 3.2).
 - **Versioning and releases.** A `wip` version on `main` is not a release. Several APIs here still have `v0` event types, so field names and enumerations can change.
 
