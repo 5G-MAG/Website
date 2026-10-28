@@ -127,6 +127,9 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          // The ROUTE and CMMF pages moved out of the "More" folder to sit beside FLUTE, one page per technology.
+          { from: '/tech/content-delivery/more/route', to: '/tech/content-delivery/route' },
+          { from: '/tech/content-delivery/more/cmmf', to: '/tech/content-delivery/cmmf' },
           // Tutorials moved into each tool's tutorials/ folder, so they cascade under Tutorials in its menu (2026-10-20).
           { from: '/reference-tools/content-delivery/tutorial-media-origin', to: '/reference-tools/content-delivery/tutorials/media-origin' },
           { from: '/reference-tools/content-delivery/tutorial-media-application', to: '/reference-tools/content-delivery/tutorials/media-application' },

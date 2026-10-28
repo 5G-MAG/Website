@@ -3,12 +3,12 @@ title: Content Delivery Protocols and Tools Overview
 sidebar_position: 0
 sidebar_label: Overview
 hide_title: true
-description: "FLUTE and its building blocks, the three FLUTE profiles (unprofiled, MBMS download, MBS Object Distribution), ROUTE and CMMF, and how they grew."
+description: "The content delivery protocols and tools of the Media Connectivity Software Accelerator: FLUTE, ROUTE and CMMF, one page per technology, with the repositories that implement and test them."
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import SpecFigure from '@site/src/components/SpecFigure';
 import JumpMenu from '@site/src/components/JumpMenu';
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -26,55 +26,27 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **What it is:** protocols that deliver files and media objects in one direction, from a sender to receivers, over UDP/IP: FLUTE and ROUTE.
-- **FLUTE:** built on ALC, adding an in-band File Delivery Table; it has three profiles: unprofiled, MBMS download and MBS Object Distribution.
-- **ROUTE and CMMF:** ROUTE delivers objects with real-time constraints; CMMF carries coded media from several sources. Each has its own page.
+- **What it is:** a project of several tools and technologies for delivering files and media objects in one direction, from a sender to receivers, over UDP/IP.
+- **Technologies:** FLUTE, ROUTE and CMMF. Each has its own page below.
+- **Tools:** a FLUTE library, a FLUTE conformance validator, a CMMF encoder, a media origin server and packager, and a reference media application.
 
 :::
 
-<JumpMenu items={[["Why one-way delivery", "why-one-way-delivery"], ["The building blocks", "the-building-blocks"], ["FLUTE version 1 and 2", "flute-version-1-and-version-2"], ["The three FLUTE profiles", "the-three-flute-profiles"], ["ROUTE and CMMF", "route-and-cmmf"], ["How it grew", "how-it-grew"]]} />
+<JumpMenu items={[["Technologies", "technologies"], ["Tools", "tools"], ["How it grew", "how-it-grew"]]} />
 
-## Why one-way delivery
+## Technologies
 
-FLUTE is a protocol for the unidirectional delivery of files over the Internet, particularly suited to multicast networks (RFC 3926 Abstract; RFC 3926 section 1). It builds on Asynchronous Layered Coding (ALC), the base protocol designed for massively scalable multicast distribution.
-
-ALC provides congestion controlled, reliable, asynchronous delivery of content to an unlimited number of concurrent receivers from a single sender (TS 26.346 V19.3.0 clause 7.1; RFC 3450 section 2). Its reliability comes from the Forward Error Correction (FEC) building block.
-
-Some networks are not amenable to congestion control (RFC 3450 section 1.3; TS 26.346 V19.3.0 clause 7.1). For a satellite or wireless network, there may be no way for receivers to reduce their reception rate, since a fixed transmission rate may be allocated to the session. MBMS download delivery is such an environment, and does not use congestion control.
-
-## The building blocks
-
-<SpecFigure src="/img/tech/content-delivery/generated/ts26346-fig10.svg" width={420} height={290} spec="TS 26.346 V19.3.0" figure="10" title="Building block structure of FLUTE" alt="FLUTE on top of ALC; ALC made of the LCT, CC and FEC building blocks, with CC and FEC drawn dashed." />
-
-- **LCT (Layered Coding Transport):** gives ALC its in-band session management (TS 26.346 V19.3.0 clause 7.1; RFC 3450 section 2.1). Each packet carries a Transport Session Identifier (TSI) and a Transport Object Identifier (TOI).
-- **CC (congestion control):** a building block that ALC combines with the others (TS 26.346 V19.3.0 clause 7.1). MBMS download does not use it.
-- **FEC (Forward Error Correction):** gives ALC its reliability (TS 26.346 V19.3.0 clause 7.1). The FEC building block allows the choice of an FEC code, including the no-code FEC code that sends the original data with no coding.
-- **ALC (Asynchronous Layered Coding):** the protocol instantiation that combines the three (TS 26.346 V19.3.0 clause 7.1). It is under-specified and transports binary objects of finite or indeterminate length.
-- **FLUTE (File Delivery over Unidirectional Transport):** a fully specified protocol to transport files (TS 26.346 V19.3.0 clause 7.1; RFC 3926 section 3.2). It uses special-purpose objects, the File Delivery Table (FDT) Instances, to provide a running index of files and their essential reception parameters in band.
-
-FLUTE is carried over UDP/IP, and is independent of the IP version and of the underlying link layers (TS 26.346 V19.3.0 clause 7.1).
-
-## FLUTE version 1 and version 2
-
-- **Version 1** is RFC 3926, an Experimental RFC of October 2004 (RFC 3926 section 1; RFC 6726 section 11.1). It uses ALC as RFC 3450 specifies it and LCT as RFC 3451 specifies it.
-- **Version 2** is RFC 6726, a Standards Track RFC of November 2012 that obsoletes RFC 3926 (RFC 6726 section 1; RFC 6726 section 3.1; RFC 6726 section 11.1). It uses ALC (RFC 5775) and LCT (RFC 5651), and is not backwards compatible with version 1: for instance, the T and R fields of the LCT header changed meaning between RFC 3451 and RFC 5651.
-
-TS 26.346 and TS 26.517 both refer to RFC 3926. The three profiles below are therefore defined on FLUTE version 1.
-
-## The three FLUTE profiles
-
-| Profile | Defined in | Sender and receiver | What it is |
+| Technology | What it is | Page | Repositories |
 | --- | --- | --- | --- |
-| **Unprofiled FLUTE** (RFC 3926 section 1; RFC 3450 section 4.1; RFC 3451 section 5.1) | RFC 3926, with RFC 3450 and RFC 3451 | Any FLUTE sender and receiver | FLUTE as the IETF defines it, with no 3GPP constraints |
-| **MBMS download** | TS 26.346 clause 7.2, and the MBMS Download Profile of annex L.4 | BM-SC and MBMS Client | MBMS clients and servers implement RFC 3926 with the ALC and LCT features FLUTE inherits, plus several optional and extended aspects of FLUTE. The MBMS Download Profile then sets the required, expected and permitted usage of the FDT attributes and elements. |
-| **MBS Object Distribution** | TS 26.517 clause 6.2 | MBSTF and MBS Client | When FLUTE realises the Object Distribution Method, the MBS Distribution Session conforms to the MBMS Download Profile of TS 26.346 annex L.4, with the additional requirements of TS 26.517 clause 6.2 |
+| **FLUTE** | File Delivery over Unidirectional Transport, built on ALC, with an in-band File Delivery Table. Three profiles: unprofiled, MBMS download and MBS Object Distribution. | [FLUTE](/tech/content-delivery/flute), with its [architecture](/tech/content-delivery/architecture) and [features](/tech/content-delivery/features) | [FLUTE Protocol and Profiles](/reference-tools/content-delivery/libflute) (rt-libflute), [FLUTE Conformance Validator](/validation/flute) |
+| **ROUTE** (RFC 9223, April 2022) | Delivers application objects, including objects with real-time constraints, over unidirectional transport. Aligned with FLUTE and with the MBMS extensions; supports low-latency streaming. TS 26.346 and TS 26.517 do not use it. | [ROUTE](/tech/content-delivery/route) | The MBMS Client with ROUTE support, see the [tutorials](/reference-tools/content-delivery/tutorials) |
+| **CMMF** (ETSI TS 103 973) | A container format for coded multisource media, agnostic to the transport. Its annex D specifies content delivery protocol instantiations, one of them based on a File Delivery Table. | [CMMF](/tech/content-delivery/cmmf) | [CMMF Encoder](/reference-tools/content-delivery/cmmf-encoder) (rt-cmmf-encoder) |
 
-Only one of the three has a name in the specifications: the MBMS Download Profile. "Unprofiled FLUTE" and "MBS Object Distribution" are the names this site uses for the other two. The [Features](./features) page compares the three, row by row.
+## Tools
 
-## ROUTE and CMMF
+The repositories of this project, which implement, package and test the technologies above.
 
-- **[ROUTE](/tech/content-delivery/more/route)** (RFC 9223, April 2022) delivers application objects, including objects with real-time constraints, over unidirectional transport. It is aligned with FLUTE and with the MBMS extensions, and supports low-latency streaming. TS 26.346 and TS 26.517 do not use it.
-- **[CMMF](/tech/content-delivery/more/cmmf)** (ETSI TS 103 973) is a container format for coded multisource media. It is agnostic to the transport; its annex D specifies content delivery protocol instantiations, one of them based on a File Delivery Table.
+<RepoCards slugs={['rt-libflute', 'flute-conformance-validator', 'rt-cmmf-encoder', 'rt-media-origin', 'rt-media-android-application']} />
 
 ## How it grew
 
@@ -97,16 +69,22 @@ The slide deck below introduces the content delivery protocols in scope; downloa
 
 [Download the slide deck](pathname:///docs/content-delivery.pdf)
 
+The Technical Analysis pages describe FLUTE and its three profiles at Release 19: TS 26.346 V19.3.0 and TS 26.517 V19.3.0.
+
+The slide deck below introduces the content delivery protocols in scope; download the file for the full detail.
+
+<div class="pdf-embed-wrapper">
+  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/content-delivery.pdf')} title="Content Delivery Protocols and Tools reference tools overview slide deck"></iframe>
+</div>
+
+[Download the slide deck](pathname:///docs/content-delivery.pdf)
+
 <details>
 <summary>Sources for this page</summary>
 
-- **Why one-way delivery:** RFC 3926, Abstract and section 1.1.4; TS 26.346 V19.3.0, clause 7.1.
-- **The building blocks:** TS 26.346 V19.3.0, clause 7.1; RFC 3926, section 3.1.
-- **Figure:** redrawn from TS 26.346 V19.3.0, figure 10.
-- **FLUTE version 1 and version 2:** RFC 3926 and RFC 3450, headers; RFC 6726, header, section 1 and section 11.1; TS 26.346 V19.3.0, clause 2 (reference [9]); TS 26.517 V19.3.0, clause 2 (reference [12]).
-- **The three FLUTE profiles:** TS 26.346 V19.3.0, clauses 7.2.0 and L.4.1; TS 26.517 V19.3.0, clause 6.2.1.
 - **ROUTE and CMMF:** RFC 9223, header and section 1.1; ETSI TS 103 973 V1.2.2, clauses 1 and 4.0 and annex D. "ROUTE" does not occur in TS 26.346 V19.3.0 or TS 26.517 V19.3.0.
 - **How it grew:** the RFC headers; TS 26.346 V19.3.0, clause 7.2.10.1 (listing 7.2.10-1, the imported extension schemas) and change history (CRs 0624, 0661 and 0677); TS 26.517 V19.3.0, change history (V17.0.0 under change control in June 2022; CRs 0031 and 0036 for V19.0.0 and V19.1.0); ETSI TS 103 973 V1.2.2, History.
+- The sources of the FLUTE material are on the [FLUTE](/tech/content-delivery/flute) page.
 
 </details>
 

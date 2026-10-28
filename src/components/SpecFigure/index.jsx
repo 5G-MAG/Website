@@ -17,7 +17,7 @@ export default function SpecFigure({ src, width, height, spec, figure, title, al
       </a>
       <figcaption className={styles.caption}>
         <span className={styles.title}>{title}</span>
-        <span className={styles.source}>{/-spec\.svg$/.test(src) ? 'From' : 'Redrawn from'} {spec}, figure {figure}</span>
+        <span className={styles.source}>{/-spec\.svg$/.test(src) ? 'From' : /\/5gmag-|-based\.svg$/.test(src) || String(figure).startsWith('based:') ? 'Based on' : 'Redrawn from'} {spec}, figure {String(figure).replace('based:', '')}</span>
         {width > 600 && <span className={styles.hint}>Scroll sideways, or tap the figure to open it full size.</span>}
       </figcaption>
     </figure>
