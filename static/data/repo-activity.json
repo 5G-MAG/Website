@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27 02:32 UTC",
+  "updated_at": "2026-10-28 02:41 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -3005,9 +3005,19 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-24",
+          "pushed_at": "2026-10-27",
           "latest_release": null,
           "pulls": [
+            {
+              "number": 46,
+              "title": "content: bring the work of three old branches into development",
+              "url": "https://github.com/5G-MAG/rt-xr-content/pull/46",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-27",
+              "updated_at": "2026-10-27",
+              "base": "development"
+            },
             {
               "number": 27,
               "title": "Added anchoring and interactivity in the furniture glTF file",
@@ -3155,22 +3165,16 @@
               "last_work_commit": "2025-07-08"
             },
             {
+              "name": "feature/port-old-branches",
+              "default": false,
+              "last_commit": "2026-10-27",
+              "last_work_commit": "2026-10-27"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-23",
               "last_work_commit": "2026-10-23"
-            },
-            {
-              "name": "feature/xr_smartphone_app",
-              "default": false,
-              "last_commit": "2026-10-23",
-              "last_work_commit": "2026-10-23"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/ar-video-plane",
@@ -4883,7 +4887,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-22",
+          "pushed_at": "2026-10-27",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -4893,7 +4897,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-22",
-              "updated_at": "2026-10-23",
+              "updated_at": "2026-10-27",
               "base": "development"
             },
             {
@@ -4983,8 +4987,8 @@
             {
               "name": "fix/mbstf-packet-fixed-port",
               "default": false,
-              "last_commit": "2026-10-22",
-              "last_work_commit": "2026-10-22"
+              "last_commit": "2026-10-27",
+              "last_work_commit": "2026-10-27"
             },
             {
               "name": "development",
@@ -5981,9 +5985,20 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-21",
+          "pushed_at": "2026-10-27",
           "latest_release": null,
-          "pulls": [],
+          "pulls": [
+            {
+              "number": 12,
+              "title": "Fix/dedicated networks r2 2",
+              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/12",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-27",
+              "updated_at": "2026-10-27",
+              "base": "development"
+            }
+          ],
           "issues": [],
           "branches": [
             {
@@ -5991,6 +6006,12 @@
               "default": true,
               "last_commit": "2026-10-20",
               "last_work_commit": "2026-10-20"
+            },
+            {
+              "name": "fix/dedicated-networks-r2-2",
+              "default": false,
+              "last_commit": "2026-10-27",
+              "last_work_commit": "2026-10-27"
             },
             {
               "name": "development",
