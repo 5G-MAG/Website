@@ -654,3 +654,165 @@ a.path:focus-visible .pathArrow {
   background: var(--ifm-color-warning);
   color: #2b2100;
 }
+
+/* ── Start here: the solution page is the starting point of the site ── */
+.startBand {
+  background: linear-gradient(120deg, #00203f 0%, #00566f 100%);
+  color: #fff;
+  padding-block: 1.4rem;
+}
+
+.startRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.startPill {
+  flex: none;
+  padding: 0.35rem 1.2rem;
+  background: #ffba00;
+  color: #2b2100;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.startText {
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
+.startText p {
+  margin: 0.25rem 0 0;
+  max-width: 70ch;
+  color: #e6f1f5;
+}
+
+.startTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.startLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ── The two tags: Available and Incubation ── */
+.legendAvailable {
+  --tag: #1e7a4a;
+}
+
+.legendIncubation {
+  --tag: #a05a00;
+}
+
+[data-theme='dark'] .legendAvailable {
+  --tag: #62d394;
+}
+
+[data-theme='dark'] .legendIncubation {
+  --tag: #f0a24a;
+}
+
+.legendChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  background: #fff;
+  color: #14262c;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.legendChip:hover {
+  background: #e9f5f9;
+  color: #14262c;
+}
+
+.legendAvailable.legendChip {
+  --tag: #1e7a4a;
+}
+
+.legendIncubation.legendChip {
+  --tag: #a05a00;
+}
+
+.groupDot {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--tag, currentColor);
+  flex: none;
+}
+
+.groupHead {
+  padding-block: 1.1rem 0.9rem;
+  background: color-mix(in srgb, var(--tag) 10%, var(--ifm-background-surface-color));
+  border-top: 4px solid var(--tag);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.groupAvailable {
+  --tag: #1e7a4a;
+}
+
+.groupIncubation {
+  --tag: #a05a00;
+}
+
+[data-theme='dark'] .groupAvailable {
+  --tag: #62d394;
+}
+
+[data-theme='dark'] .groupIncubation {
+  --tag: #f0a24a;
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.7rem;
+  color: var(--tag);
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
+}
+
+.groupCount {
+  margin-left: 0.4rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.groupText {
+  margin: 0.3rem 0 0;
+  max-width: 75ch;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.tileGroup {
+  margin-bottom: 0.9rem;
+}
+
+.tileGroupLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.4rem;
+  color: var(--tag);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}

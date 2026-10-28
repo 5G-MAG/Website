@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { playgroundFor } from '@site/src/data/playgrounds';
+import { areaTopics, topicTag } from '@site/src/data/areaStatus';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
 import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
@@ -84,7 +85,7 @@ function Showcase({ topic }) {
         <span className={`${styles.badge} ${s.status === 'available' ? styles.badgeYes : styles.badgePartial}`}>
           {SHOWCASE_STATUS[s.status]}
         </span>
-        <Heading as="h3" className={styles.featTitle}>{s.title}</Heading>
+        <Heading as="h4" className={styles.featTitle}>{s.title}</Heading>
         <p className={styles.muted}>{s.about}</p>
         {s.features.length > 0 && (
         <div className={styles.features}>
@@ -206,6 +207,27 @@ function NotYetGroup({ topic }) {
   );
 }
 
+// The heading of one of the two groups of a solution page: Available, then Incubation.
+function GroupHead({ id, tag, count }) {
+  const available = tag === 'available';
+  return (
+    <div className={`${styles.groupHead} ${available ? styles.groupAvailable : styles.groupIncubation}`}>
+      <div className="container">
+        <Heading as="h2" id={id} className={styles.groupTitle}>
+          <span className={styles.groupDot} aria-hidden="true" />
+          {available ? 'Available' : 'Incubation'}
+          {count > 0 && <span className={styles.groupCount}>{count} {count === 1 ? 'topic' : 'topics'}</span>}
+        </Heading>
+        <p className={styles.groupText}>
+          {available
+            ? 'Topics you can work with today, using the Reference Tools of the Media Connectivity Software Accelerator. A feature that is still in incubation says so.'
+            : 'Topics the association is exploring. Each one shows what is in place and what it still needs to become available.'}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // The hero animation of each area that has no `heroDiagram` in showcases.js (scripts/area-heroes.py draws them).
 const AREA_HERO = {
   rtc: 'rtc',
@@ -230,8 +252,31 @@ export default function AreaPage({ basketKey }) {
   // with no box there (Towards 6G Media) keeps the small row.
   const category = PROJECT_CATEGORIES.find((c) => c.title === basket.title);
   const topics = content?.topics || [];
+  const groups = areaTopics(basketKey);
   const heroDiagram = content?.heroDiagram || AREA_HERO[basketKey];
   const lead = content?.lead || PLACEHOLDER_LEAD;
+  const renderTopic = (t, i) => (
+    <section key={t.id} className={`${styles.topic} ${i % 2 ? styles.topicAlt : ''}`}>
+      <div className="container">
+        <div className={styles.topicHead}>
+          <span className={styles.topicIcon}><Icon id={t.id} iconKey={t.icon} size={26} /></span>
+          <Heading as="h3" id={t.id} className={styles.topicTitle}>{t.title}</Heading>
+        </div>
+        {t.showcase ? <Showcase topic={t} /> : (
+          <p className={styles.muted}>
+            {t.pipeline?.length
+              ? 'This topic is still open for the Reference Tools. What it would need is listed under What could come next, below.'
+              : 'No showcase for this topic yet.'}
+          </p>
+        )}
+        {topicTag(t) === 'incubation' && !t.showcase && t.pipeline?.length > 0 ? (
+          <a className={styles.incubation} href="#what-could-come-next">Incubation</a>
+        ) : (
+          <Paths topic={t} />
+        )}
+      </div>
+    </section>
+  );
   return (
     <Layout
       title={content?.seoTitle || basket.title}
@@ -268,6 +313,28 @@ export default function AreaPage({ basketKey }) {
           )}
         </div>
       </header>
+      <section className={styles.startBand} aria-labelledby="start-here">
+        <div className={`container ${styles.startRow}`}>
+          <span className={styles.startPill}>Start here</span>
+          <div className={styles.startText}>
+            <Heading as="h2" id="start-here" className={styles.startTitle}>This is the starting point</Heading>
+            <p>
+              Solutions are where every visit begins. Pick a topic below, then follow Learn, Implement, Experiment and
+              Deploy. <b>Available</b> topics work with the Reference Tools today; <b>Incubation</b> topics are being explored.
+            </p>
+          </div>
+          <nav className={styles.startLegend} aria-label="Jump to a group of topics">
+            {groups.available.length > 0 && (
+              <a href="#available" className={`${styles.legendChip} ${styles.legendAvailable}`}>
+                <span className={styles.groupDot} aria-hidden="true" /> Available <b>{groups.available.length}</b>
+              </a>
+            )}
+            <a href="#incubation" className={`${styles.legendChip} ${styles.legendIncubation}`}>
+              <span className={styles.groupDot} aria-hidden="true" /> Incubation <b>{groups.written ? groups.incubation.length : 'in preparation'}</b>
+            </a>
+          </nav>
+        </div>
+      </section>
       <main>
         {/* The projects sit in their own band, apart from the hero above and what follows. */}
         <section className={styles.projectBand}>
@@ -298,7 +365,7 @@ export default function AreaPage({ basketKey }) {
             )}
           </div>
         </section>
-        {/* With a single topic, its own heading opens the part; the outer heading and buttons are for two or more. */}
+        {/* The topic buttons, by tag. With a single topic, its own heading opens the part and there are no buttons. */}
         {topics.length > 1 && (
           <div className="container">
             <div className={`${styles.topicHead} ${styles.useCasesHead}`}>
@@ -308,40 +375,33 @@ export default function AreaPage({ basketKey }) {
                   {ROCKET.map((d) => <path key={d} d={d} />)}
                 </svg>
               </span>
-              <Heading as="h2" id="application-showcases" className={styles.topicTitle}>Application showcases</Heading>
+              <Heading as="h2" id="application-showcases" className={styles.topicTitle}>Topics in this solution</Heading>
             </div>
-            <nav className={styles.tiles} aria-label="Topics">
-              {topics.map((t) => (
-                <Link key={t.id} className={styles.tile} to={`#${t.id}`}>
-                  <span className={styles.tileIcon}><Icon id={t.id} iconKey={t.icon} /></span>
-                  <b>{t.title}</b>
-                </Link>
+            {[['available', 'Available', groups.available], ['incubation', 'Incubation', groups.incubation]]
+              .filter(([, , list]) => list.length > 0)
+              .map(([tag, label, list]) => (
+                <div key={tag} className={styles.tileGroup}>
+                  <span className={`${styles.tileGroupLabel} ${tag === 'available' ? styles.legendAvailable : styles.legendIncubation}`}>
+                    <span className={styles.groupDot} aria-hidden="true" /> {label}
+                  </span>
+                  <nav className={styles.tiles} aria-label={`${label} topics`}>
+                    {list.map((t) => (
+                      <Link key={t.id} className={styles.tile} to={`#${t.id}`}>
+                        <span className={styles.tileIcon}><Icon id={t.id} iconKey={t.icon} /></span>
+                        <b>{t.title}</b>
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
               ))}
-            </nav>
           </div>
         )}
-        {topics.map((t, i) => (
-          <section key={t.id} className={`${styles.topic} ${i % 2 ? styles.topicAlt : ''}`}>
-            <div className="container">
-              <div className={styles.topicHead}>
-                <span className={styles.topicIcon}><Icon id={t.id} iconKey={t.icon} size={26} /></span>
-                <Heading as="h2" id={t.id} className={styles.topicTitle}>{t.title}</Heading>
-              </div>
-              {t.showcase ? <Showcase topic={t} /> : (
-                <p className={styles.muted}>
-                  {t.pipeline?.length
-                    ? 'This topic is still open for the Reference Tools. What it would need is listed under What could come next, below.'
-                    : 'No showcase for this topic yet.'}
-                </p>
-              )}
-              {!t.showcase && t.pipeline?.length > 0 ? (
-                <a className={styles.incubation} href="#what-could-come-next">Incubation</a>
-              ) : (
-                <Paths topic={t} />
-              )}
-            </div>
-          </section>
-        ))}
+        {groups.available.length > 0 && <GroupHead id="available" tag="available" count={groups.available.length} />}
+        {groups.available.map((t, i) => renderTopic(t, i))}
+        {(groups.incubation.length > 0 || !groups.written) && (
+          <GroupHead id="incubation" tag="incubation" count={groups.incubation.length} />
+        )}
+        {groups.incubation.map((t, i) => renderTopic(t, groups.available.length + i))}
         {/* What cannot be built yet, gathered from every topic, with the call to join and contribute. */}
         {topics.some((t) => t.pipeline.length > 0) && (
           <section className={`${styles.topic} ${topics.length % 2 ? styles.topicAlt : ''}`}>

@@ -327,12 +327,22 @@ export default function Home() {
           already does live-as-you-type suggestions on its own. */}
       <div className={styles.homeSearchWrap}>
         <div className="container">
-          <p className={styles.homeSearchLabel}>Looking for specific software or solutions?</p>
+          {/* The solutions are the starting point of the site: first, large, before the search. */}
+          <div className={styles.startHere}>
+            <span className={styles.startPill}>Start here</span>
+            <h2 className={styles.startTitle}>Choose a solution</h2>
+            <p className={styles.startText}>
+              Every topic of the association belongs to one of these seven solutions. Each page shows what is
+              Available today and what is in Incubation, and leads on to the technology, the tools, the Playgrounds
+              and the kits.
+            </p>
+          </div>
+          <BasketJumpRow label="Solutions" />
+          <p className={styles.homeSearchLabel}>Or look for a specific tool or topic</p>
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
           <AskAi about="/llms.txt" collapsed />
-          <BasketJumpRow label="Solutions" />
 
           {/* Real photos alternating with icon+title banner cover-slides
               for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own

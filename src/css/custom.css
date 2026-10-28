@@ -1837,7 +1837,7 @@
 }
 
 /* Light theme: outline buttons, the active item of the blog sidebar and the remaining code token colours at 4.5:1. */
-:root:not([data-theme='dark']) .button--outline.button--primary:not(:hover) {
+:root:not([data-theme='dark']) main .button--outline.button--primary:not(:hover) {      /* inside the page content only: the hero bands are dark and keep their white text */
   color: #006f92;
 }
 

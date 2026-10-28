@@ -463,7 +463,7 @@ const config = {
           title: 'Technology',
           items: [
             { label: 'Overview', to: '/tech' },
-            { label: 'Where We Stand', to: '/tech#where-we-stand' },
+            { label: 'All projects', to: '/tech#projects' },
             { label: 'Technology Exchange', to: '/tech/exchanges' },
           ],
         },

@@ -1,11 +1,13 @@
+import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { ChartRow, iconForCatalogKey } from '@site/src/components/ProjectStatus';
-import StandCards from '@site/src/components/StandCards';
-import { BASKET_ACCENT, BASKET_PAGE, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
+import { BASKET_ACCENT, BASKET_PAGE, STAGE_GROUPS, WHERE_WE_STAND_ROWS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
+import { areaTopics } from '@site/src/data/areaStatus';
+import filterStyles from '../reference-tools/styles.module.css';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import useAnchors from '@site/src/utils/useAnchors';
@@ -100,8 +102,46 @@ const PILLARS = [
   },
 ];
 
+// One card of the "Start here" grid: the solution area, how many projects it holds and how its topics stand.
+function SolutionCard({ b }) {
+  const topics = areaTopics(b.key);
+  const accent = BASKET_ACCENT[b.key] || '#00a0d2';
+  const n = b.projects.length;
+  return (
+    <Link to={BASKET_PAGE[b.key] || `#${b.key}`} className={styles.solutionCard} style={{ '--accent': accent }}>
+      <span className={styles.solutionHead}>
+        {iconForCatalogKey(b.icon) && <span className={styles.solutionIcon}>{iconForCatalogKey(b.icon)}</span>}
+        <span className={styles.solutionName}>{b.title}</span>
+      </span>
+      <span className={styles.solutionMeta}>{n} {n === 1 ? 'project' : 'projects'}</span>
+      <span className={styles.solutionTags}>
+        {topics.available.length > 0 && (
+          <span className={`${styles.solutionTag} ${styles.tagAvailable}`}>Available {topics.available.length}</span>
+        )}
+        <span className={`${styles.solutionTag} ${styles.tagIncubation}`}>
+          Incubation {topics.written ? topics.incubation.length : '(in preparation)'}
+        </span>
+      </span>
+      <span className={styles.solutionGo}>Open the solution &rarr;</span>
+    </Link>
+  );
+}
+
 export default function Home() {
-  useAnchors('where-we-stand', ...STAGE_BASKET_ROWS.map((b) => b.key));
+  useAnchors('solutions', 'projects', ...STAGE_BASKET_ROWS.map((b) => b.key));
+  const [query, setQuery] = useState('');
+  const shown = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return STAGE_BASKET_ROWS.map((b) => {
+      const all = b.areaRow ? [b.areaRow] : b.projects;
+      const list = q
+        ? all.filter((p) => `${b.title} ${projectTitleOf(p)} ${displayNameOf(p)} ${(p.sdos || []).join(' ')} ${p.tagline || ''}`.toLowerCase().includes(q))
+        : all;
+      return { b, list };
+    }).filter((x) => x.list.length > 0);
+  }, [query]);
+  const total = STAGE_BASKET_ROWS.reduce((n, b) => n + (b.areaRow ? 1 : b.projects.length), 0);
+  const count = shown.reduce((n, x) => n + x.list.length, 0);
   return (
     <Layout
       title="Technical Docs and Standards Work"
@@ -119,8 +159,11 @@ export default function Home() {
           </>
         }
         actions={[
-          <a key="docs" className="button button--primary" href="#where-we-stand">
-            Where we stand
+          <a key="solutions" className="button button--primary" href="#solutions">
+            Start with a solution
+          </a>,
+          <a key="projects" className="button button--outline button--primary" href="#projects">
+            Find a project
           </a>,
           <Link key="exchanges" className="button button--outline button--primary" to="/tech/exchanges">
             Technology Exchanges
@@ -136,115 +179,94 @@ export default function Home() {
       />
 
       <main>
-        {/* Why It Matters -- why this hub exists, first thing after the hero.
-            No longer paired with a "How This Fits Together" section
-            (removed: that Standards -> Analysis -> Tools -> Applications
-            chain duplicated /about's "Running the Loop: From Requirements to
-            Products", which already covers it with its own
-            StandardsLoopDiagram). */}
-        <section className={styles.section}>
+        {/* Start here: the solutions are the starting point of the site, so they come first and are large. */}
+        <section id="solutions" className={styles.section} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>From Specifications to Practice</h2>
-            <p className={styles.sectionSubtitle}>
-              Understand it. Prove its value. Scale it. Resources produced by 5G-MAG members,
-              covering the full cycle from reading a spec to shaping the next one.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {PILLARS.map((p) => (
-                <div key={p.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
-                  <h3 className={styles.pillarTitle}>{p.title}</h3>
-                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
-                </div>
+            <div className={styles.startHead}>
+              <span className={styles.startPill}>Start here</span>
+              <h2 className={styles.startTitle}>Choose a solution</h2>
+              <p className={styles.startText}>
+                The solutions are the starting point. Each one shows what is Available today and what is in Incubation, and
+                leads on to the technology, the tools, the Playgrounds and the kits.
+              </p>
+            </div>
+            <div className={styles.solutionGrid}>
+              {STAGE_BASKET_ROWS.map((b) => (
+                <SolutionCard key={b.key} b={b} />
               ))}
             </div>
-            <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
-              See it built: browse the <Link to="/reference-tools">Reference Tools</Link> behind
-              these specifications, evaluate them on a <Link to="/testbeds">Testbed</Link>, or
-              follow the <Link to="/tutorials">Tutorials</Link> to run them.
-            </p>
           </div>
         </section>
 
-        {/* Where We Stand -- this hub's real "what's here" surface
-            (raised directly: drop the old "What You'll Find Here" card
-            grid entirely and go straight into this instead, since every
-            row already links to that project's own Documentation,
-            Specifications and Reference Tools -- per-project, not
-            per-resource-type; the separate "Analysis & Explainers" topic
-            grid this used to sit alongside was removed for the same
-            reason, raised directly, once this chart covered the same
-            ground). See STAGE_BASKET_ROWS' own comment. */}
+        {/* The one list of every project, by solution. Each project opens its own technology page. */}
         <section
-          id="where-we-stand"
-          className={styles.section}
+          id="projects"
+          className={`${styles.section} ${styles.sectionAlt}`}
           style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
         >
           <div className="container">
-            <h2 className={styles.sectionTitle}>Where We Stand</h2>
+            <h2 className={styles.sectionTitle}>All projects</h2>
             <p className={styles.sectionSubtitle}>
-              What we are working on, and how far along it is. This is the work of 5G-MAG members, a selection of the
-              field and not a complete map of it.
+              Every project, grouped by solution, with how far along it is: under study, technical analysis, software.
+              Click a project&apos;s name to open its page.
             </p>
-            {/* The overview: one card per area, linking to its block of the full chart below. It replaces the
-                row of area tiles that used to sit here, since each card jumps to the same block. */}
-            <StandCards />
-            {STAGE_BASKET_ROWS.map((b) => {
-              // 2026-09-27, direct instruction: "only the banner per basket
-              // will have color" -- the basket accent now tints only the
-              // banner itself (basketHeader, via its own scoped --accent
-              // override below); everything else in the block (border
-              // rail, project rows, progress bars) uses the site's normal
-              // blue instead of a per-basket one.
+            <div className={filterStyles.filterBar}>
+              <input
+                type="search"
+                className={filterStyles.filterInput}
+                placeholder={`Filter ${total} projects by name, standards body or solution…`}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Filter the projects"
+              />
+              {query && (
+                <span className={filterStyles.filterCount}>
+                  {count} of {total}
+                </span>
+              )}
+            </div>
+            <nav className={styles.areaJump} aria-label="Jump to a solution">
+              {STAGE_BASKET_ROWS.map((b) => (
+                <a key={b.key} href={`#${b.key}`} className={styles.areaJumpLink} style={{ '--accent': BASKET_ACCENT[b.key] || '#00a0d2' }}>
+                  {b.title}
+                </a>
+              ))}
+            </nav>
+            {shown.length === 0 && <p className={filterStyles.filterEmpty}>No project matches &ldquo;{query}&rdquo;.</p>}
+            {shown.map(({ b, list }) => {
+              // The solution's colour tints only its banner; the rows use the site's blue.
               const basketAccent = BASKET_ACCENT[b.key] || '#00a0d2';
               return (
                 <div
                   key={b.key}
                   id={b.key}
                   className={styles.basketBlock}
-                  style={{ '--accent': 'var(--ifm-color-primary)' }}
+                  style={{ '--accent': 'var(--ifm-color-primary)', scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
                 >
                   <div className={styles.basketHeader} style={{ '--accent': basketAccent }}>
-                    {iconForCatalogKey(b.icon) && (
-                      <span className={styles.basketIcon}>{iconForCatalogKey(b.icon)}</span>
-                    )}
+                    {iconForCatalogKey(b.icon) && <span className={styles.basketIcon}>{iconForCatalogKey(b.icon)}</span>}
                     <div>
                       <h3 className={styles.basketTitle}>
                         {BASKET_PAGE[b.key] ? <Link to={BASKET_PAGE[b.key]}>{b.title} →</Link> : b.title}
                       </h3>
-                      {/* Landing here straight from a homepage anchor link
-                          (StandCard) should not require scrolling up to
-                          find out what the coloured bars mean, or which
-                          part of the row to click -- raised directly:
-                          "when jumping to the anchor you know exactly
-                          where you are... very clear that the next step
-                          is to go to the project page". */}
                       <p className={styles.basketMeta}>
                         {b.areaRow
                           ? 'Technology area under study: click its name to open its page'
-                          : <>{b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'}:
-                            click a project&apos;s name to open its own page</>}
+                          : <>{b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'}</>}
                       </p>
                     </div>
                   </div>
-                  {/* The stage-name legend, repeated inside every basket
-                      block instead of once at the top of the whole section
-                      (raised directly: arriving via an anchor used to skip
-                      past the one shared legend, leaving the bars
-                      unexplained) -- shares chartRow's own grid so each
-                      label lines up exactly above its own column, same
-                      mechanism the original single shared axis used. */}
                   <div className={styles.basketLegend}>
-                    <div className={styles.basketLegendLabelCol}>Technology Area</div>
+                    <div className={styles.basketLegendLabelCol}>Project</div>
                     <div className={styles.basketLegendStages}>
-                      {STAGE_GROUPS.map((s) => (
-                        <span key={s.key} className={styles.basketLegendStage}>
-                          {s.label}
+                      {STAGE_GROUPS.map((st) => (
+                        <span key={st.key} className={styles.basketLegendStage}>
+                          {st.label}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <StageTable projects={b.areaRow ? [b.areaRow] : b.projects} />
+                  <StageTable projects={list} />
                 </div>
               );
             })}
@@ -260,6 +282,30 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* What a technology page gives you: three short items and where to go next. */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>From Specifications to Practice</h2>
+            <p className={styles.sectionSubtitle}>
+              Understand it. Prove its value. Scale it. Resources produced by 5G-MAG members, covering the full
+              cycle from reading a spec to shaping the next one.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {PILLARS.map((pl) => (
+                <div key={pl.title} className={styles.pillarCard}>
+                  <div className={styles.pillarIcon}>{pl.icon}</div>
+                  <h3 className={styles.pillarTitle}>{pl.title}</h3>
+                  {pl.body && <p className={styles.pillarBody}>{pl.body}</p>}
+                </div>
+              ))}
+            </div>
+            <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
+              See it built: browse the <Link to="/reference-tools">Reference Tools</Link> behind these specifications,
+              evaluate them on a <Link to="/testbeds">Testbed</Link>, or follow the <Link to="/tutorials">Tutorials</Link> to run them.
+            </p>
           </div>
         </section>
 
