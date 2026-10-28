@@ -207,10 +207,6 @@ The overlap between this API and the [QoS Booking](./using-qos-booking) API is r
 | Device swap                   | delete and re-create the booking       | release and assign against the same booking                           |
 | Suits                         | one known feed                         | a set of devices, some interchangeable                                |
 
-## How this maps to 3GPP
-
-A QoS booking reserves per-device QoS treatment that, on assignment and connection, is realised as a QoS Flow on the device's PDU session. The reservation and assignment requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and the per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The QoS profile referenced maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
-
 ## Related
 
 - [QoS Booking and Assignment API](/tech/network-apis/features/qos-booking-assignment): the API reference and CAMARA source.

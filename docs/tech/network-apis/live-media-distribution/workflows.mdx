@@ -136,10 +136,6 @@ These phases mirror the [Content Production and Contribution workflows](../conte
 - **Geofencing is first-class.** Because live media rights and editorial variants are region-specific, verifying whether a device is inside a target area (and being notified when it enters or leaves) is a genuine workflow requirement here, not an edge case. The relevant CAMARA APIs live in the DeviceLocation repository and are not part of this portal section.
 - **Monitoring is the primary purpose, not a side channel.** For distribution the whole motivation is closing the visibility gap, so the Application Profiles plus Connectivity Insights path is central rather than auxiliary.
 
-## Underlying 3GPP mechanisms
-
-QoS for downlink segment delivery is realised the same way as for contribution: a Quality on Demand session drives the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) `Nnef_AFsessionWithQoS` service, which the Policy Control Function authorises (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)) to install a downlink QoS Flow on the client's PDU session, matched to a 5QI ([TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4). The monitoring and information-sharing path relies on network capability exposure through the NEF and, at the application-enabling layer, the Service Enabler Architecture Layer for Verticals (SEAL), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), whose network resource management and location management enabling services are candidates for carrying the shared performance data. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
-
 ## Related
 
 - [Content Production workflows](../content-production/workflows): the shared QoS workflow, from the uplink side.

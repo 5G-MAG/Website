@@ -53,18 +53,14 @@ The QoS Booking and Assignment API definition (YAML) is available at: [qos-booki
 
 ## Standardisation context
 
-QoS Booking and Assignment is part of the CAMARA QoSBooking repository (OpenAPI 3.0.3, Commonalities-conformant) and belongs to the QoS family that consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles). In the 3GPP northbound model, QoS requests from an application function correspond to the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) that drives `Npcf_PolicyAuthorization` on the PCF ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)); the CAMARA definition does not specify how a booking maps to it. What is distinctive here is the two-phase model: capacity is reserved for a device count, then individual devices are attached and detached against that reservation.
+QoS Booking and Assignment is part of the CAMARA QoSBooking repository (OpenAPI 3.0.3) and takes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles). It works in two phases: capacity is reserved for a device count, then devices are attached and detached.
 
 ### Two resources: booking and assignment
 
-The API separates the reservation from the membership:
+- **Booking** (`POST /qos-bookings`): reserves capacity for `bookingDeviceCount` devices under a `qosProfile`, for a `serviceArea`, `startTime` and `duration`; returns `bookingId`, `remainingDevices` and `bookingStatus`.
+- **Assignment** (`POST /qos-bookings/{bookingId}/devices/assign` and `.../release`): attaches or detaches devices; `remainingDevices` tracks the free slots.
 
-- **Booking** (`POST /qos-bookings`): reserves capacity for `bookingDeviceCount` devices under a `qosProfile`, for a `serviceArea`, `startTime` and `duration`. The response carries a `bookingId`, `bookingDeviceCount` and `remainingDevices`, and a `bookingStatus` / `statusInfo` (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml `/qos-bookings` POST BookingInput, BookingOutput).
-- **Assignment** (`POST /qos-bookings/{bookingId}/devices/assign` and `.../release`): attaches or detaches specific devices against the booking. `remainingDevices` tracks the free slots, so the consumer can manage a pool over the booking window (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml `/qos-bookings/{bookingId}/devices/assign` and `/release` POST; BookingOutput description).
-
-This fits productions where capacity must be secured ahead of time but the exact devices are only known later (for example accredited crew arriving on site). The related [QoS Booking API](/tech/network-apis/features/qos-booking) instead binds specific devices at booking time; choose that when the devices are known up front. Both differ from Quality on Demand, which has no reservation phase and only discovers availability at request time.
-
-Because booking and assignment are separate resources, they have separate statuses (`bookingStatus` and `assignmentStatus`). A booking must be `SCHEDULED` or `ACTIVATED` before devices can be assigned, so devices can be assigned before the booking's `startTime`. Status changes on either resource are delivered asynchronously as CloudEvents when a `sink` was registered at booking creation; see Event notifications below.
+Each has its own status (`bookingStatus`, `assignmentStatus`), and devices can be assigned once the booking is `SCHEDULED` or `ACTIVATED`, before `startTime`. It fits productions where the devices are known only later; [QoS Booking](/tech/network-apis/features/qos-booking) binds devices at booking time. Status changes arrive as CloudEvents on the `sink`.
 
 ---
 

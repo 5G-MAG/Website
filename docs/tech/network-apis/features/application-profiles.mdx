@@ -75,24 +75,11 @@ The exact accepted units and value ranges are defined in the [application-profil
 
 ## Standardisation context
 
-Application Profiles is a CAMARA API defined in OpenAPI 3.0.3 and governed by the CAMARA Commonalities rules (error model, security). It is a data-management API: unlike the QoS APIs it does not, by itself, map to a 3GPP northbound operation on the Network Exposure Function (NEF). Its role is to store a reusable description of an application's requirements so that other APIs (here, Connectivity Insights) can reference it by `applicationProfileId` instead of repeating the thresholds on every call (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml info; paths `/application-profiles`).
-
-The network-quality thresholds follow the parameters used to characterise a 5G QoS flow. `packetDelayBudget` and `packetLossErrorRate` correspond to the Packet Delay Budget and Packet Error Rate characteristics that are associated with a 5G QoS Identifier (5QI) (TS 23.501 V20.3.0 clause 5.7.3.4; TS 23.501 V20.3.0 clause 5.7.3.5). The target minimum rates are not 5QI characteristics (flow bit rates are separate QoS parameters). CAMARA keeps these at an application-facing level of abstraction rather than exposing 5QI values directly. The `computeResources` block has no 3GPP QoS equivalent; it describes compute needs (CPU, GPU, memory, storage) of the application and is out of scope of the QoS mapping.
-
-Because Application Profiles is the shared vocabulary for the Connectivity Insights family, its parameter set overlaps deliberately with the [QoS Profiles API](/tech/network-apis/features/qos-profiles). The two are not identical: QoS Profiles adds duration, priority and L4S fields, while Application Profiles adds the compute block. 5G-MAG's Self-Assessment below flags harmonising the two as an open point (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml NetworkQualityThresholds, ComputeResourcesThresholds; CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile minDuration, maxDuration, priority, l4sQueueType).
+Application Profiles is a CAMARA API (OpenAPI 3.0.3). It is a data-management API: it stores a reusable description of an application's requirements, so that other APIs (here Connectivity Insights) can refer to it by `applicationProfileId`. It holds network-quality thresholds (`packetDelayBudget`, `packetLossErrorRate` and target rates) and the compute needs of the application (`computeResources`). It overlaps with the [QoS Profiles API](/tech/network-apis/features/qos-profiles), which adds duration, priority and L4S where this API adds compute; harmonising the two is an open point.
 
 ### Resource lifecycle
 
-The four operations form a simple CRUD lifecycle on the `applicationProfileId` resource (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml paths `/application-profiles` POST, `/application-profiles/{applicationProfileId}` PATCH, GET, DELETE):
-
-| Step   | Operation                                             | Effect                                                                               |
-| ------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Create | `POST /application-profiles`                          | Stores the thresholds and returns a new `applicationProfileId`. (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml `/application-profiles` POST response 201 ApplicationProfile) |
-| Read   | `GET /application-profiles/{applicationProfileId}`    | Returns the stored profile. (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml `/application-profiles/{applicationProfileId}` GET response 200) |
-| Update | `PATCH /application-profiles/{applicationProfileId}`  | Replaces the threshold set (note the description says the complete set is replaced). (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml `/application-profiles/{applicationProfileId}` PATCH description) |
-| Delete | `DELETE /application-profiles/{applicationProfileId}` | Deletes the application profile.                                                     |
-
-There is no notification mechanism on this API: a profile is inert data, and it only has an effect when another API is invoked with its id (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml paths).
+Create, read, update and delete on `applicationProfileId`: `POST /application-profiles`, then `GET`, `PATCH` (replaces the whole threshold set) and `DELETE` on `/application-profiles/{applicationProfileId}`. There are no notifications: a profile has an effect only when another API uses its id.
 
 ---
 

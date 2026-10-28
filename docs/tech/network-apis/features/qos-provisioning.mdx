@@ -51,20 +51,18 @@ The QoS Provisioning API definition (YAML) is available at: [qos-provisioning.ya
 
 ## Standardisation context
 
-QoS Provisioning is defined in the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) and, when active, maps to the same 5G Core machinery as the rest of the QoS family: the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) driving `Npcf_PolicyAuthorization` on the PCF ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)).
-
-The distinguishing property is persistence. Where [Quality on Demand](/tech/network-apis/features/quality-on-demand) applies a profile for a bounded session `duration`, QoS Provisioning creates an assignment (`POST /qos-assignments`) that applies the profile to the device every time it connects, until the assignment is deleted (`DELETE /qos-assignments/{assignmentId}`). `GET /qos-assignments/{assignmentId}` reads the assignment and `POST /retrieve-qos-assignment` looks it up by device. The returned `status` is `REQUESTED` (still being processed), `AVAILABLE` (assigned and active) or `UNAVAILABLE` (processed but not active).
+QoS Provisioning is defined in the CAMARA QualityOnDemand repository (OpenAPI 3.0.3) and takes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles). Its distinguishing property is persistence: `POST /qos-assignments` applies the profile to a device every time it connects, until `DELETE /qos-assignments/{assignmentId}`. `GET` reads the assignment and `POST /retrieve-qos-assignment` looks it up by device. The `status` is `REQUESTED`, `AVAILABLE` or `UNAVAILABLE`.
 
 ### Comparison within the QoS family
 
-| API                                                           | Duration                  | Bound to                       | Typical media use                                               |
-| ------------------------------------------------------------- | ------------------------- | ------------------------------ | --------------------------------------------------------------- |
-| QoS Provisioning (this API)                                   | Persistent, until deleted | A specific device              | A fixed contribution device that should always get its profile. (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml info.description; `/qos-assignments` POST) |
-| [Quality on Demand](/tech/network-apis/features/quality-on-demand)               | One session (`duration`)  | A device flow                  | A boost for the length of a live feed. (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas CreateSession.duration; info.description) |
-| [QoS Booking](/tech/network-apis/features/qos-booking)                           | A future window           | A specific device                 | Capacity secured ahead of a scheduled event. (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description; `/device-qos-bookings` POST) |
-| [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) | A future window           | A device count, assigned later | An event where devices are only known on the day. (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml info.description; schemas bookingDeviceCount; info.description) |
+| API | Duration | Bound to | Typical media use |
+| --- | --- | --- | --- |
+| QoS Provisioning (this API) | Until deleted | A device | A fixed contribution device that should always get its profile |
+| [Quality on Demand](/tech/network-apis/features/quality-on-demand) | One session | A device flow | A boost for the length of a live feed |
+| [QoS Booking](/tech/network-apis/features/qos-booking) | A future window | A device | Capacity secured ahead of a scheduled event |
+| [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) | A future window | A device count, assigned later | Devices known only on the day |
 
-A practical limitation for media, recorded in the Self-Assessment below, is that the assignment cannot be re-pointed to a different device: replacing a device means deleting the assignment and creating a new one, with no guarantee the new assignment succeeds. There is also no service-area dimension (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml paths; schemas CreateAssignment; `/qos-assignments` POST description (201 may carry UNAVAILABLE).
+An assignment cannot be re-pointed to another device (delete and recreate, with no guarantee it succeeds), and there is no service-area dimension.
 
 ---
 
