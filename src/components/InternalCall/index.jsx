@@ -1,4 +1,5 @@
 import React from 'react';
+import { githubFor } from '@site/src/data/baskets';
 import data from '@site/static/data/internal-call.json';
 import taxonomy from '@site/src/data/taxonomy.json';
 import { isTestbed, typeOf } from '@site/src/data/baskets';
@@ -231,7 +232,7 @@ export default function InternalCall() {
                           <td><span className={`${styles.status} ${styles[statusClass[r.status]]}`}>{r.status}</span></td>
                           <td><Repo name={r.repo} /></td>
                           <td>{r.milestone ? <a href={`${ORG}/${r.repo}/milestones`} target="_blank" rel="noreferrer">{r.milestone}</a> : <span className={styles.muted}>none open</span>}</td>
-                          <td className={styles.center}><a href={`${ORG}/${r.repo}/compare/main...development`} target="_blank" rel="noreferrer">{r.ahead}</a></td>
+                          <td className={styles.center}><a href={`${ORG}/${r.repo}/compare/${githubFor(r.repo)?.default_branch || 'main'}...development`} target="_blank" rel="noreferrer">{r.ahead}</a></td>
                           <td>{(r.status === 'No milestone' || r.status === 'No release') ? <span className={styles.muted}>none</span> : r.pending.length === 0 ? '0' : r.pending.map((n, k) => (
                             <React.Fragment key={n}>{k > 0 && ', '}<a href={`${ORG}/${r.repo}/pull/${n}`} target="_blank" rel="noreferrer">#{n}</a></React.Fragment>
                           ))}</td>

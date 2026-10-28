@@ -53,7 +53,7 @@
 .releaseRepo {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--ifm-color-primary) !important;
+  color: var(--text-accent, var(--ifm-color-primary)) !important;
   text-decoration: none !important;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -121,7 +121,7 @@
 .releaseDocLink {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary) !important;
+  color: var(--text-accent, var(--ifm-color-primary)) !important;
   text-decoration: none !important;
 }
 
@@ -137,6 +137,6 @@
 }
 
 .releaseRelLink:hover {
-  color: var(--ifm-color-primary) !important;
+  color: var(--text-accent, var(--ifm-color-primary)) !important;
   text-decoration: underline !important;
 }

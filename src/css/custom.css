@@ -76,6 +76,10 @@
   --brand-solid: #00749a;
   --ifm-link-color: #00749a;
   --ifm-link-hover-color: #006f92;
+  /* Small grey text (dates, captions, "no release yet", source lines) and the active menu item were 3:1 on white. */
+  --ifm-color-emphasis-600: #5d6870;
+  --ifm-menu-color-active: #006f92;
+  --ifm-navbar-link-hover-color: #006f92;
   /* Site-wide type scale nudged down a step (16px -> 15px base) — everything
      sized in rem (which is most of the site, via Infima) shrinks with it. */
   --ifm-font-size-base: 93.75%;
@@ -128,6 +132,9 @@
 }
 
 [data-theme='dark'] {
+  --ifm-color-emphasis-600: #ccd0d5;
+  --ifm-menu-color-active: #00a0d2;
+  --ifm-navbar-link-hover-color: #00a0d2;
   --ifm-color-primary: #00a0d2;
   --ifm-color-primary-dark: #0090bc;
   --ifm-color-primary-darker: #0088b3;
@@ -1813,4 +1820,45 @@
 /* The phase headers take their colour inline; a dark veil keeps the white text at 4.5:1 on every one of them. */
 .p-header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32));
+}
+
+/* Code highlighting in the light theme: the teal and pink token colours were below 4.5:1 on the code background. */
+:root:not([data-theme='dark']) .token.number,
+:root:not([data-theme='dark']) .token.property,
+:root:not([data-theme='dark']) .token.boolean,
+:root:not([data-theme='dark']) .token.constant,
+:root:not([data-theme='dark']) .token.symbol {
+  color: #0b6f6c !important;
+}
+
+:root:not([data-theme='dark']) .token.string,
+:root:not([data-theme='dark']) .token.attr-value {
+  color: #b3004f !important;
+}
+
+/* Light theme: outline buttons, the active item of the blog sidebar and the remaining code token colours at 4.5:1. */
+:root:not([data-theme='dark']) .button--outline.button--primary:not(:hover) {
+  color: #006f92;
+}
+
+:root:not([data-theme='dark']) .menu__link--active,
+:root:not([data-theme='dark']) a[class*='sidebarItemLinkActive'] {
+  color: #006f92 !important;
+}
+
+:root:not([data-theme='dark']) .token.comment,
+:root:not([data-theme='dark']) .token.prolog,
+:root:not([data-theme='dark']) .token.doctype,
+:root:not([data-theme='dark']) .token.cdata {
+  color: #5d6870 !important;
+}
+
+:root:not([data-theme='dark']) .token.atrule,
+:root:not([data-theme='dark']) .token.attr-name,
+:root:not([data-theme='dark']) .token.key {
+  color: #0a6a8f !important;
+}
+
+:root:not([data-theme='dark']) .token.function {
+  color: #b3202a !important;
 }

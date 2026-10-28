@@ -1,6 +1,6 @@
 .wrap {
-  --ok: #2e8a52; --ok-soft: #e3f4ea; --diff: #a46400; --diff-soft: #fdf0d9;
-  --off: #66737c; --off-soft: #edf0f2; --note: #48607a; --note-soft: #eef2f7; --inc: #6a4fb0; --inc-soft: #efeafb;
+  --ok: #1f6e40; --ok-soft: #e3f4ea; --diff: #8a5300; --diff-soft: #fdf0d9;
+  --off: #55626a; --off-soft: #edf0f2; --note: #48607a; --note-soft: #eef2f7; --inc: #6a4fb0; --inc-soft: #efeafb;
   margin: 1rem 0 2rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem;
 }
 [data-theme='dark'] .wrap {
@@ -48,14 +48,14 @@
 .req { border: 1px solid var(--ifm-color-emphasis-200); border-radius: 10px; background: var(--ifm-background-surface-color); }
 .body { border-top: 1px solid var(--ifm-color-emphasis-200); padding: 0.85rem 1rem 1rem; display: grid; gap: 0.9rem; }
 .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.colh { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 0.45rem; color: var(--ifm-color-emphasis-700); }
+.colh { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 0.45rem; color: var(--ifm-color-emphasis-700); }
 .items { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
 .item { display: grid; grid-template-columns: 1.1em minmax(0, 1fr); gap: 0.55rem; padding: 0.45rem 0.6rem; border-radius: 8px; margin: 0; }
 .mark { font-weight: 700; text-align: center; }
 .case { display: block; font-weight: 500; font-size: 0.88rem; }
 .why { display: block; font-size: 0.83rem; color: var(--ifm-color-emphasis-800); }
 .none { margin: 0; padding: 0.45rem 0.6rem; font-size: 0.85rem; color: var(--ifm-color-emphasis-700); }
-.spec { margin: 0; font-size: 0.78rem; color: var(--ifm-color-emphasis-700); border-top: 1px dashed var(--ifm-color-emphasis-300); padding-top: 0.6rem; }
+.spec { margin: 0; font-size: 0.82rem; color: var(--ifm-color-emphasis-700); border-top: 1px dashed var(--ifm-color-emphasis-300); padding-top: 0.6rem; }
 @media (max-width: 760px) {
   .cols { grid-template-columns: 1fr; }
   .fhead, .head { grid-template-columns: 1fr; }

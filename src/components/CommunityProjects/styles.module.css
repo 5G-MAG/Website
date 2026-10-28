@@ -360,9 +360,13 @@
   white-space: nowrap;
 }
 
-.ageGreen { color: var(--ifm-color-success); }
-.ageOrange { color: var(--ifm-color-warning); }
-.ageRed { color: var(--ifm-color-danger); }
+/* Darker than the theme's success, warning and danger colours so the age reads on white (4.5:1); the dark theme keeps its own. */
+.ageGreen { color: #17701f; }
+.ageOrange { color: #8f5400; }
+.ageRed { color: #b3202a; }
+[data-theme='dark'] .ageGreen { color: var(--ifm-color-success); }
+[data-theme='dark'] .ageOrange { color: var(--ifm-color-warning); }
+[data-theme='dark'] .ageRed { color: var(--ifm-color-danger); }
 
 .projectFooter {
   display: flex;
