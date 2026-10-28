@@ -83,7 +83,7 @@ TS 26.119 (MeCAR) CR 0003 "Assignment of IVAS levels to device types" is in V19.
 | XRM | Architecture Enhancements for XR (Extended Reality) and media service | TS 23.501, TS 23.502, TS 23.503 and others (SA2, CT) | PDU Set based QoS handling, PDU Set information marking in the UPF, ECN marking for L4S, exposure of QoS flow information, assistance information to the NG-RAN for power saving (clause 14.8) |
 | NR_XR_enh | XR (eXtended Reality) enhancements for NR | RAN specifications | XR awareness, power saving and capacity in NG-RAN, including a Delay Status Report MAC CE and uplink assistance information from the UE (clause 14.1) |
 | FS_eiRTCW, FS_SmarTAR, FS_ARMRQoE, FS_Audio_5GSTAR | Studies on WebRTC Phase 2, tethering AR glasses, AR and MR QoE metrics, and audio for glasses-type AR/MR devices | Studies | Listed in clauses 14.8 and 14.9 without a summary |
-| FS_XRTraffic | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | TR 26.926 | Listed in clause 17.13 ("Summary not expected") |
+| FS_XRTraffic | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | TR 26.925 (as in the work plan); TR 26.926 has the title of the work item (TR 26.925 V19.0.0 reference [47]) | Listed in clause 17.13 ("Summary not expected") |
 
 TS 26.119 V18.0.0 and TS 26.522 V18.0.0 were created in March 2024, TS 26.565 V18.0.0 and TS 26.264 V18.0.0 in June 2024 (change histories).
 

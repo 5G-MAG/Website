@@ -129,7 +129,7 @@ export const XR_SPECS = [
     title: 'Study on the enhancement for Immersive Real-Time communication for WebRTC',
     url: 'https://www.3gpp.org/dynareport/26930.htm',
     layer: 'Use cases',
-    note: 'Draft; WG S4',
+    note: 'Under change control; WG S4',
   },
   {
     id: 'TR 26.998',
@@ -179,7 +179,7 @@ export const XR_SPECS = [
     title: 'Messaging Media Profiles',
     url: 'https://www.3gpp.org/dynareport/26143.htm',
     layer: 'Media capabilities',
-    note: 'Draft; WG S4',
+    note: 'Under change control; WG S4',
   },
   {
     id: 'TS 26.565',
@@ -264,7 +264,7 @@ export const XR_SPECS = [
     title: 'Terminal audio quality performance requirements for immersive audio services',
     url: 'https://www.3gpp.org/dynareport/26261.htm',
     layer: 'Testing',
-    note: 'Draft; WG S4',
+    note: 'Under change control; WG S4',
   },
   {
     id: 'TS 26.566',

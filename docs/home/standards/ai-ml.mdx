@@ -24,7 +24,7 @@ import { AI_ML_SPECS, AI_ML_LAYER_ORDER } from '@site/src/data/specs/ai-ml';
 5G-MAG investigates the application of Artificial Intelligence (AI) and Machine Learning (ML) to media delivery, network optimisation and quality of experience within 5G systems. In 3GPP, SA2 (system architecture) defines network-side analytics through the Network Data Analytics Function (NWDAF), which collects data from network functions and produces analytics and predictions that other functions can consume. SA4 (the media codec and delivery working group) studies AI and ML in 5G media services, in TR 26.927 and TR 26.847.
 
 
-The SA4 data collection framework is one input to the network-side analytics. TS 26.531, clause 4.1: “Clause 6.2.8 of TS 23.288 [4] envisages a set of high-level procedures by which data is collected by a Network Data Analytics Function (NWDAF) from UE Application(s) via an intermediary Application Function that provides an Event Exposure Service to event consumers.” 5G-MAG's work on it is the [UE Data Collection, Reporting and Event Exposure](/reference-tools/data-collection) project.
+The SA4 data collection framework is one input to the network-side analytics. TS 26.531, clause 4.1: “Clause 6.2.8 of TS 23.288 [4] envisages a set of high-level procedures by which data is collected by a Network Data Analytics Function (NWDAF) from UE Application(s) via an intermediary Application Function that provides an Event Exposure Service to event consumers.” 5G-MAG's work on it is the [User Data Collection and Reporting](/reference-tools/data-collection) project.
 
 5G-MAG contributes primarily on the media side (SA4) and follows the SA2 analytics work for the parts that affect media sessions.
 
@@ -40,13 +40,13 @@ The SA4 data collection framework is one input to the network-side analytics. TS
 
 ## Specifications
 
-The specifications and study reports in scope of AI/ML for 5G media, filterable by track: network-side analytics in SA2, and the studies behind it.
+The specifications and study reports in scope of AI/ML for 5G media, filterable by track: network-side analytics in SA2, the SA4 data collection framework, and the studies behind it.
 
 <SpecIndex specs={AI_ML_SPECS} layerOrder={AI_ML_LAYER_ORDER} />
 
 ## Release by release
 
-By release, in TS 23.288: Release 15 introduces the NWDAF (TR 21.915 clause 5.5.2.2.5); Release 16 (eNA) defines the analytics framework (TR 21.916 clause 18.1); Release 17 (eNA_Ph2) splits the NWDAF into the Analytics Logical Function and the Model Training Logical Function and adds ML model provisioning (TR 21.917 clause 9.4.3); Release 18 adds ML model training, accuracy monitoring, federated learning among NWDAFs and ML model storage in the ADRF (TS 23.288 V18.13.0 clauses 5.3, 5C, 6.2B to 6.2F, 7.9 to 7.11 and 10.3, absent from V17.12.0); Release 19 (AIML_CN) adds vertical federated learning, AI/ML positioning support, QoS and policy assistance analytics and signalling storm analytics (TR 21.919 clause 8.1.3); Release 20 adds a loss value to the model accuracy information (TS 23.288 V20.2.0 clause 5C). On the SA4 side, FS_AI4Media produces TR 26.927 and TR 26.847 at version 19.0.0. The Release 20 work items listed for TS 23.288 in the work plan of 28 September 2026 are on the release history page, with their unverified scopes marked.
+By release, in TS 23.288: Release 15 introduces the NWDAF (TR 21.915 clause 5.5.2.2.5); Release 16 (eNA) defines the analytics framework (TR 21.916 clause 18.1); Release 17 (eNA_Ph2) splits the NWDAF into the Analytics Logical Function and the Model Training Logical Function and adds ML model provisioning (TR 21.917 clause 9.4.3); Release 18 adds ML model training, accuracy monitoring, federated learning among NWDAFs and ML model storage in the ADRF (TS 23.288 V18.13.0 clauses 5.3, 5C, 6.2B.5 to 6.2B.7, 6.2C to 6.2F, 7.9 to 7.11 and 10.3, absent from V17.12.0); Release 19 (AIML_CN) adds vertical federated learning, AI/ML positioning support, QoS and policy assistance analytics and signalling storm analytics (TR 21.919 clause 8.1.3); Release 20 adds a loss value to the model accuracy information (TS 23.288 V20.2.0 clause 5C). On the SA4 side, FS_AI4Media produces TR 26.927 and TR 26.847 at version 19.0.0. The Release 20 work items listed for TS 23.288 in the work plan of 28 September 2026 are on the release history page, with their unverified scopes marked.
 
 For the work-item history behind these specifications, see [Release history](/standards/ai-ml/evolution).
 

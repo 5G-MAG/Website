@@ -21,7 +21,7 @@ export const AI_ML_SPECS = [
     id: 'TS 26.531',
     title: 'Data Collection and Reporting; General Description and Architecture',
     url: 'https://www.3gpp.org/dynareport/26531.htm',
-    layer: 'Network analytics (SA2)',
+    layer: 'Data collection (SA4)',
     note: 'Data collected by the NWDAF from UE applications (clause 4.1)',
   },
   {
@@ -68,4 +68,4 @@ export const AI_ML_SPECS = [
 ];
 
 // Network-side track first, then the studies, matching the order the page introduces them in.
-export const AI_ML_LAYER_ORDER = ['Network analytics (SA2)', 'Studies'];
+export const AI_ML_LAYER_ORDER = ['Network analytics (SA2)', 'Data collection (SA4)', 'Studies'];

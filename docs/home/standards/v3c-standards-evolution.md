@@ -2,7 +2,7 @@
 hide_title: true
 title: Volumetric Video Experiences - Standards Evolution
 slug: /standards/v3c/evolution
-description: Edition and stage history of the ISO/IEC specifications behind MPEG V3C Immersive Platform.
+description: Companion to the Volumetric Video Experiences specifications page; the editions and status of the ISO/IEC specifications are on that page.
 sidebar_label: Release history
 ---
 
@@ -21,7 +21,7 @@ This page is the companion to [Volumetric Video Experiences: Specifications](/st
 
 ## Editions and stages
 
-The editions and stages of the ISO/IEC specifications behind this topic are described on the [Specifications](/standards/v3c) page.
+The editions and status of the ISO/IEC specifications behind this topic are described on the [Specifications](/standards/v3c#editions-and-status) page. This page does not hold a separate edition history.
 
 ## Related
 

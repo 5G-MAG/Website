@@ -25,7 +25,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **What it is:** 5G-MAG work on evaluating video formats beyond flat 2D, such as stereoscopic, multi-view, video plus depth and point clouds.
+- **What it is:** 5G-MAG work on evaluating video formats beyond flat 2D, such as stereoscopic, multi-view plus depth, point clouds and dynamic meshes.
 - **Why it matters:** It benchmarks encoding, streaming and rendering pipelines for these formats, alongside the related 3GPP study.
 - **In this section:** This page covers the formats under evaluation, the scenarios, and the pipeline and metrics.
 
@@ -41,7 +41,6 @@ Beyond 2D Video Experiences covers the evaluation and characterisation of next-g
 
 - stereoscopic video;
 - multi-view video;
-- video plus depth;
 - point clouds.
 
 The 5G-MAG work provides an evaluation framework for benchmarking encoding, streaming, and rendering pipelines for these formats. It relates to the 3GPP study captured in [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (Evaluation and Characterization of Beyond 2D Video Formats and Codecs), published as a Release 19 Technical Report (V19.0.1, October 2025).
@@ -80,7 +79,6 @@ Beyond 2D groups the content it studies into representation families, each of wh
 
 - **Stereoscopic video**: a left and right view giving a fixed 3D effect but no free viewpoint. Coded with MV-HEVC or, as an anchor, frame-compatible or simulcast HEVC.
 - **Multi-view plus depth (MV+D)**: several texture views with associated depth, supporting a limited change of viewpoint. Coded with MV-HEVC or with the MIV profile of V3C.
-- **Video plus depth**: a single texture view augmented with a depth map. The depth is carried alongside a conventional HEVC/VVC texture stream.
 - **Dense point cloud**: a volumetric capture of an object or person. Coded with V-PCC (the video-based point cloud profile of V3C) and, for comparison, G-PCC (geometry-based).
 - **Dynamic meshes**: a volumetric representation using time-varying textured 3D meshes, coded with V-DMC (Video-based Dynamic Mesh Coding, ISO/IEC 23090-29), described alongside V-PCC for the volumetric scenario.
 
@@ -110,7 +108,7 @@ Because source sequences, coded bitstreams, and rendered pose-trace videos are l
 
 ## Relationship to 5G Media Streaming
 
-Beyond 2D does not define a new transport. It evaluates the formats against the existing 5G media delivery stack: ISOBMFF/CMAF packaging and DASH (ISO/IEC 23009-1) adaptive streaming carried by 5G Media Streaming ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) V20.0.0 architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) V19.3.0 protocols and APIs). Framing the evaluation this way keeps the comparison grounded in how the content would actually be delivered, and it lets the study identify which formats and codecs are ready for that pipeline and where gaps remain for future 3GPP normative work.
+Beyond 2D does not define a new transport. The evaluation assumes delivery as ISOBMFF/CMAF packaging with DASH (ISO/IEC 23009-1) adaptive streaming (TR 26.956 V19.0.1 clauses 7.2.2.4, 7.2.6 and 7.4.6); 5G Media Streaming is specified in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) V20.0.0 (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) V19.3.0 (protocols and APIs). Framing the evaluation this way keeps the comparison grounded in how the content would actually be delivered, and it lets the study identify which formats and codecs are ready for that pipeline and where gaps remain for future 3GPP normative work.
 
 ## Related
 

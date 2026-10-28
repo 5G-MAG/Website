@@ -1,8 +1,8 @@
 // Specification catalogue for Beyond 2D Video.
 //
 // Merges the "Related 3GPP Work Items" and "Related 3GPP Technical Reports and
-// Specifications" tables this page used to carry, plus the 5G Media Streaming
-// specifications the study evaluates against, into one searchable table (see
+// Specifications" tables this page used to carry, plus the related 5G Media
+// Streaming specifications, into one searchable table (see
 // src/components/SpecIndex).
 export const BEYOND_2D_SPECS = [
   {
@@ -32,14 +32,14 @@ export const BEYOND_2D_SPECS = [
     title: '5G Media Streaming (5GMS); General description and architecture',
     url: 'https://www.3gpp.org/dynareport/26501.htm',
     layer: 'Delivery framework',
-    note: 'the framework the formats are assessed against',
+    note: 'related specification: the 5G Media Streaming architecture',
   },
   {
     id: 'TS 26.512',
     title: '5G Media Streaming (5GMS); Protocols',
     url: 'https://www.3gpp.org/dynareport/26512.htm',
     layer: 'Delivery framework',
-    note: 'the framework the formats are assessed against',
+    note: 'related specification: the 5G Media Streaming protocols',
   },
   {
     // Added 2026-08-25: docs/home/testbeds/beyond-2d/index.mdx names this as
@@ -63,12 +63,12 @@ export const BEYOND_2D_SPECS = [
     title: 'Coded representation of immersive media - Part 29: Video-based dynamic mesh coding (V-DMC)',
     url: 'https://www.iso.org/standard/85254.html',
     layer: 'Format',
-    note: 'V3C-related; Edition 1 reached Final Draft International Standard (FDIS) stage and was in ISO\'s final publication steps as of mid-2026 -- confirm current status on the ISO catalogue page before relying on it',
+    note: 'V3C-related; the cover of the ISO preview reads "First edition, 2026-07" (ISO/IEC 23090-29:2026) -- confirm current status on the ISO catalogue page before relying on it',
   },
 ];
 
 // Work item first, then the report it produced, the format spec it names,
-// then the delivery framework the study evaluates the formats against.
+// then the related delivery framework (5G Media Streaming).
 export const BEYOND_2D_LAYER_ORDER = [
   'Work item',
   'Technical report',

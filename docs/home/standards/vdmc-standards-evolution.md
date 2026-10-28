@@ -21,7 +21,17 @@ This page is the detailed, stage-by-stage companion to [Dynamic Mesh Coding: Spe
 
 ## Editions and stages
 
-The editions and stages of the ISO/IEC specifications behind this topic are described on the [Specifications](/standards/vdmc) page.
+The mpeg.expert page for V-DMC records this timeline for ISO/IEC 23090-29:
+
+| Date | Stage |
+| --- | --- |
+| June 2022 | Project start |
+| April 2024 | Committee Draft |
+| January 2025 | Draft International Standard (DIS) |
+| July 2025 | Final Draft International Standard (FDIS) |
+| March 2026 | International Standard (IS), as the target date |
+
+The cover of ISO/IEC 23090-29:2026 reads "International Standard, First edition, 2026-07". Source: [mpeg.expert/v-dmc](https://mpeg.expert/v-dmc/#about); check it and the ISO catalogue for the current stage. The current specification and scope are on the [Specifications](/standards/vdmc) page.
 
 ## Related
 

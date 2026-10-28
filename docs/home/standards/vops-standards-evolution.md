@@ -69,7 +69,7 @@ TS 26.265 is created in Release 19 (version 19.0.0, see the Release 19 section a
 | --- | --- | --- | --- |
 | 15 | HDR | High Dynamic Range in the TV Video Profiles of TS 26.116: an HDR video profile based on the Perceptual Quantizer, following ITU-R BT.2100, with H.265 (HEVC) compression, transfer functions, colour primaries and metadata | TR 21.915 clause 12.4.2 |
 | 15 | VRStream | Virtual Reality profiles in TS 26.118; for video, three operation points (Basic Video on H.264/AVC High Profile Level 5.1, Main Video and Advanced Video on H.265/HEVC High Profile Level 5.1) | TR 21.915 clause 12.4.3 |
-| 16 | HLG_HDR | Addition of HLG HDR to TV Video Profiles; listed without a description | TR 21.916 clause 22.1.3 |
+| 16 | HLG_HDR | Addition of HLG HDR to TV Video Profiles; listed without a description | TR 21.916 annex A |
 | 17 | 8K_TV_5G | An HEVC-based 8K TV operation point (H.265/HEVC Main-10 Profile Main Tier) in TS 26.116, and the corresponding decoding capabilities for 5G Media Streaming in TS 26.511 | TR 21.917 clause 15.2 |
 | 18 | FS_HEVC_Profiles | Study on new HEVC profiles and operating points; listed without a description | TR 21.918 clause 17.13 |
 | 18 | MeCAR | TS 26.119, media capabilities of AR devices, including video codecs (AVC and HEVC) per device type | TR 21.918 clause 14.2 |
