@@ -91,7 +91,7 @@ TR 103 972 clause 4.1.3 summarises the four things the Technical Module was aske
 
 1. Self-contained DVB-I services over a **5G Broadcast** system (ETSI TS 103 720)
 2. Self-contained DVB-I services over a **5G Media Streaming** system (ETSI TS 126 501)
-3. The same basic service over **regular unicast, 5G Broadcast and 5GMS at the same time**, as independent service instances, possibly at different quality (ETSI TR 103 972 V1.1.1 clause 4.1.3; DVB C100 clause 2.2.3; DVB C100 clause 2.2.4)
+3. The same basic service over **regular unicast, 5G Broadcast and 5G Media Streaming (5GMS) at the same time**, as independent service instances, possibly at different quality (ETSI TR 103 972 V1.1.1 clause 4.1.3; DVB C100 clause 2.2.3; DVB C100 clause 2.2.4)
 4. **Hybrid** DVB-I services: described in a service list, distributed over 5G Broadcast, augmented by unicast or 5GMS (ETSI TR 103 972 V1.1.1 clause 4.1.3; DVB C100 clause 2.2.3; DVB C100 clause 2.2.4)
 
 The detailed requirements are clustered by service-operation phase, in C100's own clause numbering: provisioning (2.3), announcement and detection (2.4), service components (2.5), distribution and delivery (2.6), quality and monitoring (2.7), and client functionality (2.8) (DVB C100 clause 2.3; DVB C100 clause 2.4; DVB C100 clause 2.5; DVB C100 clause 2.6; DVB C100 clause 2.7; DVB C100 clause 2.8).
@@ -105,7 +105,7 @@ Two procedural constraints shape every technical answer below. Existing DVB tech
 | Service layer | Discovery, selection, programme metadata. Unchanged across bearers. | DVB A177 / ETSI TS 103 770 |
 | Media format layer | The media presentation itself | DVB-DASH (ETSI TS 103 285); DVB-MABR (ETSI TS 103 769) where multicast is used |
 | Transport layer | The bearer | ETSI TS 103 720 (LTE-based 5G Broadcast); 3GPP 5GMS (TS 26.501, TS 26.512, TS 26.510) for unicast |
-| Provisioning | Getting content onto a broadcast bearer | xMB (ETSI TS 129 116); MBMS protocols (3GPP TS 26.346) |
+| Provisioning | Getting content onto a broadcast bearer | xMB, the reference point between the Content Provider and the Broadcast-Multicast Service Centre (BM-SC) (ETSI TS 129 116); Multimedia Broadcast/Multicast Service (MBMS) protocols (3GPP TS 26.346) |
 
 ### Requirements for the 5G Broadcast scenario
 
@@ -119,12 +119,12 @@ against the specifications as published today, not as they stood when the report
 | 2.4.4 | Embed the DVB-I service list in a 5G Broadcast signal | TS 103 770 clause 9.3.1, table 106: a user service of class `DVB-I_Service_List:1` carries the list document | **Addressed** |
 | 2.4.5 | Provide an updated service list in a 5G Broadcast signal | TS 103 770 clause 9.3.3: the client subscribes to MBMS Client notifications and acquires new versions as announced | **Addressed** |
 | 2.4.17 | Announce the location of content guide endpoints | TS 103 770 clause 9.3.1, table 106: class `DVB-I_Content_Guide:1` | **Addressed**, by carrying the documents themselves |
-| 2.6.7 | Receive-only-mode reception from a 5G Broadcast system | ETSI TS 103 720 clause 5.4.8 makes receive-only mode mandatory for LTE-based 5G Broadcast services | **Addressed** at the bearer |
+| 2.6.7 | Receive-only-mode reception from a 5G Broadcast system | ETSI TS 103 720 clause 5.4.8 makes receive-only mode (ROM) mandatory for LTE-based 5G Broadcast services | **Addressed** at the bearer |
 | 2.6.6 | Free-to-air delivery over a 5G Broadcast system | Follows from the same clause: ROM needs neither PLMN registration nor a USIM. Announcement to such receivers is 3GPP TS 26.346 clause 5.2.3.1.1 | **Addressed** at the bearer |
-| 2.4.2 | An entry point referencing a service list registry | TS 103 770 clause 5.1.3.1 defines three discovery approaches (built-in URL, registry, CICAM); none is 5G-specific; the A177r8 draft keeps the same three principal approaches in clause 5.1.3.1 and adds mDNS/DNS-SD announcement in clause 5.1.3.9, also not 5G-specific | **Partly**: the registry exists, the 5G entry point does not |
+| 2.4.2 | An entry point referencing a service list registry | TS 103 770 clause 5.1.3.1 defines three discovery approaches (built-in URL, registry, Common Interface Conditional Access Module (CICAM)); none is 5G-specific; the A177r8 draft keeps the same three principal approaches in clause 5.1.3.1 and adds mDNS/DNS-SD announcement in clause 5.1.3.9, also not 5G-specific | **Partly**: the registry exists, the 5G entry point does not |
 | 2.4.3 (DVB C100 clause 2.4.3; ETSI TS 103 770 V1.2.1 clause 9.3.1; ETSI TS 103 770 V1.2.1 clause 9.3.3) | Announce the *location* of one or more service lists in the broadcast signal | Clause 9.3 carries the list itself rather than a pointer to it | **Partly**, by a different means |
 | 2.4.7 | **The service list shall define a service instance type for 5G Broadcast** | No service instance type. The `mbms://` locator itself fits `IdentifierBasedDeliveryParameters` (TS 103 770 clause 5.5.4, table 16), on 5G-MAG's reading | **Open**: the locator has an element, the type does not |
-| 2.4.10 | Identify an editorial service from radio-layer parameters (frequency plus TMGI) | Nothing. TS 103 770 does not mention TMGI | **Open** |
+| 2.4.10 | Identify an editorial service from radio-layer parameters (frequency plus Temporary Mobile Group Identity (TMGI)) | Nothing. TS 103 770 does not mention TMGI | **Open** |
 | 2.4.15, 2.4.16 | Signal free-to-air and receive-only-mode service instances | Nothing on the service-list side. TS 103 770 has `FTAContentManagement` (clause 5.5.19), which carries content management policy, not free-to-air reception | **Open**, downstream of 2.4.7 |
 
 The last four share one cause. Requirements 2.4.10, 2.4.15 and 2.4.16 all describe attributes of a 5G Broadcast service instance, and there is no 5G Broadcast service instance type to put them on. Close 2.4.7 and they become straightforward (ETSI TS 103 770 V1.2.1 clause 5.5.4).
@@ -171,7 +171,7 @@ That attribute is the whole filtering mechanism: it is how a receiver tells a DV
 | --- | --- |
 | Content provider creates a service over xMB and sets its class | ETSI TS 129 116 V19.0.0 clause 5.2.1.1, table 5.2.1.1-1, row `service-class` |
 | BM-SC carries it in the User Service Description as `userServiceDescription@serviceClass` | 3GPP TS 26.346 V19.3.0 clause 11.2.1.2 |
-| For media, the User Service Description also references the entry point document (the MPD) | 3GPP TS 26.346 V19.3.0 clause 5.2.2.1 |
+| For media, the User Service Description also references the entry point document (the Media Presentation Description, MPD) | 3GPP TS 26.346 V19.3.0 clause 5.2.2.1 |
 | User services are announced | 3GPP TS 26.346 V19.3.0 clause 5.2.3.1 |
 | For LTE-based 5G Broadcast, announcement uses 5G Broadcast SA Services | ETSI TS 103 720 V1.2.1 clause 5.4.2 |
 
@@ -182,7 +182,7 @@ That attribute is the whole filtering mechanism: it is how a receiver tells a DV
 3. **Acquire the metadata and keep it current.** A client with *no unicast connection* acquires the service list from a user service of class `DVB-I_Service_List:1`, and may then acquire content guide metadata the same way. It subscribes to MBMS Client notifications and picks up new versions as announced. A unicast client instead checks for updates under TS 103 770 clause 5.1.7, with the HTTP caching rules of clause 4.3.2 (ETSI TS 103 770 V1.2.1 clause 9.3.3; ETSI TS 103 770 V1.2.1 clause 5.1.7; ETSI TS 103 770 V1.2.1 clause 4.3.2).
 4. **Select an instance and hand off to the player.** On selecting an instance with an `mbms://` locator, the client invokes the MBMS Client to initiate reception, and passes the player the entry point document referenced by the User Service Description (ETSI TS 103 770 V1.2.1 clause 9.3.3).
 
-This split matches the component architecture the 5G-MAG reference tools already have: an MBMS Client holding the announcement channel and the reception, and an MBMS-aware application driving it over a local API. A DVB-I receiver occupies the second role (ETSI TS 103 770 V1.2.1 clause 9.3.3).
+This split matches the component architecture the 5G-MAG reference tools already have: an MBMS Client holding the announcement channel and the reception, and an MBMS-aware application driving it over a local API (ETSI TR 103 972 V1.1.1 clauses 4.5.2 and 4.5.3). A DVB-I receiver occupies the second role (ETSI TS 103 770 V1.2.1 clause 9.3.3).
 
 ## Part 3: The gap analysis
 
@@ -204,7 +204,7 @@ document that owns it. This is an engineering assessment by 5G-MAG, not a statem
 **Versions checked:** ETSI TS 103 770 V1.2.1 (2024-09), ETSI TR 103 972 V1.1.1 (2023-07), ETSI
 TS 103 720 V1.2.1 (2023-06), ETSI TS 129 116 V19.0.0 (2025-10), ETSI TS 126 512 V19.3.0, ETSI
 TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V19.0.0, and, for the DVB side, the DVB A177r8 draft of TS 103 770 V1.3.1
-(30 June 2026). The draft is a DVB document; this page has not verified that ETSI has published it. The latest published ETSI version remains V1.2.1.
+(June 2026). The draft is a DVB document; this page has not verified that ETSI has published it. The latest published ETSI version remains V1.2.1.
 
 ### Headline
 
@@ -338,13 +338,13 @@ The deployment guidance for carrying DVB-I over 5G is ETSI TR 103 972 (DVB-I ser
 | --- | --- | --- | --- |
 | Standalone DVB-I over 5G Broadcast | Broadcast only | DVB-DASH in MBMS User Services | ETSI TS 103 720 (LTE-based 5G Broadcast) |
 | DVB-I over 5GMS | Unicast only | DVB-DASH | 3GPP 5GMS (TS 26.501 and companions) |
-| Concurrent / hybrid | 5G Broadcast and ordinary unicast | DVB-DASH | ETSI TS 103 720 for broadcast; the device's ordinary unicast connection (SGi/N6) |
+| Concurrent / hybrid | 5G Broadcast and ordinary unicast | DVB-DASH | ETSI TS 103 720 for broadcast; the device's ordinary unicast connection (SGi/N6, the reference point between the core network and the public IP network: SGi for 4G, N6 for 5G) |
 
 **Standalone DVB-I over 5G Broadcast.** In the scenario TR 103 972 works through (clauses 6.2.2 and 6.2.3), DVB-DASH content is carried in MBMS User Services, with the MPD pulled by the BM-SC, and the selected service instance refers to the MBMS User Service. DVB-MABR is described as an alternative (clause 6.2.5.2), with its MPD handling left for further study.
 
 **DVB-I over 5GMS.** The service instance references a DASH source served through 5G Media Streaming. The 5GMS downlink architecture (3GPP TS 26.501) provides the Media Application Server, session handling, and reporting; the DVB-DASH presentation is fetched and rendered by a 5GMS-aware client. The DVB-I layer above is unchanged.
 
-**Concurrent / hybrid.** Both a 5G Broadcast instance and a unicast instance are present for the same service. TR 103 972 clause 6.4.3.2 has the unicast steps "carried out using the client's basic unicast connection to the public IP network at reference point SGi/N6 in place of 5GMSd reference point M8d." The client selects or switches between them based on coverage and capability, for example receiving popular linear channels over broadcast while using unicast for on-demand or out-of-coverage fallback.
+**Concurrent / hybrid.** Both a 5G Broadcast instance and a unicast instance are present for the same service. TR 103 972 clause 6.4.3.2 has the unicast steps "carried out using the client's basic unicast connection to the public IP network at reference point SGi/N6 in place of 5GMSd reference point M8d." (M8d is the application interface between the 5GMSd-Aware Application and the 5GMSd Application Provider: TS 26.501 V19.0.0 clause 4.2.1.) The client selects or switches between them based on coverage and capability, for example receiving popular linear channels over broadcast while using unicast for on-demand or out-of-coverage fallback.
 
 The report relates DVB-I service discovery to the 3GPP service announcement differently in each scenario. For 5GMS, "Each service instance in the DVB-I Service List plays the role here of a Service Announcement at reference point M8d." (clause 6.3.3.2). For 5G Broadcast, the MBMS Service Announcement is used, with a DVB service class to find DVB-I services (clause 6.2.3.1 step 12; gap 4 of clause 6.2.4). The gaps it found "are documented as recommended changes to the relevant specifications under the control of the respective organization" (clause 6.1) (ETSI TR 103 972 V1.1.1 clause 6.3.3.2; ETSI TR 103 972 V1.1.1 clause 6.2.3.1; ETSI TR 103 972 V1.1.1 clause 6.2.4; ETSI TR 103 972 V1.1.1 clause 6.1).
 

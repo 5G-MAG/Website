@@ -52,7 +52,7 @@ Release 20 (work plan of 28 September 2026); completion percentages and dates ar
 | [AMD-ARCH-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1060069) | Stage 2 for Advanced Media Delivery | Normative | TS 26.501, TS 26.502; CR to TS 26.506 | Complete, Mar 2025 | SP-241963 |
 | [AMD_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1070057) | Stage 3 for Advanced Media Delivery | Normative | TS 26.510 (with TS 26.511, TS 26.512 and others) | Complete, Dec 2025 | SP-250265 |
 
-5G_RTP_Ph2 extends the RTC provisioning feature to include PDU Set Importance values for PDUs that may be treated as lone PDUs in the UPF, and covers multiplexed RTP streams, burst size, time to next burst, the expedited transfer indication and the definition of a data burst. TR 21.919 clause 11.7 also lists normative work to mitigate the inaccuracy of PDU Set Size information, guidelines for handling lone PDUs at the UPF, and guidelines for marking PDU Set Importance for PDU Sets that are not video frames or slices; it places the work in TS 26.522, TS 26.510 and TS 26.113. The other Release 19 change requests are tagged iRTCW, GA4RTAR and TEI19 ("(Small) Technical Enhancements and Improvements for Rel-19").
+5G_RTP_Ph2 extends the RTC Dynamic Policy API in TS 26.510 and TS 26.113 to include PDU Set Importance values for PDUs that may be treated as lone PDUs in the UPF, and covers multiplexed RTP streams, burst size, time to next burst, the expedited transfer indication and the definition of a data burst. TR 21.919 clause 11.7 also lists normative work to mitigate the inaccuracy of PDU Set Size information, guidelines for handling lone PDUs at the UPF, and guidelines for marking PDU Set Importance for PDU Sets that are not video frames or slices; it places the work in TS 26.522, TS 26.510 and TS 26.113. The other Release 19 change requests are tagged iRTCW, GA4RTAR and TEI19 ("(Small) Technical Enhancements and Improvements for Rel-19").
 
 | Specification | Version | CR | Subject |
 | --- | --- | --- | --- |
@@ -79,6 +79,7 @@ TS 26.522 (5G Real-time Media Transport Protocol Configurations, used by TS 26.1
 | TS 26.522 | 19.1.0 | 0012 | [5G_RTP_Ph2] SDP signaling for N6-unmarked PDUs |
 | TS 26.522 | 19.1.0 | 0016 | [5G_RTP_Ph2] SDES RTP Header Extension for MID |
 | TS 26.522 | 19.1.0 | 0017 | [5G_RTP_Ph2] Correction of URN and SDP signalling for RTP HE for dynamically changing traffic characteristics |
+| TS 26.522 | 19.1.0 | 0019 | [TEI19, 5G_RTP] Correction of Guidelines for PDU Set identification |
 | TS 26.522 | 19.1.0 | 0020 | [5G_RTP_Ph2] RTCP SDES Item for MID |
 | TS 26.522 | 19.1.0 | 0021 | [5G_RTP_Ph2] RTP Header Extension for Expedited Transfer Indication |
 | TS 26.522 | 19.2.0 | 0010 | Definition and clarification on time to next burst accuracy |

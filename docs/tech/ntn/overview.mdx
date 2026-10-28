@@ -43,20 +43,20 @@ non-terrestrial networks: the foundational NTN study item),
 [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) (Solutions for NR to
 support NTN), TS 38.300 (NR overall description, NTN aspects),
 [TR 38.863](https://www.3gpp.org/dynareport/38863.htm) (NTN related RF and
-co-existence aspects). For satellite broadcast delivery, see also ETSI TS 103 720 (5G
-Broadcast system for linear TV and radio), which is relevant to GEO-based NTN broadcast
-scenarios. Release 19 also adds an LTE downlink-only band (1467 to 1492 MHz, ITU Region 3) for 5G Broadcast via a GSO satellite, with UE and satellite access node RF requirements for a 10 MHz PMCH in TS 36.102 and TS 36.108 (TR 21.919 V19.0.0 clause 5.4.1, work item LTE_band_5G_bcast_GSO).
+co-existence aspects). For 5G Broadcast, see also ETSI TS 103 720 (5G
+Broadcast system for linear TV and radio; LTE-based 5G terrestrial broadcast system).
+Release 19 also adds an LTE downlink-only band (1467 to 1492 MHz, ITU Region 3) for 5G Broadcast via a GSO satellite, with UE and satellite access node RF requirements for a 10 MHz PMCH in TS 36.102 and TS 36.108 (TR 21.919 V19.0.0 clause 5.4.1, work item LTE_band_5G_bcast_GSO).
 
 ### NTN system model and terminology
 
 - **Feeder link / service link.** The service link is the wireless link between the
   NTN payload and the UE; the feeder link is the wireless transport link between the NTN
-  Gateway and the NTN payload (TS 38.300 clause 3.1). To accommodate the propagation delay,
+  Gateway and the NTN payload (TS 38.300 clause 3.2). To accommodate the propagation delay,
   several timing relationships are enhanced by a Common Timing Advance and configured
   offsets (TS 38.300 clause 16.14.2.1).
 - **Transparent vs regenerative payload.** The NTN payload, on board a satellite or high
   altitude platform station, is a TNL node (transparent payload) or a gNB (regenerative
-  payload) (TS 38.300 clause 3.1). The transparent payload forwards the radio protocol
+  payload) (TS 38.300 clause 3.2). The transparent payload forwards the radio protocol
   between the service link and the feeder link; the regenerative payload terminates the
   Uu, NG and Xn interfaces, and may terminate inter-satellite links towards other
   regenerative payloads (TS 38.300 clause 16.14.1).
@@ -66,7 +66,7 @@ scenarios. Release 19 also adds an LTE downlink-only band (1467 to 1492 MHz, ITU
   area for a limited period and another area later (e.g. NGSO satellites with steerable
   beams); Earth-moving beams slide over the Earth surface (e.g. NGSO satellites with
   fixed beams). A Tracking Area corresponds to a fixed geographical area, and a Mapped
-  Cell ID corresponds to a fixed geographical area (TS 38.300 clauses 3.1 and 16.14.1).
+  Cell ID corresponds to a fixed geographical area (TS 38.300 clauses 3.2, 16.14.1 and 16.14.5).
   These cell types drive the handover models on the
   [Mobility Aspects for NTN](/tech/ntn/procedures/mobility) page.
 - **GNSS at the UE.** In this release, the UE supporting NTN is GNSS-capable, and NTN
@@ -105,10 +105,10 @@ TS 23.247 Release 19 states that transmission of a Broadcast MBS Session is supp
 over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
 
 - **Broadcast MBS session.** Delivered with 5GC Shared MBS traffic delivery and PTM
-  delivery only, and receivable in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. Over NR NTN,
+  delivery only, and receivable in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.1). Over NR NTN,
   Release 19 adds the NR NTN Intended Service Area, carried from the 5G Core to NG-RAN in
   the MBS service area and to the UE in SIB27, which can restrict the MBS service area to
-  an area smaller than a cell (TS 23.247 V20.0.0 clauses 4.1 and 6.21; TS 38.300 V19.4.0 clause 16.10.1). TR 21.919 V19.0.0 clause 5.1.1 (NR_NTN_Ph3) describes this as support for multicast and broadcast services when the intended service area is smaller than a cell, through enhanced SIB signalling and core-to-NG-RAN signalling; the specification texts checked define the ISA for the broadcast MBS session only.
+  an area smaller than a cell (TS 23.247 V20.0.0 clauses 4.1 and 6.21; TS 38.300 V19.4.0 clauses 16.14.12 and 16.14.5). TR 21.919 V19.0.0 clause 5.1.1 (NR_NTN_Ph3) describes this as support for multicast and broadcast services when the intended service area is smaller than a cell, through enhanced SIB signalling and core-to-NG-RAN signalling; the specification texts checked define the ISA for the broadcast MBS session only.
 - **Multicast MBS session.** NG-RAN is the decision point for switching between PTP and
   PTM, and the UE receives it in RRC_CONNECTED, or in RRC_INACTIVE with PTM. TS 23.247
   has no NTN clause for the multicast MBS session; TS 38.321 has, since Release 17, a
@@ -138,18 +138,18 @@ over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
   follows the Intended Service Area of a broadcast MBS session from the 5G Core
   to SIB27, the MCCH and the UE.
 
+<details>
+<summary>Sources for this page</summary>
+
+- **Feeder link, service link, NTN payload, Mapped Cell ID:** TS 38.300 V19.4.0, clauses 3.2 and 16.14.5.
+- **Transparent and regenerative payload, cells and service links, Tracking Area, GNSS, FDD:** TS 38.300 V19.4.0, clause 16.14.1.
+- **Timing:** TS 38.300 V19.4.0, clause 16.14.2.1.
+- **Release context:** TR 21.917 V17.0.1, clause 5.1.1; TR 21.918 V18.0.0, clause 5.1; TR 21.919 V19.0.0, clauses 5.1.1 and 5.4.1; TS 22.261 V20.8.1, clause 6.46.2 and change history (CR 0835); TS 23.501 V20.3.0, clause 5.43.3 and change history (CR 6613).
+- **MBS over NTN:** TS 23.247 V20.0.0, clauses 4.1 and 6.21; TS 38.300 V19.4.0, clauses 16.10.1, 16.14.5 and 16.14.12; TS 38.331 V19.4.0, clause 6.3.1; TS 38.321 V17.15.0 and V19.4.0, clause 5.7. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA or SIB27 text.
+
+</details>
+
 **Related:** [Media delivery over 5G Multicast Broadcast Services](/tech/5g-mbs)
 · [Media delivery over 5G Broadcast](/tech/5g-broadcast) ·
 [Standards: Media delivery over 5G Multicast Broadcast Services](/standards/5g-mbs)
 · [Standards: Media delivery over 5G Broadcast](/standards/5g-broadcast)
-
-<details>
-<summary>Sources for this page (NTN terms)</summary>
-
-- **Feeder link, service link, NTN payload, Mapped Cell ID:** TS 38.300 V19.4.0, clause 3.1.
-- **Transparent and regenerative payload, cells and service links, Tracking Area, GNSS, FDD:** TS 38.300 V19.4.0, clause 16.14.1.
-- **Timing:** TS 38.300 V19.4.0, clause 16.14.2.1.
-- **Release context:** TR 21.917 V17.0.1, clause 5.1.1; TR 21.918 V18.0.0, clause 5.1; TR 21.919 V19.0.0, clauses 5.1.1 and 5.4.1; TS 22.261 V20.8.1, clause 6.46.2 and change history (CR 0835); TS 23.501 V20.3.0, clause 5.43.3 and change history (CR 6613).
-- **MBS over NTN:** TS 23.247 V20.0.0, clauses 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.10.1; TS 38.331 V19.4.0, clause 6.3.1; TS 38.321 V17.15.0 and V19.4.0, clause 5.7. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA or SIB27 text.
-
-</details>

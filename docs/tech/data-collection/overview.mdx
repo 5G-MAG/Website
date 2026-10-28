@@ -36,11 +36,11 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Why it exists
 
-The 5G System defines a set of event exposure services (SP-200937, clause 3 (Network Event usage)). The Application Function Exposure Service (Naf_EventExposure) is consumed by NF service consumers such as the NEF, NWDAF, DCCF, MFAF and the Event Consumer AF (TS 29.517 V20.1.0 clause 4.1.2). For instance, the NWDAF collects and exposes a wide range of data for analytics purposes, and uses it to build statistical and predictive analytics information for analytics data consumers.
+The 5G System defines a set of event exposure services (SP-200937, clause 3 (Network Event usage)). The Application Function Exposure Service (Naf_EventExposure) is consumed by NF service consumers such as the NEF, NWDAF, DCCF, MFAF and the Event Consumer AF (TS 29.517 V20.1.0 clause 4.1.2). For instance, the NWDAF derives analytics information, which is either statistical information of the past events or predictive information (TS 23.288 V20.2.0 clause 5.1).
 
 The 5G Media Streaming System logs the use of content hosting, which is equivalent to the information in CDN access logs, and QoE metrics and consumption reports are reported to its Data Collection AF (TS 26.501 V20.0.0 clause 4.0.2 and clause 4.7.2.1). SA4 proposed in the Release 17 study item (SP-200937, clause 3) that information available in the 5GMS System be offered by the 5GMS AF as events to the NWDAF and to the Application Provider; clauses 4.7.3 and 4.7.4 of TS 26.501 define the event data and its access restrictions (SP-200937 clause 3 (Network Event usage); TS 26.501 V20.0.0 clauses 4.7.3 and 4.7.4).
 
-3GPP defined a generic architecture that is instantiated in domain-specific ways; 5G Media Streaming is one such instantiation (TS 26.501 clause 4.7) (TS 26.531 V19.0.0 clause 4.1 and clause 4.2, NOTE 4). Instantiations other than the one for 5G Media Streaming are beyond the scope of TS 26.531 (TS 26.531 V19.0.0 clause 4.2, NOTE 4).
+3GPP defined a generic architecture that is instantiated in domain-specific ways; 5G Media Streaming is one such instantiation (TS 26.501 clause 4.7) (TS 26.531 V19.0.0 clause 4.1 and clause 4.2, NOTE 4). The definitions of the instantiations are beyond the scope of TS 26.531 (TS 26.531 V19.0.0 clause 4.2, NOTE 4); the one for 5G Media Streaming is defined in TS 26.501 V20.0.0 clause 4.7.
 
 ## The main functions
 
@@ -92,8 +92,8 @@ The set of UE data collected and exposed is the intersection between the provisi
 <details>
 <summary>Sources for this page</summary>
 
-- **Why it exists:** WID SP-210374 (EVEX), clauses 3 and 4.
-- **The main functions:** TS 26.531 V19.0.0, clause 4.1 and clause 4.2, items 1 to 8 and NOTE 4.
+- **Why it exists:** SID SP-200937 (FS_5GMS_EXT), clause 3; TS 29.517 V20.1.0, clause 4.1.2; TS 23.288 V20.2.0, clause 5.1; TS 26.501 V20.0.0, clauses 4.0.2, 4.7.2.1, 4.7.3 and 4.7.4.
+- **The main functions:** TS 26.531 V19.0.0, clauses 3.1, 4.1 and 4.6.3, and clause 4.2, items 1 to 8 and NOTE 4.
 - **Figures:** redrawn from TS 26.531 V19.0.0, figure 4.2-1, and TS 26.501 V20.0.0, figure 4.7.1-1.
 - **In 5G Media Streaming:** TS 26.501 V20.0.0, clauses 4.0.12, 4.7.1 and 4.7.2.
 - **How it grew:** TR 21.917 clauses 9.4.3 and 15.6; TR 21.919 clause 11.6; 3GPP work plan of 28 September 2026; TS 26.531 V19.0.0, clause 5.5 and change history; TS 26.532 V19.1.0, TS 26.501 V20.0.0 and TS 26.512 V19.3.0, change history.

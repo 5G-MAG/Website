@@ -25,7 +25,7 @@ export const DVBI_SPECS = [
     title: 'Service Discovery and Programme Metadata for DVB-I',
     url: 'https://dvb.org/?standard=service-discovery-and-programme-metadata-for-dvb-i',
     layer: 'DVB / ETSI',
-    note: 'the main DVB-I specification; published as ETSI TS 103 770; A177r8 (30 June 2026) is a draft of V1.3.1',
+    note: 'the main DVB-I specification; published as ETSI TS 103 770; A177r8 (June 2026) is a draft of V1.3.1',
   },
   {
     id: 'ETSI TS 103 770',
@@ -97,7 +97,7 @@ export const DVBI_SPECS = [
     title: 'Representational state transfer over xMB reference point between Content Provider and BM-SC',
     url: 'https://www.3gpp.org/dynareport/29116.htm',
     layer: '3GPP unicast',
-    note: 'the provisioning-layer spec behind 2 of the 5 open gaps this page tracks; already listed under Content delivery in the 5G Broadcast catalogue',
+    note: 'the provisioning-layer spec behind 2 of the 5 gaps this page tracks for the 5G Broadcast scenario (TR 103 972 clause 6.2.4), both still open; already listed under Content delivery in the 5G Broadcast catalogue',
   },
   {
     id: 'TS 26.502',

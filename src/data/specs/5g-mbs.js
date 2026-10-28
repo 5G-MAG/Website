@@ -198,7 +198,7 @@ export const MBS_SYSTEM_SPECS = [
     layer: 'NG-RAN',
     release: '18',
     part: 'clauses 5.9 and 5.10',
-    note: 'clause 5.9: MBS Broadcast; clause 5.10: MBS multicast reception in RRC_INACTIVE (clause 5.10 is not in V17.17.0 and is first in Release 18)',
+    note: 'clause 5.9: MBS Broadcast; clause 5.10: MBS multicast reception in RRC_INACTIVE (clause 5.10 is not in V17.18.0 and is first in Release 18)',
     versions: { 17: 'V17.18.0', 18: 'V18.11.0', 19: 'V19.4.0', 20: null },
   },
   {

@@ -23,11 +23,11 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 - **MBS User Services:** provisioning, object and packet distribution, announcement, object repair, AL-FEC, security, eMBMS interworking and more.
 - **Each feature** shows the clause that defines it and, folded, the services, APIs or procedures that realise it.
-- **Grouped** by what they do: provisioning and control, content delivery, announcement and discovery, delivery quality, and cross-cutting features.
+- **Grouped** by what they do: provisioning and control, content delivery, announcement and discovery, delivery quality, cross-cutting features, conformance profiles, and what is for further study.
 
 :::
 
-<JumpMenu items={[["Provisioning and control", "provisioning-and-control"], ["Content delivery", "content-delivery"], ["Announcement and discovery", "announcement-and-discovery"], ["Delivery quality", "delivery-quality"], ["Cross-cutting", "cross-cutting"]]} />
+<JumpMenu items={[["Provisioning and control", "provisioning-and-control"], ["Content delivery", "content-delivery"], ["Announcement and discovery", "announcement-and-discovery"], ["Delivery quality", "delivery-quality"], ["Cross-cutting", "cross-cutting"], ["Conformance profiles", "conformance-profiles"], ["For further study", "for-further-study"]]} />
 
 ## Provisioning and control
 
@@ -35,7 +35,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 **Defined in** TS 26.502 clauses 4.5 and 7.2 · **procedure** clause 5.3
 
-The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. Release 18 added to the Nmbsf_MBSUserDataIngestSession API the Associated Session ID, and active periods given as a repetition rule (feature 5MBS2), and Release 20 adds the feature 5MBS3: retrieval and reporting of the User Service Announcement bundle, a transport security protection indication, the conformance profiles of the content and the expected MIME content types (TS 29.580 V20.0.0 clause 6.2.8; the feature 5MBS3 is not in V19.6.0). The change history names no work item for the Release 20 change request, CR 0086 (CP-262115). It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3).
+The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF (TS 26.502 V19.6.0 clause 4.5.2, 5.3). Release 18 added to the Nmbsf_MBSUserDataIngestSession API the Associated Session ID, and active periods given as a repetition rule (feature 5MBS2), and Release 20 adds the feature 5MBS3: retrieval and reporting of the User Service Announcement bundle, a transport security protection indication, the conformance profiles of the content and the expected MIME content types (TS 29.580 V20.0.0 clause 6.2.8; the feature 5MBS3 is not in V19.6.0). The change history names no work item for the Release 20 change request, CR 0086 (CP-262115).
 
 <details>
 <summary>Services and APIs</summary>

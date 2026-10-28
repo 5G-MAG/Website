@@ -23,11 +23,11 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 - **MBS:** broadcast, multicast join and leave, activation, mobility, multicast in RRC_INACTIVE (Release 18), broadcast over NR non-terrestrial networks (Release 19), access to MBS of a VPLMN while roaming (Release 20), QoS, security and more.
 - **Each feature** shows the clause that defines it and, folded, the services, APIs or procedures that realise it.
-- **Grouped** by what they do: broadcast sessions, multicast sessions, mobility and coverage, service control and policy, and device and network.
+- **Grouped** by what they do: broadcast sessions, multicast sessions, mobility and coverage, service control and policy, device and network, and service area, reliability, mobility and mixed traffic.
 
 :::
 
-<JumpMenu items={[["Broadcast sessions", "broadcast-sessions"], ["Multicast sessions", "multicast-sessions"], ["Mobility and coverage", "mobility-and-coverage"], ["Service control and policy", "service-control-and-policy"], ["Device and network", "device-and-network"]]} />
+<JumpMenu items={[["Broadcast sessions", "broadcast-sessions"], ["Multicast sessions", "multicast-sessions"], ["Mobility and coverage", "mobility-and-coverage"], ["Service control and policy", "service-control-and-policy"], ["Device and network", "device-and-network"], ["Service area, reliability, mobility and mixed traffic", "service-area-reliability-mobility-and-mixed-traffic"]]} />
 
 TS 23.247 groups the MBS procedures in three: a "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). Each feature below says which of MBS Broadcast and MBS Multicast it applies to, from the clauses that define it.
 
@@ -102,7 +102,7 @@ Activation and deactivation apply to multicast only. The MB-SMF triggers them on
 
 **Applies to:** MBS Multicast · **Added in Release 18** · **defined in** TS 23.247 clause 6.17 · **NG-RAN** TS 38.300 clauses 16.10.5.2 and 16.10.5.3.5, TS 38.331 clause 5.10
 
-To provide a multicast service to more UEs in a cell, NG-RAN may move UEs that can receive in RRC_INACTIVE out of RRC_CONNECTED. The gNB decides in which state the UE receives. In RRC_INACTIVE, multicast uses PTM only, without HARQ feedback. The configuration comes in the RRCRelease message and on the multicast MCCH, whose scheduling is in SIB24. TS 38.331 V17.17.0 has no SIB24 and no clause 5.10; they appear in Release 18.
+To provide a multicast service to more UEs in a cell, NG-RAN may move UEs that can receive in RRC_INACTIVE out of RRC_CONNECTED. The gNB decides in which state the UE receives. In RRC_INACTIVE, multicast uses PTM only, without HARQ feedback. The configuration comes in the RRCRelease message and on the multicast MCCH, whose scheduling is in SIB24. TS 38.331 V17.18.0 has no SIB24 and no clause 5.10; they appear in Release 18.
 
 ## Mobility and coverage
 
@@ -208,11 +208,11 @@ For broadcast, the MCS is indicated in the DCI that schedules the transmission, 
 
 ### How is reliability of reception managed?
 
-For multicast, provision of UE feedback and support of retransmissions using PTP or PTM, among other mechanisms, ensure reliability (TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.6, 16.10.5.7). For broadcast, services are delivered with no guarantee of reception (TS 23.247 V20.0.0 clause 3.1 (note 1); TS 38.300 V19.4.0 clause 16.10.6.6), however data repetition (slot-level) is possible for improved performance (TS 38.300 V19.4.0 clause 16.10.6.6).
+For multicast, HARQ feedback and retransmission can be applied to both PTP and PTM transmission in RRC_CONNECTED state (TS 38.300 V19.4.0 clause 16.10.1), and two HARQ-ACK reporting modes are defined (TS 38.300 V19.4.0 clause 16.10.5.7). For broadcast, HARQ-ACK feedback is not supported and slot-level repetition is supported for MTCH (TS 38.300 V19.4.0 clause 16.10.6.6); the content provider and the network may not be aware whether the authorized UEs are actually receiving the data (TS 23.247 V20.0.0 clause 3.1, note 1).
 
 ### How are mobility and service continuity managed?
 
-For multicast, service continuity across cells is supported by handover between the base stations a UE traverses (TS 38.300 V19.4.0 clause 16.10.5.3.2, 16.10.5.3.3; TS 23.247 V20.0.0 clause 6.3.1). For broadcast, neighbour-cell information and cell-reselection mechanisms are available but may not ensure lossless handover (TS 38.300 V19.4.0 clause 16.10.6.5.1; TS 23.247 V20.0.0 clause 6.3.2).
+For multicast, service continuity across cells is supported by handover between the base stations a UE traverses (TS 38.300 V19.4.0 clause 16.10.5.3.2, 16.10.5.3.3; TS 23.247 V20.0.0 clause 6.3.1). For broadcast, the gNB may indicate in the MCCH the list of neighbour cells providing the same MBS broadcast service(s), and the UE applies the normal cell reselection rules with modifications (TS 38.300 V19.4.0 clause 16.10.6.5.1). The UE receives the same Broadcast MBS service in the target NG-RAN if the same MBS session is established with 5GC Shared MBS traffic delivery method in the target NG-RAN node (TS 23.247 V20.0.0 clause 6.3.2). Lossless mobility cannot be ensured for MBS broadcast, but some mechanisms are specified to support service continuity of the broadcast service (TR 21.917 V17.0.1 clause 6.3.4.3.2).
 
 Since Release 18, a UE receiving multicast in RRC_INACTIVE state can also continue when changing cells by cell reselection, without resuming the RRC connection, if it can acquire the PTM configuration of the new cell (TS 38.300 V19.4.0 clause 16.10.5.3.5; TS 23.247 V18.8.0 clause 6.17). See [the multicast procedures, moving between cells in RRC_INACTIVE](/tech/5g-mbs/procedures/multicast).
 
@@ -223,7 +223,7 @@ Mixed radio carriers can deliver multicast and/or broadcast services alongside o
 <details>
 <summary>Sources for this page</summary>
 
-- **MBS:** TS 23.247 V20.0.0, clauses 4.2, 4.3, 5.2, 6.1 to 6.20, 7.1.1, 7.2, 7.3, 7.5 and 9; TS 38.300 V19.4.0, clauses 16.10.1, 16.10.5 and 16.10.6; TS 38.413 V19.4.0, clauses 8.17 and 8.18; TS 38.331 V19.4.0, clauses 5.9, 5.10 and 6.3.1, and TS 38.331 V18.11.0 compared with TS 38.331 V17.17.0 for the Release 18 addition; TS 24.575 V19.0.0, clause 4.
+- **MBS:** TS 23.247 V20.0.0, clauses 4.2, 4.3, 5.2, 6.1 to 6.20, 7.1.1, 7.2, 7.3, 7.5 and 9; TS 38.300 V19.4.0, clauses 16.10.1, 16.10.5 and 16.10.6; TS 38.413 V19.4.0, clauses 8.17 and 8.18; TS 38.331 V19.4.0, clauses 5.9, 5.10 and 6.3.1, and TS 38.331 V18.11.0 compared with TS 38.331 V17.18.0 for the Release 18 addition; TS 24.575 V19.0.0, clause 4; TR 21.917 V17.0.1, clause 6.3.4.3.2.
 - **Broadcast over NR NTN:** TS 23.247 V20.0.0, clause 6.21; TS 38.300 V19.4.0, clauses 7.3.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.3.2 and 6.3.1 (SIB27). Compared with TS 23.247 V18.8.0 and TS 38.300 V18.11.0, which have neither.
 
 </details>

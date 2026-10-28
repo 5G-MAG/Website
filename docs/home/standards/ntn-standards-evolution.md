@@ -30,9 +30,9 @@ This page is the detailed, release-by-release companion to [Non-Terrestrial Netw
 
 :::
 
-Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 38.811 V15.4.0, TR 38.821 V16.2.0, TR 38.863 V20.0.0, TR 22.822 V16.0.0, TR 23.737 V17.2.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 38.811 V15.4.0, TR 38.821 V16.2.0, TR 38.863 V20.0.0, TR 22.822 V16.0.0, TR 23.737 V17.2.0. The Novelties section rests on the Release descriptions TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1, TR 21.918 V18.0.0 and TR 21.919 V19.0.0, and its Release 20 entry on the change histories of TS 22.261 V20.8.1, TS 23.501 V20.3.0 and TS 23.401 V20.1.0 (which lists the change requests of V20.0.0 and V20.1.0).
 
-This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm), [TR 38.863](https://www.3gpp.org/dynareport/38863.htm), [TR 22.822](https://www.3gpp.org/dynareport/22822.htm), [TR 23.737](https://www.3gpp.org/dynareport/23737.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
+This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm), [TR 38.863](https://www.3gpp.org/dynareport/38863.htm), [TR 22.822](https://www.3gpp.org/dynareport/22822.htm), [TR 23.737](https://www.3gpp.org/dynareport/23737.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version. The TR 38.863 rows of versions 17.4.0 to 17.7.0, 18.7.0 and 18.8.0 come from that database only: the change history of TR 38.863 V20.0.0 lists Release 17 only up to version 17.3.0 and Release 18 only up to version 18.6.0.
 
 ## Release 20
 

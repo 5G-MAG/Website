@@ -45,7 +45,7 @@ Advanced Media Delivery (AMD) is the line of 3GPP SA4 work that extends 5G Media
 | **Improved QoS** | Downlink and uplink | M1, M4, M5, N5, N33 | 4.0.6, 5.7.9, 5.7.10, 6.9.8, 6.9.9 | TS 26.510 cl. 5.3.3.3A.1, 5.3.3.3A.2; TS 26.512 cl. 4.6.0.1, 5.6.2 |
 | **Network slicing** | Downlink and uplink | M1, M4 | 4.0.6 | TS 26.510 cl. 5.2.7.1 |
 
-All six apply to the 5GMS AF, AS and Client of the existing architecture. Release 19 adds three reference points to it: M10d and M10u between instances of the AS, and M13d and M13u between the Media Player or Media Streamer and content the Application Provider hosts outside the 5GMS System (TS 26.501 V19.4.0 clause 4.1.2.4, table 4.1.2.4-1). See [Architecture](/tech/5gms/architecture).
+All six apply to the 5GMS AF, AS and Client of the existing architecture. Release 19 adds four reference points to it: M10d and M10u between instances of the AS, and M13d and M13u between the Media Player or Media Streamer and content the Application Provider hosts outside the 5GMS System (TS 26.501 V19.4.0 clause 4.1.2.4, table 4.1.2.4-1). Reference point M13 is private and therefore beyond the scope of standardisation (TS 26.501 V19.4.0 clause 4.1.2.4, NOTE 5). See [Architecture](/tech/5gms/architecture).
 
 ## Common Media Client Data (CMCD)
 
@@ -140,7 +140,7 @@ The study led to a stage 2 work item (AMD_ARCH_Ph2-MED, SP-260973), with target 
 
 ## Where AMD came from
 
-The Release 19 study (FS_AMD) starts from the view that mobile media delivery is as important as ever, with growing traffic and new functionality from third-party service providers. Its primary focus is the delivery of segmented media objects in the media plane: reference points M2, M4 and M7. It is documented in TR 26.804 for 5GMS and TR 26.802 for MBS (SP-241011 clause 3). Two work items took up its recommendations: stage 2 (AMD-ARCH-MED, SP-241963) in TS 26.501 and, for MBS, TS 26.502; and stage 3 (AMD_PRO-MED, SP-250265) in TS 26.510, TS 26.512 and, for MBS, TS 26.517.
+The Release 19 study (FS_AMD) starts from the view that mobile media delivery is as important as ever, with growing traffic and new functionality from third-party service providers. Its primary focus is the delivery of segmented media objects in the media plane: reference points M2, M4 and M7 (SP-241011 clause 3). It is documented in TR 26.804 for 5GMS and TR 26.802 for MBS (SP-241011 clause 5). Two work items took up its recommendations: stage 2 (AMD-ARCH-MED, SP-241963) in TS 26.501 and, for MBS, TS 26.502; and stage 3 (AMD_PRO-MED, SP-250265) in TS 26.510, TS 26.512 and, for MBS, TS 26.517.
 
 <details>
 <summary>The study's 13 key topics</summary>
@@ -164,7 +164,7 @@ The Release 19 study (FS_AMD) starts from the view that mobile media delivery is
 <details>
 <summary>Sources for this page</summary>
 
-- **Introduction, work items:** TR 21.919 V19.0.0 clause 11.6; SID SP-241011 (FS_AMD) clauses 3 and 4; WIDs SP-241963 (AMD-ARCH-MED) and SP-250265 (AMD_PRO-MED).
+- **Introduction, work items:** TR 21.919 V19.0.0 clause 11.6; SID SP-241011 (FS_AMD) clauses 3, 4 and 5; WIDs SP-241963 (AMD-ARCH-MED) and SP-250265 (AMD_PRO-MED).
 - **CMCD:** TS 26.501 V19.4.0 clause 5.13; TS 26.510 V19.2.0 clauses 8.11 and 9.5; TS 26.512 V19.3.0 clauses 4.5.9, 7.8.1 (table 7.8.1-1), 10.5.1, 11.4, 12.4, 13.2.4, 18.3.3 and G.5; CTA-5004.
 - **Multi-access delivery:** TS 26.501 V19.4.0 Annex H (clauses H.1, H.2, table H.2-1); TS 26.512 V19.3.0 clauses 4.6.1, 4.9.1A, 5.6.1, 6.2.1.2, 12.4, 13.2.4 (table 13.2.4-5) and 13.2.6; TS 26.510 V19.2.0 has no multi-access clause (search for "multi-access" and "ATSSS" returns no match).
 - **Multiple service locations:** TS 26.501 V19.4.0 clauses 4.1.2.4 and 5.4.4; TS 26.512 V19.3.0 clauses 4.10A, 4.10B, 10.3A, G.4.4 and Annex H; ETSI TS 103 998 and ETSI TS 103 973 as cited there.

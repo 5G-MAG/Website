@@ -60,11 +60,11 @@ Status is stated for each row: "published" means an ETSI publication; "draft" me
 <SpecTable
   columns={["Specification", "Latest published", "Later draft", "Source"]}
   rows={[
-    ["Service Discovery and Programme Metadata for DVB-I", "ETSI TS 103 770 V1.2.1 (5 September 2024), published", "DVB A177r8 = TS 103 770 V1.3.1, draft (30 June 2026); ETSI publication unverified", <>etsi.org deliver listing; <a href="https://dvb.org/?standard=service-discovery-and-programme-metadata-for-dvb-i" target="_blank" rel="noreferrer">dvb.org</a>; History of A177r8</>],
+    ["Service Discovery and Programme Metadata for DVB-I", "ETSI TS 103 770 V1.2.1 (5 September 2024), published", "DVB A177r8 = TS 103 770 V1.3.1, draft (June 2026); ETSI publication unverified", <>etsi.org deliver listing; <a href="https://dvb.org/?standard=service-discovery-and-programme-metadata-for-dvb-i" target="_blank" rel="noreferrer">dvb.org</a>; History of A177r8</>],
     ["DVB-MABR", "ETSI TS 103 769 V1.2.1 (12 November 2024), published", "DVB A176r7 = V1.3.1, interim draft (12 March 2025)", "History of A176r7 (month and year; day unverified)"],
-    ["DVB-DASH", "ETSI TS 103 285 V1.4.1 (13 September 2023), published", "DVB A168r10 = V1.5.1, interim draft (30 June 2026)", "etsi.org deliver listing; History of A168r10"],
+    ["DVB-DASH", "ETSI TS 103 285 V1.4.1 (13 September 2023), published", "DVB A168r10 = V1.5.1, interim draft (June 2026)", "etsi.org deliver listing; History of A168r10"],
     ["DVB-NIP", "ETSI TS 103 876 V1.1.1 (2 September 2024), published (day unverified)", "DVB A180r4 = V1.2.1, interim draft (12 March 2025)", "History of A180r4"],
-    ["DVB-I service delivery over 5G Systems", "ETSI TR 103 972 V1.1.1 (24 July 2023), published; the only version", "none known", "History of TR 103 972"],
+    ["DVB-I service delivery over 5G Systems", "ETSI TR 103 972 V1.1.1 (July 2023), published; the only version", "none known", "History of TR 103 972"],
     ["LTE-based 5G Broadcast", "ETSI TS 103 720 V1.2.1 (15 June 2023), published (unverified)", "V1.3.1 in progress (unverified)", "not re-checked"],
     ["Commercial requirements for DVB-I over 5G", "DVB C100 (July 2021)", "none known", "C100 cover page (unverified)"],
   ]}
@@ -84,7 +84,7 @@ The specifications in scope, filterable by the layer they define: the DVB and ET
     ["Commercial requirements input", "DVB C100 (Commercial Requirements for DVB-I over 5G)"],
     ["Unicast media format", "DVB-DASH (ETSI TS 103 285), profiling MPEG-DASH (ISO/IEC 23009-1)"],
     ["Multicast media delivery", "DVB-MABR (ETSI TS 103 769)"],
-    ["Unicast 5G transport", "3GPP 5GMS (TS 26.501, TS 26.512, TS 26.511)"],
+    ["Unicast 5G transport", "3GPP 5GMS (TS 26.501, TS 26.512, TS 26.510; TS 26.511 for profiles, codecs and formats)"],
     ["Broadcast 5G transport", "ETSI TS 103 720 (LTE-based 5G Broadcast); 3GPP MBS (TS 26.502, TS 23.247)"],
     ["End-to-end native-IP composite system", "DVB A180 (DVB-NIP), reusing DVB-I, DVB-DASH and DVB-MABR together"],
   ]}
@@ -96,7 +96,7 @@ DVB-I over 5G spans three standards bodies, so there is no single release line. 
 
 - **DVB**: A177 (published in successive revisions as ETSI TS 103 770; the latest published ETSI version is V1.2.1, and A177r8 is a draft of V1.3.1) is the stable service-discovery base; ETSI TR 103 972 V1.1.1 (2023) is a technical report rather than a normative specification, so it records guidance and gaps rather than mandating behaviour. The commercial input came from DVB C100 (2021).
 - **3GPP SA4**: the 5GMS architecture (TS 26.501) was introduced in Release 16 and has been extended in later releases; the MBS user-service work (TS 26.502) and the underlying system architecture (TS 23.247) were introduced in Release 17 and continue to evolve. The Release 18 5G Media Streaming Protocols Phase 2 work item added support for 5GMS over MBS and hybrid 5GMS services (TR 21.918 clause 17.9), and Release 19 Advanced Media Delivery added in-session unicast repair for MBS object distribution and deployment guidelines for MBS User Services over eMBMS (TR 21.919 clause 11.6).
-- **ETSI JTC Broadcast**: the LTE-based 5G Broadcast profile (TS 103 720) has been aligned to successive 3GPP releases, with work items updating it toward Release 18 and Release 19.
+- **ETSI JTC Broadcast**: the LTE-based 5G Broadcast profile (TS 103 720) has been aligned to successive 3GPP releases, with a work item updating it toward Release 18 (v1.3.1).
 
 Because TR 103 972 is a technical report, its main output is a set of recommended changes to specifications owned by DVB, 3GPP and ETSI; the follow-up happens in those bodies rather than in a single DVB-I-over-5G specification.
 
@@ -114,6 +114,16 @@ ETSI TR 103 972 maps the commercial requirements for DVB-I over 5G (captured in 
 />
 
 The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI. For the reference architecture and scenario-by-scenario detail, see [DVB-I Services over 5G: Technical Analysis](/tech/dvb-i).
+
+<details>
+<summary>Sources for this page</summary>
+
+- ETSI TS 103 770 V1.2.1 (2024-09) and DVB BlueBook A177r8 (June 2026, draft of V1.3.1), History: the "Latest versions" table.
+- ETSI TR 103 972 V1.1.1 (2023-07): the three service scenarios (clauses 6.2, 6.3 and 6.4) and the gaps recorded in specifications.
+- ETSI TS 103 285 V1.4.1, ETSI TS 103 769 V1.2.1 and DVB C100 (July 2021): the "Latest versions" table and the roles table.
+- 3GPP TR 21.918 V18.0.0 clause 17.9 and TR 21.919 V19.0.0 clause 11.6: the 3GPP SA4 release statements.
+
+</details>
 
 ## Related
 

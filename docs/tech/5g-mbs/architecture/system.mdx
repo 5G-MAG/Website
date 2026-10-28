@@ -31,7 +31,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## MBS in the 5G System and NG-RAN
 
-Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. In Release 19, MBS for roaming is not supported (TS 23.247 V19.3.0 clause 4.1); in Release 20, a roaming UE can receive the MBS of the VPLMN but not of the HPLMN (TS 23.247 V20.0.0 clause 4.1). Added in Release 19, a broadcast MBS session can also be transmitted over NR non-terrestrial networks (NTN) (TS 23.247 V20.0.0 clause 5.3.2.1 to 5.3.2.15, 4.1; TS 23.247 V18.8.0 clause 4.1 (comparison)).
+Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. In Release 19, MBS for roaming is not supported (TS 23.247 V19.3.0 clause 4.1); in Release 20, a roaming UE can receive the MBS of the VPLMN but not of the HPLMN (TS 23.247 V20.0.0 clause 4.1). Added in Release 19, a broadcast MBS session can also be transmitted over NR non-terrestrial networks (NTN) (TS 23.247 V20.0.0 clause 4.1, 6.21; TS 23.247 V18.8.0 clause 4.1 (comparison)).
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-2.svg" width={939} height={431} spec="TS 23.247 V20.0.0" figure="5.1-2" title="5G System architecture for Multicast and Broadcast Service in reference point representation" alt="UE, NG-RAN, AMF, SMF, UPF, UDM, MB-SMF, MB-UPF, PCF, NEF, MBSF, MBSTF and AF/AS connected by their reference points: Uu, N1, N2, N3, N4, N10, N11 and N19mb, N3mb from NG-RAN to the MB-UPF, N4mb, N11mb, N16mb, N7mb, N29mb, N30, N5, N33 and N6mb, and the MBS reference points Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb12, Nmb13 and Nmb14." />
 
@@ -52,7 +52,7 @@ TS 23.247 defines MBS sessions as follows (TS 23.247 V20.0.0 clause 3.1):
 
 Broadcast and multicast MBS sessions are time-bound (TS 23.247 V20.0.0 clause 4.2.1; TS 23.247 V20.0.0 clause 4.2.2). Their life-cycles are specified in clauses 4.2 and 4.3 of TS 23.247 (TS 23.247 V20.0.0 clause 4.2; TS 23.247 V20.0.0 clause 4.3).
 
-The geographical areas for which the multicast and broadcast MBS sessions are available is determined by the coverage area of the sites/sectors from which the broadcast service is transmitted (TS 23.247 V20.0.0 clause 3.1, note 2). Refer to TS 23.247 clause 3.1 and TS 38.300 for more detail.
+Within the 5GC, an MBS service area is described by a list of Cell ID(s) or a list of TAI(s) (TS 23.247 V20.0.0 clause 3.1, note 2). Refer to TS 23.247 clause 3.1 and TS 38.300 for more detail.
 
 ## Functions in the 5G System
 
@@ -125,6 +125,7 @@ In functionality, Nmb13, N29mb and Nmb1 are identical, Nmb5 and Nmb10 are identi
 | | Namf_MBSCommunication | N2MessageTransfer | MB-SMF (TS 23.247 V20.0.0 clause 9.3.1) |
 | **Nnef** (NEF) | Nnef_MBSTMGI | Allocate, Deallocate, ExpiryNotify | AF (TS 23.247 V20.0.0 clause 9.4.1) |
 | | Nnef_MBSSession | Create, Update, Delete, StatusNotify, StatusSubscribe, StatusUnsubscribe | AF (TS 23.247 V20.0.0 clause 9.4.1) |
+| | Nnef_MBSGroupMsgDelivery | Create, Update, Delete, StatusNotify | AF (TS 23.247 V20.0.0 clause 9.4.1) |
 | **Nmbsf** (MBSF) | defined in TS 26.502 | | |
 
 </details>
@@ -202,7 +203,7 @@ The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS use
 | **MCCH-RNTI** | Identifies MCCH transmissions and change notifications for broadcast (TS 38.300 V19.4.0 clause 8.1) |
 | **Multicast MCCH-RNTI** | Identifies MCCH transmissions and change notifications for multicast in RRC_INACTIVE (TS 38.300 V19.4.0 clause 8.1) |
 | **SIB20, SIB21** | MCCH configuration, and service continuity information, for broadcast (TS 38.300 V19.4.0 clause 7.3.1) |
-| **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.10.5.2). Added in Release 18 (TS 38.331 V18.11.0 clause 5.10 compared with V17.17.0, which has no SIB24) |
+| **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.10.5.2). Added in Release 18 (TS 38.331 V18.11.0 clause 5.10 compared with V17.18.0, which has no SIB24) |
 | **SIB27** | The intended service areas (ISAs) of MBS broadcast services in an NTN cell (TS 38.300 V19.4.0 clause 7.3.1; TS 38.300 V19.4.0 clause 16.14.12; TS 38.300 V18.11.0 clause 7.3.1). Added in Release 19 |
 
 In a PTP transmission, the gNB schedules a UE-specific PDSCH with a PDCCH whose CRC is scrambled by a UE-specific RNTI, such as the C-RNTI. In a PTM transmission, it schedules a group-common PDSCH with a group-common PDCCH whose CRC is scrambled by a group-common RNTI. When a UE has both a PTM and a PTP leg, the gNB decides dynamically which to use, based on information such as the session QoS requirements, the number of joined UEs and the UE feedback on reception quality. The same QoS requirements apply whichever it chooses (TS 38.300 V19.4.0 clause 16.10.5.4).
@@ -223,7 +224,7 @@ The first accepted join request establishes the session towards NG-RAN and the U
 <summary>Sources for this page</summary>
 
 - **MBS communication services and sessions:** TS 23.247 V20.0.0, clauses 3.1, 4.2 and 4.3.
-- **MBS, functions, reference points and services:** TS 23.247 V20.0.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 8.1 and 9; TS 38.413 V19.4.0, clauses 8.17 and 8.18.
+- **MBS, functions, reference points and services:** TS 23.247 V20.0.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 6.21, 8.1 and 9; TS 38.413 V19.4.0, clauses 8.17 and 8.18.
 - **Delivery methods:** TS 23.247 V20.0.0, clauses 3.1, 4.1, 6.7 and 7.2.1.3.
 - **NG-RAN:** TS 38.300 V19.4.0, clauses 3.1, 7.3.1, 8.1, 16.10.2 to 16.10.4 and 16.10.5.4; SIB27 compared with TS 38.300 V18.11.0, clause 7.3.1.
 - **Multicast session states:** TS 23.247 V20.0.0, clauses 4.2.2, 4.3 and 7.2.1.1.

@@ -39,11 +39,11 @@ Alongside the deployment-oriented example profile below, ETSI TS 103 720 v1.2.1 
 | 28            | LTE-based 5G Broadcast **Main Receiver**     | All SCS: 15, 7.5, 2.5, 1.25 and 0.37 kHz |
 | 30            | **5GMS** via LTE-based 5G Broadcast Receiver | All clause 7 receiver requirements plus the 5GMS requirements; no SCS set is stated (ETSI TS 103 720 V1.2.1 clause 10.4) |
 
-- **Base Receiver** is the minimum profile, aimed at fixed indoor reception using the 1.25 kHz numerology.
-- **Main Receiver** must support all five numerologies and is the target for mobile and portable devices.
+- **Base Receiver** must support the reception of signals with 1.25 kHz subcarrier spacing; other subcarrier spacings from Table 6.4.4-1 may also be supported (ETSI TS 103 720 V1.2.1 clause 10.2).
+- **Main Receiver** must support all five numerologies, that is all the subcarrier spacings defined in Table 6.4.4-1 (ETSI TS 103 720 V1.2.1 clause 10.3).
 - **5GMS Receiver** must meet all clause 7 receiver requirements plus the 5G Media Streaming requirements (ETSI TS 103 720 V1.2.1 clause 10.4; ETSI TS 103 720 V1.2.1 clause 9.3.6).
 
-The published v1.2.1 does not include specific frequency bands: its clause 8 (ETSI TS 103 720 V1.2.1 clause 8, Spectrum and Frequency Bands, informative) notes that 3GPP work on frequency bands was ongoing and expects details in a future revision (ETSI TS 103 720 V1.2.1 clause 8). The 3GPP Release 18 band additions (such as Band 108, 470 to 698 MHz) and the Release 19 PMCH enhancements are therefore expected in a later ETSI TS 103 720 version. For the release-by-release mapping, see [Standards: Media delivery over 5G Broadcast](/standards/5g-broadcast).
+The published v1.2.1 does not include specific frequency bands: its clause 8 (ETSI TS 103 720 V1.2.1 clause 8, Spectrum and Frequency Bands, informative) notes that 3GPP work on frequency bands was ongoing and expects details in a future revision (ETSI TS 103 720 V1.2.1 clause 8). The 3GPP Release 18 band additions (such as Band 108, 470 to 698 MHz) and the Release 19 PMCH enhancements are not part of it, because v1.2.1 profiles 3GPP Release 17 (ETSI TS 103 720 V1.2.1 clause 4.3.2). For the release-by-release mapping, see [Standards: Media delivery over 5G Broadcast](/standards/5g-broadcast).
 
 ## 5G Broadcast Receiver Profile A (example)
 
@@ -59,9 +59,9 @@ Implementation of radio aspects in devices shall follow clause 7.3 (Access Strat
 
 - MBMS-dedicated cells for 100% MBMS allocation (ETSI TS 103 720 V1.2.1 clause 6.4.2; TS 36.300 V19.2.0 clause 15.2.1)
 - Subcarrier spacings: 1.25 kHz, 2.5 kHz and 15 kHz.
-- Service continuity for roaming/border situations (ETSI TS 103 720 V1.2.1 clause 7.3.4; TS 36.304 V19.3.0 clause 5.2.4.1)
+- Service continuity in idle mode by cell reselection with MBMS prioritisation (ETSI TS 103 720 V1.2.1 clause 7.3.4; TS 36.304 V19.3.0 clause 5.2.4.1)
 - Multiple services with different Modulation and Coding Scheme (MCS) within a carrier (TS 36.300 V19.2.0 clause 15.3.3; TS 36.331 V19.4.0 clause 6.3.7; ETSI TS 103 720 V1.2.1 clause 7.4)
-- Support of MCS 0-26 (according to Table 7.1.7.1-1A in 3GPP TS 36.213 V19.5.0; ETSI TS 103 720 V1.2.1 table 11.3.1-1 lists MCS 0 to 26) (TS 36.213 V19.5.0 table 7.1.7.1-1A; ETSI TS 103 720 V1.2.1 table 11.3.1-1).
+- Capacity examples are given for MCS 0 to 26 (ETSI TS 103 720 V1.2.1 table 11.3.1-1, clause 11, informative; MCS table: TS 36.213 V19.5.0 table 7.1.7.1-1A).
 - Support for dual antenna reception (for numerologies other than 0.37 kHz) (ETSI TS 103 720 V1.2.1 clause 7.3.8)
 - Support of diversity reception with multiple antennas
 - Multi-threading of 5G Broadcast and unicast, i.e. using unicast at the same time when receiving on 5G Broadcast
@@ -73,29 +73,27 @@ This subsection covers the delivery methods and transport protocols a Profile A 
 - MBMS Transparent Delivery Method (TS 26.346 V19.3.0 clause 8B; ETSI TS 103 720 V1.2.1 clause 5.5.3)
 - MBMS Download Delivery Method (TS 26.346 V19.3.0 clause 7; ETSI TS 103 720 V1.2.1 clause 5.5.3)
 
-Devices shall support the following protocols (according to 3GPP TS 26.346 V19.3.0 clauses 5.6, 7.2 and 8B): (TS 26.346 V19.3.0 clause 5.6; TS 26.346 V19.3.0 clause 7.2; TS 26.346 V19.3.0 clause 8B)
+A Profile A receiver is expected to support the following protocols (profile choice; TS 26.346 V19.3.0 clauses 5.6, 7.2 and 8B): (TS 26.346 V19.3.0 clause 5.6; TS 26.346 V19.3.0 clause 7.2; TS 26.346 V19.3.0 clause 8B)
 
-- RTP (over transparent delivery method) (TS 26.346 V19.3.0 clause 8B)
+- RTP (an example of an application protocol over the transparent delivery method; TS 26.346 V19.3.0 clause 8B)
 - DASH (Dynamic Adaptive Streaming over HTTP) (TS 26.346 V19.3.0 clause 5.6; ETSI TS 103 720 V1.2.1 clause 5.3.2)
-- TS over IP (MPEG-2 Transport Stream over IP; over transparent delivery method) (TS 26.346 V19.3.0 clause 8B)
+- TS over IP (MPEG-2 Transport Stream over IP, an example of an application protocol over the transparent delivery method; TS 26.346 V19.3.0 clause 8B)
 - HLS (HTTP Live Streaming; over download delivery method) (ETSI TS 103 720 V1.2.1 clause 5.3.2; TS 26.346 V19.3.0 clause M.2.2).
 - FLUTE (File Delivery over Unidirectional Transport) (TS 26.346 V19.3.0 clause 7.2)
-- ROUTE (Real-time Object delivery over Unidirectional Transport; over transparent delivery method)
 
 The following functionalities shall be supported:
 
-- Service announcement (according to 3GPP [23.246](https://www.3gpp.org/dynareport/23246.htm) 18.0.0) (TS 23.246 V19.0.0 clause 4.4.1.2; TS 26.346 V19.3.0 clause 5.2)
-- Bootstrap.multipart file (according to 3GPP 26.346 18.0.0) (TS 26.346 V19.3.0 clause 5.2.3.1; TS 26.346 V19.3.0 clause L.2.9)
-- MBMS-URL (according to 3GPP [26.347](https://www.3gpp.org/dynareport/26347.htm) 18.0.0)
+- Service announcement (according to 3GPP [23.246](https://www.3gpp.org/dynareport/23246.htm) V19.0.0) (TS 23.246 V19.0.0 clause 4.4.3.1; TS 26.346 V19.3.0 clause 5.2)
+- Bootstrap.multipart file (according to 3GPP 26.346 V19.3.0) (TS 26.346 V19.3.0 clause 5.2.3.1; TS 26.346 V19.3.0 clause L.2.9)
+- MBMS-URL (according to 3GPP [26.347](https://www.3gpp.org/dynareport/26347.htm) V19.0.0)
 
 ### Codec
 
 A Profile A receiver is expected to decode the following audio, video, and container formats: (ETSI TS 103 720 V1.2.1 clause 7.5; TS 26.511 V19.0.0 clause 5.4)
 
-- Audio: HE-AAC aacPlus, enhanced aacPlus, AC-3, AAC
+- Audio: Enhanced aacPlus (HE-AAC v2; should; TS 26.346 V19.3.0 clauses 10.3 and K.2.2.2); for the 5GMS Television profile, the eAAC+ stereo operation point (shall), the xHE-AAC stereo operation point (should) and the IVAS operation point (may) of TS 26.117 (TS 26.511 V19.0.0 clause 5.4.2)
 - Video: H.264/AVC Progressive High Profile Level 3.1 (720p HD operation point; shall) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.1)
 - Video: H.265 (HEVC) Main Profile, Main Tier, Level 3.1 (should) (TS 26.346 V19.3.0 clause 10.5.1; TS 26.511 V19.0.0 clause 5.4.1.2)
-- Video: H.266 VVC
 - CMAF, ISO BMFF (TS 26.346 V19.3.0 clause 5.6; TS 26.511 V19.0.0 clause 5.4.4.1)
 - MPEG-2 TS
 

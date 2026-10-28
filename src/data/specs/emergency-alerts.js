@@ -49,7 +49,7 @@ export const EMERGENCY_ALERTS_SPECS = [
     title: 'Common Alerting Protocol',
     url: 'https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.pdf',
     layer: 'Warning message realisation',
-    note: 'the alert message payload format carried inside the Cell Broadcast Service message; confirmed still current, no newer version published',
+    note: 'the alert format received by the Cell Broadcast Centre at the CBE-CBC interface, which the CBC converts to a Cell Broadcast Service (CMAS) message (ETSI TS 103 720 V1.2.1 clauses 5.15.3.2 and 5.15.4); confirmed still current, no newer version published',
   },
   {
     id: 'TS 36.331',

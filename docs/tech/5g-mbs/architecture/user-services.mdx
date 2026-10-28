@@ -41,7 +41,7 @@ TS 26.501 Clause 4.9 ("Downlink 5G Media Streaming via MBS") is a full, normativ
 
 ## MBS User Services (TS 26.502)
 
-The primary goal of the MBS User Services architecture specified in TS 26.502 is to provide a higher-level abstraction on top of MBS Services that is more useful to a Content Service Provider, referred to in TS 26.502 as an **MBS Application Provider** (TS 26.502 V19.6.0 clause 1, 4.2.2). This entity plays the role of the AF/AS in the lower-level MBS Services architecture defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) and described below (TS 26.502 V19.6.0 clause 4.2.2).
+TS 26.502 defines an architecture and high-level procedures for User Services conveyed using the 5G multicast-broadcast capabilities of the 5G System (TS 26.502 V19.6.0 clause 1). MBS User Services enable high-level applications to make use of the low-level features of the MBS System (TS 26.502 V19.6.0 clause 4.2.2). The **MBS Application Provider** of TS 26.502 plays the role of the AF/AS in the MBS Services architecture defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) and described below (TS 26.502 V19.6.0 clause 4.2.2).
 
 The MBS User Services abstraction comprises three principal data entities (TS 26.502 V19.6.0 clause 4.5.1, 4.5.2):
 
@@ -127,7 +127,7 @@ The MBSF exposes two services and the MBSTF one. An MBS Application Provider out
 | MBS-5 | User Service Description retrieval API, exposed by the MBS AF, base path `{apiRoot}/3gpp-mbs-user-service-discovery/{apiVersion}/` | cl. 9 |
 | MBS-4-UC | Unicast Object Repair protocol, between the MBSTF Client and the MBS AS: post-session, and in-session (added in Release 19) | cl. 10.2, 10.3 |
 | MBS-4-UC | Time service hosted by the MBS AS, identified by a DASH UTC timing scheme (SNTP, or an HTTP resource giving the current date-time). Added in Release 19 | cl. 5.2.11, C.3 |
-| MBS-10 | MBS Service Key retrieval from the MBSSF, using the protocol of TS 33.246 clause 6.3 | cl. 11 |
+| MBS-10 | MBS Service Key retrieval from the MBSSF, using the protocol of TS 33.246 V19.0.0 clause 6.3 | cl. 11 |
 | Nmb8 | General HTTP provisions for the MBSTF endpoint that receives pushed objects | cl. 8.2.1.3 |
 
 </details>
@@ -139,7 +139,7 @@ The MBSF exposes two services and the MBSTF one. An MBS Application Provider out
 | **Object Distribution Method** | Discrete binary objects, in real time or not, including media segments | OBJECT_SINGLE: each ingested object is distributed once. OBJECT_COLLECTION: a set of objects described by a manifest, distributed once. OBJECT_CAROUSEL: a set of objects repeated as the manifest specifies, with changes reflected at the next opportunity. OBJECT_STREAMING: a sequence of objects streamed in real time, for example on the schedule of a DASH MPD |
 | **Packet Distribution Method** | Application Data Units, delivered transparently | PACKET_FORWARD_ONLY: the payloads of ingested IP packets are forwarded to the MB-UPF in new IP packets (Layer 3 proxying). PACKET_PROXY: the payloads of ingested UDP packets are forwarded in new UDP packets (Layer 4 proxying). RTP packets can be distributed in either mode |
 
-When FLUTE realises the Object Distribution Method, the MBS Distribution Session conforms to the MBMS Download Profile of TS 26.346 clause L.4, with the additions of TS 26.517 clause 6.2. TS 26.517 recommends the OBJECT_STREAMING mode for streaming DASH or HLS content to a Media Player in the UE. The Packet Distribution Method combines three delivery methods of TS 26.346, the MBMS Streaming, Group Communication and Transparent Delivery Methods, with modifications.
+When FLUTE realises the Object Distribution Method, the MBS Distribution Session conforms to the MBMS Download Profile of TS 26.346 V19.3.0 clause L.4, with the additions of TS 26.517 clause 6.2. TS 26.517 recommends the OBJECT_STREAMING mode for streaming DASH or HLS content to a Media Player in the UE. The Packet Distribution Method combines three delivery methods of TS 26.346, the MBMS Streaming, Group Communication and Transparent Delivery Methods, with modifications.
 
 For the Object Distribution Method, ingest at Nmb8 is pull-based (the MBSTF fetches objects from the MBS Application Provider) or push-based (the MBS Application Provider sends them) (TS 26.502 V19.6.0 clause 4.3.3.2).
 
@@ -187,9 +187,9 @@ The syntax for MBS User Service Announcements is specified in TS 26.517 Clause A
 <details>
 <summary>Sources for this page</summary>
 
-- **MBS User Services, functions and reference points:** TS 26.502 V19.6.0, clauses 4.2.1, 4.2.2, 4.2.7, 4.3.1 to 4.3.6 and 4.4.1, table 4.5.6-1; TS 23.247 V20.0.0, clauses 5.3.1 and 9.1.
+- **MBS User Services, functions and reference points:** TS 26.502 V19.6.0, clauses 4.2.1, 4.2.2, 4.2.7, 4.3.1 to 4.3.6 and 4.4.1, table 4.5.6-1; TS 23.247 V20.0.0, clauses 5.3.1 and 9.1; TS 33.246 V19.0.0, clause 6.3.
 - **Services and APIs:** TS 26.502 V19.6.0, clause 7 and tables 7.2-1 and 7.3-1; TS 29.580 V20.0.0, clauses 1, 5.2, 5.3, 6.1.3 and 6.2.3; TS 29.581 V20.0.0, clauses 1, 4.1 and 6.1.3; TS 26.517 V19.3.0, clauses 5.2.11, 8.2.1.3, 8A, 9, 10, 11 and C.3; OpenAPI files of TS 29.580 V20.0.0 and TS 29.581 V20.0.0.
-- **Distribution methods:** TS 26.502 V19.6.0, clauses 3.1, 4.3.3.2, 6.1 and 6.2; TS 26.517 V19.3.0, clauses 6.2.1, 6.2.3.5 and 7.2.1.
+- **Distribution methods:** TS 26.502 V19.6.0, clauses 3.1, 4.3.3.2, 6.1 and 6.2; TS 26.517 V19.3.0, clauses 6.2.1, 6.2.3.5 and 7.2.1; TS 26.346 V19.3.0, clause L.4.
 - **Sessions and their life cycle; provisioning and announcement:** TS 26.502 V19.6.0, clauses 3.1, 4.5.2 to 4.5.6, 4.6.1, 5.3, 5.3A, 5.4, 5.5.1, 5.5.2 and 5.5.4.
 - **Media streaming over MBS:** TS 26.501 V20.0.0, clause 4.9.
 - **Figures:** TS 26.502 V19.6.0, figures 4.2.1-1, 4.2.2-1, 4.3.1-1, 4.3.3.2-1, 4.3.3.3-1, 4.5.1-1 and 4.6.1-1.

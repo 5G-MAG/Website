@@ -26,11 +26,13 @@ import {
 </div>
 </div>
 
-Public warning over 5G Broadcast carries emergency alerts (earthquake and tsunami warnings, and
-CMAS-style civil alerts) to any receiver in coverage, using the same free-to-air LTE-based
+Public warning over 5G Broadcast carries emergency alerts as CMAS messages in SIB12 (ETSI TS 103 720
+V1.2.1 clause 5.15.3.3) to any receiver in coverage, using the same free-to-air LTE-based
 broadcast carrier as linear TV and radio. Because it needs no SIM, no subscription and no return
 channel, it keeps working when the cellular network is congested or unavailable, which is exactly
-when warnings matter most.
+when warnings matter most. The earthquake and tsunami warning system (ETWS) is named in ETSI TS 103 720
+only as a regional adaptation of PWS (clause 4.2.5); its SIB10 and SIB11 are not part of the TS 103 720
+profile.
 
 Three layers define it. **ETSI TS 103 720**, the 5G Broadcast system specification maintained by
 5G-MAG, profiles PWS support over the E-UTRAN Uu downlink. **3GPP TS 23.041** defines the Cell
@@ -77,7 +79,17 @@ From the 3GPP release descriptions (TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.
 - **Release 16:** ePWS adds ePWS-UE Message Identifiers and language-independent content (TR 21.916 clause 12.1); LTE_eMTC5 adds ETWS/CMAS notification in connected mode for non-Cat-M UEs (clause 7.3); LTE_terr_bcast produced TR 36.976 (clause 19.3.1).
 - **Release 17:** PWS over SNPN is supported (NG_RAN_PRN_enh, TR 21.917 clause 6.2.3.2).
 - **Release 19:** PWS_NTN adds PWS over satellite E-UTRAN and NG-RAN, ETWS geo-fencing and duplicate detection with a shared MCC (TR 21.919 clause 5.3.1); IoT_NTN_Ph3 adds NB-IoT ETWS and CMAS system information blocks (clause 5.1.3).
-- **Release 20 (work plan of 28 September 2026):** MLT-REQ, Stage 1 for Multilingual Template-based alerts (TS 22.268, UID 1130012, WID SP-261004); CPAS, Security Assurance Specification (UID 1110066, 90%, finish 12 December 2026), with CPAS-REQ and CPAS-CT (TS 23.041). Details are in [Release history](/standards/emergency-alerts/evolution). No Release 20 release description (TR 21.920) was available.
+- **Release 20 (work plan of 28 September 2026):** MLT-REQ, Stage 1 for Multilingual Template-based alerts (TS 22.268, UID 1130012, WID SP-261004); CPAS, Security Assurance Specification (UID 1110066, 90%, finish 12 December 2026; TS 23.304 in the work plan), with CPAS-REQ (TS 23.304) and CPAS-CT (TS 23.041). Details are in [Release history](/standards/emergency-alerts/evolution). No Release 20 release description (TR 21.920) was available.
+
+<details>
+<summary>Sources for this page</summary>
+
+- 3GPP TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TS 36.331 V19.4.0 and TR 36.976 V19.0.0: the quotations under "What the specifications state".
+- ETSI TS 103 720 V1.2.1: clauses 4.2.5 and 5.15.3.3.
+- 3GPP TR 21.915 V15.0.0, TR 21.916 V16.2.0, TR 21.917 V17.0.1 and TR 21.919 V19.0.0: the release statements.
+- 3GPP work plan of 28 September 2026: the Release 20 work items.
+
+</details>
 
 ## Related
 

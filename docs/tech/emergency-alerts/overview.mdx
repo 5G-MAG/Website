@@ -37,7 +37,7 @@ An alert is passed to the transmitter, encoded as a Cell Broadcast Service (CBS)
 
 **Key specifications:** ETSI TS 103 720 (5G Broadcast System for linear TV and radio services, clause 5.15.3.3 defines PWS support, the delivery of warning messages via SIB broadcast on the E-UTRAN Uu downlink), 3GPP [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) (Technical realization of Cell Broadcast Service, CBS: message structure, message identifiers, serial numbers and data coding for ETWS and CMAS), 3GPP [TS 36.331](https://www.3gpp.org/dynareport/36331.htm) (defines `SystemInformationBlockType12` and the UE actions on receiving a warning-message SIB), 3GPP [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (overall description of LTE-based 5G broadcast) (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 23.041 V20.0.0 clause 1; TS 23.041 V20.0.0 clause 9.4; TS 23.041 V20.0.0 clause 9.4.1.2; TS 23.041 V20.0.0 clause 9.4.3; TS 36.331 V19.4.0 clause 6.3.1; TS 36.331 V19.4.0 clause 5.2.2.19; TR 36.976 V19.0.0 clause 1).
 
-Public warning here follows the Public Warning System (PWS) approach: CBS is the delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami Warning System (ETWS) and the Commercial Mobile Alert System (CMAS) (TS 23.041 V20.0.0 clause 2; ETSI TS 103 720 V1.2.1 clause 4.2.5; TS 22.268 V20.3.0 clause 3.1).
+Public warning here follows the Public Warning System (PWS) approach: CBS is the delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami Warning System (ETWS) and the Commercial Mobile Alert System (CMAS) (TS 23.041 V20.0.0 clause 2; ETSI TS 103 720 V1.2.1 clause 4.2.5; TS 22.268 V20.3.0 clause 3.1). ETSI TS 103 720 profiles the CMAS path, with the warning message in SIB12; it names ETWS only as a regional adaptation of PWS, and the ETWS system information blocks SIB10 and SIB11, although defined in TS 36.331, are not part of the TS 103 720 profile (ETSI TS 103 720 V1.2.1 clauses 4.2.5 and 5.15.3.3; TS 36.331 V19.4.0 clause 6.3.1).
 
 ### Transmit and receive roles
 
@@ -55,12 +55,12 @@ CBS carries a warning message as a short, self-contained data structure rather t
 
 | CBS field | Role | Notes |
 | --- | --- | --- |
-| Message Identifier | Identifies the warning type / source (for example a CMAS or ETWS category) | Assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the reference transmitter's default configuration uses the fixed identifier 0x1102, which TS 23.041 assigns to the ETWS combined earthquake and tsunami warning. |
+| Message Identifier | Identifies the warning type / source (for example a CMAS or ETWS category) | Assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the reference transmitter's default configuration uses the fixed identifier 0x1102 (a statement about the reference tool, not taken from the specifications), which TS 23.041 assigns to the ETWS combined earthquake and tsunami warning. The value 0x1102 is 4354, within the range 4352 to 6399 that ETSI TS 103 720 V1.2.1 clause 5.15.3.3 allows for PWS. |
 | Serial Number | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event (TS 23.041 V20.0.0 clause 9.4.1.2.1; TS 23.041 V20.0.0 clause 8.2). |
 | Data Coding Scheme | Selects the character set / language of the message body | Follows the CBS data coding scheme rules in TS 23.041. |
 | Warning Message Segment | Carries the alert text, possibly split across segments | The transmitter marks the last segment and sets the segment number; the payload is the encoded warning text (TS 36.331 V19.4.0 clause 6.3.1; TS 23.041 V20.0.0 clause 9.4.3.2.4). |
 
-For CMAS-style alerts the message is carried in **SIB12**. For ETWS the primary notification is carried in **SIB10** and the secondary notification in **SIB11**; SIB11 uses the same segment fields as SIB12, SIB10 does not (TS 36.331 V19.4.0 clause 5.2.1.5; TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 5.2.1.4).
+For CMAS-style alerts the message is carried in **SIB12**. For ETWS (defined in TS 36.331 but not profiled by ETSI TS 103 720) the primary notification is carried in **SIB10** and the secondary notification in **SIB11**; SIB11 uses the same segment fields as SIB12, SIB10 does not (TS 36.331 V19.4.0 clause 5.2.1.5; TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 5.2.1.4).
 
 ### What later releases added
 

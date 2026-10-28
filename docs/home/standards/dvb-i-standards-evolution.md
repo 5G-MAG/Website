@@ -22,7 +22,7 @@ This page is the detailed, revision-by-revision companion to [DVB-I Services ove
 :::tip[At a glance]
 
 - **ETSI TS 103 770:** V1.1.1 (November 2020) and V1.2.1 (September 2024) are published. V1.2.1 is the latest published version known to 5G-MAG; the publication of V1.3.1 by ETSI has not been verified.
-- **DVB A177:** revisions r1 (July 2020) to r8 (30 June 2026). r8 is marked in its history as "Draft TS 103 770 v1.3.1". It is a draft, and it is the text the [DVB-I implementation audit](/reference-tools/dvb-i/implementation) is judged against.
+- **DVB A177:** revisions r1 (July 2020) to r8 (June 2026). r8 is marked in its history as "Draft TS 103 770 v1.3.1". It is a draft, and it is the text the [DVB-I implementation audit](/reference-tools/dvb-i/implementation) is judged against.
 - **ETSI TR 103 972:** V1.1.1 (July 2023) is the only version.
 
 :::
@@ -66,7 +66,7 @@ V1.2.1 corresponds to A177r6. Everything below is therefore in the drafts that f
 
 The A177r8 interoperability notes (clause 4.6.3) list the changes that can affect a client built for an earlier revision. The versioning rules in clause 4.6 govern how a client and a server tell which revision a list follows.
 
-Two entries concern delivery over 5G. Revision r6 also lists: "Definition of service class identifiers for metadata elements conveyed in MBMS User Services." Revision r8 also lists: "Include support for announcing Service Lists using Multicast DNS."
+One entry concerns delivery over 5G. Revision r6 also lists: "Definition of service class identifiers for metadata elements conveyed in MBMS User Services." The r8 entry on announcing service lists with Multicast DNS (clause 5.1.3.9) is general discovery on the local network, not specific to 5G.
 
 ## ETSI TR 103 972
 
@@ -75,7 +75,7 @@ The History of ETSI TR 103 972 V1.1.1 (2023-07) lists one publication: V1.1.1 (J
 <details>
 <summary>Sources for this page</summary>
 
-- DVB BlueBook A177r8 (30 June 2026, draft), History, "Document history" (revision table), and the clauses cited in the table of changes.
+- DVB BlueBook A177r8 (June 2026, draft), History, "Document history" (revision table), and the clauses cited in the table of changes.
 - ETSI TS 103 770 V1.2.1 (2024-09), History, "Document history".
 - ETSI TR 103 972 V1.1.1 (2023-07), History, "Document history".
 

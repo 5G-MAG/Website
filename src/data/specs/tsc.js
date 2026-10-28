@@ -54,7 +54,7 @@ export const TSC_SPECS = [
     url: 'https://www.3gpp.org/dynareport/23700-25.htm',
     layer: 'System architecture',
     release: '18',
-    note: 'SA2 study (FS_5TRS_URLLC) behind the TSCTSF/NEF exposure work; results folded into TS 23.501/502/29.565',
+    note: 'SA2 study (FS_5TRS_URLLC) on timing resiliency and TSC and URLLC enhancements; related work item TRS_URLLC in TS 23.501, TS 23.502 and TS 23.503, with CT aspects including TS 29.565',
   },
   {
     id: 'IEEE 802.1AS-2025',

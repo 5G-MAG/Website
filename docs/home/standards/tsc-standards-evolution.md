@@ -26,13 +26,12 @@ This page is the detailed, release-by-release companion to [Time-Sensitive Commu
 - **Release 18:** work items LPHAP, SEI, FS_DetNet, DetNet, 5TRS, FS_5TRS_URLLC, TRS_URLLC, TRS_URLLC-NR, TRS_URLLC-NR-Core, FS_TSNCH, TSN_CH, SBIProtoc18; 113 change requests.
 - **Release 17:** work items eCAV, CMED, IIoT; 79 change requests.
 - **Release 16:** work items FS_CAV, cyberCAV; 28 change requests.
-- **Release 14:** 1 change request.
 
 :::
 
 Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.104 V19.2.0, TR 22.804 V16.3.0, TS 29.565 V20.1.0, TR 23.700-25 V18.1.0.
 
-This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.804](https://www.3gpp.org/dynareport/22804.htm), [TS 29.565](https://www.3gpp.org/dynareport/29565.htm), [TR 23.700-25](https://www.3gpp.org/dynareport/23700-25.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Time Sensitive", "TSN", "Timing Resiliency" or "Deterministic Network". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
+This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.804](https://www.3gpp.org/dynareport/22804.htm), [TS 29.565](https://www.3gpp.org/dynareport/29565.htm), [TR 23.700-25](https://www.3gpp.org/dynareport/23700-25.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Time Sensitive", "TSN", "Timing Resiliency" or "Deterministic Network". The change requests are those recorded in the 3GPP Change Request database as implemented in a version. The rows of TS 29.565 versions 17.3.0 to 17.11.0 and 18.8.0 to 18.13.0, and of TS 22.104 versions 16.3.0 to 16.5.0, 17.6.0, 17.7.0 and 18.4.0, come from that database only: the change history of TS 29.565 V20.1.0 lists Release 17 only up to version 17.2.0 and Release 18 only up to version 18.7.0, and the change history of TS 22.104 V19.2.0 lists Release 16 only up to version 16.2.0, Release 17 only up to version 17.5.0 and Release 18 only up to version 18.3.0. The TS 22.104 row for CR 0064 is shown under version 18.0.0 as recorded in that database; the change history of TS 22.104 V19.2.0 lists CR 0064 in version 17.5.0 (SA#91e, March 2021).
 
 ## Release 20
 
@@ -120,7 +119,7 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | [SBIProtoc18](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960060) | CT3 aspects of SBIProtoc18 | Normative | [TS 29.565](https://www.3gpp.org/dynareport/29565.htm) (with TS 29.507, TS 29.508, TS 29.512, TS 29.514, TS 29.517, TS 29.519, TS 29.520, TS 29.521, TS 29.523, TS 29.525, TS 29.534, TS 29.535, TS 29.537, TS 29.551, TS 29.554, TS 29.557, TS 29.574, TS 29.575, TS 29.576, TS 29.580, TS 29.591, TS 29.594, TS 29.675) | Complete, Dec 2023 | [CP-221083](https://www.3gpp.org/ftp/tsg_ct/TSG_CT/TSGC_96_Budapest/Docs/CP-221083.zip) |
 
 <details>
-<summary>113 change requests and 3 versions without one</summary>
+<summary>113 change requests and 1 version without one</summary>
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -129,7 +128,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TS 29.565 | 18.0.0 | 0031 | Adding the mandatory error code 502 Bad Gateway | SBIProtoc18 |
 | TS 29.565 | 18.0.0 | 0032 | TscEvent enumeration definition in the OpenAPI file | SBIProtoc18 |
 | TS 29.565 | 18.0.0 | 0035 | Update of info and externalDocs fields | TEI18 |
-| TS 22.104 | 18.1.0 |  | 0073 D Alignment of positioning power consumption aspects between 22.261 and 22.104 |  |
 | TS 22.104 | 18.1.0 | 0065 | 5G timing resiliency | 5TRS |
 | TS 22.104 | 18.1.0 | 0066 | Quality improvement - addition of new annex (relationship between reliability and communication service availability) | eCAV |
 | TS 22.104 | 18.1.0 | 0068 | 22.104 - V18.0.0 - quality improvement - update of mobile-robots use case description | eCAV |
@@ -174,7 +172,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TS 29.565 | 18.2.0 | 0073 | 3GPP extensions to DetNet YANG model to support 5GS specifics | DetNet |
 | TS 29.565 | 18.2.0 | 0074 | Definition of 3gpp-5gs-detnet-node YANG file | DetNet |
 | TS 29.565 | 18.2.0 | 0075 | Update of info and externalDocs fields | TEI18 |
-| TS 22.104 | 18.3.0 |  | 0090 D Remove editor note for Figure A.4.4.3-1 |  |
 | TS 22.104 | 18.3.0 | 0089 | Correction of references for clause 2 | SEI |
 | TS 22.104 | 18.3.0 | 0090 | Remove editor note for Figure A.4.4.3-1 | SEI |
 | TS 22.104 | 18.3.0 | 0091 | Update to Smart Grid normative requirements | SEI |
@@ -254,13 +251,12 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | [IIoT](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=910061) | CT3 aspects of support of enhanced Industrial IoT | Normative | [TS 29.565](https://www.3gpp.org/dynareport/29565.htm) | Complete, Mar 2022 | [CP-212100](https://www.3gpp.org/ftp/tsg_ct/TSG_CT/TSGC_93e/Docs/CP-212100.zip) |
 
 <details>
-<summary>79 change requests and 7 versions without one</summary>
+<summary>79 change requests and 1 version without one</summary>
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 22.104 | 17.0.0 | 0009 | Adding vertical positioning requirements to TS 22.104 v16.1.0 | 5G_HYPOS, 5G_HYPOS |
 | TS 29.565 | 17.0.0 |  | Approved by TSG CT |  |
-| TS 22.104 | 17.1.0 |  | 0010 B Add one more case for control-to-control communication |  |
 | TS 22.104 | 17.1.0 | 0010 | Add one more case for control-to-control communication | eCAV |
 | TS 22.104 | 17.1.0 | 0011 | Addition of robotic aided surgery and diagnosis performance requirements | CMED |
 | TS 22.104 | 17.1.0 | 0012 | Addition of a new synchronisation performance requirement | CMED |
@@ -294,7 +290,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TS 29.565 | 17.1.0 | 0026 | Definitions of HTTP "403 Forbidden" response | IIoT |
 | TS 29.565 | 17.1.0 | 0027 | Initial provisioning of TSC related service information | IIoT |
 | TS 29.565 | 17.1.0 | 0028 | Update of info and externalDocs fields | TEI17 |
-| TS 22.104 | 17.2.0 |  | 0028 F Addition of transmission directions and movement characteristics |  |
 | TS 22.104 | 17.2.0 | 0026 | Correction of CMED KPIs tables | CMED |
 | TS 22.104 | 17.2.0 | 0027 | Addition of informative annex for AV Prod | AVPROD |
 | TS 22.104 | 17.2.0 | 0028 | Addition of transmission directions and movement characteristics | eCAV |
@@ -308,8 +303,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TS 29.565 | 17.2.0 | 0030 | Miscellaneous corrections in the Time Synchronization API | IIoT |
 | TS 29.565 | 17.2.0 | 0033 | Correction to Ethernet flows | IIoT |
 | TS 29.565 | 17.2.0 | 0034 | Update of info and externalDocs fields | TEI17 |
-| TS 22.104 | 17.3.0 |  | 0050 F Correction of service performance requirements in tables of annex A.6 |  |
-| TS 22.104 | 17.3.0 |  | 0049 D 22.104 Miscellaneous editorial corrections |  |
 | TS 22.104 | 17.3.0 | 0041 | Clarifications to communication service performance requirements | cyberCAV |
 | TS 22.104 | 17.3.0 | 0045 | Correcting description of communication service status in Clause C.3 | cyberCAV |
 | TS 22.104 | 17.3.0 | 0047 | Clock synchronicity budget for the 5G system | cyberCAV |
@@ -320,11 +313,9 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TS 29.565 | 17.3.0 | 0039 | Correction to Ntsctsf_TSCQoSandAssistance Service | IIoT |
 | TS 29.565 | 17.3.0 | 0041 | Correction to Ntsctsf_ASTI Service | IIoT |
 | TS 29.565 | 17.3.0 | 0050 | Correction to QoS notification control | IIoT |
-| TS 22.104 | 17.4.0 |  | 0055 F Quality improvement – burst definition |  |
 | TS 22.104 | 17.4.0 | 0055 | Quality improvement – burst definition | eCAV |
 | TS 22.104 | 17.4.0 | 0058 | CR 22.104 R17 - Editorial Improvements – Decimal Separator | eCAV |
 | TS 29.565 | 17.4.0 | 0067 | Correction on setting Packet Delay Failure report Threshold | 5G_URLLC, TEI17 |
-| TS 22.104 | 17.5.0 |  | 0063 D Non-inclusive language replacement 22.104 |  |
 | TS 22.104 | 17.5.0 | 0063 | Non-inclusive language replacement 22.104 | TEI17 |
 | TS 29.565 | 17.5.0 | 0102 | Miscellaneous Corrections | IIoT |
 | TS 22.104 | 17.6.0 | 0067 | Quality improvement - update of definition of communication service availability | eCAV |
@@ -355,7 +346,7 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | [cyberCAV](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=800007) | Service requirements for cyber-physical control applications in vertical domains | Normative | [TS 22.104](https://www.3gpp.org/dynareport/22104.htm) (with TS 22.261) | Complete, Sep 2018 | [SP-180321](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_80/Docs/SP-180321.zip) |
 
 <details>
-<summary>28 change requests and 3 versions without one</summary>
+<summary>28 change requests and 2 versions without one</summary>
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -372,7 +363,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 | TR 22.804 | 16.1.0 | 0007 | Editorial cleanup of 'private' | FS_CAV |
 | TR 22.804 | 16.1.0 | 0008 | TR 22.804 - service continuity for wind farms | FS_CAV |
 | TR 22.804 | 16.1.0 | 0009 | Add the post-conditions of Millisecond-Level Precise Load Control | FS_CAV |
-| TS 22.104 | 16.2.0 |  | 0008 F Corrections to TS 22.104 v16.1.0 |  |
 | TS 22.104 | 16.2.0 | 0005 | Adding edge computing aspect | cyberCAV |
 | TS 22.104 | 16.2.0 | 0006 | Add missing abbreviations to TS 22.104 | cyberCAV |
 | TS 22.104 | 16.2.0 | 0008 | Corrections to TS 22.104 v16.1.0 | cyberCAV |
@@ -393,12 +383,6 @@ The work plan of 28 September 2026 lists no Release 20 item whose specifications
 
 </details>
 
-## Release 14
-
-| Specification | Version | CR | Subject | Work item |
-| --- | --- | --- | --- | --- |
-| TR 22.804 | 14.1.0 | 0001 | Remove requirement in MCData TS 22.282 that has been added to MCCoRe TS 22.280. |  |
-
 ## Novelties per release (from the Release descriptions)
 
 Features that TR 21.915 to TR 21.919 attribute to each release for time-sensitive communication, with the clause that describes them. TR 21.915 (Release 15) contains no TSC feature. No TR 21.920 exists yet, so the Release 20 entry rests on the change requests above and is unverified against a release description.
@@ -406,7 +390,7 @@ Features that TR 21.915 to TR 21.919 attribute to each release for time-sensitiv
 - **Release 16.** Vertical_LAN: the 5G system integrates with IEEE TSN as a time-aware system, with TSC assistance information for scheduling (TR 21.916 clause 6.3). NR_IIOT (RAN): NR support for TSC, with reference timing delivery to the UE at 10 ns granularity by RRC signalling, Ethernet Header Compression in PDCP, TSC Assistance Information, more semi-persistent scheduling and configured grant configurations, and PDCP duplication enhancements (TR 21.916 clause 5.3).
 - **Release 17.** IIoT (stage 2, with FS_IIoT): the Time Sensitive Communication and Time Synchronization Function (TSCTSF), exposure to Application Functions through the NEF, the 5G system as IEEE 802.1AS time-aware system, IEEE 1588 boundary clock or transparent clock, the SMPTE profile of IEEE 1588 among the supported PTP profiles, uplink and UE-to-UE time synchronisation, and survival time in the TSC Assistance Information (TR 21.917 clause 7.4). NR_IIOT_URLLC_enh (RAN): propagation delay compensation for time synchronisation (round-trip-time based and timing-advance based), and RAN handling of survival time (TR 21.917 clause 7.3).
 - **Release 18.** 5TRS, FS_5TRS_URLLC and TRS_URLLC (with the RAN item TRS_URLLC-NR): reporting of the network timing synchronisation status to the TSCTSF and UEs (SIB9 indicates a change of clock quality), interworking with a TSN network in the transport network, and adaptation of traffic scheduling from RAN feedback on burst arrival time and periodicity (TR 21.918 clause 6.5.1). FS_TSNCH and TSN_CH: charging for TSN, with the new TS 32.282 and the TSCTSF and TSN AF as charging trigger functions (TR 21.918 clause 6.5.2). FS_DetNet and DetNet: extensions of the TSC framework to support DetNet, listed without a summary in TR 21.918 (clauses 27.20 and 28.11). FFAPP: SEAL enhancements for TSC services in Factories of the Future applications (TR 21.918 clause 10.11).
-- **Release 19.** TEI19_QME: configuring and transferring QoS monitoring capabilities in the 5GC, so that the SMF can determine whether the RAN supports QoS monitoring (TR 21.919 clause 23.7; TS 29.565 is among the specifications it lists). The Advanced Media Delivery work adds time synchronisation to the 5G Media Streaming and MBS architecture, offering SIB9-based and user-domain time services (TR 21.919 clause 11.6).
+- **Release 19.** TEI19_QME: configuring and transferring QoS monitoring capabilities in the 5GC, so that the SMF can determine whether the RAN supports QoS monitoring (TR 21.919 clause 23.7; TS 29.565 is among the specifications it lists). The Advanced Media Delivery work adds time synchronisation mechanisms to TS 26.502 (the MBS User Service architecture), offering both SIB9-based and user-domain time services (TR 21.919 clause 11.6).
 - **Release 20.** Change requests to TS 29.565 only (listed above); unverified against a release description.
 
 ## TS 22.104 before change control
