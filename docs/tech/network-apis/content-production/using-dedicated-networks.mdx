@@ -60,84 +60,84 @@ In the procedure flow below, each step is tagged with the actor that performs it
 
 **GET /profiles** to obtain a list of dedicated network profiles with the corresponding **"id": "string"**.
 
-The response below shows one network profile: note the `id` (used in later calls), the device cap (`maxNumberOfDevices`), the aggregate uplink/downlink throughput, and the QoS profiles it bundles.
+The response is a page: the profiles are in `items` (the `pagination` object, defined in the CAMARA common definitions, is not shown here). The example below shows one network profile: note the `id` (used in later calls), the device cap (`maxNumberOfDevices`, at least 1), the aggregate uplink/downlink throughput, and the QoS profiles it bundles.
 
 ```json
-[
-  {
-    "id": "string",
-    "maxNumberOfDevices": 0,
-    "aggregatedUlThroughput": {
-      "value": 10,
-      "unit": "bps"
-    },
-    "aggregatedDlThroughput": {
-      "value": 10,
-      "unit": "bps"
-    },
-    "qosProfiles": ["QCI_1_voice"],
-    "defaultQosProfile": "QCI_1_voice"
-  }
-]
+{
+  "items": [
+    {
+      "id": "string",
+      "maxNumberOfDevices": 5,
+      "aggregatedUlThroughput": {
+        "value": 10,
+        "unit": "bps"
+      },
+      "aggregatedDlThroughput": {
+        "value": 10,
+        "unit": "bps"
+      },
+      "qosProfiles": ["QCI_1_voice"],
+      "defaultQosProfile": "QCI_1_voice"
+    }
+  ]
+}
 ```
 
 `GET /qos-profiles/{name}`, using the [QoS Profiles API](/tech/network-apis/features/qos-profiles), to obtain details of the already arranged QoS Profile.
 
-An example of the QoS Profile, including status:
+An example of the QoS Profile, including status (the values are examples only and stand for the actual network requirements):
 
 ```json
-// Example values: replace with actual network requirements
-[
-  {
-    "name": "voice",
-    "description": "QoS profile for voice calls",
-    "status": "ACTIVE",
-    "targetMinUpstreamRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "maxUpstreamRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "maxUpstreamBurstRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "targetMinDownstreamRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "maxDownstreamRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "maxDownstreamBurstRate": {
-      "value": 128,
-      "unit": "Kbps"
-    },
-    "minDuration": {
-      "value": 60,
-      "unit": "Seconds"
-    },
-    "maxDuration": {
-      "value": 60,
-      "unit": "Seconds"
-    },
-    "priority": 20,
-    "packetDelayBudget": {
-      "value": 100,
-      "unit": "Milliseconds"
-    },
-    "jitter": {
-      "value": 30,
-      "unit": "Milliseconds"
-    },
-    "packetErrorLossRate": 3,
-    "l4sQueueType": "non-l4s-queue",
-    "serviceClass": "real_time_interactive"
-  }
-]
+{
+  "name": "voice",
+  "description": "QoS profile for voice calls",
+  "status": "ACTIVE",
+  "targetMinUpstreamRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "maxUpstreamRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "maxUpstreamBurstRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "targetMinDownstreamRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "maxDownstreamRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "maxDownstreamBurstRate": {
+    "value": 128,
+    "unit": "kbps"
+  },
+  "minDuration": {
+    "value": 60,
+    "unit": "Seconds"
+  },
+  "maxDuration": {
+    "value": 60,
+    "unit": "Seconds"
+  },
+  "priority": 20,
+  "packetDelayBudget": {
+    "value": 100,
+    "unit": "Milliseconds"
+  },
+  "jitter": {
+    "value": 30,
+    "unit": "Milliseconds"
+  },
+  "packetErrorLossRate": 3,
+  "l4sQueueType": "non-l4s-queue",
+  "serviceClass": "real_time_interactive"
+}
+```
 ```
 
 #### 1.0b. Discovery of available and eligible Network Service Areas
@@ -160,19 +160,21 @@ The ASP should create an object with the desired location by means of one of the
 
 **POST /retrieve-service-areas** passing this object as body.
 
-This operation should return an **"id": "string"**, in this form:
+This operation should return a page of areas in `items`, each with an **"id": "string"** (the `pagination` object is not shown here), in this form:
 
 ```json
-[
-  {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "string",
-    "description": "string",
-    "area": {},
-    "networkProfiles": ["string"],
-    "qosProfiles": ["QCI_1_voice"]
-  }
-]
+{
+  "items": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "name": "string",
+      "description": "string",
+      "area": {},
+      "networkProfiles": ["string"],
+      "qosProfiles": ["QCI_1_voice"]
+    }
+  ]
+}
 ```
 
 #### 1.1 Request for Dedicated Network reservation
@@ -200,20 +202,16 @@ During this phase, **GET /networks** may be used to list the information on the 
 
 #### 1.3 Assignment of Device Access to the Dedicated Network
 
-**POST /accesses** should be used to attach devices to a dedicated network. The body identifies the target network (`networkId`, the `id` returned by **POST /networks**), the device (by phone number, network access identifier or IP address), and the QoS profiles the device may use:
+**POST /accesses** should be used to create an access to a dedicated network, optionally adding devices in the same call. The body identifies the target network (`networkId`, the `id` returned by **POST /networks**), optionally the devices to add (a `devices` list of `device` objects, each identified by phone number, network access identifier or IP address), and the QoS profiles the devices may use:
 
 ```json
 {
   "networkId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "device": {
-    "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
-    "ipv4Address": {
-      "publicAddress": "84.125.93.10",
-      "publicPort": 59765
-    },
-    "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
-  },
+  "devices": [
+    {
+      "phoneNumber": "+123456789"
+    }
+  ],
   "qosProfiles": ["string"],
   "defaultQosProfile": "string"
 }
@@ -239,15 +237,15 @@ An assigned device connects to the network and starts using the reserved capabil
 
 A series of operations to assign new devices and de-assign existing ones can be performed while the Dedicated Network is active via:
 
-**POST /accesses** with the request body including the networkId received after invoking the Dedicated Network API (id), a device object, qosProfiles, this request will create a device access to a dedicated network with a given configuration. The response includes an id.
+**POST /accesses** with the request body including the networkId received after invoking the Dedicated Network API (id) and, optionally, a `devices` list of `device` objects and qosProfiles, this request will create an access to a dedicated network with a given configuration. The response includes an id.
 
-`DELETE /accesses/{accessId}` to delete a device access to the dedicated network.
+Devices are added to and removed from an access with the `/accesses/{accessId}/devices` operations (`POST /accesses/{accessId}/devices`, `POST /accesses/{accessId}/devices/add`, `POST /accesses/{accessId}/devices/remove` and `DELETE /accesses/{accessId}/devices/{accessDeviceId}`); `DELETE /accesses/{accessId}` deletes the access.
 
 ### Step 3: Dismantling
 
 When reaching the duration the Dedicated Network may be torn down. A graceful way of tearing down will delete device accesses and dedicated networks by `id`.
 
-`DELETE /accesses/{accessId}` deletes a device access to the dedicated network
+`DELETE /accesses/{accessId}` deletes an access to the dedicated network
 
 `DELETE /networks/{networkId}` deletes a dedicated network
 
@@ -268,7 +266,7 @@ The Dedicated Networks API is the most complete fit for the [multi-device produc
 
 - **Area discovery** (`POST /retrieve-service-areas`) is distinct from reservation, so the ASP can find the operator-defined service area covering a venue before committing to a booking. This is the only CAMARA API that offers this separation.
 - **Reservation** (`POST /networks`) books a Network Profile (a QoS profile plus a device cap and aggregate uplink/downlink throughput) for a service area and time window, independent of any specific device.
-- **Device access** (`POST /accesses`, `DELETE /accesses/{accessId}`) attaches and detaches individual devices to the reserved network at any time during operation.
+- **Device access** (`POST /accesses` and the `/accesses/{accessId}/devices` operations) attaches and detaches individual devices to the reserved network at any time during operation; `DELETE /accesses/{accessId}` deletes the access.
 
 This decoupling is what enables the operational patterns a production needs: attaching cameras only when they come online, swapping in a back-up camera without losing the reservation, and the on-air / preview / standby prioritisation described in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page (where a Network Profile is booked for the worst-case aggregate throughput, but only a subset of devices holds the high-quality profile at any instant). A single-device MoJo contribution is a degenerate case of the same model, with one Network Profile and one device access.
 

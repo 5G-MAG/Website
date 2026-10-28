@@ -47,7 +47,7 @@ Key fields to note:
 
 - `name` and `description`: the identifier the other APIs reference, and a human-readable label.
 - `status`: whether the profile is currently `ACTIVE`.
-- `targetMinUpstreamRate` / `maxUpstreamRate` (and the downstream equivalents): the guaranteed and maximum bit rates. For contribution feeds the upstream (uplink) rates matter most.
+- `targetMinUpstreamRate` / `maxUpstreamRate` (and the downstream equivalents): the target minimum rate and the maximum (best effort) rate. For contribution feeds the upstream (uplink) rates matter most.
 - `minDuration` / `maxDuration`: the allowed booking duration bounds.
 - `priority`: relative scheduling priority between profiles.
 - `packetDelayBudget`, `jitter`, `packetErrorLossRate`: the latency, timing-variation and loss targets.
@@ -58,10 +58,9 @@ Key fields to note:
 A CAMARA QoS Profile is a name the operator has published for a bundle of network characteristics. What a name delivers in the network is agreed between the operator and the API consumer. A profile name such as `QCI_1_voice` seen elsewhere in these pages is illustrative only.
 :::
 
-For a media contribution example, a profile intended for a single uplink camera feed would set a high guaranteed upstream rate (for example several Mbps), a low `packetDelayBudget` and `jitter`, and a low `packetErrorLossRate`, with a `serviceClass` such as `real_time_interactive`.
+For a media contribution example, a profile intended for a single uplink camera feed would set a high target minimum upstream rate (for example several Mbps), a low `packetDelayBudget` and `jitter`, and a low `packetErrorLossRate`, with a `serviceClass` such as `real_time_interactive`. The values in the example below are examples only; they stand for the actual network requirements.
 
 ```json
-// Example values: replace with actual network requirements
 [
   {
     "name": "voice",
@@ -69,27 +68,27 @@ For a media contribution example, a profile intended for a single uplink camera 
     "status": "ACTIVE",
     "targetMinUpstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxUpstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxUpstreamBurstRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "targetMinDownstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxDownstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxDownstreamBurstRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "minDuration": {
       "value": 60,
@@ -130,7 +129,7 @@ Potential improvements:
 
 ## The QoS Profile as the shared vocabulary
 
-The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (`GET /qos-profiles` and `GET /qos-profiles/{name}`); the profile name must be known beforehand, and operators are expected to publish the names through the Network API Platform.
+The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (`POST /retrieve-qos-profiles` and `GET /qos-profiles/{name}`); the names of the profiles on offer can be listed with `POST /retrieve-qos-profiles`.
 
 ## Profile fields
 
@@ -138,7 +137,7 @@ The individual profile fields mean the following:
 
 | CAMARA field | Meaning |
 | --- | --- |
-| `targetMinUpstreamRate` / `targetMinDownstreamRate` | Guaranteed minimum rate targets |
+| `targetMinUpstreamRate` / `targetMinDownstreamRate` | Target minimum rate |
 | `maxUpstreamRate` / `maxDownstreamRate` | Per-flow rate ceiling |
 | `packetDelayBudget` | Delay budget for a packet |
 | `packetErrorLossRate` | Allowed packet error loss rate (the exponent N in 10^-N) |
@@ -147,7 +146,7 @@ The individual profile fields mean the following:
 | `l4sQueueType` | Low Latency, Low Loss, Scalable throughput (L4S) marking, where supported |
 | `serviceClass` | The service category the operator associates with the profile |
 
-For a contribution feed the upstream (uplink) fields dominate, because the media flows from the device to the production centre. A profile intended for a single uplink camera would set a high guaranteed upstream rate (several Mbps or more), a low packet delay budget and jitter, and a low packet error loss rate, typically as a guaranteed-rate treatment. The downlink fields matter mainly for return video, intercom and control.
+For a contribution feed the upstream (uplink) fields dominate, because the media flows from the device to the production centre. A profile intended for a single uplink camera would set a high target minimum upstream rate (several Mbps or more), a low packet delay budget and jitter, and a low packet error loss rate; the minimum rate is a target value, which the network might not always be able to provide. The downlink fields matter mainly for return video, intercom and control.
 
 :::note
 The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS Profiles definition; some API definitions spell it `packetLossErrorRate`. Confirm the exact name against the specific `.yaml` you integrate against, as noted in [Relevant QoS Parameters](/tech/network-apis/overview#relevant-qos-parameters).

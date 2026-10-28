@@ -26,7 +26,7 @@ import SpecTable from '@site/src/components/SpecTable';
 
 :::tip[At a glance]
 
-- **CAMARA:** Quality on Demand, Network Slice Booking, Connectivity Insights and Dedicated Networks, which 5G-MAG analyses for media use cases. Several are still pre-1.0.
+- **CAMARA:** a selection of the APIs that 5G-MAG analyses for media use cases, here Quality on Demand, Network Slice Booking, Connectivity Insights and Dedicated Networks; the [Technical Analysis](/tech/network-apis) lists all of them. Several are still pre-1.0.
 - **Media focus:** contribution and live production uplinks, and live distribution downlinks.
 
 :::
@@ -35,7 +35,7 @@ import SpecTable from '@site/src/components/SpecTable';
 
 ## CAMARA
 
-[CAMARA](https://camaraproject.org/) is an open-source initiative under the Linux Foundation with GSMA support to define, develop and test network APIs. 5G-MAG contributes CAMARA API analysis for media use cases, focusing on the following APIs:
+[CAMARA](https://camaraproject.org/) is an open-source initiative under the Linux Foundation with GSMA support to define, develop and test network APIs. 5G-MAG contributes CAMARA API analysis for media use cases, focusing on APIs such as the following (the [Technical Analysis](/tech/network-apis) lists all of them):
 
 <SpecTable
   columns={["CAMARA API", "What it does for media"]}
@@ -51,7 +51,7 @@ See the [Technical Analysis](/tech/network-apis) for detailed CAMARA API profile
 
 ### How CAMARA is organised
 
-CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. APIs are shipped in twice-yearly meta-releases (spring and autumn): a `wip` version on the `main` branch is work in progress, a released meta-release version (`r`-tagged) is the one to integrate against. Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`).
+CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. APIs are shipped in twice-yearly meta-releases (spring and autumn). The CAMARA API Design Guide defines the version types: a work-in-progress (`wip`) version cannot be released and is not usable by API consumers, a release-candidate version is an internal pre-release, and a public version (`x.y.z`) is for use in commercial contexts (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md section 7.3). Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`).
 
 ## Related
 

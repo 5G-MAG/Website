@@ -130,11 +130,11 @@ Details of the already arranged QoS Profile can be retrieved with **GET /qos-pro
 
 #### 1.1 Requests creation of QoS Booking for a given number of devices
 
-With **POST /qos-bookings** passing the `numDevices`, `qosProfile`, `startTime`, `duration`, `serviceArea`.
+With **POST /qos-bookings** passing the `bookingDeviceCount`, `qosProfile`, `startTime`, `duration`, `serviceArea`.
 
 #### 1.3 Assign the QoS Booking to a specific Device
 
-**POST /qos-bookings/{bookingId}/devices/assign** passing the BookingId from the previous step and a `device` object to assign the QoS Booking to a specific device.
+**POST /qos-bookings/{bookingId}/devices/assign** passing the BookingId from the previous step and a `devices` array to assign the QoS Booking to specific devices.
 
 ### Step 2: During operation
 
@@ -154,16 +154,16 @@ A series of operations to manage assignments and delete the QoS Booking are avai
 
 #### QoS Booking and Assignment - QoS Booking API
 
-- **POST /qos-bookings** with a request body containing `numDevices`, `qosProfile`, `startTime`, `duration`, `serviceArea`, it triggers a new booking in advance and assign this reserved booking profile to one or more devices when the devices are ready. The response includes a `bookingId`.
+- **POST /qos-bookings** with a request body containing `bookingDeviceCount`, `qosProfile`, `startTime`, `duration`, `serviceArea`, it triggers a new booking in advance and assign this reserved booking profile to one or more devices when the devices are ready. The response includes a `bookingId`.
   - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](/tech/network-apis/features/qos-profiles).
 - **GET /qos-bookings/{bookingId}** - gets booking information for the given bookingId
 - **DELETE /qos-bookings/{bookingId}** - Cancel an existing booking and release resources related to that booking.
 
 #### QoS Booking and Assignment - Device Assignment API
 
-- **POST /qos-bookings/{bookingId}/devices/assign** with a request body containing `device` object, allows the end user to assign one or more devices to the existing QoS Booking.
+- **POST /qos-bookings/{bookingId}/devices/assign** with a request body containing a `devices` array, allows the end user to assign one or more devices to the existing QoS Booking.
 - **GET /qos-bookings/{bookingId}/devices** - allows the end user to retrieve the list of devices assigned to the existing QoS Booking.
-- **POST /qos-bookings/{bookingId}/devices/release** with a request body containing `device` object - Release one or more already assigned devices. This is a synchronous call.
+- **POST /qos-bookings/{bookingId}/devices/release** with a request body containing a `devices` array - Release one or more already assigned devices. The call can complete synchronously or asynchronously.
 - **POST /qos-bookings/retrieve** with a request body containing `device` object - Querying for QoS Booking resource information details for a device. Returns the QoS booking information for a given device. A device may have multiple bookings (for several times and locations), thus the response is an array
 
 ### Step 3: Dismantling
@@ -189,7 +189,7 @@ Potential improvements:
 
 This API is the right choice when resources must be reserved before the exact devices are known, or when devices may change during operation. That describes most planned multi-device productions:
 
-- A crew books capacity for N cameras for a venue and a time window (`POST /qos-bookings` with `numDevices`), before knowing which physical units will be deployed.
+- A crew books capacity for N cameras for a venue and a time window (`POST /qos-bookings` with `bookingDeviceCount`), before knowing which physical units will be deployed.
 - On site, each camera's SIM is attached to the booking (`POST /qos-bookings/{bookingId}/devices/assign`) as it comes online.
 - If a camera fails, its device is released (`POST /qos-bookings/{bookingId}/devices/release`) and a back-up is assigned, all against the same booking, so the reservation is never lost.
 - The on-air / preview / standby prioritisation in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page is realised by assigning and releasing devices across bookings that carry different QoS profiles, without re-reserving.

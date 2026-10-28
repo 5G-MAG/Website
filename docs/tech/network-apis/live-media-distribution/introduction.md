@@ -36,7 +36,7 @@ When it comes to monitoring QoS, content providers typically have sight of the t
 
 At 5G-MAG we’re investigating the possibility of logging relevant performance data through the client application and sharing it with the network operator. Standard ways of feeding back and sharing data would make the process easier and encourage such collaboration.
 
-This work connects to the network capability exposure APIs analysed elsewhere in this documentation. In particular, the [CAMARA Connectivity Insights](/tech/network-apis/overview#connectivity-insights-api) API offers a candidate mechanism for sharing application-side performance information with operators. The aim is to close the visibility gap so that both content providers and operators can see the full distribution chain.
+This work connects to the network capability exposure APIs analysed elsewhere in this documentation. In particular, the [CAMARA Connectivity Insights](/tech/network-apis/overview#connectivity-insights-api) API lets an application ask the network whether it can meet declared thresholds. Sharing application-side measurements with the operator is not covered by that API; it would need a new or extended API. The aim is to close the visibility gap so that both content providers and operators can see the full distribution chain.
 
 The related [Content Production and Contribution](../content-production/introduction) work area analyses the same CAMARA APIs from the uplink (contribution) side.
 

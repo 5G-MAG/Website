@@ -123,7 +123,7 @@ The booked device connects to the network within the reserved service area and t
 
 #### 2.2 Usage of API capabilities
 
-A series of operations to delete the QoS session or extending its duration are available:
+A series of operations to retrieve and delete the QoS booking are available:
 
 **POST /retrieve-device-qos-bookings** - Retrieve device QoS Bookings
 

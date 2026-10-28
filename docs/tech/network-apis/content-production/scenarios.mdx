@@ -34,11 +34,11 @@ The two scenarios differ mainly in scale. Single-device connectivity covers one 
 
 :::note[Key terms]
 
-- **UE (User Equipment):** a device with a mobile subscription (SIM/eSIM) that connects to the network, for example a smartphone or a modem inside a camera backpack.
+- **UE (User Equipment):** a device with a mobile subscription (SIM/eSIM) that connects to the network, for example a smartphone or a modem inside a camera backpack. On this page a device with several SIMs is counted as several UEs, one per SIM; in 3GPP terms it is one Multi-USIM UE (TS 23.501 V20.3.0 clause 3.1).
 - **RAN (Radio Access Network):** the radio part of the mobile network that connects devices to the core.
 - **SNPN (Stand-alone Non-Public Network):** a private mobile network that operates independently of any public operator.
 - **PNI-NPN (Public Network Integrated Non-Public Network):** a private network hosted with the help of a public operator's network.
-- **DSDA / DSDS:** Dual-SIM Dual-Active and Dual-SIM Dual-Standby, two ways a device can use two SIM cards (see below).
+- **DSDA / DSDS:** Dual-SIM Dual-Active and Dual-SIM Dual-Standby, two ways a device can use two SIM cards (see below). These two terms do not appear in TS 23.501 V20.3.0.
 - **QoS (Quality of Service):** the network performance targets (throughput, latency, jitter) requested for a flow.
   :::
 
@@ -151,7 +151,7 @@ The multi-device scenario admits several network deployments, each with a differ
   <tr>
     <td markdown="span" align="left">PNI-NPN (Public Network Integrated NPN)</td>
     <td markdown="span" align="left">A non-public network hosted with the help of a public operator, made available through dedicated DNNs or one or more network slice instances, optionally with Closed Access Group (CAG) cells for access control.</td>
-    <td markdown="span" align="left">Devices contribute directly; dedicated resources are guaranteed locally and across the mobile network.</td>
+    <td markdown="span" align="left">Devices contribute directly, through the dedicated DNNs or network slice instances.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">SNPN (Stand-alone NPN)</td>

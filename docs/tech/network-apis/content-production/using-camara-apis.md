@@ -78,15 +78,15 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">Creates a Dedicated Network matching Network Profile, time and area</td>
     <td markdown="span" align="left">Assigns/releases devices to a Dedicated Network</td>
     <td markdown="span" align="left">Automatic when Assignment</td>
-    <td markdown="span" align="left">N/A</td>
+    <td markdown="span" align="left">Optional callback (sink) for status-change events of the network and of the device access.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">NetworkSliceBooking</td>
     <td markdown="span" align="left">N/A</td>
     <td markdown="span" align="left">Creates a Network Slice (session)</td>
-    <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
-    <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
-    <td markdown="span" align="left">NO</td>
+    <td markdown="span" align="left">Assigns/releases devices with the Network Slice Assignment API.</td>
+    <td markdown="span" align="left">Automatic when Assignment.</td>
+    <td markdown="span" align="left">Optional callback (sink) for status-change events.</td>
   </tr>
   <tr>
     <td markdown="span" align="left"><a href="./using-qos-booking">QoSBooking</a></td>
@@ -94,7 +94,7 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">Creates a booking matching QoS profile, time, area, device, application,...</td>
     <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
     <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
-    <td markdown="span" align="left">N/A</td>
+    <td markdown="span" align="left">Optional callback (sink) for status-change events.</td>
   </tr>
   <tr>
     <td markdown="span" align="left"><a href="./using-qos-booking-assignment">QoSBookingAssignment</a></td>
@@ -102,7 +102,7 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">Creates a booking matching QoS profile, time, area,...</td>
     <td markdown="span" align="left">Assigns/releases devices to a booking.</td>
     <td markdown="span" align="left">Automatic when Assignment.</td>
-    <td markdown="span" align="left">NO</td>
+    <td markdown="span" align="left">Optional callback (sink) for booking and assignment status-change events.</td>
   </tr>
   <tr>
     <td markdown="span" align="left"><a href="./using-qos-profiles">QoSProfiles</a></td>
@@ -118,7 +118,7 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">N/A</td>
     <td markdown="span" align="left">Assigns a QoS profile to a device indefinitely (no booking, no fixed duration); the assignment is revoked on delete.</td>
     <td markdown="span" align="left">Automatic when Assignment.</td>
-    <td markdown="span" align="left">N/A</td>
+    <td markdown="span" align="left">Optional callback (sink) for status-change events.</td>
   </tr>
   <tr>
     <td markdown="span" align="left"><a href="./using-quality-on-demand">QualityonDemand</a></td>
@@ -126,7 +126,7 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">Creates a QoS session.</td>
     <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
     <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
-    <td markdown="span" align="left">NO</td>
+    <td markdown="span" align="left">Optional callback (sink) for status-change events.</td>
   </tr>
 </tbody>
 </table>
@@ -167,7 +167,7 @@ There is no equivalent service area lookup API in the other CAMARA QoS-related A
 </table>
 
 :::warning
-There are some limitations as the information on the name of the QoS profile need to be known beforehand. It is understood that the name of the profiles would be communicated by the network operator via the Network API Platform.
+There are some limitations as the QoS profiles are listed for the network, or for a device, but not for a service area or time/duration. The names of the QoS profiles on offer can be listed with POST /retrieve-qos-profiles; it is understood that the names may also be communicated by the network operator via the Network API Platform.
 :::
 
 <table>
@@ -182,7 +182,7 @@ There are some limitations as the information on the name of the QoS profile nee
 </table>
 
 :::warning
-There are some limitations as the information on the availability of QoS is only available at booking time and not beforehand. The **Connectivity Insights APIs** are also not practical as they can only be invoked at the given location. Potential remedy: Create/Adapt an API so that information on the QoS profile availability for a given location can be retrieved.
+There are some limitations as the information on the availability of QoS is only available at booking time and not beforehand. The **Connectivity Insights APIs** are also not practical here: they take a device and an application server, optionally with a future time (predictive data), but no location or service area. Potential remedy: Create/Adapt an API so that information on the QoS profile availability for a given location can be retrieved.
 :::
 
 ## RESERVATION API
@@ -198,7 +198,7 @@ It should be possible to book QoS (to reserve network resources) for a given app
   </tr></thead>
 <tbody>
   <tr>
-    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Networks - Network Profiles API</a></b> requests the creation of a dedicated network linking a QoS profile with a service area and time/duration. This comprises the booking of resources for a specific QoS Profile, a maximum number of devices which can make use of it, the service area and the time/duration.</td>
+    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Networks API</a></b> (POST /networks) requests the creation of a dedicated network linking a QoS profile with a service area and time/duration. This comprises the booking of resources for a specific QoS Profile, a maximum number of devices which can make use of it, the service area and the time/duration.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b> requests the creation of a session with the expected service time, service area, and QoS profile. The number of devices can be specified in the QoS profile.</td>
@@ -238,7 +238,7 @@ All the mechanisms described above allow the booking of QoS when already at the 
 
 These same mechanisms allow network resources to be exploited for any device, but the <b><a href="/tech/network-apis/features/qos-booking">QoS Booking API</a></b>, <b><a href="/tech/network-apis/features/qos-provisioning">QoS Provisioning API</a></b> and <b><a href="/tech/network-apis/features/quality-on-demand">Quality on Demand API</a></b> require knowledge of the devices for which the booking is requested.
 
-By contrast, if devices are not known yet at the time of booking, it is possible to use the <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Networks - Network Profiles API</a></b>, <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b> and <b><a href="/tech/network-apis/features/qos-booking-assignment">QoS Booking & Assignment - QoS Booking API</a></b> to request the booking of resources without committing to use a particular device.
+By contrast, if devices are not known yet at the time of booking, it is possible to use the <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Networks API</a></b>, <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b> and <b><a href="/tech/network-apis/features/qos-booking-assignment">QoS Booking & Assignment - QoS Booking API</a></b> to request the booking of resources without committing to use a particular device.
 
 ## ASSIGNMENT API
 
@@ -256,7 +256,7 @@ First step is to have booked the network resources either for any device, a give
     <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/qos-booking-assignment">QoS Booking and Assignment - Device Assignment API</a></b> assigns a device to an existing QoS booking.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Accesses API</a></b> assigns a device to an existing network profile.</td>
+    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Accesses API</a></b> assigns a device to an existing dedicated network.</td>
   </tr>
 </tbody>
 </table>
@@ -297,10 +297,10 @@ With the previous mechanisms there is no guarantee that new resources are availa
   </tr></thead>
 <tbody>
   <tr>
-    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Accesses API</a></b> can request the assignment or release of a device to an existing network profile.</td>
+    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/dedicated-networks">Dedicated Network - Accesses API</a></b> can request the assignment or release of a device to an existing dedicated network.</td>
   </tr>
   <tr>
-    <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a></b> can bring in a new device to exploit the booked network resources.</td>
+    <td markdown="span" align="left">The <b>Network Slice Assignment API</b> (described with the <a href="/tech/network-apis/features/network-slice-booking">Network Slice Booking API</a>) can bring in a new device to exploit the booked network resources.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">The <b><a href="/tech/network-apis/features/qos-booking-assignment">QoS Booking & Assignment - Device Assignment API</a></b> can request the assignment or release of a device to an existing QoS booking.</td>
@@ -361,7 +361,7 @@ No single CAMARA API covers all five phases cleanly. The right choice depends on
 | Reserve QoS ahead of time for a known device and application server                               | [QoS Booking](./using-qos-booking)                           | Ties booking to a device and application server at creation.                                                 |
 | Reserve QoS ahead of time for a number of devices, then attach specific devices later             | [QoS Booking and Assignment](./using-qos-booking-assignment) | Separates the booking from device assignment; supports back-up devices and on-air/standby switching.         |
 | Reserve a dedicated network for a venue and time, discover its service areas, then attach devices | [Dedicated Networks](./using-dedicated-networks)             | Separates area discovery, reservation and device access; the most complete fit for multi-device productions. |
-| Book slice-level resources for an area and window                                                 | [Network Slice Booking](/tech/network-apis/features/network-slice-booking)     | Reserves slice resources; the device that creates the session uses them automatically.                       |
+| Book slice-level resources for an area and window                                                 | [Network Slice Booking](/tech/network-apis/features/network-slice-booking)     | Reserves slice resources; devices are assigned with the Network Slice Assignment API.                           |
 
 The decisive property is whether **reservation is decoupled from device assignment**. Dedicated Networks and QoS Booking and Assignment decouple them, which is what makes device swaps and dynamic prioritisation (the on-air / preview / standby pattern in the [Workflows](./workflows#dynamic-prioritisation-of-qos-for-different-media-flows) page) possible without tearing down and re-creating a booking, and therefore without risking the loss of the reserved resources.
 
@@ -369,14 +369,14 @@ The decisive property is whether **reservation is decoupled from device assignme
 
 Mapping the CAMARA APIs onto the 5G-MAG requirement categories surfaces recurring gaps. These are open items in the analysis, not defects claimed against any deployment:
 
-- **No pre-booking availability lookup.** The Discovery phase can list profiles and service areas, but whether a given profile can actually be reserved for a specific location and time is known only when the reservation is attempted. Connectivity Insights checks conditions only at the device's current location.
+- **No pre-booking availability lookup.** The Discovery phase can list profiles and service areas, but whether a given profile can actually be reserved for a specific location and time is known only when the reservation is attempted. Connectivity Insights evaluates the network for a device and an application server, optionally for a future time (predictive data); it has no location or service area input.
 - **Service area is not universal.** Only the Dedicated Networks API separates area discovery (`POST /retrieve-service-areas`) from reservation. Quality on Demand and QoS Provisioning cannot express a target area at all; QoS Booking / QoS Booking and Assignment accept a geometry in the request but offer no prior area lookup.
 - **Monitoring uses a separate profile.** Notifications rely on an Application Profile (Connectivity Insights) distinct from the QoS Profile that was booked, rather than tracking the booked resource directly.
 - **Naming collision.** Two distinct APIs ("QoS Booking" and "QoS Booking and Assignment", the latter also referred to internally as a "QoS Booking" API) share confusingly similar names, and the Dedicated Networks and QoS Booking and Assignment procedures overlap substantially.
 
 ## API consumer authentication
 
-Before any of the calls above, the API consumer authenticates to the operator's authorisation server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent; two-legged (client credentials) tokens are restricted to APIs that do not process personal data. The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
+Before any of the calls above, the API consumer authenticates to the operator's authorisation server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent. Where the API processes personal data and users can exercise their rights through opt-in or opt-out, the CAMARA API definitions make three-legged access tokens mandatory, and the authorisation flows to be used are agreed during onboarding (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description Authorization and authentication). The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
 
 ## Related
 

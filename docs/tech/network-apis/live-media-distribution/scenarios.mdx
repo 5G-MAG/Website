@@ -80,7 +80,7 @@ The purpose of the scenario is to make the observability boundaries explicit, be
 </tbody>
 </table>
 
-The gap is the diagonal: the content provider cannot see the operator's core and transport (only their aggregate effect), and the operator cannot see the client app of a third-party service. A failure such as uplink interference that prevents a segment request from reaching the network falls into both blind spots at once, because the provider only observes a slow or failed segment (a high or infinite TTLB) while the operator observes no request at all. Sharing app-side data (TTLB, radio indicators, error events) with the operator, and network-side context back to the provider, is what a Network API such as Connectivity Insights would enable.
+The gap is the diagonal: the content provider cannot see the operator's core and transport (only their aggregate effect), and the operator cannot see the client app of a third-party service. A failure such as uplink interference that prevents a segment request from reaching the network falls into both blind spots at once, because the provider only observes a slow or failed segment (a high or infinite TTLB) while the operator observes no request at all. Sharing app-side data (TTLB, radio indicators, error events) with the operator, and network-side context back to the provider, is what a Network API would have to carry; Connectivity Insights today returns the network's confidence level for declared thresholds and has no input for app-side measurements.
 
 ## Diagnosis logic
 
