@@ -82,7 +82,7 @@ function Highlight({ h }) {
   return (
     <section className={styles.highlightBand} aria-labelledby="area-highlight">
       <div className={`container ${styles.highlight}`}>
-        <VideoCard video={h.video} isPlaying={playing} onPlay={() => setPlaying(true)} kicker="Highlight" />
+        <VideoCard video={h.video} isPlaying={playing} onPlay={() => setPlaying(true)} kicker="Highlight" thumb="maxresdefault" />
         <div>
           <span className={styles.smallLabel}>Highlight</span>
           <Heading as="h2" id="area-highlight" className={styles.highlightTitle}>{h.title}</Heading>
