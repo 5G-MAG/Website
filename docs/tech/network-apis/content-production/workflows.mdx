@@ -161,7 +161,7 @@ Through the Network API Platform:
 3. The production manager receives a booking reference responding to the service request.
 4. The production manager accepts the service booking offer (involving payment).
 5. The production manager receives **network access IDs** to be used by the production device UEs to access the network and the requested capabilities for the specified location and duration.
-   - Each network access ID ultimately resolves to a Data Network Name (DNN) and optionally a network slice identifier (S-NSSAI).
+   - Each network access ID identifies the network, and optionally the slice, that the device attaches to.
 
 <div style={{border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', padding: '0.75rem 1rem', margin: '1rem 0'}}>
 <p><b>Practical example</b></p>
@@ -235,7 +235,7 @@ Through the Network API Platform:
 
 2. The production crew requests network services for the devices (identified by their SIM cards) in advance. Possible services (network capabilities) are:
    1. _Quality-on-Demand_
-      - One or several QoS profiles for each SIM card (QoS profiles map to 5G QoS Identifiers, or 5QIs, the standardised 3GPP QoS behaviours)
+      - One or several QoS profiles for each SIM card
       - Example: A sim may be pre booked for one uplink video / one uplink audio / one downlink data / etc.
    2. _Time-as-a-service_
       - Multi-camera productions need a shared, precise time reference so that feeds from different devices can be aligned and mixed. This timing can be provided either by the access stratum or by the Precision Time Protocol (PTP).
@@ -251,7 +251,7 @@ Through the Network API Platform:
 3. The production manager receives a booking reference responding to the service request.
 4. The production manager accepts the service booking offer (involving payment/contract/SLA aspects).
 5. The production manager receives **network access IDs** to be used by the production device UEs to access the network and the requested capabilities for the specified location and duration.
-   - Each network access ID ultimately resolves to a Data Network Name (DNN) and optionally a network slice identifier (S-NSSAI).
+   - Each network access ID identifies the network, and optionally the slice, that the device attaches to.
 
 <div style={{border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', padding: '0.75rem 1rem', margin: '1rem 0'}}>
 <p><b>Practical example</b></p>
@@ -506,4 +506,4 @@ Two design themes run through the analysis. First, **separating the booking of r
 
 ## Related
 
-- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs, the QoS parameters and the 3GPP interfaces.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and the QoS parameters.

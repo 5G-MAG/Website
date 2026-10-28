@@ -2,7 +2,7 @@
 title: QoS Profiles
 sidebar_position: 8
 hide_title: true
-description: Explains the CAMARA QoS Profiles API and how its named, operator-defined performance profiles map onto 3GPP 5QI/QCI values.
+description: Explains the CAMARA QoS Profiles API and its named, operator-defined performance profiles.
 ---
 
 <div class="topic-banner">
@@ -55,7 +55,7 @@ Key fields to note:
 - `serviceClass`: the traffic category, for example `real_time_interactive`.
 
 :::note
-CAMARA QoS Profiles are an abstraction over the 3GPP QoS model. In 3GPP, a standardised QoS behaviour is identified by a 5G QoS Identifier (5QI); in earlier systems the equivalent was the QoS Class Identifier (QCI). The operator maps each named CAMARA profile onto an appropriate 5QI/QCI. A profile name such as `QCI_1_voice` seen elsewhere in these pages is illustrative only.
+A CAMARA QoS Profile is a name the operator has published for a bundle of network characteristics. What a name delivers in the network is agreed between the operator and the API consumer. A profile name such as `QCI_1_voice` seen elsewhere in these pages is illustrative only.
 :::
 
 For a media contribution example, a profile intended for a single uplink camera feed would set a high guaranteed upstream rate (for example several Mbps), a low `packetDelayBudget` and `jitter`, and a low `packetErrorLossRate`, with a `serviceClass` such as `real_time_interactive`.
@@ -121,7 +121,7 @@ For a media contribution example, a profile intended for a single uplink camera 
 
 - Centralising the performance targets in a single, named QoS Profile keeps the other CAMARA QoS-family APIs simple: they only reference a profile by name rather than repeating throughput, latency and loss parameters in every booking or session request.
 - Because a profile is entirely operator-defined and published in advance, a media application cannot request arbitrary custom values; it can only pick from whatever profiles and names the operator has chosen to provision. Portability of application logic across operators therefore depends on profile names and content being comparable, which the API itself does not guarantee.
-- The mapping from a named profile onto the underlying 3GPP 5QI/QCI is deliberately hidden from the application. This keeps the application portable, but it also means the application cannot verify which underlying network treatment it is actually receiving.
+- What a named profile delivers in the network is deliberately hidden from the application. This keeps the application portable, but it also means the application cannot verify which network treatment it is actually receiving.
 
 Potential improvements:
 
@@ -132,24 +132,22 @@ Potential improvements:
 
 The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (`GET /qos-profiles` and `GET /qos-profiles/{name}`); the profile name must be known beforehand, and operators are expected to publish the names through the Network API Platform.
 
-## Relationship to the 3GPP QoS model
+## Profile fields
 
-A CAMARA QoS Profile is an abstraction over the 3GPP QoS model, not a new one. In 5G a QoS Flow is characterised by a 5G QoS Identifier (5QI); the standardised 5QI values and their characteristics (resource type GBR / Delay-Critical GBR / non-GBR, priority level, packet delay budget, packet error rate) are tabulated in 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.7.4, Table 5.7.4-1. In earlier systems the equivalent identifier was the QoS Class Identifier (QCI), with the packet error loss rate attribute defined in [TS 23.203](https://www.3gpp.org/dynareport/23203.htm) (the 5G equivalent is the Packet Error Rate of the 5QI, TS 23.501 V20.3.0 clause 5.7.3.5). The operator maps each named CAMARA profile onto an appropriate 5QI (standardised or operator-specific) and enforces it through the Policy Control Function. This is why a profile name such as `QCI_1_voice` is illustrative only: the CAMARA layer hides whether the underlying identifier is a 5QI or a legacy QCI.
+The individual profile fields mean the following:
 
-The individual profile fields relate to 3GPP concepts as follows:
+| CAMARA field | Meaning |
+| --- | --- |
+| `targetMinUpstreamRate` / `targetMinDownstreamRate` | Guaranteed minimum rate targets |
+| `maxUpstreamRate` / `maxDownstreamRate` | Per-flow rate ceiling |
+| `packetDelayBudget` | Delay budget for a packet |
+| `packetErrorLossRate` | Allowed packet error loss rate (the exponent N in 10^-N) |
+| `priority` | Priority of the flow |
+| `jitter` | Delay-variation target, policed by the operator |
+| `l4sQueueType` | Low Latency, Low Loss, Scalable throughput (L4S) marking, where supported |
+| `serviceClass` | The service category the operator associates with the profile |
 
-| CAMARA field                                        | 3GPP concept                                                                     |
-| --------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `targetMinUpstreamRate` / `targetMinDownstreamRate` | Guaranteed Bit Rate (GBR) targets for a GBR QoS Flow                             |
-| `maxUpstreamRate` / `maxDownstreamRate`             | Maximum Bit Rate (MBR) / per-flow ceiling                                        |
-| `packetDelayBudget`                                 | Packet Delay Budget (PDB) of the 5QI                                             |
-| `packetErrorLossRate`                               | Packet Error Rate (PER) of the 5QI (expressed as the exponent N in 10^-N)        |
-| `priority`                                          | Priority Level of the 5QI                                                        |
-| `jitter`                                            | Delay-variation target (not a standalone 5QI attribute; policed by the operator) |
-| `l4sQueueType`                                      | Low Latency, Low Loss, Scalable throughput (L4S) marking, where supported        |
-| `serviceClass`                                      | The service category the operator maps to a resource type / 5QI                  |
-
-For a contribution feed the upstream (uplink) fields dominate, because the media flows from the device to the production centre. A profile intended for a single uplink camera would set a high guaranteed upstream rate (several Mbps or more), a low packet delay budget and jitter, and a low packet error loss rate, typically as a GBR treatment. The downlink fields matter mainly for return video, intercom and control.
+For a contribution feed the upstream (uplink) fields dominate, because the media flows from the device to the production centre. A profile intended for a single uplink camera would set a high guaranteed upstream rate (several Mbps or more), a low packet delay budget and jitter, and a low packet error loss rate, typically as a guaranteed-rate treatment. The downlink fields matter mainly for return video, intercom and control.
 
 :::note
 The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS Profiles definition; some API definitions spell it `packetLossErrorRate`. Confirm the exact name against the specific `.yaml` you integrate against, as noted in [Relevant QoS Parameters](/tech/network-apis/overview#relevant-qos-parameters).

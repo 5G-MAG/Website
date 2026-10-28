@@ -380,4 +380,4 @@ Before any of the calls above, the API consumer authenticates to the operator's 
 
 ## Related
 
-- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and their 3GPP mappings.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs.

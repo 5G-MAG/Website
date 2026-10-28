@@ -129,4 +129,4 @@ The [Workflows](./workflows#geofencing) require verifying whether a UE is inside
 ## Related
 
 - [Content Production: Using CAMARA APIs](../content-production/using-camara-apis): the fuller QoS API analysis reused here.
-- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and the 3GPP interfaces.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs.

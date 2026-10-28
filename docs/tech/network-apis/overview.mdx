@@ -1,7 +1,7 @@
 ---
 title: Network APIs for Connectivity Quality
 hide_title: true
-description: Indexes the CAMARA APIs 5G-MAG analyses and how they map onto underlying 3GPP NEF and PCF service-based interfaces.
+description: Indexes the CAMARA network APIs that 5G-MAG analyses for media use cases, with their shared parameters and rules.
 sidebar_label: "Overview"
 sidebar_position: 0
 ---
@@ -21,13 +21,13 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **What it is:** an index of the CAMARA network APIs 5G-MAG analyses and how they map onto the underlying 3GPP NEF and PCF interfaces.
-- **Why it matters:** a media application sees a small REST resource, while the NEF, the PCF and the user plane do the work behind it.
+- **What it is:** an index of the CAMARA network APIs 5G-MAG analyses for media production and distribution.
+- **Why it matters:** a media application sees a small REST resource, while the operator's platform does the work behind it.
 - **Where it stands:** under development and subject to change, reflecting outcomes elaborated by 5G-MAG members.
 
 :::
 
-<JumpMenu items={[["Network API Initiatives under analysis", "network-api-initiatives-under-analysis"], ["CAMARA APIs for Communication Quality Management", "camara-apis-for-communication-quality-management"], ["Details on the device object", "details-on-the-device-object"], ["Details on the Application Server", "details-on-the-application-server"], ["Relevant QoS Parameters", "relevant-qos-parameters"], ["3GPP APIs for Quality of Service", "3gpp-apis-for-quality-of-service"], ["Cross-cutting CAMARA rules (Commonalities)", "cross-cutting-camara-rules-commonalities"], ["How it works", "how-it-works"]]} />
+<JumpMenu items={[["Network API Initiatives under analysis", "network-api-initiatives-under-analysis"], ["CAMARA APIs for Communication Quality Management", "camara-apis-for-communication-quality-management"], ["Details on the device object", "details-on-the-device-object"], ["Details on the Application Server", "details-on-the-application-server"], ["Relevant QoS Parameters", "relevant-qos-parameters"], ["Cross-cutting CAMARA rules (Commonalities)", "cross-cutting-camara-rules-commonalities"], ["How it works", "how-it-works"]]} />
 
 :::warning
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
@@ -35,7 +35,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Network API Initiatives under analysis
 
-5G-MAG analyses two complementary families of network APIs: the open-source [CAMARA](https://camaraproject.org/) APIs (which provide developer-friendly abstractions of network capabilities) and the underlying 3GPP service-based interfaces that those APIs map onto inside the 5G Core.
+5G-MAG analyses the open-source [CAMARA](https://camaraproject.org/) APIs, which provide developer-friendly abstractions of network capabilities, for media use cases.
 
 This section contains information on:
 
@@ -43,7 +43,6 @@ This section contains information on:
 - [**Details on the DEVICE object**](#details-on-the-device-object)
 - [**Details on the APPLICATION SERVER**](#details-on-the-application-server)
 - [**Relevant QoS parameters**](#relevant-qos-parameters)
-- [**3GPP APIs for Quality of Service**](#3gpp-apis-for-quality-of-service)
 
 ## CAMARA APIs for Communication Quality Management
 
@@ -169,7 +168,7 @@ Both the Application Profiles API and the QoS Profiles API reuse the same core n
 - `packetDelayBudget`- the maximum allowable one-way latency between the customer's device and the gateway from the operator's network to other networks. The end-to-end or round trip latency will be about two times this value plus the latency not controlled by the operator (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml schemas packetDelayBudget; CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml schemas PacketDelayBudget)
 - `targetMinDownstreamRate` - the target minimum downstream rate (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml schemas targetMinDownstreamRate; CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml schemas TargetMinDownstreamRate).
 - `targetMinUpstreamRate` - the target minimum upstream rate (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml schemas targetMinUpstreamRate; CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml schemas TargetMinUpstreamRate)
-- `packetErrorLossRate` - the exponential power of the allowable error loss rate 10^(-N). For 5G networks the 3GPP specification [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) defines the Packet Error Rate as a 5QI characteristic (TS 23.501 V20.3.0 clause 5.7.3.5); the 4G QCI attribute is defined in [TS 23.203](https://www.3gpp.org/dynareport/23203.htm).
+- `packetErrorLossRate` - the exponential power of the allowable error loss rate 10^(-N).
 - `jitter` - this requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP) (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml schemas jitter; CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml schemas Jitter).
 
 ### Additional QoS Profiles parameters
@@ -189,45 +188,11 @@ The QoS Profiles API adds further fields on top of the core parameters above, fo
 - `downStreamDelayBudget` - is the maximum allowable downlink packet transmission latency (millisecond). By limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml schemas SliceQosProfile.downStreamDelayBudget).
 - `upStreamDelayBudget` - is the maximum allowable uplink packet transmission latency (millisecond). By limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml schemas SliceQosProfile.upStreamDelayBudget).
 
-## 3GPP APIs for Quality of Service
-
-We collect here information about the following 3GPP service-based interfaces. These are the 3GPP-defined services that several CAMARA APIs (e.g. Quality on Demand) map onto when exposed through the Network Exposure Function (NEF).
-
-### NEF (Network Exposure Function)
-
-The NEF exposes network capabilities towards Application Functions (AFs). The northbound protocol is defined in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (V20.1.0); the AsSessionWithQoS, ChargeableParty and background data transfer APIs are reused from TS 29.122 with the 5G differences listed in TS 29.522 V20.1.0 clause 5.3, and the procedures for AF required QoS are in TS 29.522 V20.1.0 clause 4.4.9. The underlying background data transfer (BDT) policy control service on the PCF is defined in [TS 29.554](https://www.3gpp.org/dynareport/29554.htm).
-
-- [Nnef_AFsessionWithQoS](https://www.3gpp.org/dynareport/29522.htm): set up an AF session with required QoS (TS 29.522, NEF Northbound APIs).
-- [Nnef_ChargeableParty](https://www.3gpp.org/dynareport/29522.htm): change the chargeable party at session set-up or during the session (TS 29.522, NEF Northbound APIs).
-- [Nnef_BDTPNegotiation](https://www.3gpp.org/dynareport/29522.htm): negotiate a policy for future background data transfer (BDT) (TS 29.522, NEF Northbound APIs, clause 4.4.4; the underlying BDT policies are handled by the PCF, TS 29.554 V20.1.0).
-
-### PCF (Policy Control Function)
-
-The PCF authorises and controls policies for AF sessions. The relevant service-based interfaces are defined in [TS 29.514](https://www.3gpp.org/dynareport/29514.htm) and TS 29.554.
-
-- [Npcf_PolicyAuthorization](https://www.3gpp.org/dynareport/29514.htm): authorise AF requests and provision policy for the Protocol Data Unit (PDU) session to which the AF session is bound (TS 29.514 V20.1.0 clause 4.1.1, Policy Authorization Service).
-- [Npcf_BDTPolicyControl](https://www.3gpp.org/dynareport/29554.htm): create, update, notify and delete background data transfer (BDT) policies (TS 29.554 V20.1.0 clause 4.2, BDT Policy Control Service).
-
-### How a QoS request flows through these interfaces
-
-For a QoS session the chain is:
-
-1. The Application Function (in this context, the CAMARA API provider or an aggregator acting on its behalf) calls the NEF `AsSessionWithQoS` API (TS 29.522). The request identifies the traffic (UE address, application server address, port ranges) and the desired QoS, expressed as a reference to a pre-agreed QoS profile plus optional per-flow bit rates.
-2. The NEF authenticates and authorises the caller (through CAPIF, [TS 23.222](https://www.3gpp.org/dynareport/23222.htm) V20.1.0 / [TS 29.222](https://www.3gpp.org/dynareport/29222.htm) V20.1.0) and forwards the request to the PCF using `Npcf_PolicyAuthorization` (TS 29.514).
-3. The PCF derives PCC rules and provisions them towards the SMF, which programs the UPF to enforce the QoS on the PDU session. The 5G QoS is characterised by a 5G QoS Identifier (5QI); in 4G/LTE the corresponding label is the QoS Class Identifier (QCI); CAMARA examples include profile names such as `QCI_1_voice`.
-4. Status changes (for example the network no longer being able to sustain the QoS) are reported back to the AF as NEF notification events, which a CAMARA provider surfaces to the consumer as CloudEvents (TS 29.522 V20.1.0 clause 4.4.9.2.2; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST callbacks, schemas QosEventType).
-
-The NEF also exposes monitoring and analytics events (used by Connectivity Insights) and, for network data analytics, may draw on the Network Data Analytics Function (NWDAF). Slice-oriented CAMARA APIs (Network Slice Booking, Dedicated Networks) map instead onto slice management provisioning and, for runtime slice influence, onto the SEAL Network Slice Capability Enablement (NSCE) service in [TS 23.434](https://www.3gpp.org/dynareport/23434.htm) V20.1.0 clause 16 (with protocol aspects in TS 24.549 V19.2.0; the detailed NSCE specification is TS 23.435, as referenced in TS 23.434 V20.1.0 clause 16.1). NSCE was defined in Release 17 as a new SEAL service (eSEAL, TR 21.917 clause 6.2.1.1) and extended in Release 18 with further slice capability exposure functions (NSCALE, TR 21.918 clause 13.7). In the reliable-transmission procedure of TS 23.434 V20.1.0 clause 14.3.10.2, the AF guidance on the S-NSSAI and DNN associated with the application descriptors, for the UE Route Selection Policy (URSP), is triggered by the network resource management (NRM) server.
-
-:::note
-CAMARA does not mandate a southbound realisation. The mappings above are the common correspondence between a CAMARA operation and the 3GPP northbound service it most naturally uses; an operator may implement a given API differently (for example directly against a policy or slice-management system rather than through the NEF). Treat the mapping as analysis, not as a normative requirement of the CAMARA specifications.
-:::
-
 ## Cross-cutting CAMARA rules (Commonalities)
 
 The APIs analysed in this section share a set of conventions defined by the CAMARA Commonalities and Identity and Consent Management working groups, rather than being redefined per API (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md section 6.1 and 6.2; CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description):
 
-- **Device identification.** `phoneNumber` is an MSISDN; `networkAccessIdentifier` corresponds to a 3GPP GPSI expressed as an External Identifier; IP address identification is also allowed. When a three-legged token identifies the subscriber the `device` object must not be provided (`422 UNNECESSARY_IDENTIFIER` otherwise); when the subscriber cannot be identified from the token or the `device` object, `422 MISSING_IDENTIFIER` is returned (TS 23.003 V20.1.0 clauses 19.7.2 and 28.8; CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md Appendix A (when the subject is identified from the token, `device` MUST NOT be provided; 422 MISSING_IDENTIFIER / UNNECESSARY_IDENTIFIER); CAMARA Commonalities main@b1a9f08 Glossary.md).
+- **Device identification.** `phoneNumber` is an MSISDN; `networkAccessIdentifier` is an identifier in the operator's network; IP address identification is also allowed. When a three-legged token identifies the subscriber the `device` object must not be provided (`422 UNNECESSARY_IDENTIFIER` otherwise); when the subscriber cannot be identified from the token or the `device` object, `422 MISSING_IDENTIFIER` is returned (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md Appendix A (when the subject is identified from the token, `device` MUST NOT be provided; 422 MISSING_IDENTIFIER / UNNECESSARY_IDENTIFIER); CAMARA Commonalities main@b1a9f08 Glossary.md).
 - **Authorisation.** OAuth 2.0, with a three-legged token (end-user consent, OpenID Connect / CIBA) identifying the subscriber, or a two-legged (client-credentials) token with the device given explicitly; many of these APIs accept either.
 - **Notifications.** [CloudEvents](https://cloudevents.io/) 1.0 JSON delivered to a `sink` callback URL, authenticated per `sinkCredential` (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1, section 3.1).
 - **Tracing and errors.** An optional `x-correlator` header is echoed back, and a common error model is used across APIs (CAMARA Commonalities main@b1a9f08 CAMARA-API-Design-Guide.md section 5.8.5, section 3.2).
@@ -235,18 +200,15 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 
 ## How it works
 
-A CAMARA API is deliberately thin: the media application sees a small REST resource, for example a QoD `session` or a slice `booking`. Behind that resource sit two further layers, so a single API call travels CAMARA API &rarr; NEF (3GPP northbound exposure) &rarr; PCF (policy decision) &rarr; SMF/UPF (enforcement on the device's PDU session, its active data connection to the network).
+A CAMARA API is deliberately thin: the media application sees a small REST resource, for example a QoD `session` or a slice `booking`. The operator's platform does the work behind it.
 
 | API / specification | What it does for media |
 |---|---|
 | CAMARA Quality on Demand (QoD) API | Requests stable latency or prioritised throughput for a media flow on demand, for example a low-latency contribution link. (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description; `/sessions` POST) |
 | CAMARA Connectivity Insights API | Checks whether the network can currently meet an application's quality requirements before or during a session. (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml info.description; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description) |
 | CAMARA Network Slice Booking API | Reserves network slice resources for a given area and time window ahead of an event. (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml info.description) |
-| 3GPP TS 23.434 (SEAL) | Provides common enabling services (group management, configuration, network resource management) that support vertical applications (TS 23.434 V20.1.0 clause 1). |
 
-**3GPP northbound exposure.** The Network Exposure Function (NEF) is the 5G Core function that exposes capabilities to an Application Function (AF). Its northbound APIs are specified in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm). For QoS the relevant northbound API is `AsSessionWithQoS` (the RESTful form of the `Nnef_AFsessionWithQoS` service). In 4G/EPC the equivalent function is the Service Capability Exposure Function (SCEF); TS 23.501 V20.3.0 clause 4.3.5.1 defines a combined SCEF+NEF node for interworking between the EPC and the 5G Core. Discovery, onboarding and authentication of these APIs are handled by the Common API Framework (CAPIF), [TS 23.222](https://www.3gpp.org/dynareport/23222.htm) V20.1.0 clause 1 / [TS 29.222](https://www.3gpp.org/dynareport/29222.htm) V20.1.0. CAPIF was introduced in Release 15 (TR 21.915 clause 11.2.1). Release 16 added interconnection between CAPIF providers and API providers in a third-party trust domain (eCAPIF, TR 21.916 clause 9.3), Release 18 added resource-owner-aware northbound API access (SNAAPP, TR 21.918 clause 10.2), and Release 19 added finer-grained authorisation, open discovery of service APIs and extended interconnection (CAPIF_Ph3, TR 21.919 clause 10.3).
-
-The application never sees the PCF, SMF or UPF. This is the value CAMARA adds: one operator-agnostic contract in place of per-operator 3GPP integration. It is also the source of most of the open questions 5G-MAG records on the CAMARA API pages, because information that exists inside the core (measured latency, service-area availability) is not always surfaced back through the CAMARA abstraction.
+This is the value CAMARA adds: one operator-agnostic contract in place of per-operator integration. It is also the source of most of the open questions 5G-MAG records on the CAMARA API pages, because information that exists inside the network (measured latency, service-area availability) is not always surfaced back through the CAMARA abstraction.
 
 **API families.** The CAMARA APIs 5G-MAG analyses fall into a few families: QoS for a flow or device ([Quality on Demand](/tech/network-apis/features/quality-on-demand), [QoS Provisioning](/tech/network-apis/features/qos-provisioning), [QoS Booking](/tech/network-apis/features/qos-booking) and [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment), all consuming a named profile from [QoS Profiles](/tech/network-apis/features/qos-profiles)); area and time reservation for many devices ([Network Slice Booking](/tech/network-apis/features/network-slice-booking) and [Dedicated Networks](/tech/network-apis/features/dedicated-networks)); and requirements and monitoring ([Application Profiles](/tech/network-apis/features/application-profiles) declares an application's needs once, and [Connectivity Insights](/tech/network-apis/features/connectivity-insights) plus [Connectivity Insights Subscriptions](/tech/network-apis/features/connectivity-insights-subscriptions) check whether the network can meet them). On `main`, all of these API definitions are work-in-progress (`wip`) versions and all event types except Quality on Demand's are `v0`, so field names and enumerations can change between releases (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas QosEventType; info.version; CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml QosProvisioningEventType).
 
