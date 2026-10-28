@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27",
+  "updated_at": "2026-10-28",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -257,7 +257,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-15",
+      "pushed_at": "2026-10-28",
       "url": "https://github.com/5G-MAG/rt-avatar-bar"
     },
     "rt-avatar-call": {
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-28",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -285,7 +285,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-23",
+      "pushed_at": "2026-10-28",
       "url": "https://github.com/5G-MAG/rt-avatar-content"
     },
     "rt-avatar-unity-tracker": {
@@ -299,7 +299,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-10-28",
       "url": "https://github.com/5G-MAG/rt-avatar-unity-tracker"
     },
     "rt-beyond2d-evaluation-framework": {
@@ -327,7 +327,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-21",
+      "pushed_at": "2026-10-27",
       "url": "https://github.com/5G-MAG/rt-camara-examples"
     },
     "rt-cmmf-encoder": {
@@ -686,7 +686,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-22",
+      "pushed_at": "2026-10-27",
       "url": "https://github.com/5G-MAG/rt-mbs-transport-function"
     },
     "rt-media-android-application": {
@@ -852,7 +852,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-24",
+      "pushed_at": "2026-10-27",
       "url": "https://github.com/5G-MAG/rt-xr-content"
     },
     "rt-xr-gITFast": {

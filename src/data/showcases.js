@@ -127,6 +127,13 @@ export const SHOWCASE_BASKETS = {
     headline: 'A media production network, on request',
     description:
       'Connected media production showcases: reserving a dedicated network for a live production with the CAMARA Connectivity Management APIs, from a portal to an AI assistant.',
+    // The video shown under the hero, as a Highlight of the area (YouTube id, title, one short text and a link).
+    highlight: {
+      video: { id: 'OQIwKcLChc4', title: 'CAMARA Dedicated Networks Portal: Reserve a Network for Live Media Production' },
+      title: 'Reserve a network for a live production',
+      text: 'The Dedicated Networks portal in action: find a service area, reserve the network, give the cameras access, and dismantle it when the show ends.',
+      link: { label: 'Read the tutorial', to: '/reference-tools/network-apis/tutorials/dedicated-networks-portal' },
+    },
     lead:
       'Live production and uplink streaming on a location needs more than good connectivity, it needs certainty that capacity for every camera, intercom device, will be available where the crew is and for as long as the show lasts.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with the outcomes of the Media Connectivity Software Accelerator.',
     topics: [

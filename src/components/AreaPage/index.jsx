@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
+import VideoCard from '@site/src/components/VideoCard';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { playgroundFor } from '@site/src/data/playgrounds';
@@ -75,6 +76,24 @@ function ProjectRow({ projects }) {
 }
 
 const DOT = { yes: styles.dotYes, partial: styles.dotPartial, early: styles.dotPartial, incubation: styles.dotPartial, no: styles.dotNo };
+
+// The area's Highlight under the hero: one video, with a line on what it shows and a link to the tutorial.
+function Highlight({ h }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section className={styles.highlightBand} aria-labelledby="area-highlight">
+      <div className={`container ${styles.highlight}`}>
+        <VideoCard video={h.video} isPlaying={playing} onPlay={() => setPlaying(true)} kicker="Highlight" thumb="maxresdefault" />
+        <div>
+          <span className={styles.smallLabel}>Highlight</span>
+          <Heading as="h2" id="area-highlight" className={styles.highlightTitle}>{h.title}</Heading>
+          <p className={styles.muted}>{h.text}</p>
+          {h.link && <Link className={styles.highlightLink} to={h.link.to}>{h.link.label} →</Link>}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function Showcase({ topic }) {
   const s = topic.showcase;
@@ -336,6 +355,7 @@ export default function AreaPage({ basketKey }) {
         </div>
       </section>
       <main>
+        {content?.highlight && <Highlight h={content.highlight} />}
         {/* The projects sit in their own band, apart from the hero above and what follows. */}
         <section className={styles.projectBand}>
           <div className="container">

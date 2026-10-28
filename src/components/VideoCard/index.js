@@ -17,7 +17,7 @@ function slugify(title) {
     .replace(/\s+/g, '-');
 }
 
-export default function VideoCard({ video, isPlaying, onPlay, kicker = 'Video' }) {
+export default function VideoCard({ video, isPlaying, onPlay, kicker = 'Video', thumb = 'mqdefault' }) {
   const id = slugify(video.title);
   useAnchors(id);
   return (
@@ -45,7 +45,7 @@ export default function VideoCard({ video, isPlaying, onPlay, kicker = 'Video' }
             className={styles.thumbButton}
             onClick={onPlay}
             aria-label={`Play: ${video.title}`}
-            style={{ backgroundImage: `url(https://img.youtube.com/vi/${video.id}/mqdefault.jpg)` }}
+            style={{ backgroundImage: `url(https://img.youtube.com/vi/${video.id}/${thumb}.jpg)` }}
           >
             <span className={styles.playBtn}>{PLAY_ICON}</span>
           </button>

@@ -120,10 +120,6 @@ Connectivity Insights checks a single connected device against a profile. Distri
 
 The [Workflows](./workflows#geofencing) require verifying whether a UE is inside a target service area and being notified when UEs enter or leave it, because live media rights and editorial variants are region-specific. CAMARA does address this, in the [DeviceLocation](https://github.com/camaraproject/DeviceLocation) repository (Location Verification, Location Retrieval and Geofencing Subscriptions APIs, with scope limited to 4G and 5G networks), but those APIs are not among the CAMARA APIs documented in this portal section. They are therefore recorded as a requirement and an open point rather than mapped in detail. Any use of location data also carries privacy and consent obligations: under the CAMARA security model, location APIs process personal data, so they require an end-user-consent flow (CIBA) rather than a two-legged client-credentials token.
 
-## Underlying 3GPP mechanisms
-
-The QoS requests map to network capability exposure through the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) and Policy Control Function ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)), exactly as on the contribution side. The monitoring and information-sharing capability corresponds to network capability exposure through the NEF and, at the application-enabling layer, to the Service Enabler Architecture Layer for Verticals (SEAL), 3GPP [TS 23.434](https://www.3gpp.org/dynareport/23434.htm) (also published as ETSI TS 123 434), whose enabling services (including network resource management and location management) are candidates for carrying the shared data. See [Network API Initiatives](/tech/network-apis/overview#3gpp-apis-for-quality-of-service).
-
 ## Open points
 
 - Geofencing (UE location verification and enter/leave notifications) is required by the workflow but is not covered by the CAMARA APIs documented here. The relevant API needs to be identified.
@@ -133,4 +129,4 @@ The QoS requests map to network capability exposure through the Network Exposure
 ## Related
 
 - [Content Production: Using CAMARA APIs](../content-production/using-camara-apis): the fuller QoS API analysis reused here.
-- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and the 3GPP interfaces.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs.

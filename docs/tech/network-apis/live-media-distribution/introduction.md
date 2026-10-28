@@ -36,7 +36,7 @@ When it comes to monitoring QoS, content providers typically have sight of the t
 
 At 5G-MAG we’re investigating the possibility of logging relevant performance data through the client application and sharing it with the network operator. Standard ways of feeding back and sharing data would make the process easier and encourage such collaboration.
 
-This work connects to the network capability exposure APIs analysed elsewhere in this documentation. In particular, the [CAMARA Connectivity Insights](/tech/network-apis/overview#connectivity-insights-api) API offers a candidate mechanism for sharing application-side performance information with operators, and 3GPP [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), the Service Enabler Architecture Layer (SEAL) for verticals, provides the underlying network capability exposure framework. The aim is to close the visibility gap so that both content providers and operators can see the full distribution chain.
+This work connects to the network capability exposure APIs analysed elsewhere in this documentation. In particular, the [CAMARA Connectivity Insights](/tech/network-apis/overview#connectivity-insights-api) API offers a candidate mechanism for sharing application-side performance information with operators. The aim is to close the visibility gap so that both content providers and operators can see the full distribution chain.
 
 The related [Content Production and Contribution](../content-production/introduction) work area analyses the same CAMARA APIs from the uplink (contribution) side.
 
@@ -64,7 +64,6 @@ Two families of network capability are relevant to distribution, and they are an
 - **Quality of Service** for reliable, interruption-free segment delivery. This reuses the same CAMARA QoS APIs analysed for contribution (Quality on Demand, referencing a named QoS Profile), applied on the downlink to a large population of client devices rather than to a few contributing cameras. The [Content Production and Contribution](../content-production/introduction) work area covers those APIs in depth; the distribution-specific differences (scale, geofencing) are highlighted in [Using CAMARA APIs](./using-camara-apis).
 - **Information sharing and network assistance** for diagnosing the visibility gap. The candidate mechanism is the [CAMARA Connectivity Insights](/tech/network-apis/overview#connectivity-insights-api) API (and its subscription variant), which lets an application declare quality thresholds (an Application Profile) and receive the network's assessment of whether it can meet them, one-shot or as recurring notifications.
 
-Underneath, 3GPP capability exposure is provided by the Network Exposure Function (NEF, northbound APIs in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) and, for the application-enabling and analytics layer, the Service Enabler Architecture Layer for Verticals (SEAL), 3GPP TS 23.434 (also published as ETSI TS 123 434). SEAL specifies reusable enabling services (including network resource management and location management) that vertical applications such as media distribution can build on.
 
 ## Geofencing and regional rights
 
@@ -77,4 +76,4 @@ This work reflects analysis in progress by 5G-MAG members. It does not assert th
 ## Related
 
 - [Content Production and Contribution](../content-production/introduction): the same QoS APIs analysed from the uplink side.
-- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs and the 3GPP interfaces they map onto.
+- [Network API Initiatives](/tech/network-apis/overview): the CAMARA APIs.

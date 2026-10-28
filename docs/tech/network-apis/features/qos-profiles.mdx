@@ -57,7 +57,7 @@ The QoS Profiles API definition (YAML) is available at: [qos-profiles.yaml](http
 | `packetDelayBudget`       | the maximum allowable one-way latency between the customer's device and the gateway from the operator's network to other networks. The end-to-end or round trip latency will be about two times this value plus the latency not controlled by the operator (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile packetDelayBudget) |
 | `targetMinDownstreamRate` | the target minimum downstream rate. (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile targetMinDownstreamRate) |
 | `targetMinUpstreamRate`   | the target minimum upstream rate (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile targetMinUpstreamRate) |
-| `packetErrorLossRate` | the exponential power of the allowable error loss rate 10^(-N). For 5G networks the 3GPP specification [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) defines the Packet Error Rate as a 5G QoS characteristic. (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile packetErrorLossRate; TS 23.501 V20.3.0 clause 5.7.3.5) |
+| `packetErrorLossRate` | the exponential power of the allowable error loss rate 10^(-N). (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile packetErrorLossRate) |
 | `jitter`                  | this requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP). (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile jitter) |
 | `minDuration`             | the minimum time a session using this profile can be requested for. (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile minDuration) |
 | `maxDuration`             | the maximum time a session using this profile can be requested for. (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile maxDuration) |
@@ -68,18 +68,13 @@ The response example below also carries fields not listed here (for example `max
 
 ## Standardisation context
 
-QoS Profiles is defined in the CAMARA QoSProfiles repository (OpenAPI 3.0.3, Commonalities-conformant), separate from the QualityOnDemand repository that holds Quality on Demand and QoS Provisioning. It is the catalogue that the whole QoS family reads from: a profile is a named, operator-defined bundle of network characteristics, and the other QoS APIs (Quality on Demand, QoS Provisioning, QoS Booking, QoS Booking and Assignment, and the Dedicated Networks profiles) take a profile `name` as input. The API is read-only: `GET /qos-profiles/{name}` returns one profile, and `POST /retrieve-qos-profiles` returns the profiles matching the given criteria (optionally filtered by `device`, `name` and `status`) (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml externalDocs url; openapi; `/retrieve-qos-profiles` POST).
+QoS Profiles is defined in the CAMARA QoSProfiles repository (OpenAPI 3.0.3). It is the read-only catalogue the QoS family reads from: a profile is a named, operator-defined bundle of network characteristics, and [Quality on Demand](/tech/network-apis/features/quality-on-demand), [QoS Provisioning](/tech/network-apis/features/qos-provisioning), [QoS Booking](/tech/network-apis/features/qos-booking), [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) and the Dedicated Networks profiles take its `name`. `GET /qos-profiles/{name}` returns one profile; `POST /retrieve-qos-profiles` returns those matching `device`, `name` and `status`.
 
-The profile fields resemble the way QoS is characterised inside a 5G Core. A 5G QoS flow is described by a 5G QoS Identifier (5QI) and its associated QoS characteristics: a resource type (guaranteed or non-guaranteed bit rate), a priority level, a Packet Delay Budget and a Packet Error Rate. The CAMARA fields `packetDelayBudget` and `packetErrorLossRate`, the `targetMin`/`max` upstream and downstream rates and `priority` are comparable at an application-facing level, but CAMARA leaves the mapping of profiles to connectivity characteristics to agreement between the API provider and the API consumer, and exposes named profiles rather than raw 5QI values.
-
-Two fields are worth calling out for media:
-
-- `l4sQueueType` indicates the type of queue the profile uses for L4S (Low Latency, Low Loss, Scalable throughput) traffic management: `non-l4s-queue`, `l4s-queue` or `mixed-queue`. L4S is described in IETF RFC 9330, and the field is marked experimental in the API definition.
-- `jitter` is defined against ITU Y.1540 and targets the 99th percentile of round-trip delay variation for acknowledged packets.
+Each profile carries delay budget, error rate, rates and priority; what a name delivers is agreed between the API provider and the consumer. For media, `l4sQueueType` (experimental) selects the L4S queue type, and `jitter` follows ITU Y.1540 (99th percentile).
 
 ### Known gaps
 
-The API has no operation to define a profile: profiles are created out of band by the operator. The names of the profiles on offer can be listed with `POST /retrieve-qos-profiles`, with or without a device filter. Availability is expressed only per country and optionally per network (`countryAvailability`), with no service-area or time dimension, so a profile's availability at a given place and time is not expressed. 5G-MAG's Self-Assessment below records the remaining points as practical gaps for media workflows (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml info.description API functionality; `/retrieve-qos-profiles` POST description; QosProfile countryAvailability).
+Profiles are created out of band by the operator; the API cannot define one. Availability is expressed per country and optionally per network (`countryAvailability`), with no service-area or time dimension. The Self-Assessment lists the remaining gaps.
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27 02:32 UTC",
+  "updated_at": "2026-10-28 02:40 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -273,6 +273,19 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "pulls": [
+        {
+          "repo": "rt-xr-content",
+          "branch": null,
+          "number": 46,
+          "title": "content: bring the work of three old branches into development",
+          "url": "https://github.com/5G-MAG/rt-xr-content/pull/46",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "glTF-Validator",
           "branch": null,
@@ -968,7 +981,21 @@
       "name": "CAMARA Connectivity Quality Management APIs",
       "doc_url": "/reference-tools/network-apis/",
       "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-camara-examples",
+          "branch": null,
+          "number": 12,
+          "title": "Fix/dedicated networks r2 2",
+          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/12",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "Conversational Avatar Communication with MPEG ARF",

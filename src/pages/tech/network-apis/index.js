@@ -16,7 +16,7 @@ export default function NetworkAPIs() {
       techUrl="/tech/network-apis"
       icon={ICON}
       accent="#d1477a"
-      description="Introduces 5G-MAG's analysis of CAMARA network APIs for QoS, slicing and connectivity insight in media use cases, and the underlying 3GPP exposure chain."
+      description="Introduces 5G-MAG's analysis of CAMARA network APIs for QoS, slicing and connectivity insight in media use cases."
       analysisHref="/tech/network-apis/overview"
       standardsHref="/standards/network-apis"
       softwareHref="/reference-tools/network-apis"
@@ -25,9 +25,8 @@ export default function NetworkAPIs() {
           <p className={styles.whyMattersBody}>
                 Without CAMARA, a media application that wants a specific network guarantee: a
                 low-latency contribution link, a reserved slice for an event: has to integrate
-                directly against each operator&apos;s own 3GPP-exposed interfaces (NEF, then PCF for
-                policy), a separate integration per operator. CAMARA hides that chain behind one
-                small, operator-agnostic REST resource, so a developer builds against a single API
+                directly against each operator&apos;s own interfaces, a separate integration per
+                operator. CAMARA offers one small, operator-agnostic REST resource, so a developer builds against a single API
                 once and it works across any operator that implements the same CAMARA profile,
                 instead of maintaining a bespoke integration for every network it needs to reach.
               </p>
@@ -46,7 +45,7 @@ export default function NetworkAPIs() {
                 </p>
                 <p>
                   5G-MAG&apos;s work centres on the CAMARA project (a Linux Foundation initiative with
-                  GSMA support) and its mapping to 3GPP-defined APIs, applied specifically to media
+                  GSMA support) applied specifically to media
                   production and live distribution use cases. GSMA Open Gateway (OGW) API profiles
                   align these CAMARA APIs across operators.
                 </p>

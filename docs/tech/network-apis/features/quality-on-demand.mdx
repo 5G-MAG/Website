@@ -48,23 +48,14 @@ The Quality on Demand API definition (YAML) is available at: [quality-on-demand.
 
 ## Standardisation context
 
-Quality on Demand is part of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). Its notification event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where the event types of the other APIs analysed here are `v0`; the API definition itself is `version: wip`, like the others. It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.version, info.openapi, info.x-camara-commonalities, schemas QosEventType; CAMARA QoSBooking main@4de93f1 qos-booking.yaml; QoSBooking qos-booking-and-assignment.yaml).
+Quality on Demand is part of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3): its event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where the other APIs analysed here are at `v0`; the API definition itself is `version: wip`, like the others (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.version, schemas QosEventType). It takes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles).
 
-### Mapping to 3GPP
-
-QoD is the canonical example of a CAMARA API mapping onto 3GPP northbound exposure:
-
-1. The API provider (acting as, or on behalf of, an Application Function) calls the NEF `AsSessionWithQoS` API in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (the RESTful form of the `Nnef_AFsessionWithQoS` service; procedures in TS 29.522 V20.1.0 clause 4.4.9, API reused from TS 29.122). The QoD request already carries what that API needs: the `device` (mapped to a subscriber identifier), the `applicationServer` address and the `devicePorts` / `applicationServerPorts` (which define the flow descriptors), and the `qosProfile` name (mapped to a QoS reference).
-2. The NEF forwards the request to the Policy Control Function via `Npcf_PolicyAuthorization` ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The PCF authorises it and installs policy on the subscriber's PDU session, enforced by the SMF and UPF (TS 29.522 V20.1.0 clause 4.4.9.2.0; TS 29.514 V20.1.0 clause 4.1.1; TS 23.501 V20.3.0 clause 5.7.1.5).
-3. When the network can no longer sustain the QoS, the NEF raises a notification event, which the QoD provider surfaces to the consumer as a CloudEvent (see Event notifications); the QoD provider also sends an event when a session ends because its duration expired or it was deleted. In 4G/EPC the SCEF takes the role of the NEF.
-
-CAMARA does not mandate this realisation; it is the common correspondence, and an operator may implement QoD against a different southbound interface.
 
 ### Session lifecycle
 
-A session moves through the `qosStatus` values `REQUESTED` (accepted, not yet applied), `AVAILABLE` (QoS is being applied) and `UNAVAILABLE` (the network cannot provide the requested QoS, or no longer does). It is created with `POST /sessions` for a bounded `duration`, can be prolonged with `POST /sessions/{sessionId}/extend` (passing `requestedAdditionalDuration` in seconds), read with `GET /sessions/{sessionId}`, looked up per device with `POST /retrieve-sessions`, and torn down with `DELETE /sessions/{sessionId}`. Because there is no reservation phase, availability is only established when the session is requested (`qosStatus` is `AVAILABLE`, or `REQUESTED` until the network confirms or refuses it); for a scheduled event where capacity must be guaranteed ahead of time, [QoS Booking](/tech/network-apis/features/qos-booking) fits better, and for a profile that should apply on every connection, [QoS Provisioning](/tech/network-apis/features/qos-provisioning) is the persistent option (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas QosStatus, EventQosStatus, StatusInfo; `/sessions` POST description; `/sessions/{sessionId}/extend` POST).
+A session has a `qosStatus` of `REQUESTED`, `AVAILABLE` or `UNAVAILABLE`. `POST /sessions` creates it for a bounded `duration`; `POST /sessions/{sessionId}/extend` adds `requestedAdditionalDuration` (seconds); `GET`, `POST /retrieve-sessions` and `DELETE` read, find and end it. There is no reservation phase, so availability is known only when the session is requested: for guaranteed capacity use [QoS Booking](/tech/network-apis/features/qos-booking), and for a profile on every connection use [QoS Provisioning](/tech/network-apis/features/qos-provisioning).
 
-For a live media flow QoD is the most direct API: it is invoked at the moment the boost is needed, runs for a bounded duration that can be extended, and reports back through the `sink` when the network can no longer sustain the requested QoS so the application can adapt.
+For live media QoD is the most direct API: it is invoked when the boost is needed, can be extended, and reports through the `sink` when the QoS can no longer be sustained.
 
 ---
 
