@@ -89,6 +89,11 @@ export function deriveLinkItems(relDir, urlPrefix, routeBasePathPrefix = '') {
         routeBasePathPrefix
       );
       if (children.length === 0) continue;
+      // A folder labelled "More" is not a category button: its pages sit directly in the list, in the folder's position.
+      if ((meta.label || '').trim().toLowerCase() === 'more') {
+        children.forEach((child, i) => items.push({ ...child, __position: (meta.position ?? Infinity) + i / 100 }));
+        continue;
+      }
       items.push({
         type: 'category',
         label: meta.label || prettify(entry.name),

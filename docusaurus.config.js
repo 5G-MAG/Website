@@ -316,6 +316,16 @@ const config = {
         routeBasePath: 'tech',
         sidebarPath: './sidebars-tech.js',
         breadcrumbs: false,
+        // A folder labelled "More" is not a button in the sidebar: its pages sit directly in the list, where the folder was.
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const flatten = (items) =>
+            items.flatMap((item) => {
+              if (item.type !== 'category') return [item];
+              if (String(item.label).trim().toLowerCase() === 'more') return flatten(item.items);
+              return [{ ...item, items: flatten(item.items) }];
+            });
+          return flatten(await defaultSidebarItemsGenerator(args));
+        },
       },
     ],
     [
