@@ -32,7 +32,7 @@ export const mbsVideos = [
 :::tip[At a glance]
 
 - **Two parts:** MBS User Services (MBSF and MBSTF), and MBS in the 5G System and NG-RAN (MB-SMF, MB-UPF and NR radio bearers).
-- **Two services:** broadcast, for all UEs in a geographical area, and multicast, for a dedicated set of UEs.
+- **Two services:** broadcast, for all User Equipment (UE) in a geographical area, and multicast, for a dedicated set of UEs.
 - **Delivery:** 5GC Shared or Individual delivery to NG-RAN, PTM or PTP over the radio; the MBSF and MBSTF are optional.
 
 :::
@@ -41,7 +41,7 @@ export const mbsVideos = [
 
 ## What MBS is
 
-3GPP Release 17 brings Multicast-Broadcast Services (MBS) to the 5G System, based on 5G Core and New Radio (TS 23.247 V17.0.0 clause 1; TS 38.300 V19.4.0 clause 16.10.1). MBS allows the network to select the most suitable among point-to-multipoint (PTM) or point-to-point (PTP) delivery based on requirements set by either service providers or network operators and/or taking into account concurrent user demand (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4).
+3GPP Release 17 brings Multicast-Broadcast Services (MBS) to the 5G System, based on 5G Core and New Radio (TS 23.247 V17.0.0 clause 1; TS 38.300 V19.4.0 clause 16.10.1). For multicast, NG-RAN is the decision point for switching between point-to-multipoint (PTM) and point-to-point (PTP) delivery (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4).
 
 MBS is a point-to-multipoint service: data is transmitted from a single source to multiple recipients, either to all users in a broadcast service area or to the users in a multicast group. TS 23.247 states what its architecture provides:
 
@@ -67,9 +67,9 @@ A single copy of the MBS traffic is efficiently transported over the 5G core net
 
 **Multicast communication service:** the same content is provided at the same time to a dedicated set of UEs. The content provider and the network can be aware whether the UEs are actually receiving it. A UE can receive it in RRC_CONNECTED, with PTP and/or PTM delivery, and in RRC_INACTIVE, with PTM delivery (TS 23.247 V20.0.0 clause 3.1 (definition and note 3); TS 38.300 V19.4.0 clause 16.10.1).
 
-A Multicast Service uses PTM and/or PTP delivery methods to transport traffic from a single source to User Equipment (UE) terminals within a multicast service area that have subscribed to the service (TS 23.247 V20.0.0 clause 3.1, 4.1, 6.1.2; TS 38.300 V19.4.0 clause 16.10.1). Multicast traffic is efficiently and reliably transported over the 5G core network to compatible base stations using the shared traffic delivery method (TS 23.247 V20.0.0 clause 4.1). The individual traffic delivery method can serve multicast traffic to legacy base stations that do not support MBS (TS 23.247 V20.0.0 clause 4.1, 6.3.1).
+A Multicast Service uses PTM and/or PTP delivery methods to transport traffic from a single source to authorized UEs within an MBS service area (TS 23.247 V20.0.0 clause 3.1, 4.1, 6.1.2; TS 38.300 V19.4.0 clause 16.10.1). For MBS multicast communication, if the NG-RAN node supports MBS, the network shall use the 5GC Shared MBS traffic delivery method for MBS data transmission (TS 23.247 V20.0.0 clause 4.1). The individual traffic delivery method can serve multicast traffic to legacy base stations that do not support MBS (TS 23.247 V20.0.0 clause 4.1, 6.3.1).
 
-MBS-enabled base stations autonomously decide whether to use PTM or PTP delivery methods at the radio access network based on the number of concurrent subscriptions and the quality of the radio channel (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4).
+If a UE is configured with both PTM and PTP transmissions, the gNB dynamically decides whether to deliver multicast data by the PTM leg and/or the PTP leg for a given UE, based on information such as MBS Session quality of service (QoS) requirements, number of joined UEs, UE individual feedback on reception quality, and other criteria (TS 38.300 V19.4.0 clause 16.10.5.4; TS 23.247 V20.0.0 clause 4.1).
 
 <figure style={{maxWidth: '900px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_1.svg')} width="1040" height="470" alt="A Multicast Service is ingested from the service provider's origin server or CDN into the 5G core network. A single copy goes to base stations 1 and 2. Base station 1 uses PTM to the UEs of the multicast group; base station 2 uses PTM and also PTP. Base station 3, which does not support MBS, receives unicast copies and serves each UE through a conventional unicast PDU session." />
@@ -80,16 +80,16 @@ MBS-enabled base stations autonomously decide whether to use PTM or PTP delivery
 
 3GPP identified a number of services across different industry verticals that share the requirement of conveying common data to multiple recipients at the same time - for example public safety, group communications and internet of things (IoT) (TR 23.757 V17.0.0 clause 1 and history).
 
-As multicast and broadcast have the potential to deliver 'common data' services more efficiently than unicast 3GPP has since standardised these capabilities in the 5G system as 5G New Radio Multicast and Broadcast Services (5G-NR MBS) (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.1). 5G-NR MBS was substantially complete in Release 17 (Rel-17), with some (mainly service) aspects carrying over to Rel-18 (TS 23.247 V18.8.0 clause 6.17, which is not in V17.0.0).
+3GPP has since standardised these capabilities in the 5G System (TS 23.247 V20.0.0 clause 4.1), and the NR system enables resource efficient delivery of multicast/broadcast services (TS 38.300 V19.4.0 clause 16.10.1). This page calls them 5G New Radio Multicast and Broadcast Services (5G-NR MBS); the term 5G-NR MBS is not used in TS 23.247 or TS 38.300. Clause 6.17 of TS 23.247, support of multicast MBS session data reception in UE with RRC_INACTIVE state, is in V18.8.0 (Release 18) and is not in V17.0.0 (Release 17) (TS 23.247 V18.8.0 clause 6.17).
 
-Media services, for example linear/live radio and TV, concurrently requested by a number of users, have many characteristics in common with the use cases that were identified, and so may also benefit from 5G-NR MBS (TR 23.757 V17.0.0 clause 1 (IPTV); TS 26.502 V19.6.0 clause 1).
+Media services, for example linear/live radio and TV, concurrently requested by a number of users, have many characteristics in common with the use cases that were identified, and so may also benefit from 5G-NR MBS (5G-MAG analysis; the use cases identified in TR 23.757 V17.0.0 clause 1 include IPTV). TS 26.502 defines an architecture and high-level procedures for User Services conveyed using the 5G multicast-broadcast capabilities of the 5G System (TS 26.502 V19.6.0 clause 1).
 
 ### What kinds of service could be offered with 5G MBS?
 
-MBS supports the delivery of both operator and third-party media content (TS 26.502 V19.6.0 clause 1, 4.2.2).
+MBS supports the delivery of both operator and third-party media content (5G-MAG Explainer, April 2023).
 
 - Broadcast is suitable for localised services at the granularity of individual cells (TS 23.247 V20.0.0 clause 3.1 (MBS service area, note 2), 6.2.2 (note 1)).
-- Multicast allows the efficient and scalable delivery of popular services while ensuring a similar quality of service (QoS) and reliability to that of unicast distribution (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4). Multicast allows a group of UEs to receive services according to QoS requirements and/or prevailing channel conditions (TS 38.300 V19.4.0 clause 16.10.5.4).
+- Multicast allows the efficient and scalable delivery of popular services while ensuring a similar quality of service and reliability to that of unicast distribution (5G-MAG Explainer, April 2023). In TS 38.300 the same QoS requirements apply whether the gNB delivers multicast data by the PTM leg and/or the PTP leg (TS 38.300 V19.4.0 clause 16.10.5.4). Multicast allows a group of UEs to receive services according to QoS requirements and/or prevailing channel conditions (TS 38.300 V19.4.0 clause 16.10.5.4).
 
 ## Explainer and videos
 

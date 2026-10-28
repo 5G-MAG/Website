@@ -25,7 +25,7 @@ This page is the detailed, release-by-release companion to [Non-Terrestrial Netw
 - **Release 19:** 26 change requests.
 - **Release 18:** 14 change requests.
 - **Release 17:** work item NR_NTN_solutions-Core; 22 change requests.
-- **Release 16:** work items FS_NR_NTN_solutions, FS_5GSAT; 1 change request.
+- **Release 16:** work items FS_NR_NTN_solutions, FS_5GSAT; 2 change requests.
 - **Release 15:** work item FS_NR_nonterr_nw; 8 change requests.
 
 :::
@@ -144,6 +144,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 22.822 | 16.0.0 |  | Raised to v.16.0.0 following one-step-approval at SA |  |
+| TR 38.821 | 16.1.0 | 0001 | Correction of round trip delay drift rate for NTN scenarios |  |
 | TR 38.821 | 16.2.0 | 0002 | Corrections to abbreviations, figures and table header | FS_NR_NTN_solutions |
 
 ## Release 15
@@ -196,7 +197,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## TR 38.821 before change control
 
 <details>
-<summary>2 versions before approval</summary>
+<summary>13 versions before approval</summary>
 
 The Foreword of the specification defines the first digit of the version: 1 means presented to TSG for information, 2 means presented to TSG for approval, and 3 or greater indicates a TSG approved document under change control. The change history lists the versions before approval as follows.
 
@@ -204,6 +205,17 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 | --- | --- | --- | --- | --- |
 | Aug 2018 | RAN3#101 | R3-185304 | Skeleton TR | 0.0.0 |
 | Aug 2018 | RAN3#101 | R3-185333 | Agreed version including pCRs of R3-184522, R3-185235, R3-185310 | 0.1.0 |
+| Oct 2018 | RAN3#101bis, RAN2#103bis | R3-186269 | Agreed version including pCRs of R2-1815953, R3-186257, R3-186112, R3-186214 | 0.2.0 |
+| Nov 2018 | RAN3#102, RAN2#104 | R3-187281 | Agreed version including pCRs of R3-187113, R3-187193, R3-187195, R3-187196, R3-187273, R2-1816538, R2-1818514 | 0.3.0 |
+| Mar 2019 | RAN3#103, RAN2#105 | R3-191167 | Agreed version including pCRs of R2-1900564, R2-1902554, R3-191023, R3-191025, R3-191026, R3-191027, R3-191029, R3-191030, R3-191031, R3-191032, R3-191146 | 0.4.0 |
+| Apr 2019 | RAN3#103bis, RAN2#105bis, RAN1#96bis | R3-192186 | Agreed version including pCRs of R2-1905297, R3-191276, R3-191631, R3-192103, R3-192110, R3-192111, R3-192113, R3-192115, R3-192170, R3-192169, R3-192119, R3-192171, R3-192121, R3-192117 | 0.5.0 |
+| Apr 2019 | Post RAN3#103bis | R3-192189 | Removal of R3-192117 changes1. Corrections of chapter 5 headers numbering. Corrections of chapter 8 headers numbering | 0.6.0 |
+| May 2019 | RAN3#104, RAN2#106, RAN1#97 | R3-193293 | Agreed version including pCRs of R3-192758, R3-193207, R3-193208, R3-193209, R3-193212, R3-193216, R3-193277, R3-193287, R3-192783, R3-193182, R3-193049, R3-193217, R3-193218, R2-1906302, R2-1907970, R2-1908243, R1-1907836 | 0.7.0 |
+| Sep 2019 | RAN3#105, RAN2#107, RAN1#98 | R3-194796 | Agreed version including Agreements of Chairman's notes of RAN1#98 as well as pCRs of R2-1910685, R2-1911748 | 0.8.0 |
+| Oct 2019 | RAN3#105bis, RAN2#107bis, RAN1#98bis | R3-196330 | Agreed version including Agreements of Chairman's notes of RAN1#98bis as well as pCRs of R2-1913969, R2-1914055, R2-1914056, R2-1914069, R2-1914070, R2-1914194, R2-1914196, R2-1914198 | 0.9.0 |
+| Dec 2019 | RAN3#106, RAN2#108, RAN1#99 | R3-197795 | pCRs of R1-1913436, R1-1913455, R1-1913426, R1-1913402, R1-1913427, R1-1913260, R2-1914721, R2-1916376, R2-1916386, R2-1916392, R2-1916393, R2-1916396, R3-197002, R2-1916414, R2-1916415, R2-1916469, R2-1916351 | 0.10.0 |
+| Dec 2019 | RAN#86 | RP-192504 | TR Submission to TSG RAN plenary for approval | 1.0.0 |
+| Dec 2019 | RAN#86 | RP-193062 | Corrections to TP implementation | 1.1.0 |
 
 </details>
 

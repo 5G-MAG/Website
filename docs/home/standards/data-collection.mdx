@@ -24,7 +24,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 UE data collection, reporting and event exposure is specified by 3GPP SA4. This page lists its specifications and what each covers.
 
-The page covers Release 17 to Release 19. No Release 20 work item in the 3GPP work plan lists these specifications. The work plan lists TS 29.517, which these specifications build on, under the Release 20 work item AIML_CN_Ph2-CT; its scope is unverified (see [Release history](/standards/data-collection/evolution)).
+The page covers Release 17 to Release 19. No Release 20 work item in the 3GPP work plan lists these specifications. The work plan lists TS 29.517, which these specifications build on, under the Release 20 work items AIML_CN_Ph2-CT and eNetAE20-CT; their scope is unverified (see [Release history](/standards/data-collection/evolution)).
 
 :::tip[At a glance]
 
@@ -49,7 +49,7 @@ The Release column is the release of each document's first version. Titles are e
   ]}
 />
 
-TS 26.531 has the same clause structure in Release 17, 18 and 19. In TS 26.532 the API roots stay at `/v1`; from Release 18 a data reporting configuration is created at `/sessions/{sessionId}/configurations` instead of `/sessions/{sessionId}/configurations/{configurationId}`.
+TS 26.531 has the same clause structure in Release 17, 18 and 19. In the OpenAPI description of TS 26.532 (annex B.3), the API roots stay at `/v1`; in V18.5.0 the CreateConfiguration operation (POST) is under `/sessions/{sessionId}/configurations`, where V17.3.0 puts it under `/sessions/{sessionId}/configurations/{configurationId}`. The resource clauses (clause 6.2.4) are the same in both.
 
 ## 5G System specifications they build on
 

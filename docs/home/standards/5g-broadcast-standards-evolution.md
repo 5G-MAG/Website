@@ -26,7 +26,7 @@ LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of se
 :::tip[At a glance]
 
 - **Release 14:** the FeMBMS baseline, with 1.25 kHz and 7.5 kHz subcarrier spacing, the Cell Acquisition Subframe and the MBMS-dedicated cell.
-- **Release 16:** LTE-based 5G Terrestrial Broadcast, with 2.5 kHz and 0.37 kHz subcarrier spacing and Receive-Only Mode.
+- **Release 16:** LTE-based 5G Terrestrial Broadcast, with 2.5 kHz and 0.37 kHz subcarrier spacing, and an extended Receive-Only Mode report (`MBMS-ROM-Info-r16`).
 - **Release 17:** 6, 7 and 8 MHz PMCH channel bandwidths.
 - **Release 18:** Band 108, and the completion of Band 107.
 - **Release 19:** PMCH phase 2 (time and frequency interleaving), CAS muting, and Bands 112 and 113.
@@ -40,9 +40,9 @@ LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of se
 
 | 3GPP Release | Key additions |
 | ------------ | ------------- |
-| Rel-14 | 1.25 kHz and 7.5 kHz subcarrier spacing (SCS); Cell Acquisition Subframe (CAS); MBMS-dedicated cell; 256-QAM for PMCH; MIB-MBMS; SIB1-MBMS |
-| Rel-16 | 2.5 kHz and 0.37 kHz SCS; new reference-signal patterns; PDCCH Format 4 (aggregation level 16); MBSFN-AreaInfo-r16; Receive-Only Mode (ROM) |
-| Rel-17 | 6/7/8 MHz PMCH channel bandwidths (30/35/40 PRB); Band 107 (612 to 652 MHz, downlink-only) named here, but its TS 36.101 band-table entry and receiver requirements were not written until Release 18 (see below). |
+| Rel-14 | 1.25 kHz and 7.5 kHz subcarrier spacing (SCS); Cell Acquisition Subframe (CAS); MBMS-dedicated cell; MIB-MBMS; SIB1-MBMS |
+| Rel-16 | 2.5 kHz and 0.37 kHz SCS; new reference-signal patterns; PDCCH Format 4 (aggregation level 16); MBSFN-AreaInfo-r16; extended Receive-Only Mode (ROM) report (`MBMS-ROM-Info-r16`) |
+| Rel-17 | 6/7/8 MHz PMCH channel bandwidths (30/35/40 PRB); Band 107 (612 to 652 MHz, downlink-only) is not in the Release 17 TS 36.101 (V17.19.0): its band-table entry and receiver requirements were written in Release 18 (see below). |
 | Rel-18 | Band 108 (470 to 698 MHz, receive-only) and Band 107's TS 36.101/36.104 entries and receiver requirements, both introduced and completed here (CR 6016 to CR 6067, September 2023 to December 2024; see below). |
 | Rel-19 | PMCH time interleaving and frequency interleaving; cyclic shift; TBS scaling; extended MCH scheduling periods; RRC v1900 extension chain |
 | Rel-19 | CAS muting for PSS / SSS / PBCH; SIB1-MBMS v1900; new UE capability |
