@@ -145,7 +145,7 @@ How files are split into source blocks and encoding symbols, the FEC schemes, an
 | Compact No-Code supported; every UE decodes Raptor and recovers any source block RFC 5053 encodes | Sender and receiver | – | TS 26.346 clauses 7.2.1, 7.2.2 (shall) | – |  |
 | Blocking: RFC 3926 algorithm for Compact No-Code, RFC 5053 for Raptor; sub-blocks under 256 KB | Sender | – | TS 26.346 clause 7.2.3 (shall) | – |  |
 | MBMS Download Profile: Compact No-Code and Raptor optional to implement by the BM-SC, mandatory to support by the UE | Sender and receiver | – | TS 26.346 clause L.4.7 (shall) | TS 26.346 clause L.4.7 (shall) |  |
-| MBMS Download Profile: blocking per RFC 3695 for Compact No-Code and RFC 5053 for Raptor | Sender | – | TS 26.346 clause L.4.7 (shall) | TS 26.346 clause L.4.7 (shall) |  |
+| MBMS Download Profile: blocking per RFC 3695 for Compact No-Code and RFC 5053 for Raptor | Sender | – | TS 26.346 clause L.4.7 (should) | TS 26.346 clause L.4.7 (should) |  |
 | FEC-Redundancy-Level of individual transport objects in the FDT | Sender and receiver | – | TS 26.346 clause 7.2.16 (may) | – |  |
 | MBMS FEC scheme definition (Raptor, FEC Encoding ID 1): FEC Payload ID and OTI | Sender and receiver | – | TS 26.346 clause 7.2.12 | – |  |
 | Annex A: blocking and symbol encoding required at the MBMS client and server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
@@ -207,7 +207,6 @@ What a receiver obtains before joining, and the SDP the 3GPP profiles define for
 | SDP for a FLUTE session: source address, channels, TSI, timing, bearer mode, FEC, bandwidth, protocol and media | Session description | – | TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14 (shall) | TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14 (shall) | added in Release 19 |
 | MBMS Download Profile: SDP parameters mandatory, optional or not applicable (table L.4.8-1) | Session description | – | TS 26.346 clauses L.4.7, L.4.8 (shall) | TS 26.346 clauses L.4.7, L.4.8 (shall) |  |
 | MBMS Download Profile: OMA Push and RTSP excluded | Session description | – | TS 26.346 clause L.4.1 (shall not) | TS 26.346 clause L.4.1 (shall not) |  |
-| Transparent delivery services: announcement profile | Session description | – | TS 26.346 clause L.5 (shall) | – |  |
 | OMA Push over other bearers | Session description | – | TS 26.346 clause 7.1 (may) | – |  |
 | MBS session description: restrictions on TS 26.346 clause 7.3 and the mbs-servicetype attribute | Session description | – | – | TS 26.517 clauses 6.2.2.1, 6.2.2.2 (shall) |  |
 | SDP parameters for a FLUTE session (table L.4.8-1) | Session description | – | TS 26.346 clause L.4.8 | TS 26.346 clause L.4.8 |  |
@@ -275,7 +274,7 @@ Integrity, authentication and protection of the session description and of prote
 | Requirement | Side | Unprofiled FLUTE | MBMS download | MBS Object Distribution | Releases |
 | --- | --- | --- | --- | --- | --- |
 | Integrity check of each reconstructed object and FDT Instance | Receiver | v1: RFC 3926 section 7; RFC 3450 section 5; RFC 3451 section 8; RFC 3452 section 7; RFC 5052 section 11; RFC 5053 section 6; RFC 6330 section 6 · v2: RFC 6726 sections 7.2.1, 7.2.2, 7.3.2 (should) | As the RFC | As the RFC | |
-| Packet authentication (EXT_AUTH, TESLA) | Sender and receiver | v1: RFC 3926 section 7; RFC 3450 sections 2.5, 4.3, 4.4, 4.5, 5; RFC 3451 sections 5.2, 6.2, 8; RFC 3452 section 7; RFC 5052 section 11; RFC 5053 section 6; RFC 6330 section 6; RFC 3738 section 7 · v2: RFC 6726 sections 7.3.3, 7.3.4, 7.4, 7.5; RFC 5775 sections 2.5, 5, 5.1, 5.1.1, 5.1.2.1, 5.1.2.2, 5.1.2.3, 5.1.2.4, 5.1.2.5; RFC 5651 sections 8, 8.1, 8.2, 8.3 (shall) | As the RFC | As the RFC | |
+| Packet authentication (EXT_AUTH, TESLA) | Sender and receiver | v1: RFC 3926 section 7; RFC 3450 sections 2.5, 4.3, 4.4, 4.5, 5; RFC 3451 sections 5.2, 6.2, 8; RFC 3452 section 7; RFC 5052 section 11; RFC 5053 section 6; RFC 6330 section 6; RFC 3738 section 7 · v2: RFC 6726 sections 7.3.3, 7.3.4, 7.4, 7.5; RFC 5775 sections 2.5, 5, 5.1, 5.1.1, 5.1.2.1, 5.1.2.2, 5.1.2.3, 5.1.2.4, 5.1.2.5; RFC 5651 sections 8, 8.1, 8.2, 8.3 (should) | As the RFC | As the RFC | |
 | Protecting the session description and the receivers that obtain it | Session description | v1: RFC 3926 section 7; RFC 3450 section 5; RFC 3451 sections 7, 8; RFC 3452 section 7; RFC 3738 section 7; RFC 5052 section 11; RFC 5053 section 6; RFC 6330 section 6 · v2: RFC 6726 section 7.3.1 (should) | As the RFC | As the RFC | |
 | Receiver without write access to system files | Receiver | v1: RFC 3926 section 7 (should) | As the RFC | As the RFC | |
 | Network measures: Reverse Path Forwarding checks, rendezvous point placement | Network | v1: RFC 3926 section 7; RFC 3450 sections 1.3, 5; RFC 3451 section 8; RFC 3452 section 7; RFC 3738 section 7; RFC 5052 section 11; RFC 5053 section 6; RFC 6330 section 6 (should) | As the RFC | As the RFC | |

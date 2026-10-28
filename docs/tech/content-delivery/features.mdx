@@ -34,7 +34,7 @@ Each profile takes FLUTE from a different set of documents, and the columns foll
 
 - **What it covers:** how unprofiled FLUTE, MBMS download and MBS Object Distribution differ in what they require.
 - **Unprofiled FLUTE** leaves most choices open; the MBMS and MBS profiles narrow it for a network without congestion control.
-- **Releases:** Release 19 raises both FDT schema versions and adds repair features; Release 18 changes only wording.
+- **Releases:** Release 19 raises both FDT schema versions and adds repair features; in TS 26.346 Release 18 changes none of the clauses read, and in TS 26.517 Release 18 changes the SDP timing rule.
 
 :::
 
@@ -168,7 +168,7 @@ Each profile takes FLUTE from a different set of documents, and the columns foll
 <details>
 <summary>MBS Object Distribution</summary>
 
-- In the MBMS Download Profile, Compact No-Code and Raptor are optional to implement by the sender and mandatory to support by the UE. Blocking follows the algorithm of RFC 3926 for Compact No-Code (TS 26.346 clause 7.2.3) and the parameter recommendations of RFC 5053 for Raptor (TS 26.346 V19.3.0 clause L.4.7; RFC 5053 section 4.2). Blocking should follow RFC 3695 for Compact No-Code and the parameter recommendations of RFC 5053 for Raptor.
+- In the MBMS Download Profile, Compact No-Code and Raptor are optional to implement by the sender and mandatory to support by the UE. Blocking should follow the algorithm of RFC 3695 for Compact No-Code and should comply with the recommendations of RFC 5053 for Raptor (TS 26.346 V19.3.0 clause L.4.7).
 - The repair procedures handle both schemes: with Compact No-Code the MBS Client considers the source symbols already received, with Raptor the source and repair symbols already received (TS 26.517 V19.3.0 clause 6.2.4.5).
 
 </details>

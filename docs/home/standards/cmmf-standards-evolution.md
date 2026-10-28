@@ -50,4 +50,4 @@ On the 3GPP side, TR 21.919 clause 11.6 (Release 19, Advanced Media Delivery, wo
 ## Related
 
 - [CMMF (Multisource Delivery): Specifications](/standards/cmmf)
-- [CMMF (Multisource Delivery): Technical Analysis](/tech/content-delivery)
+- [CMMF (Multisource Delivery): Technical Analysis](/tech/content-delivery/cmmf)

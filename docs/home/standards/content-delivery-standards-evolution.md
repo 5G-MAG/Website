@@ -53,16 +53,15 @@ The work items below are those that the 3GPP release descriptions (TR 21.915 to 
 | 17 | 5MBUSA | New TS 26.502 (MBS User Service architecture); stage 3 for the MBS user services in TS 26.517, TS 26.346, TS 26.347 and TS 26.348 | TR 21.917 clause 6.3.4.5 |
 | 17 | 5MBP3 | New TS 26.517 for user service announcement (M5) and for the MBS distribution methods (M4): the Object distribution method, based on the MBMS download delivery method of TS 26.346, and the Packet distribution method, based on the transparent delivery method | TR 21.917 clause 6.3.4.3.3 |
 | 18 | UEConfig5MBS | UE pre-configuration for 5MBS; the pre-configured user service description information refers to TS 26.517 | TR 21.918 clause 12.3 |
-| 18 | 5GMS_Pro_Ph2 | Support for 5GMS over MBS and hybrid 5GMS services; updates to TS 26.247 among others | TR 21.918 clause 17.9 |
 | 19 | AMD | In-session unicast repair for MBS object distribution (stage 2 in TS 26.502, stage 3 for MBS and MBMS sessions); the Coded Multi-Source Media Format (ETSI TS 103 973) listed among the stage 3 items | TR 21.919 clause 11.6 |
 
-Release 20 (work plan of 28 September 2026): no work item lists TS 26.346, TS 26.347, TS 26.348 or TS 26.517. There is no TR 21.920 in the archive used for this page, so a Release 20 change that no work plan row lists is not excluded.
+Release 20 (work plan of 28 September 2026): no work item lists TS 26.346, TS 26.347 or TS 26.517. There is no TR 21.920 in the archive used for this page, so a Release 20 change that no work plan row lists is not excluded.
 
 Not stated in the release descriptions: which clauses of TS 26.346 the Release 17 to Release 19 work items changed beyond the Change Requests listed below; for those, the change history of the specification is the source.
 
 ## TS 26.346: Change Requests on FLUTE delivery
 
-Taken from the change history of TS 26.346 V19.3.0, which lists Change Requests from 2016 onwards.
+Taken from the change history of TS 26.346 V19.3.0, which lists changes from 2005 onwards; its table with Change Request numbers starts in 2016-06.
 
 | Date | CR | Subject | Version |
 | --- | --- | --- | --- |
