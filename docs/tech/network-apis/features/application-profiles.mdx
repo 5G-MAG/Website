@@ -100,11 +100,11 @@ There is no notification mechanism on this API: a profile is inert data, and it 
 
 A user of a media application would like to create an Application Profile with the network quality thresholds for the application. The following step creates the profile.
 
-The figure below places Application Profiles in the wider Connectivity Insights flow, so it shows more than the single creation step described here (the Application Profile is the first block; the later blocks belong to Connectivity Insights).
+The figure below is the architecture drawing of the Connectivity Insights APIs. It shows more than the creation step described here: the Application Profiles API is one of the APIs the API consumers invoke; the others belong to Connectivity Insights.
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Sequence showing an Application Profile being created, then referenced by a Connectivity Insights network-quality check." />
-  <figcaption>Application Profiles in the context of a Connectivity Insights check. This page covers only the profile-creation step; the remaining blocks are described on the Connectivity Insights page.</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs, and a booking tool at the production centre invokes the Application Profiles API, both through a Network API Platform linked to the mobile network. The connectivity under monitoring is between the device and the application server, according to the Application Profile." />
+  <figcaption>API consumers (a planning tool and a booking tool) invoke the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs through the Network API Platform. The connectivity under monitoring is that between the device and the application server, according to the Application Profile (figure text). This page covers only the Application Profiles API.</figcaption>
 </figure>
 
 ### Step 1: Creation of Application Profile
@@ -120,12 +120,12 @@ The figure below places Application Profiles in the wider Connectivity Insights 
 What we understand:
 
 - The API is likely to be invoked well before the actual use of the network with the required values of performance and compute resources.
-- The Application Profile appears to be a list of parameters to be monitored on the link between the device and the Application Server (AS, the server endpoint the media flows to or from) once other APIs are invoked passing the Application Profile as body (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml `/check-network-quality` POST request description; ApplicationServer description).
+- The Application Profile appears to be a list of parameters to be monitored on the link between the device and the Application Server (AS, the server endpoint the media flows to or from) once other APIs are invoked passing the `applicationProfileId` in the request body (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml `/check-network-quality` POST request description; ApplicationServer description).
 - Once an `applicationProfileId` is obtained, it can be used by other APIs (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml NetworkQualityInsightRequest.applicationProfileId; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml CreateSubscriptionDetail.applicationProfileId).
 
 Open questions and potential improvements:
 
-- The list of parameters and their units/accuracy should be checked for typical media applications. The parameters are a subset of `qosProfile` with additional compute resources. Harmonise?
+- The list of parameters and their units/accuracy should be checked for typical media applications. The network quality parameters are a subset of the `QosProfile` object of the QoS Profiles API (with one property spelled differently: `packetLossErrorRate` here, `packetErrorLossRate` there), plus the compute resources (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml QosProfile; CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml NetworkQualityThresholds, ComputeResourcesThresholds). Harmonise?
 - Is the packet delay budget defined between device and cloud server, or to the User Plane Function (UPF)? When invoking Connectivity Insights with such a profile and an indicated device and AS, how would this relate?
 
 ---
@@ -184,7 +184,7 @@ The request body below declares the network quality thresholds and compute resou
 }
 ```
 
-Type of response: An **applicationProfileId**. The response echoes back the stored thresholds together with the new identifier to reference in later calls (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml `/application-profiles` POST response 201 ApplicationProfile):
+Type of response: An **applicationProfileId**. The response returns the stored application profile with the new identifier to reference in later calls (only the network quality part is shown here) (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml `/application-profiles` POST response 201 ApplicationProfile):
 
 ```json
 {

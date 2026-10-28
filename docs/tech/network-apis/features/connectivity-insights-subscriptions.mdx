@@ -47,7 +47,7 @@ The Connectivity Insights Subscriptions API definition (YAML) is available at: [
 
 ## Standardisation context
 
-This API is the event-driven counterpart of the one-shot [Connectivity Insights](/tech/network-apis/features/connectivity-insights) check. It follows the CAMARA "explicit subscription" pattern defined by the Commonalities working group: the consumer creates a subscription resource with `POST /subscriptions`, supplies a `sink` callback URL and the `types` of event it wants, and the provider then pushes notifications instead of the consumer polling. This is the same subscription/notification model used by the other event-bearing APIs on this portal (for example [Quality on Demand](/tech/network-apis/features/quality-on-demand) and [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment)), and it maps conceptually onto the NEF monitoring-event subscription mechanism in the 5G Core ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), where an Application Function subscribes to be notified of network events rather than querying repeatedly.
+This API is the event-driven counterpart of the one-shot [Connectivity Insights](/tech/network-apis/features/connectivity-insights) check. It follows the CAMARA "explicit subscription" pattern defined by the Commonalities working group: the consumer creates a subscription resource with `POST /subscriptions`, supplies a `sink` callback URL and the `types` of event it wants, and the provider then pushes notifications instead of the consumer polling. [Quality on Demand](/tech/network-apis/features/quality-on-demand) and [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) also deliver CloudEvents notifications to a `sink`, but they register the `sink` in the request that creates the session or booking, not through a separate `/subscriptions` resource. The explicit subscription maps conceptually onto the NEF monitoring-event subscription mechanism in the 5G Core ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), where an Application Function subscribes to be notified of network events rather than querying repeatedly.
 
 Notifications are [CloudEvents](https://cloudevents.io/) 1.0 JSON documents. The subscription carries a lifetime and a cap: `subscriptionExpireTime` bounds how long it remains active and `subscriptionMaxEvents` bounds how many events are delivered before it closes. `initialEvent: true` requests an event as soon as the subscription is created if the current situation reflects the event request; that event counts towards `subscriptionMaxEvents`. Where present, `sinkCredential` describes how the provider authenticates to the consumer's `sink`.
 
@@ -58,19 +58,19 @@ As with the one-shot API, the payload is qualitative (per-threshold indications 
 A user of a media application would like to obtain Connectivity Insights events. An example figure is shown in the context of using Application Profiles and Connectivity Insights. The following steps are executed:
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Sequence showing an Application Profile being created, then a subscription that delivers recurring network-quality notifications." />
-  <figcaption>An Application Profile is created first (Step 0), then a subscription is created (Step 1) that delivers recurring network-quality notifications.</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs, and a booking tool at the production centre invokes the Application Profiles API, both through a Network API Platform linked to the mobile network. The connectivity under monitoring is between the device and the application server, according to the Application Profile." />
+  <figcaption>API consumers (a planning tool and a booking tool) invoke the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs through the Network API Platform. The connectivity under monitoring is that between the device and the application server, according to the Application Profile (figure text).</figcaption>
 </figure>
 
 ### Step 0: Pre-conditions
 
 - Create an application profile using the **Application Profiles API** (with the relevant application requirements) (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml info.description API functionality usage step 1; CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml CreateSubscriptionDetail.applicationProfileId).
-- Create a device object for the device which media flow is to be monitored (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml CreateSubscriptionDetail.device; info.description Relevant terms).
+- Create a device object for the device which media flow is to be monitored; this is needed only with a two-legged access token, as with a three-legged access token the device is identified from the token and the `device` object must not be provided (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml CreateSubscriptionDetail.device; info.description Relevant terms).
 - Obtain IP address and port of the application server (Ingest Server of Production).
 
 ### Step 1: Subscribe to recurrent events/notifications on network quality
 
-- **POST /subscriptions**, passing the **applicationProfileId** obtained in step 0, the address/port of an application server, and a device object. Indicate expiration time and maximum number of events (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` POST; Config.subscriptionExpireTime/subscriptionMaxEvents via CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.2.3).
+- **POST /subscriptions**, passing the **applicationProfileId** obtained in step 0, the address/port of an application server, and a device object (two-legged access token only). Indicate expiration time and maximum number of events (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml `/subscriptions` POST; Config.subscriptionExpireTime/subscriptionMaxEvents via CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.2.3).
 
 ## 5G-MAG's Self-Assessment
 
@@ -145,9 +145,8 @@ This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
-      "publicAddress": "84.125.93.10",
+      "publicAddress": "203.0.113.0",
       "publicPort": 59765
     },
     "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
@@ -179,9 +178,8 @@ The request below creates a subscription. The key fields are (CAMARA Connectivit
     "subscriptionDetail": {
       "device": {
         "phoneNumber": "+123456789",
-        "networkAccessIdentifier": "123456789@domain.com",
         "ipv4Address": {
-          "publicAddress": "84.125.93.10",
+          "publicAddress": "203.0.113.0",
           "publicPort": 59765
         },
         "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
@@ -208,7 +206,7 @@ The request below creates a subscription. The key fields are (CAMARA Connectivit
 }
 ```
 
-Type of response: A **subscription** object. The response echoes the subscription configuration and adds the assigned `id`, `startsAt`/`expiresAt` window, and current `status`:
+Type of response: A **subscription** object. The response echoes the subscription configuration and adds the assigned `id`, `startsAt`/`expiresAt` window, and current `status`. If more than one device identifier was sent, only one is selected by the implementation and returned (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml info.description Device):
 
 ```json
 {
@@ -217,13 +215,7 @@ Type of response: A **subscription** object. The response echoes the subscriptio
   "config": {
     "subscriptionDetail": {
       "device": {
-        "phoneNumber": "+123456789",
-        "networkAccessIdentifier": "123456789@domain.com",
-        "ipv4Address": {
-          "publicAddress": "84.125.93.10",
-          "publicPort": 59765
-        },
-        "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+        "phoneNumber": "+123456789"
       },
       "applicationServer": {
         "ipv4Address": "192.168.0.1/24",
@@ -268,6 +260,7 @@ The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification
 | Event type                                                                 | Meaning                                                                     |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `org.camaraproject.connectivity-insights-subscriptions.v0.network-quality` | The network quality relative to the subscribed application profile changed. (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml ApiEventType; EventNetworkQuality; callbacks notifications description) |
+| `org.camaraproject.connectivity-insights-subscriptions.v0.subscription-started`, `…subscription-updated`, `…subscription-ended` | The subscription lifecycle events, which the API definition says are managed by Commonalities and identical across the CAMARA APIs that support explicit subscriptions. (CAMARA ConnectivityInsights main@db9c0de connectivity-insights-subscriptions.yaml SubscriptionLifecycleEventType; EventSubscriptionStarted; EventSubscriptionUpdated; EventSubscriptionEnded) |
 
 The `data` object carries the network-quality assessment (the same qualitative per-threshold indications returned by the one-shot [Connectivity Insights](/tech/network-apis/features/connectivity-insights) check, plus the `applicationProfileId`). The `v0` segment in the event type is the event version; for an initial API the event version starts at `v0`, and stable APIs use a version greater than 0.
 

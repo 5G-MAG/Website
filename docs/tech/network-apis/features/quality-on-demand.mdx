@@ -48,7 +48,7 @@ The Quality on Demand API definition (YAML) is available at: [quality-on-demand.
 
 ## Standardisation context
 
-Quality on Demand is the flagship QoS API of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). Of the CAMARA APIs 5G-MAG analyses it is the most mature: its notification event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where the event types of the other APIs analysed here are still `v0`. It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.openapi, info.x-camara-commonalities, schemas QosEventType; CAMARA QoSBooking main@4de93f1 qos-booking.yaml; QoSBooking qos-booking-and-assignment.yaml).
+Quality on Demand is part of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). Its notification event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where the event types of the other APIs analysed here are `v0`; the API definition itself is `version: wip`, like the others. It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.version, info.openapi, info.x-camara-commonalities, schemas QosEventType; CAMARA QoSBooking main@4de93f1 qos-booking.yaml; QoSBooking qos-booking-and-assignment.yaml).
 
 ### Mapping to 3GPP
 
@@ -73,8 +73,8 @@ For a live media flow QoD is the most direct API: it is invoked at the moment th
 A user of a media application wants a QoS boost for the duration of a media flow. The following steps are executed:
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Sequence showing a QoS Profile being looked up by name, then a Quality on Demand session created for that profile and duration." />
-  <figcaption>The QoS profile is looked up by name (via the QoS Profiles API), then a QoD session is created for that profile and duration.</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Quality on Demand API through a Network API Platform linked to the mobile network; a booking tool at the production centre is also an API consumer. The QoS session applies to the segment between the 5G-enabled production devices and the mobile network, to which devices can be attached with POST /sessions." />
+  <figcaption>The Quality on Demand API is invoked by an API consumer through the Network API Platform. The QoS session applies to the segment between the devices and the mobile network, to which devices can be attached with POST /sessions (figure text).</figcaption>
 </figure>
 
 ### Step 0: Pre-conditions
@@ -108,7 +108,6 @@ With **POST /sessions**, to manage latency/throughput priorities. The request sp
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
@@ -140,7 +139,10 @@ With **POST /sessions**, to manage latency/throughput priorities. The request sp
   "qosProfile": "voice",
   "sink": "https://endpoint.example.com/sink",
   "sinkCredential": {
-    "credentialType": "PLAIN"
+    "credentialType": "ACCESSTOKEN",
+    "accessToken": "<access_token>",
+    "accessTokenExpiresUtc": "2025-12-31T23:59:59Z",
+    "accessTokenType": "bearer"
   },
   "duration": 3600
 }
@@ -169,7 +171,6 @@ With **POST /retrieve-sessions** and device object. The request identifies the d
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765

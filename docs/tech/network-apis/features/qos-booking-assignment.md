@@ -95,7 +95,7 @@ With **POST /qos-bookings**. The request reserves capacity for a device count, a
 
 ```json
 {
-  "numDevices": 15,
+  "bookingDeviceCount": 15,
   "qosProfile": "QOS_MEDIA_BROADCAST",
   "startTime": "2025-10-27T15:00:00.000Z",
   "duration": 3600,
@@ -117,12 +117,12 @@ With **POST /qos-bookings**. The request reserves capacity for a device count, a
 }
 ```
 
-Type of response: A **bookingId**, plus the reserved and remaining device counts and the booking status (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml `/qos-bookings` POST BookingOutput):
+Type of response: A **bookingId**, plus the booked and remaining device counts and the booking status. The example below is the CAMARA example `BOOKING_SUCCESSFUL`, where the start time is in the future and the status is `SCHEDULED` (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml `/qos-bookings` POST BookingOutput; examples BOOKING_SUCCESSFUL):
 
 ```json
 {
   "bookingId": "8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",
-  "totalDevices": 15,
+  "bookingDeviceCount": 15,
   "remainingDevices": 15,
   "qosProfile": "QOS_MEDIA_BROADCAST",
   "startTime": "2025-10-27T15:00:00.000Z",
@@ -135,23 +135,20 @@ Type of response: A **bookingId**, plus the reserved and remaining device counts
     },
     "radius": 100
   },
-  "status": "SUCCESSFUL",
-  "statusInfo": "BOOKING_ACCEPTED"
+  "bookingStatus": "SCHEDULED",
+  "statusInfo": "BOOKING_SCHEDULED"
 }
 ```
 
 ### Assign a device
 
-With **POST /qos-bookings/{bookingId}/devices/assign**, and device parameters. The request lists the devices to attach (each identified by any one of phone number, IPv4 address or IPv6 address) (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml info.description Identifier for the device; Devices schema; DeviceAssignmentInput):
+With **POST /qos-bookings/{bookingId}/devices/assign**, and device parameters. The request lists the devices to attach (each identified by a phone number, an IPv4 address or an IPv6 address; the Network Access Identifier is "defined for future use and is not currently supported" in the API description) (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml info.description Identifier for the device; Devices schema; DeviceAssignmentInput):
 
 ```json
 {
   "devices": [
     {
       "phoneNumber": "+14145550101"
-    },
-    {
-      "networkAccessIdentifier": "123456789@domain.com"
     },
     {
       "ipv4Address": {
@@ -206,23 +203,40 @@ The booking event `data` carries `bookingDetails`, `bookingStatus` (`SCHEDULED`,
 
 ### Example notification payload
 
-The following is an illustrative booking status-changed CloudEvent built from the CAMARA structure (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml examples BOOKING_CANCELLED):
+The following booking status-changed CloudEvent is built from the CAMARA structure: `data` carries `bookingDetails` (the CAMARA example `BOOKING_CANCELLED`), `bookingStatus` and `statusInfo`. The values of `id`, `source` and `time` are made up for illustration (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml EventBookingStatusChanged; BookingStatusChanged; examples BOOKING_CANCELLED):
 
 ```json
 {
   "id": "83a0d986-0866-4f38-b8c0-fc65bfcda452",
   "source": "https://api.example.com/qos-booking-and-assignment/v0/qos-bookings/8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",
   "specversion": "1.0",
-  "type": "org.camaraproject.qos-booking-and-assignment.v0.status-changed",
+  "type": "org.camaraproject.qos-booking-and-assignment.v0.booking-status-changed",
   "time": "2025-10-27T15:00:00.000Z",
   "data": {
-    "bookingId": "8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",
-    "status": "SUCCESSFUL",
-    "statusInfo": "BOOKING_ACCEPTED"
+    "bookingDetails": {
+      "bookingId": "8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",
+      "bookingDeviceCount": 15,
+      "remainingDevices": 15,
+      "qosProfile": "QOS_MEDIA_BROADCAST",
+      "startTime": "2025-10-27T15:00:00.000Z",
+      "duration": 3600,
+      "serviceArea": {
+        "areaType": "CIRCLE",
+        "center": {
+          "latitude": 37.735851,
+          "longitude": -127.10066
+        },
+        "radius": 100
+      },
+      "bookingStatus": "TERMINATED",
+      "statusInfo": "BOOKING_CANCELLED"
+    },
+    "bookingStatus": "TERMINATED",
+    "statusInfo": "BOOKING_CANCELLED"
   }
 }
 ```
 
 :::note
-The event types and `status` values above are taken from the CAMARA QoS Booking and Assignment API definition; note the `v0` segment in the event type, indicating the API is at an early version. The `data` field contents in particular should be confirmed against the [`qos-booking-and-assignment.yaml`](https://github.com/camaraproject/QoSBooking/blob/main/code/API_definitions/qos-booking-and-assignment.yaml) for the version you are integrating against (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml QosBookingEventType; examples BOOKING_CANCELLED).
+The `v0` segment in the event type shows that the API is at an early version. The event types and the `data` structure above are those of the CAMARA QoS Booking and Assignment API definition (`version: wip` in the held copy); check them against the [`qos-booking-and-assignment.yaml`](https://github.com/camaraproject/QoSBooking/blob/main/code/API_definitions/qos-booking-and-assignment.yaml) of the version you integrate against (CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml QosBookingEventType; EventBookingStatusChanged).
 :::

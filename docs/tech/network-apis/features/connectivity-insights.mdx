@@ -44,7 +44,7 @@ The Connectivity Insights API definition (YAML) is available at: [connectivity-i
 
 ## Standardisation context
 
-Connectivity Insights is a CAMARA sandbox/incubating API (OpenAPI 3.0.3, Commonalities-conformant). It is a read-only, request/response API: it does not change any network state and does not create a QoS session. Where a QoS request maps to the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), Connectivity Insights instead draws on the network's monitoring and analytics capabilities. Inside a 5G Core these are exposed as NEF monitoring events and, for predictive or aggregated signals, the Network Data Analytics Function (NWDAF). CAMARA does not require any particular source; an operator may satisfy the check from live measurements, from analytics, or from a mix.
+Connectivity Insights is defined in OpenAPI 3.0.3; the held definition is a work-in-progress version (`version: wip`) that declares `x-camara-commonalities: 0.9.0` (CAMARA ConnectivityInsights main@db9c0de connectivity-insights.yaml info). It is a read-only, request/response API: it does not change any network state and does not create a QoS session. In the 3GPP northbound model a QoS request corresponds to the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm) V20.1.0 clause 4.4.9.2.0). A Connectivity Insights provider may instead use sources such as the monitoring events (TS 29.522 V20.1.0 clause 4.4.2) and the analytics information (clause 4.4.14.1) that the NEF exposes. The CAMARA definition names no particular source; an operator may satisfy the check from live measurements, from analytics, or from a mix.
 
 The design decision most relevant to media is the qualitative response. Each threshold field in the reply carries a string such as `"meets the application requirements"` rather than a measured value; `additionalKPIs` adds supporting context (for example `signalStrength`, `connectivityType`). This keeps the API operator-agnostic (operators do not have to expose raw core measurements), but it limits how much an application can adapt: it learns that a requirement is not met, but not by how much. 5G-MAG's Self-Assessment records this as a gap for professional media, where a quantitative figure (for example the actual latency on the device-to-application-server path) would allow targeted remedies.
 
@@ -55,8 +55,8 @@ By default the check uses the current date and time; the optional `monitoringTim
 A user of a media application would like to obtain Connectivity Insights about the ability of the network to meet the requirements. The following steps are executed:
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Sequence showing an Application Profile being created, then a Connectivity Insights one-shot network-quality check that references it." />
-  <figcaption>An Application Profile is created first (Step 0), then referenced in a single check-network-quality call (Step 1).</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs, and a booking tool at the production centre invokes the Application Profiles API, both through a Network API Platform linked to the mobile network. The connectivity under monitoring is between the device and the application server, according to the Application Profile." />
+  <figcaption>API consumers (a planning tool and a booking tool) invoke the Application Profiles, Connectivity Insights and Connectivity Insights Subscriptions APIs through the Network API Platform. The connectivity under monitoring is that between the device and the application server, according to the Application Profile (figure text).</figcaption>
 </figure>
 
 ### Step 0: Pre-conditions
@@ -143,9 +143,8 @@ This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
-      "publicAddress": "84.125.93.10",
+      "publicAddress": "203.0.113.0",
       "publicPort": 59765
     },
     "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
@@ -168,9 +167,8 @@ With **POST /check-network-quality** passing (CAMARA ConnectivityInsights main@d
   "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
-      "publicAddress": "84.125.93.10",
+      "publicAddress": "203.0.113.0",
       "publicPort": 59765
     },
     "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"

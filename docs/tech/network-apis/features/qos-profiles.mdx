@@ -85,11 +85,11 @@ The API has no operation to define a profile: profiles are created out of band b
 
 ## Workflow: Media application retrieving QoS profiles
 
-A user of a media application would like to retrieve QoS profiles available in the network. An example figure is shown using the QoS Profiles in the context of Quality on Demand. The following steps are executed:
+A user of a media application would like to retrieve QoS profiles available in the network. An example figure is shown for the Quality on Demand API, which consumes a QoS profile name. The following steps are executed:
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Sequence showing a QoS Profile being retrieved by name, then used in a Quality on Demand session request." />
-  <figcaption>QoS Profiles in the context of a Quality on Demand request: the profile is looked up by name (Step 1) and the name is then passed to the QoD session.</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Quality on Demand API through a Network API Platform linked to the mobile network; a booking tool at the production centre is also an API consumer. The QoS session applies to the segment between the 5G-enabled production devices and the mobile network, to which devices can be attached with POST /sessions." />
+  <figcaption>The Quality on Demand API is invoked by an API consumer through the Network API Platform. The QoS session applies to the segment between the devices and the mobile network, to which devices can be attached with POST /sessions (figure text). The profile names come from the QoS Profiles API (described in the steps below).</figcaption>
 </figure>
 
 ### Step 0: Pre-conditions
@@ -110,7 +110,6 @@ The QoS Profiles API would be used prior to the start of the event in order to u
 
 Potential improvements:
 
-- A way to list profile names available in the network
 - A solution to the fact that QoS Profiles need to be established manually before being able to invoke them.
 - Availability is expressed only per country and network (`countryAvailability`), not per location or service area. It would be impractical if QoS Profiles would only be retrievable once in the exact location and at a given time.
 
@@ -126,7 +125,6 @@ With **POST /retrieve-qos-profiles**, and optional device parameters. The reques
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
@@ -138,10 +136,9 @@ With **POST /retrieve-qos-profiles**, and optional device parameters. The reques
 }
 ```
 
-Type of response: information about the QoS Profiles, returned as an array of profile objects. Each object carries the profile `name`, `description`, `status` and its performance characteristics (rates, delay, jitter, priority, and so on) (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml `/retrieve-qos-profiles` POST 200; QosProfile):
+Type of response: information about the QoS Profiles, returned as an array of profile objects. Each object carries the profile `name`, `description`, `status` and its performance characteristics (rates, delay, jitter, priority, and so on) (CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml `/retrieve-qos-profiles` POST 200; QosProfile; RateUnitEnum). The values are examples only; they stand for the actual network values:
 
 ```json
-// Example values: replace with actual network requirements
 [
   {
     "name": "voice",
@@ -149,27 +146,27 @@ Type of response: information about the QoS Profiles, returned as an array of pr
     "status": "ACTIVE",
     "targetMinUpstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxUpstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxUpstreamBurstRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "targetMinDownstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxDownstreamRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "maxDownstreamBurstRate": {
       "value": 128,
-      "unit": "Kbps"
+      "unit": "kbps"
     },
     "minDuration": {
       "value": 60,

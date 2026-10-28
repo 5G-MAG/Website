@@ -55,7 +55,7 @@ Both rate parameters (`downStreamRatePerDevice`, `upStreamRatePerDevice`) indica
 
 ## Standardisation context
 
-Network Slice Booking is a CAMARA API (OpenAPI 3.0.3). It exposes, at a booking-request level, what 3GPP defines as network slicing. In the 5G System a slice is identified by a Single Network Slice Selection Assistance Information value (S-NSSAI, [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.15.2.1) and is characterised, at management level, by a Network Slice Template. The management of slices (creation, allocation, deallocation) is covered by 3GPP slice management specifications, and the industry parameter template is the GSMA Generic Network Slice Template (GST). At runtime, the SEAL Network Slice Capability Enablement (NSCE) service exposes slice capabilities to vertical applications ([TS 23.434](https://www.3gpp.org/dynareport/23434.htm) V20.1.0 clause 16; the detailed specification is TS 23.435, as referenced in TS 23.434 V20.1.0 clause 16.1).
+Network Slice Booking is a CAMARA API (OpenAPI 3.0.3). It exposes, at a booking-request level, what 3GPP defines as network slicing. In the 5G System a slice is identified by a Single Network Slice Selection Assistance Information value (S-NSSAI, [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.15.2.1) TS 23.501 V20.3.0 clause 5.15.2.2 (NOTE 2) refers to GSMA NG.116, "Generic Network Slice Template", for a mapping of GSMA defined Network Slice Types to standard SST values. The slice management specifications are not analysed on this page. At runtime, the SEAL Network Slice Capability Enablement (NSCE) service exposes slice capabilities to vertical applications ([TS 23.434](https://www.3gpp.org/dynareport/23434.htm) V20.1.0 clause 16; the detailed specification is TS 23.435, as referenced in TS 23.434 V20.1.0 clause 16.1).
 
 The CAMARA `network-slice-booking.yaml` does not use this 3GPP nomenclature. It exposes independent, application-facing concepts (service time, a circular or polygonal service area, and a `sliceQosProfile` of per-device rates, delay budgets and a device count) rather than S-NSSAI, GST or URSP. The 3GPP terms above are therefore background, not a normative part of the API; the correspondence is 5G-MAG analysis and an operator may implement the booking differently.
 
@@ -157,11 +157,43 @@ or described as a polygon (an ordered list of boundary coordinates):
   },
 ```
 
-Type of response: the booking attributes (`serviceTime`, `serviceArea`, `sliceQosProfile`) plus a **sliceId** identifying the booking (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST response 201; SliceInfo):
+Type of response: the booking attributes (`serviceTime`, `serviceArea`, `sliceQosProfile`) plus a **sliceId** identifying the booking. The example below is the CAMARA example `RESPONSE_CIRCLE` (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST response 201; SliceInfo; examples RESPONSE_CIRCLE):
 
 ```json
 {
-  "sliceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "status": "REQUESTED"
+  "serviceTime": {
+    "startDate": "2024-06-01T12:00:00Z",
+    "endDate": "2024-06-02T12:00:00Z"
+  },
+  "serviceArea": {
+    "areaType": "CIRCLE",
+    "center": {
+      "latitude": 45.754114,
+      "longitude": 4.860374
+    },
+    "radius": 800
+  },
+  "sliceQosProfile": {
+    "maxNumOfDevices": 5,
+    "downStreamRatePerDevice": {
+      "value": 10,
+      "unit": "bps"
+    },
+    "upStreamRatePerDevice": {
+      "value": 10,
+      "unit": "bps"
+    },
+    "downStreamDelayBudget": {
+      "value": 12,
+      "unit": "Milliseconds"
+    },
+    "upStreamDelayBudget": {
+      "value": 12,
+      "unit": "Milliseconds"
+    }
+  },
+  "sliceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
 ```
+
+The request can also carry an optional `sink` (a callback URL) and a `sinkCredential`; a slice event is then notified as a CloudEvent of type `org.camaraproject.network-slice-booking.v0.status-changed`, whose `data` has the slice attributes (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceAttributes sink, sinkCredential; ApiEventType; SliceCreatedEvent; examples SLICE_CREATED_EVENT_CIRCLE).

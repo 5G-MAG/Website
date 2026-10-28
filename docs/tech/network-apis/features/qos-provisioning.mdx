@@ -51,7 +51,7 @@ The QoS Provisioning API definition (YAML) is available at: [qos-provisioning.ya
 
 ## Standardisation context
 
-QoS Provisioning is defined in the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) and, when active, maps to the same 5G Core machinery as the rest of the QoS family: the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) driving `Npcf_PolicyAuthorization` on the PCF ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)).
+QoS Provisioning is defined in the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). It consumes a named profile from the [QoS Profiles API](/tech/network-apis/features/qos-profiles) and, in the 3GPP northbound model, an AF session with required QoS corresponds to the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm) V20.1.0 clause 4.4.9.2.0), in which the NEF interacts with the PCF using the `Npcf_PolicyAuthorization` service ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm) V20.1.0 clause 4.1.1). The CAMARA definition does not specify how an assignment that applies until it is deleted maps to it.
 
 The distinguishing property is persistence. Where [Quality on Demand](/tech/network-apis/features/quality-on-demand) applies a profile for a bounded session `duration`, QoS Provisioning creates an assignment (`POST /qos-assignments`) that applies the profile to the device every time it connects, until the assignment is deleted (`DELETE /qos-assignments/{assignmentId}`). `GET /qos-assignments/{assignmentId}` reads the assignment and `POST /retrieve-qos-assignment` looks it up by device. The returned `status` is `REQUESTED` (still being processed), `AVAILABLE` (assigned and active) or `UNAVAILABLE` (processed but not active).
 
@@ -70,11 +70,11 @@ A practical limitation for media, recorded in the Self-Assessment below, is that
 
 ## Workflow: Media application using the QoS Provisioning API to assign a QoS profile to a device
 
-A user of a media application would like to request the assignment of a QoS Profile to a device. An example figure is shown using the QoS Provisioning in the context of Quality on Demand. The following steps are executed:
+A user of a media application would like to request the assignment of a QoS Profile to a device. An example figure is shown for the Quality on Demand API, the related QoS API that applies to a session. The following steps are executed:
 
 <figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Sequence showing a QoS Profile being looked up, then assigned to a device via QoS Provisioning." />
-  <figcaption>QoS Provisioning shown in the Quality on Demand context: the profile is looked up by name, then attached to the device so it applies on every connection.</figcaption>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_qualityondemand.png')} width="80%" alt="Architecture drawing: a planning tool at the field location invokes the Quality on Demand API through a Network API Platform linked to the mobile network; a booking tool at the production centre is also an API consumer. The QoS session applies to the segment between the 5G-enabled production devices and the mobile network, to which devices can be attached with POST /sessions." />
+  <figcaption>The Quality on Demand API is invoked by an API consumer through the Network API Platform. The QoS session applies to the segment between the devices and the mobile network, to which devices can be attached with POST /sessions (figure text). QoS Provisioning does not use sessions; it is described in the steps below.</figcaption>
 </figure>
 
 ### Step 0: Pre-conditions
@@ -112,6 +112,34 @@ Potential improvements:
 
 ## Quality-on-Demand (QoD) Provisioning API Usage
 
+### Assigning a QoS profile to a device
+
+With **POST /qos-assignments**, passing the `qosProfile` name and, with a two-legged access token, the `device` object; an optional `sink` receives notifications. The request below is built from the `CreateAssignment` schema (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml `/qos-assignments` POST; schemas CreateAssignment, BaseAssignmentInfo):
+
+```json
+{
+  "device": {
+    "phoneNumber": "+123456789"
+  },
+  "qosProfile": "QOS_L",
+  "sink": "https://application-server.com/callback"
+}
+```
+
+Type of response: the assignment with its `assignmentId` and the initial `status` `REQUESTED`. The example is the CAMARA example `ASSIGNMENT_CREATION_EXAMPLE_WITH_DEVICE_RESPONSE`; if more than one device identifier was sent, only one is returned (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml examples ASSIGNMENT_CREATION_EXAMPLE_WITH_DEVICE_RESPONSE; schemas Status):
+
+```json
+{
+  "device": {
+    "phoneNumber": "+123456789"
+  },
+  "qosProfile": "QOS_L",
+  "sink": "https://application-server.com/callback",
+  "assignmentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "status": "REQUESTED"
+}
+```
+
 ### Obtaining the QoS assignment for a device
 
 With **POST /retrieve-qos-assignment**, and device object. The request identifies the device whose assignment is queried (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml `/retrieve-qos-assignment` POST; schemas RetrieveAssignmentByDevice):
@@ -120,7 +148,6 @@ With **POST /retrieve-qos-assignment**, and device object. The request identifie
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
@@ -148,5 +175,26 @@ Type of response: the assignment details, including the assigned `qosProfile`, t
   "assignmentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "startedAt": "2024-05-12T17:32:01Z",
   "status": "AVAILABLE"
+}
+```
+
+---
+
+## Event notifications
+
+When a `sink` is given, the API provider notifies status changes of the assignment as CloudEvents. The event type is `org.camaraproject.qos-provisioning.v0.status-changed`, and the `data` carries the `assignmentId`, the `status` (`AVAILABLE` or `UNAVAILABLE`) and optionally a `statusInfo` (CAMARA QualityOnDemand main@471aa35 qos-provisioning.yaml QosProvisioningEventType; EventStatusChanged; StatusChanged). The CAMARA example for an assignment that became unavailable is below (examples ASSIGNMENT_STATUS_CHANGED_EXAMPLE):
+
+```json
+{
+  "id": "83a0d986-0866-4f38-b8c0-fc65bfcda452",
+  "source": "https://api.example.com/qos-provisioning/v0.4/qos-assignments/123e4567-e89b-12d3-a456-426614174000",
+  "specversion": "1.0",
+  "type": "org.camaraproject.qos-provisioning.v0.status-changed",
+  "time": "2021-12-12T00:00:00Z",
+  "data": {
+    "assignmentId": "123e4567-e89b-12d3-a456-426614174000",
+    "status": "UNAVAILABLE",
+    "statusInfo": "NETWORK_TERMINATED"
+  }
 }
 ```

@@ -1,7 +1,7 @@
 ---
 title: CAMARA QoS Booking
 hide_title: true
-description: Describes the CAMARA QoS Booking API, which reserves a QoS profile in advance for specific devices known at booking time.
+description: Describes the CAMARA QoS Booking API, which reserves a QoS profile in advance for a device known at booking time.
 sidebar_label: "QoS Booking"
 sidebar_position: 5
 ---
@@ -37,7 +37,7 @@ The QoS Booking API definition (YAML) is available at: [qos-booking.yaml](https:
 
 ### QoS Booking API
 
-- **POST /device-qos-bookings** with a request body containing `qosProfile`, `applicationServer`, `applicationServerPorts`, `device` object, `devicePorts`, `startTime`, `duration`, `serviceArea`, it creates a time-bounded booking of a QoS profile for the specified devices. The response includes a `bookingId` (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and BookingInfo).
+- **POST /device-qos-bookings** with a request body containing `qosProfile`, `applicationServer`, `applicationServerPorts`, `device` object, `devicePorts`, `startTime`, `duration`, `serviceArea`, it creates a time-bounded booking of a QoS profile for the specified device. The response includes a `bookingId` (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and BookingInfo).
   - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](/tech/network-apis/features/qos-profiles) (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description; QoSProfileName schema).
 - **GET /device-qos-bookings/{bookingId}** - Get QoS Booking information (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings/{bookingId}` GET getBookingById).
 - **DELETE /device-qos-bookings/{bookingId}** - Deletes a QoS Booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings/{bookingId}` DELETE deleteBooking).
@@ -49,15 +49,15 @@ QoS Booking is part of the CAMARA QoSBooking repository (OpenAPI 3.0.3, Commonal
 
 ### Device-bound bookings
 
-This API binds the reservation to specific devices supplied at booking time. `POST /device-qos-bookings` takes an optional `device` object (omitted when a 3-legged token identifies the device), the `qosProfile`, the `applicationServer` and `applicationServerPorts` / `devicePorts` that scope the flow, and the booking window, and returns a `bookingId` with a `bookingStatus` (for example `REQUESTED`, then `SCHEDULED`). `POST /retrieve-device-qos-bookings` looks up the bookings held for a given device (a device may hold several, for different times or locations), and `GET`/`DELETE /device-qos-bookings/{bookingId}` read and cancel a booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and bookingStatus; `/retrieve-device-qos-bookings` POST 200 response; BookingStatus enum).
+This API binds the reservation to the device supplied at booking time. `POST /device-qos-bookings` takes an optional `device` object (omitted when a 3-legged token identifies the device), the `qosProfile`, the `applicationServer` and `applicationServerPorts` / `devicePorts` that scope the flow, and the booking window, and returns a `bookingId` with a `bookingStatus` (for example `REQUESTED`, then `SCHEDULED`). `POST /retrieve-device-qos-bookings` looks up the bookings held for a given device (a device may hold several, for different times or locations), and `GET`/`DELETE /device-qos-bookings/{bookingId}` read and cancel a booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and bookingStatus; `/retrieve-device-qos-bookings` POST 200 response; BookingStatus enum).
 
-This is the "devices known up front" variant. Where the exact devices are not known until later, the related [QoS Booking and Assignment API](/tech/network-apis/features/qos-booking-assignment) reserves for a device count and lets devices be assigned and released afterwards. Where no reservation is wanted at all and the boost is requested at the moment of use, [Quality on Demand](/tech/network-apis/features/quality-on-demand) is the direct session API, and [QoS Provisioning](/tech/network-apis/features/qos-provisioning) applies a profile persistently. All of these APIs take a profile name from the QoS Profiles catalogue.
+This is the "device known up front" variant. Where the exact devices are not known until later, the related [QoS Booking and Assignment API](/tech/network-apis/features/qos-booking-assignment) reserves for a device count and lets devices be assigned and released afterwards. Where no reservation is wanted at all and the boost is requested at the moment of use, [Quality on Demand](/tech/network-apis/features/quality-on-demand) is the direct session API, and [QoS Provisioning](/tech/network-apis/features/qos-provisioning) applies a profile persistently. All of these APIs take a profile name from the QoS Profiles catalogue.
 
 ---
 
 ## Workflow: Media application booking QoS for a device
 
-A user of a media application wants to reserve a QoS profile for one or more known devices ahead of an event. The following steps are executed:
+A user of a media application wants to reserve a QoS profile for a known device ahead of an event. The following steps are executed:
 
 ### Step 0: Pre-conditions
 
@@ -66,7 +66,7 @@ A user of a media application wants to reserve a QoS profile for one or more kno
 
 ### Step 1: Create the booking
 
-- **POST /device-qos-bookings** passing the `qosProfile`, the `device` object(s), the `serviceArea`, `startTime` and `duration`. The response returns a `bookingId` used to query or cancel the booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking; BookingInfo bookingId; `/device-qos-bookings/{bookingId}` GET and DELETE).
+- **POST /device-qos-bookings** passing the `qosProfile`, the `device` object, the `serviceArea`, `startTime` and `duration`. The response returns a `bookingId` used to query or cancel the booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking; BookingInfo bookingId; `/device-qos-bookings/{bookingId}` GET and DELETE).
 
 ---
 
@@ -74,8 +74,8 @@ A user of a media application wants to reserve a QoS profile for one or more kno
 
 This section records 5G-MAG's practical reading of the API and the open points it raises for media use.
 
-- Booking directly against known devices keeps the model simple for a single-device contribution feed (for example a MoJo uplink) or a small crew where the devices are fixed in advance.
-- Because the reservation is bound to specific devices at booking time, substituting a device mid-event (for example replacing a failed camera) requires a new booking rather than reassigning the existing one. Where the exact devices are not known up front, or may change, [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) is the better fit.
+- Booking directly against a known device keeps the model simple for a single-device contribution feed (for example a MoJo uplink); for a small crew with fixed devices, each device would need its own booking, as the API definition books for "a specific device".
+- Because the reservation is bound to the device given at booking time, substituting a device mid-event (for example replacing a failed camera) requires a new booking rather than reassigning the existing one. Where the exact devices are not known up front, or may change, [QoS Booking and Assignment](/tech/network-apis/features/qos-booking-assignment) is the better fit.
 - Like the other QoS-family APIs, there is no separate discovery step: availability is only confirmed once the booking is created.
 
 Potential improvements:
@@ -100,7 +100,6 @@ With **POST /device-qos-bookings**, and device parameters. The request specifies
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
@@ -131,25 +130,34 @@ With **POST /device-qos-bookings**, and device parameters. The request specifies
     "ports": [5060, 5070]
   },
   "sink": "https://endpoint.example.com/sink",
-  "sinkCredential": {},
+  "sinkCredential": {
+    "credentialType": "ACCESSTOKEN",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR...",
+    "accessTokenExpiresUtc": "2024-12-01T12:00:00Z",
+    "accessTokenType": "bearer"
+  },
   "startTime": "2024-06-01T12:00:00Z",
   "duration": 3600,
-  "serviceArea": {}
+  "serviceArea": {
+    "areaType": "CIRCLE",
+    "center": {
+      "latitude": 50.735851,
+      "longitude": 7.10066
+    },
+    "radius": 100
+  }
 }
 ```
 
-Type of response: A **bookingId** (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST 201 BookingInfo)
+Type of response: A **bookingId** and the booking status, with the other attributes of the booking. If more than one type of device identifier was provided, only one identifier is returned, at the implementation's choice; `startedAt` is not returned while the status is `REQUESTED` or `SCHEDULED` (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST 201 BookingInfo; BookingInfo description; startedAt)
 
 ```json
 {
   "device": {
-    "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
-    },
-    "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+    }
   },
   "qosProfile": "QCI_1_voice",
   "applicationServer": {
@@ -175,12 +183,17 @@ Type of response: A **bookingId** (CAMARA QoSBooking main@4de93f1 qos-booking.ya
     "ports": [5060, 5070]
   },
   "sink": "https://endpoint.example.com/sink",
-  "sinkCredential": {},
   "startTime": "2024-06-01T12:00:00Z",
   "duration": 3600,
-  "serviceArea": {},
+  "serviceArea": {
+    "areaType": "CIRCLE",
+    "center": {
+      "latitude": 50.735851,
+      "longitude": 7.10066
+    },
+    "radius": 100
+  },
   "bookingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "startedAt": "2024-06-01T12:00:00Z",
   "bookingStatus": "REQUESTED"
 }
 ```
@@ -193,7 +206,6 @@ With **POST /retrieve-device-qos-bookings**, and device parameters. The request 
 {
   "device": {
     "phoneNumber": "+123456789",
-    "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "203.0.113.0",
       "publicPort": 59765
@@ -221,7 +233,7 @@ With **GET /device-qos-bookings/{bookingId}**. The response returns the booking'
   "sink": "https://application-server.com/notifications",
   "startTime": "2024-06-01T12:00:00Z",
   "startedAt": "2024-06-01T12:00:00Z",
-  "bookingStatus": "SCHEDULED",
+  "bookingStatus": "ACTIVATED",
   "serviceArea": {
     "areaType": "CIRCLE",
     "center": {
@@ -229,6 +241,33 @@ With **GET /device-qos-bookings/{bookingId}**. The response returns the booking'
       "longitude": 7.10066
     },
     "radius": 100
+  }
+}
+```
+
+---
+
+## Event notifications
+
+The request can carry an optional `sink` (a callback URL) and a `sinkCredential`. When `sink` is included, the API provider sends notifications about status changes of the booking, for example when its duration expires, as CloudEvents; if `sink` is included, it is recommended to provide `sinkCredential` as well, and `sinkCredential.credentialType` must be `ACCESSTOKEN` or `PRIVATE_KEY_JWT` in the current version (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description Notification URL and token).
+
+| Event type | Meaning |
+| --- | --- |
+| `org.camaraproject.qos-booking.v0.status-changed` | The status of the booking changed. The `data` carries `bookingId`, `bookingStatus` (`SCHEDULED`, `ACTIVATED` or `TERMINATED`) and optionally `statusInfo` (CAMARA QoSBooking main@4de93f1 qos-booking.yaml BookingEventType; EventStatusChanged; BookingStatusChanged). |
+
+The CAMARA example for a booking that ended because its duration expired is below. The values of `id`, `source` and `time` come from that example (CAMARA QoSBooking main@4de93f1 qos-booking.yaml examples BOOKING_STATUS_CHANGED_EXAMPLE):
+
+```json
+{
+  "id": "83a0d986-0866-4f38-b8c0-fc65bfcda452",
+  "source": "https://api.example.com/qod/v1/sessions/123e4567-e89b-12d3-a456-426614174000",
+  "type": "org.camaraproject.qos-booking.v0.status-changed",
+  "specversion": "1.0",
+  "time": "2024-06-01T13:00:00Z",
+  "data": {
+    "bookingId": "123e4567-e89b-12d3-a456-426614174000",
+    "bookingStatus": "TERMINATED",
+    "statusInfo": "DURATION_EXPIRED"
   }
 }
 ```
