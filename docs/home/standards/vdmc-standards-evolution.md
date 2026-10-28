@@ -36,4 +36,4 @@ The cover of ISO/IEC 23090-29:2026 reads "International Standard, First edition,
 ## Related
 
 - [Dynamic Mesh Coding: Specifications](/standards/vdmc)
-- [Dynamic Mesh Coding: Technical Analysis](/tech/vdmc)
+- [Dynamic Mesh Coding: Technology](/tech/vdmc)

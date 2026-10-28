@@ -36,7 +36,7 @@ function SdoCard({ sdo }) {
 }
 
 // The landing page every project shares (/tech/<project>), in this order: hero with the taxonomy tagline, the intro
-// with cover image, why it matters, the overview deck, the three steps (Technical Analysis, Specifications, Software
+// with cover image, why it matters, the overview deck, the three steps (Technology, Specifications, Software
 // Accelerator), Standards Implemented, Open Source, Built Together, and Repositories.
 // A page passes only what is its own: the intro and "why it matters" prose as children, and its icon and cover.
 //   title, tagline: when the page is not named after the taxonomy project (the 6G study).

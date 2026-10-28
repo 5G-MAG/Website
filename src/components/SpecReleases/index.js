@@ -173,7 +173,7 @@ export default function SpecReleases({ map }) {
   );
 }
 
-// Topics: for each specification, the Technical Analysis features its requirements fall under, in the issue in
+// Topics: for each specification, the Technology features its requirements fall under, in the issue in
 // force at the baseline release, largest first. The counts behind it stay in the data file; they are not shown.
 export function SpecTopics({ map, minShare = 0.1 }) {
   const docs = map.documents.filter((d) => d.topics && d.topics.length > 0);
@@ -206,7 +206,7 @@ export function SpecTopics({ map, minShare = 0.1 }) {
         </table>
       </div>
       <p className={styles.source}>
-        Topics are the Technical Analysis feature headings that the requirements of the Release {map.releases.baseline}
+        Topics are the Technology feature headings that the requirements of the Release {map.releases.baseline}
         issue in force fall under, the largest first; a topic with under {Math.round(minShare * 100)}% of a
         specification&apos;s requirements is not listed. Reports, and specifications that belong to another project, are
         not shown here.

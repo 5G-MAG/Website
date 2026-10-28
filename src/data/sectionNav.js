@@ -52,7 +52,7 @@ export function stripBaseUrl(pathname, baseUrl) {
 // id={b.key}).
 const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
 
-// The Solutions mega menu: every project with its own Technical Analysis page, grouped under its area
+// The Solutions mega menu: every project with its own Technology page, grouped under its area
 // (taxonomy order); each group's title links to the area page. An area with no project yet but its own
 // page lists that page instead. Testbeds are not listed here: they are in the Software Accelerator menu.
 // The Software Accelerator menu, area by area: each area is one card, each project in it one row with what it

@@ -17,17 +17,17 @@ export default function FiveGMS() {
         <>
           <p className={styles.whyMattersBody}>
                 Before 5GMS, 3GPP&apos;s streaming architecture was the Packet Switched Streaming
-                architecture in TS 26.233, mainly developed for RTSP streaming. When the Release 16 work
-                began, 3GPP considered it unfit for 5G media streaming services. Meanwhile, classical
-                broadcast and content distribution services were migrating towards modern distribution
-                architectures.
+                (PSS) architecture in TS 26.233, which contains the unicast delivery architecture for RTSP,
+                progressive download and 3GP DASH. TS 26.233 has no version after Release 15 (V15.0.0).
+                The 3GPP study on media distribution over 5G (TR 26.891) concluded that the RTSP/RTP part
+                of PSS is no longer required.
               </p>
               <p className={styles.whyMattersBody}>
-                A 3GPP study on media distribution over 5G (TR 26.891) concluded that a new 5G media
-                streaming architecture was required to enable any type of deployment of streaming
-                services over 5G. 5GMS is that architecture. Its Release 16 work item asked for input
-                from broadcasters, content providers and emerging media service providers, and from
-                mobile network operators running their own media services.
+                The same study recommended defining a 5G Media Streaming architecture based on a
+                function-based design, to leverage 5G features for existing and new media services, and
+                inviting key industry players and standards bodies to share their usage scenarios:
+                classical broadcast content providers, emerging media service providers and mobile network
+                operators running media services (TR 26.891 clause 8.2). 5GMS is specified in TS 26.501.
               </p>
               <p className={styles.whyMattersBody}>
                 As of Release 19, TS 26.501 defines these features for media streaming in the 5G

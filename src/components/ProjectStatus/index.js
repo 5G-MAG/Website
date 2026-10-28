@@ -28,7 +28,7 @@ export function iconForCatalogKey(key) {
 }
 
 // What concretely exists for one reached segment, as small text-pill
-// bubbles -- Technical Analysis surfaces the real Docs/Specs pages,
+// bubbles -- Technology surfaces the real Docs/Specs pages,
 // Software the real repo count with a direct link to wherever the code
 // lives (Reference Tools or a testbed page); Under Study has no real
 // content to point at beyond its SDO tags, so it stays otherwise bare
@@ -51,7 +51,7 @@ function bubblesForGroup(project, groupKey) {
   }
   if (groupKey === 'technical-analysis') {
     const b = [];
-    if (project.tech_url) b.push({ label: 'Technical Analysis', href: project.tech_url });
+    if (project.tech_url) b.push({ label: 'Technology', href: project.tech_url });
     if (project.standards_url) b.push({ label: 'Specifications', href: project.standards_url });
     return b;
   }

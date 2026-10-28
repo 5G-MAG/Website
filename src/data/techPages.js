@@ -1,4 +1,4 @@
-// The Technical Analysis pages a project's page links to under "Learn", one per question: what it is (overview), how it is
+// The Technology pages a project's page links to under "Learn", one per question: what it is (overview), how it is
 // built (architecture), what it can do (features) and how it runs (procedures). A project lists only the pages it has; a
 // link to a page that does not exist is left out (ProjectPath checks the routes), and a project not listed here gets
 // its overview from techOverviews.js. Keep it in step with docs/tech when a project gains a page.

@@ -181,4 +181,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Towards 6G Media: Specifications](/standards/6g)
-- [Towards 6G Media: Technical Analysis](/tech/6g)
+- [Towards 6G Media: Technology](/tech/6g)

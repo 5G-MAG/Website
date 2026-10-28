@@ -84,4 +84,4 @@ The History of ETSI TR 103 972 V1.1.1 (2023-07) lists one publication: V1.1.1 (J
 ## Related
 
 - [DVB-I Services over 5G: Specifications](/standards/dvb-i)
-- [DVB-I Services over 5G: Technical Analysis](/tech/dvb-i)
+- [DVB-I Services over 5G: Technology](/tech/dvb-i)

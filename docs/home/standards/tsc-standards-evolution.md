@@ -470,4 +470,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Time-Sensitive Communications (TSC): Specifications](/standards/tsc)
-- [Time-Sensitive Communications (TSC): Technical Analysis](/tech/tsc)
+- [Time-Sensitive Communications (TSC): Technology](/tech/tsc)

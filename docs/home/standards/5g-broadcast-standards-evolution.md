@@ -64,7 +64,7 @@ The work item records above are listed separately so the summary stays readable;
 
 ## Release 14: the FeMBMS baseline
 
-Release 14 introduced Further enhanced MBMS (FeMBMS) under the RAN work item [**MBMS_LTE_enh2**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=710081) (eMBMS enhancements for LTE, WI 710081; approved RAN#71; finish date 15 September 2017 in the 3GPP work plan of 28 September 2026), alongside the SA work item [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) (WI 700032; finish date 9 June 2017 in the same work plan). The introducing CRs to TS 36.211 (CR 0331 rev1), TS 36.300 (CR 0974 rev1) and TS 36.331 (CR 2645 rev1) were approved at RAN#75 (March 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources). See [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast) and its [Technical Analysis](/tech/5g-broadcast) for the receiver-behaviour detail.
+Release 14 introduced Further enhanced MBMS (FeMBMS) under the RAN work item [**MBMS_LTE_enh2**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=710081) (eMBMS enhancements for LTE, WI 710081; approved RAN#71; finish date 15 September 2017 in the 3GPP work plan of 28 September 2026), alongside the SA work item [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) (WI 700032; finish date 9 June 2017 in the same work plan). The introducing CRs to TS 36.211 (CR 0331 rev1), TS 36.300 (CR 0974 rev1) and TS 36.331 (CR 2645 rev1) were approved at RAN#75 (March 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources). See [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast) and its [Technology page](/tech/5g-broadcast) for the receiver-behaviour detail.
 
 Physical layer (TS 36.211):
 
@@ -157,7 +157,7 @@ A companion RAN4 work item, **`LTE_terr_bcast_Ph2-Perf`** (WI 1062081), adds the
 
 The RAN#111 CRs (parameter-name alignment across TS 36.211/36.212/36.213) show the feature was still receiving corrections into 2026, after the work item's own December 2025 completion date; this is normal 3GPP maintenance behaviour, not a sign the feature is unstable.
 
-- **PMCH time interleaving** (TS 36.213 V19.5.0 clause 11.1, with the parameters `pmch-TimeInterleavingN` and `pmch-TimeInterleavingM`): within a block of N times M MBSFN subframes, transport block m is sent in the MBSFN subframes m+n·M with redundancy version n, for n = 0 to N-1, and the transport block size is scaled by N. See [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast) and its [Technical Analysis](/tech/5g-broadcast) for the design background (NR TBoMS reuse, HARQ soft-combining).
+- **PMCH time interleaving** (TS 36.213 V19.5.0 clause 11.1, with the parameters `pmch-TimeInterleavingN` and `pmch-TimeInterleavingM`): within a block of N times M MBSFN subframes, transport block m is sent in the MBSFN subframes m+n·M with redundancy version n, for n = 0 to N-1, and the transport block size is scaled by N. See [Media delivery over 5G Broadcast: Specifications](/standards/5g-broadcast) and its [Technology page](/tech/5g-broadcast) for the design background (NR TBoMS reuse, HARQ soft-combining).
 - **PMCH cyclic shift** (TS 36.211 V19.3.0 clause 6.5.1): the block of coded bits is cyclically shifted, with the shift set by `pmch-CyclicShiftAlpha` (alpha1, alpha2 or alpha3).
 - **PMCH frequency interleaving** (TS 36.211 clause 6.5.2): block interleaving of PMCH resource elements in frequency for extra diversity.
 - **TBS scaling** (TS 36.213 V19.5.0 clause 11.1): when time interleaving is configured, the derived transport block size is scaled by N. The PMCH MCS tables 11.1-1 and 11.1-2 of the same clause are already in TS 36.213 V17.8.0; they apply when `timeSeperation` is configured with the value 4, and Tables 7.1.7.1-1 and 7.1.7.1-1A apply otherwise.
@@ -209,7 +209,7 @@ The work plan lists no Release 20 item for TS 26.346 or TS 26.347.
 ## Related
 
 - [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs)
-- [Media delivery over 5G Broadcast: Technical Analysis](/tech/5g-broadcast)
+- [Media delivery over 5G Broadcast: Technology](/tech/5g-broadcast)
 - [Media delivery over 5G Multicast Broadcast Services: Release history](/standards/5g-mbs/evolution)
 - [Non-Terrestrial Networks in 5G Systems: Specifications](/standards/ntn)
 - [Standardisation](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks

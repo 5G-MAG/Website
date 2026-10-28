@@ -365,4 +365,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Non-Public Networks: Specifications](/standards/npn)
-- [Non-Public Networks: Technical Analysis](/tech/npn)
+- [Non-Public Networks: Technology](/tech/npn)

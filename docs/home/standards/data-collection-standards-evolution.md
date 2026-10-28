@@ -114,4 +114,4 @@ Both specifications were placed under change control at SA#96 (June 2022) as ver
 ## Related
 
 - [User Data Collection and Reporting: Specifications](/standards/data-collection)
-- [User Data Collection and Reporting: Technical Analysis](/tech/data-collection)
+- [User Data Collection and Reporting: Technology](/tech/data-collection)

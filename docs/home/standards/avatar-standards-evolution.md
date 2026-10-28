@@ -142,4 +142,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Conversational Avatar Communication: Specifications](/standards/avatar)
-- [Conversational Avatar Communication: Technical Analysis](/tech/avatar)
+- [Conversational Avatar Communication: Technology](/tech/avatar)

@@ -33,7 +33,7 @@ const TAXONOMY_FILE = path.join(ROOT, 'src/data/taxonomy.json');
 // write-up). Each key is its own boolean on project.stages.
 const STAGE_OPTIONS = [
   { key: 'under-study', label: 'Under Study' },
-  { key: 'technical-analysis', label: 'Technical Analysis' },
+  { key: 'technical-analysis', label: 'Technology' },
   { key: 'basic', label: 'Basic' },
   { key: 'advanced', label: 'Mature' },
   { key: 'showcase', label: 'Showcase' },

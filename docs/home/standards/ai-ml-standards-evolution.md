@@ -219,4 +219,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [AI/ML Evaluation Framework: Specifications](/standards/ai-ml)
-- [AI/ML Evaluation Framework: Technical Analysis](/tech/ai-ml)
+- [AI/ML Evaluation Framework: Technology](/tech/ai-ml)

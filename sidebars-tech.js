@@ -10,7 +10,7 @@ import { deriveLinkItems, resolveDocHref } from './sidebarDerive.js';
 // per project, so a topic added there needs no matching edit here.
 //
 // Each project's sidebar carries the project's own flagship hub page, then
-// exactly 3 destinations -- Technical Analysis, Reference Tools (or
+// exactly 3 destinations -- Technology, Reference Tools (or
 // Testbed), Specifications -- the same as sidebars-home.js's own
 // per-project sidebars, real vs. link swapped depending on which plugin
 // instance owns which page (a sidebar can only hold real docs from its OWN
@@ -49,7 +49,7 @@ ALL_TOPICS.forEach((topic) => {
     topic.autogen
       ? {
           type: 'category',
-          label: 'Technical Analysis',
+          label: 'Technology',
           collapsed: false,
           items: topic.onlyOverview
             ? [{ type: 'doc', id: topic.techOverviewDoc }]
@@ -57,7 +57,7 @@ ALL_TOPICS.forEach((topic) => {
         }
       : {
           type: 'link',
-          label: 'Technical Analysis',
+          label: 'Technology',
           href: topic.techOverviewDoc ? `/tech/${topic.techOverviewDoc}` : topic.techHref,
         }
   );

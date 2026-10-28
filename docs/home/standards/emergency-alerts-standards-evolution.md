@@ -650,4 +650,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Public Warning Systems: Specifications](/standards/emergency-alerts)
-- [Public Warning Systems: Technical Analysis](/tech/emergency-alerts)
+- [Public Warning Systems: Technology](/tech/emergency-alerts)

@@ -79,4 +79,4 @@ Repository: [camaraproject/DedicatedNetworks](https://github.com/camaraproject/D
 ## Related
 
 - [Network APIs for Connectivity Quality: Specifications](/standards/network-apis)
-- [Network APIs for Connectivity Quality: Technical Analysis](/tech/network-apis)
+- [Network APIs for Connectivity Quality: Technology](/tech/network-apis)

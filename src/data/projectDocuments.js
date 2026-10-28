@@ -1,4 +1,4 @@
-// 5G-MAG documents (explainers and reports, from github.com/5G-MAG/Tech, docs/) shown on a project's Technical Analysis pages by
+// 5G-MAG documents (explainers and reports, from github.com/5G-MAG/Tech, docs/) shown on a project's Technology pages by
 // <ProjectDocuments slug="..." />. The PDFs are in static/docs; pages and size are read from the files.
 export const DOCUMENTS = {
   '5g-mbs': [

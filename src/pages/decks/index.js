@@ -45,7 +45,7 @@ function DeckTile({ cover, title, pages, file, page, pageLabel, description }) {
 // The taxonomy project behind a deck slug (/tech/<slug>): the area it belongs to and its page title.
 function projectOf(slug) {
   const last = (u) => (u || '').replace(/\/$/, '').split('/').pop();
-  // by the last part of its Technical Analysis address, or of its software page when it has no analysis page of that name
+  // by the last part of its Technology address, or of its software page when it has no analysis page of that name
   const matches = ALL_PROJECTS.filter((p) => last(p.tech_url) === slug || last(p.doc_url) === slug);
   return matches.find((p) => p.type === 'project' || p.type === 'reference-tool' || p.type === 'platform') || matches[0] || null;
 }

@@ -193,7 +193,7 @@ function SlidingIndicatorGroup({ items }) {
   const settleOnActive = () => {
     const container = containerRef.current;
     const sectionHref = resolveSectionHref(pathname);
-    // Solutions covers the area pages and the Technical Analysis (the /tech section, including the
+    // Solutions covers the area pages and the Technology (the /tech section, including the
     // per-topic Standards pages that SECTION_NAV files under it).
     const onAreaPage = SOLUTIONS_ITEMS.some((i) => matchesPrefix(pathname, i.href)) || sectionHref === '/tech';
     const activeEl =
@@ -497,7 +497,7 @@ function MegaMenu({ trigger, label, children }) {
 }
 
 // Solutions opens one wide panel with one card per area, and its own link goes to /tech (Where we stand). The panel has one card per
-// area: the card title opens the area page, the lines under it each project's Technical Analysis (this
+// area: the card title opens the area page, the lines under it each project's Technology (this
 // replaces the former separate Technology menu).
 function SolutionsMenu({ item }) {
   return (

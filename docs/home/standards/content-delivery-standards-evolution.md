@@ -104,4 +104,4 @@ Taken from the change history of TS 26.346 V19.3.0, which lists changes from 200
 ## Related
 
 - [Content Delivery Protocols and Tools: Specifications](/standards/content-delivery)
-- [Content Delivery Protocols and Tools: Technical Analysis](/tech/content-delivery)
+- [Content Delivery Protocols and Tools: Technology](/tech/content-delivery)

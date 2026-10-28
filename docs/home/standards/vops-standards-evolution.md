@@ -105,4 +105,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Video Operation Points: Specifications](/standards/vops)
-- [Video Operation Points: Technical Analysis](/tech/vops)
+- [Video Operation Points: Technology](/tech/vops)

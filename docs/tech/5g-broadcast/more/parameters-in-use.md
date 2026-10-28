@@ -84,10 +84,10 @@ Bands observed in member deployments and reference tool configurations (not take
 
 ## Receiver Profiles
 
-ETSI TS 103 720 defines receiver categories (Base, Main, 5GMS and Emergency Alerts; see Deployment Profiles for the Feature Value table) (ETSI TS 103 720 V1.2.1 clause 10). In 5G-MAG's deployment work the following receiver profiles are used:
+ETSI TS 103 720 defines receiver categories (Base, Main, 5GMS and Emergency Alerts; see Deployment Profiles for the Feature Value table) (ETSI TS 103 720 V1.2.1 clause 10). In 5G-MAG's deployment work the following two kinds of receiver are distinguished (they are not the "Profile A" of the [deployment profiles](/tech/5g-broadcast/more/deployment-profiles) page, which is a proposal for European handsets):
 
-- **Profile A (RAN-only)**: Receive-Only Mode using FeMBMS physical layer only. Typical of a dedicated broadcast receiver with no cellular return path, for example a TV set, a set-top box, or an in-car broadcast tuner.
-- **Profile B (Full)**: Full LTE UE supporting both unicast and broadcast modes. Typical of a smartphone or connected tablet that can both stream over cellular and receive broadcast.
+- **RAN-only receiver**: Receive-Only Mode using FeMBMS physical layer only. Typical of a dedicated broadcast receiver with no cellular return path, for example a TV set, a set-top box, or an in-car broadcast tuner.
+- **Full receiver**: Full LTE UE supporting both unicast and broadcast modes. Typical of a smartphone or connected tablet that can both stream over cellular and receive broadcast.
 
 ## References
 

@@ -12,10 +12,10 @@ import { TECH_OVERVIEW } from './src/data/techOverviews.js';
 // techTopics.js's ALL_TOPICS, mirroring sidebars-tech.js's own per-project
 // generation -- same destinations, same order, real vs. link swapped
 // here since Standards and Reference Tools docs both live in THIS plugin
-// instance ("home") while Technical Analysis lives in the separate "tech"
+// instance ("home") while Technology lives in the separate "tech"
 // instance (a sidebar can only hold real docs from its own instance).
 //
-// "Technical Analysis" below is nonetheless a real, expandable category
+// "Technology" below is nonetheless a real, expandable category
 // here too (2026-09-28, direct instruction: "I want this to be managed
 // per project, e.g. all what is 5gms will get the same lateral menu no
 // matter where pages are") -- `deriveLinkItems` (sidebarDerive.js) scans
@@ -39,7 +39,7 @@ ALL_TOPICS.forEach((topic) => {
 
   items.push({
     type: 'category',
-    label: 'Technical Analysis',
+    label: 'Technology',
     collapsed: false,
     // A folder shared by two projects (volumetric) lists only the project's own overview.
     items: deriveLinkItems(`docs/tech/${topic.autogen}`, `/tech/${topic.autogen}`, '/tech').filter(

@@ -40,7 +40,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## What it does
 
-The 6G media study records the traffic characteristics of AI media services from this testbed's measurements, as the basis for its statements on AI media services. The study obtains the characteristics with the framework of its annexes B, C and D (clause 6.3.3.1); the results are the record of the AI traffic characteristics it collects. What the study covers, and where AI traffic fits in it: [Technical Analysis](/tech/6g/overview).
+The 6G media study records the traffic characteristics of AI media services from this testbed's measurements, as the basis for its statements on AI media services. The study obtains the characteristics with the framework of its annexes B, C and D (clause 6.3.3.1); the results are the record of the AI traffic characteristics it collects. What the study covers, and where AI traffic fits in it: [Technology page](/tech/6g/overview).
 
 <figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />

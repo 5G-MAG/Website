@@ -120,4 +120,4 @@ TS 26.506 was approved at SA#100 in June 2023, and TS 26.113 in June 2024. TR 21
 ## Related
 
 - [Real-time Media Communication (RTC): Specifications](/standards/rtc)
-- [Real-time Media Communication (RTC): Technical Analysis](/tech/rtc)
+- [Real-time Media Communication (RTC): Technology](/tech/rtc)

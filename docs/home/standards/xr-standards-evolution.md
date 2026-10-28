@@ -119,4 +119,4 @@ The Release 16 study FS_5GXR (TR 26.928) is listed on the [XR Media & 3D Scenes:
 ## Related
 
 - [XR Media & 3D Scenes: Specifications](/standards/xr)
-- [XR Media & 3D Scenes: Technical Analysis](/tech/xr)
+- [XR Media & 3D Scenes: Technology](/tech/xr)

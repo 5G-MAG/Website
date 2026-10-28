@@ -269,4 +269,4 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 ## Related
 
 - [Non-Terrestrial Networks in 5G Systems: Specifications](/standards/ntn)
-- [Non-Terrestrial Networks in 5G Systems: Technical Analysis](/tech/ntn)
+- [Non-Terrestrial Networks in 5G Systems: Technology](/tech/ntn)

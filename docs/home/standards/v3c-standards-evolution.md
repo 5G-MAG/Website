@@ -26,4 +26,4 @@ The editions and status of the ISO/IEC specifications behind this topic are desc
 ## Related
 
 - [Volumetric Video Experiences: Specifications](/standards/v3c)
-- [Volumetric Video Experiences: Technical Analysis](/tech/v3c)
+- [Volumetric Video Experiences: Technology](/tech/v3c)

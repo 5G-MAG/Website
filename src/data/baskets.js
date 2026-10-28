@@ -42,7 +42,7 @@ import repoGithubData from '../../static/data/repo-metadata.json';      // what 
 // for why. It still has a real reference-tools page where one exists;
 // only its place in the basket/status taxonomy is absent.
 //
-// `stages` (Under Study / Technical Analysis / Basic / Advanced / Showcase)
+// `stages` (Under Study / Technology / Basic / Advanced / Showcase)
 // is a set of independent ticks, not one ordinal value: reaching a later
 // stage does not imply every earlier one happened the same way, so each key
 // on `stages` is its own curated boolean, informed by -- not mechanically
@@ -102,7 +102,7 @@ export const STAGE_GROUPS = [
   { key: 'under-study', label: 'Under Study', reached: (s) => !!s?.['under-study'] },
   {
     key: 'technical-analysis',
-    label: 'Technical Analysis',
+    label: 'Technology',
     reached: (s) => !!s?.['technical-analysis'],
   },
   { key: 'software', label: 'Software', reached: (s) => !!(s?.basic || s?.advanced) },
@@ -157,7 +157,7 @@ export function displayNameOf(project) {
   return project.displayName || project.name;
 }
 
-// The name of a project as a topic (Technical Analysis, Specifications, the area pages, the status chart), as opposed to the
+// The name of a project as a topic (Technology, Specifications, the area pages, the status chart), as opposed to the
 // name of its reference tool, testbed or validator (displayNameOf, used on the Reference Tools, Testbeds and
 // Validation pages). `projectTitle` holds it where it differs from `name`; an offering that has a parent (a testbed,
 // an evaluation framework, a validator) takes its parent's project title.
@@ -261,7 +261,7 @@ export function projectBySlug(slug) {
   return ALL_PROJECTS.find((p) => projectSlugOf(p) === slug);
 }
 
-// The name a link to a project's Technical Analysis page carries. A testbed's display name names the testbed, so
+// The name a link to a project's Technology page carries. A testbed's display name names the testbed, so
 // its Technology page is labelled with the project name (AI Traffic Characterization, not the 6G AI Traffic
 // Characterization Testbed).
 export function techLabelOf(project) {

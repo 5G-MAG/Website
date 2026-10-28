@@ -21,7 +21,7 @@ export default function ProjectStrip({ contained = false }) {
   const spec = family.find((p) => p.standards_url)?.standards_url;
   const software = family.filter((p) => p.doc_url);
   const items = [
-    tech && { label: 'Technical Analysis', to: TECH_OVERVIEW[tech] || tech, base: tech },
+    tech && { label: 'Technology', to: TECH_OVERVIEW[tech] || tech, base: tech },
     spec && { label: 'Specifications', to: spec },
     ...software.map((p) => ({
       label: softwareLabel(p) !== 'Reference Tools' || software.length > 1 ? displayNameOf(p) : 'Software',

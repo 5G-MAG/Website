@@ -13,7 +13,7 @@ const trim = (url) => url.replace(/\/$/, '');
 
 // The names of the links are the names of the side menu (Overview, Architecture, Features, Procedures; Specification list, Release
 // history; Repositories, Implementation status, Tutorials), so a card and the menu say the same thing about the same page.
-// The block every project page shares, in three steps: Learn (Technical Analysis), Standards (Specifications) and Build
+// The block every project page shares, in three steps: Learn (Technology), Standards (Specifications) and Build
 // (Software Accelerator). Each step is a card with a few links into what is behind it, and only the links to pages that
 // exist are shown, so a project with one analysis page and one tool gets a short card, not an empty one.
 export default function ProjectPath({ analysisHref, standardsHref, softwareHref, softwareIsTestbed = false }) {
@@ -52,7 +52,7 @@ export default function ProjectPath({ analysisHref, standardsHref, softwareHref,
   const steps = [
     analysisHref && {
       label: 'Learn',
-      title: 'Technical Analysis',
+      title: 'Technology',
       desc: 'How this technology works, and what it is good for.',
       links: learn,
       icon: ICON_CATALOG['doc-report'],

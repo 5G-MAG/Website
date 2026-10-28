@@ -202,7 +202,7 @@ These work items are not MBS work items, but the work plan, or for NR_NTN_Ph3 it
 ## Related
 
 - [Media delivery over 5G Multicast Broadcast Services: Specifications](/standards/5g-mbs)
-- [Media delivery over 5G Multicast Broadcast Services: Technical Analysis](/tech/5g-mbs)
+- [Media delivery over 5G Multicast Broadcast Services: Technology](/tech/5g-mbs)
 - [Media Streaming and Advanced Media Delivery: Release history](/standards/5gms/evolution)
 - [Media delivery over 5G Broadcast: Release history](/standards/5g-broadcast/evolution)
 
