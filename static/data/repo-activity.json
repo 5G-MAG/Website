@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28 02:41 UTC",
+  "updated_at": "2026-10-29 03:00 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -776,7 +776,7 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-25",
+          "pushed_at": "2026-10-28",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -786,7 +786,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-26",
+              "updated_at": "2026-10-28",
               "base": "development"
             }
           ],
@@ -901,8 +901,8 @@
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-10-25",
-              "last_work_commit": "2026-10-25"
+              "last_commit": "2026-10-28",
+              "last_work_commit": "2026-10-28"
             },
             {
               "name": "development",
@@ -924,9 +924,19 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-26",
+          "pushed_at": "2026-10-28",
           "latest_release": "2026-05-26",
           "pulls": [
+            {
+              "number": 88,
+              "title": "Fix lint errors and QoE playlist test assertion",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/88",
+              "draft": false,
+              "author": "ErikGaida",
+              "created_at": "2026-10-28",
+              "updated_at": "2026-10-28",
+              "base": "development"
+            },
             {
               "number": 86,
               "title": "Add media delivery session identification",
@@ -939,6 +949,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 87,
+              "title": "./gradlew build fails on development",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/87",
+              "author": "ErikGaida",
+              "created_at": "2026-10-28",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 85,
               "title": "Support media delivery session identification",
@@ -1089,6 +1109,12 @@
               "last_work_commit": "2026-05-26"
             },
             {
+              "name": "bugfix/gradle-build-failures",
+              "default": false,
+              "last_commit": "2026-10-28",
+              "last_work_commit": "2026-10-28"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-26",
@@ -1228,7 +1254,7 @@
           "description": "5GMS Common Android Library",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-24",
+          "pushed_at": "2026-10-28",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -1238,7 +1264,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-26",
+              "updated_at": "2026-10-28",
               "base": "development"
             }
           ],
@@ -1253,8 +1279,8 @@
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-10-24",
-              "last_work_commit": "2026-10-24"
+              "last_commit": "2026-10-28",
+              "last_work_commit": "2026-10-28"
             },
             {
               "name": "development",
@@ -3005,7 +3031,7 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-27",
+          "pushed_at": "2026-10-28",
           "latest_release": null,
           "pulls": [
             {
@@ -3022,10 +3048,10 @@
               "number": 27,
               "title": "Added anchoring and interactivity in the furniture glTF file",
               "url": "https://github.com/5G-MAG/rt-xr-content/pull/27",
-              "draft": true,
+              "draft": false,
               "author": "nlsdvl",
               "created_at": "2025-05-09",
-              "updated_at": "2026-09-29",
+              "updated_at": "2026-10-28",
               "base": "development"
             }
           ],
@@ -3175,24 +3201,6 @@
               "default": false,
               "last_commit": "2026-10-23",
               "last_work_commit": "2026-10-23"
-            },
-            {
-              "name": "feature/ar-video-plane",
-              "default": false,
-              "last_commit": "2025-06-13",
-              "last_work_commit": "2025-06-13"
-            },
-            {
-              "name": "feature/helper-scripts",
-              "default": false,
-              "last_commit": "2025-05-09",
-              "last_work_commit": "2025-05-09"
-            },
-            {
-              "name": "dev/blender-xr-anchor",
-              "default": false,
-              "last_commit": "2025-02-27",
-              "last_work_commit": "2025-02-27"
             },
             {
               "name": "feature/development_tools",
@@ -5890,9 +5898,19 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-22",
+          "pushed_at": "2026-10-28",
           "latest_release": null,
           "pulls": [
+            {
+              "number": 14,
+              "title": "Replace vendored aiortc fork with runtime-registered aicodec plugin; add Qwen3-VL/Qwen3.6 encoder placement stack",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/14",
+              "draft": false,
+              "author": "Vaderpucong",
+              "created_at": "2026-10-28",
+              "updated_at": "2026-10-28",
+              "base": "edge-tokenizer-resilient-qos"
+            },
             {
               "number": 11,
               "title": "docs: apply the 5G-MAG README format",
@@ -5951,6 +5969,12 @@
               "default": false,
               "last_commit": "2026-09-04",
               "last_work_commit": "2026-09-04"
+            },
+            {
+              "name": "edge-tokenizer-resilient-qos",
+              "default": false,
+              "last_commit": "2026-09-04",
+              "last_work_commit": "2026-09-04"
             }
           ]
         },
@@ -5985,20 +6009,9 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-27",
-          "latest_release": null,
-          "pulls": [
-            {
-              "number": 12,
-              "title": "Fix/dedicated networks r2 2",
-              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/12",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-27",
-              "updated_at": "2026-10-27",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-28",
+          "latest_release": "2026-10-28",
+          "pulls": [],
           "issues": [],
           "branches": [
             {
@@ -6010,8 +6023,8 @@
             {
               "name": "fix/dedicated-networks-r2-2",
               "default": false,
-              "last_commit": "2026-10-27",
-              "last_work_commit": "2026-10-27"
+              "last_commit": "2026-10-28",
+              "last_work_commit": "2026-10-28"
             },
             {
               "name": "development",
