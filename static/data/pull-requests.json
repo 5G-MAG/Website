@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-28 02:40 UTC",
+  "updated_at": "2026-10-29 02:59 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gms-media-stream-handler",
+          "branch": null,
+          "number": 88,
+          "title": "Fix lint errors and QoE playlist test assertion",
+          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/88",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-10-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-media-session-handler",
           "branch": null,
@@ -370,7 +383,7 @@
           "number": 27,
           "title": "Added anchoring and interactivity in the furniture glTF file",
           "url": "https://github.com/5G-MAG/rt-xr-content/pull/27",
-          "draft": true,
+          "draft": false,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
           "created_at": "2025-05-09",
@@ -952,6 +965,19 @@
         {
           "repo": "6G-Testbed",
           "branch": null,
+          "number": 14,
+          "title": "Replace vendored aiortc fork with runtime-registered aicodec plugin; add Qwen3-VL/Qwen3.6 encoder placement stack",
+          "url": "https://github.com/5G-MAG/6G-Testbed/pull/14",
+          "draft": false,
+          "author_login": "Vaderpucong",
+          "author_avatar": "https://avatars.githubusercontent.com/u/47764877?v=4",
+          "created_at": "2026-10-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "6G-Testbed",
+          "branch": null,
           "number": 11,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/6G-Testbed/pull/11",
@@ -981,21 +1007,7 @@
       "name": "CAMARA Connectivity Quality Management APIs",
       "doc_url": "/reference-tools/network-apis/",
       "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
-      "pulls": [
-        {
-          "repo": "rt-camara-examples",
-          "branch": null,
-          "number": 12,
-          "title": "Fix/dedicated networks r2 2",
-          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/12",
-          "draft": true,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-27",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Conversational Avatar Communication with MPEG ARF",

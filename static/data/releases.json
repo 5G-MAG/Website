@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28 02:40 UTC",
+  "updated_at": "2026-10-29 02:59 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -366,6 +366,25 @@
           "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/releases/tag/v0.2.1",
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
+        }
+      ]
+    },
+    {
+      "name": "CAMARA Connectivity Quality Management APIs",
+      "doc_url": "/reference-tools/network-apis/",
+      "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
+      "releases_slug": "#repositories--releases",
+      "image": "/assets/images/projects/network-apis.png",
+      "latest_date": "2026-10-28",
+      "releases": [
+        {
+          "repo": "rt-camara-examples",
+          "branch": null,
+          "tag": "rt-camara-examples-v1.0.0",
+          "date": "2026-10-28",
+          "url": "https://github.com/5G-MAG/rt-camara-examples/releases/tag/rt-camara-examples-v1.0.0",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
       ]
     },

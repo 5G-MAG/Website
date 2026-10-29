@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-28",
+  "updated_at": "2026-10-29",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-09-04",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 2
     },
     "Standards2Deployments": {
       "status": "Under Development",
@@ -102,7 +102,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
       "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 2
     },
     "rt-ai-ml-evaluation-framework": {
       "status": "Under Development",
@@ -141,10 +141,10 @@
       "open_pulls_last_year": 0
     },
     "rt-camara-examples": {
-      "status": "Under Development",
-      "latest_release": null,
+      "status": "Actively Maintained",
+      "latest_release": "2026-10-28",
       "last_work_commit": "2026-10-20",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 0
     },
     "rt-cmmf-encoder": {
       "status": "Under Development",
