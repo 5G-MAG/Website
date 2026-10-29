@@ -361,6 +361,16 @@ const NAV_ITEM_ICONS = {
   '/community': ['M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
   // the Community Activity page's own banner icon
   '/community/activity': ['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M17 10h2a2 2 0 0 1 2 2v1', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M3 13v-1a2 2 0 0 1 2 -2h2'],
+  // Tabler: chalkboard
+  '/decks': ['M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1', 'M11 17a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -1'],
+  // Tabler: external-link
+  '/standards/industry-fora': ['M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6', 'M11 13l9 -9', 'M15 4h5v5'],
+  // Tabler: school
+  '/tutorials': ['M22 9l-10 -4l-10 4l10 4l10 -4v6', 'M6 10.6v5.4a6 3 0 0 0 12 0v-5.4'],
+  // Tabler: circuit-switch-open
+  '/public-call': ['M2 12h2', 'M20 12h2', 'M4 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M16 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M7.5 10.5l7.5 -5.5'],
+  // Tabler: circuit-switch-closed
+  '/internal-call': ['M2 12h2', 'M20 12h2', 'M4 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M16 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M8 12h8'],
   '/license': ['M14 3v4a1 1 0 0 0 1 1h4', 'M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z', 'M9 13l6 0', 'M9 17l6 0'],
   '/early-access': ['M7 14a4 4 0 1 1 0 -8a4 4 0 0 1 0 8', 'M11 10h10', 'M18 10v3', 'M21 10v2'],
   '/developer/exchanges': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
