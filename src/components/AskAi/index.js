@@ -83,7 +83,7 @@ export default function AskAi({ about, collapsed = false }) {
   return (
     <details className={styles.details}>
       <summary className={styles.summary}>
-        Or ask an AI {about ? 'about 5G-MAG' : 'about this page'}
+        Or ask an AI {about ? 'about our work' : 'about this page'}
       </summary>
       {box}
     </details>
