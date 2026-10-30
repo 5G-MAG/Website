@@ -329,13 +329,7 @@ export default function Home() {
         <div className="container">
           {/* The solutions are the starting point of the site: first, large, before the search. */}
           <div className={styles.startHere}>
-            <span className={styles.startPill}>Start here</span>
-            <h2 className={styles.startTitle}>Choose a solution</h2>
-            <p className={styles.startText}>
-              Every topic of the association belongs to one of these seven solutions. Each page shows what is
-              Available today and what is in Incubation, and leads on to the technology, the tools, the Playgrounds
-              and the kits.
-            </p>
+            <h2 className={styles.startTitle}>Explore</h2>
           </div>
           <BasketJumpRow label="Solutions" />
           <p className={styles.homeSearchLabel}>Or look for a specific tool or topic</p>
@@ -386,7 +380,9 @@ export default function Home() {
                   <span className={styles.noWrap}>Media and Connectivity</span>
                 </h2>
                 <p className={styles.introLead}>
-                  Driving the future of connected media experiences with open specifications and open-source software.
+                  Driving the future of connected media experiences
+                  <br className={styles.introBreak} />{' '}
+                  with open specifications and <span className={styles.noWrap}>open-source</span> software.
                 </p>
                 <p className={styles.introLine}>
                   We are a neutral, non-profit association enabling organisations to collaborate, share development efforts, scale software projects, and bring open technologies to market faster.

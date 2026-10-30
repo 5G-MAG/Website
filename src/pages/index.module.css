@@ -291,7 +291,7 @@
    rather than a cross-file import. Shown under the solution areas in the
    search band. */
 .inviteBlock {
-  margin: 1.5rem 0 0;
+  margin: 2.5rem 0 0;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
   background: linear-gradient(120deg, #006f92 0%, #7448b8 100%);
@@ -343,7 +343,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin: 0;
+  margin: 3rem 0 0;
 }
 
 /* One column from 768px down, and only the first slot: three stacked
@@ -758,4 +758,11 @@
   margin: 0;
   max-width: 62ch;
   color: var(--ifm-color-emphasis-700);
+}
+
+/* The intro lead breaks after its first half on a wide screen; on a phone it flows as one sentence. */
+@media (max-width: 600px) {
+  .introBreak {
+    display: none;
+  }
 }
