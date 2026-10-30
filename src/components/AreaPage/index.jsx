@@ -334,13 +334,8 @@ export default function AreaPage({ basketKey }) {
       </header>
       <section className={styles.startBand} aria-labelledby="start-here">
         <div className={`container ${styles.startRow}`}>
-          <span className={styles.startPill}>Start here</span>
           <div className={styles.startText}>
-            <Heading as="h2" id="start-here" className={styles.startTitle}>This is the starting point</Heading>
-            <p>
-              Solutions are where every visit begins. Pick a topic below, then follow Learn, Implement, Experiment and
-              Deploy. <b>Available</b> topics work with the Reference Tools today; <b>Incubation</b> topics are being explored.
-            </p>
+            <Heading as="h2" id="start-here" className={styles.startTitle}>Explore the current solutions</Heading>
           </div>
           <nav className={styles.startLegend} aria-label="Jump to a group of topics">
             {groups.available.length > 0 && (
