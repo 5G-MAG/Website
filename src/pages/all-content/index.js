@@ -23,7 +23,7 @@ const AREAS = [
   {
     key: 'solutions',
     title: 'Solutions and Technology',
-    text: 'The seven areas of work and the technical analysis of every project.',
+    text: 'The areas of work and the technical analysis of every project.',
     hubs: [
       ...BASKETS.map((b) => ({ url: BASKET_PAGE[b.key], title: b.title })).filter((h) => h.url),
       { url: '/tech', title: 'Where We Stand: all projects by area' },
