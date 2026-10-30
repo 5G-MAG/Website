@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29",
+  "updated_at": "2026-10-30",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-10-29",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -285,7 +285,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-10-29",
       "url": "https://github.com/5G-MAG/rt-avatar-content"
     },
     "rt-avatar-unity-tracker": {
@@ -686,7 +686,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-27",
+      "pushed_at": "2026-10-29",
       "url": "https://github.com/5G-MAG/rt-mbs-transport-function"
     },
     "rt-media-android-application": {

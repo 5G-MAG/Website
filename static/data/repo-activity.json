@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29 03:00 UTC",
+  "updated_at": "2026-10-30 03:05 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -786,7 +786,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-28",
+              "updated_at": "2026-10-29",
               "base": "development"
             }
           ],
@@ -934,7 +934,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-28",
-              "updated_at": "2026-10-28",
+              "updated_at": "2026-10-29",
               "base": "development"
             },
             {
@@ -1264,7 +1264,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-28",
+              "updated_at": "2026-10-29",
               "base": "development"
             }
           ],
@@ -1318,7 +1318,7 @@
               "draft": false,
               "author": "sygupt",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-26",
+              "updated_at": "2026-10-29",
               "base": "feature/cmmf-dev/docker-example"
             }
           ],
@@ -4895,7 +4895,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-27",
+          "pushed_at": "2026-10-29",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -4905,7 +4905,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-22",
-              "updated_at": "2026-10-27",
+              "updated_at": "2026-10-29",
               "base": "development"
             },
             {
@@ -4995,8 +4995,8 @@
             {
               "name": "fix/mbstf-packet-fixed-port",
               "default": false,
-              "last_commit": "2026-10-27",
-              "last_work_commit": "2026-10-27"
+              "last_commit": "2026-10-29",
+              "last_work_commit": "2026-10-29"
             },
             {
               "name": "development",
@@ -5908,7 +5908,7 @@
               "draft": false,
               "author": "Vaderpucong",
               "created_at": "2026-10-28",
-              "updated_at": "2026-10-28",
+              "updated_at": "2026-10-29",
               "base": "edge-tokenizer-resilient-qos"
             },
             {
@@ -5928,7 +5928,7 @@
               "draft": false,
               "author": "ibouazizi",
               "created_at": "2026-08-26",
-              "updated_at": "2026-10-08",
+              "updated_at": "2026-10-29",
               "base": "development"
             }
           ],
