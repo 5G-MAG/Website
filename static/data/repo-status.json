@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-10-31",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -53,7 +53,7 @@
     "rt-5gc-service-consumers": {
       "status": "Actively Maintained",
       "latest_release": "2026-06-05",
-      "last_work_commit": "2026-10-09",
+      "last_work_commit": "2026-10-30",
       "open_pulls_last_year": 0
     },
     "rt-5gms-application": {
@@ -197,8 +197,8 @@
     "rt-libflute": {
       "status": "Actively Maintained",
       "latest_release": "2026-09-01",
-      "last_work_commit": "2026-10-19",
-      "open_pulls_last_year": 4
+      "last_work_commit": "2026-10-30",
+      "open_pulls_last_year": 3
     },
     "rt-mbms-application": {
       "status": "Under Development",
@@ -225,7 +225,7 @@
       "open_pulls_last_year": 0
     },
     "rt-mbms-examples": {
-      "status": "Actively Maintained",
+      "status": "Stable",
       "latest_release": "2024-11-05",
       "last_work_commit": "2025-10-31",
       "open_pulls_last_year": 0
@@ -243,25 +243,25 @@
       "open_pulls_last_year": 2
     },
     "rt-mbms-mw": {
-      "status": "Actively Maintained",
+      "status": "Stable",
       "latest_release": "2022-12-08",
       "last_work_commit": "2025-10-31",
-      "open_pulls_last_year": 1
+      "open_pulls_last_year": 0
     },
     "rt-mbms-mw-android": {
-      "status": "Actively Maintained",
+      "status": "Stable",
       "latest_release": "2024-09-05",
       "last_work_commit": "2025-10-31",
       "open_pulls_last_year": 0
     },
     "rt-mbms-tx": {
-      "status": "Actively Maintained",
+      "status": "Stable",
       "latest_release": "2023-06-21",
       "last_work_commit": "2025-10-31",
       "open_pulls_last_year": 0
     },
     "rt-mbms-tx-for-qrd-and-crd": {
-      "status": "Actively Maintained",
+      "status": "Stable",
       "latest_release": "2024-09-05",
       "last_work_commit": "2025-10-31",
       "open_pulls_last_year": 0
@@ -293,14 +293,14 @@
     "rt-mbs-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-23",
+      "last_work_commit": "2026-10-30",
       "open_pulls_last_year": 0
     },
     "rt-mbs-transport-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-21",
-      "open_pulls_last_year": 2
+      "last_work_commit": "2026-10-30",
+      "open_pulls_last_year": 1
     },
     "rt-media-android-application": {
       "status": "Under Development",
@@ -377,8 +377,8 @@
     "rt-xr-gITFast": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2025-10-28",
-      "open_pulls_last_year": 2
+      "last_work_commit": "2026-10-30",
+      "open_pulls_last_year": 0
     },
     "rt-xr-maf-native": {
       "status": "Under Development",

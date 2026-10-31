@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30 03:04 UTC",
+  "updated_at": "2026-10-31 02:51 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -111,19 +111,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 35,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "cmcd-toolkit",
           "branch": null,
           "number": 2,
@@ -143,19 +130,6 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 116,
-          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-mbms-modem",
           "branch": null,
@@ -339,37 +313,11 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-xr-gITFast",
-          "branch": null,
-          "number": 16,
-          "title": "MPEG-I scene description extensions and interactivity fixes (ISO/IEC 23090-14:2024(E))",
-          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/16",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-12",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-xr-blender-exporter",
           "branch": null,
           "number": 18,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/pull/18",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-xr-gITFast",
-          "branch": null,
-          "number": 15,
-          "title": "docs: add FORK.md describing what this fork changes",
-          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/15",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -413,35 +361,9 @@
         {
           "repo": "rt-mbs-transport-function",
           "branch": null,
-          "number": 84,
-          "title": "mbstf: serve every unicast packet session on the configured packetIngest port",
-          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/84",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-22",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-transport-function",
-          "branch": null,
           "number": 81,
           "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/81",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 116,
-          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -468,19 +390,6 @@
           "number": 2,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 35,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -1182,19 +1091,6 @@
         {
           "repo": "rt-libflute",
           "branch": null,
-          "number": 116,
-          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
           "number": 98,
           "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/98",
@@ -1268,19 +1164,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-30",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 35,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },

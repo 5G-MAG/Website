@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30 03:05 UTC",
+  "updated_at": "2026-10-31 02:52 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1171,20 +1171,9 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-06-05",
-          "pulls": [
-            {
-              "number": 35,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 6,
@@ -1205,15 +1194,15 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09",
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
             },
             {
@@ -1431,19 +1420,9 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-20",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-09-01",
           "pulls": [
-            {
-              "number": 116,
-              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "development"
-            },
             {
               "number": 98,
               "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
@@ -1476,6 +1455,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 117,
+              "title": "FLUTE Receiver: join a multicast (SSM/ASM) group on the tunnel address",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/117",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -1591,16 +1578,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
               "last_commit": "2026-10-20",
               "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/mbs-profile",
@@ -3216,29 +3203,9 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-23",
+          "pushed_at": "2026-10-30",
           "latest_release": null,
           "pulls": [
-            {
-              "number": 16,
-              "title": "MPEG-I scene description extensions and interactivity fixes (ISO/IEC 23090-14:2024(E))",
-              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/16",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "updated_at": "2026-10-19",
-              "base": "rt-xr/development"
-            },
-            {
-              "number": 15,
-              "title": "docs: add FORK.md describing what this fork changes",
-              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/15",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-23",
-              "base": "rt-xr/development"
-            },
             {
               "number": 8,
               "title": "Development tools",
@@ -3255,20 +3222,26 @@
             {
               "name": "rt-xr/development",
               "default": true,
-              "last_commit": "2025-10-28",
-              "last_work_commit": "2025-10-28"
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "feature/xr_smartphone_app-u6",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-23",
               "last_work_commit": "2026-10-23"
-            },
-            {
-              "name": "feature/xr_smartphone_app",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "rt-xr/meta-quest",
@@ -3390,7 +3363,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-10-30",
               "base": "development"
             }
           ],
@@ -3563,7 +3536,7 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-30",
           "latest_release": "2025-02-27",
           "pulls": [
             {
@@ -3573,7 +3546,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-10-30",
               "base": "development"
             }
           ],
@@ -3639,56 +3612,6 @@
               ]
             },
             {
-              "number": 119,
-              "title": "[rt-xr-gITFast] MPEG_haptic: haptic data is not rendered",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/119",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 118,
-              "title": "[rt-xr-gITFast] MPEG_lights_punctual and MPEG_lights_texture_based are not parsed",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/118",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 117,
-              "title": "[rt-xr-gITFast] MPEG_animation_timing is not implemented",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/117",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 116,
-              "title": "[rt-xr-gITFast] MPEG_viewport_recommended is not implemented",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/116",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 115,
-              "title": "[rt-xr-gITFast] MPEG_scene_dynamic: scene updates are not applied",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/115",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
               "number": 114,
               "title": "[rt-xr-gITFast] MPEG_accessor_timed: header presence, immutable, header configuration and update rate are not honoured",
               "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/114",
@@ -3719,49 +3642,9 @@
               ]
             },
             {
-              "number": 111,
-              "title": "[rt-xr-gITFast] Geospatial anchor coordinates are read latitude first; the clause gives longitude first",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/111",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 110,
-              "title": "[rt-xr-gITFast] minimumRequiredSpace is compared per axis with an invented 2.5 m height and the assets are not skipped",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/110",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 109,
-              "title": "[rt-xr-gITFast] requiresAnchoring is not applied: assets are shown before the pose of the anchor is known",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/109",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 108,
               "title": "[rt-xr-gITFast] Interactivity data not applied: collision precision, boundary, collider mesh and material, occlusion options",
               "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/108",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 107,
-              "title": "[rt-xr-gITFast] Behavior priority is parsed and ignored",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/107",
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
               "labels": [
@@ -3789,16 +3672,6 @@
               ]
             },
             {
-              "number": 104,
-              "title": "[rt-xr-gITFast] Node-level proximity limits start at zero and are scaled, so the node is only near at distance zero",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/104",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 103,
               "title": "[rt-xr-gITFast] Scene-level proximity trigger overwrites its reference node with the camera",
               "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/103",
@@ -3812,66 +3685,6 @@
               "number": 102,
               "title": "[rt-xr-gITFast] A node with only a node-level collision trigger is not used for detection; usePhysics does not gate the rigid body",
               "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/102",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 101,
-              "title": "[rt-xr-gITFast] Scene-level collision trigger fires only when all detectors collide",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/101",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 100,
-              "title": "[rt-xr-gITFast] Trigger combination control: negation, parentheses and trigger indices are not interpreted",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/100",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 99,
-              "title": "[rt-xr-gITFast] Trigger activation control: FIRST_ENTER and FIRST_EXIT are overridden by EACH_*; ON is reported late",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/99",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 98,
-              "title": "[rt-xr-gITFast] ACTION_MEDIA is a stub and ANIMATION_PAUSE throws",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/98",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 97,
-              "title": "[rt-xr-gITFast] ACTION_TRANSFORM throws NotImplementedException from its Delay property",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/97",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 96,
-              "title": "[rt-xr-gITFast] ACTION_ACTIVATE applies activationStatus inverted",
-              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/96",
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
               "labels": [
@@ -4031,13 +3844,19 @@
               "last_work_commit": "2025-06-03"
             },
             {
-              "name": "development",
+              "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
             },
             {
-              "name": "feature/xr_smartphone_app",
+              "name": "feature/xr_smartphone_app-u6",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-10-19"
@@ -4240,6 +4059,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 58,
+              "title": "Merge 5mbs-development branch to 5mbs branch",
+              "url": "https://github.com/5G-MAG/open5gs/issues/58",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 54,
               "title": "Audit bbc-patches against a current upstream open5gs release",
@@ -4512,19 +4339,9 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-20",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-09-01",
           "pulls": [
-            {
-              "number": 116,
-              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "development"
-            },
             {
               "number": 98,
               "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
@@ -4557,6 +4374,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 117,
+              "title": "FLUTE Receiver: join a multicast (SSM/ASM) group on the tunnel address",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/117",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -4672,16 +4497,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
               "last_commit": "2026-10-20",
               "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/mbs-profile",
@@ -4727,10 +4552,18 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-23",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-07-03",
           "pulls": [],
           "issues": [
+            {
+              "number": 77,
+              "title": "Change wrap files back to the main branches",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/77",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 76,
               "title": "MBSF: the announcement channel queues one MBSTF request per key for every unanswered key",
@@ -4872,8 +4705,8 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-23",
-              "last_work_commit": "2026-10-23"
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
             },
             {
               "name": "fix/mbsf-usac-create-retry",
@@ -4895,19 +4728,9 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-29",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-07-03",
           "pulls": [
-            {
-              "number": 84,
-              "title": "mbstf: serve every unicast packet session on the configured packetIngest port",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/84",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-22",
-              "updated_at": "2026-10-29",
-              "base": "development"
-            },
             {
               "number": 81,
               "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
@@ -4920,6 +4743,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 85,
+              "title": "Change wrap files back to the main branches",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/85",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 83,
               "title": "MBSTF: use after free when a Distribution Session create is refused after the session was built",
@@ -4993,16 +4824,16 @@
               "last_work_commit": "2026-07-03"
             },
             {
-              "name": "fix/mbstf-packet-fixed-port",
-              "default": false,
-              "last_commit": "2026-10-29",
-              "last_work_commit": "2026-10-29"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-21",
-              "last_work_commit": "2026-10-21"
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "fix/mbstf-packet-fixed-port",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
             },
             {
               "name": "fix/mbstf-minimum-fdt-expiry",
@@ -5048,20 +4879,9 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-06-05",
-          "pulls": [
-            {
-              "number": 35,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 6,
@@ -5082,15 +4902,15 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09",
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
             },
             {
@@ -5141,7 +4961,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
-              "updated_at": "2026-10-22",
+              "updated_at": "2026-10-30",
               "base": "development"
             }
           ],
@@ -5389,7 +5209,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-14",
+              "updated_at": "2026-10-30",
               "base": "development"
             },
             {
@@ -5480,7 +5300,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-14",
+              "updated_at": "2026-10-30",
               "base": "development"
             },
             {
@@ -5540,7 +5360,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-14",
+              "updated_at": "2026-10-30",
               "base": "development"
             }
           ],
@@ -6012,7 +5832,16 @@
           "pushed_at": "2026-10-28",
           "latest_release": "2026-10-28",
           "pulls": [],
-          "issues": [],
+          "issues": [
+            {
+              "number": 13,
+              "title": "Working plan for new features",
+              "url": "https://github.com/5G-MAG/rt-camara-examples/issues/13",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            }
+          ],
           "branches": [
             {
               "name": "main",
@@ -6561,19 +6390,9 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-20",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-09-01",
           "pulls": [
-            {
-              "number": 116,
-              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "development"
-            },
             {
               "number": 98,
               "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
@@ -6606,6 +6425,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 117,
+              "title": "FLUTE Receiver: join a multicast (SSM/ASM) group on the tunnel address",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/117",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -6721,16 +6548,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
               "last_commit": "2026-10-20",
               "last_work_commit": "2026-10-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/mbs-profile",
@@ -6822,6 +6649,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 58,
+              "title": "Merge 5mbs-development branch to 5mbs branch",
+              "url": "https://github.com/5G-MAG/open5gs/issues/58",
+              "author": "dsilhavy",
+              "created_at": "2026-10-30",
+              "labels": []
+            },
             {
               "number": 54,
               "title": "Audit bbc-patches against a current upstream open5gs release",
@@ -7423,20 +7258,9 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-10-30",
           "latest_release": "2026-06-05",
-          "pulls": [
-            {
-              "number": 35,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 6,
@@ -7457,15 +7281,15 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09",
+              "last_commit": "2026-10-30",
+              "last_work_commit": "2026-10-30"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
             },
             {
