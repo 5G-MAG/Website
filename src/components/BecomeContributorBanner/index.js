@@ -1,4 +1,3 @@
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { icon } from '@site/src/components/GodeeperCard';
 import styles from './styles.module.css';
@@ -27,9 +26,9 @@ export default function BecomeContributorBanner() {
           code can be merged into the Reference Tools.
         </p>
         <div className={styles.actions}>
-          <Link className={styles.primary} to="/community#becoming-a-contributor">
-            Become a contributor &rarr;
-          </Link>
+          <a className={styles.primary} href="#contributor-license-agreement">
+            Become a contributor &darr;
+          </a>
           <a className={styles.ghost} href={cla} target="_blank" rel="noreferrer">
             Download the CLA (individual)
           </a>
