@@ -22,8 +22,8 @@ export default function BecomeContributorBanner() {
           Become a contributor
         </h3>
         <p className={styles.desc}>
-          Sign the Contributor License Agreement (CLA) and have it on file with 5G-MAG, and your
-          code can be merged into the Reference Tools.
+          Sign the Contributor License Agreement (CLA) and have it on file with 5G-MAG Project
+          Office, so your code can be merged into the relevant repository.
         </p>
         <div className={styles.actions}>
           <a className={styles.primary} href="#contributor-license-agreement">
