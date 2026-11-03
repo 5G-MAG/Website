@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-03",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -378,7 +378,7 @@
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-10-30",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 2
     },
     "rt-xr-maf-native": {
       "status": "Under Development",
