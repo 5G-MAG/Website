@@ -23,5 +23,5 @@ export const PROJECT_DECKS = {
   tsc: { title: 'Time-Sensitive Communications (TSC)', pages: 7 },
   'ai-ml': { title: 'AI/ML Evaluation Framework', pages: 10 },
   '6g': { title: '6G AI Traffic Characterization', pages: 11 },
-  '3gpp-platforms': { title: '3GPP RAN and Core Platforms', pages: 12 },
+  '3gpp-platforms': { title: '3GPP RAN and Core Platforms', pages: 11 },
 };

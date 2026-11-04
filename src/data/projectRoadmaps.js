@@ -2,52 +2,6 @@
 // Where We Stand deck (admin-graphics/slides/where_we_stand, sync_website.py), so the page and the deck show the same
 // columns and words. A project without a slide there keeps the roadmap of its own deck.
 export const PROJECT_ROADMAPS = {
-  "3gpp-platforms": {
-    "read": "4 November 2026",
-    "merged": "9 pull requests in 2 repositories",
-    "phases": [
-      {
-        "label": "UNDER STUDY (BACKLOG)",
-        "items": [
-          {
-            "head": "libscpcf",
-            "body": "No optional feature is negotiated, and a termination request from the PCF is not served."
-          },
-          {
-            "head": "libscbsf",
-            "body": "Looks up a PCF binding by IPv4 address or IPv6 prefix only; no register or update operation."
-          },
-          {
-            "head": "libscmbsmf",
-            "body": "Needs fixes, among them updating a status subscription and the 200 reply where TS 29.532 gives 204."
-          }
-        ]
-      },
-      {
-        "label": "IN DEVELOPMENT",
-        "items": [
-          {
-            "head": "Open5GS",
-            "body": "Open pull requests port the 5G-MAG patches onto Open5GS v2.8.0 and carry collocated NF instances in the NF profile."
-          },
-          {
-            "head": "srsRAN_4G",
-            "body": "Open pull requests bring Release 16 features of 5G Broadcast (PBCH repetition, aggregation level 16, CFI in the MIB)."
-          }
-        ]
-      },
-      {
-        "label": "COMPLETED",
-        "items": [
-          {
-            "head": "rt-5gc-service-consumers 2.1.1",
-            "body": "5 Jun 2026. A bug-fix release: memory issues fixed, and the callback is called after a DELETE operation."
-          }
-        ]
-      }
-    ],
-    "since": "5 Jun 2026"
-  },
   "5g-broadcast": {
     "read": "4 November 2026",
     "phases": [
