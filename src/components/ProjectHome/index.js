@@ -142,9 +142,18 @@ export default function ProjectHome({
           </div>
         </section>
 
+        {/* The roadmap comes straight after the introduction, so that it is on or just below the first screen (owner, 4 November 2026). */}
+        {PROJECT_ROADMAPS[slug] && (
+          <section className={`${styles.section} ${styles.sectionAlt}`}>
+            <div className="container">
+              <ProjectRoadmap slug={slug} accent={accent} />
+            </div>
+          </section>
+        )}
+
         <ProjectDeckBand slug={slug} />
 
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <section className={`${styles.section} ${implemented ? '' : styles.sectionAlt}`}>
           <div className="container">
             <ProjectPath
               accent={accent}
@@ -155,14 +164,6 @@ export default function ProjectHome({
             />
           </div>
         </section>
-
-        {PROJECT_ROADMAPS[slug] && (
-          <section className={styles.section}>
-            <div className="container">
-              <ProjectRoadmap slug={slug} accent={accent} />
-            </div>
-          </section>
-        )}
 
         {/* Only a curated block is shown. The taxonomy's sdos name the bodies a project relates to, which is not the same as
             the standards it implements (5G MBS also implements IETF specifications through its FLUTE library). */}
