@@ -150,50 +150,6 @@ export const PROJECT_ROADMAPS = {
       }
     ]
   },
-  "6g": {
-    "read": "4 November 2026",
-    "merged": null,
-    "phases": [
-      {
-        "label": "UNDER STUDY (BACKLOG)",
-        "items": [
-          {
-            "head": "Metrics",
-            "body": "Whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation is for further study in TR 26.870."
-          },
-          {
-            "head": "Agentic uplink",
-            "body": "Whether the retransmitted context that explains the uplink-heavy agentic traffic occurs in agentic applications is for further study."
-          },
-          {
-            "head": "AI gateway",
-            "body": "The test scenario of the AI gateway, and the source code of its call flow, are still to be provided."
-          }
-        ]
-      },
-      {
-        "label": "IN DEVELOPMENT",
-        "items": [
-          {
-            "head": "Agentic scenarios",
-            "body": "Pull request 10 adds the agentic measurement scenarios agreed for the 6G media study and separates network measurement into the standalone netemu package."
-          },
-          {
-            "head": "Video analysis scenarios",
-            "body": "Scenario configurations for video-traffic analysis."
-          },
-          {
-            "head": "Chat with token IDs",
-            "body": "A chat scenario configuration in which the client sends token identifiers."
-          }
-        ]
-      },
-      {
-        "label": "COMPLETED",
-        "items": []
-      }
-    ]
-  },
   "ai-in-media-services": {
     "read": "4 November 2026",
     "phases": [
@@ -255,42 +211,6 @@ export const PROJECT_ROADMAPS = {
             "body": ""
           }
         ]
-      }
-    ]
-  },
-  "ai-ml": {
-    "read": "4 November 2026",
-    "merged": null,
-    "phases": [
-      {
-        "label": "UNDER STUDY (BACKLOG)",
-        "items": [
-          {
-            "head": "Human pose estimation",
-            "body": "The README describes the split inferencing of PoseNet at different layers; the repository has no scripts for it yet."
-          },
-          {
-            "head": "Video super resolution",
-            "body": "The README gives the motivation: video calls are typically 480p today and XR calls need more. The repository has no scripts for it yet."
-          },
-          {
-            "head": "Hand gestures and federated learning",
-            "body": "The README has the headings and no text. Both are planned."
-          }
-        ]
-      },
-      {
-        "label": "IN DEVELOPMENT",
-        "items": [
-          {
-            "head": "Bit incremental transfer",
-            "body": "A pull request is open to merge the bit incremental transfer feature into the main branch."
-          }
-        ]
-      },
-      {
-        "label": "COMPLETED",
-        "items": []
       }
     ]
   },
