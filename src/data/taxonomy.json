@@ -350,7 +350,9 @@
         "rt-vdmc-web-decoder-player"
       ],
       "releases_slug": "#repositories--releases",
-      "contributors": [],
+      "contributors": [
+        "Nokia"
+      ],
       "stages": {
         "under-study": true,
         "technical-analysis": false,
@@ -589,6 +591,9 @@
       "tagline": "Video capabilities and operation points of 3GPP TS 26.265, and the conformance validator for them",
       "basket": "content-delivery",
       "repos": [],
+      "contributors": [
+        "Qualcomm"
+      ],
       "stages": {
         "under-study": false,
         "technical-analysis": true,
@@ -613,6 +618,9 @@
       "parent": "Video Operation Points",
       "repos": [
         "vops-conformance-validator"
+      ],
+      "contributors": [
+        "Qualcomm"
       ],
       "sdos": [
         "3GPP"
