@@ -1,0 +1,78 @@
+{
+  "5gms": {
+    "title": "5G Media Streaming (5GMS)",
+    "view": 2
+  },
+  "content-delivery": {
+    "title": "Content Delivery Protocols and Tools",
+    "view": 3
+  },
+  "dvb-i": {
+    "title": "DVB-I Services over 5G Systems",
+    "view": 4
+  },
+  "data-collection": {
+    "title": "UE Data Collection, Reporting and Event Exposure",
+    "view": 5
+  },
+  "vops": {
+    "title": "Video Operation Points",
+    "view": 6
+  },
+  "beyond-2d": {
+    "title": "Beyond 2D Video Experiences",
+    "view": 7
+  },
+  "avatar": {
+    "title": "Conversational Avatar Communication with MPEG ARF",
+    "view": 8
+  },
+  "vdmc": {
+    "title": "Dynamic Mesh Coding",
+    "view": 9
+  },
+  "v3c": {
+    "title": "MPEG V3C Immersive Platform",
+    "view": 10
+  },
+  "xr": {
+    "title": "XR/3D Scenes with MPEG-I Scene Description",
+    "view": 11
+  },
+  "emergency-alerts": {
+    "title": "5G Broadcast - Emergency Alerts",
+    "view": 12
+  },
+  "5g-broadcast": {
+    "title": "5G Broadcast - TV and Radio Services",
+    "view": 13
+  },
+  "5g-mbs": {
+    "title": "5G Multicast Broadcast Services (MBS)",
+    "view": 14
+  },
+  "rtc": {
+    "title": "Real-time Media Communication (RTC) Architecture",
+    "view": 15
+  },
+  "network-apis": {
+    "title": "CAMARA Connectivity Quality Management APIs",
+    "view": 16
+  },
+  "npn": {
+    "title": "Non-Public Networks",
+    "view": 17
+  },
+  "tsc": {
+    "title": "Time-Sensitive Communications (TSC)",
+    "view": 18
+  },
+  "ntn": {
+    "title": "Non-Terrestrial Networks in 5G Systems",
+    "view": 19
+  },
+  "ai-in-media-services": {
+    "title": "AI in Media Services",
+    "view": 20
+  }
+}

@@ -5,6 +5,11 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+# One data commit at a time: this and update-roadmaps.yml queue behind each other instead of racing on the push.
+concurrency:
+  group: data-commits
+  cancel-in-progress: false
+
 # GITHUB_TOKEN only needs to read; the commit/push step below authenticates
 # with SYNC_TOKEN (a PAT), not the default token.
 permissions:

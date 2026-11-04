@@ -1,0 +1,89 @@
+name: Update Roadmaps
+
+# Reads the public board "5G-MAG Roadmaps" (https://github.com/orgs/5G-MAG/projects/76) and writes the roadmaps of the project
+# pages (src/data/projectRoadmaps.json). A commit happens only when an entry changed; the commit starts the site deploy.
+# Run it by hand from the Actions tab after an edit on the board that should not wait for the night.
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+    inputs:
+      override:
+        description: 'Accept a large drop of entries or an emptied project (read the log of the failed run first)'
+        type: boolean
+        default: false
+
+# One data commit at a time: this and update-data.yml queue behind each other instead of racing on the push.
+concurrency:
+  group: data-commits
+  cancel-in-progress: false
+
+# GITHUB_TOKEN reads the public board and opens the issue on failure; the commit and the pull request use SYNC_TOKEN
+# (a PAT), because a push made with GITHUB_TOKEN does not start the deploy workflow.
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  update-roadmaps:
+    if: github.repository == '5G-MAG/Website'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SYNC_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Stops without writing when a check fails: unknown project label, a missing or wrong Status, more than 8 entries in
+      # a column, a headline over 160 characters, a duplicate, an empty board, an emptied project, or a drop below 80 per
+      # cent of the entries of the last file. The last good file then stays on the site.
+      - name: Read the board and check it
+        id: read
+        run: node scripts/fetch-project-roadmaps.js
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ROADMAPS_OVERRIDE: ${{ inputs.override }}
+
+      # More than ten entries added, removed or moved in one run opens a pull request for review instead of committing.
+      - name: Commit, or open a pull request for a large change
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          CHANGES: ${{ steps.read.outputs.changes }}
+          OVERRIDE: ${{ inputs.override }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/projectRoadmaps.json
+          if git diff --cached --quiet; then
+            echo "The roadmaps did not change."
+            exit 0
+          fi
+          if [ "${CHANGES:-0}" -gt 10 ] && [ "$OVERRIDE" != "true" ]; then
+            branch="roadmaps-$(date -u +%Y%m%d-%H%M)"
+            git checkout -b "$branch"
+            git commit -m "Roadmaps: ${CHANGES} entries changed on the board"
+            git push origin "$branch"
+            gh pr create --base main --head "$branch" \
+              --title "Roadmaps: ${CHANGES} entries changed on the board" \
+              --body "More than ten entries were added, removed or moved on the board since the last export. Check them on https://github.com/orgs/5G-MAG/projects/76, then merge. Merging deploys the site."
+          else
+            git commit -m "Update roadmaps from the board"
+            git pull --rebase origin main
+            git push
+          fi
+
+      # A run that fails (a check above, an expired SYNC_TOKEN, a GitHub error) opens one issue, so the roadmaps do not go stale unseen.
+      - name: Open an issue when the run failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Roadmap export failed"
+          if [ -z "$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number')" ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" \
+              --body "The scheduled run of Update Roadmaps failed, so the project pages keep the last good roadmaps. See $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. The board is https://github.com/orgs/5G-MAG/projects/76."
+          fi

@@ -1,10 +1,12 @@
 import styles from './styles.module.css';
 import { PROJECT_ROADMAPS } from '@site/src/data/projectRoadmaps';
+import ROADMAP_PROJECTS from '@site/src/data/roadmapProjects.json';
 
-// The roadmap slide of the project's slide deck, as a block of the project page: the same columns in the same order
-// (brought to study, on-going, outcomes) and the same words. The data is written from the Where We Stand slide of the
-// project (admin-graphics/slides/where_we_stand, sync_website.py), so the page and the deck cannot differ. A project
-// without such a slide keeps the columns of its own deck (known gaps, in development, released).
+// The roadmap of the project as a block of the project page: three columns (brought to study, on-going, outcomes) with
+// their entries. The entries come from the public GitHub board "5G-MAG Roadmaps" (scripts/fetch-project-roadmaps.js), so
+// the page, the decks and the Where We Stand slides show the same words. The link under the columns opens the board view
+// of the project, where 5G-MAG officials edit the entries.
+const BOARD = 'https://github.com/orgs/5G-MAG/projects/76';
 const COLUMN_COLOURS = {
   'BROUGHT TO STUDY': '#D64545', 'ON-GOING': '#E08A00', OUTCOMES: '#2E8B5A',
   RELEASED: '#2E8B5A', 'IN DEVELOPMENT': '#0A6E9C',
@@ -36,9 +38,11 @@ export default function ProjectRoadmap({ slug, accent }) {
           );
         })}
       </div>
-      {roadmap.merged && (
-        <p className={styles.merged}>
-          <strong>Merged since {roadmap.since}</strong> {roadmap.merged}
+      {ROADMAP_PROJECTS[slug] && (
+        <p className={styles.board}>
+          <a href={`${BOARD}/views/${ROADMAP_PROJECTS[slug].view}`} target="_blank" rel="noopener noreferrer">
+            Edit or follow this roadmap on GitHub
+          </a>
         </p>
       )}
     </div>
