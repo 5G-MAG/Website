@@ -1,12 +1,13 @@
-// The "Latest updates and roadmap" slide of each project's slide deck, keyed by the project's slug. Written by the deck
-// build (admin-graphics/slides, DECKS_ROADMAP_DIR) so the project page and the deck show the same columns and words.
+// The "Latest updates and roadmap" block of each project page, keyed by the project's slug: the project's slide of the
+// Where We Stand deck (admin-graphics/slides/where_we_stand, sync_website.py), so the page and the deck show the same
+// columns and words. A project without a slide there keeps the roadmap of its own deck.
 export const PROJECT_ROADMAPS = {
   "3gpp-platforms": {
-    "read": "23 October 2026",
+    "read": "4 November 2026",
     "merged": "9 pull requests in 2 repositories",
     "phases": [
       {
-        "label": "KNOWN GAPS",
+        "label": "UNDER STUDY (BACKLOG)",
         "items": [
           {
             "head": "libscpcf",
@@ -36,7 +37,7 @@ export const PROJECT_ROADMAPS = {
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "COMPLETED",
         "items": [
           {
             "head": "rt-5gc-service-consumers 2.1.1",
@@ -48,185 +49,159 @@ export const PROJECT_ROADMAPS = {
     "since": "5 Jun 2026"
   },
   "5g-broadcast": {
-    "read": "23 October 2026",
-    "merged": "61 pull requests in 8 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Release 17 to 19 transmitter",
-            "body": "Wider bandwidths, new UHF bands, CAS muting and interleaving in the QRD and CRD transmitter."
-          },
-          {
-            "head": "Android playback modes",
-            "body": "DASH and RTP playback, and seamless switching with DASH, in the MBMS Android Middleware."
-          },
-          {
-            "head": "Docker setup",
-            "body": "Container images for the transmitter and the client-side components."
+            "head": "Integration of DVB-I with 5G Broadcast",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "ETSI TS 103 720 update",
-            "body": "The update of the specification for 3GPP Release 18 is in progress."
+            "head": "Release 19 transmitter and receiver",
+            "body": ""
           },
           {
-            "head": "BM-SC and application provider",
-            "body": "xMB interface fields reworked to the specification, real Raptor FEC and a stricter FLUTE profile in the BM-SC."
+            "head": "Docker set-up",
+            "body": ""
           },
           {
-            "head": "MBMS Client announcement",
-            "body": "The MBMS Client gains every client-side way of acquiring the service announcement, and a broadcast demo chain."
+            "head": "Validator for the BM-SC, the RAN and the signal",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-libflute 0.12.4",
-            "body": "1 Sep 2026. Option to finish sending all files when the transmitter is deactivated; fixes unbounded FDT growth."
+            "head": "LTE-based 5G Broadcast transmitter",
+            "body": ""
           },
           {
-            "head": "rt-mbms-examples 1.1.0",
-            "body": "5 Nov 2024. Adds configuration changes and sample scripts for the IBC 24 demo."
+            "head": "Seamless switching between 5G Broadcast and unicast",
+            "body": ""
           },
           {
-            "head": "rt-mbms-mw-android 1.0.0",
-            "body": "5 Sep 2024. Seamless switching between 5G broadcast and unicast delivery on Android, with HLS support."
+            "head": "Demonstration set-up for IBC 2024",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v1.0.0"
+    ]
   },
   "5g-mbs": {
-    "read": "23 October 2026",
-    "merged": "40 pull requests in 8 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "REPORTS IN PROGRESS",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Service and System Aspects",
-            "body": "Technical Report on MBS: Service and System Aspects."
+            "head": "MBS Multicast",
+            "body": ""
           },
           {
-            "head": "Service Layer Aspects",
-            "body": "Technical Report on MBS: Service Layer Aspects."
+            "head": "MBS over NTN",
+            "body": ""
           },
           {
-            "head": "RAN Aspects",
-            "body": "Technical Report on MBS: RAN Aspects. Further reports cover mobility, RAN procedures and NTN."
+            "head": "Porting to Release 19",
+            "body": ""
+          },
+          {
+            "head": "Support in OCUDU",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "MBS Broadcast demonstration",
-            "body": "An end-to-end MBS Broadcast demonstration: 5GC, MBSF, MBSTF, gNB and UE, with DASH over broadcast."
-          },
-          {
-            "head": "Closer to the specifications",
-            "body": "Compliance work on the MBSF, the MBSTF, the MBS Client and the application and provider tools."
-          },
-          {
-            "head": "Broadcast in the RAN",
-            "body": "More robust MBS Broadcast reception in the UE and the gNodeB, including concurrent sessions."
+            "head": "MBS Broadcast Rel-18 end-to-end",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-mbs-examples v0.4.0",
-            "body": "2 Oct 2026. Docker set up for MBS User Services, loadable demo templates and a non-interactive tutorial mode."
+            "head": "Implementation of MBS User Services including MBSF and MBSTF",
+            "body": ""
           },
           {
-            "head": "rt-mbs-function 1.1.0",
-            "body": "3 Jul 2026. Support for the Packet Distribution Method for MBS Distribution Sessions."
-          },
-          {
-            "head": "MBS gNodeB v0.1.4-5mbs-srsRAN_Project",
-            "body": "14 Jul 2026. MBS support across the gNodeB: broadcast session setup and delivery."
+            "head": "Initial implementation of 5GC, gNodeB and UE supporting MBS",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "9 Jun 2026"
+    ]
   },
   "5gms": {
-    "read": "23 October 2026",
-    "merged": "21 pull requests in 8 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "UNDER STUDY",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Testing in testbeds",
-            "body": "Testing of the 5G Media Streaming Reference Tools in testbeds."
+            "head": "Study of implementation of 5GMS and RTC architectures",
+            "body": ""
           },
           {
-            "head": "Commercial OTT app",
-            "body": "Integration of the 5GMS clients with a commercial OTT application, a candidate."
-          },
-          {
-            "head": "Advanced Media Delivery",
-            "body": "Documentation on the standards related to Advanced Media Delivery."
+            "head": "Candidate topics from 3GPP AMD Phase 2",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Reference Tools for Releases 17 and 18",
-            "body": "Implementation of the Reference Tools for 3GPP Release 17 and Release 18 is in progress."
+            "head": "Implementation of Dynamic QoS policies",
+            "body": ""
           },
           {
-            "head": "Several Application Servers",
-            "body": "More than one Application Server, also over HTTPS, and integration of the Data Collection Application Function."
+            "head": "Implementation of Network Assistance",
+            "body": ""
           },
           {
-            "head": "CMMF and DVB-I",
-            "body": "A CMMF recipe in the Docker setup, and a native Android DVB-I client for the 5GMS-Aware Application."
+            "head": "Implementation of CMMF support in 5GMS",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-5gms-application-function v1.4.7",
-            "body": "3 Aug 2026. Rejects an invalid content hosting ingest URL and prevents crashes on invalid or missing configuration."
+            "head": "Implementation of Content Hosting",
+            "body": ""
           },
           {
-            "head": "rt-5gms-application-server 1.2.5",
-            "body": "3 Aug 2026. Adds CMCD capture and forwarding."
+            "head": "Implementation of QoE Metrics and Consumption Reporting",
+            "body": ""
           },
           {
-            "head": "rt-5gms-application-provider 1.3.0",
-            "body": "3 Aug 2026. QoE metrics reporting is absorbed into the Management UI, and CMCD is added."
+            "head": "Initial Implementation of CMCD",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v1.4.6"
+    ]
   },
   "6g": {
-    "read": "23 October 2026",
+    "read": "4 November 2026",
     "merged": null,
     "phases": [
       {
-        "label": "FOR FURTHER STUDY",
+        "label": "UNDER STUDY (BACKLOG)",
         "items": [
           {
             "head": "Metrics",
@@ -258,47 +233,83 @@ export const PROJECT_ROADMAPS = {
             "body": "A chat scenario configuration in which the client sends token identifiers."
           }
         ]
+      },
+      {
+        "label": "COMPLETED",
+        "items": []
       }
     ]
   },
   "ai-in-media-services": {
-    "read": "23 October 2026",
-    "merged": null,
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "UNDER STUDY",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
+            "head": "More evaluation scenarios: pose and gesture split inferencing, video super resolution, federated learning",
+            "body": ""
+          },
+          {
             "head": "Metrics",
-            "body": "A careful review and detailed definition of the metrics, and of how the traffic characteristics are measured."
+            "body": ""
+          },
+          {
+            "head": "AI gateway",
+            "body": ""
+          },
+          {
+            "head": "Agentic uplink",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "AI traffic testbed",
-            "body": "Agentic measurements for the 6G media study, and video analysis and chat traffic with tokens."
+            "head": "Bit incremental transfer of model data",
+            "body": ""
           },
           {
-            "head": "Network emulator",
-            "body": "Network capture and measurement as a standalone package, which the testbed uses for shaping and pcap analysis."
+            "head": "Measurement package",
+            "body": ""
           },
           {
-            "head": "AI and ML evaluation framework",
-            "body": "Split inferencing and compressed model transfer, including incremental transfer of model data."
+            "head": "Scenario configurations for video-traffic analysis",
+            "body": ""
+          },
+          {
+            "head": "Chat scenario in which the client sends token identifiers",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "AI traffic characterization testbed (draft TR 26.870)",
+            "body": ""
+          },
+          {
+            "head": "Model transfer and split inference (TR 26.927)",
+            "body": ""
+          },
+          {
+            "head": "Real-time translation scenario",
+            "body": ""
           }
         ]
       }
     ]
   },
   "ai-ml": {
-    "read": "23 October 2026",
+    "read": "4 November 2026",
     "merged": null,
     "phases": [
       {
-        "label": "NO SCRIPTS YET",
+        "label": "UNDER STUDY (BACKLOG)",
         "items": [
           {
             "head": "Human pose estimation",
@@ -322,429 +333,614 @@ export const PROJECT_ROADMAPS = {
             "body": "A pull request is open to merge the bit incremental transfer feature into the main branch."
           }
         ]
+      },
+      {
+        "label": "COMPLETED",
+        "items": []
       }
     ]
   },
   "avatar": {
-    "read": "23 October 2026",
-    "merged": "5 pull requests in 3 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Body animation support",
-            "body": "Planned for rt-avatar-call."
+            "head": "Avatar calls phase 2",
+            "body": ""
           },
           {
-            "head": "Call-flow UI",
-            "body": "A UI that supports a call flow."
+            "head": "Body animation support in the avatar call client",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "v0.10.155",
-            "body": "Initial support for Gaussian splatting based avatars, with UnityARF 1.1.0.155; pre-release v0.10.155-b2 is out."
+            "head": "Gaussian splatting avatars",
+            "body": ""
           },
           {
-            "head": "Android XR support",
-            "body": "Animation generation on AndroidXR is under development."
+            "head": "Animation generation on Android XR",
+            "body": ""
           },
           {
             "head": "Base Avatar Repository",
-            "body": "rt-avatar-bar: the service is ready; the client fetch in rt-avatar-call is pending."
+            "body": ""
+          },
+          {
+            "head": "Android Avatar Call Client Application with enhanced UX",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-avatar-call v0.10.154",
-            "body": "16 Oct 2026. CLI build tooling and updated default camera framing."
+            "head": "Initial Avatar Call Client",
+            "body": ""
           },
           {
-            "head": "rt-avatar-content v0.10.154",
-            "body": "16 Oct 2026. Content supporting rt-avatar-call v0.10.154."
+            "head": "Initial implementation of SWAP protocol",
+            "body": ""
           },
           {
-            "head": "rt-3gpp-swap v0.9",
-            "body": "16 Oct 2026. Closes the TS 26.113 SWAP conformance gaps."
+            "head": "Avatar content for the call client",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v0.9.1"
+    ]
   },
   "beyond-2d": {
-    "read": "23 October 2026",
-    "merged": "1 pull request in 1 repository",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Test content",
-            "body": "Collecting the initial contents for the evaluation of the FS_Beyond2D formats."
+            "head": "Scenario 1: UE-to-UE stereoscopic video live streaming",
+            "body": ""
+          },
+          {
+            "head": "Scenario 2: Streaming of professionally produced volumetric video with a single asset containing people",
+            "body": ""
+          },
+          {
+            "head": "Scenario 3: On-demand streaming of multi-view plus depth",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Evaluation services",
-            "body": "Completing the evaluation setups for the three services of the study."
+            "head": "Completing the evaluation setups",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-beyond2d-evaluation-framework v0.2.1",
-            "body": "24 Jul 2025. Adds the point cloud setup and updates for video generation scripts."
+            "head": "Multi-view plus depth evaluation framework",
+            "body": ""
+          },
+          {
+            "head": "Point cloud (V-PCC) evaluation scripts for scenario 2",
+            "body": ""
+          },
+          {
+            "head": "Point cloud setup and video generation scripts",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v0.2.0"
+    ]
   },
   "content-delivery": {
-    "read": "23 October 2026",
-    "merged": "7 pull requests in 4 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "EARLY STAGE",
+        "label": "BROUGHT TO STUDY",
+        "items": []
+      },
+      {
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "FLUTE conformance",
-            "body": "A validator that tests a FLUTE implementation against the FLUTE profiles, starting with the FLUTE library."
+            "head": "Implementation of a versatile Media Origin and Packager to support 5G-MAG projects (DASH, HLS, CMAF packaging, V3C over DASH, live media in XR scenes,...)",
+            "body": ""
           },
           {
-            "head": "rt-cmmf-encoder",
-            "body": "A reference implementation of ETSI TS 103 973: no encoder code on the main branch yet, and no release."
+            "head": "Implementation of Reference Application for Android",
+            "body": ""
+          },
+          {
+            "head": "CMMF (Coded Multisource Media Format) encoder for the xCD-1 code type of ETSI TS 103 973",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "FLUTE library",
-            "body": "Further FEC schemes, FLUTE version 2 signalling, congestion control and tunnelled operation, outside the 3GPP profiles."
-          },
-          {
-            "head": "Media origin",
-            "body": "Radio channels, real-time push transports and documentation for the media origin server and packager."
-          },
-          {
-            "head": "Reference Media Application",
-            "body": "An Android app and a test rig that check each delivery method of the media origin on a phone."
-          }
-        ]
-      },
-      {
-        "label": "RELEASED",
-        "items": [
-          {
-            "head": "rt-libflute 0.12.4",
-            "body": "1 Sep 2026. Finish-sending option, a tunnel mode test, and fixes for FDT growth and compression."
+            "head": "FLUTE library supporting MBMS Download, MBS and standard RFC profiles",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "0.12.4"
+    ]
   },
   "data-collection": {
-    "read": "23 October 2026",
-    "merged": "2 pull requests in 1 repository",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "IN DEVELOPMENT",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Embedding in other functions",
-            "body": "The Data Collection AF library is being made to build and run inside other Application Functions, such as the 5G Media Streaming AF."
-          },
-          {
-            "head": "Automated testing",
-            "body": "The regression tests are being run automatically, and the library is being hardened against missing configuration."
-          },
-          {
-            "head": "Newer 5G core base",
-            "body": "Moving the Data Collection AF to a newer Open5GS release line."
+            "head": "Uplift of the Data Collection AF to Release 19",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Data Collection AF 1.1.0",
-            "body": "13 May 2025. Fixes a returned status code and adds Docker Compose."
+            "head": "Integration of UE Data Collection Application Function as part of 5GMS",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Initial implementation of standalone UE Data Collection Application Function",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "1.1.0"
+    ]
   },
   "dvb-i": {
-    "read": "23 October 2026",
-    "merged": "1 pull request in 1 repository",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Service list acquisition",
-            "body": "DVB-I service list acquisition in the 5GMSd-aware application, as in the deployment guidelines."
-          },
-          {
-            "head": "Reference service list",
-            "body": "A DVB-I reference service list that uses 5G Media Streaming, for development and demonstration."
+            "head": "Implementation of 5GMS and 5G Broadcast delivery for DVB-I, as in ETSI TR 103 972 and TS 103 770",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Native Android DVB-I client",
-            "body": "A native Android DVB-I client inside the 5GMS-Aware Application, following the DVB-I specification."
+            "head": "Open-source implementation of DVB-I end-to-end components including Application Provider, Service List Registry, Web Application and Android Application",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-5gms-application v1.3.0",
-            "body": "26 May 2026. A new demonstration interface for 5GMS features, closely aligned with commercial streaming interfaces."
+            "head": "Initial implementation of DVB-I Webplayer",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v1.3.0"
+    ]
   },
   "emergency-alerts": {
-    "read": "23 October 2026",
-    "merged": "4 pull requests in 2 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "UNDER STUDY",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "ETWS support",
-            "body": "The tooling focuses on the CMAS path (SIB12); ETWS notifications (SIB10 and SIB11) are tracked on the boards."
-          },
-          {
-            "head": "More 5G Broadcast transmitter features",
-            "body": "Further radio features of the shared transmitter, such as new bands and more robust broadcast signalling."
-          },
-          {
-            "head": "Improvements to the specification",
-            "body": "The work towards ETSI TS 103 720 V1.3.1 adds PWS-related improvements."
+            "head": "Support of 3GPP Service URL to wake up 5G Broadcast receiver on emergency alert reception",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Custom alert content",
-            "body": "A developer will be able to supply custom message content and warning type instead of a hardcoded payload."
-          },
-          {
             "head": "Cell Broadcast Centre",
-            "body": "The CBC takes a warning as JSON and sends it to the MME; the step on to the transmitter is open."
+            "body": ""
           },
           {
             "head": "Docker support",
-            "body": "Running the transmitter in containers."
+            "body": ""
+          },
+          {
+            "head": "Custom alert message and warning type",
+            "body": ""
+          },
+          {
+            "head": "ETWS support (SIB10, SIB11)",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-mbms-tx-for-qrd-and-crd ea-1.0.0",
-            "body": "5 Sep 2024. Release of the transmitter for QRD and CRD devices, for the emergency alerts work."
+            "head": "Emergency alert broadcast",
+            "body": ""
           },
           {
-            "head": "rt-mbms-tx v1.0.0",
-            "body": "21 Jun 2023. The first release of the LTE-based 5G Broadcast transmitter."
+            "head": "First release of the LTE-based 5G Broadcast transmitter",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "1.0.0"
+    ]
   },
-  "rtc": {
-    "read": "23 October 2026",
-    "merged": null,
+  "network-apis": {
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "IN DEVELOPMENT",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Call teardown and errors",
-            "body": "The server accepts the acknowledgement that ends a call, and returns the error details the specification asks for."
-          },
-          {
-            "head": "Endpoint selection",
-            "body": "Selection among matching endpoints brought in line with the matching rules of the specification."
-          },
-          {
-            "head": "SDP handling",
-            "body": "An enforcement point on the answering side, so that a preliminary answer is not sent."
+            "head": "Alignment with CAMARA Sync26 meta-release: Dedicated Networks r2.3 (rc planned); code follows r2.2 (rc)",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "rt-3gpp-swap v0.9",
-            "body": "16 Oct 2026. First release of the SWAP server and its JavaScript library."
+            "head": "Initial implementation of Quality on Demand (API) consumer with Telefónica QoD sandbox",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Insomnia collections for Dedicated Networks",
+            "body": ""
+          },
+          {
+            "head": "Dedicated Networks portal for reservation and device access",
+            "body": ""
+          },
+          {
+            "head": "MCP Server for AI assistants",
+            "body": ""
+          }
+        ]
+      }
+    ]
+  },
+  "npn": {
+    "read": "4 November 2026",
+    "phases": [
+      {
+        "label": "BROUGHT TO STUDY",
+        "items": []
+      },
+      {
+        "label": "ON-GOING",
+        "items": []
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Non-Public 5G Networks for Content Production",
+            "body": ""
+          },
+          {
+            "head": "Deploying stand-alone Non-Public 5G Networks for media production",
+            "body": ""
+          },
+          {
+            "head": "5G NPNs for media production in collaboration with third-party networks",
+            "body": ""
+          },
+          {
+            "head": "Guidelines on registration and onboarding for media production equipment over 5G NPNs",
+            "body": ""
+          },
+          {
+            "head": "Roles in the 5G Media Production Ecosystem",
+            "body": ""
+          },
+          {
+            "head": "Spectrum access for live media production using Non-Public Networks (NPNs)",
+            "body": ""
+          },
+          {
+            "head": "Towards a comprehensive 5G-based toolbox for live media production",
+            "body": ""
+          }
+        ]
+      }
+    ]
+  },
+  "ntn": {
+    "read": "4 November 2026",
+    "phases": [
+      {
+        "label": "BROUGHT TO STUDY",
+        "items": [
+          {
+            "head": "OCUDU NTN Release 17",
+            "body": ""
+          },
+          {
+            "head": "Uplift to Release 19",
+            "body": ""
+          },
+          {
+            "head": "MBS over NTN",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "ON-GOING",
+        "items": []
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Study on handover and mobility over NTN",
+            "body": ""
+          },
+          {
+            "head": "MBS over NTN profiling: broadcast, multicast and multicast mobility",
+            "body": ""
+          },
+          {
+            "head": "NTN overview: system model, radio-layer adaptations and system information",
+            "body": ""
+          }
+        ]
+      }
+    ]
+  },
+  "rtc": {
+    "read": "4 November 2026",
+    "phases": [
+      {
+        "label": "BROUGHT TO STUDY",
+        "items": [
+          {
+            "head": "Split rendering (TS 26.565, TS 26.249)",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "ON-GOING",
+        "items": [
+          {
+            "head": "Preparation for Release 19 media delivery",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": []
+      }
+    ]
+  },
+  "tsc": {
+    "read": "4 November 2026",
+    "phases": [
+      {
+        "label": "BROUGHT TO STUDY",
+        "items": []
+      },
+      {
+        "label": "ON-GOING",
+        "items": []
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Report: Time synchronization services for media production over 5G networks",
+            "body": ""
+          },
+          {
+            "head": "Report: Time synchronization and media streams for content production using SMPTE ST 2110 standards",
+            "body": ""
           }
         ]
       }
     ]
   },
   "v3c": {
-    "read": "23 October 2026",
-    "merged": "3 pull requests in 3 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Haptics over DASH",
-            "body": "Streaming of haptics over DASH."
+            "head": "Support for Haptics over DASH",
+            "body": ""
           },
           {
-            "head": "Real-time protocols",
-            "body": "Support for real-time protocols such as RTP and WebRTC."
+            "head": "Support for Real-time protocols (RTP, WebRTC) in the player",
+            "body": ""
           },
           {
-            "head": "More synthesizers",
-            "body": "Support for an additional synthesizer, such as V-DMC."
+            "head": "Support for an additional synthesizer, such as V-DMC",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "V3C Unity Player",
-            "body": "A fuller player on Android: title and source on screen, content library and settings, playback statistics from the decoder."
+            "head": "New Android player",
+            "body": ""
           },
           {
-            "head": "V3C Unity Player",
-            "body": "Support for new devices: Meta Quest headsets."
+            "head": "Support for Meta Quest headsets",
+            "body": ""
           },
           {
-            "head": "Content and origin",
-            "body": "Titles that carry their own name, description and environment; real-time push transports in the media origin."
+            "head": "V3C over DASH streaming to devices",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-v3c-unity-player v1.1",
-            "body": "30 Sep 2025. Improves V-PCC rendering, with renamed and extended materials and shaders."
+            "head": "Improved V-PCC rendering in the Unity player",
+            "body": ""
           },
           {
-            "head": "rt-v3c-decoder-plugin v1.1",
-            "body": "30 Sep 2025. Adds the source code of the haptic decoder and synthesizer and of the V-PCC synthesizer."
+            "head": "Haptic decoder and synthesizer, and V-PCC synthesizer, as source code",
+            "body": ""
           },
           {
-            "head": "rt-v3c-content v1.1",
-            "body": "9 Oct 2025. Adds a V3C DASH packager and tools to generate V-PCC bitstreams."
+            "head": "V3C DASH packager and tools to generate V-PCC bitstreams",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v1.0"
+    ]
   },
-  "vops": {
-    "read": "23 October 2026",
-    "merged": null,
+  "vdmc": {
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "PLANNED",
+        "label": "BROUGHT TO STUDY",
+        "items": []
+      },
+      {
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "Testing with conformance bitstreams",
-            "body": "Every operation point is to be tested with its conformance bitstreams, to confirm the schemas and parsers."
+            "head": "Initial implementation of V-DMC web decoder and player",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": []
+      }
+    ]
+  },
+  "vops": {
+    "read": "4 November 2026",
+    "phases": [
+      {
+        "label": "BROUGHT TO STUDY",
+        "items": [
+          {
+            "head": "Keeping the validator in step with the specification",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "ON-GOING",
+        "items": [
+          {
+            "head": "Porting of VOPS Validator from 3GPP",
+            "body": ""
           },
           {
-            "head": "Version 19.3.0 of the specification",
-            "body": "The Standards page keeps V19.2.0 as the baseline until the validator is rebuilt against V19.3.0, which changes the dual-layer HEVC capabilities."
+            "head": "Fixes identified on verdicts",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "label": "OUTCOMES",
+        "items": [
+          {
+            "head": "Porting of Validator from 3GPP under the umbrella of the Media Connectivity Software Accelerator",
+            "body": ""
           }
         ]
       }
     ]
   },
   "xr": {
-    "read": "23 October 2026",
-    "merged": "23 pull requests in 5 repositories",
+    "read": "4 November 2026",
     "phases": [
       {
-        "label": "UNDER INVESTIGATION",
+        "label": "BROUGHT TO STUDY",
         "items": [
           {
-            "head": "Delivery over 5G Media Streaming",
-            "body": "Serving glTF content to rt-xr-unity-player applications."
+            "head": "Support for new MPEG Extensions for glTF 2.0",
+            "body": ""
           },
           {
-            "head": "Real-time communication",
-            "body": "Avatar based real time communication, TR 26.813 (Release 20 study complete), with the MPEG_node_avatar extension."
+            "head": "New XR Scene Player for Meta Quest",
+            "body": ""
           },
           {
-            "head": "Split rendering",
-            "body": "TS 26.249 (Immersive Audio for Split Rendering Scenarios) and TS 26.565 (Split Rendering Media Service Enabler)."
+            "head": "Split rendering (TS 26.565, TS 26.249) and delivery of XR scenes over the RTC architecture",
+            "body": ""
           }
         ]
       },
       {
-        "label": "IN DEVELOPMENT",
+        "label": "ON-GOING",
         "items": [
           {
-            "head": "XR Scene Player",
-            "body": "A smartphone app with media control, and compliance work."
+            "head": "New XR Scene Player for Android",
+            "body": ""
           },
           {
-            "head": "Reference scenes and validator",
-            "body": "Reference scenes that follow ISO/IEC 23090-14, and a scene validator."
+            "head": "Contributions to MPEG Scene validator",
+            "body": ""
           },
           {
-            "head": "Media pipelines and loader",
-            "body": "Decoding of timed metadata tracks, and fixes for the scene description extensions and interactivity."
+            "head": "Decoding of timed metadata tracks",
+            "body": ""
+          },
+          {
+            "head": "Support of media streaming of live content within XR/3D scenes",
+            "body": ""
           }
         ]
       },
       {
-        "label": "RELEASED",
+        "label": "OUTCOMES",
         "items": [
           {
-            "head": "rt-xr-unity-player v1.1.0",
-            "body": "27 Feb 2025. Media pipelines, video textures and spatial audio sources on Android."
+            "head": "Reference scenes aligned with ISO/IEC 23090-14",
+            "body": ""
           },
           {
-            "head": "rt-xr-blender-exporter v1.1.0",
-            "body": "16 Apr 2025. XR anchors defined in Blender and exported as MPEG_anchor glTF extensions."
+            "head": "Unity Player, Blender Project, Content repository",
+            "body": ""
           }
         ]
       }
-    ],
-    "since": "v1.1.0"
+    ]
   }
 };
