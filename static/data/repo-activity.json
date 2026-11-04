@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03 04:10 UTC",
+  "updated_at": "2026-11-04 03:27 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -3018,9 +3018,19 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-28",
+          "pushed_at": "2026-11-03",
           "latest_release": null,
           "pulls": [
+            {
+              "number": 47,
+              "title": "Fix MPEG media in the test scenes, add timed accessor header test scenes",
+              "url": "https://github.com/5G-MAG/rt-xr-content/pull/47",
+              "draft": false,
+              "author": "nlsdvl",
+              "created_at": "2026-11-03",
+              "updated_at": "2026-11-03",
+              "base": "development"
+            },
             {
               "number": 46,
               "title": "content: bring the work of three old branches into development",
@@ -3178,6 +3188,12 @@
               "last_work_commit": "2025-07-08"
             },
             {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-11-03",
+              "last_work_commit": "2026-11-03"
+            },
+            {
               "name": "feature/port-old-branches",
               "default": false,
               "last_commit": "2026-10-27",
@@ -3203,7 +3219,7 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-02",
+          "pushed_at": "2026-11-03",
           "latest_release": null,
           "pulls": [
             {
@@ -3213,17 +3229,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-11-02",
-              "updated_at": "2026-11-02",
-              "base": "rt-xr/development"
-            },
-            {
-              "number": 18,
-              "title": "gltfast: carry FlipTexture and MpegEquirectSkybox in the package",
-              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/18",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-11-02",
-              "updated_at": "2026-11-02",
+              "updated_at": "2026-11-03",
               "base": "rt-xr/development"
             },
             {
@@ -3242,14 +3248,14 @@
             {
               "name": "rt-xr/development",
               "default": true,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-03",
+              "last_work_commit": "2026-11-03"
             },
             {
               "name": "feature/bufferinfo-per-spec",
               "default": false,
-              "last_commit": "2026-11-02",
-              "last_work_commit": "2026-11-02"
+              "last_commit": "2026-11-03",
+              "last_work_commit": "2026-11-03"
             },
             {
               "name": "feature/gltfast-shaders",
@@ -3385,7 +3391,7 @@
           "description": "XR Media Pipelines",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-02",
+          "pushed_at": "2026-11-03",
           "latest_release": null,
           "pulls": [
             {
@@ -3395,7 +3401,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-02",
+              "updated_at": "2026-11-03",
               "base": "development"
             }
           ],
@@ -3539,8 +3545,8 @@
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-11-02",
-              "last_work_commit": "2026-11-02"
+              "last_commit": "2026-11-03",
+              "last_work_commit": "2026-11-03"
             },
             {
               "name": "development",
@@ -3568,7 +3574,7 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-02",
+          "pushed_at": "2026-11-03",
           "latest_release": "2025-02-27",
           "pulls": [
             {
@@ -3578,7 +3584,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-02",
+              "updated_at": "2026-11-03",
               "base": "development"
             }
           ],
@@ -3878,8 +3884,8 @@
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-11-02",
-              "last_work_commit": "2026-11-02"
+              "last_commit": "2026-11-03",
+              "last_work_commit": "2026-11-03"
             },
             {
               "name": "feature/xr_smartphone_app-u6",
@@ -4588,6 +4594,24 @@
           "latest_release": "2026-07-03",
           "pulls": [],
           "issues": [
+            {
+              "number": 79,
+              "title": "Docker image missing MIME database",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/79",
+              "author": "ypo",
+              "created_at": "2026-11-03",
+              "labels": []
+            },
+            {
+              "number": 78,
+              "title": "MBSF generates SDP bandwidth field without AS bandwidth modifier",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/78",
+              "author": "ypo",
+              "created_at": "2026-11-03",
+              "labels": [
+                "MBSF"
+              ]
+            },
             {
               "number": 77,
               "title": "Change wrap files back to the main branches",

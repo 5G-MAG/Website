@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-04",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -852,7 +852,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-11-03",
       "url": "https://github.com/5G-MAG/rt-xr-content"
     },
     "rt-xr-gITFast": {
@@ -866,7 +866,7 @@
       "private": false,
       "archived": false,
       "default_branch": "rt-xr/development",
-      "pushed_at": "2026-11-02",
+      "pushed_at": "2026-11-03",
       "url": "https://github.com/5G-MAG/rt-xr-gITFast"
     },
     "rt-xr-maf-native": {
@@ -880,7 +880,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-02",
+      "pushed_at": "2026-11-03",
       "url": "https://github.com/5G-MAG/rt-xr-maf-native"
     },
     "rt-xr-unity-player": {
@@ -894,7 +894,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-02",
+      "pushed_at": "2026-11-03",
       "url": "https://github.com/5G-MAG/rt-xr-unity-player"
     },
     "srsRAN": {
