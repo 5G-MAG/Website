@@ -1,0 +1,46 @@
+name: Renew Roadmaps Issue Limit
+
+# Only collaborators of 5G-MAG/Roadmaps (in practice the organisation owners) may open issues or comment there, so nothing
+# but the officials' entries reaches the board that feeds the project pages. GitHub keeps such an interaction limit for six
+# months at most, so this job sets it again on the 1st of every month: it never runs out. The limit is set with SYNC_TOKEN,
+# which needs admin rights on 5G-MAG/Roadmaps. If the token cannot do that, the run fails and opens an issue here.
+on:
+  schedule:
+    - cron: '23 4 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  renew:
+    if: github.repository == '5G-MAG/Website'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Set the limit to collaborators only, six months from now, and check it
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh api -X PUT /repos/5G-MAG/Roadmaps/interaction-limits -f limit=collaborators_only -f expiry=six_months > /dev/null
+          result="$(gh api /repos/5G-MAG/Roadmaps/interaction-limits)"
+          echo "$result"
+          limit="$(echo "$result" | jq -r '.limit')"
+          expires="$(echo "$result" | jq -r '.expires_at')"
+          [ "$limit" = "collaborators_only" ] || { echo "The limit is '$limit', expected collaborators_only"; exit 1; }
+          # at least five months ahead (150 days)
+          [ "$(date -u -d "$expires" +%s)" -gt "$(date -u -d '+150 days' +%s)" ] || { echo "The limit expires too soon: $expires"; exit 1; }
+
+      # A failed run opens one issue, so a lapsed token or a changed repository is noticed long before the limit would end.
+      - name: Open an issue when the run failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Roadmaps issue limit could not be renewed"
+          if [ -z "$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number')" ]; then
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" \
+              --body "The monthly run of Renew Roadmaps Issue Limit failed: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID. The limit on 5G-MAG/Roadmaps (only collaborators may open issues) ends six months after its last renewal. Check that SYNC_TOKEN has admin rights on that repository, then run the workflow again."
+          fi
