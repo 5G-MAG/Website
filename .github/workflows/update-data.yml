@@ -96,14 +96,6 @@ jobs:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         continue-on-error: true
 
-      # Requires SYNC_TOKEN — the GraphQL Projects API has no
-      # unauthenticated tier, unlike the REST-based fetch steps above.
-      - name: Fetch roadmap board
-        run: node scripts/fetch-roadmaps.js
-        env:
-          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
-        continue-on-error: true
-
       - name: Refresh site stats (after community stats)
         run: node scripts/fetch-site-stats.js
         env:
@@ -114,6 +106,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/repo-activity.json static/data/internal-call.json static/data/repo-metadata.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json static/data/repo-status.json static/badges/status
-          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats and roadmap data"
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/repo-activity.json static/data/internal-call.json static/data/repo-metadata.json static/data/community-stats.json static/data/site-stats.json static/data/repo-status.json static/badges/status
+          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats and site-stats data"
           git push
