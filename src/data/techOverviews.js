@@ -9,7 +9,7 @@ export const TECH_OVERVIEW = {
   '/tech/ai-in-media-services': '/tech/ai-in-media-services/overview',
   '/tech/ai-ml': '/tech/ai-ml/overview',
   '/tech/avatar': '/tech/avatar/overview',
-  '/tech/beyond-2d': '/tech/beyond-2d',
+  '/tech/beyond-2d': '/tech/beyond-2d/overview',
   '/tech/content-delivery': '/tech/content-delivery/overview',
   '/tech/data-collection': '/tech/data-collection/overview',
   '/tech/dvb-i': '/tech/dvb-i/overview',
