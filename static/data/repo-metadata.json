@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-11-05",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-04",
+      "pushed_at": "2026-11-05",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -936,7 +936,7 @@
       "private": true,
       "archived": false,
       "default_branch": "5mbs",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-11-05",
       "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
     },
     "srsRAN_Project_mbs": {
@@ -950,7 +950,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-11-05",
       "url": "https://github.com/5G-MAG/srsRAN_Project_mbs"
     },
     "vops-conformance-validator": {

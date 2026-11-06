@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -101,7 +101,7 @@
     "rt-5gms-media-stream-handler": {
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
-      "last_work_commit": "2026-05-26",
+      "last_work_commit": "2026-11-05",
       "open_pulls_last_year": 2
     },
     "rt-ai-ml-evaluation-framework": {

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05 03:51 UTC",
+  "updated_at": "2026-11-06 03:48 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -786,7 +786,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-04",
+              "updated_at": "2026-11-05",
               "base": "development"
             }
           ],
@@ -924,17 +924,17 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-04",
+          "pushed_at": "2026-11-05",
           "latest_release": "2026-05-26",
           "pulls": [
             {
-              "number": 88,
-              "title": "Fix lint errors and QoE playlist test assertion",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/88",
+              "number": 101,
+              "title": "Implement ExoPlayerAdapter seek() and reset()",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/101",
               "draft": false,
-              "author": "ErikGaida",
-              "created_at": "2026-10-28",
-              "updated_at": "2026-11-04",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "updated_at": "2026-11-05",
               "base": "development"
             },
             {
@@ -950,14 +950,102 @@
           ],
           "issues": [
             {
-              "number": 87,
-              "title": "./gradlew build fails on development",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/87",
-              "author": "ErikGaida",
-              "created_at": "2026-10-28",
+              "number": 100,
+              "title": "`ExoPlayerAdapter.seek()` and `reset()` are not implemented",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/100",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
               "labels": [
                 "bug"
               ]
+            },
+            {
+              "number": 99,
+              "title": "`IncomingHandler` uses the deprecated `Handler()` constructor",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/99",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 98,
+              "title": "MSISDN lookup is skipped on Android 13",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/98",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 97,
+              "title": "`getActiveSIMIdx` returns a subscription ID, not a list index",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/97",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 96,
+              "title": "Instrumented smoke tests on an emulator",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/96",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 95,
+              "title": "Tests with a real ExoPlayer on the JVM",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/95",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 94,
+              "title": "Component tests for complete playback sessions on the JVM",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/94",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 93,
+              "title": "Unit tests for controllers, IPC layer and ExoPlayer listener",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/93",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 92,
+              "title": "Make the QoE trackers testable and cover them with unit tests",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/92",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 89,
+              "title": "Increase test coverage of the Media Stream Handler",
+              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/89",
+              "author": "dsilhavy",
+              "created_at": "2026-11-05",
+              "labels": []
             },
             {
               "number": 85,
@@ -1109,16 +1197,22 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "bugfix/gradle-build-failures",
+              "name": "bugfix/exoplayer-seek-reset",
               "default": false,
-              "last_commit": "2026-11-04",
-              "last_work_commit": "2026-11-04"
+              "last_commit": "2026-11-05",
+              "last_work_commit": "2026-11-05"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-26",
-              "last_work_commit": "2026-05-26"
+              "last_commit": "2026-11-05",
+              "last_work_commit": "2026-11-05"
+            },
+            {
+              "name": "bugfix/gradle-build-failures",
+              "default": false,
+              "last_commit": "2026-11-04",
+              "last_work_commit": "2026-11-04"
             },
             {
               "name": "feature/media-delivery-session-id",
@@ -1307,7 +1401,7 @@
               "draft": false,
               "author": "sygupt",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-29",
+              "updated_at": "2026-11-05",
               "base": "feature/cmmf-dev/docker-example"
             }
           ],
@@ -1529,16 +1623,6 @@
               "created_at": "2026-08-22",
               "labels": [
                 "bug"
-              ]
-            },
-            {
-              "number": 66,
-              "title": "Add tunnelled operation to Receiver class",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
-              "author": "davidjwbbc",
-              "created_at": "2026-08-11",
-              "labels": [
-                "enhancement"
               ]
             },
             {
@@ -4062,7 +4146,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-05",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -4084,16 +4168,6 @@
               "created_at": "2026-10-16",
               "updated_at": "2026-10-20",
               "base": "improvements"
-            },
-            {
-              "number": 55,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/open5gs/pull/55",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "5mbs-development"
             }
           ],
           "issues": [
@@ -4310,10 +4384,10 @@
               "last_work_commit": "2025-08-13"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-11-05",
+              "last_work_commit": "2026-10-09"
             },
             {
               "name": "port/nrf-collocation",
@@ -4326,12 +4400,6 @@
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2026-10-09",
-              "last_work_commit": "2026-10-09"
             },
             {
               "name": "feature/mbs-compliance-fixes",
@@ -4486,16 +4554,6 @@
               "created_at": "2026-08-22",
               "labels": [
                 "bug"
-              ]
-            },
-            {
-              "number": 66,
-              "title": "Add tunnelled operation to Receiver class",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
-              "author": "davidjwbbc",
-              "created_at": "2026-08-11",
-              "labels": [
-                "enhancement"
               ]
             },
             {
@@ -4859,16 +4917,6 @@
               "labels": [
                 "enhancement",
                 "MBSTF"
-              ]
-            },
-            {
-              "number": 27,
-              "title": "MBSTF: HTTP Push configuration for Docker",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/27",
-              "author": "davidjwbbc",
-              "created_at": "2025-08-01",
-              "labels": [
-                "enhancement"
               ]
             }
           ],
@@ -5784,7 +5832,7 @@
               "draft": false,
               "author": "Vaderpucong",
               "created_at": "2026-10-28",
-              "updated_at": "2026-11-05",
+              "updated_at": "2026-11-06",
               "base": "edge-tokenizer-resilient-qos"
             },
             {
@@ -6558,16 +6606,6 @@
               ]
             },
             {
-              "number": 66,
-              "title": "Add tunnelled operation to Receiver class",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
-              "author": "davidjwbbc",
-              "created_at": "2026-08-11",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
               "number": 43,
               "title": "Flexible handling of unknown TSI values",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/43",
@@ -6670,7 +6708,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-05",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -6692,16 +6730,6 @@
               "created_at": "2026-10-16",
               "updated_at": "2026-10-20",
               "base": "improvements"
-            },
-            {
-              "number": 55,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/open5gs/pull/55",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "5mbs-development"
             }
           ],
           "issues": [
@@ -6918,10 +6946,10 @@
               "last_work_commit": "2025-08-13"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-11-05",
+              "last_work_commit": "2026-10-09"
             },
             {
               "name": "port/nrf-collocation",
@@ -6934,12 +6962,6 @@
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2026-10-09",
-              "last_work_commit": "2026-10-09"
             },
             {
               "name": "feature/mbs-compliance-fixes",

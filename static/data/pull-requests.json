@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05 03:50 UTC",
+  "updated_at": "2026-11-06 03:47 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -9,13 +9,13 @@
         {
           "repo": "rt-5gms-media-stream-handler",
           "branch": null,
-          "number": 88,
-          "title": "Fix lint errors and QoE playlist test assertion",
-          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/88",
+          "number": 101,
+          "title": "Implement ExoPlayerAdapter seek() and reset()",
+          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/101",
           "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-10-28",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-11-05",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -394,32 +394,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "srsRAN_4G_mbs",
-          "branch": null,
-          "number": 3,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/srsRAN_4G_mbs/pull/3",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "srsRAN_Project_mbs",
-          "branch": null,
-          "number": 2,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },
