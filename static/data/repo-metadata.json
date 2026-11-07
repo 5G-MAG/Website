@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-07",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -12,7 +12,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/6G-Testbed"
     },
     "Standards2Deployments": {
@@ -24,7 +24,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-21",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/Standards2Deployments"
     },
     "cmcd-toolkit": {
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-05",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -217,7 +217,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
     },
     "rt-5gms-media-stream-handler": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-05",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-29",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -616,7 +616,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-mbs-application"
     },
     "rt-mbs-application-provider": {
@@ -630,7 +630,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-mbs-application-provider"
     },
     "rt-mbs-client": {
@@ -644,7 +644,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-mbs-client"
     },
     "rt-mbs-examples": {
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-22",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -936,7 +936,7 @@
       "private": true,
       "archived": false,
       "default_branch": "5mbs",
-      "pushed_at": "2026-11-05",
+      "pushed_at": "2026-11-06",
       "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
     },
     "srsRAN_Project_mbs": {

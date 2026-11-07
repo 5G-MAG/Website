@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-06 03:48 UTC",
+  "updated_at": "2026-11-07 03:21 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -776,7 +776,7 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-28",
+          "pushed_at": "2026-11-06",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -786,7 +786,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-05",
+              "updated_at": "2026-11-06",
               "base": "development"
             }
           ],
@@ -901,8 +901,8 @@
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-10-28",
-              "last_work_commit": "2026-10-28"
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
             },
             {
               "name": "development",
@@ -924,7 +924,7 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-05",
+          "pushed_at": "2026-11-06",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -944,7 +944,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-26",
+              "updated_at": "2026-11-06",
               "base": "development"
             }
           ],
@@ -1197,6 +1197,12 @@
               "last_work_commit": "2026-05-26"
             },
             {
+              "name": "feature/media-delivery-session-id",
+              "default": false,
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
+            },
+            {
               "name": "bugfix/exoplayer-seek-reset",
               "default": false,
               "last_commit": "2026-11-05",
@@ -1213,12 +1219,6 @@
               "default": false,
               "last_commit": "2026-11-04",
               "last_work_commit": "2026-11-04"
-            },
-            {
-              "name": "feature/media-delivery-session-id",
-              "default": false,
-              "last_commit": "2026-10-24",
-              "last_work_commit": "2026-10-24"
             },
             {
               "name": "feature/cmcd",
@@ -3668,7 +3668,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-03",
+              "updated_at": "2026-11-06",
               "base": "development"
             }
           ],
@@ -4146,7 +4146,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-05",
+          "pushed_at": "2026-11-06",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -4386,8 +4386,8 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-05",
-              "last_work_commit": "2026-10-09"
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
             },
             {
               "name": "port/nrf-collocation",
@@ -5055,17 +5055,17 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-22",
+          "pushed_at": "2026-11-06",
           "latest_release": "2026-10-02",
           "pulls": [
             {
               "number": 33,
               "title": "MBS Broadcast end-to-end demonstration: 5GC, MBSF, MBSTF, gNB and UE with DASH over broadcast",
               "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/33",
-              "draft": true,
+              "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
-              "updated_at": "2026-10-30",
+              "updated_at": "2026-11-06",
               "base": "development"
             }
           ],
@@ -5089,8 +5089,8 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-22",
-              "last_work_commit": "2026-10-22"
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
             },
             {
               "name": "development",
@@ -5164,7 +5164,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-01",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-11-06",
               "base": "development"
             },
             {
@@ -5184,7 +5184,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-08-27",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-11-06",
               "base": "development"
             }
           ],
@@ -5822,19 +5822,9 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-28",
+          "pushed_at": "2026-11-06",
           "latest_release": null,
           "pulls": [
-            {
-              "number": 14,
-              "title": "Replace vendored aiortc fork with runtime-registered aicodec plugin; add Qwen3-VL/Qwen3.6 encoder placement stack",
-              "url": "https://github.com/5G-MAG/6G-Testbed/pull/14",
-              "draft": false,
-              "author": "Vaderpucong",
-              "created_at": "2026-10-28",
-              "updated_at": "2026-11-06",
-              "base": "edge-tokenizer-resilient-qos"
-            },
             {
               "number": 11,
               "title": "docs: apply the 5G-MAG README format",
@@ -5865,6 +5855,12 @@
               "last_work_commit": "2026-04-24"
             },
             {
+              "name": "edge-tokenizer-resilient-qos",
+              "default": false,
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
+            },
+            {
               "name": "sa1-media-scenarios",
               "default": false,
               "last_commit": "2026-10-22",
@@ -5890,12 +5886,6 @@
             },
             {
               "name": "development",
-              "default": false,
-              "last_commit": "2026-09-04",
-              "last_work_commit": "2026-09-04"
-            },
-            {
-              "name": "edge-tokenizer-resilient-qos",
               "default": false,
               "last_commit": "2026-09-04",
               "last_work_commit": "2026-09-04"
@@ -5937,6 +5927,16 @@
           "latest_release": "2026-10-28",
           "pulls": [],
           "issues": [
+            {
+              "number": 14,
+              "title": "MCP server: robustness for agent use (auth renewal, tool errors, flat arguments)",
+              "url": "https://github.com/5G-MAG/rt-camara-examples/issues/14",
+              "author": "aaronmontilla",
+              "created_at": "2026-11-06",
+              "labels": [
+                "enhancement"
+              ]
+            },
             {
               "number": 13,
               "title": "Working plan for new features",
@@ -6708,7 +6708,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-05",
+          "pushed_at": "2026-11-06",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -6948,8 +6948,8 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-05",
-              "last_work_commit": "2026-10-09"
+              "last_commit": "2026-11-06",
+              "last_work_commit": "2026-11-06"
             },
             {
               "name": "port/nrf-collocation",
