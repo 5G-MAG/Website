@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12 04:28 UTC",
+  "updated_at": "2026-11-13 03:44 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -41,7 +41,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-24",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -122,6 +122,12 @@
               "default": true,
               "last_commit": "2026-10-24",
               "last_work_commit": "2026-10-24"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -470,7 +476,7 @@
           "description": "5GMS Application Provider",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
@@ -544,6 +550,12 @@
               "last_work_commit": "2026-08-03"
             },
             {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
@@ -575,7 +587,7 @@
           "description": "5GMS Application Server (AS)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-08-03",
           "pulls": [
             {
@@ -727,6 +739,12 @@
               "last_work_commit": "2026-08-03"
             },
             {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-19",
@@ -776,7 +794,7 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -786,7 +804,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-06",
+              "updated_at": "2026-11-12",
               "base": "development"
             }
           ],
@@ -901,8 +919,14 @@
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -924,7 +948,7 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -944,7 +968,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-06",
+              "updated_at": "2026-11-12",
               "base": "development"
             }
           ],
@@ -1199,8 +1223,14 @@
             {
               "name": "feature/media-delivery-session-id",
               "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "bugfix/exoplayer-seek-reset",
@@ -1265,7 +1295,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -1286,6 +1316,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -1337,7 +1373,7 @@
           "description": "5GMS Common Android Library",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-28",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -1347,7 +1383,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-10-29",
+              "updated_at": "2026-11-12",
               "base": "development"
             }
           ],
@@ -1362,8 +1398,14 @@
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-10-28",
-              "last_work_commit": "2026-10-28"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -4146,7 +4188,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -4171,6 +4213,38 @@
             }
           ],
           "issues": [
+            {
+              "number": 62,
+              "title": "smf, app: TMGI pool default and the drop of MBS data until a DL tunnel is given",
+              "url": "https://github.com/5G-MAG/open5gs/issues/62",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 61,
+              "title": "upf, pfcp: N4mb and N3mb behaviour of the MB-UPF (Created PDR, Application ID, source address, Maximum Bitrate)",
+              "url": "https://github.com/5G-MAG/open5gs/issues/61",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 60,
+              "title": "amf, smf: broadcast Create request attributes and the n2MbsSmInfoList containers",
+              "url": "https://github.com/5G-MAG/open5gs/issues/60",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 59,
+              "title": "amf, smf: bind a broadcast context to an AMF of the set and move it to another when that AMF is gone",
+              "url": "https://github.com/5G-MAG/open5gs/issues/59",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
             {
               "number": 58,
               "title": "Merge 5mbs-development branch to 5mbs branch",
@@ -4386,8 +4460,14 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-11",
+              "last_work_commit": "2026-11-11"
             },
             {
               "name": "port/nrf-collocation",
@@ -4983,7 +5063,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -5004,6 +5084,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -5055,7 +5141,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-10-02",
           "pulls": [
             {
@@ -5065,11 +5151,27 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
-              "updated_at": "2026-11-06",
+              "updated_at": "2026-11-12",
               "base": "development"
             }
           ],
           "issues": [
+            {
+              "number": 38,
+              "title": "mbs-broadcast-demo: the tested combination of the branches (table of commits)",
+              "url": "https://github.com/5G-MAG/rt-mbs-examples/issues/38",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 37,
+              "title": "mbs-broadcast-demo: a second AMF of the set, the end-to-end test, GNB_PCAP and the package list",
+              "url": "https://github.com/5G-MAG/rt-mbs-examples/issues/37",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
             {
               "number": 22,
               "title": "srsRAN crashes on non-AVX-512 CPUs (SIGILL)",
@@ -5089,8 +5191,8 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -5762,7 +5864,18 @@
           "private": false,
           "pushed_at": "2026-10-19",
           "latest_release": null,
-          "pulls": [],
+          "pulls": [
+            {
+              "number": 2,
+              "title": "Initial V-DMC web decoder/player contribution",
+              "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player/pull/2",
+              "draft": false,
+              "author": "martin-nokia",
+              "created_at": "2026-11-12",
+              "updated_at": "2026-11-12",
+              "base": "development"
+            }
+          ],
           "issues": [],
           "branches": [
             {
@@ -6042,7 +6155,7 @@
           "description": "Common Shared Tools",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-08-03",
           "pulls": [
             {
@@ -6108,6 +6221,12 @@
               "default": true,
               "last_commit": "2026-08-03",
               "last_work_commit": "2026-08-03"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-10",
+              "last_work_commit": "2026-11-10"
             },
             {
               "name": "development",
@@ -6188,7 +6307,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-24",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -6269,6 +6388,12 @@
               "default": true,
               "last_commit": "2026-10-24",
               "last_work_commit": "2026-10-24"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
@@ -6708,7 +6833,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -6733,6 +6858,38 @@
             }
           ],
           "issues": [
+            {
+              "number": 62,
+              "title": "smf, app: TMGI pool default and the drop of MBS data until a DL tunnel is given",
+              "url": "https://github.com/5G-MAG/open5gs/issues/62",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 61,
+              "title": "upf, pfcp: N4mb and N3mb behaviour of the MB-UPF (Created PDR, Application ID, source address, Maximum Bitrate)",
+              "url": "https://github.com/5G-MAG/open5gs/issues/61",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 60,
+              "title": "amf, smf: broadcast Create request attributes and the n2MbsSmInfoList containers",
+              "url": "https://github.com/5G-MAG/open5gs/issues/60",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
+            {
+              "number": 59,
+              "title": "amf, smf: bind a broadcast context to an AMF of the set and move it to another when that AMF is gone",
+              "url": "https://github.com/5G-MAG/open5gs/issues/59",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-12",
+              "labels": []
+            },
             {
               "number": 58,
               "title": "Merge 5mbs-development branch to 5mbs branch",
@@ -6948,8 +7105,14 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-11",
+              "last_work_commit": "2026-11-11"
             },
             {
               "name": "port/nrf-collocation",
@@ -7336,7 +7499,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-12",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -7357,6 +7520,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-12",
+              "last_work_commit": "2026-11-12"
             },
             {
               "name": "development",
