@@ -1391,7 +1391,7 @@
         "display_name": "Media Application Function (Media AF)",
         "description": "The Media Application Function (Media AF) is a Network Function that forms part of the 5G Media Streaming framework, as defined in 3GPP TS 26.510 and TS 26.512. It is the 5GMS AF of earlier releases.",
         "repo_url": "https://github.com/5G-MAG/rt-media-application-function",
-        "branch": "feature/release-19-uplift",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
