@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-14",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -24,7 +24,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/Standards2Deployments"
     },
     "cmcd-toolkit": {
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -119,7 +119,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
     },
     "rt-5gms-application": {
@@ -133,7 +133,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gms-application"
     },
     "rt-5gms-application-function": {
@@ -161,7 +161,7 @@
       "private": false,
       "archived": false,
       "default_branch": "master",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gms-application-provider"
     },
     "rt-5gms-application-server": {
@@ -175,7 +175,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gms-application-server"
     },
     "rt-5gms-common-android-library": {
@@ -217,7 +217,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
     },
     "rt-5gms-media-stream-handler": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-10",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -355,7 +355,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-common-shared"
     },
     "rt-data-collection-application-function": {
@@ -644,7 +644,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-06",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-mbs-client"
     },
     "rt-mbs-examples": {
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -702,6 +702,18 @@
       "default_branch": "main",
       "pushed_at": "2026-10-20",
       "url": "https://github.com/5G-MAG/rt-media-android-application"
+    },
+    "rt-media-application-function": {
+      "description": null,
+      "license": null,
+      "language": "C",
+      "topics": [],
+      "homepage": null,
+      "private": true,
+      "archived": false,
+      "default_branch": "main",
+      "pushed_at": "2026-11-13",
+      "url": "https://github.com/5G-MAG/rt-media-application-function"
     },
     "rt-media-origin": {
       "description": "Media Origin Server and Packager",
@@ -866,7 +878,7 @@
       "private": false,
       "archived": false,
       "default_branch": "rt-xr/development",
-      "pushed_at": "2026-11-03",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-xr-gITFast"
     },
     "rt-xr-maf-native": {
@@ -880,7 +892,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-03",
+      "pushed_at": "2026-11-13",
       "url": "https://github.com/5G-MAG/rt-xr-maf-native"
     },
     "rt-xr-unity-player": {
@@ -1019,11 +1031,6 @@
       "private": false
     },
     {
-      "name": "rt-media-application-function",
-      "description": null,
-      "private": true
-    },
-    {
       "name": "Standards",
       "description": "5G-MAG: Feedback to SDOs and references related to 5G-MAG work",
       "private": false
@@ -1039,5 +1046,11 @@
       "private": false
     }
   ],
-  "drift": []
+  "drift": [
+    {
+      "repo": "rt-media-application-function",
+      "taxonomy_public": true,
+      "github_private": true
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13 03:43 UTC",
+  "updated_at": "2026-11-14 03:41 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -261,6 +261,19 @@
       "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "pulls": [
         {
+          "repo": "rt-xr-maf-native",
+          "branch": null,
+          "number": 35,
+          "title": "Development",
+          "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/35",
+          "draft": false,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-11-13",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-xr-content",
           "branch": null,
           "number": 47,
@@ -270,19 +283,6 @@
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
           "created_at": "2026-11-03",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-xr-gITFast",
-          "branch": null,
-          "number": 19,
-          "title": "gltfast: pass the media format as BufferInfo.outputMedia, with the specified attribute types",
-          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/19",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-02",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -318,19 +318,6 @@
           "number": 126,
           "title": "XR Scene Player: smartphone app, media control and compliance work",
           "url": "https://github.com/5G-MAG/rt-xr-unity-player/pull/126",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-12",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-xr-maf-native",
-          "branch": null,
-          "number": 33,
-          "title": "Decode timed metadata tracks and report the buffer format",
-          "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/33",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -925,37 +912,11 @@
       "tagline": "Real-time conversational avatars, animated from user to user",
       "pulls": [
         {
-          "repo": "rt-avatar-call",
-          "branch": null,
-          "number": 60,
-          "title": "Keep the application registered, and clean up after a call",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/60",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-10",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-avatar-content",
           "branch": null,
           "number": 9,
           "title": "Add Joao-155-compat.arfz (ARF 155 supportedAnimations names)",
           "url": "https://github.com/5G-MAG/rt-avatar-content/pull/9",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-avatar-call",
-          "branch": null,
-          "number": 59,
-          "title": "Incoming calls: listen as a user, ring, Accept or Decline",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/59",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13 03:44 UTC",
+  "updated_at": "2026-11-14 03:42 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -41,7 +41,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -126,8 +126,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -476,7 +476,7 @@
           "description": "5GMS Application Provider",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
@@ -552,8 +552,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -587,7 +587,7 @@
           "description": "5GMS Application Server (AS)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-08-03",
           "pulls": [
             {
@@ -741,8 +741,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "fix/apply-new-format",
@@ -794,7 +794,7 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -804,7 +804,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-12",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -917,13 +917,13 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "feature/Rel-18-media-delivery-session-identification",
+              "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
-              "name": "feature/release-19-uplift",
+              "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
               "last_commit": "2026-11-12",
               "last_work_commit": "2026-11-12"
@@ -933,12 +933,6 @@
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-05-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -948,7 +942,7 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -968,7 +962,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-12",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -1221,13 +1215,13 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "feature/media-delivery-session-id",
+              "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
-              "name": "feature/release-19-uplift",
+              "name": "feature/media-delivery-session-id",
               "default": false,
               "last_commit": "2026-11-12",
               "last_work_commit": "2026-11-12"
@@ -1295,10 +1289,18 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
+            {
+              "number": 36,
+              "title": "mb-smf-sc: OpenAPI_ext_mbs_session_create() call does not compile against the open5gs MbsSession model with four more attributes",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/36",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-13",
+              "labels": []
+            },
             {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",
@@ -1318,28 +1320,28 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01",
-              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",
@@ -1383,7 +1385,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-24",
-              "updated_at": "2026-11-12",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -3345,19 +3347,9 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-03",
+          "pushed_at": "2026-11-13",
           "latest_release": null,
           "pulls": [
-            {
-              "number": 19,
-              "title": "gltfast: pass the media format as BufferInfo.outputMedia, with the specified attribute types",
-              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/19",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-11-02",
-              "updated_at": "2026-11-03",
-              "base": "rt-xr/development"
-            },
             {
               "number": 8,
               "title": "Development tools",
@@ -3374,14 +3366,14 @@
             {
               "name": "rt-xr/development",
               "default": true,
-              "last_commit": "2026-11-03",
-              "last_work_commit": "2026-11-03"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "feature/bufferinfo-per-spec",
               "default": false,
-              "last_commit": "2026-11-03",
-              "last_work_commit": "2026-11-03"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "feature/gltfast-shaders",
@@ -3517,18 +3509,18 @@
           "description": "XR Media Pipelines",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-03",
+          "pushed_at": "2026-11-13",
           "latest_release": null,
           "pulls": [
             {
-              "number": 33,
-              "title": "Decode timed metadata tracks and report the buffer format",
-              "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/33",
+              "number": 35,
+              "title": "Development",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/35",
               "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-12",
-              "updated_at": "2026-11-10",
-              "base": "development"
+              "author": "nlsdvl",
+              "created_at": "2026-11-13",
+              "updated_at": "2026-11-13",
+              "base": "main"
             }
           ],
           "issues": [
@@ -3669,16 +3661,16 @@
               "last_work_commit": "2026-10-23"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
               "name": "feature/xr_smartphone_app",
               "default": false,
               "last_commit": "2026-11-03",
               "last_work_commit": "2026-11-03"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-23",
-              "last_work_commit": "2026-10-23"
             },
             {
               "name": "fix/apply-new-format",
@@ -3710,7 +3702,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-10",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -4188,7 +4180,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -4213,6 +4205,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 63,
+              "title": "smf: the MB-SMF service area reduction compares TACs as text, so a coverage written 'tac: 1' never matches the SBI's '000001'",
+              "url": "https://github.com/5G-MAG/open5gs/issues/63",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-13",
+              "labels": []
+            },
             {
               "number": 62,
               "title": "smf, app: TMGI pool default and the drop of MBS data until a DL tunnel is given",
@@ -4460,8 +4460,8 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "feature/release-19-uplift",
@@ -5063,10 +5063,18 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
+            {
+              "number": 36,
+              "title": "mb-smf-sc: OpenAPI_ext_mbs_session_create() call does not compile against the open5gs MbsSession model with four more attributes",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/36",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-13",
+              "labels": []
+            },
             {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",
@@ -5086,28 +5094,28 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01",
-              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",
@@ -5141,7 +5149,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-10-02",
           "pulls": [
             {
@@ -5151,7 +5159,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
-              "updated_at": "2026-11-12",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -5191,8 +5199,8 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -5266,7 +5274,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-01",
-              "updated_at": "2026-11-06",
+              "updated_at": "2026-11-13",
               "base": "development"
             },
             {
@@ -5286,7 +5294,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-08-27",
-              "updated_at": "2026-11-06",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -6155,7 +6163,7 @@
           "description": "Common Shared Tools",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-08-03",
           "pulls": [
             {
@@ -6165,7 +6173,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "updated_at": "2026-10-08",
+              "updated_at": "2026-11-13",
               "base": "development"
             }
           ],
@@ -6225,8 +6233,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-10",
-              "last_work_commit": "2026-11-10"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -6307,7 +6315,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -6392,8 +6400,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -6833,7 +6841,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -6858,6 +6866,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 63,
+              "title": "smf: the MB-SMF service area reduction compares TACs as text, so a coverage written 'tac: 1' never matches the SBI's '000001'",
+              "url": "https://github.com/5G-MAG/open5gs/issues/63",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-13",
+              "labels": []
+            },
             {
               "number": 62,
               "title": "smf, app: TMGI pool default and the drop of MBS data until a DL tunnel is given",
@@ -7105,8 +7121,8 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "feature/release-19-uplift",
@@ -7499,10 +7515,18 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-13",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
+            {
+              "number": 36,
+              "title": "mb-smf-sc: OpenAPI_ext_mbs_session_create() call does not compile against the open5gs MbsSession model with four more attributes",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/36",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-13",
+              "labels": []
+            },
             {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",
@@ -7522,28 +7546,28 @@
               "last_work_commit": "2026-05-27"
             },
             {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-13",
+              "last_work_commit": "2026-11-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01",
-              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",

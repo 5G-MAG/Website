@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-14",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -41,7 +41,7 @@
     "open5gs": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-14",
-      "last_work_commit": "2026-11-12",
+      "last_work_commit": "2026-11-13",
       "open_pulls_last_year": 2
     },
     "rt-3gpp-swap": {
@@ -53,7 +53,7 @@
     "rt-5gc-service-consumers": {
       "status": "Actively Maintained",
       "latest_release": "2026-06-05",
-      "last_work_commit": "2026-10-30",
+      "last_work_commit": "2026-11-13",
       "open_pulls_last_year": 0
     },
     "rt-5gms-application": {
@@ -308,6 +308,12 @@
       "last_work_commit": null,
       "open_pulls_last_year": 0
     },
+    "rt-media-application-function": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
     "rt-media-origin": {
       "status": "Under Development",
       "latest_release": null,
@@ -377,13 +383,13 @@
     "rt-xr-gITFast": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-11-03",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-13",
+      "open_pulls_last_year": 0
     },
     "rt-xr-maf-native": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-23",
+      "last_work_commit": "2026-11-13",
       "open_pulls_last_year": 1
     },
     "rt-xr-unity-player": {
