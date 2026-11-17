@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-17",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -12,7 +12,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-06",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/6G-Testbed"
     },
     "Standards2Deployments": {
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -119,7 +119,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
     },
     "rt-5gms-application": {
@@ -445,7 +445,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-libflute"
     },
     "rt-mbms-application": {
@@ -644,7 +644,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-mbs-client"
     },
     "rt-mbs-examples": {
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -672,7 +672,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-mbs-function"
     },
     "rt-mbs-transport-function": {
@@ -686,7 +686,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-30",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-mbs-transport-function"
     },
     "rt-media-android-application": {
@@ -906,7 +906,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-10",
+      "pushed_at": "2026-11-16",
       "url": "https://github.com/5G-MAG/rt-xr-unity-player"
     },
     "srsRAN": {

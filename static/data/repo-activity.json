@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16 03:20 UTC",
+  "updated_at": "2026-11-17 05:20 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1289,7 +1289,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -1318,6 +1318,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "development",
@@ -1558,7 +1564,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -1704,6 +1710,12 @@
               "default": true,
               "last_commit": "2026-08-21",
               "last_work_commit": "2026-08-21"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "development",
@@ -3349,18 +3361,7 @@
           "private": false,
           "pushed_at": "2026-11-13",
           "latest_release": null,
-          "pulls": [
-            {
-              "number": 8,
-              "title": "Development tools",
-              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/8",
-              "draft": true,
-              "author": "Etiennefaivredarcier",
-              "created_at": "2024-08-23",
-              "updated_at": "2025-02-11",
-              "base": "rt-xr/development"
-            }
-          ],
+          "pulls": [],
           "issues": [],
           "branches": [
             {
@@ -3692,7 +3693,7 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-10",
+          "pushed_at": "2026-11-16",
           "latest_release": "2025-02-27",
           "pulls": [
             {
@@ -3702,7 +3703,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-13",
+              "updated_at": "2026-11-16",
               "base": "development"
             }
           ],
@@ -4002,8 +4003,8 @@
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-11-10",
-              "last_work_commit": "2026-11-10"
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "feature/xr_smartphone_app-u6",
@@ -4180,7 +4181,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -4458,6 +4459,12 @@
               "last_work_commit": "2025-08-13"
             },
             {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "5mbs-development",
               "default": false,
               "last_commit": "2026-11-13",
@@ -4525,7 +4532,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -4673,6 +4680,12 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-30",
@@ -4728,7 +4741,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-07-03",
           "pulls": [],
           "issues": [
@@ -4897,6 +4910,12 @@
               "last_work_commit": "2026-07-03"
             },
             {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-30",
@@ -4922,7 +4941,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -5008,6 +5027,12 @@
               "last_work_commit": "2026-07-03"
             },
             {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-30",
@@ -5063,7 +5088,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -5092,6 +5117,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "development",
@@ -5149,7 +5180,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-10-02",
           "pulls": [
             {
@@ -5195,6 +5226,12 @@
               "default": true,
               "last_commit": "2026-09-20",
               "last_work_commit": "2026-09-20"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "feature/mbs-compliance-fixes",
@@ -5880,7 +5917,7 @@
               "draft": false,
               "author": "martin-nokia",
               "created_at": "2026-11-12",
-              "updated_at": "2026-11-12",
+              "updated_at": "2026-11-17",
               "base": "development"
             }
           ],
@@ -5943,9 +5980,39 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-06",
+          "pushed_at": "2026-11-16",
           "latest_release": null,
           "pulls": [
+            {
+              "number": 18,
+              "title": "Follow the peak_rate to mean_rate rename in the Q2 burst chart and docs",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/18",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-16",
+              "updated_at": "2026-11-16",
+              "base": "sa1-media-scenarios"
+            },
+            {
+              "number": 17,
+              "title": "Attribution for the One-D-Piece code (needed by #15) and portable smoke_autoload.py",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/17",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-16",
+              "updated_at": "2026-11-16",
+              "base": "edge-tokenizer-resilient-qos"
+            },
+            {
+              "number": 16,
+              "title": "SA1 media scenarios and calibrated directional profiles (draft, stacked on #10)",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/16",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-16",
+              "updated_at": "2026-11-16",
+              "base": "refactor"
+            },
             {
               "number": 15,
               "title": "Add end-to-end experiment pipeline for One-D-Piece image-token transmission over lossy links with Qwen3-VL evaluation",
@@ -5963,7 +6030,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
+              "updated_at": "2026-11-16",
               "base": "development"
             },
             {
@@ -5973,7 +6040,7 @@
               "draft": false,
               "author": "ibouazizi",
               "created_at": "2026-08-26",
-              "updated_at": "2026-10-29",
+              "updated_at": "2026-11-16",
               "base": "development"
             }
           ],
@@ -5986,6 +6053,24 @@
               "last_work_commit": "2026-04-24"
             },
             {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
+              "name": "fix/odp-attribution-and-smoke-path",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
+              "name": "fix/sa1-burst-rate-rename",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "edge-tokenizer-resilient-qos",
               "default": false,
               "last_commit": "2026-11-06",
@@ -5996,12 +6081,6 @@
               "default": false,
               "last_commit": "2026-10-22",
               "last_work_commit": "2026-10-22"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "refactor",
@@ -6637,7 +6716,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-30",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -6785,6 +6864,12 @@
               "last_work_commit": "2026-08-21"
             },
             {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-30",
@@ -6851,7 +6936,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-07-14",
           "pulls": [
             {
@@ -7127,6 +7212,12 @@
               "default": true,
               "last_commit": "2025-08-13",
               "last_work_commit": "2025-08-13"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "5mbs-development",
@@ -7525,7 +7616,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-16",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -7554,6 +7645,12 @@
               "default": true,
               "last_commit": "2026-05-27",
               "last_work_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-16",
+              "last_work_commit": "2026-11-16"
             },
             {
               "name": "development",
