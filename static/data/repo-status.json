@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-09-04",
-      "open_pulls_last_year": 5
+      "open_pulls_last_year": 3
     },
     "Standards2Deployments": {
       "status": "Under Development",
@@ -143,7 +143,7 @@
     "rt-camara-examples": {
       "status": "Actively Maintained",
       "latest_release": "2026-10-28",
-      "last_work_commit": "2026-10-20",
+      "last_work_commit": "2026-11-17",
       "open_pulls_last_year": 0
     },
     "rt-cmmf-encoder": {
@@ -359,7 +359,7 @@
     "rt-vdmc-web-decoder-player": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-09-21",
+      "last_work_commit": "2026-11-17",
       "open_pulls_last_year": 1
     },
     "rt-wui": {

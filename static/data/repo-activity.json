@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17 05:20 UTC",
+  "updated_at": "2026-11-18 04:48 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -41,7 +41,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -126,8 +126,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-13",
-              "last_work_commit": "2026-11-13"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "development",
@@ -476,7 +476,7 @@
           "description": "5GMS Application Provider",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
@@ -548,12 +548,6 @@
               "default": true,
               "last_commit": "2026-08-03",
               "last_work_commit": "2026-08-03"
-            },
-            {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-13",
-              "last_work_commit": "2026-11-13"
             },
             {
               "name": "development",
@@ -794,7 +788,7 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -919,8 +913,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-13",
-              "last_work_commit": "2026-11-13"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
@@ -942,7 +936,7 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -1217,8 +1211,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-13",
-              "last_work_commit": "2026-11-13"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "feature/media-delivery-session-id",
@@ -1381,7 +1375,7 @@
           "description": "5GMS Common Android Library",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-12",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -1404,13 +1398,13 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "feature/Rel-18-media-delivery-session-identification",
+              "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
-              "name": "feature/release-19-uplift",
+              "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
               "last_commit": "2026-11-12",
               "last_work_commit": "2026-11-12"
@@ -2641,7 +2635,7 @@
           "description": "MBMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-17",
           "latest_release": "2024-11-05",
           "pulls": [
             {
@@ -2681,6 +2675,12 @@
               "default": true,
               "last_commit": "2024-11-05",
               "last_work_commit": "2024-11-05"
+            },
+            {
+              "name": "feature/positioning-assistance-demo",
+              "default": false,
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "development",
@@ -3703,7 +3703,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-16",
+              "updated_at": "2026-11-17",
               "base": "development"
             }
           ],
@@ -5907,16 +5907,16 @@
           "description": "V-DMC Web Decoder/Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-17",
           "latest_release": null,
           "pulls": [
             {
-              "number": 2,
-              "title": "Initial V-DMC web decoder/player contribution",
-              "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player/pull/2",
-              "draft": false,
-              "author": "martin-nokia",
-              "created_at": "2026-11-12",
+              "number": 3,
+              "title": "Attribution notice and robustness follow-ups to the initial V-DMC web decoder",
+              "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player/pull/3",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-17",
               "updated_at": "2026-11-17",
               "base": "development"
             }
@@ -5932,14 +5932,14 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-09-21"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "fix/attribution-notice-and-followups",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             }
           ]
         }
@@ -5980,7 +5980,7 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-17",
           "latest_release": null,
           "pulls": [
             {
@@ -5994,16 +5994,6 @@
               "base": "sa1-media-scenarios"
             },
             {
-              "number": 17,
-              "title": "Attribution for the One-D-Piece code (needed by #15) and portable smoke_autoload.py",
-              "url": "https://github.com/5G-MAG/6G-Testbed/pull/17",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-11-16",
-              "updated_at": "2026-11-16",
-              "base": "edge-tokenizer-resilient-qos"
-            },
-            {
               "number": 16,
               "title": "SA1 media scenarios and calibrated directional profiles (draft, stacked on #10)",
               "url": "https://github.com/5G-MAG/6G-Testbed/pull/16",
@@ -6012,16 +6002,6 @@
               "created_at": "2026-11-16",
               "updated_at": "2026-11-16",
               "base": "refactor"
-            },
-            {
-              "number": 15,
-              "title": "Add end-to-end experiment pipeline for One-D-Piece image-token transmission over lossy links with Qwen3-VL evaluation",
-              "url": "https://github.com/5G-MAG/6G-Testbed/pull/15",
-              "draft": false,
-              "author": "Vaderpucong",
-              "created_at": "2026-11-16",
-              "updated_at": "2026-11-16",
-              "base": "edge-tokenizer-resilient-qos"
             },
             {
               "number": 11,
@@ -6040,7 +6020,7 @@
               "draft": false,
               "author": "ibouazizi",
               "created_at": "2026-08-26",
-              "updated_at": "2026-11-16",
+              "updated_at": "2026-11-17",
               "base": "development"
             }
           ],
@@ -6051,6 +6031,12 @@
               "default": true,
               "last_commit": "2026-04-24",
               "last_work_commit": "2026-04-24"
+            },
+            {
+              "name": "edge-tokenizer-resilient-qos",
+              "default": false,
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "fix/apply-new-format",
@@ -6069,12 +6055,6 @@
               "default": false,
               "last_commit": "2026-11-16",
               "last_work_commit": "2026-11-16"
-            },
-            {
-              "name": "edge-tokenizer-resilient-qos",
-              "default": false,
-              "last_commit": "2026-11-06",
-              "last_work_commit": "2026-11-06"
             },
             {
               "name": "sa1-media-scenarios",
@@ -6133,7 +6113,7 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-28",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-10-28",
           "pulls": [],
           "issues": [
@@ -6164,16 +6144,16 @@
               "last_work_commit": "2026-10-20"
             },
             {
-              "name": "fix/dedicated-networks-r2-2",
-              "default": false,
-              "last_commit": "2026-10-28",
-              "last_work_commit": "2026-10-28"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-20",
-              "last_work_commit": "2026-10-20"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
+            },
+            {
+              "name": "fix/dedicated-networks-r2-2",
+              "default": false,
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             }
           ]
         }
@@ -6404,7 +6384,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-17",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -6489,8 +6469,8 @@
             {
               "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-11-13",
-              "last_work_commit": "2026-11-13"
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "development",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -12,7 +12,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-16",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/6G-Testbed"
     },
     "Standards2Deployments": {
@@ -24,7 +24,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/Standards2Deployments"
     },
     "cmcd-toolkit": {
@@ -133,7 +133,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-5gms-application"
     },
     "rt-5gms-application-function": {
@@ -161,7 +161,7 @@
       "private": false,
       "archived": false,
       "default_branch": "master",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-5gms-application-provider"
     },
     "rt-5gms-application-server": {
@@ -189,7 +189,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-5gms-common-android-library"
     },
     "rt-5gms-examples": {
@@ -217,7 +217,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
     },
     "rt-5gms-media-stream-handler": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -327,7 +327,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-28",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-camara-examples"
     },
     "rt-cmmf-encoder": {
@@ -516,7 +516,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-mbms-examples"
     },
     "rt-mbms-gw": {
@@ -712,7 +712,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-media-application-function"
     },
     "rt-media-origin": {
@@ -822,7 +822,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-19",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player"
     },
     "rt-wui": {
@@ -948,7 +948,7 @@
       "private": true,
       "archived": false,
       "default_branch": "5mbs",
-      "pushed_at": "2026-11-12",
+      "pushed_at": "2026-11-17",
       "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
     },
     "srsRAN_Project_mbs": {
@@ -1029,6 +1029,11 @@
       "name": "Roadmaps",
       "description": "Roadmap entries of the 5G-MAG projects, shown on the project pages of the 5G-MAG website.",
       "private": false
+    },
+    {
+      "name": "rt-media-application-provider",
+      "description": null,
+      "private": true
     },
     {
       "name": "Standards",
