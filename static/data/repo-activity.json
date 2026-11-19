@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18 04:48 UTC",
+  "updated_at": "2026-11-19 04:39 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1283,7 +1283,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -1316,8 +1316,8 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "development",
@@ -1338,7 +1338,7 @@
               "last_work_commit": "2026-11-13"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "delete_fix_apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
@@ -3359,9 +3359,20 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-18",
           "latest_release": null,
-          "pulls": [],
+          "pulls": [
+            {
+              "number": 20,
+              "title": "gltfast: MpegDiagnostics switch for the XRTEST test logs",
+              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/20",
+              "draft": false,
+              "author": "nlsdvl",
+              "created_at": "2026-11-18",
+              "updated_at": "2026-11-18",
+              "base": "rt-xr/development"
+            }
+          ],
           "issues": [],
           "branches": [
             {
@@ -3369,6 +3380,12 @@
               "default": true,
               "last_commit": "2026-11-13",
               "last_work_commit": "2026-11-13"
+            },
+            {
+              "name": "feature/xrtest-diagnostics",
+              "default": false,
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "feature/bufferinfo-per-spec",
@@ -3693,7 +3710,7 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2025-02-27",
           "pulls": [
             {
@@ -3703,7 +3720,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "updated_at": "2026-11-17",
+              "updated_at": "2026-11-18",
               "base": "development"
             }
           ],
@@ -4003,8 +4020,8 @@
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "feature/xr_smartphone_app-u6",
@@ -4181,30 +4198,9 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-07-14",
-          "pulls": [
-            {
-              "number": 57,
-              "title": "sbi: carry collocated NF instances in the NF profile; amf: fix discovery option use-after-free",
-              "url": "https://github.com/5G-MAG/open5gs/pull/57",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "improvements"
-            },
-            {
-              "number": 56,
-              "title": "Port bbc-patches onto Open5GS v2.8.0",
-              "url": "https://github.com/5G-MAG/open5gs/pull/56",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "improvements"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 63,
@@ -4461,8 +4457,20 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
+            },
+            {
+              "name": "improvements",
+              "default": false,
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
+            },
+            {
+              "name": "5mbs-development-jsr",
+              "default": false,
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "5mbs-development",
@@ -4477,19 +4485,19 @@
               "last_work_commit": "2026-11-11"
             },
             {
-              "name": "port/nrf-collocation",
+              "name": "delete_port_nrf-collocation",
               "default": false,
               "last_commit": "2026-10-17",
               "last_work_commit": "2026-10-17"
             },
             {
-              "name": "port/bbc-patches",
+              "name": "delete_port_bbc-patches",
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
             },
             {
-              "name": "feature/mbs-compliance-fixes",
+              "name": "delete_feature_mbs-compliance-fixes",
               "default": false,
               "last_commit": "2026-10-07",
               "last_work_commit": "2026-10-07"
@@ -4505,12 +4513,6 @@
               "default": false,
               "last_commit": "2026-08-12",
               "last_work_commit": "2026-08-12"
-            },
-            {
-              "name": "improvements",
-              "default": false,
-              "last_commit": "2026-06-20",
-              "last_work_commit": "2026-06-20"
             },
             {
               "name": "5mbs",
@@ -4741,7 +4743,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-07-03",
           "pulls": [],
           "issues": [
@@ -4912,8 +4914,8 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "development",
@@ -4922,7 +4924,7 @@
               "last_work_commit": "2026-10-30"
             },
             {
-              "name": "fix/mbsf-usac-create-retry",
+              "name": "delete_fix_mbsf-usac-create-retry",
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
@@ -4941,7 +4943,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -5029,17 +5031,17 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
-              "name": "development",
+              "name": "delete_fix_mbstf-packet-fixed-port",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-30"
             },
             {
-              "name": "fix/mbstf-packet-fixed-port",
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-30"
@@ -5088,7 +5090,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -5121,8 +5123,8 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "development",
@@ -5143,7 +5145,7 @@
               "last_work_commit": "2026-11-13"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "delete_fix_apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"
@@ -5180,7 +5182,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-10-02",
           "pulls": [
             {
@@ -5230,8 +5232,8 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "feature/mbs-compliance-fixes",
@@ -5240,16 +5242,16 @@
               "last_work_commit": "2026-11-13"
             },
             {
+              "name": "delete_fix_apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-09-20"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/mbsdeployment",
@@ -6232,7 +6234,7 @@
           "description": "Common Shared Tools",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-13",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-08-03",
           "pulls": [
             {
@@ -6306,16 +6308,16 @@
               "last_work_commit": "2026-11-13"
             },
             {
+              "name": "delete_fix_apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2026-08-13"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/mbs-compliance-fixes",
@@ -6330,7 +6332,7 @@
               "last_work_commit": "2026-08-13"
             },
             {
-              "name": "fix/cjson-copy-assign-missing-return",
+              "name": "delete_fix_cjson-copy-assign-missing-return",
               "default": false,
               "last_commit": "2026-08-11",
               "last_work_commit": "2026-08-11"
@@ -6916,30 +6918,9 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-07-14",
-          "pulls": [
-            {
-              "number": 57,
-              "title": "sbi: carry collocated NF instances in the NF profile; amf: fix discovery option use-after-free",
-              "url": "https://github.com/5G-MAG/open5gs/pull/57",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "improvements"
-            },
-            {
-              "number": 56,
-              "title": "Port bbc-patches onto Open5GS v2.8.0",
-              "url": "https://github.com/5G-MAG/open5gs/pull/56",
-              "draft": true,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-16",
-              "updated_at": "2026-10-20",
-              "base": "improvements"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 63,
@@ -7196,8 +7177,20 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
+            },
+            {
+              "name": "improvements",
+              "default": false,
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
+            },
+            {
+              "name": "5mbs-development-jsr",
+              "default": false,
+              "last_commit": "2026-11-17",
+              "last_work_commit": "2026-11-17"
             },
             {
               "name": "5mbs-development",
@@ -7212,19 +7205,19 @@
               "last_work_commit": "2026-11-11"
             },
             {
-              "name": "port/nrf-collocation",
+              "name": "delete_port_nrf-collocation",
               "default": false,
               "last_commit": "2026-10-17",
               "last_work_commit": "2026-10-17"
             },
             {
-              "name": "port/bbc-patches",
+              "name": "delete_port_bbc-patches",
               "default": false,
               "last_commit": "2026-10-16",
               "last_work_commit": "2026-10-16"
             },
             {
-              "name": "feature/mbs-compliance-fixes",
+              "name": "delete_feature_mbs-compliance-fixes",
               "default": false,
               "last_commit": "2026-10-07",
               "last_work_commit": "2026-10-07"
@@ -7240,12 +7233,6 @@
               "default": false,
               "last_commit": "2026-08-12",
               "last_work_commit": "2026-08-12"
-            },
-            {
-              "name": "improvements",
-              "default": false,
-              "last_commit": "2026-06-20",
-              "last_work_commit": "2026-06-20"
             },
             {
               "name": "5mbs",
@@ -7296,70 +7283,6 @@
               "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/9",
               "author": "veryfatfatman",
               "created_at": "2025-08-21",
-              "labels": []
-            },
-            {
-              "number": 8,
-              "title": "[gNB] RRC: SIB21",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/8",
-              "author": "jsroldan",
-              "created_at": "2025-02-07",
-              "labels": []
-            },
-            {
-              "number": 7,
-              "title": "[gNB] E1AP: BC BEARER CONTEXT SETUP FAILURE",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/7",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 6,
-              "title": "[gNB] E1AP: BC BEARER CONTEXT SETUP RESPONSE",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/6",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 5,
-              "title": "[gNB] E1AP: BC BEARER CONTEXT SETUP REQUEST",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/5",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 4,
-              "title": "[gNB] E1AP: BC Bearer Context Setup procedure",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/4",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 3,
-              "title": "[gNB] NGAP: BROADCAST SESSION SETUP FAILURE",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/3",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 2,
-              "title": "[gNB] NGAP: BROADCAST SESSION SETUP RESPONSE",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/2",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
-              "labels": []
-            },
-            {
-              "number": 1,
-              "title": "[AMF & gNB] NGAP: Broadcast Session Setup procedure",
-              "url": "https://github.com/5G-MAG/rt-srsRAN_Project/issues/1",
-              "author": "Borjis131",
-              "created_at": "2025-02-05",
               "labels": []
             }
           ],
@@ -7541,14 +7464,6 @@
                 "documentation",
                 "Project: Maintenance"
               ]
-            },
-            {
-              "number": 1,
-              "title": "[UE] RRC: SIB21",
-              "url": "https://github.com/5G-MAG/srsRAN_4G/issues/1",
-              "author": "jsroldan",
-              "created_at": "2025-02-07",
-              "labels": []
             }
           ],
           "branches": [
@@ -7596,7 +7511,7 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-16",
+          "pushed_at": "2026-11-18",
           "latest_release": "2026-06-05",
           "pulls": [],
           "issues": [
@@ -7629,8 +7544,8 @@
             {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
-              "last_commit": "2026-11-16",
-              "last_work_commit": "2026-11-16"
+              "last_commit": "2026-11-18",
+              "last_work_commit": "2026-11-18"
             },
             {
               "name": "development",
@@ -7651,7 +7566,7 @@
               "last_work_commit": "2026-11-13"
             },
             {
-              "name": "fix/apply-new-format",
+              "name": "delete_fix_apply-new-format",
               "default": false,
               "last_commit": "2026-10-30",
               "last_work_commit": "2026-10-09"

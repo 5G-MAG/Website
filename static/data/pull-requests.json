@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18 04:48 UTC",
+  "updated_at": "2026-11-19 04:39 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -260,6 +260,19 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "Composing, positioning, and temporally synchronising dynamic 3D visual and audio objects for XR",
       "pulls": [
+        {
+          "repo": "rt-xr-gITFast",
+          "branch": null,
+          "number": 20,
+          "title": "gltfast: MpegDiagnostics switch for the XRTEST test logs",
+          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/20",
+          "draft": false,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-11-18",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-xr-maf-native",
           "branch": null,
