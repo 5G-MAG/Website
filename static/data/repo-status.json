@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2026-09-04",
-      "open_pulls_last_year": 3
+      "open_pulls_last_year": 4
     },
     "Standards2Deployments": {
       "status": "Under Development",
@@ -155,8 +155,8 @@
     "rt-common-shared": {
       "status": "Actively Maintained",
       "latest_release": "2026-08-03",
-      "last_work_commit": "2026-08-13",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-19",
+      "open_pulls_last_year": 0
     },
     "rt-data-collection-application-function": {
       "status": "Actively Maintained",
@@ -287,7 +287,7 @@
     "rt-mbs-examples": {
       "status": "Actively Maintained",
       "latest_release": "2026-10-02",
-      "last_work_commit": "2026-09-20",
+      "last_work_commit": "2026-11-19",
       "open_pulls_last_year": 1
     },
     "rt-mbs-function": {
@@ -377,8 +377,8 @@
     "rt-xr-content": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-23",
-      "open_pulls_last_year": 3
+      "last_work_commit": "2026-11-19",
+      "open_pulls_last_year": 1
     },
     "rt-xr-gITFast": {
       "status": "Under Development",
