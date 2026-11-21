@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-09-04",
-      "open_pulls_last_year": 4
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 3
     },
     "Standards2Deployments": {
       "status": "Under Development",
@@ -42,7 +42,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-07-14",
       "last_work_commit": "2026-11-17",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-3gpp-swap": {
       "status": "Under Development",
@@ -54,7 +54,7 @@
       "status": "Actively Maintained",
       "latest_release": "2026-06-05",
       "last_work_commit": "2026-11-13",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-5gms-application": {
       "status": "Actively Maintained",
@@ -83,8 +83,8 @@
     "rt-5gms-common-android-library": {
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
-      "last_work_commit": "2026-05-26",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 0
     },
     "rt-5gms-examples": {
       "status": "Actively Maintained",
@@ -101,8 +101,8 @@
     "rt-5gms-media-stream-handler": {
       "status": "Actively Maintained",
       "latest_release": "2026-05-26",
-      "last_work_commit": "2026-11-05",
-      "open_pulls_last_year": 2
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 1
     },
     "rt-ai-ml-evaluation-framework": {
       "status": "Under Development",
@@ -155,7 +155,7 @@
     "rt-common-shared": {
       "status": "Actively Maintained",
       "latest_release": "2026-08-03",
-      "last_work_commit": "2026-11-19",
+      "last_work_commit": "2026-11-20",
       "open_pulls_last_year": 0
     },
     "rt-data-collection-application-function": {
@@ -287,20 +287,20 @@
     "rt-mbs-examples": {
       "status": "Actively Maintained",
       "latest_release": "2026-10-02",
-      "last_work_commit": "2026-11-19",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 4
     },
     "rt-mbs-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-30",
-      "open_pulls_last_year": 0
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 1
     },
     "rt-mbs-transport-function": {
       "status": "Actively Maintained",
       "latest_release": "2026-07-03",
-      "last_work_commit": "2026-10-30",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 2
     },
     "rt-media-android-application": {
       "status": "Under Development",
@@ -383,8 +383,8 @@
     "rt-xr-gITFast": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-11-13",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 0
     },
     "rt-xr-maf-native": {
       "status": "Under Development",
@@ -395,8 +395,8 @@
     "rt-xr-unity-player": {
       "status": "Actively Maintained",
       "latest_release": "2025-02-27",
-      "last_work_commit": "2026-10-19",
-      "open_pulls_last_year": 1
+      "last_work_commit": "2026-11-20",
+      "open_pulls_last_year": 0
     },
     "srsRAN": {
       "status": "Under Development",

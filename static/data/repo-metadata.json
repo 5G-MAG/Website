@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -12,7 +12,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/6G-Testbed"
     },
     "Standards2Deployments": {
@@ -24,7 +24,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/Standards2Deployments"
     },
     "cmcd-toolkit": {
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -119,7 +119,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
     },
     "rt-5gms-application": {
@@ -133,7 +133,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-17",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-5gms-application"
     },
     "rt-5gms-application-function": {
@@ -189,7 +189,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-5gms-common-android-library"
     },
     "rt-5gms-examples": {
@@ -231,7 +231,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler"
     },
     "rt-ai-ml-evaluation-framework": {
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -355,7 +355,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-common-shared"
     },
     "rt-data-collection-application-function": {
@@ -445,7 +445,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-libflute"
     },
     "rt-mbms-application": {
@@ -616,7 +616,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-application"
     },
     "rt-mbs-application-provider": {
@@ -630,7 +630,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-06",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-application-provider"
     },
     "rt-mbs-client": {
@@ -644,7 +644,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-client"
     },
     "rt-mbs-examples": {
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -672,7 +672,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-function"
     },
     "rt-mbs-transport-function": {
@@ -686,7 +686,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-mbs-transport-function"
     },
     "rt-media-android-application": {
@@ -712,7 +712,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-media-application-function"
     },
     "rt-media-origin": {
@@ -878,7 +878,7 @@
       "private": false,
       "archived": false,
       "default_branch": "rt-xr/development",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-xr-gITFast"
     },
     "rt-xr-maf-native": {
@@ -892,7 +892,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-13",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-xr-maf-native"
     },
     "rt-xr-unity-player": {
@@ -906,7 +906,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/rt-xr-unity-player"
     },
     "srsRAN": {
@@ -948,7 +948,7 @@
       "private": true,
       "archived": false,
       "default_branch": "5mbs",
-      "pushed_at": "2026-11-19",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
     },
     "srsRAN_Project_mbs": {
@@ -962,7 +962,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-05",
+      "pushed_at": "2026-11-20",
       "url": "https://github.com/5G-MAG/srsRAN_Project_mbs"
     },
     "vops-conformance-validator": {
