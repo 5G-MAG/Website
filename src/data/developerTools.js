@@ -3,7 +3,7 @@
 export const DEVELOPER_TOOLS = [
   {
     id: '3gpp-explorer',
-    title: '3GPP Explorer',
+    title: '3GPP Toolkit',
     icon: 'route',
     short: 'Find 3GPP work items and download their change requests.',
     summary: 'Filter the 3GPP work plan and download the agreed change requests of the work items you choose. Runs locally.',
