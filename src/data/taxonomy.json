@@ -471,7 +471,7 @@
       "contributors": [
         "Qualcomm",
         "Huawei",
-        "vivo"
+        "vivo mobile"
       ],
       "stages": {
         "under-study": true,
@@ -2726,7 +2726,7 @@
       "logo": "unilu.png"
     },
     {
-      "name": "vivo",
+      "name": "vivo mobile",
       "href": "https://www.vivo.com",
       "logo": "vivo.png"
     }

@@ -11,9 +11,9 @@ export const GENERAL_DECKS = [
   {
     id: 'software-accelerator',
     title: '5G-MAG Software Accelerator Deck',
-    description: 'The Media Connectivity Software Accelerator: open-source tools, validators and testbeds turning specs into working code.',
+    description: 'Accelerating next-generation connected media experiences through open specifications and open source software.',
     file: '/docs/Software_Accelerator.pdf',
     cover: '/assets/images/projects/software-accelerator-deck-cover.jpg',
-    pages: 16,
+    pages: 15,
   },
 ];
