@@ -14,6 +14,6 @@ export const GENERAL_DECKS = [
     description: 'The Media Connectivity Software Accelerator: open-source tools, validators and testbeds turning specs into working code.',
     file: '/docs/Software_Accelerator.pdf',
     cover: '/assets/images/projects/software-accelerator-deck-cover.jpg',
-    pages: 14,
+    pages: 15,
   },
 ];

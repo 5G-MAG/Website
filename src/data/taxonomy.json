@@ -470,7 +470,8 @@
       "releases_slug": "#repositories--releases",
       "contributors": [
         "Qualcomm",
-        "Huawei"
+        "Huawei",
+        "vivo"
       ],
       "stages": {
         "under-study": true,
@@ -2723,6 +2724,11 @@
       "name": "University of Luxembourg",
       "href": "https://www.uni.lu",
       "logo": "unilu.png"
+    },
+    {
+      "name": "vivo",
+      "href": "https://www.vivo.com",
+      "logo": "vivo.png"
     }
   ]
 }
