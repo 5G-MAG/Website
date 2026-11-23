@@ -401,9 +401,9 @@ export default function Home() {
                   <li>Sign an Individual or Corporate Contributor License Agreement (CLA).</li>
                   <li>Anybody can become a contributor (no need to be a 5G-MAG member to contribute code).</li>
                   <li>
-                    5G-MAG members get priority in support from the 5G-MAG Project Office, and
-                    additional development resources may be provided. 5G-MAG members define
-                    priorities and where to dedicate resources.
+                    5G-MAG members get priority in support from the 5G-MAG Project Office and
+                    5G-MAG development resources. 5G-MAG members define priorities and where
+                    to dedicate resources.
                   </li>
                   <li>
                     Membership of 5G-MAG remains open to the industry, to boost and scale your
