@@ -1,0 +1,7 @@
+{
+  "_comment": "The implementation boards of 5G-MAG/ProjectBoards that feed the Implementation status pages: slug of the project page -> organisation project number. Read nightly by scripts/fetch-board-status.js into src/data/boardStatus.json.",
+  "5gms": { "board": 79, "title": "5GMS" },
+  "5g-mbs": { "board": 80, "title": "5G MBS" },
+  "5g-broadcast": { "board": 81, "title": "5G Broadcast" },
+  "rtc": { "board": 82, "title": "RTC" }
+}
