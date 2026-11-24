@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-24",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -12,7 +12,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/6G-Testbed"
     },
     "Standards2Deployments": {
@@ -24,7 +24,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/Standards2Deployments"
     },
     "cmcd-toolkit": {
@@ -90,7 +90,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/open5gs"
     },
     "rt-3gpp-swap": {
@@ -119,7 +119,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
     },
     "rt-5gms-application": {
@@ -271,7 +271,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-avatar-call"
     },
     "rt-avatar-content": {
@@ -285,7 +285,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-10-29",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-avatar-content"
     },
     "rt-avatar-unity-tracker": {
@@ -355,7 +355,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-common-shared"
     },
     "rt-data-collection-application-function": {
@@ -445,7 +445,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-libflute"
     },
     "rt-mbms-application": {
@@ -644,7 +644,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-mbs-client"
     },
     "rt-mbs-examples": {
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -948,7 +948,7 @@
       "private": true,
       "archived": false,
       "default_branch": "5mbs",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/srsRAN_4G_mbs"
     },
     "srsRAN_Project_mbs": {
@@ -962,7 +962,7 @@
       "private": true,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-23",
       "url": "https://github.com/5G-MAG/srsRAN_Project_mbs"
     },
     "vops-conformance-validator": {
@@ -992,7 +992,7 @@
     },
     {
       "name": "3gpp-toolkit",
-      "description": null,
+      "description": "Moved to 5G-MAG/Standards2Deployments, folder 3gpp-toolkit/. To be archived.",
       "private": true
     },
     {
@@ -1026,6 +1026,21 @@
       "private": true
     },
     {
+      "name": "Project-Records",
+      "description": "Private working records of 5G-MAG standards-to-deployment project status",
+      "private": true
+    },
+    {
+      "name": "ProjectBoards",
+      "description": "Implementation boards of the 5G-MAG projects: features and component tasks derived from the 3GPP specifications, moved forward by agents and people. Roadmaps stay in 5G-MAG/Roadmaps.",
+      "private": false
+    },
+    {
+      "name": "Projects",
+      "description": "Detailed work items (issues and kanban boards) of the 5G-MAG projects. The high-level roadmaps stay in 5G-MAG/Roadmaps.",
+      "private": false
+    },
+    {
       "name": "Requests-for-Feedback",
       "description": "Publications related to 5G-MAG's areas of work which are open for comments from the community.",
       "private": false
@@ -1034,6 +1049,11 @@
       "name": "Roadmaps",
       "description": "Roadmap entries of the 5G-MAG projects, shown on the project pages of the 5G-MAG website.",
       "private": false
+    },
+    {
+      "name": "rt-cmmf-decoder",
+      "description": null,
+      "private": true
     },
     {
       "name": "rt-media-application-provider",

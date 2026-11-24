@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-11-23 04:10 UTC",
+  "updated_at": "2026-11-24 07:11 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 38,
+          "title": "subprojects: pin the open5gs wrap to 5mbs-development",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/38",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-media-stream-handler",
           "branch": null,
@@ -15,19 +28,6 @@
           "draft": false,
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 37,
-          "title": "Bring the history of the MBS compliance fixes into development",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/37",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-11-20",
           "last_comment_by": null,
           "last_comment_date": null
@@ -307,6 +307,19 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 38,
+          "title": "subprojects: pin the open5gs wrap to 5mbs-development",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/38",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-mbs-function",
           "branch": null,
           "number": 80,
@@ -338,97 +351,6 @@
           "number": 44,
           "title": "demo: ocudu is the gNB again; README records the end-to-end run on the development branches",
           "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/44",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 43,
-          "title": "mbs-deployment: Docker deployment of the 5G MBS chain (3 commits of feature/mbsdeployment)",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/43",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 42,
-          "title": "Demo scripts: USRP radios, own service area, leftovers and stop handling",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/42",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 41,
-          "title": "5mbs development jsr",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/41",
-          "draft": false,
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-client",
-          "branch": null,
-          "number": 5,
-          "title": "ServiceControl: do not restart the sessions of an already active service",
-          "url": "https://github.com/5G-MAG/rt-mbs-client/pull/5",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "srsRAN_4G_mbs",
-          "branch": null,
-          "number": 18,
-          "title": "MBS Broadcast: the NR UE fixes of 5mbs-development-jsr (RRC, MAC, PHY, PDCP, RLC)",
-          "url": "https://github.com/5G-MAG/srsRAN_4G_mbs/pull/18",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "srsRAN_Project_mbs",
-          "branch": null,
-          "number": 3,
-          "title": "MBS: Broadcast Context Setup Failure boilerplate and the modification success flag (2 commits of upv)",
-          "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/3",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 37,
-          "title": "Bring the history of the MBS compliance fixes into development",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/37",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -884,19 +806,6 @@
           "created_at": "2026-11-20",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "6G-Testbed",
-          "branch": null,
-          "number": 18,
-          "title": "Follow the peak_rate to mean_rate rename in the Q2 burst chart and docs",
-          "url": "https://github.com/5G-MAG/6G-Testbed/pull/18",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-16",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -911,6 +820,19 @@
       "doc_url": "/reference-tools/avatar/",
       "tagline": "Real-time conversational avatars, animated from user to user",
       "pulls": [
+        {
+          "repo": "rt-avatar-call",
+          "branch": null,
+          "number": 63,
+          "title": "Feature/urp linear",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/63",
+          "draft": true,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-11-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-avatar-content",
           "branch": null,
@@ -986,13 +908,26 @@
         {
           "repo": "Standards2Deployments",
           "branch": null,
-          "number": 2,
-          "title": "Refactor validator into library and WebUI with automatic DOCX comparison",
-          "url": "https://github.com/5G-MAG/Standards2Deployments/pull/2",
+          "number": 11,
+          "title": "Add the baseline workflow (workflow 2) beside the 3gpp-toolkit (workflow 1)",
+          "url": "https://github.com/5G-MAG/Standards2Deployments/pull/11",
           "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-10-08",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "Standards2Deployments",
+          "branch": null,
+          "number": 10,
+          "title": "check: fail when a specification document is tracked",
+          "url": "https://github.com/5G-MAG/Standards2Deployments/pull/10",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-23",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -1105,13 +1040,13 @@
         {
           "repo": "rt-5gc-service-consumers",
           "branch": null,
-          "number": 37,
-          "title": "Bring the history of the MBS compliance fixes into development",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/37",
+          "number": 38,
+          "title": "subprojects: pin the open5gs wrap to 5mbs-development",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/38",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
+          "created_at": "2026-11-23",
           "last_comment_by": null,
           "last_comment_date": null
         },
