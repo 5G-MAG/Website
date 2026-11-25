@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24 07:11 UTC",
+  "updated_at": "2026-11-25 05:46 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -41,7 +41,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -134,16 +134,22 @@
               "last_work_commit": "2026-10-24"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/5gmag-libs-2.0.0",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
               "name": "feature/release-19-uplift",
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-22",
-              "last_work_commit": "2026-10-22"
             },
             {
               "name": "docs/readme-fixes",
@@ -798,20 +804,9 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-19",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-05-26",
-          "pulls": [
-            {
-              "number": 66,
-              "title": "Add media delivery session identification to the Media Session Handler",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/pull/66",
-              "draft": false,
-              "author": "ErikGaida",
-              "created_at": "2026-10-24",
-              "updated_at": "2026-11-13",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 67,
@@ -931,22 +926,22 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "feature/release-19-uplift",
+              "name": "development",
               "default": false,
-              "last_commit": "2026-11-19",
-              "last_work_commit": "2026-11-19"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/Rel-18-media-delivery-session-identification",
               "default": false,
-              "last_commit": "2026-11-12",
-              "last_work_commit": "2026-11-12"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
-              "name": "development",
+              "name": "feature/release-19-uplift",
               "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-05-26"
+              "last_commit": "2026-11-19",
+              "last_work_commit": "2026-11-19"
             }
           ]
         },
@@ -956,31 +951,10 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-05-26",
-          "pulls": [
-            {
-              "number": 103,
-              "title": "Feature/ktlint v2",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/103",
-              "draft": false,
-              "author": "dsilhavy",
-              "created_at": "2026-11-20",
-              "updated_at": "2026-11-20",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
-            {
-              "number": 102,
-              "title": "Add ktlint code style check",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/issues/102",
-              "author": "dsilhavy",
-              "created_at": "2026-11-20",
-              "labels": [
-                "enhancement"
-              ]
-            },
             {
               "number": 100,
               "title": "`ExoPlayerAdapter.seek()` and `reset()` are not implemented",
@@ -1219,19 +1193,13 @@
               "last_work_commit": "2026-05-26"
             },
             {
-              "name": "bugfix/exoplayer-seek-reset",
-              "default": false,
-              "last_commit": "2026-11-20",
-              "last_work_commit": "2026-11-20"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-11-20",
-              "last_work_commit": "2026-11-20"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
-              "name": "feature/ktlint-v2",
+              "name": "bugfix/exoplayer-seek-reset",
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
@@ -1390,21 +1358,10 @@
           "description": "5GMS Common Android Library",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-05-26",
           "pulls": [],
-          "issues": [
-            {
-              "number": 39,
-              "title": "Add ktlint code style check",
-              "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/issues/39",
-              "author": "dsilhavy",
-              "created_at": "2026-11-20",
-              "labels": [
-                "enhancement"
-              ]
-            }
-          ],
+          "issues": [],
           "branches": [
             {
               "name": "main",
@@ -1414,6 +1371,18 @@
             },
             {
               "name": "development",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/ktlint-check",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/version-2.0.0",
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
@@ -1573,7 +1542,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -1721,16 +1690,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
-              "name": "feature/mbs-broadcast-rel19",
-              "default": false,
-              "last_commit": "2026-11-19",
-              "last_work_commit": "2026-11-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -1758,9 +1727,19 @@
           "description": "MBMS Modem",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-24",
           "latest_release": "2022-06-30",
           "pulls": [
+            {
+              "number": 56,
+              "title": "FeMBMS reception: Rel-19 PMCH, CAS muting, numerologies, PMCH wider than the carrier",
+              "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/56",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-24",
+              "updated_at": "2026-11-24",
+              "base": "development"
+            },
             {
               "number": 55,
               "title": "rest: report the pre-FEC BER estimate from srsRAN in the channel status",
@@ -1987,16 +1966,22 @@
               "last_work_commit": "2023-02-27"
             },
             {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/prs-toa",
+              "default": false,
+              "last_commit": "2026-11-14",
+              "last_work_commit": "2026-11-14"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2025-10-31"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
             },
             {
               "name": "gh-pages",
@@ -2009,12 +1994,6 @@
               "default": false,
               "last_commit": "2026-09-30",
               "last_work_commit": "2026-09-30"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -2302,9 +2281,20 @@
           "description": "5G Broadcast Transmitter",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-24",
           "latest_release": "2023-06-21",
-          "pulls": [],
+          "pulls": [
+            {
+              "number": 8,
+              "title": "FeMBMS transmit support, multi-PMCH routing, control endpoints over TCP",
+              "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/8",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-24",
+              "updated_at": "2026-11-24",
+              "base": "development"
+            }
+          ],
           "issues": [
             {
               "number": 5,
@@ -2333,22 +2323,22 @@
               "last_work_commit": "2023-09-13"
             },
             {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/prs-transmit",
+              "default": false,
+              "last_commit": "2026-11-14",
+              "last_work_commit": "2026-11-14"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2025-10-31"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -2626,9 +2616,19 @@
           "description": "MBMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-17",
+          "pushed_at": "2026-11-24",
           "latest_release": "2024-11-05",
           "pulls": [
+            {
+              "number": 21,
+              "title": "Add mbms-broadcast-demo and the FeMBMS tutorial coverage suite",
+              "url": "https://github.com/5G-MAG/rt-mbms-examples/pull/21",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-24",
+              "updated_at": "2026-11-24",
+              "base": "development"
+            },
             {
               "number": 18,
               "title": "WIP: Docker setup for MBMS client components",
@@ -2668,6 +2668,12 @@
               "last_work_commit": "2024-11-05"
             },
             {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
               "name": "feature/positioning-assistance-demo",
               "default": false,
               "last_commit": "2026-11-17",
@@ -2680,28 +2686,10 @@
               "last_work_commit": "2025-10-31"
             },
             {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
-            },
-            {
               "name": "feature/dockerClientComponents",
               "default": false,
               "last_commit": "2025-08-29",
               "last_work_commit": "2025-08-29"
-            },
-            {
-              "name": "fix/submodule-clone",
-              "default": false,
-              "last_commit": "2024-07-25",
-              "last_work_commit": "2024-07-25"
             },
             {
               "name": "feature/mws",
@@ -2723,9 +2711,20 @@
           "description": "5G Broadcast Transmitter",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-19",
+          "pushed_at": "2026-11-24",
           "latest_release": "2023-06-21",
-          "pulls": [],
+          "pulls": [
+            {
+              "number": 8,
+              "title": "FeMBMS transmit support, multi-PMCH routing, control endpoints over TCP",
+              "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/8",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-24",
+              "updated_at": "2026-11-24",
+              "base": "development"
+            }
+          ],
           "issues": [
             {
               "number": 5,
@@ -2754,22 +2753,22 @@
               "last_work_commit": "2023-09-13"
             },
             {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/prs-transmit",
+              "default": false,
+              "last_commit": "2026-11-14",
+              "last_work_commit": "2026-11-14"
+            },
+            {
               "name": "development",
               "default": false,
               "last_commit": "2026-10-19",
               "last_work_commit": "2025-10-31"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23",
-              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -4159,7 +4158,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-07-14",
           "pulls": [],
           "issues": [
@@ -4418,8 +4417,14 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-23",
-              "last_work_commit": "2026-11-23"
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -4432,12 +4437,6 @@
               "default": false,
               "last_commit": "2026-11-18",
               "last_work_commit": "2026-11-18"
-            },
-            {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-11",
-              "last_work_commit": "2026-11-11"
             },
             {
               "name": "bbc-patches",
@@ -4459,7 +4458,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -4607,16 +4606,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
-              "name": "feature/mbs-broadcast-rel19",
-              "default": false,
-              "last_commit": "2026-11-19",
-              "last_work_commit": "2026-11-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -4849,7 +4848,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-07-03",
           "pulls": [
             {
@@ -4945,6 +4944,12 @@
               "last_work_commit": "2026-07-03"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
+            },
+            {
               "name": "feature/mbs-broadcast-rel19",
               "default": false,
               "last_commit": "2026-11-20",
@@ -4955,12 +4960,6 @@
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
             },
             {
               "name": "fix/mbstf-minimum-fdt-expiry",
@@ -5085,20 +5084,9 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-10-02",
-          "pulls": [
-            {
-              "number": 44,
-              "title": "demo: ocudu is the gNB again; README records the end-to-end run on the development branches",
-              "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/44",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-11-20",
-              "updated_at": "2026-11-20",
-              "base": "development"
-            }
-          ],
+          "pulls": [],
           "issues": [
             {
               "number": 38,
@@ -5135,8 +5123,8 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-11-23",
-              "last_work_commit": "2026-11-23"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -5873,9 +5861,29 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-25",
           "latest_release": null,
           "pulls": [
+            {
+              "number": 23,
+              "title": "Netem calibration (#20) on top of the edge-tokenizer merge (#22)",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/23",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-25",
+              "updated_at": "2026-11-25",
+              "base": "merge/edge-tokenizer-into-development"
+            },
+            {
+              "number": 22,
+              "title": "Merge edge-tokenizer-resilient-qos into development",
+              "url": "https://github.com/5G-MAG/6G-Testbed/pull/22",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-24",
+              "updated_at": "2026-11-25",
+              "base": "development"
+            },
             {
               "number": 21,
               "title": "Add SA1 media test scenarios and campaign reporting",
@@ -5893,7 +5901,7 @@
               "draft": false,
               "author": "ibouazizi",
               "created_at": "2026-11-20",
-              "updated_at": "2026-11-20",
+              "updated_at": "2026-11-24",
               "base": "development"
             }
           ],
@@ -5904,6 +5912,18 @@
               "default": true,
               "last_commit": "2026-04-24",
               "last_work_commit": "2026-04-24"
+            },
+            {
+              "name": "merge/edge-tokenizer-into-development",
+              "default": false,
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
+            },
+            {
+              "name": "merge/netem-calibration-on-edge-tokenizer",
+              "default": false,
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
             },
             {
               "name": "fix/q2-mean-rate-chart",
@@ -6093,7 +6113,7 @@
           "description": "Common Shared Tools",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
@@ -6156,7 +6176,7 @@
               "last_work_commit": "2026-11-20"
             },
             {
-              "name": "feature/mbms-broadcast-demo",
+              "name": "feature/mbs-broadcast-rel19",
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
@@ -6168,16 +6188,16 @@
               "last_work_commit": "2026-11-20"
             },
             {
-              "name": "feature/mbs-broadcast-rel19",
-              "default": false,
-              "last_commit": "2026-10-01",
-              "last_work_commit": "2026-10-01"
-            },
-            {
               "name": "3GPP-Rel18",
               "default": false,
               "last_commit": "2026-08-13",
               "last_work_commit": "2026-08-13"
+            },
+            {
+              "name": "feature/mbms",
+              "default": false,
+              "last_commit": "2026-07-26",
+              "last_work_commit": "2026-07-26"
             },
             {
               "name": "3GPP-Rel17",
@@ -6196,12 +6216,6 @@
               "default": false,
               "last_commit": "2023-09-26",
               "last_work_commit": "2023-09-26"
-            },
-            {
-              "name": "feature/mbms",
-              "default": false,
-              "last_commit": "2022-12-08",
-              "last_work_commit": "2022-12-08"
             }
           ]
         }
@@ -6222,7 +6236,7 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-05-26",
           "pulls": [
             {
@@ -6315,16 +6329,22 @@
               "last_work_commit": "2026-10-24"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/5gmag-libs-2.0.0",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
               "name": "feature/release-19-uplift",
               "default": false,
               "last_commit": "2026-11-20",
               "last_work_commit": "2026-11-20"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-22",
-              "last_work_commit": "2026-10-22"
             },
             {
               "name": "docs/readme-fixes",
@@ -6544,7 +6564,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-24",
           "latest_release": "2026-09-01",
           "pulls": [
             {
@@ -6692,16 +6712,16 @@
               "last_work_commit": "2026-08-21"
             },
             {
-              "name": "feature/mbs-broadcast-rel19",
-              "default": false,
-              "last_commit": "2026-11-19",
-              "last_work_commit": "2026-11-19"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-30",
-              "last_work_commit": "2026-10-30"
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
+            },
+            {
+              "name": "feature/mbs-broadcast-rel19",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -6740,7 +6760,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-23",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-07-14",
           "pulls": [],
           "issues": [
@@ -6999,8 +7019,14 @@
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2026-11-23",
-              "last_work_commit": "2026-11-23"
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
+            },
+            {
+              "name": "feature/release-19-uplift",
+              "default": false,
+              "last_commit": "2026-11-24",
+              "last_work_commit": "2026-11-24"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -7013,12 +7039,6 @@
               "default": false,
               "last_commit": "2026-11-18",
               "last_work_commit": "2026-11-18"
-            },
-            {
-              "name": "feature/release-19-uplift",
-              "default": false,
-              "last_commit": "2026-11-11",
-              "last_work_commit": "2026-11-11"
             },
             {
               "name": "bbc-patches",

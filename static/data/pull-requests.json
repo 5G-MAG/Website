@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24 07:11 UTC",
+  "updated_at": "2026-11-25 05:45 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -16,32 +16,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-11-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-media-stream-handler",
-          "branch": null,
-          "number": 103,
-          "title": "Feature/ktlint v2",
-          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/pull/103",
-          "draft": false,
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-media-session-handler",
-          "branch": null,
-          "number": 66,
-          "title": "Add media delivery session identification to the Media Session Handler",
-          "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/pull/66",
-          "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-10-24",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -117,6 +91,84 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
+        {
+          "repo": "rt-mbms-modem",
+          "branch": null,
+          "number": 56,
+          "title": "FeMBMS reception: Rel-19 PMCH, CAS muting, numerologies, PMCH wider than the carrier",
+          "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/56",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-tx",
+          "branch": null,
+          "number": 8,
+          "title": "FeMBMS transmit support, multi-PMCH routing, control endpoints over TCP",
+          "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/8",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-examples",
+          "branch": null,
+          "number": 21,
+          "title": "Add mbms-broadcast-demo and the FeMBMS tutorial coverage suite",
+          "url": "https://github.com/5G-MAG/rt-mbms-examples/pull/21",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-client",
+          "branch": null,
+          "number": 3,
+          "title": "Track rt-libflute development; build and README fixes",
+          "url": "https://github.com/5G-MAG/rt-mbms-client/pull/3",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-application-provider",
+          "branch": null,
+          "number": 2,
+          "title": "Match the xMB rework; remove Public Warning System origination",
+          "url": "https://github.com/5G-MAG/rt-mbms-application-provider/pull/2",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-bmsc",
+          "branch": null,
+          "number": 2,
+          "title": "xMB rework for TS 26.348, FLUTE profile selection, Raptor delivery",
+          "url": "https://github.com/5G-MAG/rt-mbms-bmsc/pull/2",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbms-modem",
           "branch": null,
@@ -240,7 +292,21 @@
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tagline": "Emergency warnings delivered over 5G Broadcast",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-mbms-tx",
+          "branch": null,
+          "number": 8,
+          "title": "FeMBMS transmit support, multi-PMCH routing, control endpoints over TCP",
+          "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/8",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
@@ -338,19 +404,6 @@
           "number": 86,
           "title": "subprojects: build against the development branch of rt-libflute",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/86",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-11-20",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 44,
-          "title": "demo: ocudu is the gNB again; README records the end-to-end run on the development branches",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/44",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -781,6 +834,32 @@
       "doc_url": "/testbeds/6g-testbed/",
       "tagline": "6G testbed and AI-driven traffic characterization",
       "pulls": [
+        {
+          "repo": "6G-Testbed",
+          "branch": null,
+          "number": 23,
+          "title": "Netem calibration (#20) on top of the edge-tokenizer merge (#22)",
+          "url": "https://github.com/5G-MAG/6G-Testbed/pull/23",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-25",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "6G-Testbed",
+          "branch": null,
+          "number": 22,
+          "title": "Merge edge-tokenizer-resilient-qos into development",
+          "url": "https://github.com/5G-MAG/6G-Testbed/pull/22",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-11-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "6G-Testbed",
           "branch": null,
