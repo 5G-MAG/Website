@@ -1,0 +1,19 @@
+.board { margin: 1.5rem 0; }
+.intro { color: var(--ifm-color-emphasis-700); margin: 0 0 1rem; max-width: 70ch; }
+.summary { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0 0 0.75rem; }
+.summary b { display: block; font-size: 1.4rem; line-height: 1.1; }
+.summary span { color: var(--ifm-color-emphasis-700); font-size: 0.85rem; }
+.strip { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--ifm-color-emphasis-200); margin: 0 0 1rem; }
+.strip i { display: block; height: 100%; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; }
+.chip { font: inherit; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--ifm-color-emphasis-400); background: transparent; color: inherit; border-radius: 999px; padding: 0.15rem 0.8rem; }
+.chip[aria-pressed='true'] { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: var(--ifm-font-color-base-inverse); }
+.feature { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; margin: 0 0 0.5rem; padding: 0.1rem 0.9rem; }
+.feature summary { cursor: pointer; padding: 0.55rem 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; align-items: baseline; font-weight: 600; }
+.meta { font-weight: 400; font-size: 0.85rem; color: var(--ifm-color-emphasis-700); }
+.tasks { list-style: none; margin: 0 0 0.6rem; padding: 0; }
+.tasks li { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; align-items: baseline; padding: 0.3rem 0; border-top: 1px solid var(--ifm-color-emphasis-200); font-size: 0.9rem; }
+.pill { font-size: 0.75rem; border-radius: 999px; padding: 0.05rem 0.6rem; border: 1px solid currentColor; white-space: nowrap; }
+.s0 { color: var(--ifm-color-emphasis-700); } .s1 { color: #b45309; } .s2 { color: #a16207; } .s3 { color: #7e22ce; } .s4 { color: #1d4ed8; } .s5 { color: #15803d; } .s6 { color: #be185d; } .s7 { color: var(--ifm-color-emphasis-600); }
+.b0 { background: var(--ifm-color-emphasis-400); } .b1 { background: #f59e0b; } .b2 { background: #eab308; } .b3 { background: #a855f7; } .b4 { background: #3b82f6; } .b5 { background: #22c55e; } .b6 { background: #ec4899; } .b7 { background: var(--ifm-color-emphasis-600); }
+.note { color: var(--ifm-color-emphasis-700); font-size: 0.85rem; margin: 0.75rem 0 0; }
