@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25 05:46 UTC",
+  "updated_at": "2026-11-26 05:36 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1737,7 +1737,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-11-24",
-              "updated_at": "2026-11-24",
+              "updated_at": "2026-11-25",
               "base": "development"
             },
             {
@@ -4643,9 +4643,19 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-11-20",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-07-03",
           "pulls": [
+            {
+              "number": 82,
+              "title": "mbsf: advertise a service only on the paths its servAnnModes select",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/pull/82",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-25",
+              "updated_at": "2026-11-25",
+              "base": "development"
+            },
             {
               "number": 80,
               "title": "subprojects: build against the development branches of open5gs and rt-5gc-service-consumers",
@@ -4658,6 +4668,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 81,
+              "title": "MBSF: MBS-5 and the announcement channel serve every service with a bundle, whatever servAnnModes says",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/81",
+              "author": "jordijoangimenez",
+              "created_at": "2026-11-25",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 79,
               "title": "Docker image missing MIME database",
@@ -4821,6 +4841,12 @@
               "default": true,
               "last_commit": "2026-07-03",
               "last_work_commit": "2026-07-03"
+            },
+            {
+              "name": "fix/serv-ann-modes-per-path",
+              "default": false,
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -5084,7 +5110,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-24",
+          "pushed_at": "2026-11-25",
           "latest_release": "2026-10-02",
           "pulls": [],
           "issues": [
@@ -5123,8 +5149,8 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-11-24",
-              "last_work_commit": "2026-11-24"
+              "last_commit": "2026-11-25",
+              "last_work_commit": "2026-11-25"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -5871,7 +5897,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-11-25",
-              "updated_at": "2026-11-25",
+              "updated_at": "2026-11-26",
               "base": "merge/edge-tokenizer-into-development"
             },
             {
@@ -5881,7 +5907,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-11-24",
-              "updated_at": "2026-11-25",
+              "updated_at": "2026-11-26",
               "base": "development"
             },
             {

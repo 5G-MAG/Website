@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25",
+  "updated_at": "2026-11-26",
   "repos": {
     "6G-Testbed": {
       "description": "6G AI Traffic Characterization Testbed",
@@ -658,7 +658,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-24",
+      "pushed_at": "2026-11-25",
       "url": "https://github.com/5G-MAG/rt-mbs-examples"
     },
     "rt-mbs-function": {
@@ -672,7 +672,7 @@
       "private": false,
       "archived": false,
       "default_branch": "main",
-      "pushed_at": "2026-11-20",
+      "pushed_at": "2026-11-25",
       "url": "https://github.com/5G-MAG/rt-mbs-function"
     },
     "rt-mbs-transport-function": {
