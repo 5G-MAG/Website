@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26",
+  "updated_at": "2026-11-27",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -161,8 +161,8 @@
     "rt-data-collection-application-function": {
       "status": "Actively Maintained",
       "latest_release": "2025-05-13",
-      "last_work_commit": "2026-08-28",
-      "open_pulls_last_year": 2
+      "last_work_commit": "2026-11-26",
+      "open_pulls_last_year": 0
     },
     "rt-dvb-i-android-application": {
       "status": "Under Development",
