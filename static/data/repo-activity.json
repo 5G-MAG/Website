@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27 05:30 UTC",
+  "updated_at": "2026-11-28 05:06 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -5110,7 +5110,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-11-25",
+          "pushed_at": "2026-11-27",
           "latest_release": "2026-10-02",
           "pulls": [],
           "issues": [
@@ -5149,8 +5149,8 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-11-25",
-              "last_work_commit": "2026-11-25"
+              "last_commit": "2026-11-27",
+              "last_work_commit": "2026-11-27"
             },
             {
               "name": "feature/mbs-broadcast-rel19",
@@ -5199,97 +5199,6 @@
               "default": true,
               "last_commit": "2026-02-18",
               "last_work_commit": "2026-02-18"
-            }
-          ]
-        },
-        {
-          "repo": "rt-data-collection-application-function",
-          "url": "https://github.com/5G-MAG/rt-data-collection-application-function",
-          "description": "Generic 3GPP Data Collection AF",
-          "auxiliary": false,
-          "private": false,
-          "pushed_at": "2026-11-26",
-          "latest_release": "2025-05-13",
-          "pulls": [
-            {
-              "number": 33,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-data-collection-application-function/pull/33",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "updated_at": "2026-10-19",
-              "base": "development"
-            }
-          ],
-          "issues": [
-            {
-              "number": 37,
-              "title": "Update development to Open5GS v2.8.0 (improvements) for the new release line",
-              "url": "https://github.com/5G-MAG/rt-data-collection-application-function/issues/37",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-17",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 29,
-              "title": "Uplift to results of SA#109 (TS 26.532 V18.5.0)",
-              "url": "https://github.com/5G-MAG/rt-data-collection-application-function/issues/29",
-              "author": "davidjwbbc",
-              "created_at": "2025-10-10",
-              "labels": []
-            },
-            {
-              "number": 12,
-              "title": "Data Collection SP: Event Exposure data filtering on user and group Ids",
-              "url": "https://github.com/5G-MAG/rt-data-collection-application-function/issues/12",
-              "author": "davidjwbbc",
-              "created_at": "2024-08-23",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 5,
-              "title": "Event Consumer AF",
-              "url": "https://github.com/5G-MAG/rt-data-collection-application-function/issues/5",
-              "author": "rjb1000",
-              "created_at": "2023-12-20",
-              "labels": []
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2025-05-13",
-              "last_work_commit": "2025-05-13"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-11-26",
-              "last_work_commit": "2026-11-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-10-19",
-              "last_work_commit": "2026-10-19"
-            },
-            {
-              "name": "v1.0.x",
-              "default": false,
-              "last_commit": "2025-05-13",
-              "last_work_commit": "2025-05-13"
-            },
-            {
-              "name": "v1.1.x",
-              "default": false,
-              "last_commit": "2025-05-13",
-              "last_work_commit": "2025-05-13"
             }
           ]
         }
